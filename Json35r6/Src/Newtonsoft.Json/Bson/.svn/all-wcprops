@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Bson
+END
+BsonWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Bson/BsonWriter.cs
+END
+BsonType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Bson/BsonType.cs
+END
+BsonReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Bson/BsonReader.cs
+END
+BsonBinaryType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Bson/BsonBinaryType.cs
+END

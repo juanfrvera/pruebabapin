@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/69/workspace/development/bapin/Newtonsoft.Json/Utilities
+END
+ValidationUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/ValidationUtils.cs
+END
+ReflectionUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/ReflectionUtils.cs
+END
+CollectionUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/CollectionUtils.cs
+END
+ListWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/ListWrapper.cs
+END
+DateTimeUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/DateTimeUtils.cs
+END
+ThreadSafeStore.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/ThreadSafeStore.cs
+END
+Base64Encoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/Base64Encoder.cs
+END
+EnumValues.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/EnumValues.cs
+END
+MiscellaneousUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/MiscellaneousUtils.cs
+END
+DynamicWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/DynamicWrapper.cs
+END
+EnumUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/EnumUtils.cs
+END
+StringUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/StringUtils.cs
+END
+JavaScriptUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/JavaScriptUtils.cs
+END
+CollectionWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/CollectionWrapper.cs
+END
+BidirectionalDictionary.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/BidirectionalDictionary.cs
+END
+LateBoundDelegateFactory.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/LateBoundDelegateFactory.cs
+END
+StringBuffer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/69/workspace/development/bapin/Newtonsoft.Json/Utilities/StringBuffer.cs
+END
+EnumValue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/EnumValue.cs
+END
+ConvertUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/ConvertUtils.cs
+END
+DictionaryWrapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/DictionaryWrapper.cs
+END
+MathUtils.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Utilities/MathUtils.cs
+END

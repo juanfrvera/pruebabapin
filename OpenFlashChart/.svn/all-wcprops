@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/mecon/!svn/ver/69/workspace/development/bapin/OpenFlashChart
+END
+ChartElement.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ChartElement.cs
+END
+HBar.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/HBar.cs
+END
+LineScatter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/LineScatter.cs
+END
+RadarAxis.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/RadarAxis.cs
+END
+Animation.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Animation.cs
+END
+AreaLine.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AreaLine.cs
+END
+YAxisLabels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/YAxisLabels.cs
+END
+Title.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Title.cs
+END
+ChartControlDesigner.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ChartControlDesigner.cs
+END
+AxisLabels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AxisLabels.cs
+END
+mssccprj.scc
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/mssccprj.scc
+END
+ToolTip.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ToolTip.cs
+END
+LineDotValue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/LineDotValue.cs
+END
+ClassDiagram1.cd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ClassDiagram1.cd
+END
+OpenFlashChart.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/OpenFlashChart.csproj
+END
+ChartBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ChartBase.cs
+END
+OpenFlashChart.csproj.vspscc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/OpenFlashChart.csproj.vspscc
+END
+swfobject.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/swfobject.js
+END
+YAxis.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/YAxis.cs
+END
+LineDot.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/LineDot.cs
+END
+Chart.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Chart.cs
+END
+AxisLabel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AxisLabel.cs
+END
+Axis.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Axis.cs
+END
+BarType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarType.cs
+END
+DotStyle.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/DotStyle.cs
+END
+LineHollow.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/LineHollow.cs
+END
+Pie.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Pie.cs
+END
+XAxisLabels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/XAxisLabels.cs
+END
+AnimationType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AnimationType.cs
+END
+LineBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/LineBase.cs
+END
+BarFilled.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarFilled.cs
+END
+open-flash-chart.swf
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/open-flash-chart.swf
+END
+Candle.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Candle.cs
+END
+Line.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Line.cs
+END
+DotType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/DotType.cs
+END
+BarStack.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarStack.cs
+END
+Bar3D.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Bar3D.cs
+END
+YAxisRight.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/YAxisRight.cs
+END
+XAxis.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/XAxis.cs
+END
+ClassDiagram2.cd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/ClassDiagram2.cd
+END
+AreaHollow.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AreaHollow.cs
+END
+YAxisLabel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/YAxisLabel.cs
+END
+Legend.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Legend.cs
+END
+BarGlass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarGlass.cs
+END
+BarBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarBase.cs
+END
+OpenFlashChart.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/OpenFlashChart.cs
+END
+OpenFlashChartControl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/OpenFlashChartControl.cs
+END
+AreaBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/AreaBase.cs
+END
+Bar.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Bar.cs
+END
+Scatter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Scatter.cs
+END
+BarSketch.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/BarSketch.cs
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/readme.txt
+END
+Area.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/Area.cs
+END

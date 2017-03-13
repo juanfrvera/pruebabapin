@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
+ <Targets>
+  <Target Name="C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.dll">
+   <Modules>
+    <Module Name="newtonsoft.json.dll">
+     <Namespaces>
+      <Namespace Name="Newtonsoft.Json">
+       <Types>
+        <Type Name="JsonConvert" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DeserializeObject(System.String,System.Type,Newtonsoft.Json.JsonSerializerSettings)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonConvert.cs" Line="685">In method 'JsonConvert.DeserializeObject(string, Type, JsonSerializerSettings)', object 'sr' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'sr' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PopulateObject(System.String,System.Object,Newtonsoft.Json.JsonSerializerSettings)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonConvert.cs" Line="723">In method 'JsonConvert.PopulateObject(string, object, JsonSerializerSettings)', object 'sr' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'sr' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SerializeObject(System.Object,Newtonsoft.Json.Formatting,Newtonsoft.Json.JsonSerializerSettings)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonConvert.cs" Line="571">In method 'JsonConvert.SerializeObject(object, Formatting, JsonSerializerSettings)', object 'sw' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'sw' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ToString(System.Enum)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonConvert.cs" Line="227">In externally visible method 'JsonConvert.ToString(Enum)', validate parameter 'value' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonReader" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetTypeForCloseToken(Newtonsoft.Json.JsonToken)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="JsonToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonReader.cs" Line="379">Correct the spelling of the unrecognized token 'JsonToken' in the literal '"Not a valid close JsonToken: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsStartToken(Newtonsoft.Json.JsonToken)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonReader.cs" Line="364">Method 'JsonReader.IsStartToken(JsonToken)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected JsonToken value.".</Issue>
+            </Message>
+            <Message Id="JsonToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonReader.cs" Line="364">Correct the spelling of the unrecognized token 'JsonToken' in the literal '"Unexpected JsonToken value."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetStateBasedOnCurrent()" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JsonType" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonReader.cs" Line="335">Correct the spelling of the unrecognized token 'JsonType' in the literal '"While setting the reader state back to current object an unexpected JsonType was..."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonTextWriter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#WriteEnd(Newtonsoft.Json.JsonToken)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JsonToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonTextWriter.cs" Line="191">Correct the spelling of the unrecognized token 'JsonToken' in the literal '"Invalid JsonToken: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonValidatingReader" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CurrentMemberSchema" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_CurrentMemberSchema()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+             <Messages>
+              <Message Id="CurrentPropertyName" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+               <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonValidatingReader.cs" Line="178">Correct the spelling of the unrecognized token 'CurrentPropertyName' in the literal '"CurrentPropertyName has not been set on scope."'.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonWriter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AutoCompleteClose(Newtonsoft.Json.JsonToken)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="JsonType" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonWriter.cs" Line="533">Correct the spelling of the unrecognized token 'JsonType' in the literal '"Unknown JsonType: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteConstructorDate(Newtonsoft.Json.JsonReader)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="EndConstructor" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonWriter.cs" Line="399">Correct the spelling of the unrecognized token 'EndConstructor' in the literal '"Unexpected token while reading date constructor. Expected EndConstructor, got "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteToken(Newtonsoft.Json.JsonReader,System.Int32)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json" File="JsonWriter.cs" Line="377">Method 'JsonWriter.WriteToken(JsonReader, int)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected token type.".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Newtonsoft.Json.Converters">
+       <Types>
+        <Type Name="BinaryConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="BinaryConverter.cs" Line="99">In externally visible method 'BinaryConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="BinaryConverter.cs" Line="61">In externally visible method 'BinaryConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CustomCreationConverter`1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="2" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="CustomCreationConverter.cs" Line="60">In externally visible method 'CustomCreationConverter&lt;T&gt;.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'serializer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="CustomCreationConverter" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="CustomCreationConverter.cs" Line="44">Correct the spelling of the unrecognized token 'CustomCreationConverter' in the literal '"CustomCreationConverter should only be used while deserializing."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DataSetConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataSetConverter.cs" Line="70">In method 'DataSetConverter.ReadJson(JsonReader, Type, JsonSerializer)', call System.IDisposable.Dispose on object 'ds' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataSetConverter.cs" Line="74">In externally visible method 'DataSetConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataSetConverter.cs" Line="49">In externally visible method 'DataSetConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DataTableConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataTableConverter.cs" Line="76">In method 'DataTableConverter.ReadJson(JsonReader, Type, JsonSerializer)', call System.IDisposable.Dispose on object 'dt' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataTableConverter.cs" Line="81">In method 'DataTableConverter.ReadJson(JsonReader, Type, JsonSerializer)', call System.IDisposable.Dispose on object 'dt' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataTableConverter.cs" Line="74">In externally visible method 'DataTableConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataTableConverter.cs" Line="47">In externally visible method 'DataTableConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+            <Message Id="2" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="DataTableConverter.cs" Line="55">In externally visible method 'DataTableConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'serializer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EntityKeyMemberConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="2" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="EntityKeyMemberConverter.cs" Line="119">In externally visible method 'EntityKeyMemberConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'serializer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="EntityKeyMemberConverter.cs" Line="58">In externally visible method 'EntityKeyMemberConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HtmlColorConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="HtmlColorConverter.cs" Line="45">In externally visible method 'HtmlColorConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IsoDateTimeConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="IsoDateTimeConverter.cs" Line="101">In externally visible method 'IsoDateTimeConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="IsoDateTimeConverter.cs" Line="84">In externally visible method 'IsoDateTimeConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JavaScriptDateTimeConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="JavaScriptDateTimeConverter.cs" Line="59">In externally visible method 'JavaScriptDateTimeConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="JavaScriptDateTimeConverter.cs" Line="41">In externally visible method 'JavaScriptDateTimeConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="StringEnumConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="StringEnumConverter.cs" Line="74">In externally visible method 'StringEnumConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="StringEnumConverter.cs" Line="48">In externally visible method 'StringEnumConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="XmlNodeConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DeserializeNode(Newtonsoft.Json.JsonReader,System.Xml.XmlDocument,System.Xml.XmlNamespaceManager,System.Xml.XmlNode)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="DeserializeRootElementName" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="499">Correct the spelling of the unrecognized token 'DeserializeRootElementName' in the literal '"JSON root object has multiple properties. The root object must have a single pro..."'.</Issue>
+            </Message>
+            <Message Id="JsonToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="531">Correct the spelling of the unrecognized token 'JsonToken' in the literal '"Unexpected JsonToken when deserializing node: "'.</Issue>
+            </Message>
+            <Message Id="specifing" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="499">Correct the spelling of the unrecognized token 'specifing' in the literal '"JSON root object has multiple properties. The root object must have a single pro..."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DeserializeValue(Newtonsoft.Json.JsonReader,System.Xml.XmlDocument,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlNode)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="JsonToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="417">Correct the spelling of the unrecognized token 'JsonToken' in the literal '"Unexpected JsonToken: "'.</Issue>
+            </Message>
+            <Message Id="XmlDeclaration" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="342">Correct the spelling of the unrecognized token 'XmlDeclaration' in the literal '"Unexpected property name encountered while deserializing XmlDeclaration: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPropertyName(System.Xml.XmlNode)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="XmlNodeType" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="96">Correct the spelling of the unrecognized token 'XmlNodeType' in the literal '"Unexpected XmlNodeType when getting node name: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReadJson(Newtonsoft.Json.JsonReader,System.Type,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="XmlDocuments" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="273">Correct the spelling of the unrecognized token 'XmlDocuments' in the literal '"XmlNodeConverter only supports deserializing XmlDocuments"'.</Issue>
+            </Message>
+            <Message Id="XmlNodeConverter" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="291">Correct the spelling of the unrecognized token 'XmlNodeConverter' in the literal '"XmlNodeConverter can only convert JSON that begins with an object."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="273">Correct the spelling of the unrecognized token 'XmlNodeConverter' in the literal '"XmlNodeConverter only supports deserializing XmlDocuments"'.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="290">In externally visible method 'XmlNodeConverter.ReadJson(JsonReader, Type, JsonSerializer)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SerializeNode(Newtonsoft.Json.JsonWriter,System.Xml.XmlNode,System.Boolean)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="XmlNodeType" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="256">Correct the spelling of the unrecognized token 'XmlNodeType' in the literal '"Unexpected XmlNodeType when serializing nodes: "'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Converters" File="XmlNodeConverter.cs" Line="68">In externally visible method 'XmlNodeConverter.WriteJson(JsonWriter, object, JsonSerializer)', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Newtonsoft.Json.Linq">
+       <Types>
+        <Type Name="JArray" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Load(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JArray" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="106">Correct the spelling of the unrecognized token 'JArray' in the literal '"Error reading JArray from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="115">Correct the spelling of the unrecognized token 'JArray' in the literal '"Error reading JArray from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="JsonReader" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="106">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JArray from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="115">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JArray from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="103">In externally visible method 'JArray.Load(JsonReader)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Parse(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="129">In method 'JArray.Parse(string)', call System.IDisposable.Dispose on object 'new StringReader(json)' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteTo(Newtonsoft.Json.JsonWriter,Newtonsoft.Json.JsonConverter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JArray.cs" Line="167">In externally visible method 'JArray.WriteTo(JsonWriter, params JsonConverter[])', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JConstructor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Newtonsoft.Json.Linq.JConstructor)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="75">In externally visible method 'JConstructor.JConstructor(JConstructor)', validate parameter 'other' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Load(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JConstructor" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="179">Correct the spelling of the unrecognized token 'JConstructor' in the literal '"Error reading JConstructor from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="189">Correct the spelling of the unrecognized token 'JConstructor' in the literal '"Error reading JConstructor from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="JsonReader" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="179">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JConstructor from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="189">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JConstructor from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="176">In externally visible method 'JConstructor.Load(JsonReader)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteTo(Newtonsoft.Json.JsonWriter,Newtonsoft.Json.JsonConverter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JConstructor.cs" Line="128">In externally visible method 'JConstructor.WriteTo(JsonWriter, params JsonConverter[])', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JObject" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Load(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JObject" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="253">Correct the spelling of the unrecognized token 'JObject' in the literal '"Error reading JObject from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="264">Correct the spelling of the unrecognized token 'JObject' in the literal '"Error reading JObject from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="JsonReader" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="253">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JObject from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="264">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JObject from JsonReader."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Parse(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="278">In method 'JObject.Parse(string)', call System.IDisposable.Dispose on object 'new StringReader(json)' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteTo(Newtonsoft.Json.JsonWriter,Newtonsoft.Json.JsonConverter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JObject.cs" Line="316">In externally visible method 'JObject.WriteTo(JsonWriter, params JsonConverter[])', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JProperty" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Newtonsoft.Json.Linq.JProperty)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="104">In externally visible method 'JProperty.JProperty(JProperty)', validate parameter 'other' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Load(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JProperty" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="253">Correct the spelling of the unrecognized token 'JProperty' in the literal '"Error reading JProperty from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="264">Correct the spelling of the unrecognized token 'JProperty' in the literal '"Error reading JProperty from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="JsonReader" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="253">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JProperty from JsonReader."'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="264">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JProperty from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="250">In externally visible method 'JProperty.Load(JsonReader)', validate parameter 'reader' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteTo(Newtonsoft.Json.JsonWriter,Newtonsoft.Json.JsonConverter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JProperty.cs" Line="234">In externally visible method 'JProperty.WriteTo(JsonWriter, params JsonConverter[])', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JRaw" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Create(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JRaw.cs" Line="45">Object 'sw' can be disposed more than once in method 'JRaw.Create(JsonReader)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 45</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JToken" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ReadFrom(Newtonsoft.Json.JsonReader)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="JToken" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JToken.cs" Line="1084">Correct the spelling of the unrecognized token 'JToken' in the literal '"Error reading JToken from JsonReader."'.</Issue>
+            </Message>
+            <Message Id="JsonReader" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JToken.cs" Line="1084">Correct the spelling of the unrecognized token 'JsonReader' in the literal '"Error reading JToken from JsonReader."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JTokenReader" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetEndToken(Newtonsoft.Json.Linq.JContainer)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JTokenReader.cs" Line="112">Method 'JTokenReader.GetEndToken(JContainer)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected JContainer type.".</Issue>
+            </Message>
+            <Message Id="JContainer" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JTokenReader.cs" Line="112">Correct the spelling of the unrecognized token 'JContainer' in the literal '"Unexpected JContainer type."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetToken(Newtonsoft.Json.Linq.JToken)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JTokenReader.cs" Line="195">Method 'JTokenReader.SetToken(JToken)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected JTokenType.".</Issue>
+            </Message>
+            <Message Id="JTokenType" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JTokenReader.cs" Line="195">Correct the spelling of the unrecognized token 'JTokenType' in the literal '"Unexpected JTokenType."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JValue" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Newtonsoft.Json.Linq.JValue)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JValue.cs" Line="53">In externally visible method 'JValue.JValue(JValue)', validate parameter 'other' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WriteTo(Newtonsoft.Json.JsonWriter,Newtonsoft.Json.JsonConverter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JValue.cs" Line="330">Method 'JValue.WriteTo(JsonWriter, params JsonConverter[])' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected token type.".</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Linq" File="JValue.cs" Line="292">In externally visible method 'JValue.WriteTo(JsonWriter, params JsonConverter[])', validate parameter 'writer' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Newtonsoft.Json.Schema">
+       <Types>
+        <Type Name="JsonSchema" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Parse(System.String,Newtonsoft.Json.Schema.JsonSchemaResolver)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Schema" File="JsonSchema.cs" Line="239">In method 'JsonSchema.Parse(string, JsonSchemaResolver)', call System.IDisposable.Dispose on object 'new StringReader(json)' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ToString()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Schema" File="JsonSchema.cs" Line="275">In method 'JsonSchema.ToString()', call System.IDisposable.Dispose on object 'writer' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonSchemaNodeCollection" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetKeyForItem(Newtonsoft.Json.Schema.JsonSchemaNode)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Schema" File="JsonSchemaNodeCollection.cs" Line="34">In externally visible method 'JsonSchemaNodeCollection.GetKeyForItem(JsonSchemaNode)', validate parameter 'item' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Newtonsoft.Json.Serialization">
+       <Types>
+        <Type Name="DefaultContractResolver" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateProperties(Newtonsoft.Json.Serialization.JsonObjectContract)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="seralizable" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DefaultContractResolver.cs" Line="397">Correct the spelling of the unrecognized token 'seralizable' in the literal '"Null collection of seralizable members returned."'.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DefaultContractResolver.cs" Line="395">In externally visible method 'DefaultContractResolver.CreateProperties(JsonObjectContract)', validate parameter 'contract' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateProperty(Newtonsoft.Json.Serialization.JsonObjectContract,System.Reflection.MemberInfo)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DefaultContractResolver.cs" Line="476">In externally visible method 'DefaultContractResolver.CreateProperty(JsonObjectContract, MemberInfo)', validate parameter 'contract' before using it.</Issue>
+            </Message>
+            <Message Id="1" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DefaultContractResolver.cs" Line="443">In externally visible method 'DefaultContractResolver.CreateProperty(JsonObjectContract, MemberInfo)', validate parameter 'member' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DynamicValueProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetValue(System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DynamicValueProvider.cs" Line="106">In externally visible method 'DynamicValueProvider.GetValue(object)', validate parameter 'target' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetValue(System.Object,System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="DynamicValueProvider.cs" Line="86">In externally visible method 'DynamicValueProvider.SetValue(object, object)', validate parameter 'target' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JsonPropertyCollection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddProperty(Newtonsoft.Json.Serialization.JsonProperty)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="JsonPropertyCollection.cs" Line="68">In externally visible method 'JsonPropertyCollection.AddProperty(JsonProperty)', validate parameter 'property' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetKeyForItem(Newtonsoft.Json.Serialization.JsonProperty)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="JsonPropertyCollection.cs" Line="59">In externally visible method 'JsonPropertyCollection.GetKeyForItem(JsonProperty)', validate parameter 'item' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ReflectionValueProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetValue(System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="ReflectionValueProvider.cs" Line="83">In externally visible method 'ReflectionValueProvider.GetValue(object)', validate parameter 'target' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetValue(System.Object,System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Serialization" File="ReflectionValueProvider.cs" Line="66">In externally visible method 'ReflectionValueProvider.SetValue(object, object)', validate parameter 'target' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Newtonsoft.Json.Utilities">
+       <Types>
+        <Type Name="CollectionWrapper`1" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#System.Collections.IList.IndexOf(System.Object)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="ICollection" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="170">Correct the spelling of the unrecognized token 'ICollection' in the literal '"Wrapped ICollection&lt;T&gt; does not support IndexOf."'.</Issue>
+            </Message>
+            <Message Id="IndexOf" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="170">Correct the spelling of the unrecognized token 'IndexOf' in the literal '"Wrapped ICollection&lt;T&gt; does not support IndexOf."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.Collections.IList.Insert(System.Int32,System.Object)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="ICollection" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="189">Correct the spelling of the unrecognized token 'ICollection' in the literal '"Wrapped ICollection&lt;T&gt; does not support Insert."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#System.Collections.IList.Item[System.Int32]" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#System.Collections.IList.get_Item(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+             <Messages>
+              <Message Id="ICollection" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+               <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="211">Correct the spelling of the unrecognized token 'ICollection' in the literal '"Wrapped ICollection&lt;T&gt; does not support indexer."'.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#System.Collections.IList.set_Item(System.Int32,System.Object)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+             <Messages>
+              <Message Id="ICollection" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+               <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="218">Correct the spelling of the unrecognized token 'ICollection' in the literal '"Wrapped ICollection&lt;T&gt; does not support indexer."'.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#System.Collections.IList.RemoveAt(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="ICollection" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="181">Correct the spelling of the unrecognized token 'ICollection' in the literal '"Wrapped ICollection&lt;T&gt; does not support RemoveAt."'.</Issue>
+            </Message>
+            <Message Id="RemoveAt" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="CollectionWrapper.cs" Line="181">Correct the spelling of the unrecognized token 'RemoveAt' in the literal '"Wrapped ICollection&lt;T&gt; does not support RemoveAt."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DateTimeUtils" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ToSerializationMode(System.DateTimeKind)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="DateTimeUtils.cs" Line="35">Method 'DateTimeUtils.ToSerializationMode(DateTimeKind)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Unexpected DateTimeKind value.".</Issue>
+            </Message>
+            <Message Id="DateTimeKind" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="DateTimeUtils.cs" Line="35">Correct the spelling of the unrecognized token 'DateTimeKind' in the literal '"Unexpected DateTimeKind value."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DictionaryWrapper`2" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#CopyTo(System.Collections.Generic.KeyValuePair`2&lt;!0,!1&gt;[],System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="DictionaryWrapper.cs" Line="166">In externally visible method 'DictionaryWrapper&lt;TKey, TValue&gt;.CopyTo(KeyValuePair&lt;TKey, TValue&gt;[], int)', validate parameter 'array' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DynamicWrapper" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetStrongKey()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="DynamicWrapper.cs" Line="59">Correct the spelling of the unrecognized token 'Newtonsoft' in the literal '"Should have a Newtonsoft.Json.Dynamic.snk as an embedded resource."'.</Issue>
+            </Message>
+            <Message Id="snk" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="DynamicWrapper.cs" Line="59">Correct the spelling of the unrecognized token 'snk' in the literal '"Should have a Newtonsoft.Json.Dynamic.snk as an embedded resource."'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EnumValues`1" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetKeyForItem(Newtonsoft.Json.Utilities.EnumValue`1&lt;!0&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="EnumValues.cs" Line="38">In externally visible method 'EnumValues&lt;T&gt;.GetKeyForItem(EnumValue&lt;T&gt;)', validate parameter 'item' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="StringUtils" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Indent(System.String,System.Int32,System.Char)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="StringUtils.cs" Line="190">In method 'StringUtils.Indent(string, int, char)', call System.IDisposable.Dispose on object 'sr' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="StringUtils.cs" Line="191">In method 'StringUtils.Indent(string, int, char)', call System.IDisposable.Dispose on object 'sw' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NumberLines(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="StringUtils.cs" Line="229">In method 'StringUtils.NumberLines(string)', call System.IDisposable.Dispose on object 'sr' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="StringUtils.cs" Line="230">In method 'StringUtils.NumberLines(string)', call System.IDisposable.Dispose on object 'sw' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReplaceNewLines(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="StringUtils.cs" Line="258">In method 'StringUtils.ReplaceNewLines(string, string)', call System.IDisposable.Dispose on object 'sr' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ValidationUtils" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ArgumentIsPositive`1(!!0,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="ValidationUtils.cs" Line="128">Method 'ValidationUtils.ArgumentIsPositive&lt;T&gt;(T, string)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Positive number required.".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ArgumentNotNegative(System.Int32,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="ValidationUtils.cs" Line="104">Method 'ValidationUtils.ArgumentNotNegative(int, string)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Argument cannot be negative.".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ArgumentNotZero(System.Int32,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message Id="Newtonsoft.Json.Utilities.MiscellaneousUtils.CreateArgumentOutOfRangeException(System.String,System.Object,System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-03-07 17:45:13Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\Utilities" File="ValidationUtils.cs" Line="116">Method 'ValidationUtils.ArgumentNotZero(int, string)' passes a literal string as parameter 'message' of a call to 'MiscellaneousUtils.CreateArgumentOutOfRangeException(string, object, string)'. Retrieve the following string(s) from a resource table instead: "Argument cannot be zero.".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>Dispose objects before losing scope</Name>
+   <Description>If a disposable object is not explicitly disposed before all references to it are out of scope, the object will be disposed at some indeterminate time when the garbage collector runs the finalizer of the object. Because an exceptional event might occur that will prevent the finalizer of the object from running, the object should be explicitly disposed instead.</Description>
+   <Resolution Name="ExceptionEdge">In method {0}, object {1} is not disposed along all exception paths. Call System.IDisposable.Dispose on object {1} before all references to it are out of scope.</Resolution>
+   <Resolution Name="NonExceptionEdge">In method {0}, call System.IDisposable.Dispose on object {1} before all references to it are out of scope.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182289.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 45</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>Literal strings that are embedded in source code are difficult to localize. Avoid passing literal strings as arguments in circumstances where a localized string is generally expected.</Description>
+   <Resolution Name="KnownValue">Method {0} passes a literal string as parameter '{1}' of a call to {2}. Retrieve the following string(s) from a resource table instead: {3}.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182187.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204">
+   <Name>Literals should be spelled correctly</Name>
+   <Description>This rule parses the literal string into words, tokenizing compound words, and checks the spelling of each word/token.</Description>
+   <Resolution Name="Default">Correct the spelling of the unrecognized token '{0}' in the literal '{1}'.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/bb264488.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062">
+   <Name>Validate arguments of public methods</Name>
+   <Description>All reference arguments passed to externally visible methods should be checked against null (Nothing in VB). If appropriate, throw a System.ArgumentNullException when the argument is null.</Description>
+   <Resolution Name="Default">In externally visible method {0}, validate parameter '{1}' before using it.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182182.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

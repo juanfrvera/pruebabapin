@@ -1,0 +1,371 @@
+﻿/* FORM */
+
+.form
+{
+	clear: both;
+	margin:0px 0px 10px 0px;
+	background: #e0ebf6;
+	border: 1px solid lightsteelblue;
+	padding: 10px;
+}
+
+/* BOX */
+
+.box
+{
+	clear: both;
+	margin:0px 0px 10px 0px;
+	background: #e0ebf6;
+	border: 1px solid lightsteelblue;
+	padding: 10px;
+}
+
+.box h2
+{
+	color: #336699;
+}
+
+.box h2 a
+{
+}
+
+.box .body
+{
+}
+
+.commandBar
+{
+	padding:5px;
+	margin: 5px 0px;
+}
+
+.editor
+{
+	padding: 5px 5px 5px 0px;
+	vertical-align: top;
+}
+
+
+.list
+{
+	padding: 5px 5px 5px 15px;
+	vertical-align: top;
+	border-left: 1px dotted gainsboro;
+}
+
+.splitter
+{
+	border-left: 1px dotted gainsboro;
+}
+
+/* BUTTONS  */
+
+.button
+{
+	border: solid 1 px;
+
+
+}
+.CompletInput
+{ 
+	width:200px;
+}
+
+.lightButton
+{
+/*height:21px;
+background-image: url(Images/Layout/linea3.jpg);
+background-repeat:repeat-x;
+border:1px solid #859f6b;
+font-size:11px;*/
+}
+
+.lightList
+{
+	border: solid 0px;
+	border-width: 0px;
+	font-size: 1em;
+}
+
+/* LABELS */
+.info
+{
+	color: #000000;
+	background: url(images/icons/information.gif) #ccffcc no-repeat 5px 5px;
+	border: #B0C6DF 1px solid;
+	margin: 0px;
+	padding: 5px 5px 5px 25px;
+	display: block;
+	clear: both;
+}
+
+.error
+{
+	color: #000000;
+	background: url(images/icons/error.gif) #FFCCCC no-repeat 5px 5px;
+	border: #993333 1px solid;
+	margin: 0px;
+	padding: 5px 5px 5px 25px;
+	display: block;
+	clear: both;
+}
+
+.warning
+{
+	color: #000000;
+	background: url(images/icons/warning.gif) #FFFFCC no-repeat 5px 5px;
+	border: #CC9900 1px solid;
+	margin: 5px 0px 0px 0px;
+	padding: 5px 5px 5px 25px;
+	display: block;
+	clear: both;
+}
+
+.required
+{
+	font-weight: bold;
+	width: 125px;
+	vertical-align: top;
+}
+
+.optional
+{
+	font-style: italic;
+	color: gray;
+	width: 125px;
+	vertical-align: top;
+}
+
+/* AJAX Styles */
+
+.popup
+{
+	border: 1px solid gray !important;
+	border-top: 5px solid #336699 !important;
+	background-color: white !important;
+	padding: 10px !important;
+}
+
+.popup-background
+{
+	border: 1px solid gray !important;
+	background-color: gray !important;
+	filter: alpha(opacity=25) !important;
+	opacity: 0.25 !important;
+}
+
+/* COMMON */
+
+.left
+{
+	float: left;
+}
+
+.right
+{
+	float: right;
+}
+
+.clear
+{
+	clear: both;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.noborder
+{
+	border: 0;
+}
+
+.nopadding
+{
+	padding: 0;
+}
+
+/* TOOLTIP */
+
+.tooltip
+{
+	color: black;
+	background-color: #fffaaf;
+	padding: 5px;
+	border: gold 1px solid;
+}
+
+.tooltip hr
+{
+	border: 1px dotted dimgray;
+}
+
+.tooltip td
+{
+	padding: 1px !important;
+	background: transparent !important;
+	border: 0 !important;
+}
+
+/* REFERENCE */
+
+.reference
+{
+	margin: 10px 0px;
+}
+
+.reference ul
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.reference .white
+{
+	background-image: url(images/icons/box_white.gif);
+	background-repeat: no-repeat;
+	padding: 5px 30px;
+}
+
+.reference .yellow
+{
+	background-image: url(images/icons/box_yellow.gif);
+	background-repeat: no-repeat;
+	padding: 5px 30px;
+}
+
+.darkColumn
+{
+	background-color: #fffaaf !important;
+}
+
+
+/* LIST */
+
+.simpleList .header
+{
+	border-bottom: 1px dotted gainsboro !important;
+	background-color: Transparent !important;
+	padding: 2px !important;
+}
+
+.simpleList .body
+{
+	padding-left: 20px !important;
+}
+
+.simpleList p
+{
+	padding-left: 20px !important;
+	margin-bottom: 10px;
+}
+
+
+/* COMMENT */
+
+.comment
+{
+	width: 500px;
+}
+
+.comment .title
+{
+	font-weight: bold;
+}
+
+.comment .description
+{
+	font-style: italic;
+}
+
+
+/* RSS */
+
+.rss ul li
+{
+	color: darkorange;
+	border-bottom: 1px dotted gainsboro;
+}
+
+.rss ul li a
+{
+	color: #336699 !important;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.rss ul li p
+{
+	color: black !important;
+}
+
+.cmbSmall
+{
+    FONT-WEIGHT: normal; 
+    FONT-SIZE: 11px; 
+    FONT-FAMILY: Verdana;
+    margin-left: 10px;
+    width: 200px;
+}
+
+.ListSearchExtenderPrompt
+{
+	font-style:italic;
+	color:Gray;
+	background-color:white;
+}
+
+.MaskedEditValidator
+{
+    background-color:#ffcccc;
+}
+
+.MaskedEditValidatorRightAlign
+{
+    background-color:#ffcccc;
+    text-align: right;
+}
+
+
+.CenteredText
+{
+    text-align:center;
+}
+
+.collapsePanelHeader
+{
+	color: #003366;
+	background: url(images/layout/back1.gif) #e0ebf6 repeat-x;	
+	border: 1px solid lightsteelblue;
+	padding: 5px;
+	width:722px;
+}
+
+.comboSinItems
+{
+	font-style:italic;
+	color:Gray;
+    background-color:#ffcccc;
+}
+
+
+
+.RightAlignText
+{
+    text-align: right;
+}
+
+
+
+.ListaSinItems
+{
+    float: right;
+    width: 180px;
+	font-style:italic;
+	color:Gray;
+    background-color:#ffcccc;
+}
+
+.

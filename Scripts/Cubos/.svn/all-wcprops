@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/mecon/!svn/ver/129/workspace/sql/Cubos
+END
+Create JOB sp_Cubo_Inicia_CxT.sql
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/116/workspace/sql/Cubos/Create%20JOB%20sp_Cubo_Inicia_CxT.sql
+END
+Leeme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/mecon/!svn/ver/116/workspace/sql/Cubos/Leeme.txt
+END
+00.Cubos.sql
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/mecon/!svn/ver/107/workspace/sql/Cubos/00.Cubos.sql
+END
+Cambios en la version v003-02.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/129/workspace/sql/Cubos/Cambios%20en%20la%20version%20v003-02.txt
+END
+00.Cubos-v002.sql
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/mecon/!svn/ver/116/workspace/sql/Cubos/00.Cubos-v002.sql
+END
+Create JOB sp_Cubo_Inicia_CxO.sql
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/116/workspace/sql/Cubos/Create%20JOB%20sp_Cubo_Inicia_CxO.sql
+END
+00.Cubos-v003-02.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/mecon/!svn/ver/129/workspace/sql/Cubos/00.Cubos-v003-02.sql
+END
+00.Cubos-v005-01.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/mecon/!svn/ver/139/workspace/sql/Cubos/00.Cubos-v005-01.sql
+END

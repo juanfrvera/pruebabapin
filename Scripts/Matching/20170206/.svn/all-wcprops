@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/mecon/!svn/ver/129/workspace/sql/Matching/20170206
+END
+01_ScriptEliminaEstructuras.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/129/workspace/sql/Matching/20170206/01_ScriptEliminaEstructuras.sql
+END
+02_ScriptCreaEstructurasBD.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/129/workspace/sql/Matching/20170206/02_ScriptCreaEstructurasBD.sql
+END
+03_InsertaConfig.sql
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/129/workspace/sql/Matching/20170206/03_InsertaConfig.sql
+END

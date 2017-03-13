@@ -1,0 +1,4 @@
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\bin\Debug\Documentation.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\bin\Debug\Documentation.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\obj\Debug\Documentation.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\obj\Debug\Documentation.pdb

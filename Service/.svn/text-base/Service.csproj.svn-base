@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0846CC81-3446-4220-B3CA-CADDADB8D91F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ingematica.Librerias.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Ingematica\Ingematica.Librerias.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\ServiceHelper.cs" />
+    <Compile Include="Base\EntityService.cs" />
+    <Compile Include="Base\Extensiones.cs" />
+    <Compile Include="Manager\AuditManager.cs" />
+    <Compile Include="Manager\AccionesCache.cs" />
+    <Compile Include="Manager\DirectoryFileManager.cs" />
+    <Compile Include="Manager\DatabaseFileManager.cs" />
+    <Compile Include="Manager\EstadoDeDesicionCache.cs" />
+    <Compile Include="Manager\PerfilCache.cs" />
+    <Compile Include="Manager\MessageManager.cs" />
+    <Compile Include="Manager\EstadosCache.cs" />
+    <Compile Include="Manager\EmailNotificationManager.cs" />
+    <Compile Include="Manager\ParameterManager.cs" />
+    <Compile Include="Manager\ExceptionManager.cs" />
+    <Compile Include="Manager\TextManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ActividadPermisoService.cs" />
+    <Compile Include="Service\ActividadService.cs" />
+    <Compile Include="Service\AdministracionTipoService.cs" />
+    <Compile Include="Service\AnioService.cs" />
+    <Compile Include="Service\AuditOperationDetailService.cs" />
+    <Compile Include="Service\AuditOperationService.cs" />
+    <Compile Include="Service\AuditSessionService.cs" />
+    <Compile Include="Service\Base\_ActividadPermisoService.cs" />
+    <Compile Include="Service\Base\_ActividadService.cs" />
+    <Compile Include="Service\Base\_AdministracionTipoService.cs" />
+    <Compile Include="Service\Base\_AnioService.cs" />
+    <Compile Include="Service\Base\_AuditOperationDetailService.cs" />
+    <Compile Include="Service\Base\_AuditOperationService.cs" />
+    <Compile Include="Service\Base\_AuditSessionService.cs" />
+    <Compile Include="Service\Base\_CaracterEconomicoService.cs" />
+    <Compile Include="Service\Base\_CaracterEconomicoTipoService.cs" />
+    <Compile Include="Service\Base\_CargoService.cs" />
+    <Compile Include="Service\Base\_ClasificacionGastoRubroService.cs" />
+    <Compile Include="Service\Base\_ClasificacionGastoService.cs" />
+    <Compile Include="Service\Base\_ClasificacionGastoTipoService.cs" />
+    <Compile Include="Service\Base\_ClasificacionGeograficaService.cs" />
+    <Compile Include="Service\Base\_ClasificacionGeograficaTipoService.cs" />
+    <Compile Include="Service\Base\_ClasificacionService.cs" />
+    <Compile Include="Service\Base\_ComentarioTecnicoService.cs" />
+    <Compile Include="Service\Base\_ConfigurationCategoryService.cs" />
+    <Compile Include="Service\Base\_ConfigurationService.cs" />
+    <Compile Include="Service\Base\_EntidadTipoService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\Base\_EstadoDeDesicionHistoricoService.cs" />
+    <Compile Include="Service\Base\_EstadoDeDesicionService.cs" />
+    <Compile Include="Service\Base\_EstadoService.cs" />
+    <Compile Include="Service\Base\_EtapaService.cs" />
+    <Compile Include="Service\Base\_EvaluacionAspectoEvaluacionResultadoService.cs" />
+    <Compile Include="Service\Base\_EvaluacionAspectoService.cs" />
+    <Compile Include="Service\Base\_EvaluacionResultadoService.cs" />
+    <Compile Include="Service\Base\_EvaluacionTipoEvaluacionAspectoService.cs" />
+    <Compile Include="Service\Base\_EvaluacionTipoService.cs" />
+    <Compile Include="Service\Base\_FaseService.cs" />
+    <Compile Include="Service\Base\_FileInfoService.cs" />
+    <Compile Include="Service\Base\_FinalidadFuncionService.cs" />
+    <Compile Include="Service\Base\_FinalidadFuncionTipoService.cs" />
+    <Compile Include="Service\Base\_FuenteFinanciamientoService.cs" />
+    <Compile Include="Service\Base\_FuenteFinanciamientoTipoService.cs" />
+    <Compile Include="Service\Base\_GeoreferenciacionPuntoService.cs" />
+    <Compile Include="Service\Base\_GeoreferenciacionService.cs" />
+    <Compile Include="Service\Base\_GestionTipoService.cs" />
+    <Compile Include="Service\Base\_IndicadorClaseService.cs" />
+    <Compile Include="Service\Base\_IndicadorEvolucionInstanciaService.cs" />
+    <Compile Include="Service\Base\_IndicadorEvolucionService.cs" />
+    <Compile Include="Service\Base\_IndicadorMedioVerificacionService.cs" />
+    <Compile Include="Service\Base\_IndicadorRelacionRubroService.cs" />
+    <Compile Include="Service\Base\_IndicadorRubroService.cs" />
+    <Compile Include="Service\Base\_IndicadorService.cs" />
+    <Compile Include="Service\Base\_IndicadorTipoService.cs" />
+    <Compile Include="Service\Base\_JurisdiccionService.cs" />
+    <Compile Include="Service\Base\_LanguageService.cs" />
+    <Compile Include="Service\Base\_MedioVerificacionService.cs" />
+    <Compile Include="Service\Base\_MessageAttachService.cs" />
+    <Compile Include="Service\Base\_MessageConfigurationService.cs" />
+    <Compile Include="Service\Base\_MessageMediaService.cs" />
+    <Compile Include="Service\Base\_MessageSendService.cs" />
+    <Compile Include="Service\Base\_MessageService.cs" />
+    <Compile Include="Service\Base\_ModalidadContratacionService.cs" />
+    <Compile Include="Service\Base\_ModalidadFinancieraService.cs" />
+    <Compile Include="Service\Base\_MonedaCotizacionService.cs" />
+    <Compile Include="Service\Base\_MonedaService.cs" />
+    <Compile Include="Service\Base\_NumerationService.cs" />
+    <Compile Include="Service\Base\_ObjetivoIndicadorService.cs" />
+    <Compile Include="Service\Base\_ObjetivoService.cs" />
+    <Compile Include="Service\Base\_ObjetivoSupuestoService.cs" />
+    <Compile Include="Service\Base\_OficinaSafProgramaService.cs" />
+    <Compile Include="Service\Base\_OficinaSafService.cs" />
+    <Compile Include="Service\Base\_OficinaService.cs" />
+    <Compile Include="Service\Base\_OrganismoFinancieroService.cs" />
+    <Compile Include="Service\Base\_OrganismoPrioridadService.cs" />
+    <Compile Include="Service\Base\_OrganismoService.cs" />
+    <Compile Include="Service\Base\_OrganismoTipoService.cs" />
+    <Compile Include="Service\Base\_ParameterCategoryService.cs" />
+    <Compile Include="Service\Base\_ParameterService.cs" />
+    <Compile Include="Service\Base\_PerfilActividadService.cs" />
+    <Compile Include="Service\Base\_PerfilService.cs" />
+    <Compile Include="Service\Base\_PerfilTipoService.cs" />
+    <Compile Include="Service\Base\_PermisoService.cs" />
+    <Compile Include="Service\Base\_PersonaService.cs" />
+    <Compile Include="Service\Base\_PlanPeriodoService.cs" />
+    <Compile Include="Service\Base\_PlanPeriodoVersionActivaService.cs" />
+    <Compile Include="Service\Base\_PlanTipoService.cs" />
+    <Compile Include="Service\Base\_PlanVersionService.cs" />
+    <Compile Include="Service\Base\_PrestamoAlcanceGeograficoService.cs" />
+    <Compile Include="Service\Base\_PrestamoCalificacionService.cs" />
+    <Compile Include="Service\Base\_PrestamoComponenteService.cs" />
+    <Compile Include="Service\Base\_PrestamoConvenioService.cs" />
+    <Compile Include="Service\Base\_PrestamoDesembolsoService.cs" />
+    <Compile Include="Service\Base\_PrestamoDictamenEstadoService.cs" />
+    <Compile Include="Service\Base\_PrestamoDictamenFileService.cs" />
+    <Compile Include="Service\Base\_PrestamoDictamenService.cs" />
+    <Compile Include="Service\Base\_PrestamoEstadoService.cs" />
+    <Compile Include="Service\Base\_PrestamoFileService.cs" />
+    <Compile Include="Service\Base\_PrestamoFinalidadFuncionService.cs" />
+    <Compile Include="Service\Base\_PrestamoFinanciamientoService.cs" />
+    <Compile Include="Service\Base\_PrestamoObjetivoEspecificoService.cs" />
+    <Compile Include="Service\Base\_PrestamoObjetivoService.cs" />
+    <Compile Include="Service\Base\_PrestamoOficinaFuncionarioService.cs" />
+    <Compile Include="Service\Base\_PrestamoOficinaPerfilService.cs" />
+    <Compile Include="Service\Base\_PrestamoProductoService.cs" />
+    <Compile Include="Service\Base\_PrestamoService.cs" />
+    <Compile Include="Service\Base\_PrestamoSubComponenteService.cs" />
+    <Compile Include="Service\Base\_PrestamoSubConvenioService.cs" />
+    <Compile Include="Service\Base\_PrioridadService.cs" />
+    <Compile Include="Service\Base\_PriorityService.cs" />
+    <Compile Include="Service\Base\_ProcesoService.cs" />
+    <Compile Include="Service\Base\_ProgramaObjetivoService.cs" />
+    <Compile Include="Service\Base\_ProgramaService.cs" />
+    <Compile Include="Service\Base\_ProyectoAlcanceGeograficoService.cs" />
+    <Compile Include="Service\Base\_ProyectoBeneficiarioIndicadorService.cs" />
+    <Compile Include="Service\Base\_ProyectoBeneficioIndicadorService.cs" />
+    <Compile Include="Service\Base\_ProyectoCalidadLocalizacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoCalidadService.cs" />
+    <Compile Include="Service\Base\_ProyectoCalificacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoComentarioTecnicoService.cs" />
+    <Compile Include="Service\Base\_ProyectoDemoraService.cs" />
+    <Compile Include="Service\Base\_ProyectoDictamenEstadoService.cs" />
+    <Compile Include="Service\Base\_ProyectoDictamenFileService.cs" />
+    <Compile Include="Service\Base\_ProyectoDictamenSeguimientoService.cs" />
+    <Compile Include="Service\Base\_ProyectoDictamenService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaEstimadoPeriodoService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaEstimadoService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaIndicadorService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaRealizadoPeriodoService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaRealizadoService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaService.cs" />
+    <Compile Include="Service\Base\_ProyectoEvaluacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoFaseProyectoEtapaService.cs" />
+    <Compile Include="Service\Base\_ProyectoFileService.cs" />
+    <Compile Include="Service\Base\_ProyectoFinService.cs" />
+    <Compile Include="Service\Base\_ProyectoGeoLocalizacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoGeoreferenciacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoIndicadorEconomicoService.cs" />
+    <Compile Include="Service\Base\_ProyectoIndicadorPriorizacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoLocalizacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoOficinaPerfilFuncionarioService.cs" />
+    <Compile Include="Service\Base\_ProyectoOficinaPerfilService.cs" />
+    <Compile Include="Service\Base\_ProyectoOrigenFinanciamientoService.cs" />
+    <Compile Include="Service\Base\_ProyectoOrigenFinanciamientoTipoService.cs" />
+    <Compile Include="Service\Base\_ProyectoPlanService.cs" />
+    <Compile Include="Service\Base\_ProyectoPrioridadService.cs" />
+    <Compile Include="Service\Base\_ProyectoProductoProyectoEtapaService.cs" />
+    <Compile Include="Service\Base\_ProyectoProductoService.cs" />
+    <Compile Include="Service\Base\_ProyectoPropositoService.cs" />
+    <Compile Include="Service\Base\_ProyectoRelacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoRelacionTipoService.cs" />
+    <Compile Include="Service\Base\_ProyectoSeguimientoEstadoService.cs" />
+    <Compile Include="Service\Base\_ProyectoSeguimientoFileService.cs" />
+    <Compile Include="Service\Base\_ProyectoSeguimientoLocalizacionService.cs" />
+    <Compile Include="Service\Base\_ProyectoSeguimientoProyectoService.cs" />
+    <Compile Include="Service\Base\_ProyectoSeguimientoService.cs" />
+    <Compile Include="Service\Base\_ProyectoService.cs" />
+    <Compile Include="Service\Base\_ProyectoShapeFileService.cs" />
+    <Compile Include="Service\Base\_ProyectoTipoService.cs" />
+    <Compile Include="Service\Base\_SAFService.cs" />
+    <Compile Include="Service\Base\_SectorService.cs" />
+    <Compile Include="Service\Base\_SistemaAccionService.cs" />
+    <Compile Include="Service\Base\_SistemaCommandService.cs" />
+    <Compile Include="Service\Base\_SistemaEntidadAccionService.cs" />
+    <Compile Include="Service\Base\_SistemaEntidadEstadoService.cs" />
+    <Compile Include="Service\Base\_SistemaEntidadService.cs" />
+    <Compile Include="Service\Base\_SistemaReporteHistoricoService.cs" />
+    <Compile Include="Service\Base\_SistemaReporteService.cs" />
+    <Compile Include="Service\Base\_SubConvenioTipoService.cs" />
+    <Compile Include="Service\Base\_SubJurisdiccionService.cs" />
+    <Compile Include="Service\Base\_SubProgramaService.cs" />
+    <Compile Include="Service\Base\_TextCategoryService.cs" />
+    <Compile Include="Service\Base\_TextLanguageService.cs" />
+    <Compile Include="Service\Base\_TextService.cs" />
+    <Compile Include="Service\Base\_TransferenciaDetalleService.cs" />
+    <Compile Include="Service\Base\_TransferenciaService.cs" />
+    <Compile Include="Service\Base\_UnidadMedidaService.cs" />
+    <Compile Include="Service\Base\_UsuarioOficinaPerfilService.cs" />
+    <Compile Include="Service\Base\_UsuarioPerfilService.cs" />
+    <Compile Include="Service\Base\_UsuarioService.cs" />
+    <Compile Include="Service\CaracterEconomicoService.cs" />
+    <Compile Include="Service\CaracterEconomicoTipoService.cs" />
+    <Compile Include="Service\CargoService.cs" />
+    <Compile Include="Service\ClasificacionGastoRubroService.cs" />
+    <Compile Include="Service\ClasificacionGastoService.cs" />
+    <Compile Include="Service\ClasificacionGastoTipoService.cs" />
+    <Compile Include="Service\ClasificacionGeograficaService.cs" />
+    <Compile Include="Service\ClasificacionGeograficaTipoService.cs" />
+    <Compile Include="Service\ClasificacionService.cs" />
+    <Compile Include="Service\ComentarioTecnicoService.cs" />
+    <Compile Include="Service\ConfigurationCategoryService.cs" />
+    <Compile Include="Service\ConfigurationService.cs" />
+    <Compile Include="Service\EntidadTipoService.cs" />
+    <Compile Include="Service\EstadoDeDesicionHistoricoService.cs" />
+    <Compile Include="Service\EstadoDeDesicionService.cs" />
+    <Compile Include="Service\EstadoService.cs" />
+    <Compile Include="Service\EtapaService.cs" />
+    <Compile Include="Service\EvaluacionAspectoEvaluacionResultadoService.cs" />
+    <Compile Include="Service\EvaluacionAspectoService.cs" />
+    <Compile Include="Service\EvaluacionResultadoService.cs" />
+    <Compile Include="Service\EvaluacionTipoEvaluacionAspectoService.cs" />
+    <Compile Include="Service\EvaluacionTipoService.cs" />
+    <Compile Include="Service\FaseService.cs" />
+    <Compile Include="Service\FileInfoService.cs" />
+    <Compile Include="Service\FinalidadFuncionService.cs" />
+    <Compile Include="Service\FinalidadFuncionTipoService.cs" />
+    <Compile Include="Service\FuenteFinanciamientoService.cs" />
+    <Compile Include="Service\FuenteFinanciamientoTipoService.cs" />
+    <Compile Include="Service\GeoreferenciacionPuntoService.cs" />
+    <Compile Include="Service\GeoreferenciacionService.cs" />
+    <Compile Include="Service\GestionTipoService.cs" />
+    <Compile Include="Service\IndicadorClaseService.cs" />
+    <Compile Include="Service\IndicadorEvolucionInstanciaService.cs" />
+    <Compile Include="Service\IndicadorEvolucionService.cs" />
+    <Compile Include="Service\IndicadorMedioVerificacionService.cs" />
+    <Compile Include="Service\IndicadorRelacionRubroService.cs" />
+    <Compile Include="Service\IndicadorRubroService.cs" />
+    <Compile Include="Service\IndicadorService.cs" />
+    <Compile Include="Service\IndicadorTipoService.cs" />
+    <Compile Include="Service\JurisdiccionService.cs" />
+    <Compile Include="Service\LanguageService.cs" />
+    <Compile Include="Service\MedioVerificacionService.cs" />
+    <Compile Include="Service\MessageAttachService.cs" />
+    <Compile Include="Service\MessageConfigurationService.cs" />
+    <Compile Include="Service\MessageMediaService.cs" />
+    <Compile Include="Service\MessageSendService.cs" />
+    <Compile Include="Service\MessageService.cs" />
+    <Compile Include="Service\ModalidadContratacionService.cs" />
+    <Compile Include="Service\ModalidadFinancieraService.cs" />
+    <Compile Include="Service\MonedaCotizacionService.cs" />
+    <Compile Include="Service\MonedaService.cs" />
+    <Compile Include="Service\NumerationService.cs" />
+    <Compile Include="Service\ObjetivoIndicadorService.cs" />
+    <Compile Include="Service\ObjetivoService.cs" />
+    <Compile Include="Service\ObjetivoSupuestoService.cs" />
+    <Compile Include="Service\OficinaSafProgramaService.cs" />
+    <Compile Include="Service\OficinaSafService.cs" />
+    <Compile Include="Service\OficinaService.cs" />
+    <Compile Include="Service\OrganismoFinancieroService.cs" />
+    <Compile Include="Service\OrganismoPrioridadService.cs" />
+    <Compile Include="Service\OrganismoService.cs" />
+    <Compile Include="Service\OrganismoTipoService.cs" />
+    <Compile Include="Service\ParameterCategoryService.cs" />
+    <Compile Include="Service\ParameterService.cs" />
+    <Compile Include="Service\PerfilActividadService.cs" />
+    <Compile Include="Service\PerfilService.cs" />
+    <Compile Include="Service\PerfilTipoService.cs" />
+    <Compile Include="Service\PermisoService.cs" />
+    <Compile Include="Service\PersonaService.cs" />
+    <Compile Include="Service\PlanPeriodoService.cs" />
+    <Compile Include="Service\PlanPeriodoVersionActivaService.cs" />
+    <Compile Include="Service\PlanTipoService.cs" />
+    <Compile Include="Service\PlanVersionService.cs" />
+    <Compile Include="Service\PrestamoAlcanceGeograficoService.cs" />
+    <Compile Include="Service\PrestamoCalificacionService.cs" />
+    <Compile Include="Service\PrestamoComponenteService.cs" />
+    <Compile Include="Service\PrestamoConvenioService.cs" />
+    <Compile Include="Service\PrestamoDesembolsoService.cs" />
+    <Compile Include="Service\PrestamoDictamenEstadoService.cs" />
+    <Compile Include="Service\PrestamoDictamenFileService.cs" />
+    <Compile Include="Service\PrestamoDictamenService.cs" />
+    <Compile Include="Service\PrestamoEstadoService.cs" />
+    <Compile Include="Service\PrestamoFileService.cs" />
+    <Compile Include="Service\PrestamoFinalidadFuncionService.cs" />
+    <Compile Include="Service\PrestamoFinanciamientoService.cs" />
+    <Compile Include="Service\PrestamoObjetivoEspecificoService.cs" />
+    <Compile Include="Service\PrestamoObjetivosComposeService.cs" />
+    <Compile Include="Service\PrestamoObjetivoService.cs" />
+    <Compile Include="Service\PrestamoOficinaFuncionarioService.cs" />
+    <Compile Include="Service\PrestamoOficinaPerfilService.cs" />
+    <Compile Include="Service\PrestamoProductoComposeService.cs" />
+    <Compile Include="Service\PrestamoProductoService.cs" />
+    <Compile Include="Service\PrestamoService.cs" />
+    <Compile Include="Service\PrestamoSubComponenteService.cs" />
+    <Compile Include="Service\PrestamoSubConvenioService.cs" />
+    <Compile Include="Service\PrestamoDictamenDNIPComposeService.cs" />
+    <Compile Include="Service\PrioridadService.cs" />
+    <Compile Include="Service\PriorityService.cs" />
+    <Compile Include="Service\ProcesoService.cs" />
+    <Compile Include="Service\ProgramaComposeService.cs" />
+    <Compile Include="Service\ProgramaObjetivosComposeService.cs" />
+    <Compile Include="Service\ProgramaObjetivoService.cs" />
+    <Compile Include="Service\ProgramaService.cs" />
+    <Compile Include="Service\ProyectoAlcanceGeograficoService.cs" />
+    <Compile Include="Service\ProyectoBeneficiarioIndicadorService.cs" />
+    <Compile Include="Service\ProyectoBeneficioIndicadorService.cs" />
+    <Compile Include="Service\ProyectoCalidadComposeService.cs" />
+    <Compile Include="Service\ProyectoCalidadLocalizacionService.cs" />
+    <Compile Include="Service\ProyectoCalidadService.cs" />
+    <Compile Include="Service\ProyectoCalificacionService.cs" />
+    <Compile Include="Service\ProyectoComentarioTecnicoService.cs" />
+    <Compile Include="Service\ProyectoCronogramaComposeService.cs" />
+    <Compile Include="Service\ProyectoDemoraService.cs" />
+    <Compile Include="Service\ProyectoDictamenEstadoService.cs" />
+    <Compile Include="Service\ProyectoDictamenFileService.cs" />
+    <Compile Include="Service\ProyectoDictamenSeguimientoService.cs" />
+    <Compile Include="Service\ProyectoDictamenService.cs" />
+    <Compile Include="Service\ProyectoEtapaEstimadoPeriodoService.cs" />
+    <Compile Include="Service\ProyectoEtapaEstimadoService.cs" />
+    <Compile Include="Service\ProyectoEtapaIndicadorService.cs" />
+    <Compile Include="Service\ProyectoEtapaRealizadoPeriodoService.cs" />
+    <Compile Include="Service\ProyectoEtapaRealizadoService.cs" />
+    <Compile Include="Service\ProyectoEtapaService.cs" />
+    <Compile Include="Service\ProyectoEvaluacionComposeService.cs" />
+    <Compile Include="Service\ProyectoEvaluacionService.cs" />
+    <Compile Include="Service\ProyectoFaseProyectoEtapaService.cs" />
+    <Compile Include="Service\ProyectoFilesComposeService.cs" />
+    <Compile Include="Service\ProyectoFileService.cs" />
+    <Compile Include="Service\ProyectoFinService.cs" />
+    <Compile Include="Service\ProyectoGeoLocalizacionService.cs" />
+    <Compile Include="Service\ProyectoGeoreferenciacionService.cs" />
+    <Compile Include="Service\ProyectoIndicadorEconomicoService.cs" />
+    <Compile Include="Service\ProyectoIndicadorPriorizacionService.cs" />
+    <Compile Include="Service\ProyectoIntervencionDNIPComposeService.cs" />
+    <Compile Include="Service\ProyectoLocalizacionService.cs" />
+    <Compile Include="Service\ProyectoObjetivosComposeService.cs" />
+    <Compile Include="Service\ProyectoOficinaPerfilFuncionarioService.cs" />
+    <Compile Include="Service\ProyectoOficinaPerfilService.cs" />
+    <Compile Include="Service\ProyectoOrigenFinanciamientoService.cs" />
+    <Compile Include="Service\ProyectoOrigenFinanciamientoTipoService.cs" />
+    <Compile Include="Service\ProyectoPlanService.cs" />
+    <Compile Include="Service\ProyectoPrioridadService.cs" />
+    <Compile Include="Service\ProyectoProductoIntermedioComposeService.cs" />
+    <Compile Include="Service\ProyectoProductoProyectoEtapaService.cs" />
+    <Compile Include="Service\ProyectoProductoService.cs" />
+    <Compile Include="Service\ProyectoPropositoService.cs" />
+    <Compile Include="Service\ProyectoRelacionService.cs" />
+    <Compile Include="Service\ProyectoRelacionTipoService.cs" />
+    <Compile Include="Service\ProyectoSeguimientoEstadoService.cs" />
+    <Compile Include="Service\ProyectoSeguimientoFileService.cs" />
+    <Compile Include="Service\ProyectoSeguimientoLocalizacionService.cs" />
+    <Compile Include="Service\ProyectoSeguimientoProyectoService.cs" />
+    <Compile Include="Service\ProyectoSeguimientoService.cs" />
+    <Compile Include="Service\ProyectoService.cs" />
+    <Compile Include="Service\ProyectoShapeFileService.cs" />
+    <Compile Include="Service\ProyectoTipoService.cs" />
+    <Compile Include="Service\SafService.cs" />
+    <Compile Include="Service\SectorService.cs" />
+    <Compile Include="Service\SistemaAccionService.cs" />
+    <Compile Include="Service\SistemaCommandService.cs" />
+    <Compile Include="Service\SistemaEntidadAccionService.cs" />
+    <Compile Include="Service\SistemaEntidadEstadoService.cs" />
+    <Compile Include="Service\SistemaEntidadService.cs" />
+    <Compile Include="Service\SistemaReporteHistoricoService.cs" />
+    <Compile Include="Service\SistemaReporteService.cs" />
+    <Compile Include="Service\SubConvenioTipoService.cs" />
+    <Compile Include="Service\SubJurisdiccionService.cs" />
+    <Compile Include="Service\SubProgramaService.cs" />
+    <Compile Include="Service\TextCategoryService.cs" />
+    <Compile Include="Service\TextLanguageService.cs" />
+    <Compile Include="Service\TextService.cs" />
+    <Compile Include="Service\TransferenciaDetalleService.cs" />
+    <Compile Include="Service\TransferenciaService.cs" />
+    <Compile Include="Service\UnidadMedidaService.cs" />
+    <Compile Include="Service\UsuarioOficinaPerfilService.cs" />
+    <Compile Include="Service\UsuarioPerfilService.cs" />
+    <Compile Include="Service\UsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{C8BC04B2-8301-476D-825A-955AAAB83241}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{4DAE049E-E23F-48B9-9B05-79A04949E911}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{502770AF-5356-4C46-9F61-90890936E0F8}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

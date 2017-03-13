@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/mecon/!svn/ver/36/workspace/development/bapin/Application/Security
+END
+Web.config
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/Web.config
+END
+frmLogin.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/36/workspace/development/bapin/Application/Security/frmLogin.aspx
+END
+frmChangePassword.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/frmChangePassword.aspx
+END
+frmChangePassword.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/frmChangePassword.aspx.designer.cs
+END
+frmLogin.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/35/workspace/development/bapin/Application/Security/frmLogin.aspx.designer.cs
+END
+frmChangePassword.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/frmChangePassword.aspx.cs
+END
+PasswordRecovery.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/PasswordRecovery.aspx
+END
+frmLogin.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/frmLogin.aspx.cs
+END
+PasswordRecovery.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/PasswordRecovery.aspx.designer.cs
+END
+Default.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/Default.aspx
+END
+PasswordRecovery.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/PasswordRecovery.aspx.cs
+END
+Default.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/Default.aspx.designer.cs
+END
+Default.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/Default.aspx.cs
+END
+PasswordRecovery-es.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/PasswordRecovery-es.txt
+END
+DefaultSecure.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/DefaultSecure.aspx
+END
+DefaultSecure.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/DefaultSecure.aspx.designer.cs
+END
+DefaultSecure.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/DefaultSecure.aspx.cs
+END
+ExceptionMapping.config
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Security/ExceptionMapping.config
+END

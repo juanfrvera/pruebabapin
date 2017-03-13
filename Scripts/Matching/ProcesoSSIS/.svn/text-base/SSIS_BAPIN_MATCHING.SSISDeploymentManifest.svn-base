@@ -1,0 +1,1 @@
+<?xml version="1.0"?><DTSDeploymentManifest GeneratedBy="WIN-PIM96ACBLGJ\Administrator" GeneratedFromProjectName="SSIS_BAPIN_MATCHING" GeneratedDate="2017-02-05T21:34:33.5329582-03:00" AllowConfigurationChanges="true"><Package>SSIS_BAPIN.dtsx</Package><ConfigurationFile>SSIS_BAPIN_CONFIG.xml</ConfigurationFile></DTSDeploymentManifest>

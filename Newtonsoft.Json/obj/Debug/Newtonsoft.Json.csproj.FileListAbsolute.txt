@@ -1,0 +1,8 @@
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.xml
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.dll.CodeAnalysisLog.xml
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.dll.lastcodeanalysissucceeded
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.csprojResolveAssemblyReference.cache

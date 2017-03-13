@@ -1,0 +1,11 @@
+Pasos para generar las tablas, funciones y procedimientos necesarios para el modulo de Cubos.
+
+1. Descomprimir el archivo [00.Cubos.rar] y ejecutar el script [00.Cubos-v002.sql]
+
+el procedimiento concluye ejecutando los procedimientos [sp_Cubo_Inicia_CxO] y 
+[sp_Cubo_Inicia_CxT]
+
+como resultado se deberian generar las tablas [Cubo_CxO] y [Cubo_CxT]
+
+2. Se cambiaron los nombres en los scripts que generan los Jobs por los nuevos [sp_Cubo_Inicia_CxO] y [sp_Cubo_Inicia_CxT]
+

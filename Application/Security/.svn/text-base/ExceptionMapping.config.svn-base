@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<configuration>
+<exceptionMappingConfiguration>
+  <exceptionMappings>
+    <add type="System.ApplicationException" returnOriginalMessage="True" />
+    <add type="System.ServiceModel.FaultException" returnOriginalMessage="True" />
+    <add type="System.Data.Linq.ChangeConflictException" message="FKEditConstraint" />
+    <add type="System.Data.SqlClient.SqlException">
+      <attributes name="Number">
+        <add value="2627" message="DuplicateKey" />
+        <add value="547" contains="DELETE" message="FKDeleteConstraint" />
+        <add value="547" contains="INSERT" message="FKUpdateConstraint" />
+      </attributes>
+    </add>
+  </exceptionMappings>
+</exceptionMappingConfiguration>
+</configuration>

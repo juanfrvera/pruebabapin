@@ -1,0 +1,1005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4DAE049E-E23F-48B9-9B05-79A04949E911}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contract</RootNamespace>
+    <AssemblyName>Contract</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ingematica.Librerias.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Ingematica\Ingematica.Librerias.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Enterprise Library\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aspects\Security\IAutorizacionManager.cs" />
+    <Compile Include="Aspects\Security\ISessionRepository.cs" />
+    <Compile Include="Aspects\Security\CustomPrincipal.cs" />
+    <Compile Include="Aspects\Security\SecuriryContainer.cs" />
+    <Compile Include="Base\CacheManagerResult.cs" />
+    <Compile Include="Base\Context\Managers\IAuthorizationManager.cs" />
+    <Compile Include="Base\Context\Managers\ICacheManager.cs" />
+    <Compile Include="Base\Context\Managers\INotificationManager.cs" />
+    <Compile Include="Base\Context\Managers\IAuditManager.cs" />
+    <Compile Include="Base\Context\Managers\IParameterManager.cs" />
+    <Compile Include="Base\Context\Managers\IExceptionManager.cs" />
+    <Compile Include="Base\EmailNotificationMessage.cs" />
+    <Compile Include="Base\EntitiesCache.cs" />
+    <Compile Include="Base\IEntityBusiness.cs" />
+    <Compile Include="Base\IEntityData.cs" />
+    <Compile Include="Base\IEntityService.cs" />
+    <Compile Include="Base\Context\Managers\ITextManager.cs" />
+    <Compile Include="Base\Context\SolutionContext.cs" />
+    <Compile Include="Base\IGraphicInfo.cs" />
+    <Compile Include="Base\IGraphicItemInfo.cs" />
+    <Compile Include="Base\InfoEntity.cs" />
+    <Compile Include="Base\ReportInfo.cs" />
+    <Compile Include="Config\CargoConfig.cs" />
+    <Compile Include="Config\ClasificacionGeograficaTipoConfig.cs" />
+    <Compile Include="Config\ProyectoDictamenEstadoConfig.cs" />
+    <Compile Include="Config\EstadoDeDesicionConfig.cs" />
+    <Compile Include="Config\EstadoEnum.cs" />
+    <Compile Include="Config\FaseConfig.cs" />
+    <Compile Include="Config\GeoreferenciacionTipoConfig.cs" />
+    <Compile Include="Config\IndicadorEvolucionInstanciaConfig.cs" />
+    <Compile Include="Config\IndicadorTipoConfig.cs" />
+    <Compile Include="Config\MessageMediaConfig.cs" />
+    <Compile Include="Config\NumerationConfig.cs" />
+    <Compile Include="Config\AuditMandateConfig.cs" />
+    <Compile Include="Config\ActionConfig.cs" />
+    <Compile Include="Config\OrganismoTipoConfig.cs" />
+    <Compile Include="Config\PerfilConfig.cs" />
+    <Compile Include="Config\PerfilTipoConfig.cs" />
+    <Compile Include="Config\PriorityConfig.cs" />
+    <Compile Include="Config\ProyectoOrigenFinanciamientoTipoConfig.cs" />
+    <Compile Include="Config\SecurityConfig.cs" />
+    <Compile Include="Base\Context\IContextUser.cs" />
+    <Compile Include="Base\Filter.cs" />
+    <Compile Include="Base\Result.cs" />
+    <Compile Include="Config\SistemaEntidadConfig.cs" />
+    <Compile Include="Config\SystemConfig.cs" />
+    <Compile Include="Config\TreeSelectConfig.cs" />
+    <Compile Include="DataClasses.cs">
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Aspects\Exceptions\ServiceException.cs" />
+    <Compile Include="Aspects\Exceptions\EnterpriseLibrary\ExceptionsHandler.cs" />
+    <Compile Include="Aspects\Exceptions\MembershipException.cs" />
+    <Compile Include="DataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\ActividadFilter.cs" />
+    <Compile Include="Filters\ActividadPermisoFilter.cs" />
+    <Compile Include="Filters\AdministracionTipoFilter.cs" />
+    <Compile Include="Filters\AnioFilter.cs" />
+    <Compile Include="Filters\AuditOperationDetailFilter.cs" />
+    <Compile Include="Filters\AuditOperationFilter.cs" />
+    <Compile Include="Filters\AuditSessionFilter.cs" />
+    <Compile Include="Filters\Base\_ActividadFilter.cs" />
+    <Compile Include="Filters\Base\_ActividadPermisoFilter.cs" />
+    <Compile Include="Filters\Base\_AdministracionTipoFilter.cs" />
+    <Compile Include="Filters\Base\_AnioFilter.cs" />
+    <Compile Include="Filters\Base\_AuditOperationDetailFilter.cs" />
+    <Compile Include="Filters\Base\_AuditOperationFilter.cs" />
+    <Compile Include="Filters\Base\_AuditSessionFilter.cs" />
+    <Compile Include="Filters\Base\_CaracterEconomicoFilter.cs" />
+    <Compile Include="Filters\Base\_CaracterEconomicoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_CargoFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionGastoFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionGastoRubroFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionGastoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionGeograficaFilter.cs" />
+    <Compile Include="Filters\Base\_ClasificacionGeograficaTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ComentarioTecnicoFilter.cs" />
+    <Compile Include="Filters\Base\_ConfigurationCategoryFilter.cs" />
+    <Compile Include="Filters\Base\_ConfigurationFilter.cs" />
+    <Compile Include="Filters\Base\_EntidadTipoFilter.cs" />
+    <Compile Include="Filters\Base\_EstadoDeDesicionFilter.cs" />
+    <Compile Include="Filters\Base\_EstadoDeDesicionHistoricoFilter.cs" />
+    <Compile Include="Filters\Base\_EstadoFilter.cs" />
+    <Compile Include="Filters\Base\_EtapaEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_EtapaFilter.cs" />
+    <Compile Include="Filters\Base\_EvaluacionAspectoEvaluacionResultadoFilter.cs" />
+    <Compile Include="Filters\Base\_EvaluacionAspectoFilter.cs" />
+    <Compile Include="Filters\Base\_EvaluacionResultadoFilter.cs" />
+    <Compile Include="Filters\Base\_EvaluacionTipoEvaluacionAspectoFilter.cs" />
+    <Compile Include="Filters\Base\_EvaluacionTipoFilter.cs" />
+    <Compile Include="Filters\Base\_FaseFilter.cs" />
+    <Compile Include="Filters\Base\_FileInfoFilter.cs" />
+    <Compile Include="Filters\Base\_FinalidadFuncionFilter.cs" />
+    <Compile Include="Filters\Base\_FinalidadFuncionTipoFilter.cs" />
+    <Compile Include="Filters\Base\_FuenteFinanciamientoFilter.cs" />
+    <Compile Include="Filters\Base\_FuenteFinanciamientoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_GeoreferenciacionFilter.cs" />
+    <Compile Include="Filters\Base\_GeoreferenciacionPuntoFilter.cs" />
+    <Compile Include="Filters\Base\_GestionTipoFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorClaseFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorEvolucionFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorEvolucionInstanciaFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorMedioVerificacionFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorRelacionRubroFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorRubroFilter.cs" />
+    <Compile Include="Filters\Base\_IndicadorTipoFilter.cs" />
+    <Compile Include="Filters\Base\_JurisdiccionFilter.cs" />
+    <Compile Include="Filters\Base\_LanguageFilter.cs" />
+    <Compile Include="Filters\Base\_MedioVerificacionFilter.cs" />
+    <Compile Include="Filters\Base\_MessageAttachFilter.cs" />
+    <Compile Include="Filters\Base\_MessageConfigurationFilter.cs" />
+    <Compile Include="Filters\Base\_MessageFilter.cs" />
+    <Compile Include="Filters\Base\_MessageMediaFilter.cs" />
+    <Compile Include="Filters\Base\_MessageSendFilter.cs" />
+    <Compile Include="Filters\Base\_ModalidadContratacionFilter.cs" />
+    <Compile Include="Filters\Base\_ModalidadFinancieraFilter.cs" />
+    <Compile Include="Filters\Base\_MonedaCotizacionFilter.cs" />
+    <Compile Include="Filters\Base\_MonedaFilter.cs" />
+    <Compile Include="Filters\Base\_NumerationFilter.cs" />
+    <Compile Include="Filters\Base\_ObjetivoFilter.cs" />
+    <Compile Include="Filters\Base\_ObjetivoIndicadorFilter.cs" />
+    <Compile Include="Filters\Base\_ObjetivoSupuestoFilter.cs" />
+    <Compile Include="Filters\Base\_OficinaFilter.cs" />
+    <Compile Include="Filters\Base\_OficinaSafFilter.cs" />
+    <Compile Include="Filters\Base\_OficinaSafProgramaFilter.cs" />
+    <Compile Include="Filters\Base\_OrganismoFilter.cs" />
+    <Compile Include="Filters\Base\_OrganismoFinancieroFilter.cs" />
+    <Compile Include="Filters\Base\_OrganismoPrioridadFilter.cs" />
+    <Compile Include="Filters\Base\_OrganismoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ParameterCategoryFilter.cs" />
+    <Compile Include="Filters\Base\_ParameterFilter.cs" />
+    <Compile Include="Filters\Base\_PerfilActividadFilter.cs" />
+    <Compile Include="Filters\Base\_PerfilFilter.cs" />
+    <Compile Include="Filters\Base\_PerfilTipoFilter.cs" />
+    <Compile Include="Filters\Base\_PermisoFilter.cs" />
+    <Compile Include="Filters\Base\_PersonaFilter.cs" />
+    <Compile Include="Filters\Base\_PlanPeriodoFilter.cs" />
+    <Compile Include="Filters\Base\_PlanPeriodoVersionActivaFilter.cs" />
+    <Compile Include="Filters\Base\_PlanTipoFilter.cs" />
+    <Compile Include="Filters\Base\_PlanVersionFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoAlcanceGeograficoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoCalificacionFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoComponenteFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoConvenioFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoDesembolsoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoDictamenEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoDictamenFileFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoDictamenFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoEstadoFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Filters\Base\_PrestamoFileFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoFinalidadFuncionFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoFinanciamientoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoModalidadFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoObjetivoEspecificoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoObjetivoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoOficinaFuncionarioFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoProductoFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoSubComponenteFilter.cs" />
+    <Compile Include="Filters\Base\_PrestamoSubConvenioFilter.cs" />
+    <Compile Include="Filters\Base\_PrioridadFilter.cs" />
+    <Compile Include="Filters\Base\_PriorityFilter.cs" />
+    <Compile Include="Filters\Base\_ProcesoFilter.cs" />
+    <Compile Include="Filters\Base\_ProcesoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ProgramaFilter.cs" />
+    <Compile Include="Filters\Base\_ProgramaObjetivoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoAlcanceGeograficoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoBeneficiarioIndicadorFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoBeneficioIndicadorFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoCalidadFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoCalidadLocalizacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoCalificacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoComentarioTecnicoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoDemoraFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoDictamenEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoDictamenFileFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoDictamenFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoDictamenSeguimientoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaEstimadoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaEstimadoPeriodoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaIndicadorFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaRealizadoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEtapaRealizadoPeriodoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoEvaluacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoFaseProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoFileFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoFinFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoGeoLocalizacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoGeoreferenciacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoIndicadorEconomicoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoIndicadorPriorizacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoLocalizacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoOficinaPerfilFuncionarioFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoOrigenFinanciamientoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoOrigenFinanciamientoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoPlanFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoPrioridadFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoProductoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoProductoProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoPropositoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoRelacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoRelacionTipoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoSeguimientoEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoSeguimientoFileFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoSeguimientoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoSeguimientoLocalizacionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoSeguimientoProyectoFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoShapeFileFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoTipoFilter.cs" />
+    <Compile Include="Filters\Base\_SAFFilter.cs" />
+    <Compile Include="Filters\Base\_SectorFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaAccionFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaCommandFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaEntidadAccionFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaEntidadEstadoFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaEntidadFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaReporteFilter.cs" />
+    <Compile Include="Filters\Base\_SistemaReporteHistoricoFilter.cs" />
+    <Compile Include="Filters\Base\_SubConvenioTipoFilter.cs" />
+    <Compile Include="Filters\Base\_SubJurisdiccionFilter.cs" />
+    <Compile Include="Filters\Base\_SubProcesoFilter.cs" />
+    <Compile Include="Filters\Base\_SubProgramaFilter.cs" />
+    <Compile Include="Filters\Base\_TansferenciaDetalleFilter.cs" />
+    <Compile Include="Filters\Base\_TextCategoryFilter.cs" />
+    <Compile Include="Filters\Base\_TextFilter.cs" />
+    <Compile Include="Filters\Base\_TextLanguageFilter.cs" />
+    <Compile Include="Filters\Base\_TransferenciaDetalleFilter.cs" />
+    <Compile Include="Filters\Base\_TransferenciaFilter.cs" />
+    <Compile Include="Filters\Base\_UnidadMedidaFilter.cs" />
+    <Compile Include="Filters\Base\_UsuarioFilter.cs" />
+    <Compile Include="Filters\Base\_UsuarioOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\Base\_UsuarioPerfilFilter.cs" />
+    <Compile Include="Filters\CaracterEconomicoFilter.cs" />
+    <Compile Include="Filters\CaracterEconomicoTipoFilter.cs" />
+    <Compile Include="Filters\CargoFilter.cs" />
+    <Compile Include="Filters\ClasificacionFilter.cs" />
+    <Compile Include="Filters\ClasificacionGastoFilter.cs" />
+    <Compile Include="Filters\ClasificacionGastoRubroFilter.cs" />
+    <Compile Include="Filters\ClasificacionGastoTipoFilter.cs" />
+    <Compile Include="Filters\ClasificacionGeograficaFilter.cs" />
+    <Compile Include="Filters\ClasificacionGeograficaTipoFilter.cs" />
+    <Compile Include="Filters\ComentarioTecnicoFilter.cs" />
+    <Compile Include="Filters\ConfigurationCategoryFilter.cs" />
+    <Compile Include="Filters\ConfigurationFilter.cs" />
+    <Compile Include="Filters\EntidadTipoFilter.cs" />
+    <Compile Include="Filters\EstadoDeDesicionFilter.cs" />
+    <Compile Include="Filters\EstadoDeDesicionHistoricoFilter.cs" />
+    <Compile Include="Filters\EstadoFilter.cs" />
+    <Compile Include="Filters\EtapaEstadoFilter.cs" />
+    <Compile Include="Filters\EtapaFilter.cs" />
+    <Compile Include="Filters\EvaluacionAspectoEvaluacionResultadoFilter.cs" />
+    <Compile Include="Filters\EvaluacionAspectoFilter.cs" />
+    <Compile Include="Filters\EvaluacionResultadoFilter.cs" />
+    <Compile Include="Filters\EvaluacionTipoEvaluacionAspectoFilter.cs" />
+    <Compile Include="Filters\EvaluacionTipoFilter.cs" />
+    <Compile Include="Filters\FaseFilter.cs" />
+    <Compile Include="Filters\FileInfoFilter.cs" />
+    <Compile Include="Filters\FinalidadFuncionFilter.cs" />
+    <Compile Include="Filters\FinalidadFuncionTipoFilter.cs" />
+    <Compile Include="Filters\FuenteFinanciamientoFilter.cs" />
+    <Compile Include="Filters\FuenteFinanciamientoTipoFilter.cs" />
+    <Compile Include="Filters\GeoreferenciacionFilter.cs" />
+    <Compile Include="Filters\GeoreferenciacionPuntoFilter.cs" />
+    <Compile Include="Filters\GestionTipoFilter.cs" />
+    <Compile Include="Filters\IndicadorClaseFilter.cs" />
+    <Compile Include="Filters\IndicadorEvolucionFilter.cs" />
+    <Compile Include="Filters\IndicadorEvolucionInstanciaFilter.cs" />
+    <Compile Include="Filters\IndicadorFilter.cs" />
+    <Compile Include="Filters\IndicadorMedioVerificacionFilter.cs" />
+    <Compile Include="Filters\IndicadorRelacionRubroFilter.cs" />
+    <Compile Include="Filters\IndicadorRubroFilter.cs" />
+    <Compile Include="Filters\IndicadorTipoFilter.cs" />
+    <Compile Include="Filters\JurisdiccionFilter.cs" />
+    <Compile Include="Filters\LanguageFilter.cs" />
+    <Compile Include="Filters\MedioVerificacionFilter.cs" />
+    <Compile Include="Filters\MessageAttachFilter.cs" />
+    <Compile Include="Filters\MessageConfigurationFilter.cs" />
+    <Compile Include="Filters\MessageFilter.cs" />
+    <Compile Include="Filters\MessageMediaFilter.cs" />
+    <Compile Include="Filters\MessageSendFilter.cs" />
+    <Compile Include="Filters\ModalidadContratacionFilter.cs" />
+    <Compile Include="Filters\ModalidadFinancieraFilter.cs" />
+    <Compile Include="Filters\MonedaCotizacionFilter.cs" />
+    <Compile Include="Filters\MonedaFilter.cs" />
+    <Compile Include="Filters\NumerationFilter.cs" />
+    <Compile Include="Filters\ObjetivoFilter.cs" />
+    <Compile Include="Filters\ObjetivoIndicadorFilter.cs" />
+    <Compile Include="Filters\ObjetivoSupuestoFilter.cs" />
+    <Compile Include="Filters\OficinaFilter.cs" />
+    <Compile Include="Filters\OficinaSafFilter.cs" />
+    <Compile Include="Filters\OficinaSafProgramaFilter.cs" />
+    <Compile Include="Filters\OrganismoFilter.cs" />
+    <Compile Include="Filters\OrganismoFinancieroFilter.cs" />
+    <Compile Include="Filters\OrganismoPrioridadFilter.cs" />
+    <Compile Include="Filters\OrganismoTipoFilter.cs" />
+    <Compile Include="Filters\ParameterCategoryFilter.cs" />
+    <Compile Include="Filters\ParameterFilter.cs" />
+    <Compile Include="Filters\PerfilActividadFilter.cs" />
+    <Compile Include="Filters\PerfilFilter.cs" />
+    <Compile Include="Filters\PerfilTipoFilter.cs" />
+    <Compile Include="Filters\PermisoFilter.cs" />
+    <Compile Include="Filters\PersonaFilter.cs" />
+    <Compile Include="Filters\PlanPeriodoFilter.cs" />
+    <Compile Include="Filters\PlanPeriodoVersionActivaFilter.cs" />
+    <Compile Include="Filters\PlanTipoFilter.cs" />
+    <Compile Include="Filters\PlanVersionFilter.cs" />
+    <Compile Include="Filters\PrestamoAlcanceGeograficoFilter.cs" />
+    <Compile Include="Filters\PrestamoCalificacionFilter.cs" />
+    <Compile Include="Filters\PrestamoComponenteFilter.cs" />
+    <Compile Include="Filters\PrestamoConvenioFilter.cs" />
+    <Compile Include="Filters\PrestamoDesembolsoFilter.cs" />
+    <Compile Include="Filters\PrestamoDictamenEstadoFilter.cs" />
+    <Compile Include="Filters\PrestamoDictamenFileFilter.cs" />
+    <Compile Include="Filters\PrestamoDictamenFilter.cs" />
+    <Compile Include="Filters\PrestamoEstadoFilter.cs" />
+    <Compile Include="Filters\PrestamoFileFilter.cs" />
+    <Compile Include="Filters\PrestamoFilter.cs" />
+    <Compile Include="Filters\PrestamoFinalidadFuncionFilter.cs" />
+    <Compile Include="Filters\PrestamoFinanciamientoFilter.cs" />
+    <Compile Include="Filters\PrestamoModalidadFilter.cs" />
+    <Compile Include="Filters\PrestamoObjetivoEspecificoFilter.cs" />
+    <Compile Include="Filters\PrestamoObjetivoFilter.cs" />
+    <Compile Include="Filters\PrestamoOficinaFuncionarioFilter.cs" />
+    <Compile Include="Filters\PrestamoOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\PrestamoProductoFilter.cs" />
+    <Compile Include="Filters\PrestamoSubComponenteFilter.cs" />
+    <Compile Include="Filters\PrestamoSubConvenioFilter.cs" />
+    <Compile Include="Filters\PrioridadFilter.cs" />
+    <Compile Include="Filters\PriorityFilter.cs" />
+    <Compile Include="Filters\ProcesoFilter.cs" />
+    <Compile Include="Filters\ProcesoTipoFilter.cs" />
+    <Compile Include="Filters\ProgramaFilter.cs" />
+    <Compile Include="Filters\ProgramaObjetivoFilter.cs" />
+    <Compile Include="Filters\ProyectoAlcanceGeograficoFilter.cs" />
+    <Compile Include="Filters\ProyectoBeneficiarioIndicadorFilter.cs" />
+    <Compile Include="Filters\ProyectoBeneficioIndicadorFilter.cs" />
+    <Compile Include="Filters\ProyectoCalidadFilter.cs" />
+    <Compile Include="Filters\ProyectoCalidadLocalizacionFilter.cs" />
+    <Compile Include="Filters\ProyectoCalificacionFilter.cs" />
+    <Compile Include="Filters\ProyectoComentarioTecnicoFilter.cs" />
+    <Compile Include="Filters\ProyectoDemoraFilter.cs" />
+    <Compile Include="Filters\ProyectoDictamenEstadoFilter.cs" />
+    <Compile Include="Filters\ProyectoDictamenFileFilter.cs" />
+    <Compile Include="Filters\ProyectoDictamenFilter.cs" />
+    <Compile Include="Filters\ProyectoDictamenSeguimientoFilter.cs" />
+    <Compile Include="Filters\ProyectoEstadoFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaEstimadoFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaEstimadoPeriodoFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaIndicadorFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaRealizadoFilter.cs" />
+    <Compile Include="Filters\ProyectoEtapaRealizadoPeriodoFilter.cs" />
+    <Compile Include="Filters\ProyectoEvaluacionFilter.cs" />
+    <Compile Include="Filters\ProyectoFaseProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\ProyectoFileFilter.cs" />
+    <Compile Include="Filters\ProyectoFilter.cs" />
+    <Compile Include="Filters\ProyectoFinFilter.cs" />
+    <Compile Include="Filters\ProyectoGeoLocalizacionFilter.cs" />
+    <Compile Include="Filters\ProyectoGeoreferenciacionFilter.cs" />
+    <Compile Include="Filters\ProyectoIndicadorEconomicoFilter.cs" />
+    <Compile Include="Filters\ProyectoIndicadorPriorizacionFilter.cs" />
+    <Compile Include="Filters\ProyectoLocalizacionFilter.cs" />
+    <Compile Include="Filters\ProyectoOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\ProyectoOficinaPerfilFuncionarioFilter.cs" />
+    <Compile Include="Filters\ProyectoOrigenFinanciamientoFilter.cs" />
+    <Compile Include="Filters\ProyectoOrigenFinanciamientoTipoFilter.cs" />
+    <Compile Include="Filters\ProyectoPlanFilter.cs" />
+    <Compile Include="Filters\ProyectoPrioridadFilter.cs" />
+    <Compile Include="Filters\ProyectoProductoFilter.cs" />
+    <Compile Include="Filters\ProyectoProductoProyectoEtapaFilter.cs" />
+    <Compile Include="Filters\ProyectoPropositoFilter.cs" />
+    <Compile Include="Filters\ProyectoRelacionFilter.cs" />
+    <Compile Include="Filters\ProyectoRelacionTipoFilter.cs" />
+    <Compile Include="Filters\ProyectoSeguimientoEstadoFilter.cs" />
+    <Compile Include="Filters\ProyectoSeguimientoFileFilter.cs" />
+    <Compile Include="Filters\ProyectoSeguimientoFilter.cs" />
+    <Compile Include="Filters\ProyectoSeguimientoLocalizacionFilter.cs" />
+    <Compile Include="Filters\ProyectoSeguimientoProyectoFilter.cs" />
+    <Compile Include="Filters\ProyectoShapeFileFilter.cs" />
+    <Compile Include="Filters\ProyectoTipoFilter.cs" />
+    <Compile Include="Filters\SafFilter.cs" />
+    <Compile Include="Filters\SectorFilter.cs" />
+    <Compile Include="Filters\SistemaAccionFilter.cs" />
+    <Compile Include="Filters\SistemaCommandFilter.cs" />
+    <Compile Include="Filters\SistemaEntidadAccionFilter.cs" />
+    <Compile Include="Filters\SistemaEntidadEstadoFilter.cs" />
+    <Compile Include="Filters\SistemaEntidadFilter.cs" />
+    <Compile Include="Filters\SistemaReporteFilter.cs" />
+    <Compile Include="Filters\SistemaReporteHistoricoFilter.cs" />
+    <Compile Include="Filters\SubConvenioTipoFilter.cs" />
+    <Compile Include="Filters\SubJurisdiccionFilter.cs" />
+    <Compile Include="Filters\SubProcesoFilter.cs" />
+    <Compile Include="Filters\SubProgramaFilter.cs" />
+    <Compile Include="Filters\TextCategoryFilter.cs" />
+    <Compile Include="Filters\TextFilter.cs" />
+    <Compile Include="Filters\TextLanguageFilter.cs" />
+    <Compile Include="Filters\TransferenciaDetalleFilter.cs" />
+    <Compile Include="Filters\TransferenciaFilter.cs" />
+    <Compile Include="Filters\UnidadMedidaFilter.cs" />
+    <Compile Include="Filters\UsuarioFilter.cs" />
+    <Compile Include="Filters\UsuarioOficinaPerfilFilter.cs" />
+    <Compile Include="Filters\UsuarioPerfilFilter.cs" />
+    <Compile Include="Helper\ContractHelper.cs" />
+    <Compile Include="Models.cs" />
+    <Compile Include="Others Contracts\ActividadCompose.cs" />
+    <Compile Include="Others Contracts\DetalleCalidadCompose.cs" />
+    <Compile Include="Others Contracts\MessageConfigurationCompose.cs" />
+    <Compile Include="Others Contracts\ParameterCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoDictamenFactibilidadCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoDictamenFilesCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoGeoLocalizacionCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoSeguimientoCompose.cs" />
+    <Compile Include="Others Contracts\IndicadorClaseCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoEditDictamenCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoComponenteCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoProductosCompose.cs" />
+    <Compile Include="Others Contracts\ProgramaCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoSeguimientoFilesCompose.cs" />
+    <Compile Include="Others Contracts\IndicadorEvolucionCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoConvenioCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoDictamenDNIPCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoGeneralCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoAlcanceGeograficoCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoDictamenFilesCompose.cs" />
+    <Compile Include="Others Contracts\PrestamoFilesCompose.cs" />
+    <Compile Include="Others Contracts\DictamenCompose.cs" />
+    <Compile Include="Others Contracts\OficinaCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoCalidadCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoEvaluacionCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoFilesCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoIntervencionDNIPCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoProductoIntermedioCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoShapeFileCompose.cs" />
+    <Compile Include="Others Contracts\SistemaEntidadCompose.cs" />
+    <Compile Include="Others Contracts\ObjetivoCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoCronogramaCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoObjetivoCompose.cs" />
+    <Compile Include="Others Contracts\PerfilCompose.cs" />
+    <Compile Include="Others Contracts\MessageCompose.cs" />
+    <Compile Include="Others Contracts\DateRange.cs" />
+    <Compile Include="Others Contracts\PermisoSimpleResult.cs" />
+    <Compile Include="Others Contracts\PersonaCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoAlcanceGeograficoCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoGeneralCompose.cs" />
+    <Compile Include="Others Contracts\UsuarioCompose.cs" />
+    <Compile Include="Others Contracts\ValidationInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Results\ActividadPermisoResult.cs" />
+    <Compile Include="Results\ActividadResult.cs" />
+    <Compile Include="Results\AdministracionTipoResult.cs" />
+    <Compile Include="Results\AnioResult.cs" />
+    <Compile Include="Results\AuditOperationDetailResult.cs" />
+    <Compile Include="Results\AuditOperationResult.cs" />
+    <Compile Include="Results\AuditSessionResult.cs" />
+    <Compile Include="Results\Base\_ActividadPermisoResult.cs" />
+    <Compile Include="Results\Base\_ActividadResult.cs" />
+    <Compile Include="Results\Base\_AdministracionTipoResult.cs" />
+    <Compile Include="Results\Base\_AnioResult.cs" />
+    <Compile Include="Results\Base\_AuditOperationDetailResult.cs" />
+    <Compile Include="Results\Base\_AuditOperationResult.cs" />
+    <Compile Include="Results\Base\_AuditSessionResult.cs" />
+    <Compile Include="Results\Base\_CaracterEconomicoResult.cs" />
+    <Compile Include="Results\Base\_CaracterEconomicoTipoResult.cs" />
+    <Compile Include="Results\Base\_CargoResult.cs" />
+    <Compile Include="Results\Base\_ClasificacionGastoResult.cs" />
+    <Compile Include="Results\Base\_ClasificacionGastoRubroResult.cs" />
+    <Compile Include="Results\Base\_ClasificacionGastoTipoResult.cs" />
+    <Compile Include="Results\Base\_ClasificacionGeograficaTipoResult.cs" />
+    <Compile Include="Results\Base\_ClasificacionResult.cs" />
+    <Compile Include="Results\Base\_ComentarioTecnicoResult.cs" />
+    <Compile Include="Results\Base\_ConfigurationCategoryResult.cs" />
+    <Compile Include="Results\Base\_ConfigurationResult.cs" />
+    <Compile Include="Results\Base\_EntidadTipoResult.cs" />
+    <Compile Include="Results\Base\_EstadoDeDesicionHistoricoResult.cs" />
+    <Compile Include="Results\Base\_EstadoDeDesicionResult.cs" />
+    <Compile Include="Results\Base\_EstadoResult.cs" />
+    <Compile Include="Results\Base\_EtapaResult.cs" />
+    <Compile Include="Results\Base\_EvaluacionAspectoEvaluacionResultadoResult.cs" />
+    <Compile Include="Results\Base\_EvaluacionAspectoResult.cs" />
+    <Compile Include="Results\Base\_EvaluacionResultadoResult.cs" />
+    <Compile Include="Results\Base\_EvaluacionTipoEvaluacionAspectoResult.cs" />
+    <Compile Include="Results\Base\_EvaluacionTipoResult.cs" />
+    <Compile Include="Results\Base\_FaseResult.cs" />
+    <Compile Include="Results\Base\_FinalidadFuncionResult.cs" />
+    <Compile Include="Results\Base\_FinalidadFuncionTipoResult.cs" />
+    <Compile Include="Results\Base\_FuenteFinanciamientoResult.cs" />
+    <Compile Include="Results\Base\_FuenteFinanciamientoTipoResult.cs" />
+    <Compile Include="Results\Base\_GeoreferenciacionPuntoResult.cs" />
+    <Compile Include="Results\Base\_GeoreferenciacionResult.cs" />
+    <Compile Include="Results\Base\_GestionTipoResult.cs" />
+    <Compile Include="Results\Base\_IndicadorClaseResult.cs" />
+    <Compile Include="Results\Base\_IndicadorEvolucionInstanciaResult.cs" />
+    <Compile Include="Results\Base\_IndicadorEvolucionResult.cs" />
+    <Compile Include="Results\Base\_IndicadorMedioVerificacionResult.cs" />
+    <Compile Include="Results\Base\_IndicadorRelacionRubroResult.cs" />
+    <Compile Include="Results\Base\_IndicadorResult.cs" />
+    <Compile Include="Results\Base\_IndicadorRubroResult.cs" />
+    <Compile Include="Results\Base\_IndicadorTipoResult.cs" />
+    <Compile Include="Results\Base\_JurisdiccionResult.cs" />
+    <Compile Include="Results\Base\_LanguageResult.cs" />
+    <Compile Include="Results\Base\_MedioVerificacionResult.cs" />
+    <Compile Include="Results\Base\_MessageConfigurationResult.cs" />
+    <Compile Include="Results\Base\_MessageMediaResult.cs" />
+    <Compile Include="Results\Base\_MessageResult.cs" />
+    <Compile Include="Results\Base\_ModalidadContratacionResult.cs" />
+    <Compile Include="Results\Base\_ModalidadFinancieraResult.cs" />
+    <Compile Include="Results\Base\_MonedaCotizacionResult.cs" />
+    <Compile Include="Results\Base\_MonedaResult.cs" />
+    <Compile Include="Results\Base\_NumerationResult.cs" />
+    <Compile Include="Results\Base\_ObjetivoIndicadorResult.cs" />
+    <Compile Include="Results\Base\_ObjetivoResult.cs" />
+    <Compile Include="Results\Base\_ObjetivoSupuestoResult.cs" />
+    <Compile Include="Results\Base\_OficinaResult.cs" />
+    <Compile Include="Results\Base\_OficinaSafProgramaResult.cs" />
+    <Compile Include="Results\Base\_OficinaSafResult.cs" />
+    <Compile Include="Results\Base\_OrganismoFinancieroResult.cs" />
+    <Compile Include="Results\Base\_OrganismoPrioridadResult.cs" />
+    <Compile Include="Results\Base\_OrganismoResult.cs" />
+    <Compile Include="Results\Base\_OrganismoTipoResult.cs" />
+    <Compile Include="Results\Base\_ParameterCategoryResult.cs" />
+    <Compile Include="Results\Base\_ParameterResult.cs" />
+    <Compile Include="Results\Base\_PerfilActividadResult.cs" />
+    <Compile Include="Results\Base\_PerfilResult.cs" />
+    <Compile Include="Results\Base\_PerfilTipoResult.cs" />
+    <Compile Include="Results\Base\_PermisoResult.cs" />
+    <Compile Include="Results\Base\_PersonaResult.cs" />
+    <Compile Include="Results\Base\_PlanPeriodoResult.cs" />
+    <Compile Include="Results\Base\_PlanPeriodoVersionActivaResult.cs" />
+    <Compile Include="Results\Base\_PlanTipoResult.cs" />
+    <Compile Include="Results\Base\_PlanVersionResult.cs" />
+    <Compile Include="Results\Base\_PrestamoAlcanceGeograficoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoCalificacionResult.cs" />
+    <Compile Include="Results\Base\_PrestamoComponenteResult.cs" />
+    <Compile Include="Results\Base\_PrestamoConvenioResult.cs" />
+    <Compile Include="Results\Base\_PrestamoDesembolsoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoDictamenEstadoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoDictamenFileResult.cs" />
+    <Compile Include="Results\Base\_PrestamoDictamenResult.cs" />
+    <Compile Include="Results\Base\_PrestamoEstadoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoFileResult.cs" />
+    <Compile Include="Results\Base\_PrestamoFinalidadFuncionResult.cs" />
+    <Compile Include="Results\Base\_PrestamoFinanciamientoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoModalidadResult.cs" />
+    <Compile Include="Results\Base\_PrestamoObjetivoEspecificoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoObjetivoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoOficinaFuncionarioResult.cs" />
+    <Compile Include="Results\Base\_PrestamoOficinaPerfilResult.cs" />
+    <Compile Include="Results\Base\_PrestamoProductoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoResult.cs" />
+    <Compile Include="Results\Base\_PrestamoSubComponenteResult.cs" />
+    <Compile Include="Results\Base\_PrestamoSubConvenioResult.cs" />
+    <Compile Include="Results\Base\_PrioridadResult.cs" />
+    <Compile Include="Results\Base\_PriorityResult.cs" />
+    <Compile Include="Results\Base\_ProcesoResult.cs" />
+    <Compile Include="Results\Base\_ProcesoTipoResult.cs" />
+    <Compile Include="Results\Base\_ProgramaObjetivoResult.cs" />
+    <Compile Include="Results\Base\_ProgramaResult.cs" />
+    <Compile Include="Results\Base\_ProyectoBeneficiarioIndicadorResult.cs" />
+    <Compile Include="Results\Base\_ProyectoBeneficioIndicadorResult.cs" />
+    <Compile Include="Results\Base\_ProyectoCalidadLocalizacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoCalidadResult.cs" />
+    <Compile Include="Results\Base\_ProyectoCalificacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoComentarioTecnicoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoDemoraResult.cs" />
+    <Compile Include="Results\Base\_ProyectoDictamenEstadoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoDictamenFileResult.cs" />
+    <Compile Include="Results\Base\_ProyectoDictamenResult.cs" />
+    <Compile Include="Results\Base\_ProyectoEtapaEstimadoPeriodoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoEtapaIndicadorResult.cs" />
+    <Compile Include="Results\Base\_ProyectoEtapaRealizadoPeriodoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoEvaluacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoFaseProyectoEtapaResult.cs" />
+    <Compile Include="Results\Base\_ProyectoFileResult.cs" />
+    <Compile Include="Results\Base\_ProyectoFinResult.cs" />
+    <Compile Include="Results\Base\_ProyectoGeoLocalizacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoGeoreferenciacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoIndicadorEconomicoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoIndicadorPriorizacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoLocalizacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoOficinaPerfilFuncionarioResult.cs" />
+    <Compile Include="Results\Base\_ProyectoOficinaPerfilResult.cs" />
+    <Compile Include="Results\Base\_ProyectoOrigenFinanciamientoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoOrigenFinanciamientoTipoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoPlanResult.cs" />
+    <Compile Include="Results\Base\_ProyectoPrioridadResult.cs" />
+    <Compile Include="Results\Base\_ProyectoProductoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoPropositoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoRelacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoRelacionTipoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoSeguimientoEstadoResult.cs" />
+    <Compile Include="Results\Base\_ProyectoSeguimientoLocalizacionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoShapeFileResult.cs" />
+    <Compile Include="Results\Base\_ProyectoTipoResult.cs" />
+    <Compile Include="Results\Base\_SAFResult.cs" />
+    <Compile Include="Results\Base\_SectorResult.cs" />
+    <Compile Include="Results\Base\_SistemaAccionResult.cs" />
+    <Compile Include="Results\Base\_SistemaCommandResult.cs" />
+    <Compile Include="Results\Base\_SistemaEntidadAccionResult.cs" />
+    <Compile Include="Results\Base\_SistemaEntidadEstadoResult.cs" />
+    <Compile Include="Results\Base\_SistemaEntidadResult.cs" />
+    <Compile Include="Results\Base\_SistemaReporteHistoricoResult.cs" />
+    <Compile Include="Results\Base\_SistemaReporteResult.cs" />
+    <Compile Include="Results\Base\_SubConvenioTipoResult.cs" />
+    <Compile Include="Results\Base\_SubJurisdiccionResult.cs" />
+    <Compile Include="Results\Base\_SubProgramaResult.cs" />
+    <Compile Include="Results\Base\_TextCategoryResult.cs" />
+    <Compile Include="Results\Base\_TextLanguageResult.cs" />
+    <Compile Include="Results\Base\_TextResult.cs" />
+    <Compile Include="Results\Base\_TransferenciaDetalleResult.cs" />
+    <Compile Include="Results\Base\_TransferenciaResult.cs" />
+    <Compile Include="Results\Base\_UnidadMedidaResult.cs" />
+    <Compile Include="Results\Base\_UsuarioOficinaPerfilResult.cs" />
+    <Compile Include="Results\Base\_UsuarioPerfilResult.cs" />
+    <Compile Include="Results\CaracterEconomicoResult.cs" />
+    <Compile Include="Results\CaracterEconomicoTipoResult.cs" />
+    <Compile Include="Results\CargoResult.cs" />
+    <Compile Include="Results\ClasificacionGastoResult.cs" />
+    <Compile Include="Results\ClasificacionGastoRubroResult.cs" />
+    <Compile Include="Results\ClasificacionGastoTipoResult.cs" />
+    <Compile Include="Results\ClasificacionGeograficaResult.cs" />
+    <Compile Include="Results\ClasificacionGeograficaTipoResult.cs" />
+    <Compile Include="Results\ClasificacionResult.cs" />
+    <Compile Include="Results\ComentarioTecnicoResult.cs" />
+    <Compile Include="Results\ConfigurationCategoryResult.cs" />
+    <Compile Include="Results\ConfigurationResult.cs" />
+    <Compile Include="Results\EntidadTipoResult.cs" />
+    <Compile Include="Results\EstadoDeDesicionHistoricoResult.cs" />
+    <Compile Include="Results\EstadoDeDesicionResult.cs" />
+    <Compile Include="Results\EstadoResult.cs" />
+    <Compile Include="Results\EtapaResult.cs" />
+    <Compile Include="Results\EvaluacionAspectoEvaluacionResultadoResult.cs" />
+    <Compile Include="Results\EvaluacionAspectoResult.cs" />
+    <Compile Include="Results\EvaluacionResultadoResult.cs" />
+    <Compile Include="Results\EvaluacionTipoEvaluacionAspectoResult.cs" />
+    <Compile Include="Results\EvaluacionTipoResult.cs" />
+    <Compile Include="Results\FaseResult.cs" />
+    <Compile Include="Results\FileInfoResult.cs" />
+    <Compile Include="Results\FinalidadFuncionResult.cs" />
+    <Compile Include="Results\FinalidadFuncionTipoResult.cs" />
+    <Compile Include="Results\FuenteFinanciamientoResult.cs" />
+    <Compile Include="Results\FuenteFinanciamientoTipoResult.cs" />
+    <Compile Include="Results\GeoreferenciacionPuntoResult.cs" />
+    <Compile Include="Results\GeoreferenciacionResult.cs" />
+    <Compile Include="Results\GestionTipoResult.cs" />
+    <Compile Include="Results\IndicadorClaseResult.cs" />
+    <Compile Include="Results\IndicadorEvolucionInstanciaResult.cs" />
+    <Compile Include="Results\IndicadorEvolucionResult.cs" />
+    <Compile Include="Results\IndicadorMedioVerificacionResult.cs" />
+    <Compile Include="Results\IndicadorRelacionRubroResult.cs" />
+    <Compile Include="Results\IndicadorResult.cs" />
+    <Compile Include="Results\IndicadorRubroResult.cs" />
+    <Compile Include="Results\IndicadorTipoResult.cs" />
+    <Compile Include="Results\JurisdiccionResult.cs" />
+    <Compile Include="Results\LanguageResult.cs" />
+    <Compile Include="Results\MedioVerificacionResult.cs" />
+    <Compile Include="Results\MessageAttachResult.cs" />
+    <Compile Include="Results\MessageConfigurationResult.cs" />
+    <Compile Include="Results\MessageMediaResult.cs" />
+    <Compile Include="Results\MessageResult.cs" />
+    <Compile Include="Results\MessageSendResult.cs" />
+    <Compile Include="Results\ModalidadContratacionResult.cs" />
+    <Compile Include="Results\ModalidadFinancieraResult.cs" />
+    <Compile Include="Results\MonedaCotizacionResult.cs" />
+    <Compile Include="Results\MonedaResult.cs" />
+    <Compile Include="Results\NumerationResult.cs" />
+    <Compile Include="Results\ObjetivoIndicadorResult.cs" />
+    <Compile Include="Results\ObjetivoResult.cs" />
+    <Compile Include="Results\ObjetivoSupuestoResult.cs" />
+    <Compile Include="Results\OficinaResult.cs" />
+    <Compile Include="Results\OficinaSafProgramaResult.cs" />
+    <Compile Include="Results\OficinaSafResult.cs" />
+    <Compile Include="Results\OrganismoFinancieroResult.cs" />
+    <Compile Include="Results\OrganismoPrioridadResult.cs" />
+    <Compile Include="Results\OrganismoResult.cs" />
+    <Compile Include="Results\OrganismoTipoResult.cs" />
+    <Compile Include="Results\ParameterCategoryResult.cs" />
+    <Compile Include="Results\ParameterResult.cs" />
+    <Compile Include="Results\PerfilActividadResult.cs" />
+    <Compile Include="Results\PerfilResult.cs" />
+    <Compile Include="Results\PerfilTipoResult.cs" />
+    <Compile Include="Results\PermisoResult.cs" />
+    <Compile Include="Results\PersonaResult.cs" />
+    <Compile Include="Results\PlanPeriodoResult.cs" />
+    <Compile Include="Results\PlanPeriodoVersionActivaResult.cs" />
+    <Compile Include="Results\PlanTipoResult.cs" />
+    <Compile Include="Results\PlanVersionResult.cs" />
+    <Compile Include="Results\PrestamoAlcanceGeograficoResult.cs" />
+    <Compile Include="Results\PrestamoCalificacionResult.cs" />
+    <Compile Include="Results\PrestamoComponenteResult.cs" />
+    <Compile Include="Results\PrestamoConvenioResult.cs" />
+    <Compile Include="Results\PrestamoDesembolsoResult.cs" />
+    <Compile Include="Results\PrestamoDictamenEstadoResult.cs" />
+    <Compile Include="Results\PrestamoDictamenFileResult.cs" />
+    <Compile Include="Results\PrestamoDictamenResult.cs" />
+    <Compile Include="Results\PrestamoEstadoResult.cs" />
+    <Compile Include="Results\PrestamoFileResult.cs" />
+    <Compile Include="Results\PrestamoFinalidadFuncionResult.cs" />
+    <Compile Include="Results\PrestamoFinanciamientoResult.cs" />
+    <Compile Include="Results\PrestamoModalidadResult.cs" />
+    <Compile Include="Results\PrestamoObjetivoEspecificoResult.cs" />
+    <Compile Include="Results\PrestamoObjetivoResult.cs" />
+    <Compile Include="Results\PrestamoOficinaFuncionarioResult.cs" />
+    <Compile Include="Results\PrestamoOficinaPerfilResult.cs" />
+    <Compile Include="Results\PrestamoProductoResult.cs" />
+    <Compile Include="Results\PrestamoResult.cs" />
+    <Compile Include="Results\PrestamoSubComponenteResult.cs" />
+    <Compile Include="Results\PrestamoSubConvenioResult.cs" />
+    <Compile Include="Results\PrioridadResult.cs" />
+    <Compile Include="Results\PriorityResult.cs" />
+    <Compile Include="Results\ProcesoResult.cs" />
+    <Compile Include="Results\ProcesoTipoResult.cs" />
+    <Compile Include="Results\ProgramaObjetivoResult.cs" />
+    <Compile Include="Results\ProgramaResult.cs" />
+    <Compile Include="Results\ProyectoAlcanceGeograficoResult.cs" />
+    <Compile Include="Results\ProyectoBeneficiarioIndicadorResult.cs" />
+    <Compile Include="Results\ProyectoBeneficioIndicadorResult.cs" />
+    <Compile Include="Results\ProyectoCalidadLocalizacionResult.cs" />
+    <Compile Include="Results\ProyectoCalidadResult.cs" />
+    <Compile Include="Results\ProyectoCalificacionResult.cs" />
+    <Compile Include="Results\ProyectoComentarioTecnicoResult.cs" />
+    <Compile Include="Results\ProyectoDemoraResult.cs" />
+    <Compile Include="Results\ProyectoDictamenEstadoResult.cs" />
+    <Compile Include="Results\ProyectoDictamenFileResult.cs" />
+    <Compile Include="Results\ProyectoDictamenResult.cs" />
+    <Compile Include="Results\ProyectoDictamenSeguimientoResult.cs" />
+    <Compile Include="Results\ProyectoEtapaEstimadoPeriodoResult.cs" />
+    <Compile Include="Results\ProyectoEtapaEstimadoResult.cs" />
+    <Compile Include="Results\ProyectoEtapaIndicadorResult.cs" />
+    <Compile Include="Results\ProyectoEtapaRealizadoPeriodoResult.cs" />
+    <Compile Include="Results\ProyectoEtapaRealizadoResult.cs" />
+    <Compile Include="Results\ProyectoEtapaResult.cs" />
+    <Compile Include="Results\ProyectoEvaluacionResult.cs" />
+    <Compile Include="Results\ProyectoFaseProyectoEtapaResult.cs" />
+    <Compile Include="Results\ProyectoFileResult.cs" />
+    <Compile Include="Results\ProyectoFinResult.cs" />
+    <Compile Include="Results\ProyectoGeoLocalizacionResult.cs" />
+    <Compile Include="Results\ProyectoGeoreferenciacionResult.cs" />
+    <Compile Include="Results\ProyectoIndicadorEconomicoResult.cs" />
+    <Compile Include="Results\ProyectoIndicadorPriorizacionResult.cs" />
+    <Compile Include="Results\ProyectoLocalizacionResult.cs" />
+    <Compile Include="Results\ProyectoOficinaPerfilFuncionarioResult.cs" />
+    <Compile Include="Results\ProyectoOficinaPerfilResult.cs" />
+    <Compile Include="Results\ProyectoOrigenFinanciamientoResult.cs" />
+    <Compile Include="Results\ProyectoOrigenFinanciamientoTipoResult.cs" />
+    <Compile Include="Results\ProyectoPlanResult.cs" />
+    <Compile Include="Results\ProyectoPrioridadResult.cs" />
+    <Compile Include="Results\ProyectoProductoProyectoEtapaResult.cs" />
+    <Compile Include="Results\ProyectoProductoResult.cs" />
+    <Compile Include="Results\ProyectoPropositoResult.cs" />
+    <Compile Include="Results\ProyectoRelacionResult.cs" />
+    <Compile Include="Results\ProyectoRelacionTipoResult.cs" />
+    <Compile Include="Results\ProyectoResult.cs" />
+    <Compile Include="Results\ProyectoSeguimientoEstadoResult.cs" />
+    <Compile Include="Results\ProyectoSeguimientoFileResult.cs" />
+    <Compile Include="Results\ProyectoSeguimientoLocalizacionResult.cs" />
+    <Compile Include="Results\ProyectoSeguimientoProyectoResult.cs" />
+    <Compile Include="Results\ProyectoSeguimientoResult.cs" />
+    <Compile Include="Results\ProyectoShapeFileResult.cs" />
+    <Compile Include="Results\ProyectoTipoResult.cs" />
+    <Compile Include="Results\SafResult.cs" />
+    <Compile Include="Results\SectorResult.cs" />
+    <Compile Include="Results\SistemaAccionResult.cs" />
+    <Compile Include="Results\SistemaCommandResult.cs" />
+    <Compile Include="Results\SistemaEntidadAccionResult.cs" />
+    <Compile Include="Results\SistemaEntidadEstadoResult.cs" />
+    <Compile Include="Results\SistemaEntidadResult.cs" />
+    <Compile Include="Results\SistemaReporteHistoricoResult.cs" />
+    <Compile Include="Results\SistemaReporteResult.cs" />
+    <Compile Include="Results\SubConvenioTipoResult.cs" />
+    <Compile Include="Results\SubJurisdiccionResult.cs" />
+    <Compile Include="Results\SubProgramaResult.cs" />
+    <Compile Include="Results\TextCategoryResult.cs" />
+    <Compile Include="Results\TextLanguageResult.cs" />
+    <Compile Include="Results\TextResult.cs" />
+    <Compile Include="Results\TransferenciaDetalleResult.cs" />
+    <Compile Include="Results\TransferenciaResult.cs" />
+    <Compile Include="Results\UnidadMedidaResult.cs" />
+    <Compile Include="Results\UsuarioOficinaPerfilResult.cs" />
+    <Compile Include="Results\UsuarioPerfilResult.cs" />
+    <Compile Include="Results\UsuarioResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{502770AF-5356-4C46-9F61-90890936E0F8}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataClasses.dbml.layout">
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,5045 @@
+﻿##|TYPE Template
+##|UNIQUEID 724b2f12-11c9-4ae5-bb12-6c58c18a1700
+##|TITLE Spunlogic NHibernate Object Mapping 0.1
+##|NAMESPACE NHibernate
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE C#
+##|COMMENTS_BEGIN
+This is a spin-off from the excellent work of Gustavo's update and k-dub's original work.
+
+Added: AssemblyName
+Added: InheritFrom
+Reworked the UI for new features and future expansion.
+##|COMMENTS_END
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE System.Windows.Forms.dll %>
+<%#NAMESPACE System, System.Text, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui( ZeusGuiContext context ) : base( context ) {}
+	
+	GuiTextBox applicationName;
+	GuiTextBox applicationCode;
+	GuiTextBox applicationPath;
+	
+	public override void Setup()
+	{
+		RegistryKey reg ;
+		reg = Registry.CurrentUser;
+		reg = reg.CreateSubKey("Software");
+		reg = reg.CreateSubKey("Ingematica");
+		reg = reg.CreateSubKey("Bapin");
+	
+		if ( !input.Contains( "chooseTables" ) || !input.Contains( "txtPath" ))
+		{
+			ui.Title = "Ingematica Maker";
+			ui.Width = 800;
+			ui.Height = 600;
+	
+			// Grab default output path
+			string sOutputPath = "";
+			
+			if( input.Contains( "defaultOutputPath" ) ) 
+			{
+				sOutputPath = input["defaultOutputPath"].ToString();
+			}
+
+			// Locates the folder in the register 
+			reg = Registry.CurrentUser;
+			reg = reg.OpenSubKey("Software\\Ingematica\\Bapin");
+
+
+			/**************************************************************************************************/
+			// Set Application Name Label
+			GuiLabel lblApplicationName = ui.AddLabel("lblApplicationName", "Application Name: ", "Enter the application name." );
+			lblApplicationName.Top = 10;
+			lblApplicationName.Left = 10;
+			lblApplicationName.Width = 100;
+			
+			// Set Application Name Textbox
+			applicationName = ui.AddTextBox( "applicationName", "[AplicationName]", "Enter the application name." );
+			applicationName.Top = lblApplicationName.Top;
+			applicationName.Left = lblApplicationName.Left + lblApplicationName.Width+10;
+			applicationName.Width = 200;
+			applicationName.Text = (string)reg.GetValue("applicationName", "[AplicationName]");
+					
+			// Set Namespace Label
+			GuiLabel lblApplicationCode = ui.AddLabel( "lblApplicationCode", "Application Code: ",  "Enter the application code." );
+			lblApplicationCode.Top = lblApplicationName.Top;
+			lblApplicationCode.Left = applicationName.Left + applicationName.Width+10;
+			lblApplicationCode.Width = 100;
+			
+			// Set Namespace Textbox
+			applicationCode = ui.AddTextBox( "applicationCode", "", "Enter the application code." );	
+			applicationCode.Top = lblApplicationCode.Top;
+			applicationCode.Left = lblApplicationCode.Left + lblApplicationCode.Width+10;
+			applicationCode.Width = 50;
+            applicationCode.Text = (string)reg.GetValue("applicationCode", "");
+			
+			/**************************************************************************************************/
+			// Section Title
+			GuiLabel lblApplicationPath = ui.AddLabel( "lblApplicationPath", "Output Path: ", "Select the output path for generated content." );
+			lblApplicationPath.Top = lblApplicationCode.Top+30 ;
+			lblApplicationPath.Left = lblApplicationName.Left;
+			lblApplicationPath.Width = 70;
+				
+			// Output folder Textbox and File Picker
+			applicationPath = ui.AddTextBox("applicationPath", sOutputPath, "Select the output path for generated content.");
+			applicationPath.Top = lblApplicationPath.Top;
+			applicationPath.Left = applicationName.Left;
+			applicationPath.Width = 600;
+			applicationPath.Text = (string)reg.GetValue("applicationPath", sOutputPath);
+			
+			GuiFilePicker selectPath = ui.AddFilePicker("selectPath", "Browse", "Select a directory to output generated content.", "applicationPath", true );
+			selectPath.Top = applicationPath.Top;
+			selectPath.Left = applicationPath.Left + applicationPath.Width + 10;
+			selectPath.Width = 52;
+					
+			/**************************************************************************************************/
+			// Section Title
+			GuiLabel lblDatabaseMappings = ui.AddLabel( "lblDatabaseMappings", "Database Mappings", "Select database mappings below." );
+			lblDatabaseMappings.Top = applicationPath.Top + 20;
+			lblDatabaseMappings.Left = 10;
+			lblDatabaseMappings.Width = 150;
+			lblDatabaseMappings.Bold = true;
+			
+			// Set Database DropDown
+			GuiLabel lblChooseDatabase = ui.AddLabel("lblChooseDatabase", "Source Database: ", "Select a database to generate content from." );
+			lblChooseDatabase.Top = lblDatabaseMappings.Top + 30;
+			lblChooseDatabase.Left = lblDatabaseMappings.Left;
+			lblChooseDatabase.Width = 100;
+			
+			GuiComboBox chooseDatabase = ui.AddComboBox( "chooseDatabase", "Select a database to generate content from." );
+			chooseDatabase.Top = lblChooseDatabase.Top;
+			chooseDatabase.Left = lblChooseDatabase.Left + lblChooseDatabase.Width;
+			chooseDatabase.Width = lblApplicationName.Width;								
+			
+			// Setup Tables selection multi-select listbox.
+			GuiLabel lblTableSelect = ui.AddLabel( "lblTableSelect", "Select tables:", "Select tables from the listbox below." );
+			lblTableSelect.Top = chooseDatabase.Top + 30;
+			lblTableSelect.Left = lblDatabaseMappings.Left;
+			lblTableSelect.Width = lblDatabaseMappings.Width;
+			
+			GuiListBox chooseTables = ui.AddListBox( "chooseTables", "Select tables." );
+			chooseTables.Top = lblTableSelect.Top + 20;
+			chooseTables.Width = 350;
+			chooseTables.Height = 340;
+	
+			// Setup Views selection multi-select listbox.
+			GuiLabel lblViewSelect = ui.AddLabel( "lblViewSelect", "Select views:", "Select views from the listbox below." );
+			lblViewSelect.Top = lblTableSelect.Top;
+			lblViewSelect.Left = 420;
+			lblViewSelect.Width = lblTableSelect.Width;
+			
+			GuiListBox chooseViews = ui.AddListBox( "chooseViews", "Select views." );
+			chooseViews.Top = lblViewSelect.Top + 20;
+			chooseViews.Left = lblViewSelect.Left;
+			chooseViews.Width = chooseTables.Width;
+			chooseViews.Height = chooseTables.Height;
+			
+			// Attach the onchange event to the cmbDatabases control.
+			setupDatabaseDropdown( chooseDatabase );
+			chooseDatabase.AttachEvent( "onchange", "chooseDatabase_onchange" );
+			/**************************************************************************************************/
+	
+	
+			GuiButton btnSave = ui.AddButton("btnSave", "Save", "Save all changes.");
+            btnSave.AttachEvent("onclick", "btnSave_onclick");
+	
+			ui.ShowGui = true;
+		}
+		else 
+		{
+			ui.ShowGui = false;
+		}
+	}
+	
+	public void setupDatabaseDropdown( GuiComboBox Databases )
+	{
+		try 
+		{	
+			if( MyMeta.IsConnected )
+			{
+				Databases.BindData( MyMeta.Databases );
+				if( MyMeta.DefaultDatabase != null ) 
+				{
+					Databases.SelectedValue = MyMeta.DefaultDatabase.Alias;
+					bindTables( Databases.SelectedValue );
+					bindViews( Databases.SelectedValue );
+				}
+			}
+		}
+		catch
+		{
+		}
+	}
+	
+	public void bindTables( string sDatabase )
+	{
+		int count = 0;
+	
+		GuiListBox lstTables = ui["chooseTables"] as GuiListBox;
+		
+		try 
+		{	
+			IDatabase db = MyMeta.Databases[sDatabase];
+			lstTables.BindData( db.Tables );
+		}
+		catch
+		{
+		}
+	}
+	
+	public void bindViews( string sDatabase )
+	{
+		int count = 0;
+	
+		GuiListBox lstViews = ui["chooseViews"] as GuiListBox;
+		
+		try 
+		{	
+			IDatabase db = MyMeta.Databases[sDatabase];
+			lstViews.BindData( db.Views );
+		}
+		catch
+		{
+		}
+	}
+	
+	public void chooseDatabase_onchange( GuiComboBox control )
+	{
+		int count = 0;
+
+		GuiComboBox cmbDatabases = ui["chooseDatabase"] as GuiComboBox;
+	
+		bindTables( cmbDatabases.SelectedText );
+		bindViews( cmbDatabases.SelectedText );
+	}
+	
+
+	private bool getBool(object valor){
+		return  Boolean.Parse((string) valor);
+	}
+	public void btnSave_onclick(GuiButton btnSave)
+	{
+		RegistryKey reg ;
+		reg = Registry.CurrentUser;
+		reg = reg.CreateSubKey("Software");
+		reg = reg.CreateSubKey("Ingematica");
+		reg = reg.CreateSubKey("Bapin");
+		
+		reg.SetValue("applicationName", applicationName.Text);
+		reg.SetValue("applicationCode", applicationCode.Text);
+		reg.SetValue("applicationpath", applicationPath.Text);	
+	}
+	
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#NAMESPACE System.IO, System.Text, System.Text.RegularExpressions, System.Globalization,System.Collections.Generic%><%
+/* 
+Template Autor: flaviolrita@hotmail.com.ar 
+*/
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	private ArrayList _selectedTables;
+	private ArrayList _selectedViews;
+	private string _dbName;
+	private string _tableName;
+	private string _className;
+	private string _entityName;
+	private string _fileName;
+	private string _nameSpace;
+	private string _assemblyName;
+	private string _inheritFrom="";
+	private string _prefix="";	
+	private bool _createReadOnly=false;
+	private bool _generateEqualsHashCode=true;
+	private bool _useNull=true;
+	private bool _dontCreateFK=false;
+	private bool _enableLazyClass=true;
+	private bool _enableNullTypes=true;
+	private bool _createClassFiles=true;
+	private bool _createXmlFiles=true;
+	private bool _CreatingXML = true;
+	private string _keys = "event,delegate";    
+	string _name="";
+	private string projectContractNamespace;
+	private Dictionary<string,string> _names = new Dictionary<string,string>();	
+	private bool __overrideClassPersonalized=false;//el valor por default es false , para que no pise las clases personalizadas
+	
+	//Aplication
+	private string aplicationPath;
+	private string aplicationName;
+	private string aplicationCode;
+	//Contract
+	private string projectContractPath;
+	private string folderContractResultPath;
+	private string folderContractResultBasePath;
+	private string folderContractFilterPath;
+	private string folderContractFilterBasePath;
+	//Data
+	private string _DbContext;
+	private string	projectDataNamespace;
+	private string projectDataPath;
+	private string folderDataAccessPath;
+	private string folderDataAccessBasePath;
+	//Business
+	private string projectBusinessNamespace;
+	private string projectBusinessPath;
+	private string folderBusinessAccessPath;
+	private string folderBusinessAccessBasePath;
+	//Service
+	private string projectServiceNamespace;
+	private string projectServicePath;
+	private string folderServiceAccessPath;
+	private string folderServiceAccessBasePath;
+	//Windows Form
+	
+	//UI ASP.NET
+	private string projectUIAspNetNamespace;
+	private string projectUIAspNetPath;
+	private string folderUIAspNetAccessPath;
+	private string folderUIAspNetAccessBasePath;
+
+	
+	private string _NullSufix;
+	
+	public GeneratedTemplate( ZeusContext context ) : base( context ) {}
+
+	public override void Render()
+	{
+		_NullSufix = "?";	
+		_dbName = input["chooseDatabase"].ToString();	
+		_selectedTables = input["chooseTables"] as ArrayList;
+		_selectedViews = input["chooseViews"] as ArrayList;
+		//Aplication
+		aplicationPath =input["applicationPath"].ToString()+@"\";
+		aplicationName =input["applicationName"].ToString();
+		aplicationCode =input["applicationCode"].ToString();
+		
+		//Contract
+		projectContractNamespace = "Contract";
+		projectContractPath = aplicationPath + "Contract";
+		folderContractResultPath = projectContractPath+@"/Results";
+		folderContractResultBasePath = folderContractResultPath+@"/Base";
+		folderContractFilterPath = projectContractPath+@"/Filters";
+		folderContractFilterBasePath = folderContractFilterPath+@"/Base";
+		//Data
+		_DbContext = "DataClassesDataContext";
+		projectDataNamespace = "DataAccess";
+		projectDataPath = aplicationPath +"DataAccess";
+		folderDataAccessPath = projectDataPath+@"/DataAccess";
+		folderDataAccessBasePath = folderDataAccessPath+@"/Base";
+		//Business
+		projectBusinessNamespace = "Business";
+		projectBusinessPath = aplicationPath + "Business";
+		folderBusinessAccessPath = projectBusinessPath+@"/Business";
+		folderBusinessAccessBasePath = folderBusinessAccessPath+@"/Base";
+		//Service
+		projectServiceNamespace = "Service";
+		projectServicePath = aplicationPath + "Service";
+		folderServiceAccessPath = projectServicePath+@"/Service";
+		folderServiceAccessBasePath = folderServiceAccessPath+@"/Base";
+		//Windows Form
+		
+		//UI ASP.NET
+		projectUIAspNetNamespace= "UI.Web";
+		projectUIAspNetPath =aplicationPath + "Application";
+		folderUIAspNetAccessPath = projectUIAspNetPath+@"/Generates";		
+
+		foreach( string _newTable in _selectedTables )
+		{
+			try
+			{
+			ITable _workingTable = MyMeta.Databases[_dbName].Tables[_newTable];		
+			//Contract
+			GenerateDataResultBase(_workingTable);			
+			GenerateDataResult(_workingTable);
+			GenerateDataFilterBase(_workingTable);
+			GenerateDataFilter(_workingTable);
+			//Data
+			GenerateDataAccessBase(_workingTable);
+			GenerateDataAccess(_workingTable);
+			//Business
+			GenerateBusinessAccessBase(_workingTable);
+			GenerateBusinessAccess(_workingTable);
+			//Service
+			GenerateServiceAccessBase(_workingTable);
+			GenerateServiceAccess(_workingTable);
+			//UI Asp.NET
+			GenerateWebUserControlEditAscxCs(_workingTable);
+			GenerateWebUserControlEditAscx(_workingTable);
+			GenerateWebUserControlEditAscxDesignerCs(_workingTable);
+			
+			GenerateWebUserControlFilterAscxCs(_workingTable);
+			GenerateWebUserControlFilterAscx(_workingTable);
+			GenerateWebUserControlFilterAscxDesignerCs(_workingTable);
+			
+			GenerateWebUserControlListAscxCs(_workingTable);
+			GenerateWebUserControlListAscx(_workingTable);
+			GenerateWebUserControlListAscxDesignerCs(_workingTable);
+			
+			GenerateWebPageListAspxCs(_workingTable);
+			GenerateWebPageListAspx(_workingTable);
+			GenerateWebPageListAspxDesignerCs(_workingTable);
+			
+			GenerateWebPageEditAspxCs(_workingTable);
+			GenerateWebPageEditAspx(_workingTable);
+			GenerateWebPageEditAspxDesignerCs(_workingTable);
+			
+			GenerateWebPageListEditAspxCs(_workingTable);
+			GenerateWebPageListEditAspx(_workingTable);
+			GenerateWebPageListEditAspxDesignerCs(_workingTable);
+			
+			}
+			//falata manejo de errores
+			catch(Exception exception){
+			    output.writeln(exception.Message);
+				output.clear();
+			}
+		}
+		foreach( string _newView in _selectedViews )
+		{
+			try
+			{
+			   IView _workingView = MyMeta.Databases[_dbName].Views[_newView];
+			   			   
+				GenerateViewDataResultBase(_workingView);			
+				GenerateViewDataResult(_workingView);
+				GenerateViewDataFilter(_workingView);
+				GenerateViewDataFilterBase(_workingView);
+			   
+				GenerateViewDataAccess(_workingView);
+				GenerateViewDataAccessBase(_workingView);
+			   
+				GenerateViewBusinessAccess(_workingView);
+			   
+				GenerateViewServiceAccess(_workingView);
+			   
+				GenerateWebPageViewAspxCs(_workingView);
+				GenerateWebPageViewAspx(_workingView);
+				GenerateWebPageViewAspxDesignerCs(_workingView);
+			   
+				GenerateWebUserControlViewListAscxCs(_workingView);
+				GenerateWebUserControlViewListAscx(_workingView);
+				GenerateWebUserControlViewListAscxDesignerCs(_workingView);
+				
+				GenerateWebUserControlViewFilterAscxCs(_workingView);
+				GenerateWebUserControlViewFilterAscx(_workingView);
+				GenerateWebUserControlViewFilterAscxDesignerCs(_workingView);
+			}
+			//falata manejo de errores
+			catch(Exception exception){
+			    //output.writeln(exception.Message);
+				output.clear();
+			}
+		}
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//TEMPLATES	
+///////////////////////////////// UI ASP.NET /////////////////////////////////////////////////////////////////////
+//
+////----------------------------------------------------- WEB PAGES ---------------------------------------------
+// control Edit ascx.cs
+	private void GenerateWebPageEditAspxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageEdit.aspx.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		IColumn pkColumn= PrimaryKey(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Service;
+using nc=Contract;
+using Contract;
+using AjaxControlToolkit;
+using Application.Controls;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>PageEdit : PageEdit<nc.<%=_className%> ,nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>>
+    {	
+		#region Override        
+		protected override void _Load()
+        {
+            webControlEdit = this.edit<%=_className%>;
+            webControlEditionButtons = this.editButtons;
+            PathListPage = "<%=_className%>PageList.aspx";            
+            base._Load();
+        }
+		protected <%=_className%>Service Service
+		{
+			get { return <%=_className%>Service.Current; }
+		}
+		protected override IEntityService<nc.<%=_className%>, nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>> EntityService
+		{
+			get { return <%=_className%>Service.Current; }
+		}
+		protected override <%=pkColumn.LanguageType%> ConvertId(object value)
+		{
+			return  <%= Convert(pkColumn.LanguageType,"value.ToString()")%>;
+		}
+		#endregion
+	}
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control Edit aspx
+	private void GenerateWebPageEditAspx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"PageEdit.aspx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+
+output.writeln(@"<"+"%@ Page Title=\"\" Language=\"C#\" MasterPageFile=\"~/App_Shared/General.Master\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"PageEdit.aspx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"PageEdit\" %"+">");
+output.writeln(@"<"+"%@ Register Assembly=\"System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" Namespace=\"System.Web.UI.WebControls\" TagPrefix=\"asp\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"Edit"+_className+"\" Src=\""+_className+"Edit.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"EditButtons\" Src=\"~/Controls/WebControlEditionButtons2.ascx\" %"+">");
+
+%>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoPrincipal" runat="server">
+    <table >		 
+		<tr><td>&nbsp;</td></tr>
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="upEdit" runat="server">
+                    <ContentTemplate>
+                        <uc:Edit<%=_className%> runat="server" ID="edit<%=_className%>" ></uc:Edit<%=_className%>>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+		<tr>
+		    <td>
+		        <asp:ValidationSummary id="vsEdition<%=_className%>" runat="server" DisplayMode="BulletList" ValidationGroup="Edition<%=_className%>" ShowSummary="false" ShowMessageBox="True"></asp:ValidationSummary>
+		    </td>
+		</tr>
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upEditButtons" runat="server">
+                    <ContentTemplate>
+                       <uc:EditButtons runat="server" ID="editButtons"  ValidationGroup="Edition<%=_className%>" ></uc:EditButtons >
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>		
+    </table>
+</asp:Content>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebPageEditAspxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageEdit.aspx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>PageEdit
+    {        
+		protected global::System.Web.UI.UpdatePanel upEditButtons;
+		protected global::System.Web.UI.UpdatePanel upEdit;
+		protected global::UI.Web.<%=_className%>Edit edit<%=_className%>;
+		protected global::UI.Web.WebControlEditionButtons2 editButtons;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------------------------------------------
+// Page List ascx.cs
+	private void GenerateWebPageListAspxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageList.aspx.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		IColumn pkColumn= PrimaryKey(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Service;
+using nc=Contract;
+using Contract;
+using AjaxControlToolkit;
+using Application.Controls;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>PageList : PageList<nc.<%=_className%> ,nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>>
+    {
+		protected override void _Initialize()
+        {
+			base._Initialize();
+            bool canCreate = this.Can(ActionConfig.CREATE);
+            btNew.Visible = canCreate;
+        }	
+		protected override void _Load()
+        {
+            webControlList = this.lst<%=_className%>;
+            webControlFilter = this.ft<%=_className%>;
+			//webControlListButtons = this.listButtons;
+			webControlPaggingButtons = this.pgButtons;
+            PathEditPage = "<%=_className%>PageEdit.aspx";            
+            base._Load();
+        }
+		protected <%=_className%>Service Service
+		{
+			get { return <%=_className%>Service.Current; }
+		}
+		protected override IEntityService<nc.<%=_className%>, nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>> EntityService
+		{
+			get { return Service; }
+		}
+		protected override IViewService<nc.<%=_className%> ,nc.<%=_className%>Filter,<%=_entityName%>Result, <%=pkColumn.LanguageType%>> ViewService
+        {
+            get { return Service; }
+        }
+		protected override <%=pkColumn.LanguageType%> ConvertId(object value)
+		{
+			return  <%= Convert(pkColumn.LanguageType,"value.ToString()")%>;
+		}
+		protected void btNew_OnClick(object sender, EventArgs e)
+        {
+            ControlCommand(Command.ADD_NEW);
+        }
+		protected void btExportExcel_OnClick(object sender, EventArgs e)
+        {
+            ControlCommand(Command.EXPORT_EXCEL);
+        }
+	}
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control List aspx
+	private void GenerateWebPageListAspx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"PageList.aspx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+
+output.writeln(@"<"+"%@ Page Title=\"\" Language=\"C#\" MasterPageFile=\"~/App_Shared/General.Master\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"PageList.aspx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"PageList\" %"+">");
+output.writeln(@"<"+"%@ Register Assembly=\"System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" Namespace=\"System.Web.UI.WebControls\" TagPrefix=\"asp\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"Filter"+_className+"\" Src=\""+_className+"Filter.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"List"+_className+"\" Src=\""+_className+"List.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"ListButtons\" Src=\"~/Controls/WebControlListButtons.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"PaggingButtons\" Src=\"~/Controls/WebControlPaggingButtons.ascx\" %"+">");
+
+%>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoPrincipal" runat="server">
+    <table width="100%"  >
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="upSearch" runat="server">
+                    <ContentTemplate>
+					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlFilter" >
+                            <div  >
+                               <uc:Filter<%=_className%> runat="server" ID="ft<%=_className%>" ></uc:Filter<%=_className%>>
+						    </div>
+                        </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+		<tr>
+		    <td>
+		        <asp:ValidationSummary id="vsFilter<%=_className%>" runat="server" DisplayMode="BulletList" ValidationGroup="Filter<%=_className%>" ShowSummary="false" ShowMessageBox="True"></asp:ValidationSummary>
+		    </td>
+		</tr>
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upListButtons" runat="server">
+                    <ContentTemplate>
+                      <table width="100%">
+                        <tr>
+                            <td align="left">
+								    <asp:Button  ID ="btNew"  runat = "server" Text="Agregar" OnClick ="btNew_OnClick"   />
+									<asp:Button  ID ="btExportExcel"  runat = "server" Text="Export Excel" OnClick ="btExportExcel_OnClick"   />
+                            </td>
+                            <td align="right" ><uc:PaggingButtons runat="server" ID="pgButtons"  SearchVisible="true" ValidationGroup="Filter<%=_className%>" ></uc:PaggingButtons ></td>
+                        </tr>
+                      </table>                       
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>		
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upGrilla" runat="server">
+                    <ContentTemplate>
+                       <uc:List<%=_className%> runat="server" ID="lst<%=_className%>" ></uc:List<%=_className%> >
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebPageListAspxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageList.aspx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>PageList
+    {        
+		protected global::System.Web.UI.UpdatePanel upSearch;
+		protected global::System.Web.UI.UpdatePanel upListButtons;
+		protected global::System.Web.UI.UpdatePanel upGrilla;
+		protected global::UI.Web.<%=_className%>List lst<%=_className%>;
+		protected global::UI.Web.<%=_className%>Filter ft<%=_className%>;		
+		protected global::System.Web.UI.WebControls.Button btNew;
+		protected global::UI.Web.WebControlPaggingButtons pgButtons;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------------------------------------------
+//--------------------------------------------LIST EDIT  ----------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------
+// Page List ascx.cs
+	private void GenerateWebPageListEditAspxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageListEdit.aspx.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		IColumn pkColumn= PrimaryKey(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Service;
+using nc=Contract;
+using Contract;
+using AjaxControlToolkit;
+using Application.Controls;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>PageListEdit : PageListEdit<nc.<%=_className%> ,nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>>
+    {
+		#region Override
+		protected override void _Initialize()
+        {
+			base._Initialize();
+            pnPopUpEdit<%=_className%>.Attributes.CssStyle.Add("display", "none");
+        }	
+		protected override void _Load()
+        {
+            webControlList = this.lst<%=_className%>;
+            webControlFilter = this.ft<%=_className%>;
+			webControlEdit = this.edit<%=_className%>;
+			webControlPaggingButtons = this.pgButtons;
+            PathEditPage = "<%=_className%>PageEdit.aspx";            
+            base._Load();
+        }
+		protected <%=_className%>Service Service
+		{
+			get { return <%=_className%>Service.Current; }
+		}
+		protected override IEntityService<nc.<%=_className%>, nc.<%=_className%>Filter, nc.<%=_className%>Result, <%=pkColumn.LanguageType%>> EntityService
+		{
+			get { return <%=_className%>Service.Current; }
+		}				
+		protected override <%=pkColumn.LanguageType%> ConvertId(object value)
+		{
+			return  <%= Convert(pkColumn.LanguageType,"value.ToString()")%>;
+		}
+		#endregion	
+		#region Methods
+        protected override void ShowEdit()
+        {            
+            base.ShowEdit();
+            IsActivePopup = true;
+            upEdit<%=_className%>.Update();
+            ModalPopupExtenderEdit<%=_className%>.Show();            
+        }
+        protected override void ShowView()
+        {
+            base.ShowView();
+            IsActivePopup = true;
+            upEdit<%=_className%>.Update();
+            ModalPopupExtenderEdit<%=_className%>.Show();
+        }
+        protected override void HideEdit()
+        {
+            base.HideEdit();
+            IsActivePopup = false;
+            ActivePopupName = "";
+            ModalPopupExtenderEdit<%=_className%>.Hide();
+        }
+        #endregion
+		#region Events
+        protected void btNew_OnClick(object sender, EventArgs e)
+        {
+            ControlCommand(Command.ADD_NEW);
+        }       
+        protected virtual void btEdit_Click(object sender, EventArgs e)
+        {
+            if (webControlList.GetSelectedId() > 0)
+                ControlCommand(Command.EDIT);
+        }
+        protected virtual void btView_Click(object sender, EventArgs e)
+        {
+            if (webControlList.GetSelectedId() > 0)
+               ControlCommand(Command.VIEW);
+        }
+        protected virtual void btDelete_Click(object sender, EventArgs e)
+        {
+            if (webControlList.GetSelectedId() > 0)
+               ControlCommand(Command.DELETE);
+        }
+        #endregion	
+	}
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// Page ListEdit aspx
+	private void GenerateWebPageListEditAspx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"PageListEdit.aspx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+
+output.writeln(@"<"+"%@ Page Title=\"\" Language=\"C#\" MasterPageFile=\"~/App_Shared/General.Master\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"PageList.aspx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"PageList\" %"+">");
+output.writeln(@"<"+"%@ Register Assembly=\"System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" Namespace=\"System.Web.UI.WebControls\" TagPrefix=\"asp\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"Filter"+_className+"\" Src=\""+_className+"Filter.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"List"+_className+"\" Src=\""+_className+"List.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"Edit"+_className+"\" Src=\""+_className+"Edit.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"ListButtons\" Src=\"~/Controls/WebControlListButtons.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"PaggingButtons\" Src=\"~/Controls/WebControlPaggingButtons.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"EditButtons\" Src=\"~/Controls/WebControlEditionButtons2.ascx\" %"+">");
+
+%>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoPrincipal" runat="server">
+    <table width="100%"  >
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="upSearch" runat="server">
+                    <ContentTemplate>
+					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlFilter" >
+                            <div style="padding:15px" >
+                               <uc:Filter<%=_className%> runat="server" ID="ft<%=_className%>" ></uc:Filter<%=_className%>>
+						    </div>
+                        </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upListButtons" runat="server">
+                    <ContentTemplate>
+                      <table width="100%">
+                        <tr>
+                            <td align="left">
+								&nbsp;<asp:Button  ID ="btTransferencia"  Enabled="false" runat = "server" Text="Agregar <%=_className%>" OnClick ="btNew_Click"  /> 
+                                &nbsp;<asp:Button  ID ="btEdit"   runat = "server" Text="Editar" OnClick ="btEdit_Click" /> 
+                                &nbsp;<asp:Button  ID ="btView"  runat = "server" Text="Ver" OnClick ="btView_Click" /> 
+                                &nbsp;<asp:Button  ID ="btDelete" runat = "server"   Text="Cancelar" OnClientClick="return confirm('Esta seguro de eliminar?');" OnClick ="btDelete_Click"/>                                 
+                            </td>
+                            <td align="right" ><uc:PaggingButtons runat="server" ID="pgButtons"  SearchVisible="true" ValidationGroup="Filter<%=_className%>" ></uc:PaggingButtons ></td>
+                        </tr>
+                      </table>                       
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>		
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upGrilla" runat="server">
+                    <ContentTemplate>
+                       <uc:List<%=_className%> runat="server" ID="lst<%=_className%>" ></uc:List<%=_className%> >
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+		 <tr>
+           <td>
+           <!-- BEGIN EDIT <%=_className%>-->
+            <asp:Panel ID="pnPopUpEdit<%=_className%>" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
+            <asp:Panel ID="pnPopUpEdit<%=_className%>DragHandle" runat="server" Style="cursor: move;">
+            <table width="100%" cellpadding="0" cellspacing="5">
+                <tr class="menutop" >
+                    <th align="center" height="10">Edici&oacute;n <%=_className%></th>                    
+                </tr>
+            </table>
+            </asp:Panel>
+            <asp:Panel ID="pnEdit<%=_className%>" runat="server">             
+                <asp:UpdatePanel ID="upEdit<%=_className%>" runat="server" UpdateMode="Conditional" >
+                <ContentTemplate>
+                <table >	             
+                <tr>
+                    <td>                      
+                        <uc:Edit<%=_className%>runat="server" ID="edit<%=_className%>" ></uc:Edit<%=_className%>>                           
+                    </td>
+                </tr>               
+               
+                <tr>
+                    <td>
+                        <asp:ValidationSummary id="vsEdition<%=_className%>" runat="server" DisplayMode="BulletList" ValidationGroup="Edition<%=_className%>" ShowSummary="False" ShowMessageBox="True"></asp:ValidationSummary>
+                    </td>
+                </tr>		
+                </table>
+                </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+            <asp:Button ID="btPn<%=_className%>" runat="server" Text="Button" Style="display: none" />
+            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderEdit<%=_className%>" runat="server" CancelControlID="btPn<%=_className%>" 
+					PopupDragHandleControlID="pnPopUpEdit<%=_className%>DragHandle" PopupControlID="pnPopUpEdit<%=_className%>"
+					OkControlID="Button2" TargetControlID="btPn<%=_className%>" BackgroundCssClass="modalBackground" />
+            </asp:Panel>
+            <!--END EDIT <%=_className%> -->            
+           </td>
+        </tr>
+    </table>
+</asp:Content>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebPageListEditAspxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"PageListEdit.aspx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>PageListEdit
+    {	
+		protected global::System.Web.UI.UpdatePanel upSearch;
+		protected global::System.Web.UI.WebControls.Panel pnlFilter;
+		protected global::System.Web.UI.UpdatePanel upListButtons;
+		protected global::UI.Web.<%=_className%>List lst<%=_className%>;
+		protected global::UI.Web.<%=_className%>Filter ft<%=_className%>;
+		protected global::System.Web.UI.WebControls.Button btNew;
+		protected global::System.Web.UI.WebControls.Button btEdit;
+		protected global::System.Web.UI.WebControls.Button btView;
+		protected global::System.Web.UI.WebControls.Button btDelete;
+		protected global::UI.Web.WebControlPaggingButtons pgButtons;
+		protected global::System.Web.UI.UpdatePanel upGrilla;
+		protected global::System.Web.UI.WebControls.Panel pnPopUpEdit<%=_className%>;
+		protected global::System.Web.UI.WebControls.Panel pnPopUpEdit<%=_className%>DragHandle;
+		protected global::System.Web.UI.WebControls.Panel pnEdit<%=_className%>;
+		protected global::System.Web.UI.UpdatePanel upEdit<%=_className%>;
+		protected global::UI.Web.<%=_className%>Edit edit<%=_className%>;
+		protected global::System.Web.UI.WebControls.ValidationSummary vsEdition<%=_className%>;
+		protected global::System.Web.UI.WebControls.Button btPn<%=_className%>;
+		protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtenderEdit<%=_className%>;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+////-------------------------------------------------------- WEB CONTROLS ----------------------------------------
+// control List ascx.cs
+	private void GenerateWebUserControlListAscxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"List.ascx.cs";
+		IColumn pkColumn= PrimaryKey(Table);		
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>List : WebControlGrid<nc.<%=_className%>Result,<%=pkColumn.LanguageType%>>    
+    {
+		public override GridView GridView { get { return this.Grid;} }
+        protected override <%=pkColumn.LanguageType%> ConvertId(object value)
+		{
+			return  <%= Convert(pkColumn.LanguageType,"value.ToString()")%>;
+		}
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control List ascx
+	private void GenerateWebUserControlListAscx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"List.ascx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+
+output.writeln(@"<"+"%@ Control Language=\"C#\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"List.ascx.cs\" Inherits=\" "+projectUIAspNetNamespace+"."+_className+"List\" %"+">");
+%>
+<asp:GridView ID="Grid" runat="server"  Width="100%"
+    AutoGenerateColumns="False" DataKeyNames="ID"     
+    OnRowCommand="Grid_RowCommand"    
+    AllowSorting="True"
+    OnSorting="Grid_Sorting"      
+    >
+    <Columns> 
+<%
+foreach(IColumn field in Columns)
+{
+	if(field.IsInPrimaryKey && field.IsAutoKey)
+		continue;
+		
+	string propertyName=ColumnToPropertyName(field);
+	string columnName = columnWithIdToParameter(field);
+	
+	
+	 if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			  {
+			   string relationObjectName = columnWithIdToParameter(field);
+			   ITable relationObject = field.ForeignKeys[0].PrimaryTable; 
+			   IColumn pkColumn = PrimaryKey(field.ForeignKeys[0].PrimaryTable);
+			   IColumn viewColumn = ColumnDefaultView(field.ForeignKeys[0].PrimaryTable);
+	
+	%><asp:BoundField DataField="<%=relationObject.Alias+"_"+viewColumn.Alias%>" HeaderText="<%=relationObjectName%>" SortExpression="<%=relationObject.Alias+"_"+viewColumn.Alias%>" />
+	<%
+	}
+	else
+	{	
+	switch( field.LanguageType.ToLower())
+			{
+				case "bool":
+	%><asp:CheckBoxField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					break;				
+				case "decimal":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" DataFormatString="{0:F2}"  />
+	<%
+					break;
+				case "byte":
+				case "sbyte":
+				case "numeric":
+				case "double":
+				case "float":
+				case "uint":
+				case "int":
+				case "long":
+				case "bigint":	
+				case "ulong":
+				case "short":
+				case "ushort":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					break;
+				case "char":
+				case "varchar":
+				case "string":
+				case "text":
+				
+				if(field.CharacterMaxLength > 25 )
+				{
+	%><asp:TemplateField   HeaderText="<%=columnName%>"  SortExpression="<%=propertyName%>"  >            
+            <ItemTemplate>
+                <asp:Label ID="lbl<%=propertyName%>" runat="server" Text='<%= "<"+"%# Contract.DataHelper.CutString((string)Eval(\""+propertyName+"\"),25) %"+">" %>' ToolTip='<%= "<"+"%# Eval(\""+propertyName+"\") %"+">" %>'  ></asp:Label>
+            </ItemTemplate>
+    </asp:TemplateField>
+	<%
+					}
+					else
+					{
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					}
+					break;
+				case "smalldatetime":	
+				case "datetime":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" DataFormatString="{0:dd/MM/yyyy}"  />
+	<%				
+					break;
+		}
+	}//else	
+					
+}
+%>		<asp:TemplateField  ItemStyle-HorizontalAlign="Right" >           
+            <ItemTemplate>
+				<asp:ImageButton ID ="btRead" runat ="server"  src="../Images/read.png" ToolTip ='<%= "<"+"%# Translate(\"Leer\") %"+">" %>'    Visible='<%= "<"+"%# CanRead(Eval(\"ID\")) %"+">" %>'  CommandName='<%= "<"+"%# Command.READ %"+">" %>'    CommandArgument='<%= "<"+"%# Eval(\"ID\")%"+">" %>'  CausesValidation="false" />
+				&nbsp;
+				<asp:ImageButton ID ="btEdit" runat ="server"  src="../Images/edit.png" ToolTip ='<%= "<"+"%# Translate(\"Editar\") %"+">" %>'    Visible='<%= "<"+"%# CanEdit(Eval(\"ID\")) %"+">" %>'  CommandName='<%= "<"+"%# Command.EDIT %"+">" %>'    CommandArgument='<%= "<"+"%# Eval(\"ID\")%"+">" %>'  CausesValidation="false" />
+				&nbsp;
+				<asp:ImageButton ID ="btDelete" runat ="server"  src="../Images/delete.jpg" ToolTip ='<%= "<"+"%# Translate(\"Eliminar\") %"+">" %>'  Visible='<%= "<"+"%# CanDelete(Eval(\"ID\")) %"+">" %>'   CommandName='<%= "<"+"%# Command.DELETE %"+">" %>' OnClientClick="return confirm('Esta seguro de eliminar?');" CommandArgument='<%= "<"+"%#Eval(\"ID\")%"+">" %>' CausesValidation="false" />            
+       	   </ItemTemplate>            
+            <ItemStyle Width ="80px" />
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebUserControlListAscxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"List.ascx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>List
+    {        
+		protected global::System.Web.UI.WebControls.GridView Grid;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+// control Edit aspx.cs
+	private void GenerateWebUserControlEditAscxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"Edit.ascx.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Edit : WebControlEdit<nc.<%=_className%>>
+    { 
+		protected override void _Initialize()
+        {
+            base._Initialize();
+			<%foreach(IColumn field in Columns)
+			{
+			  if(field.IsInPrimaryKey && field.IsAutoKey)continue;
+			  
+			  string propertyName= field.Alias;// ColumnToPropertyName(field);
+			  string columnName = columnWithIdToParameter(field);	
+			
+			  if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			  {
+			   string relationObjectName = columnWithIdToParameter(field);
+			   ITable relationObject = field.ForeignKeys[0].PrimaryTable; 
+			   IColumn pkColumn = PrimaryKey(field.ForeignKeys[0].PrimaryTable);
+			   IColumn viewColumn = ColumnDefaultView(field.ForeignKeys[0].PrimaryTable);
+			
+			%>UIHelper.Load<nc.<%=relationObject.Alias%>>(ddl<%=relationObjectName%>, <%=relationObject.Alias%>Service.Current.GetList(),"<%=viewColumn.Alias%>","<%=pkColumn.Alias%>",new nc.<%=relationObject.Alias%>(){<%=pkColumn.Alias%>=0, <%=viewColumn.Alias%>= "Seleccione <%=relationObject.Alias%>"});
+			<%
+			   }			  
+			  else
+			  {
+			   switch(field.LanguageType.ToLower())
+			   {					
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+					if(field.IsNullable)
+					   {
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegNumberNullable();
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");			  		  
+			<%
+					}
+					else
+					{
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegNumber();
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");
+			  rfv<%=propertyName%>.ErrorMessage = TranslateFormat("FieldIsNull", "<%=propertyName%>");
+			<%
+					}
+						break;
+					case "char":					
+					case "string":
+					   if(field.IsNullable )
+					   {
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegStringNullable(<%= field.CharacterMaxLength.ToString() %>);
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");
+			<%
+					   }else
+					   {
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegString(<%= field.CharacterMaxLength.ToString() %>);
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");
+			  rfv<%=propertyName%>.ErrorMessage = TranslateFormat("FieldIsNull", "<%=propertyName%>");
+			<%  
+					   }						
+						break;	
+					case "datetime":
+						controlName="di"+propertyName;
+						break;
+				}
+			  }
+			}
+			%>
+		}
+		public override void Clear()
+        {			
+			<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey && field.IsAutoKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = field.ForeignKeys[0].PrimaryTable.Alias; 
+				controlName="ddl"+relationObjectName;
+			}
+			else
+			{
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						break;
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						break;	
+					case "datetime":
+						controlName="di"+propertyName;
+						break;
+				}			
+			}
+			%>UIHelper.Clear(<%=controlName%>);
+			<% if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }		
+		public override void SetValue()
+        {			
+			<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey && field.IsAutoKey)
+				continue;			
+			
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				//string relationObjectName = ColumnEntityToPropertyName(field);
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 
+				controlName="ddl"+relationObjectName;
+			}
+			else
+			{
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						break;
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						break;	
+					case "datetime":
+						controlName="di"+propertyName;
+						break;
+				}			
+			}
+			%>UIHelper.SetValue(<%=controlName%>, Entity.<%=propertyName%>);
+			<% if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }	
+        public override void GetValue()
+        {
+			<%
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey && field.IsAutoKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);			
+			
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				//string relationObjectName = ColumnEntityToPropertyName(field);
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 				
+			%>Entity.<%=propertyName%> =UIHelper.GetInt<%= field.IsNullable?"Nullable":""%>(ddl<%= relationObjectName%>);
+			<%
+			}
+			else
+			{		
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>Entity.<%=propertyName%>=UIHelper.GetBoolean(chk<%=propertyName%>);
+			<%
+						break;
+					case "double":
+					case "float":					
+					case "decimal":
+			%>Entity.<%=propertyName%>=UIHelper.GetDecimal<%= field.IsNullable?"Nullable":""%>(txt<%= propertyName%>);
+			<%
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+			%>Entity.<%=propertyName%>=UIHelper.GetInt<%= field.IsNullable?"Nullable":""%>(txt<%= propertyName%>);
+			<%					
+						  break;
+					case "short":
+					case "ushort":
+			%>Entity.<%=propertyName%>=UIHelper.GetShort<%= field.IsNullable?"Nullable":""%>(txt<%= propertyName%>);
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>Entity.<%=propertyName%> =UIHelper.GetString(txt<%= propertyName%>);
+			<%
+						break;					
+					case "datetime":
+			%>Entity.<%=propertyName%> =UIHelper.GetDateTime<%= field.IsNullable?"Nullable":""%>(di<%= propertyName%>);
+			<%				
+						break;
+			}			
+		  }
+		}%>	
+        }
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control Edit ascx
+	private void GenerateWebUserControlEditAscx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"Edit.ascx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+
+output.writeln(@"<"+"%@ Control Language=\"C#\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"Edit.ascx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"Edit\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"DateInput\" Src=\"~/Controls/WebControl_DateInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"Autocomplete\" Src=\"~/Controls/WebControl_Autocomplete.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"ThreeState\" Src=\"~/Controls/WebControl_ThreeStatesCheckbox.ascx\"   %"+">");
+%>
+<table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
+<%
+foreach(IColumn field in Columns){
+	if(field.IsInPrimaryKey && field.IsAutoKey)
+		continue;	
+	
+	string propertyName= field.Alias;// ColumnToPropertyName(field);
+	string columnName = columnWithIdToParameter(field);
+	int length = field.CharacterMaxLength;
+	string width = "";
+	if(length<=10) width = "60px";
+	else if(length<=20) width = "100px";
+	else if(length<=50) width = "200px";
+	else if(length<=100) width = "300px";
+	else if(length<=150) width = "400px";
+	else width = "100%";
+	
+	if( field.IsInForeignKey && !field.IsInPrimaryKey)
+	{
+		string relationObjectName = columnWithIdToParameter(field);
+		ITable relationObject = field.ForeignKeys[0].PrimaryTable; 
+		
+%><tr>
+	<td class="tdLabel"  ><asp:Literal ID="li<%=relationObjectName%>" Text="<%=relationObjectName%>" runat="server" ></asp:Literal></td>
+	<td >&nbsp;</td>
+	<td  class="filaInput"><asp:DropDownList ID="ddl<%=relationObjectName%>" runat="server" CssClass="field_input"     ></asp:DropDownList></td>
+	<td class="filaValidator">&nbsp;<%if(field.IsNullable==false){%><asp:RequiredFieldValidator ID="rfv<%=relationObjectName%>" InitialValue="0" runat="server" ControlToValidate="ddl<%=relationObjectName%>"  ValidationGroup="Edition<%=_className%>"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator><%}%></td>
+	</tr>
+	 <%
+		}
+		else
+		{	
+
+			switch( field.LanguageType.ToLower())
+			{
+				case "bool":
+	%><tr>
+		<td class="tdLabel"  ><asp:Literal ID="li<%=columnName%>" Text="<%=columnName%>" runat="server" ></asp:Literal></td>
+		<td class="filaValidator" >&nbsp;</td>
+		<td class="filaInput"><asp:CheckBox ID="chk<%=propertyName%>" runat="server" CssClass="field_input" ></asp:CheckBox></td>		
+	</tr>
+	<%
+					break;
+				case "byte":
+				case "sbyte":
+				case "numeric":
+				case "decimal":
+				case "double":
+				case "float":
+				case "uint":
+				case "int":
+				case "long":
+				case "bigint":	
+				case "ulong":
+				case "short":
+				case "ushort":
+	%><tr>
+		<td class="tdLabel"  ><asp:Literal ID="li<%=columnName%>" Text="<%=columnName%>" runat="server" ></asp:Literal></td>	
+		<td class="filaValidator">&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server" ControlToValidate="txt<%=propertyName%>"  ValidationGroup="Edition<%=_className%>"  Text="*" Width="1px" Height="1px"  ></asp:RegularExpressionValidator>
+		<% if(field.IsNullable == false)
+		{%><asp:RequiredFieldValidator ID="rfv<%=columnName%>" runat="server" ControlToValidate="txt<%=columnName%>"  ValidationGroup="Edition<%=_className%>"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>
+		<%}%>
+		</td>
+		<td class="filaInput" ><asp:TextBox ID="txt<%=propertyName%>" Width="60px"   runat="server" CssClass="field_input" ></asp:TextBox></td>
+	</tr>
+	<%
+					break;
+				case "char":
+				case "varchar":
+				case "string":
+				case "text":
+	%><tr>
+		<td class="tdLabel"  ><asp:Literal ID="li<%=columnName%>" Text="<%=columnName%>" runat="server" ></asp:Literal></td>
+		<td class="filaValidator">&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server"   ControlToValidate="txt<%=propertyName%>"  ValidationGroup="Edition<%=_className%>"  Text="*" Width="1px" Height="1px"  ></asp:RegularExpressionValidator>
+		<% if(field.IsNullable == false)
+		{%><asp:RequiredFieldValidator ID="rfv<%=columnName%>" runat="server" ControlToValidate="txt<%=columnName%>"  ValidationGroup="Edition<%=_className%>"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>
+		<%}%></td>
+		<td class="filaInput" ><asp:TextBox ID="txt<%=propertyName%>"  Width="<%=width%>"  MaxLength="<%=length.ToString()%>"    <%= length>200?"TextMode=\"MultiLine\"  Rows=\"6\" ":"" %>   runat="server" CssClass="field_input"  ></asp:TextBox></td>
+	</tr>
+	<%
+					break;
+				case "smalldatetime":	
+				case "datetime":
+	%><tr>
+		 <td class="tdLabel"  ><asp:Literal ID="li<%=columnName%>" Text="<%=columnName%>" runat="server" ></asp:Literal></td>
+	 	 <td class="filaValidator">&nbsp;</td>
+		 <td class="filaInput" ><uc:DateInput runat="server"  IsValidEmpty="<%=field.IsNullable?"true":"false" %>"   ID="di<%=propertyName%>" /></td>
+	</tr><%				
+					break;
+		}		
+	}
+}%></table>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebUserControlEditAscxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"Edit.ascx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Edit
+    {        
+			<%
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey && field.IsAutoKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);		
+			
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{				
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 				
+			%>protected global::System.Web.UI.WebControls.DropDownList ddl<%= relationObjectName%>;
+			<%if(field.IsNullable==false){%>protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv<%= relationObjectName%>;<%}%>
+			<%
+			}
+			else
+			{		
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>protected global::System.Web.UI.WebControls.CheckBox chk<%=propertyName%>;
+			<%
+						break;
+					case "double":
+					case "float":					
+					case "decimal":
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%if(field.IsNullable==false){%>protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv<%=propertyName%>;<%}%>
+			<%
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%if(field.IsNullable==false){%>protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv<%=propertyName%>;<%}%>
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%if(field.IsNullable==false){%>protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv<%=propertyName%>;<%}%>
+			<%
+						break;					
+					case "datetime":
+			%>protected global::UI.Web.WebControl_DateInput di<%= propertyName%>;
+			<%				
+						break;
+			}			
+		  }
+		}%>	
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+//Web Filter ascx.cs
+	private void GenerateWebUserControlFilterAscxCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"Filter.ascx.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Filter : WebControlFilter<nc.<%=_className%>Filter>
+    {
+		protected override void _Initialize()
+        {
+            base._Initialize();
+			<%foreach(IColumn field in Columns)
+			{
+				if(field.IsInPrimaryKey)continue;
+			  
+			    string propertyName= field.Alias;// ColumnToPropertyName(field);
+			    string columnName = columnWithIdToParameter(field);	
+			
+				
+			  if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			  {
+			   string relationObjectName = columnWithIdToParameter(field);
+			   ITable relationObject = field.ForeignKeys[0].PrimaryTable; 
+			   IColumn pkColumn = PrimaryKey(field.ForeignKeys[0].PrimaryTable);
+			   IColumn viewColumn = ColumnDefaultView(field.ForeignKeys[0].PrimaryTable);
+			
+			%>UIHelper.Load<nc.<%=relationObject.Alias%>>(ddl<%=relationObjectName%>, <%=relationObject.Alias%>Service.Current.GetList(),"<%=viewColumn.Alias%>","<%=pkColumn.Alias%>",new nc.<%=relationObject.Alias%>(){<%=pkColumn.Alias%>=0, <%=viewColumn.Alias%>= "Seleccione <%=relationObject.Alias%>"});
+			<%
+			  } 
+			  else
+			  {
+			   switch(field.LanguageType.ToLower())
+			   {					
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegNumberNullable();
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");	
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegStringNullable(<%= field.CharacterMaxLength.ToString() %>);
+			  rev<%=propertyName%>.ErrorMessage = TranslateFormat("InvalidField", "<%=propertyName%>");	
+			<%
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						break;
+					case "datetime":
+						controlName="rd"+propertyName;
+						break;
+				}
+			  }
+			}			
+			%>
+		}
+		protected override void Clear()
+        {			
+			<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = field.ForeignKeys[0].PrimaryTable.Alias; 
+				controlName="ddl"+relationObjectName;
+			}
+			else
+			{
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						break;
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						break;
+					case "datetime":
+						controlName="rd"+propertyName;
+						break;
+				}			
+			}
+			%>UIHelper.Clear(<%=controlName%>);
+			<% if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }		
+		protected override void SetValue()
+        {<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				//string relationObjectName = ColumnEntityToPropertyName(field);
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 
+				controlName="ddl"+relationObjectName;
+				%>UIHelper.SetValue(<%=controlName%>, Filter.<%=propertyName%>);
+				<%
+			}
+			else
+			{
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						%>UIHelper.SetValue(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						%>UIHelper.SetValue(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						%>UIHelper.SetValue<decimal?>(<%=controlName%>, Filter.<%=propertyName%>, Filter.<%=propertyName%>_To);
+						<%
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						%>UIHelper.SetValueFilter(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;	
+					case "datetime":
+						controlName="rd"+propertyName;
+						%>UIHelper.SetValue<DateTime?>(<%=controlName%>, Filter.<%=propertyName%>, Filter.<%=propertyName%>_To);
+						<%
+						break;
+				}			
+			}
+			   if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }	
+        protected override void GetValue()
+        {
+			<%
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);			
+			
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				//string relationObjectName = ColumnEntityToPropertyName(field);
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 				
+			%>Filter.<%=propertyName%> =UIHelper.GetIntNullable(ddl<%= relationObjectName%>);
+			<%
+			}
+			else
+			{		
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>Filter.<%=propertyName%>=UIHelper.GetBooleanNullable(chk<%=propertyName%>);			  
+			<%
+						break;
+					case "double":
+					case "float":
+			%>Filter.<%=propertyName%>=UIHelper.GetDecimalNullable(txt<%= propertyName%>);
+			<%
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>Filter.<%=propertyName%>=UIHelper.GetIntNullable(txt<%= propertyName%>);
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>Filter.<%=propertyName%> =UIHelper.GetStringFilter(txt<%= propertyName%>);
+			<%
+						break;
+					case "decimal":
+			%>Filter.<%=propertyName%> =UIHelper.GetValueFrom<decimal?>(rn<%= propertyName%>);
+            Filter.<%=propertyName%>_To = UIHelper.GetValueTo<decimal?>(rn<%= propertyName%>);
+			<%				
+						break;
+					case "datetime":
+			%>Filter.<%=propertyName%> =UIHelper.GetValueFrom<DateTime?>(rd<%= propertyName%>);
+            Filter.<%=propertyName%>_To = UIHelper.GetValueTo<DateTime?>(rd<%= propertyName%>);
+			<%				
+						break;
+			}			
+		  }
+		}%>	
+        }
+		protected void btClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+		protected void btSearch_Click(object sender, EventArgs e)
+        {
+            RaiseControlCommand(Command.SEARCH);
+        }
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------------------------
+// control Filter ascx
+	private void GenerateWebUserControlFilterAscx(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_CreatingXML =false;
+		_fileName =  _className+"Filter.ascx";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName( Table);
+		int colNumber=0;
+		int colCount = 4;
+		bool NewRow=false;
+		
+
+output.writeln(@"<"+"%@ Control Language=\"C#\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"Filter.ascx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"Filter\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"DateInput\" Src=\"~/Controls/WebControl_DateInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"DateRangeInput\" Src=\"~/Controls/WebControl_DateRangeInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"NumberRangeInput\" Src=\"~/Controls/WebControl_NumericRangeInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"Autocomplete\" Src=\"~/Controls/WebControl_Autocomplete.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"ThreeState\" Src=\"~/Controls/WebControl_ThreeStatesCheckbox.ascx\"   %"+">");
+%>
+<table width="100%"  cellpadding="0" cellspacing="0" border="0">	   
+<%
+		foreach(IColumn field in Columns)
+		{
+			if(field.IsInPrimaryKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = field.Alias;	
+			if(colNumber >= colCount )
+			{ 
+			 colNumber= 1;				  
+			}
+			else
+			{
+			   colNumber++;
+			}			
+			if(colNumber==1)
+	{%><tr>
+	    <%}%><td class="tdFilter" ><%
+			
+			
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				string relationObjectName = columnWithIdToParameter(field);
+				ITable relationObject = field.ForeignKeys[0].PrimaryTable; 
+		%><div ><asp:Literal ID="li<%=relationObjectName%>" Text="<%=relationObjectName%>" runat="server" ></asp:Literal></div>
+		<div><asp:DropDownList ID="ddl<%=relationObjectName%>" runat="server" CssClass="field_input"  ></asp:DropDownList></div>
+		<%
+			}
+			else
+			{	
+		
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+		%><div ><asp:Literal ID="li<%=propertyName%>" Text="<%=propertyName%>" runat="server" ></asp:Literal></div>
+		<div><uc:ThreeState ID="chk<%=propertyName%>" runat="server" CssClass="field_input" ></uc:ThreeState></div>        
+		<%
+						break;
+					case "byte":
+					case "sbyte":
+					case "numeric":					
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+		%><div ><asp:Literal ID="li<%=propertyName%>" Text="<%=propertyName%>" runat="server" ></asp:Literal>&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server"  ControlToValidate="txt<%=propertyName%>" ValidationGroup="Filter<%=_className%>" Text="*" Width="1px" Height="1px"  ></asp:RegularExpressionValidator></div>
+		<div><asp:TextBox ID="txt<%=propertyName%>" runat="server" CssClass="field_input"  ></asp:TextBox></div>
+        <%
+						break;
+					case "decimal":
+		%><div ><asp:Literal ID="li<%=propertyName%>" Text="<%=propertyName%>" runat="server" ></asp:Literal></div>
+		 <div><uc:NumberRangeInput runat="server" ID="rn<%=propertyName%>"  /> </div>         
+		<%	
+						break;
+					case "char":
+					case "varchar":
+					case "string":
+					case "text":
+		%><div ><asp:Literal ID="li<%=propertyName%>" Text="<%=propertyName%>" runat="server" ></asp:Literal>&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server"  ControlToValidate="txt<%=propertyName%>" ValidationGroup="Filter<%=_className%>" Text="*" Width="1px" Height="1px"  ></asp:RegularExpressionValidator></div>
+		<div><asp:TextBox ID="txt<%=propertyName%>" runat="server" CssClass="field_input"  ></asp:TextBox></div>
+        <%
+						break;
+					case "smalldatetime":	
+					case "datetime":
+		%><div ><asp:Literal ID="li<%=propertyName%>" Text="<%=propertyName%>" runat="server" ></asp:Literal></div>
+		 <uc:DateRangeInput runat="server" ID="rd<%=propertyName%>"  />         
+		<%				
+						break;
+			}			
+		}
+		%></td><% if(colNumber==colCount)
+		{%>
+	</tr><%}
+	}		
+	if(colNumber<colCount)
+	{		   
+		colNumber= colNumber+1;	    		
+	}
+	else
+	{
+		colNumber= 1;
+		%><tr><%
+	}	
+	for(;colNumber<colCount;colNumber++)
+		{%><td class="tdFilter" >&nbsp;</td>
+		<%}
+	%><td align="right" valign="bottom" >
+	           <asp:Button  ID ="btClear"  runat = "server" Text="Limpiar" OnClick ="btClear_Click"  Visible="true" />
+		  &nbsp;<asp:Button  ID ="btSearch"  runat = "server" Text="Buscar" OnClick ="btSearch_Click"  Visible="true" />
+	 </td>
+	<%
+%></tr>
+</table>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebUserControlFilterAscxDesignerCs(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		_tableName = Table.Alias.Replace( " ", "" );		
+		_className = EntityName(Table);
+		_fileName =  _className+"Filter.ascx.designer.cs";
+		string classProperty = _className;
+		string classMember = ColumnToParameterName(Table);
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Filter
+    {        
+			<%
+		foreach(IColumn field in Columns){
+			if(field.IsInPrimaryKey)
+				continue;
+				
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = field.Alias;		
+			
+			if( field.IsInForeignKey && !field.IsInPrimaryKey)
+			{
+				//string relationObjectName = ColumnEntityToPropertyName(field);
+				string relationObjectName = columnWithIdToParameter(field);
+				string relationObject = EntityName( field.ForeignKeys[0].PrimaryTable ); 				
+			%>protected global::System.Web.UI.WebControls.DropDownList ddl<%= relationObjectName%>;
+			<%
+			}
+			else
+			{		
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>protected global::UI.Web.WebControl_ThreeStatesCheckbox chk<%=propertyName%>;
+			<%
+						break;
+					case "double":
+					case "float":				
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;
+					case "decimal":
+			%>protected global::UI.Web.WebControl_NumericRangeInput rn<%= propertyName%>;
+			<%				
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;					
+					case "datetime":
+			%>protected global::UI.Web.WebControl_DateRangeInput rd<%= propertyName%>;
+			<%				
+						break;
+			}			
+		  }
+		}%>	
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+
+//////////////////////////////  WINDOWS FORM /////////////////////////////////////////////////////////////////////
+//////////////////////////////  SERVICE      /////////////////////////////////////////////////////////////////////
+private void GenerateServiceAccess( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = Table.Alias.Replace( " ", "" )+"Service";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectBusinessNamespace%>;
+using <%=projectServiceNamespace%>.Base;
+
+namespace <%=projectServiceNamespace%>
+{
+    public class <%= _className%> : _<%= _className%> 
+    {	  
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderServiceAccessPath,__overrideClassPersonalized);
+}
+//--------------------------------------------------------------
+private void GenerateServiceAccessBase( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = "_"+Table.Alias.Replace( " ", "" )+"Service";
+		_fileName = _className + ".cs";
+		IColumn pkColumn= PrimaryKey(Table);
+		string text="";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using nc=<%=projectContractNamespace%>;
+using <%=projectBusinessNamespace%>;
+
+namespace <%=projectServiceNamespace%>.Base
+{
+    public class <%= _className%> : EntityService<nc.<%=_entityName%>,nc.<%=_entityName%>Filter,nc.<%=_entityName%>Result,<%=pkColumn.LanguageType%>>
+    {        
+		protected readonly <%=_entityName%>Business Business = new <%=_entityName%>Business();
+        protected override IEntityBusiness<nc.<%=_entityName%>,nc.<%=_entityName%>Filter,nc.<%=_entityName%>Result,<%=pkColumn.LanguageType%>> EntityBusiness
+        {
+            get { return this.Business;}
+        }
+    }	
+}
+<%
+	SaveFile(_fileName,folderServiceAccessBasePath);
+}
+//////////////////////////////  BUSINESS     /////////////////////////////////////////////////////////////////////
+private void GenerateBusinessAccess( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = Table.Alias.Replace( " ", "" )+"Business";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>;
+using <%=projectBusinessNamespace%>.Base;
+
+namespace <%=projectBusinessNamespace%>
+{
+    public class <%= _className%> : _<%= _className%> 
+    {   
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderBusinessAccessPath,__overrideClassPersonalized);
+}
+//--------------------------------------------------------------
+private void GenerateBusinessAccessBase( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = "_"+Table.Alias.Replace( " ", "" )+"Business";
+		_fileName = _className + ".cs";
+		IColumn pkColumn= PrimaryKey(Table);
+		string text="";
+%>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>;
+using nc=<%=projectContractNamespace%>;
+
+namespace <%=projectBusinessNamespace%>.Base
+{
+    public class <%= _className%> : EntityBusiness<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=pkColumn.LanguageType%>>
+    {        
+		protected readonly <%=_entityName%>Data Data = new <%=_entityName%>Data();
+        protected override IEntityData<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=pkColumn.LanguageType%>> EntityData
+        {
+            get { return this.Data;}
+        }
+		public override bool Can(<%=pkColumn.LanguageType%> id, string actionName, IContextUser contextUser, Hashtable args)
+        {
+            return Can(new nc.<%=_entityName%>() { <%=pkColumn.Alias%> = id }, actionName, contextUser, args);
+        }
+		public override void Validate(nc.<%=_entityName%> entity,string actionName, IContextUser contextUser, Hashtable args)
+        {           
+            base.Validate(entity, actionName,contextUser,args);			
+            switch (actionName)
+            { 
+                case ActionConfig.CREATE:
+				case ActionConfig.UPDATE:
+				   if (actionName != ActionConfig.CREATE)
+				   {
+				<%
+				  
+				  foreach(IColumn column in Table.Columns)
+				  {
+				     if(column.IsInPrimaryKey || (column.IsInForeignKey && !column.IsNullable ) )
+					 {
+					    text= columnWithIdToParameter(column);
+						output.write("DataHelper.Validate(entity."+column.Alias+" != default("+column.LanguageType+"),\"InvalidField\", \""+text+"\");\r\n");
+					 }
+				   }
+				%>
+                  }				
+				<%
+				  foreach(IColumn column in Table.Columns)
+				    output.write(DefaultValidation(column));				
+				%>
+                break;				
+				case ActionConfig.READ:
+				case ActionConfig.DELETE:
+				<%
+				  foreach(IColumn column in Table.Columns)
+				  {
+				     if(column.IsInPrimaryKey )
+					 {
+					  text= columnWithIdToParameter(column);
+					  output.write("DataHelper.Validate(entity."+column.Alias+" != default("+column.LanguageType+"),\"InvalidField\", \""+text+"\");\r\n");
+					 }
+				   }
+				%>
+				break;
+            }
+        }   
+		
+    }	
+}
+<%
+	SaveFile(_fileName,folderBusinessAccessBasePath);
+}
+private string DefaultValidation(IColumn column)
+{	
+	string name= column.Alias;
+	string text= columnWithIdToParameter(column);
+	int length = column.CharacterMaxLength;
+	bool isNull = column.IsNullable;
+	if(column.IsInForeignKey && !column.IsInPrimaryKey && !column.IsNullable)
+	{
+		return "DataHelper.Validate(entity."+name+" != default("+column.LanguageType+"),\"InvalidField\", \""+text+"\");\r\n";
+	}
+	else
+	{
+		switch(column.LanguageType)
+		{
+			case "string":
+				  if(!isNull)
+					return (!isNull?"DataHelper.Validate(entity."+name+"!=null,\"FieldIsNull\",\""+text+"\");\r\n":"")
+				        +"DataHelper.Validate(entity."+name+".Trim().Length <= "+length.ToString()+",\"FieldInvalidLength\",\""+text+"\");\r\n";
+				  break;
+		   case "DateTime":
+		          if(!isNull)
+				     return "DataHelper.Validate(entity."+name+" > new DateTime(1900,1,1) ,\"InvalidField\", \""+text+"\");\r\n";
+				  break;
+		}
+	}
+	return "";
+}
+//////////////////////////////  DATA         /////////////////////////////////////////////////////////////////////
+private void GenerateDataAccess( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = Table.Alias.Replace( " ", "" )+"Data";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>.Base;
+
+namespace <%=projectDataNamespace%>
+{
+    public class <%= _className%> : _<%= _className%> 
+    { 
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderDataAccessPath,__overrideClassPersonalized);
+}
+//--------------------------------------------------------------
+private void GenerateDataAccessBase( ITable Table )
+{
+		_entityName = _className = Table.Alias;
+		_className = "_"+Table.Alias.Replace( " ", "" )+"Data";
+		_fileName = _className + ".cs";
+		bool first=true;
+		IColumn pkColumn= PrimaryKey(Table);
+		IColumn columnOrder = ColumnDefaultView(Table);
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>;
+using nc=<%=projectContractNamespace%>;
+using nd=<%=projectDataNamespace%>;
+
+namespace <%=projectDataNamespace%>.Base
+{
+    public abstract class <%= _className%> : EntityData<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=pkColumn.LanguageType%>>
+    { 		
+		#region Context        
+        public  <%=_DbContext%> Context
+        {
+            get { return LinqUtility.Context;}
+        }
+        #endregion		
+		#region Get
+		public override string IdFieldName { get { return "<%=pkColumn.Alias%>"; } }
+		public override <%=pkColumn.LanguageType%> GetId(nc.<%=_entityName%> entity)
+		{			
+			return entity.<%=pkColumn.Alias%>;
+		}		
+		public override <%=_entityName%> GetByEntity(<%=_entityName%> entity)
+        {
+            return this.GetById(entity.<%=pkColumn.Alias%>);
+        }
+        public override <%=_entityName%> GetById(<%=pkColumn.LanguageType%> id)
+        {
+            return (from o in this.Table where o.<%=pkColumn.Alias%> == id select o).FirstOrDefault();
+        }
+		#endregion
+		#region Query
+		protected override IQueryable<<%=_entityName%>> Query(<%=_entityName%>Filter filter)
+        {
+			return (from o in this.Table
+                     <%
+					first=true;
+					for(int i =0,count = Table.Columns.Count;i<count;i++)
+					{
+					IColumn column= Table.Columns[i];
+					  //if(column.IsInPrimaryKey)continue;
+					 %><%=(first?" where ":" && ")+GetWhereFiledFilter(column)%>
+					 <%if(column.IsNullable && column.LanguageType!="string")
+					    {
+					 %><%=" && "+GetWhereIsNullableFilter(column)%>
+					 <%
+						}
+					 first=false;
+					}%> select o
+                    ).AsQueryable();
+        }	
+        protected override IQueryable<<%=_entityName%>Result> QueryResult(<%=_entityName%>Filter filter)
+        {
+		  return (from o in Query(filter)					
+					<%
+					int t=0;
+					foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+					{
+						if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+						continue;
+						t++;
+						string  PKTableName = Plural(ForeignKey.PrimaryTable.Alias);
+						IColumn FKColumn = ForeignKey.ForeignColumns[0];
+						IColumn PKColumn = ForeignKey.PrimaryColumns[0];
+						
+						if(FKColumn.IsNullable)
+						{
+					 %>join _t<%=t.ToString()%>  in this.Context.<%=PKTableName%> on o.<%=FKColumn.Alias%> equals _t<%=t.ToString()%>.<%=PKColumn.Alias%> into tt<%=t.ToString()%> from t<%=t.ToString()%> in tt<%=t.ToString()%>.DefaultIfEmpty()
+				   <%
+						} 
+						else
+						{
+					 %> join t<%=t.ToString()%>  in this.Context.<%=PKTableName%> on o.<%=FKColumn.Alias%> equals t<%=t.ToString()%>.<%=PKColumn.Alias%>   
+				   <%   }
+				   
+				     }
+					%>select new <%=_entityName%>Result(){
+					<%
+					first=true;
+					foreach( IColumn column in Table.Columns )
+					{
+					%> <%=(first?"":",")+column.Alias %>=o.<%= column.Alias %>
+					<%	first=false;	
+					}
+					t=0;
+					foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+					{
+						if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+						continue;
+						t++;
+						string  PKTableName = Plural(ForeignKey.PrimaryTable.Alias);
+						IColumn FKColumn = ForeignKey.ForeignColumns[0];
+						IColumn PKColumn = ForeignKey.PrimaryColumns[0];
+						string strFkColumn =columnWithIdToParameter(FKColumn);
+						
+						foreach(IColumn fkColumn in ForeignKey.PrimaryTable.Columns)
+						{						   
+						   if(fkColumn.IsInPrimaryKey)continue;
+						   if(FKColumn.IsNullable)
+						   {
+						%>,<%= strFkColumn+"_"+fkColumn.Alias %>= t<%=t.ToString()%>!=null?(<%= fkColumn.LanguageType+ColumnFilterNullableSufix(fkColumn)%>)t<%=t.ToString()+"."+ fkColumn.Alias%>:null	
+						<%}
+						  else
+						  {
+						  %>,<%= strFkColumn+"_"+fkColumn.Alias %>= t<%=t.ToString()+"."+ fkColumn.Alias%>	
+						<% }
+				 		}
+					}%>}
+                    ).AsQueryable();
+        }
+		#endregion
+		#region Copy
+		public override nc.<%=_entityName%> Copy(nc.<%=_entityName%> entity)
+        {           
+            nc.<%=_entityName%> _new = new nc.<%=_entityName%>();
+<%
+		  foreach(IColumn column in Table.Columns)
+		  {
+			if(column.IsInPrimaryKey)continue;
+			if(column.IsInForeignKey)
+			{
+			  IForeignKey f = column.ForeignKeys[0];
+			  if(f.UpdateRule.ToString()!="CASCADE")
+			  {
+				  output.writeln("\t\t _new."+column.Alias+"= entity."+column.Alias+";");
+			  }
+			}
+			else
+			{
+			   output.writeln("\t\t _new."+column.Alias+"= entity."+column.Alias+";");
+			}
+		  }
+		_names.Clear();
+		foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+		{			
+			if(ForeignKey.UpdateRule.ToString()!="CASCADE")continue;
+			if(ForeignKey.ForeignTable.Alias!=Table.Alias)
+			{
+			   string _name = ForeignKey.ForeignTable.Alias;					
+			   if(_names.ContainsKey(_name))continue;			
+			   _names.Add(_name,_name);
+			   
+			   IColumn FKColumn = ForeignKey.ForeignColumns[0];
+			   IColumn PKColumn = ForeignKey.PrimaryColumns[0];
+			
+			 output.writeln("\t\tList<"+_name+"> list"+_name+" = nd."+_name+"Data.Current.GetList(new nc."+_name+"Filter() { "+FKColumn.Alias+" = entity."+pkColumn.Alias+" });\r\n"
+						   +"\t\tforeach ("+_name+" item in list"+_name+")\r\n"
+						   +"\t\t{\r\n"
+						   +"\t\t	 _new."+Plural(_name)+".Add(nd."+_name+"Data.Current.Copy(item));\r\n"
+						   +"\t\t}");
+		   }
+		}				  
+%>		return _new;			
+        }
+		public override <%=pkColumn.LanguageType%> CopyAndSave(<%=_entityName%> entity,string renameFormat)
+        {
+            <%=_entityName%>  newEntity = Copy(entity);<%
+			if(columnOrder.LanguageType.ToLower() == "string" ){%>
+            newEntity.<%=columnOrder.Alias%> = string.Format(renameFormat,newEntity.<%=columnOrder.Alias%>);<%}%>
+            Add(newEntity);
+			return GetId(newEntity);
+        }
+		#endregion
+		#region Set
+		public override void SetId(<%=_entityName%> entity, <%=pkColumn.LanguageType%> id)
+        {            
+            entity.<%=pkColumn.Alias%> = id;            
+        }
+		public override void Set(<%=_entityName%> source,<%=_entityName%> target,bool hadSetId)
+		{		   
+		<%
+		foreach( IColumn column in Table.Columns )
+		{	
+		 if(column.IsInPrimaryKey)
+		 {
+		    %>if(hadSetId)<%
+		 }		 
+		 %>target.<%= column.Alias %>= source.<%= column.Alias %> ;
+		 <%	
+		}%>		  
+		}
+		public override void Set(<%=_entityName%>Result source,<%=_entityName%> target,bool hadSetId)
+		{		   
+		<%
+		foreach( IColumn column in Table.Columns )
+		{	
+		 if(column.IsInPrimaryKey)
+		 {
+		    %>if(hadSetId)<%
+		 }		 
+		 %>target.<%= column.Alias %>= source.<%= column.Alias %> ;
+		 <%	
+		}%>
+		}
+		public override void Set(<%=_entityName%> source,<%=_entityName%>Result target,bool hadSetId)
+		{		   
+		<%
+		foreach( IColumn column in Table.Columns )
+		{	
+		 if(column.IsInPrimaryKey)
+		 {
+		    %>if(hadSetId)<%
+		 }		 
+		 %>target.<%= column.Alias %>= source.<%= column.Alias %> ;
+		 <%	
+		}%>	
+		}		
+		public override void Set(<%=_entityName%>Result source,<%=_entityName%>Result target,bool hadSetId)
+		{		   
+		<%
+		foreach( IColumn column in Table.Columns )
+		{	
+		 if(column.IsInPrimaryKey)
+		 {
+		    %>if(hadSetId)<%
+		 }		 
+		 %>target.<%= column.Alias %>= source.<%= column.Alias %> ;
+		 <%	
+		}		
+		foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+		{
+			if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+			continue;
+			t++;
+			string  PKTableName = Plural(ForeignKey.PrimaryTable.Alias);
+			IColumn FKColumn = ForeignKey.ForeignColumns[0];
+			IColumn PKColumn = ForeignKey.PrimaryColumns[0];
+			string strFkColumn =columnWithIdToParameter(FKColumn);
+			
+			foreach(IColumn fkColumn in ForeignKey.PrimaryTable.Columns)
+			{						   
+			   if(fkColumn.IsInPrimaryKey)continue;
+			   if(FKColumn.IsNullable)
+			   {
+			%>target.<%= strFkColumn+"_"+fkColumn.Alias %>= source.<%= strFkColumn+"_"+fkColumn.Alias %>;	
+			<%}
+			  else
+			  {
+			  %>target.<%= strFkColumn+"_"+fkColumn.Alias %>= source.<%= strFkColumn+"_"+fkColumn.Alias %>;	
+			<% }
+			}
+		}%>		
+		}
+		#endregion			
+		#region Equals
+		public override bool Equals(<%=_entityName%> source,<%=_entityName%> target)
+        {
+		   if(source == null && target == null)return true;
+		   if(source == null )return false;
+		   if(target == null)return false;
+        <%
+		foreach( IColumn column in Table.Columns )
+		{
+		 if(column.IsNullable && column.IsInForeignKey )
+		 {
+		     	switch(column.LanguageType.ToLower())
+				{					
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						 %> if((source.<%= column.Alias %> == null)?(target.<%= column.Alias %>.HasValue && target.<%= column.Alias %>.Value > 0):!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+						 <%
+						break;
+					case "string":
+						%> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null: !( (target.<%= column.Alias %>== String.Empty && source.<%= column.Alias %>== null) || (target.<%= column.Alias %>==null && source.<%= column.Alias %>== String.Empty )) && !source.<%= column.Alias %>.Trim().Replace ("\r","").Equals(target.<%= column.Alias %>.Trim().Replace ("\r","")))return false;
+						<%
+						break;
+					default:
+						%> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null:!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+						<%
+					break;
+				}
+		 }
+		 else if(column.IsNullable  && column.LanguageType.ToLower() != "string" )
+		 {
+			%> if((source.<%= column.Alias %> == null)?(target.<%= column.Alias %>.HasValue):!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+			<%
+		 }	
+		 else if(column.LanguageType.ToLower() == "string" )
+		 {
+			%> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null:  !( (target.<%= column.Alias %>== String.Empty && source.<%= column.Alias %>== null) || (target.<%= column.Alias %>==null && source.<%= column.Alias %>== String.Empty )) &&  !source.<%= column.Alias %>.Trim().Replace ("\r","").Equals(target.<%= column.Alias %>.Trim().Replace ("\r","")))return false;
+			<%
+		 }
+		 else
+		 {
+		 %> if(!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+		 <%
+		 }
+		 
+		}%>
+		  return true;
+        }
+		public override bool Equals(<%=_entityName%>Result source,<%=_entityName%>Result target)
+        {
+		   if(source == null && target == null)return true;
+		   if(source == null )return false;
+		   if(target == null)return false;
+        <%
+		foreach( IColumn column in Table.Columns )
+		{
+		 if(column.IsNullable && column.IsInForeignKey )
+		 {
+		     	switch(column.LanguageType.ToLower())
+				{					
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						 %> if((source.<%= column.Alias %> == null)?(target.<%= column.Alias %>.HasValue && target.<%= column.Alias %>.Value > 0):!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+						 <%
+						break;
+					case "string":
+							   %> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null: !( (target.<%= column.Alias %>== String.Empty && source.<%= column.Alias %>== null) || (target.<%= column.Alias %>==null && source.<%= column.Alias %>== String.Empty )) &&  !source.<%= column.Alias %>.Trim().Replace ("\r","").Equals(target.<%= column.Alias%>.Trim().Replace ("\r","")))return false;
+							   <%
+						break;
+					default:
+					 %> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null:!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+					 <%
+					break;
+				}
+		 }
+		 else if( column.IsNullable  && column.LanguageType.ToLower() != "string" )
+		 {			
+			%> if((source.<%= column.Alias %> == null)?(target.<%= column.Alias %>.HasValue):!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+			<%
+		 }else if( column.LanguageType.ToLower() == "string" )
+		 {		 
+			%> if((source.<%= column.Alias %> == null)?target.<%= column.Alias %>!=null: !( (target.<%= column.Alias %>== String.Empty && source.<%= column.Alias %>== null) || (target.<%= column.Alias %>==null && source.<%= column.Alias %>== String.Empty )) && !source.<%= column.Alias %>.Trim().Replace ("\r","").Equals(target.<%= column.Alias %>.Trim().Replace ("\r","")))return false;
+			<%
+		 }
+		 else
+		 {
+		 %> if(!source.<%= column.Alias %>.Equals(target.<%= column.Alias %>))return false;
+		 <%
+		 }		 
+		}
+		//variables de relaciones
+		foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+		{
+			if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+			continue;
+			t++;
+			string  PKTableName = Plural(ForeignKey.PrimaryTable.Alias);
+			IColumn FKColumn = ForeignKey.ForeignColumns[0];
+			IColumn PKColumn = ForeignKey.PrimaryColumns[0];
+			string strFkColumn =columnWithIdToParameter(FKColumn);
+			
+			foreach(IColumn fkColumn in ForeignKey.PrimaryTable.Columns)
+			{						   
+			   if(fkColumn.IsInPrimaryKey)continue;
+						
+					 string columnName = strFkColumn+"_"+fkColumn.Alias; 
+					 if(fkColumn.IsNullable && fkColumn.IsInForeignKey )
+					 {
+							switch(fkColumn.LanguageType.ToLower())
+							{					
+								case "byte":					
+								case "decimal":
+								case "double":
+								case "float":
+								case "uint":
+								case "int":
+								case "long":
+								case "bigint":	
+								case "ulong":
+								case "short":
+								case "ushort":
+									 %> if((source.<%= columnName %> == null)?(target.<%= columnName %>.HasValue && target.<%= columnName %>.Value > 0):!source.<%= columnName %>.Equals(target.<%= columnName %>))return false;
+									 <%
+									break;
+							    case "string":
+								   %> if((source.<%= columnName %> == null)?target.<%= columnName %>!=null: !( (target.<%= columnName %>== String.Empty && source.<%= columnName %>== null) || (target.<%= columnName %>==null && source.<%= columnName %>== String.Empty )) &&  !source.<%= columnName %>.Trim().Replace ("\r","").Equals(target.<%= columnName %>.Trim().Replace ("\r","")))return false;
+								   <%
+								   break;
+								default:
+								 %> if((source.<%= columnName %> == null)?target.<%= columnName %>!=null:!source.<%= columnName %>.Equals(target.<%= columnName %>))return false;
+								 <%
+								break;
+							}
+					 }
+					 else if(fkColumn.IsNullable && fkColumn.LanguageType.ToLower() != "string" )
+					 {
+						%> if((source.<%= columnName %> == null)?(target.<%= columnName %>.HasValue ):!source.<%= columnName %>.Equals(target.<%= columnName %>))return false;
+						<%						
+					 }
+					 else if(fkColumn.LanguageType.ToLower() == "string" )
+					 {
+						%> if((source.<%= columnName %> == null)?target.<%= columnName %>!=null: !( (target.<%= columnName %>== String.Empty && source.<%= columnName %>== null) || (target.<%= columnName %>==null && source.<%= columnName %>== String.Empty )) &&   !source.<%= columnName %>.Trim().Replace ("\r","").Equals(target.<%= columnName %>.Trim().Replace ("\r","")))return false;
+						<%
+					 }
+					 else
+					 {
+					 %> if(!source.<%= columnName %>.Equals(target.<%= columnName %>))return false;
+					 <%
+					 }		
+			
+			}			
+		}%>		
+		  return true;
+        }
+		#endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderDataAccessBasePath);
+}
+//////////////////////////////  CONTRACTS    /////////////////////////////////////////////////////////////////////
+//--------------------------------------------------------------------------------------
+private void GenerateDataFilter( ITable Table )
+{
+     	_className = Table.Alias.Replace( " ", "" )+"Filter";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>.Base;
+namespace <%=projectContractNamespace%>
+{
+    [Serializable, DataContract(Name = "<%= _className%>")]
+    public class <%= _className%> : _<%= _className%>
+    {	
+		
+    }
+}
+<%
+
+	SaveFile(_fileName,folderContractFilterPath,__overrideClassPersonalized);
+}
+//-------------------------------------------------------------------------------------------------------------------------------
+private void GenerateDataFilterBase( ITable Table )
+{
+		_className = "_"+Table.Alias.Replace( " ", "" )+"Filter";
+		_fileName = _className + ".cs";
+		IColumn pkColumn= PrimaryKey(Table);
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.Serialization;
+namespace <%=projectContractNamespace%>.Base
+{
+	[Serializable, DataContract]
+    public abstract class <%= _className%> : Filter
+    {   
+		#region Private
+		<%
+		foreach( IColumn column in Table.Columns )
+		{		    
+			if(column.LanguageType!="string")continue;
+		%>private <%=column.LanguageType+ColumnFilterNullableSufix(column)%> _<%=column.Alias%>;
+		 <%	
+		}%>
+		#endregion
+		#region Properties
+		<%
+		foreach( IColumn column in Table.Columns )
+		{
+		 if(column.LanguageType=="string")
+		 {
+		  %>
+		  [DataMember(Name = "<%=column.Alias%>", IsRequired = false)]
+		  public <%=column.LanguageType+ColumnFilterNullableSufix(column)%> <%=column.Alias%>
+		  {
+		   get{ if(_<%=column.Alias%>==null)_<%=column.Alias%>= string.Empty;
+				return _<%=column.Alias%>; 
+				}
+		   set{ _<%=column.Alias%>=value;}
+		  }
+		 <%
+		 }else
+		 {
+		   if(column.IsNullable)
+		   {
+			  %>[DataMember(Name = "<%=column.Alias%>IsNull", IsRequired = false)]
+			  public bool? <%=column.Alias%>IsNull{get;set;}<%
+		   }
+			output.write(GetDeclarateFiledByFilter(column));		 
+		 }
+		 
+		}%>
+		#endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderContractFilterBasePath);
+}	
+//--------------------------------------------------------------------------------------
+private void GenerateDataResult( ITable Table )
+{
+     	_entityName = _className = Table.Alias;
+		_className = Table.Alias.Replace( " ", "" )+"Result";
+		_fileName = _className + ".cs";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>.Base;
+namespace <%=projectContractNamespace%>
+{
+	[Serializable]
+    public class <%= _className%> : _<%= _className%>
+    { 	
+    }
+}
+<%
+	SaveFile(_fileName,folderContractResultPath,__overrideClassPersonalized);
+}
+//-------------------------------------------------------------------------------------
+private void GenerateDataResultBase( ITable Table )
+{
+		_entityName =  Table.Alias;
+		_className = "_"+Table.Alias.Replace( " ", "" )+"Result";
+		_fileName = _className + ".cs";
+		IColumn pkColumn= PrimaryKey(Table);
+		bool first = false;
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace <%=projectContractNamespace%>.Base
+{
+	[Serializable]
+    public abstract class <%= _className%> : IResult<<%=pkColumn.LanguageType%>>
+    {        
+		<%
+		foreach( IColumn column in Table.Columns )
+		{	
+		if(column.IsInPrimaryKey)
+		{%>public virtual <%=pkColumn.LanguageType%> ID{get{return <%= column.Alias %>;}}
+		 <%	
+		}%>public <%= column.LanguageType+ColumnNullableSufix(column) %> <%= column.Alias %>{get;set;}
+		 <%		
+		}%>
+		 <%
+		foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+		{
+			if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+			continue;
+			ITable  PKTable =  ForeignKey.PrimaryTable;
+			IColumn FKColumn = ForeignKey.ForeignColumns[0];
+			//esto esta personalizado para Ingematica Comex (Hya que ver como hacerlo bien)
+			string strFkColumn =columnWithIdToParameter(FKColumn);
+			
+			foreach(IColumn fkColumn in ForeignKey.PrimaryTable.Columns)
+			{
+			//if(fkColumn.CharacterOctetLength > 8000)continue;
+			if(fkColumn.IsInPrimaryKey)continue;
+			if(FKColumn.IsNullable)
+			{
+			%>public <%= fkColumn.LanguageType+ColumnFilterNullableSufix(fkColumn)  %> <%= strFkColumn+"_"+fkColumn.Alias %>{get;set;}	
+	<%		}
+			else
+			{
+			%>public <%= fkColumn.LanguageType+ColumnNullableSufix(fkColumn)  %> <%= strFkColumn+"_"+fkColumn.Alias %>{get;set;}	
+	<%		}
+	}
+		}%>				
+		public virtual <%=_entityName%> ToEntity()
+		{
+		   <%=_entityName%> _<%=_entityName%> = new <%=_entityName%>();
+		<%
+		foreach( IColumn column in Table.Columns )
+		{		 
+		 %>_<%=_entityName%>.<%= column.Alias %> = this.<%= column.Alias %>;
+		 <%	
+		}%>
+		  return _<%=_entityName%>;
+		}		
+		public virtual void Set(<%=_entityName%> entity)
+		{		   
+		<%
+		foreach( IColumn column in Table.Columns )
+		{%> this.<%= column.Alias %>= entity.<%= column.Alias %> ;
+		 <%	
+		}%>		  
+		}		
+		public virtual bool Equals(<%=_entityName%> entity)
+        {
+		   if(entity == null)return false;
+        <%
+		foreach( IColumn column in Table.Columns )
+		{
+		 if(column.IsNullable && column.IsInForeignKey )
+		 {
+		     	switch(column.LanguageType.ToLower())
+				{					
+					case "byte":					
+					case "decimal":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						 %> if((entity.<%= column.Alias %> == null)?(this.<%= column.Alias %>.HasValue && this.<%= column.Alias %>.Value > 0):!entity.<%= column.Alias %>.Equals(this.<%= column.Alias %>))return false;
+						 <%
+						break;
+					case "string":
+						%> if((entity.<%= column.Alias %> == null)?this.<%= column.Alias %>!=null: !( (this.<%= column.Alias %>== String.Empty && entity.<%= column.Alias %>== null) || (this.<%= column.Alias %>==null && entity.<%= column.Alias %>== String.Empty )) && !entity.<%= column.Alias %>.Trim().Replace ("\r","").Equals(this.<%= column.Alias %>.Trim().Replace ("\r","")))return false;
+						<%
+						break;
+					default:
+						%> if((entity.<%= column.Alias %> == null)?this.<%= column.Alias %>!=null:!entity.<%= column.Alias %>.Equals(this.<%= column.Alias %>))return false;
+						<%
+					break;
+				}
+		 }
+		 else if(column.IsNullable  && column.LanguageType.ToLower() != "string" )
+		 {
+			%> if((entity.<%= column.Alias %> == null)?(this.<%= column.Alias %>.HasValue):!entity.<%= column.Alias %>.Equals(this.<%= column.Alias %>))return false;
+			<%
+		 }	
+		 else if(column.LanguageType.ToLower() == "string" )
+		 {
+			%> if((entity.<%= column.Alias %> == null)?this.<%= column.Alias %>!=null:  !( (this.<%= column.Alias %>== String.Empty && entity.<%= column.Alias %>== null) || (this.<%= column.Alias %>==null && entity.<%= column.Alias %>== String.Empty )) &&  !entity.<%= column.Alias %>.Trim().Replace ("\r","").Equals(this.<%= column.Alias %>.Trim().Replace ("\r","")))return false;
+			<%
+		 }
+		 else
+		 {
+		 %> if(!entity.<%= column.Alias %>.Equals(this.<%= column.Alias %>))return false;
+		 <%
+		 }
+		 
+		}%>
+		  return true;
+        }
+		
+		public virtual DataTableMapping ToMapping()
+		{
+		    return new DataTableMapping("<%=_entityName%>", new List<DataColumnMapping>( new DataColumnMapping[]{
+		<%
+			first=true;
+			foreach(IColumn column in Table.Columns)
+			{
+			  if(column.IsInPrimaryKey && column.IsAutoKey)
+			  continue;
+				
+			  string propertyName=ColumnToPropertyName(column);
+			  string columnName = columnWithIdToParameter(column);			
+			
+			 if( column.IsInForeignKey && !column.IsInPrimaryKey)
+			 {
+			   string relationObjectName = columnWithIdToParameter(column);
+			   ITable relationObject = column.ForeignKeys[0].PrimaryTable; 
+			   IColumn viewColumn = ColumnDefaultView(column.ForeignKeys[0].PrimaryTable);			   
+			
+			%><%=first?"":","%>new DataColumnMapping("<%=relationObjectName%>","<%=relationObject.Alias+"_"+viewColumn.Alias%>")
+			<%
+			}
+			else
+			{	
+			switch( column.LanguageType.ToLower())
+					{
+						case "bool":									
+						case "decimal":
+						case "byte":
+						case "sbyte":
+						case "numeric":
+						case "double":
+						case "float":
+						case "uint":
+						case "int":
+						case "long":
+						case "bigint":	
+						case "ulong":
+						case "short":
+						case "ushort":
+						case "char":
+						case "varchar":
+						case "string":
+						case "text":
+			%><%=first?"":","%>new DataColumnMapping("<%=columnName%>","<%=propertyName%>")
+			<%						
+							break;
+						case "smalldatetime":	
+						case "datetime":
+			%><%=first?"":","%>new DataColumnMapping("<%=columnName%>","<%=propertyName%>","{0:dd/MM/yyyy}")
+			<%			
+							break;
+				}				
+			}//else
+			first = false;
+		}
+		%>}));
+		}
+	}
+}
+		<%
+				
+	SaveFile(_fileName,folderContractResultBasePath);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//VIEWS
+//-----------------------------------------------------------------------------------------------------------------
+// Page ViewList ascx.cs
+	private void GenerateWebPageViewAspxCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"PageList.aspx.cs";
+		string classProperty = _className;
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Service;
+using nc=Contract;
+using Contract;
+using AjaxControlToolkit;
+using Application.Controls;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>PageList : PageList<nc.<%=_className%> ,nc.<%=_className%>Filter,<%=_entityName%>Result, nc.<%=_className%>Id>
+    {
+		protected override void _Initialize()
+        {
+			base._Initialize();            
+        }	
+		protected override void _Load()
+        {
+            webControlList = this.lst<%=_className%>;
+            webControlFilter = this.ft<%=_className%>;			
+			webControlPaggingButtons = this.pgButtons;                      
+            base._Load();
+        }
+		protected <%=_className%>Service Service
+		{
+			get { return <%=_className%>Service.Current; }
+		}
+		protected override IViewService<nc.<%=_className%> ,nc.<%=_className%>Filter,<%=_entityName%>Result, nc.<%=_className%>Id> ViewService
+        {
+            get { return Service; }
+        }
+		public override IUserInterfaceMessage MessageDisplay
+		{
+			get { return Master.FindControl("MessageBarForm") as IUserInterfaceMessage; }
+		}
+		protected override nc.<%=_className%>Id ConvertId(object value)
+		{
+			throw new NotImplementedException();
+		}		
+	}
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control List aspx
+	private void GenerateWebPageViewAspx(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_CreatingXML =false;
+		_fileName =  _className+"PageList.aspx";
+		string classProperty = _className;
+
+output.writeln(@"<"+"%@ Page Title=\"\" Language=\"C#\" MasterPageFile=\"~/App_Shared/General.Master\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"PageList.aspx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"PageList\" %"+">");
+output.writeln(@"<"+"%@ Register Assembly=\"System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" Namespace=\"System.Web.UI.WebControls\" TagPrefix=\"asp\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"Filter"+_className+"\" Src=\""+_className+"Filter.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"List"+_className+"\" Src=\""+_className+"List.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"ListButtons\" Src=\"~/Controls/WebControlListButtons.ascx\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\"  TagName=\"PaggingButtons\" Src=\"~/Controls/WebControlPaggingButtons.ascx\" %"+">");
+
+%>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoPrincipal" runat="server">
+    <table width="100%"  >
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="upSearch" runat="server">
+                    <ContentTemplate>
+					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlFilter" >
+                            <div style="padding:15px" >
+                               <uc:Filter<%=_className%> runat="server" ID="ft<%=_className%>" ></uc:Filter<%=_className%>>
+						    </div>
+                        </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upListButtons" runat="server">
+                    <ContentTemplate>
+                      <table width="100%">
+                        <tr>                            
+                            <td align="right" ><uc:PaggingButtons runat="server" ID="pgButtons"  SearchVisible="true" ValidationGroup="Filter<%=_className%>" ></uc:PaggingButtons ></td>
+                        </tr>
+                      </table>                       
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>		
+		<tr>
+            <td>
+                <asp:UpdatePanel ID="upGrilla" runat="server">
+                    <ContentTemplate>
+                       <uc:List<%=_className%> runat="server" ID="lst<%=_className%>" ></uc:List<%=_className%> >
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebPageViewAspxDesignerCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"PageList.aspx.designer.cs";
+		string classProperty = _className;
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>PageList
+    {        
+		protected global::System.Web.UI.UpdatePanel upSearch;
+		protected global::System.Web.UI.UpdatePanel upListButtons;
+		protected global::System.Web.UI.UpdatePanel upGrilla;
+		protected global::UI.Web.<%=_className%>List lst<%=_className%>;
+		protected global::UI.Web.<%=_className%>Filter ft<%=_className%>;		
+		protected global::System.Web.UI.WebControls.LinkButton btNew;
+		protected global::UI.Web.WebControlPaggingButtons pgButtons;
+		protected global::System.Web.UI.HtmlControls.HtmlImage idImgCreate;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+///--------------------------------------------------------------------------------------------------------------
+///-------------------------------------------------------- WEB CONTROLS ----------------------------------------
+// control List ascx.cs
+	private void GenerateWebUserControlViewListAscxCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"List.ascx.cs";				
+		string classProperty = _className;		
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace <%=projectUIAspNetNamespace%>
+{    
+	public partial class <%=_className%>List : WebControlList<nc.<%=_className%>,nc.<%=_className%>Id>    
+    { 
+		public override object DataSource
+        {
+            get{return this.Grid.DataSource;}
+            set{this.Grid.DataSource = value;}
+        }
+        public override void DataBind()
+        {
+            this.Grid.DataBind();
+        }
+		#region Events
+        protected void Grid_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            RaiseControlCommand(e.CommandName, e.CommandArgument);
+        }
+        protected virtual void Grid_Sorting(object sender, GridViewSortEventArgs e)
+        {   
+            try
+            {                
+                Grid.PageIndex = 0;
+                RaiseControlCommand(Command.SORT, e);                
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+        }
+        protected virtual void Grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                Grid.PageIndex = e.NewPageIndex;
+                base.RaiseControlCommand(Command.REFRESH);
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+        }
+		#endregion	
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//------------------------------------------------------------------------------
+// control List ascx
+	private void GenerateWebUserControlViewListAscx(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_CreatingXML =false;
+		_fileName =  _className+"List.ascx";
+		string classProperty = _className;
+
+output.writeln(@"<"+"%@ Control Language=\"C#\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"List.ascx.cs\" Inherits=\" "+projectUIAspNetNamespace+"."+_className+"List\" %"+">");
+%>
+<asp:GridView ID="Grid" runat="server"  Width="100%"
+    AutoGenerateColumns="False"  
+    OnRowCommand="Grid_RowCommand"    
+    AllowSorting="True"
+    OnSorting="Grid_Sorting"    
+    EmptyDataText="No se encontraron registros..."        
+    >
+    <Columns> 
+<%
+foreach(IColumn field in Columns)
+{		
+	string propertyName=ColumnToPropertyName(field);
+	string columnName = columnWithIdToParameter(field);
+	
+		
+	switch( field.LanguageType.ToLower())
+			{
+				case "bool":
+	%><asp:CheckBoxField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					break;				
+				case "decimal":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" DataFormatString="{0:F2}"  />
+	<%
+					break;
+				case "byte":
+				case "sbyte":
+				case "numeric":
+				case "double":
+				case "float":
+				case "uint":
+				case "int":
+				case "long":
+				case "bigint":	
+				case "ulong":
+				case "short":
+				case "ushort":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					break;
+				case "char":
+				case "varchar":
+				case "string":
+				case "text":
+				
+				if(field.CharacterMaxLength > 25 )
+				{
+	%><asp:TemplateField   HeaderText="<%=columnName%>"  SortExpression="<%=propertyName%>"  >            
+            <ItemTemplate>
+                <asp:Label ID="lbl<%=propertyName%>" runat="server" Text='<%= "<"+"%# Contract.DataHelper.CutString((string)Eval(\""+propertyName+"\"),25) %"+">" %>' ToolTip='<%= "<"+"%# Eval(\""+propertyName+"\") %"+">" %>'  ></asp:Label>
+            </ItemTemplate>
+    </asp:TemplateField>
+	<%
+					}
+					else
+					{
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" />
+	<%
+					}
+					break;
+				case "smalldatetime":	
+				case "datetime":
+	%><asp:BoundField DataField="<%=propertyName%>" HeaderText="<%=columnName%>" SortExpression="<%=propertyName%>" DataFormatString="{0:dd/MM/yyyy}"  />
+	<%				
+					break;
+		}
+	
+					
+}
+%>		
+    </Columns>
+</asp:GridView>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebUserControlViewListAscxDesignerCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"List.ascx.designer.cs";
+		string classProperty = _className;		
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>List
+    {        
+		protected global::System.Web.UI.WebControls.GridView Grid;
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+///---------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//Web Filter ascx.cs
+	private void GenerateWebUserControlViewFilterAscxCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"Filter.ascx.cs";
+		string classProperty = _className;		
+		int fieldNumber=0;
+		string controlName="";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Filter : WebControlFilter<nc.<%=_className%>Filter>
+    {
+		protected override void _Initialize()
+        {
+            base._Initialize();
+			<%foreach(IColumn field in Columns)
+			{			
+			  
+			    string propertyName= field.Alias;// ColumnToPropertyName(field);
+			    string columnName = columnWithIdToParameter(field);							
+			  
+			   switch(field.LanguageType.ToLower())
+			   {					
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegNumberNullable();
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>rev<%=propertyName%>.ValidationExpression=Contract.DataHelper.GetExpRegStringNullable(<%= field.CharacterMaxLength.ToString() %>);
+			<%
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						break;
+					case "datetime":
+						controlName="rd"+propertyName;
+						break;
+				}			  
+			}			
+			%>
+		}
+		protected override void Clear()
+        {			
+			<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+							
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+			
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						break;
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						break;
+					case "datetime":
+						controlName="rd"+propertyName;
+						break;
+				}		
+			%>UIHelper.Clear(<%=controlName%>);
+			<% if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }		
+		protected override void SetValue()
+        {<%
+		fieldNumber=0;
+		controlName="";
+		foreach(IColumn field in Columns){
+							
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);	
+			
+			fieldNumber++;
+			
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+						controlName="chk"+propertyName;
+						%>UIHelper.SetValue(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;
+					case "byte":
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+						controlName="txt"+propertyName;
+						%>UIHelper.SetValue(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;
+					case "decimal":
+						controlName="rn"+propertyName;
+						%>UIHelper.SetValue<decimal?>(<%=controlName%>, Filter.<%=propertyName%>, Filter.<%=propertyName%>_To);
+						<%
+						break;
+					case "char":					
+					case "string":					
+						controlName="txt"+propertyName;
+						%>UIHelper.SetValueFilter(<%=controlName%>, Filter.<%=propertyName%>);
+						<%
+						break;	
+					case "datetime":
+						controlName="rd"+propertyName;
+						%>UIHelper.SetValue<DateTime?>(<%=controlName%>, Filter.<%=propertyName%>, Filter.<%=propertyName%>_To);
+						<%
+						break;
+				}		
+			
+			   if(fieldNumber==1)
+			   {
+				%><%=controlName%>.Focus();
+				<%
+			   }
+		}%>	
+        }	
+        protected override void GetValue()
+        {
+			<%
+		foreach(IColumn field in Columns){
+							
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = columnWithIdToParameter(field);			
+								
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>Filter.<%=propertyName%>=UIHelper.GetBooleanNullable(chk<%=propertyName%>);			  
+			<%
+						break;
+					case "double":
+					case "float":
+			%>Filter.<%=propertyName%>=UIHelper.GetDecimalNullable(txt<%= propertyName%>);
+			<%
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>Filter.<%=propertyName%>=UIHelper.GetIntNullable(txt<%= propertyName%>);
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>Filter.<%=propertyName%> =UIHelper.GetStringFilter(txt<%= propertyName%>);
+			<%
+						break;
+					case "decimal":
+			%>Filter.<%=propertyName%> =UIHelper.GetValueFrom<decimal?>(rn<%= propertyName%>);
+            Filter.<%=propertyName%>_To = UIHelper.GetValueTo<decimal?>(rn<%= propertyName%>);
+			<%				
+						break;
+					case "datetime":
+			%>Filter.<%=propertyName%> =UIHelper.GetValueFrom<DateTime?>(rd<%= propertyName%>);
+            Filter.<%=propertyName%>_To = UIHelper.GetValueTo<DateTime?>(rd<%= propertyName%>);
+			<%				
+						break;
+			}
+		}%>	
+        }
+		//protected void btSearch_Click(object sender, EventArgs e)
+        //{
+        //    RaiseControlCommand(Command.SEARCH);
+        //}
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------------------------
+// control Filter ascx
+	private void GenerateWebUserControlViewFilterAscx(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName = View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_CreatingXML =false;
+		_fileName =  _className+"Filter.ascx";
+		string classProperty = _className;		
+		int colNumber=0;
+		int colCount = 4;
+		bool NewRow=false;
+		
+
+output.writeln(@"<"+"%@ Control Language=\"C#\" AutoEventWireup=\"true\" CodeBehind=\""+_className+"Filter.ascx.cs\" Inherits=\""+projectUIAspNetNamespace+"."+_className+"Filter\" %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"DateInput\" Src=\"~/Controls/WebControl_DateInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"DateRangeInput\" Src=\"~/Controls/WebControl_DateRangeInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"NumberRangeInput\" Src=\"~/Controls/WebControl_NumericRangeInput.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"Autocomplete\" Src=\"~/Controls/WebControl_Autocomplete.ascx\"   %"+">");
+output.writeln(@"<"+"%@ Register Tagprefix=\"uc\" TagName=\"ThreeState\" Src=\"~/Controls/WebControl_ThreeStatesCheckbox.ascx\"   %"+">");
+%>
+<table width="100%"  cellpadding="0" cellspacing="0" border="0">	   
+<%
+		foreach(IColumn field in Columns)
+		{			
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = field.Alias;	
+			if(colNumber >= colCount )
+			{ 
+			 colNumber= 1;				  
+			}
+			else
+			{
+			   colNumber++;
+			}			
+			if(colNumber==1)
+	{%><tr>
+	    <%}%><td class="tdFilter" ><%
+								
+				switch(field.LanguageType.ToLower())
+				{
+					case "bool":
+		%><div ><%=propertyName%></div>
+		<div><uc:ThreeState ID="chk<%=propertyName%>" runat="server" CssClass="field_input" ></uc:ThreeState></div>        
+		<%
+						break;
+					case "byte":
+					case "sbyte":
+					case "numeric":					
+					case "double":
+					case "float":
+					case "uint":
+					case "int":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+		%><div ><%=propertyName%>&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server"  ControlToValidate="txt<%=propertyName%>" ValidationGroup="Filter<%=_className%>" Text="*" Width="1px" Height="1px"  ErrorMessage="El <%=propertyName%> no es valido"></asp:RegularExpressionValidator></div>
+		<div><asp:TextBox ID="txt<%=propertyName%>" runat="server" CssClass="field_input"  ></asp:TextBox></div>
+        <%
+						break;
+					case "decimal":
+		%><div ><%=propertyName%></div>
+		 <div><uc:NumberRangeInput runat="server" ID="rn<%=propertyName%>"  /> </div>         
+		<%	
+						break;
+					case "char":
+					case "varchar":
+					case "string":
+					case "text":
+		%><div ><%=propertyName%>&nbsp;<asp:RegularExpressionValidator ID="rev<%=propertyName%>" runat="server"  ControlToValidate="txt<%=propertyName%>" ValidationGroup="Filter<%=_className%>" Text="*" Width="1px" Height="1px"  ErrorMessage="El <%=propertyName%> no es valido"></asp:RegularExpressionValidator></div>
+		<div><asp:TextBox ID="txt<%=propertyName%>" runat="server" CssClass="field_input"  ></asp:TextBox></div>
+        <%
+						break;
+					case "smalldatetime":	
+					case "datetime":
+		%><div ><%=propertyName%></div>
+		 <uc:DateRangeInput runat="server" ID="rd<%=propertyName%>"  />         
+		<%				
+						break;
+			}		
+		
+		%></td><% if(colNumber==colCount)
+		{%>
+	</tr><%}
+	}		
+	if(colNumber<colCount)
+	{	for(;colNumber<colCount;colNumber++)
+		{%><td class="tdFilter" >&nbsp;</td>
+		<%}		
+	}
+%></tr>
+</table>
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+//-----------------------------------------------------------------------------
+	private void GenerateWebUserControlViewFilterAscxDesignerCs(IView View)
+	{
+		IColumns Columns = View.Columns;
+		_tableName =View.Alias.Replace( " ", "" );		
+		_className = EntityName(View);
+		_fileName =  _className+"Filter.ascx.designer.cs";
+		string classProperty = _className;		
+		int fieldNumber=0;
+		string controlName="";
+		
+%>
+namespace <%=projectUIAspNetNamespace%>
+{
+    public partial class <%=_className%>Filter
+    {        
+			<%
+		foreach(IColumn field in Columns){
+							
+			string propertyName= field.Alias;// ColumnToPropertyName(field);
+			string columnName = field.Alias;		
+								
+				switch( field.LanguageType.ToLower())
+				{
+					case "bool":
+			%>protected global::UI.Web.WebControl_ThreeStatesCheckbox chk<%=propertyName%>;
+			<%
+						break;
+					case "double":
+					case "float":				
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;
+					case "decimal":
+			%>protected global::UI.Web.WebControl_NumericRangeInput rn<%= propertyName%>;
+			<%				
+						break;
+					case "byte":					
+					case "int":
+					case "uint":
+					case "long":
+					case "bigint":	
+					case "ulong":
+					case "short":
+					case "ushort":
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;
+					case "char":					
+					case "string":					
+			%>protected global::System.Web.UI.WebControls.TextBox txt<%= propertyName%>;
+			protected global::System.Web.UI.WebControls.RegularExpressionValidator rev<%=propertyName%>;
+			<%
+						break;					
+					case "datetime":
+			%>protected global::UI.Web.WebControl_DateRangeInput rd<%= propertyName%>;
+			<%				
+						break;
+			}		  
+		}%>	
+    }
+}
+<%
+	SaveFile(_fileName,folderUIAspNetAccessPath,true);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------------------------------------------
+//View Service
+private void GenerateViewServiceAccess( IView View )
+{
+		_entityName = _className = View.Alias;
+		_className = View.Alias.Replace( " ", "" )+"Service";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectBusinessNamespace%>;
+using <%=projectServiceNamespace%>.Base;
+
+namespace <%=projectServiceNamespace%>
+{
+    public class <%= _className%> : ViewService<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=_entityName%>Id>
+    {	  
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+	   
+	   protected readonly <%=_entityName%>Business Business = new <%=_entityName%>Business();
+       protected override IViewBusiness<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=_entityName%>Id> ViewBusiness
+       {
+            get { return this.Business;}
+       }
+    }
+}
+<%
+	SaveFile(_fileName,folderServiceAccessPath,__overrideClassPersonalized);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//View Business
+private void GenerateViewBusinessAccess( IView View  )
+{
+		_entityName = _className = View.Alias;
+		_className = View.Alias.Replace( " ", "" )+"Business";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>;
+using <%=projectBusinessNamespace%>.Base;
+
+namespace <%=projectBusinessNamespace%>
+{
+    public class <%= _className%> : ViewBusiness<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=_entityName%>Id>
+    {   
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+	   
+	   protected readonly <%=_entityName%>Data Data = new <%=_entityName%>Data();
+       protected override IViewData<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=_entityName%>Id> ViewData
+       {
+            get { return this.Data;}
+       }
+    }
+}
+<%
+	SaveFile(_fileName,folderBusinessAccessPath,__overrideClassPersonalized);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//View Data 
+private void GenerateViewDataAccess( IView View  )
+{
+		_entityName = _className = View.Alias;
+		_className = View.Alias.Replace( " ", "" )+"Data";
+		_fileName = _className + ".cs";
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>.Base;
+
+namespace <%=projectDataNamespace%>
+{
+    public class <%= _className%> : _<%= _className%>  
+    { 
+	   #region Singleton
+	   private static volatile <%= _className%> current;
+	   private static object syncRoot = new Object();
+
+	   //private <%= _className%>() {}
+	   public static <%= _className%> Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new <%= _className%>();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderDataAccessPath,__overrideClassPersonalized);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//View Data Base
+private void GenerateViewDataAccessBase( IView View )
+{
+		_entityName = _className = View.Alias;
+		_className = "_"+View.Alias.Replace( " ", "" )+"Data";
+		_fileName = _className + ".cs";
+		bool first=true;
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.Linq;
+using System.Text;
+using <%=projectContractNamespace%>;
+using <%=projectDataNamespace%>;
+using nc=<%=projectContractNamespace%>;
+using nd=<%=projectDataNamespace%>;
+
+namespace <%=projectDataNamespace%>.Base
+{
+    public abstract class <%= _className%> : ViewData<<%=_entityName%>,<%=_entityName%>Filter,<%=_entityName%>Result,<%=_entityName%>Id>
+    { 		
+		#region Context        
+        public  <%=_DbContext%> Context
+        {
+            get { return LinqUtility.Context;}
+        }
+        #endregion		
+		
+		protected override IQueryable<<%=_entityName%>> Query(<%=_entityName%>Filter filter)
+        {
+			return (from o in this.Table
+                     <%
+					first=true;
+					for(int i =0,count = View.Columns.Count;i<count;i++)
+					{
+					  IColumn column= View.Columns[i];					  
+					 %><%=(first?" where ":" && ")+GetWhereFiledFilter(column)%>
+					 <%if(column.IsNullable && column.LanguageType!="string")
+					    {
+					 %><%=" && "+GetWhereIsNullableFilter(column)%>
+					 <%
+						}
+					 first=false;
+					}%> select o
+                    ).AsQueryable();
+        }
+		protected override IQueryable<<%=_entityName%>Result> QueryResult(<%=_entityName%>Filter filter)
+        {
+		  return (from o in Query(filter)					
+					<%
+					int t=0;					
+					%>select new <%=_entityName%>Result(){
+					<%
+					first=true;
+					foreach( IColumn column in View.Columns )
+					{
+					%> <%=(first?"":",")+column.Alias %>=o.<%= column.Alias %>
+					<%	first=false;	
+					}					
+					%>}
+                    ).AsQueryable();
+        }
+    }
+}
+<%
+	SaveFile(_fileName,folderDataAccessBasePath);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//VIEW FILTER
+private void GenerateViewDataFilter( IView View )
+{
+		_entityName = _className = View.Alias;
+     	_className = View.Alias.Replace( " ", "" )+"Filter";
+		_fileName = _className + ".cs";		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>.Base;
+namespace <%=projectContractNamespace%>
+{
+	public struct <%=_entityName%>Id
+    {
+      //definir aqui el Id correspondiente
+	  //public int Id;      
+    }	
+    [Serializable]
+    public class <%= _className%> : _<%= _className%>
+    {		
+    }
+}
+<%
+	SaveFile(_fileName,folderContractFilterPath,__overrideClassPersonalized);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+private void GenerateViewDataFilterBase( IView View)
+{
+		_className = "_"+ View.Alias.Replace( " ", "" )+"Filter";
+		_fileName = _className + ".cs";		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace <%=projectContractNamespace%>.Base
+{
+	[Serializable]
+    public abstract class <%= _className%> : Filter
+    {   
+		#region Private
+		<%
+		foreach( IColumn column in View.Columns )
+		{
+			if(column.LanguageType!="string")
+				continue;
+		%>private <%=column.LanguageType+ColumnFilterNullableSufix(column)%> _<%=column.Alias%>;
+		 <%	
+		}%>
+		#endregion
+		#region Properties
+		<%
+		foreach( IColumn column in View.Columns )
+		{				
+		 if(column.LanguageType=="string")
+		 {
+		  %>public <%=column.LanguageType+ColumnFilterNullableSufix(column)%> <%=column.Alias%>
+		  {
+		   get{ if(_<%=column.Alias%>==null)_<%=column.Alias%>= string.Empty;
+				return _<%=column.Alias%>; 
+				}
+		   set{ _<%=column.Alias%>=value;}
+		  }
+		 <%
+		 }else
+		 {
+		   if(column.IsNullable)
+		   {
+			  %>public bool? <%=column.Alias%>IsNull{get;set;}<%
+		   }
+			output.write(GetDeclarateFiledByFilter(column));		 
+		 }
+		 
+		}%>
+		#endregion
+    }
+}
+<%
+	SaveFile(_fileName,folderContractFilterBasePath);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//--------------------------------------------------------------------------------------
+private void GenerateViewDataResult(IView View )
+{
+     	_entityName = _className = View.Alias;
+		_className = View.Alias.Replace( " ", "" )+"Result";
+		_fileName = _className + ".cs";
+		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%=projectContractNamespace%>.Base;
+namespace <%=projectContractNamespace%>
+{
+	[Serializable]
+    public class <%= _className%> : _<%= _className%>
+    { 	
+    }
+}
+<%
+	SaveFile(_fileName,folderContractResultPath,__overrideClassPersonalized);
+}
+//-------------------------------------------------------------------------------------
+private void GenerateViewDataResultBase( IView View )
+{
+		_entityName =  View.Alias;
+		_className = "_"+View.Alias.Replace( " ", "" )+"Result";
+		_fileName = _className + ".cs";		
+%>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace <%=projectContractNamespace%>.Base
+{
+	[Serializable]
+    public abstract class <%= _className%> : IResult<<%=_entityName%>Id>
+    {        
+		public virtual <%=_entityName%>Id ID{get{return default(<%=_entityName%>Id);}}
+		<%
+		foreach( IColumn column in View.Columns )
+		{		
+		%>public <%= column.LanguageType+ColumnNullableSufix(column) %> <%= column.Alias %>{get;set;}
+		 <%		
+		}%>
+	}
+}
+		<%
+				
+	SaveFile(_fileName,folderContractResultBasePath);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FUNCIONES
+private string columnWithIdToParameter(IColumn column)
+{
+	if(column.Alias.ToLower().StartsWith("id"))return column.Alias.Substring(2,column.Alias.Length-2);
+	if(column.Alias.ToLower().EndsWith("id"))return column.Alias.Substring(0,column.Alias.Length-2);
+	return column.Alias;
+}
+private string GetWhereIsNullableFilter(IColumn column)
+{
+    string name= column.Alias;
+	return "(filter."+name+"IsNull == null || filter."+name+"IsNull == true || o."+name+" != null )"
+	  +" && (filter."+name+"IsNull == null || filter."+name+"IsNull == false || o."+name+" == null)";
+}
+private string GetWhereFiledFilter(IColumn column)
+{	
+	string name= column.Alias;
+	switch(column.LanguageType)
+	{
+		case "DateTime":
+		    return "(filter."+name+" == null || filter."+name+" == DateTime.MinValue || o."+name+" >=  filter."+name+")"
+			  +" && (filter."+name+"_To == null || filter."+name+"_To == DateTime.MinValue || o."+name+" <= filter."+name+"_To)";
+		case "string":
+		    //return "(filter."+name+" == null || filter."+name+".Trim() == string.Empty || o."+name+".StartsWith(filter."+name+"))";
+			
+			return "(filter."+name+" == null || filter."+name+".Trim() == string.Empty || filter."+name+".Trim() == \"%\" " 
+			      +" || (filter."+name+".EndsWith(\"%\") && filter."+name+".StartsWith(\"%\") && (o."+name+".Contains(filter."+name+".Replace(\"%\", \"\"))))" 
+				  +" || (filter."+name+".EndsWith(\"%\") && o."+name+".StartsWith(filter."+name+".Replace(\"%\",\"\")))"
+			      +" || (filter."+name+".StartsWith(\"%\") && o."+name+".EndsWith(filter."+name+".Replace(\"%\",\"\"))) || o."+name+" == filter."+name+" )";
+			
+			//filter.Nombre == null ||  filter.Nombre.Trim() == string.Empty 
+            //          || ( filter.Nombre.EndsWith("%") && o.Nombre.StartsWith(filter.Nombre.Replace("%","")))
+			//	      || ( filter.Nombre.StartsWith("%") && o.Nombre.EndsWith(filter.Nombre.Replace("%","")))
+            //          ||  o.Nombre == filter.Nombre)			
+			//return "(filter."+name+".Trim() == string.Empty || (filter."+name+".EndsWith(\"%\") && o."+name+".StartsWith(filter."+name+".TrimStart('%')))"
+			//      +"|| (filter."+name+".StartsWith(\"%\") && o."+name+".EndsWith(filter."+name+".TrimEnd('%'))) || ( o."+name+".Equals(filter."+name+")))";		
+		case "byte":
+		case "char":
+		case "decimal":
+		case "float":		
+		case "short":
+		case "int":
+		case "long":
+		    if(column.IsInForeignKey)
+			   return "(filter."+name+" == null || filter."+name+" == 0 || o."+name+"==filter."+name+")";
+			else
+			    return "(filter."+name+" == null || o."+name+" >=  filter."+name+")"
+			         +" && (filter."+name+"_To == null || o."+name+" <= filter."+name+"_To)";			  
+			   //return "(filter."+name+" == null || o."+name+"==filter."+name+")";
+		case "bool":
+		default :
+			return "(filter."+name+" == null || o."+name+"==filter."+name+")";
+	}
+}
+private string GetDeclarateFiledByFilter(IColumn column)
+{		
+	switch(column.LanguageType)
+	{
+		case "DateTime":				
+			return 
+			       "[DataMember(Name = \""+column.Alias+"\", IsRequired = false)]"
+			      +"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"{get;set;}\t\t\r\n"
+				  +"[DataMember(Name = \""+column.Alias+"_To\", IsRequired = false)]\t\t\r\n"
+			      +"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"_To{get;set;}\t\t\r\n";		
+		case "decimal":
+		case "float":		
+		case "short":
+		case "int":
+		case "long":
+		    if(column.IsInForeignKey)
+			  return   "[DataMember(Name = \""+column.Alias+"\", IsRequired = false)]"
+			           +"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"{get;set;}\t\t\r\n";	
+			else
+			  return 
+			         "[DataMember(Name = \""+column.Alias+"\", IsRequired = false)]"
+					+"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"{get;set;}\t\t\r\n"
+					+"[DataMember(Name = \""+column.Alias+"_To\", IsRequired = false)]\t\t\r\n"
+			        +"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"_To{get;set;}\t\t\r\n";
+		default :
+			return  "[DataMember(Name = \""+column.Alias+"\", IsRequired = false)]"
+			       +"public "+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"{get;set;}\t\t\r\n";			
+	}
+}
+private string GetDeclarateParameterFiledByFilter(IColumn column)
+{		
+	switch(column.LanguageType)
+	{
+		case "DateTime":
+			return column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+","+column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias+"_To";
+		default :
+			return column.LanguageType+ColumnFilterNullableSufix(column)+" "+column.Alias;
+	}
+}
+private string GetParameterFiledByFilter(IColumn column)
+{		
+	switch(column.LanguageType)
+	{
+		case "DateTime":
+			return column.Alias+","+column.Alias+"_To";
+		default :
+			return column.Alias;
+	}
+}
+private string GetParameterNullByFilter(IColumn column)
+{		
+	switch(column.LanguageType)
+	{
+		case "DateTime":
+			return "null,null";
+		default :
+			return "null";
+	}
+}
+private string GetParameterSetByFilter(IColumn column)
+{		
+	switch(column.LanguageType)
+	{
+		case "DateTime":
+			return "this."+column.Alias+"="+column.Alias+";"
+				  +"this."+column.Alias+"_To="+column.Alias+"_To;";
+		default :
+			return "this."+column.Alias+"="+column.Alias+";";
+	}
+}
+private string ColumnFilterNullableSufix(IColumn column)
+{
+	return IsLanguageNullable(column.LanguageType)?"?":"";
+}
+private string Plural(string name)
+{
+	if(name.ToLower().EndsWith("y"))return name.Substring(0,name.Length-1)+"ies";
+	if(name.ToLower().EndsWith("s"))return name;
+	return name+"s";	
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	private bool HadPk(ITable Table)
+	{
+		bool hadPK=false;
+		foreach(IForeignKey ForeignKey in Table.ForeignKeys)
+		{
+			if(ForeignKey.ForeignTable.Alias!=Table.Alias && ForeignKey.ForeignColumns.Count > 0)
+			continue;
+			hadPK=true;
+		}
+		return hadPK;
+	}
+	
+	private IColumn PrimaryKey(ITable Table)
+	{
+		IColumns Columns = Table.Columns;
+		foreach( IColumn c in Columns )
+			if( c.IsInPrimaryKey )
+			   return c;
+		return null;
+	}
+	private int PrimaryKeyCount(ITable Table)
+	{
+		int i=0;
+		IColumns Columns = Table.Columns;
+		foreach(IColumn c in Columns )
+			if( c.IsInPrimaryKey )
+			   i++;
+		return i;
+	}
+	private void SaveFile(string fileName,string exportPath)
+	{
+		SaveFile(fileName,exportPath,true);
+	}
+	private void SaveFile(string fileName,string exportPath,bool _override)
+	{
+		try
+		{
+			string path = Path.Combine( exportPath, fileName );
+			if( _override)
+			{			
+				output.save(path,false);
+			}
+			else
+			{
+				if(!System.IO.File.Exists(path))
+				{
+					output.save(path,false);
+				}
+			}			
+		}
+		//falta manejo de errores
+		catch{}		
+		output.clear();
+	}	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	private string ColumnNullableSufix(IColumn column)
+	{
+		return IsLanguageNullable(column)?"?":"";
+	}	
+	private bool IsLanguageNullable( IColumn column )
+	{
+		if(IsLanguageNullable(column.LanguageType) && column.IsNullable)
+		   return true;
+		else
+		   return false;	
+	}
+	private bool IsLanguageNullable( string languageType)
+	{
+     	switch( languageType )
+		{
+			case "bool":
+			case "char":
+			case "decimal":
+			case "float":
+			case "byte":
+			case "short":
+			case "int":
+			case "long":
+			case "DateTime":
+				   return true;
+		}
+		return false;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	private string ToStringFormat( string Type )
+	{
+		string retVal = Type;
+		
+		switch( Type.ToLower() )
+		{
+			case "bool":
+				retVal = "{0}";
+				break;
+			case "byte":
+				retVal =  "{0}";
+				break;
+			case "sbyte":
+				retVal =  "{0}";
+				break;
+			case "char":
+				retVal =  "'{0}'";
+				break;
+			case "numeric":
+			case "decimal":
+				retVal = "{0}";
+				break;
+			case "double":
+				retVal =  "{0}";
+				break;
+			case "float":
+				retVal =  "{0}";
+				break;
+			case "int":
+				retVal =  "{0}";
+				break;
+			case "uint":
+				retVal =  "{0}";
+				break;
+			case "long":
+				retVal =  "{0}";
+				break;
+			case "bigint":	
+			case "ulong":
+				retVal =  "{0}";
+				break;
+			case "short":
+				retVal =  "{0}";
+				break;
+			case "ushort":
+				retVal =  "{0}";
+				break;
+			case "text":
+			case "varchar":
+			case "string":
+				retVal =  "'{0}'";
+				break;
+			case "smalldatetime":	
+			case "datetime":
+				retVal =  "'{0:yyyyMMdd}'";
+				break;
+		}
+		
+		return retVal;
+	}
+	private string DefaulValue( string Type )
+	{
+		string retVal = Type;
+		
+		switch( Type.ToLower() )
+		{
+			case "bool":
+				retVal = "false";
+				break;
+			case "byte":
+				retVal = "0";
+				break;
+			case "sbyte":
+				retVal = "0";
+				break;
+			case "char":
+				retVal = "\"\"";
+				break;
+			case "numeric":
+			case "decimal":
+				retVal = "0";
+				break;
+			case "double":
+				retVal = "0";
+				break;
+			case "float":
+				retVal = "0";
+				break;
+			case "int":
+				retVal = "0";
+				break;
+			case "uint":
+				retVal = "0";
+				break;
+			case "long":
+				retVal = "0";
+				break;
+			case "bigint":	
+			case "ulong":
+				retVal = "0";
+				break;
+			case "short":
+				retVal = "0";
+				break;
+			case "ushort":
+				retVal = "0";
+				break;
+			case "text":
+			case "varchar":
+			case "string":
+				retVal = "\"\"";
+				break;
+			case "smalldatetime":	
+			case "datetime":
+				retVal = "DateTime.MinValue";
+				break;
+		}		
+		return retVal;
+	}
+	
+	
+	private string GetConvert( string Type )
+	{
+		string retVal = Type;
+		
+		switch( Type.ToLower() )
+		{
+			case "bool":
+				retVal = "GetBoolean";
+				break;
+			case "byte":
+				retVal = "GetByte";
+				break;
+			case "sbyte":
+				retVal = "GetByte";
+				break;
+			case "char":
+				retVal = "GetString";
+				break;
+			case "numeric":
+			case "decimal":
+				retVal = "GetDecimal";
+				break;
+			case "double":
+				retVal = "GetDouble";
+				break;
+			case "float":
+				retVal = "GetFloat";
+				break;
+			case "int":
+				retVal = "GetInt32";
+				break;
+			case "uint":
+				retVal = "GetInt32";
+				break;
+			case "long":
+				retVal = "GetInt64";
+				break;
+			case "bigint":	
+			case "ulong":
+				retVal = "GetInt64";
+				break;
+			case "short":
+				retVal = "GetInt16";
+				break;
+			case "ushort":
+				retVal = "GetInt16";
+				break;
+			case "text":
+			case "varchar":
+			case "string":
+				retVal = "GetString";
+				break;
+			case "smalldatetime":	
+			case "datetime":
+				retVal = "GetDateTime";
+				break;
+		}		
+		return retVal;
+	}
+	private string ConvertNHibernate( string Type )
+	{
+		string retVal = Type;
+		
+		switch( Type )
+		{
+			case "bool":
+				retVal = "Boolean";
+				break;
+			case "byte":
+				retVal = "Byte";
+				break;
+			case "sbyte":
+				retVal = "SByte";
+				break;
+			case "char":
+				retVal = "Char";
+				break;
+			case "decimal":
+				retVal = "Decimal";
+				break;
+			case "double":
+				retVal = "Double";
+				break;
+			case "float":
+				retVal = "Single";
+				break;
+			case "int":
+				retVal = "Int32";
+				break;
+			case "uint":
+				retVal = "UInt32";
+				break;
+			case "long":
+				retVal = "Int64";
+				break;
+			case "ulong":
+				retVal = "UInt64";
+				break;
+			case "short":
+				retVal = "Int16";
+				break;
+			case "ushort":
+				retVal = "UInt16";
+				break;
+			case "string":
+				retVal = "String";
+				break;
+			case "smalldatetime":	
+			case "datetime":
+				retVal = "DateTime";
+				break;
+		}
+		
+		return retVal;
+	}	
+	private string Convert( string Type,string value )
+	{
+		string retVal = Type;
+		
+		switch( Type )
+		{
+			case "bool":
+				retVal = "Convert.ToBoolean("+value+")";
+				break;
+			case "byte":
+				retVal = "Convert.ToByte("+value+")";
+				break;
+			case "sbyte":
+				retVal = "Convert.ToSByte("+value+")";
+				break;
+			case "char":
+				retVal = value;//"Convert.ToChar("+value+")";
+				break;
+			case "numeric":
+			case "decimal":
+				retVal = "Convert.ToDecimal("+value+")";
+				break;
+			case "double":
+				retVal = "Convert.ToDouble("+value+")";
+				break;
+			case "float":
+				retVal = "Convert.ToSingle("+value+")";
+				break;
+			case "int":
+				retVal = "Convert.ToInt32("+value+")";
+				break;
+			case "uint":
+				retVal = "Convert.ToUInt32("+value+")";
+				break;
+			case "bigint":
+			case "long":
+				retVal = "Convert.ToInt64("+value+")";
+				break;
+			case "ulong":
+				retVal = "Convert.ToUInt64("+value+")";
+				break;
+			case "short":
+				retVal = "Convert.ToInt16("+value+")";
+				break;
+			case "ushort":
+				retVal = "Convert.ToUInt16("+value+")";
+				break;
+			case "text":
+			case "varchar":
+			case "string":
+				retVal = value;//"Convert.ToString("+value+")";
+				break;
+			case "smalldatetime":	
+			case "datetime":
+				retVal = "Convert.ToDateTime("+value+")";
+				break;
+		}
+		
+		return retVal;
+	}
+	
+	private IColumn ColumnDefaultView( ITable Table )
+	{
+		string propertyName="";
+		foreach(IColumn column in Table.Columns)
+			if(column.Alias.ToLower()=="name" || column.Alias.ToLower()=="nombre")
+				return column;
+		foreach(Column column in Table.Columns)
+			if(column.Alias.ToLower()=="code" || column.Alias.ToLower()=="cod")
+				return column;
+		foreach(Column column in Table.Columns)
+			if(column.Alias.ToLower()=="description" || column.Alias.ToLower()=="descripcion")
+				return column;
+		foreach(Column column in Table.Columns)
+			if(column.LanguageType.ToLower()=="string")
+				return column;
+		if(Table.Columns.Count > 0)
+			return Table.Columns[0];
+		return null;
+	}
+	
+	
+	private string EntityName( ITable Table )
+	{
+		return EntityName(Table.Alias.Replace("TBL_", ""));
+	}
+	private string EntityName( IView View )
+	{
+		return EntityName(View.Alias.Replace("VIEW_", "View"));
+	}	
+	private string EntityName(string name )
+	{
+		if(name.ToUpper().EndsWith("NODES"))
+			name=name.Substring(0,name.Length-1);
+		if(name.ToUpper().EndsWith("LANES"))
+			name=name.Substring(0,name.Length-1);
+			
+		else if(name.ToUpper().EndsWith("NES"))
+			name=name.Substring(0,name.Length-2);
+		else if(name.ToUpper().EndsWith("RES"))
+			name=name.Substring(0,name.Length-2);
+		else if(name.ToUpper().EndsWith("DES"))
+			name=name.Substring(0,name.Length-2);
+		else if(name.ToUpper().EndsWith("SES"))
+			name=name.Substring(0,name.Length-2);
+		else if(name.ToUpper().EndsWith("IES"))
+			name=name.Substring(0,name.Length-3)+'Y';
+		else if(name.ToUpper().EndsWith("S"))
+			name=name.Substring(0,name.Length-1);
+		return ToPascalCase(name);
+	}
+	private string ColumnToMemberVariable( IColumn Column )
+	{
+		return _prefix + UniqueColumn( Column ).ToLower();
+	}	
+	private string ColumnToPropertyName( IColumn Column )
+	{
+		return ToPascalCase( UniqueColumn( Column ) );
+	}
+	private string ColumnEntityToPropertyName( IColumn Column )
+	{
+		string  parameter = ToPascalCase( UniqueColumn( Column ) );
+		return parameter.EndsWith("Id")?parameter.Replace("Id",""):parameter;
+	}
+	private string ColumnToParameterName(ITable Table )
+	{
+		string parameter = ToLeadingLower(EntityName(Table ));
+		return this._keys.IndexOf(parameter)>-1?"_"+parameter:parameter;
+	}
+	private string ColumnEntityToParameterName(IColumn Column )
+	{
+		string  parameter = ToLeadingLower(ColumnToPropertyName(Column ));
+		parameter = parameter.EndsWith("Id")?parameter.Replace("Id",""):parameter;
+		return this._keys.IndexOf(parameter)>-1?"_"+parameter:parameter;
+	}
+	private string ColumnToParameterName(IColumn Column )
+	{
+		string  parameter = ToLeadingLower(ColumnToPropertyName(Column ));
+		return this._keys.IndexOf(parameter)>-1?"_"+parameter:parameter;
+	}
+	private string ColumnToArgumentName( IColumn Column )
+	{
+		return UniqueColumn( Column ).ToLower();
+	}	
+	private string ColumnToNHibernateProperty( IColumn Column )
+	{
+		return _prefix + UniqueColumn( Column );
+	}	
+	private string UniqueColumn( IColumn Column )
+	{
+		string c = Column.Alias.Replace( " ", "" );
+		if( Column.Table != null && Column.Table.Alias.Replace( " ", "" ) == c )
+		{
+			c += "Name";
+		}
+		if( Column.View != null && Column.View.Alias.Replace( " ", "" ) == c )
+		{
+			c += "Name";
+		}
+		return c;
+	}
+	
+	// nhibernate doesn't have these, so use the existing types
+	private string ColumnToNHibernateType( IColumn Column )
+	{
+		string retVal = Column.LanguageType;
+		
+		switch( retVal )
+		{
+			case "sbyte":
+				retVal = "byte";
+				break;
+			case "uint":
+				retVal = "int";
+				break;
+			case "ulong":
+				retVal = "long";
+				break;
+			case "ushort":
+				retVal = "short";
+				break;
+			case "bool":
+			case "decimal":
+			case "float":
+			case "byte":
+			case "short":
+			case "int":
+			case "long":
+			case "DateTime":
+			if (!_CreatingXML){
+					if(Column.IsNullable)
+					{
+						retVal =  retVal + _NullSufix;
+					}
+				}
+				break;
+		}
+
+		return retVal;
+	}
+	
+	private string ColumnNullableAddSufijo( IColumn Column )
+	{
+		string retVal = "";
+		
+		switch( Column.LanguageType )
+		{
+			case "sbyte":
+				retVal = "";
+				break;
+			case "uint":
+				retVal = "";
+				break;
+			case "ulong":
+				retVal = "";
+				break;
+			case "ushort":
+				retVal = "";
+				break;
+			case "bool":
+			case "decimal":
+			case "float":
+			case "byte":
+			case "short":
+			case "int":
+			case "long":
+			if (!_CreatingXML){
+					if(Column.IsNullable)
+					{
+						retVal =  ".Value";
+					}
+				}
+				break;
+		}
+		return retVal;
+	}
+	
+	private string ToLeadingCaps( string name )
+	{
+		char[] chars = name.ToLower().ToCharArray();
+		chars[0] = Char.ToUpper( chars[0] );
+		return new string( chars );
+	}
+	
+	private string ToLeadingLower( string name )
+	{
+		char[] chars = name.ToCharArray();
+		chars[0] = Char.ToLower( chars[0] );
+		return new string( chars );
+	}
+	
+	private string ToPascalCase( string name )
+	{
+		string notStartingAlpha = Regex.Replace( name, "^[^a-zA-Z]+", "" );
+		string workingString = ToLowerExceptCamelCase( notStartingAlpha );
+		workingString = RemoveSeparatorAndCapNext( workingString );
+		return workingString;
+	}
+	
+	private string RemoveSeparatorAndCapNext( string input )
+	{
+		string dashUnderscore = "-_";
+		string workingString = input;
+		char[] chars = workingString.ToCharArray();
+		int under = workingString.IndexOfAny( dashUnderscore.ToCharArray() );
+		while( under > -1 )
+		{
+			chars[ under + 1 ] = Char.ToUpper( chars[ under + 1 ], CultureInfo.InvariantCulture );
+			workingString = new String( chars );
+			under = workingString.IndexOfAny( dashUnderscore.ToCharArray(), under + 1 );
+		}
+		chars[ 0 ] = Char.ToUpper( chars[ 0 ], CultureInfo.InvariantCulture );
+		workingString = new string( chars );
+		return Regex.Replace( workingString, "[-_]", "" );
+	}
+
+	private string ToLowerExceptCamelCase( string input )
+	{
+		char[] chars = input.ToCharArray();
+		for( int i = 0; i < chars.Length; i++ )
+		{
+			int left = ( i > 0 ? i - 1 : i );
+			int right = ( i < chars.Length - 1 ? i + 1 : i );
+			if( i != left && i != right )
+			{
+				if( Char.IsUpper( chars[i] ) && Char.IsLetter( chars[ left ] ) && Char.IsUpper( chars[ left ] ) )
+				{
+					chars[i] = Char.ToLower( chars[i], CultureInfo.InvariantCulture );
+				}
+				else if( Char.IsUpper( chars[i] ) && Char.IsLetter( chars[ right ] ) && Char.IsUpper( chars[ right ] ) )
+				{
+					chars[i] = Char.ToLower( chars[i], CultureInfo.InvariantCulture );
+				}
+				else if( Char.IsUpper( chars[i] ) && !Char.IsLetter( chars[ right ] ) )
+				{
+					chars[i] = Char.ToLower( chars[i], CultureInfo.InvariantCulture );
+				}
+			}
+		}
+		chars[ chars.Length - 1 ] = Char.ToLower( chars[ chars.Length - 1 ], CultureInfo.InvariantCulture );
+		return new string( chars );
+	}
+	
+	private int CountRequiredFields( IColumns Columns )
+	{
+		return Columns.Count - CountNullableFields( Columns );
+	}
+	
+	private int CountNullableFields( IColumns Columns )
+	{
+		int i = 0;
+		foreach( IColumn c in Columns )
+		{
+			if( c.IsNullable )
+			{
+				i++;
+			}
+		}
+		return i;
+	}
+	
+	private int CountUniqueFields( IColumns Columns )
+	{
+		int i = 0;
+		foreach( IColumn c in Columns )
+		{
+			if( !c.IsNullable && c.IsInPrimaryKey )
+			{
+				i++;
+			}
+		}
+		return i;
+	}
+	
+	
+	private bool ExistsColumnStartDate( IColumns Columns )
+	{
+		foreach( IColumn c in Columns )
+			if( c.Alias.ToUpper()=="START_DATE" )
+				return true;
+		return false;
+	}
+	private bool ExistsColumnStartUser( IColumns Columns )
+	{
+		foreach( IColumn c in Columns )
+			if( c.Alias.ToUpper()=="START_USER_ID" )
+				return true;
+		return false;
+	}
+	private bool ExistsColumnLastDate( IColumns Columns )
+	{
+		foreach( IColumn c in Columns )
+			if( c.Alias.ToUpper()=="LAST_DATE" )
+				return true;
+		return false;
+	}
+	private bool ExistsColumnLastUser( IColumns Columns )
+	{
+		foreach( IColumn c in Columns )
+			if( c.Alias.ToUpper()=="LAST_USER_ID" )
+				return true;
+		return false;
+	}
+}
+
+%>
+##|BODY_END

@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/mecon/!svn/ver/102/workspace/development/bapin/Contract/Config
+END
+IndicadorTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/IndicadorTipoConfig.cs
+END
+OrganismoTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/OrganismoTipoConfig.cs
+END
+ClasificacionGeograficaTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/ClasificacionGeograficaTipoConfig.cs
+END
+CargoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/CargoConfig.cs
+END
+SistemaEntidadConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/SistemaEntidadConfig.cs
+END
+TreeSelectConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/TreeSelectConfig.cs
+END
+AuditMandateConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/AuditMandateConfig.cs
+END
+GeoreferenciacionTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/GeoreferenciacionTipoConfig.cs
+END
+EstadoDeDesicionConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/102/workspace/development/bapin/Contract/Config/EstadoDeDesicionConfig.cs
+END
+SecurityConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/SecurityConfig.cs
+END
+ProyectoDictamenEstadoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/62/workspace/development/bapin/Contract/Config/ProyectoDictamenEstadoConfig.cs
+END
+ProyectoOrigenFinanciamientoTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/ProyectoOrigenFinanciamientoTipoConfig.cs
+END
+IndicadorEvolucionInstanciaConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/IndicadorEvolucionInstanciaConfig.cs
+END
+EstadoTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/EstadoTipoConfig.cs
+END
+PerfilTipoConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/PerfilTipoConfig.cs
+END
+ActionConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/102/workspace/development/bapin/Contract/Config/ActionConfig.cs
+END
+FaseConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/FaseConfig.cs
+END
+EstadoEnum.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/62/workspace/development/bapin/Contract/Config/EstadoEnum.cs
+END
+PerfilConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/PerfilConfig.cs
+END
+NumerationConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/NumerationConfig.cs
+END
+PriorityConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/PriorityConfig.cs
+END
+MessageMediaConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/MessageMediaConfig.cs
+END
+SystemConfig.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Config/SystemConfig.cs
+END

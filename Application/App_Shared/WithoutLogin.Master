@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WithoutLogin.Master.cs" Inherits="Application.Shared.WithoutLogin" %>
+<%@ Register TagPrefix ="ctl" Src= "~/App_Shared/HeaderWihtoutLogin.ascx" TagName ="CtlHeader"  %>
+<%@ Register TagPrefix ="ctl" Src= "~/App_Shared/Footer.ascx" TagName ="CtlFooter"  %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>ProjectBase</title>
+<link href="../App_Themes/Sky/main.css" rel="stylesheet" type="text/css" />
+<script src="../App_Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<script type="text/javascript">
+function setActiveTab(tabName, tabIndex) {
+    var tabs = $find(tabName);
+    if (tabs != null)
+        tabs.set_activeTabIndex(tabIndex);
+    else
+        alert(tabName);
+}
+function OnClientCancelClick(docName) {
+    document.form1.action = docName;
+    document.form1.submit();
+}        
+</script>
+</head>
+<body>
+<form id="formMaster" runat="server">
+    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" EnableScriptGlobalization="true"
+        EnableScriptLocalization="true" EnablePartialRendering="true" />
+<div id="wrapper">
+<div id="content_header">
+    <!---HEADER-->
+    <div id="header">
+        <ctl:CtlHeader id="ctlHeader" runat="server" ></ctl:CtlHeader>
+        <ctl:CtlMenu id="ctlMenu" runat="server" ></ctl:CtlMenu> 
+    </div>    
+    <!---END HEADER-->
+    
+	
+</div>
+<asp:ContentPlaceHolder ID="ContenidoPrincipal" runat="server" />
+<div class="blanco">
+    <div id="contenido">
+        <uc:MessageBar ID="MessageBarForm" runat="server" />
+    </div>
+</div>
+<div id="content_footer">
+	
+	<div id="linea1"><img src="../Images/linea_footer.jpg"/></div>
+	<!---FOOTER-->
+	<div id="footer">
+		<ctl:CtlFooter id="ctlFooter" runat="server" ></ctl:CtlFooter> 
+	</div>
+	<!---END FOOTER-->
+</div>
+
+</div>
+</form>
+</body>
+</html>

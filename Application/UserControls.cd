@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UI.Web.WebControlBase" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAxAgACIAQQAKhgCAAKQAQACAARmIQgAAAEAQqAAgA=</HashCode>
+      <FileName>Base\Controls\WebControlBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.Web.WebControlEdit&lt;TEntity&gt;" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAABAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Base\Controls\WebControlEdit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.Web.WebControlFilter&lt;TFilter&gt;" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAIAAAAwAAABAgEAAAABAAAAAAAAAFAABAAAA=</HashCode>
+      <FileName>Base\Controls\WebControlFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.Web.WebControlList&lt;TResult, TIdType&gt;" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAABEAAACAgAAAgAAQAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Base\Controls\WebControlList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UI.Web.WebControlGrid&lt;TResult, TIdType&gt;" Collapsed="true">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIEAAAAEAAAAAkAACAAIAAAAAEAAAAAAAACBARCIAAI=</HashCode>
+      <FileName>Base\Controls\WebControlList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.Web.WebControlGridWithSelection&lt;TResult, TIdType&gt;" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAEBAAAAAQAAABAAAAAAAAQAAAAAAAEAAAAIAA=</HashCode>
+      <FileName>Base\Controls\WebControlList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.Web.ProyectoFilter" Collapsed="true">
+    <Position X="11.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Ad6GALNopIS8QoASSYmIIXAAmAQAwEYtiAIoRAXMDzE=</HashCode>
+      <FileName>Proyecto\ProyectoFilter.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.Web.ProyectoList" Collapsed="true">
+    <Position X="8.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Proyecto\ProyectoList.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.Web.ProyectoEdit" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yvernfTfru/sQv3/2//Z//vZ+Q7f+3/f77vZn53v7+k=</HashCode>
+      <FileName>Proyecto\ProyectoEdit.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

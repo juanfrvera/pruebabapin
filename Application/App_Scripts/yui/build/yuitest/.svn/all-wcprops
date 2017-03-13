@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest
+END
+yuitest.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest.js
+END
+yuitest-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest-min.js
+END
+yuitest-debug.js
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest-debug.js
+END
+yuitest_core.js
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest_core.js
+END
+yuitest_core-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest_core-min.js
+END
+yuitest_core-debug.js
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/yui/build/yuitest/yuitest_core-debug.js
+END

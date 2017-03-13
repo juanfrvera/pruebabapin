@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema
+END
+JsonSchemaTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/JsonSchemaTests.cs
+END
+ExtensionsTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/ExtensionsTests.cs
+END
+JsonSchemaNodeTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/JsonSchemaNodeTests.cs
+END
+JsonSchemaBuilderTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/JsonSchemaBuilderTests.cs
+END
+JsonSchemaGeneratorTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/JsonSchemaGeneratorTests.cs
+END
+JsonSchemaModelBuilderTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Schema/JsonSchemaModelBuilderTests.cs
+END

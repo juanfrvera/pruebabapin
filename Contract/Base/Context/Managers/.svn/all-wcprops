@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers
+END
+IExceptionManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/IExceptionManager.cs
+END
+IAuthorizationManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/IAuthorizationManager.cs
+END
+IParameterManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/IParameterManager.cs
+END
+ICacheManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/ICacheManager.cs
+END
+ITextManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/ITextManager.cs
+END
+IAuditManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/IAuditManager.cs
+END
+INotificationManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Context/Managers/INotificationManager.cs
+END

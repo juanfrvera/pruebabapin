@@ -1,0 +1,292 @@
+
+-- Creo la tabla ProyectoGeoLocalizacion
+
+IF NOT EXISTS(SELECT 1 FROM sys.tables WHERE Name = 'ProyectoGeoLocalizacion' AND OBJECT_ID = OBJECT_ID('ProyectoGeoLocalizacion'))
+BEGIN
+	CREATE TABLE dbo.ProyectoGeoLocalizacion  
+	   (IdGeoLocalizacion INT PRIMARY KEY IDENTITY (1,1) NOT NULL,  
+		IdProyecto INT NOT NULL,  
+		TipoLocalizacion VARCHAR(25) NOT NULL, --valores prosibles [poligono, rectangulo, circulo, linea y punto]
+		InfoLocalizacion VARCHAR(1000) NOT NULL
+		)
+
+	ALTER TABLE [dbo].[ProyectoGeoLocalizacion]  WITH CHECK ADD  CONSTRAINT [FK_ProyectoGeoLocalizacion_Proyecto] FOREIGN KEY([IdProyecto])
+	REFERENCES [dbo].[Proyecto] ([IdProyecto])
+	
+	PRINT 'Tabla ProyectoGeoLocalizacion creada correctamente'
+END
+GO
+
+-- Creo la tabla ProyectoShapeFile
+
+IF NOT EXISTS(SELECT 1 FROM sys.tables WHERE Name = 'ProyectoShapeFile' AND OBJECT_ID = OBJECT_ID('ProyectoShapeFile'))
+BEGIN
+	CREATE TABLE dbo.ProyectoShapeFile
+	   (IdProyectoShapeFile INT PRIMARY KEY IDENTITY (1,1)NOT NULL,  
+		IdProyecto INT NOT NULL,  
+		RutaArchivo VARCHAR (1000) NOT NULL
+		)	
+
+	ALTER TABLE [dbo].[ProyectoShapeFile]  WITH CHECK ADD  CONSTRAINT [FK_ProyectoShapeFile_Proyecto] FOREIGN KEY([IdProyecto])
+	REFERENCES [dbo].[Proyecto] ([IdProyecto])
+	
+	PRINT 'Tabla ProyectoShapeFile creada correctamente'
+END
+
+GO
+
+-- Creo la columna GeneraComentarioTecnico para la tabla ProyectoSeguimientoEstado
+
+IF NOT EXISTS(SELECT TOP 1 1
+	FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE COLUMN_NAME = 'GeneraComentarioTecnico' AND TABLE_NAME = 'ProyectoSeguimientoEstado')
+	BEGIN
+		ALTER TABLE ProyectoSeguimientoEstado ADD GeneraComentarioTecnico bit NOT NULL DEFAULT 'false'
+		
+		PRINT 'Columna GeneraComentarioTecnico creada correctamente en la tabla ProyectoSeguimientoEstado'
+	END
+
+GO
+
+-- Agreg el registro "Evaludación" a la tabla "ComentarioTecnico"
+IF NOT EXISTS (SELECT TOP 1 1 FROM ComentarioTecnico WHERE Nombre = 'Evaluación')
+	BEGIN
+		INSERT INTO ComentarioTecnico VALUES ('Evaluación', 1)
+		
+		PRINT 'Registro  Evaluación insertado correctamente en la tabla ComentarioTecnico'
+	END
+	
+GO
+
+-- Agreg el registro "Reiniciado" a la tabla "EstadoDeDesicion"
+IF NOT EXISTS (SELECT TOP 1 1 FROM EstadoDeDesicion WHERE Nombre = 'Reiniciado')
+	BEGIN
+		INSERT INTO EstadoDeDesicion VALUES ('Reiniciado', 'Reiniciado', 5, null, 1)
+		
+		PRINT 'Registro  Reiniciado insertado correctamente en la tabla EstadoDeDesicion'
+	END
+
+GO
+
+-- Creo la columna DetalleMedioVerificacion para la tabla Indicador
+
+IF NOT EXISTS(SELECT TOP 1 1
+	FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE COLUMN_NAME = 'DetalleMedioVerificacion' AND TABLE_NAME = 'Indicador')
+	BEGIN
+		ALTER TABLE Indicador ADD DetalleMedioVerificacion Varchar(1000) NULL
+		
+		PRINT 'Columna  DetalleMedioVerificacion creada correctamente en la tabla Indicador'
+	END
+	
+GO
+
+-- Creo el usuario SISTEMA BAPIN fecha: 20-10-2016
+
+BEGIN TRY
+
+	BEGIN TRAN
+	
+	-- Crea el usuario solamente si el mismo no existe en la base de datos
+	
+	IF NOT EXISTS (SELECT TOP 1 1 FROM Usuario WHERE NombreUsuario = 'BAPIN')
+		BEGIN
+	
+			-- declaracion de variables para la insercion de datos
+			DECLARE @idUserModif INT, @fechaActual SMALLDATETIME, @idOficinaCentral INT, @idUltimoUsuario INT
+			
+			-- Obtengo un usuario al asar de la lista de usuario para setearlo en el campo 
+			-- IdUsuarioUltMod en la insercion del registro PERSONA
+			SELECT TOP 1 @idUserModif = idUsuario 
+				FROM Usuario 
+				ORDER BY IdUsuario
+			
+			-- Obtengo la fecha actual
+			SELECT @fechaActual = GETDATE()
+			
+			-- Obtengo el id de la oficina central
+			SELECT TOP 1 @idOficinaCentral = idOficina FROM Oficina
+				WHERE Nombre = 'DNIP'
+		
+			-- inserto el registro en la tabla PERSONA
+			INSERT INTO Persona 
+			(
+				EsUsuario,
+				EsContacto,
+				Nombre,
+				Apellido,
+				NombreCompleto,
+				IdOficina,
+				Sexo,
+				FechaAlta,
+				Activo,
+				FechaUltMod,
+				IdUsuarioUltMod
+			)
+			VALUES
+			(
+				0,
+				1,
+				'SISTEMA BAPIN',
+				'',
+				'SISTEMA BAPIN',
+				@idOficinaCentral,
+				'M',
+				@fechaActual,
+				1,
+				@fechaActual,
+				@idUserModif
+			)
+		
+			PRINT 'Registro Persona creado correctamente'
+			
+			-- Obtengo el de la persona que se creo en la consulta anterior
+			SELECT @idUltimoUsuario = @@IDENTITY
+				
+			-- inserto el registro en la tabla USUARIO
+			INSERT INTO Usuario
+			(
+				IdUsuario,
+				NombreUsuario,
+				Clave,
+				Activo,
+				EsSectioralista,
+				IdLanguage,
+				AccesoTotal
+			)
+			VALUES
+			(
+				@idUltimoUsuario,
+				'BAPIN',
+				'BAPIN',
+				1,
+				0,
+				1,
+				1
+			)
+			
+			PRINT 'Registro Usuario creado correctamente'
+		
+		END
+
+	COMMIT TRAN
+	
+END TRY
+
+BEGIN CATCH
+
+	ROLLBACK TRAN
+	PRINT 'Hubo un error al registrar el usuario "SISTEMA BAPIN", verifique e intente nuevamente'
+	
+END CATCH
+
+GO
+
+
+--Creo la tabla ProyectoDictamenFile y elimino la columna IdFile de la tabla ProyectoDictamen
+
+BEGIN TRY
+
+	BEGIN TRAN
+		
+		-- Verifico si la tabla ProyectoDictamenFile existe, si no existe la creo
+		IF NOT EXISTS(SELECT 1 FROM sys.tables WHERE Name = 'ProyectoDictamenFile' AND OBJECT_ID = OBJECT_ID('ProyectoDictamenFile'))
+			BEGIN
+		
+				-- creo las variables que voy a usar en este proceso
+				DECLARE @idProyectoDictamen INT, @idFile INT
+			
+				--Creo la tabla ProyectoDictamenFile
+				CREATE TABLE dbo.ProyectoDictamenFile  
+				   (IdProyectoDictamenFile INT PRIMARY KEY IDENTITY (1,1) NOT NULL,  
+					IdProyectoDictamen INT NOT NULL,  
+					IdFile INT NOT NULL
+					)
+
+				-- Creo las foreign keys de la tabla ProyectoDictamenFile
+				ALTER TABLE [dbo].[ProyectoDictamenFile]  WITH CHECK ADD  CONSTRAINT [FK_ProyectoDictamenFile_ProyectoDictamen] FOREIGN KEY([IdProyectoDictamen])
+				REFERENCES [dbo].[ProyectoDictamen] ([IdProyectoDictamen])
+				
+				ALTER TABLE [dbo].[ProyectoDictamenFile]  WITH CHECK ADD  CONSTRAINT [FK_ProyectoDictamenFile_FileInfo] FOREIGN KEY([IdFile])
+				REFERENCES [dbo].[FileInfo] ([IdFile])
+				
+				PRINT 'Tabla ProyectoDictamenFile creada correctamente'
+				
+				-- Creo e inserto los datos de idFile en la tabla temporal Files
+				SELECT IdProyectoDictamen, IdFile INTO #Files 
+				FROM ProyectoDictamen
+
+				-- CREO EL CURSOR PARA LUEGO IR INSERTANDO LOS VALORES DE IDFILE EN LA NUEVA TABLA CRAEDA EN EL PUNTO 
+				--ANTERIOR
+				DECLARE cursor_file CURSOR FOR
+				
+				SELECT IdProyectoDictamen, IdFile 
+					FROM #Files
+		
+				-- abro el cursor
+				OPEN cursor_file
+				
+				FETCH NEXT FROM cursor_file   
+				INTO @idProyectoDictamen, @idFile
+
+				--RECORREMOS LOS DATOS DEL CURSOR
+				--Verifico si la instauccion Fecth se ejecuto correctamente
+				WHILE @@FETCH_STATUS = 0  
+					BEGIN
+						
+						-- verifico si el registro actual tiene un archivo asociado, si es asi, lo inserto
+						-- en la nueva tabla creada
+						IF @idFile IS NOT NULL
+						BEGIN
+							
+							INSERT INTO ProyectoDictamenFile 
+							(
+								IdProyectoDictamen,
+								IdFile
+							)
+							VALUES
+							(
+								@idProyectoDictamen,
+								@idFile
+							)
+						
+						END
+				
+				
+					FETCH NEXT FROM cursor_file   
+					INTO @idProyectoDictamen, @idFile
+	
+				END
+			
+				-- cierro el cursor
+				CLOSE cursor_file
+				DEALLOCATE cursor_file
+			
+				-- Elimino la tabla temporal
+				DROP TABLE #Files
+				
+				--ELIMINO LA COLUMNA IdFile de la tabla ProyectoDictamen
+				ALTER TABLE ProyectoDictamen DROP COLUMN IdFile  
+			
+				PRINT 'Columna IdFile (tabla ProyectoDictamen) eliminada correctamente'
+			
+			END
+			
+	-- confirmo la transaccion
+	COMMIT TRAN
+
+END TRY
+
+BEGIN CATCH
+
+	-- deshago los cambios hasta el momento para volver a empezar
+	ROLLBACK TRAN
+	PRINT 'Hubo un error al Crear la tabla ProyectoDictamenFile y/o eliminar la columna IdFile, verifique e intente nuevamente'
+
+END CATCH
+
+GO
+
+
+
+

@@ -1,0 +1,31 @@
+<VisualStudioProject>
+  <CSHARP ProjectType="local" ProjectVersion="7.10.3077" SchemaVersion="2.0" ProjectGuid="c8888a2b-2289-41b1-b217-cee4eaa99955">
+    <Build>
+      <Settings AssemblyName="DBAuthorizationRuleProvider" DefaultClientScript="JScript" DefaultHTMLPageLayout="Grid" DefaultTargetSchema="IE50" DelaySign="false" OutputType="Library">
+        <Config Name="Debug" AllowUnsafeBlocks="true" DefineConstants="DEBUG;TRACE" DebugSymbols="true" IncrementalBuild="false" NoStdLib="false" Optimize="false" OutputPath="bin\Debug\" WarningLevel="4" />
+        <Config Name="Release" AllowUnsafeBlocks="true" DefineConstants="TRACE" DebugSymbols="false" IncrementalBuild="false" NoStdLib="false" Optimize="true" OutputPath="bin\Release\" WarningLevel="4" />
+      </Settings>
+      <References>
+        <Reference Name="Microsoft.Practices.EnterpriseLibrary.Common" AssemblyName="Microsoft.Practices.EnterpriseLibrary.Common" />
+        <Reference Name="Microsoft.Practices.EnterpriseLibrary.Security" AssemblyName="Microsoft.Practices.EnterpriseLibrary.Security" />
+        <Reference Name="Microsoft.Practices.EnterpriseLibrary.Data" AssemblyName="Microsoft.Practices.EnterpriseLibrary.Data" />
+        <Reference Name="Microsoft.Practices.ObjectBuilder" AssemblyName="Microsoft.Practices.ObjectBuilder" />
+        <Reference Name="System.Configuration" AssemblyName="System.Configuration" />
+        <Reference Name="System.Data" AssemblyName="System.Data" />
+        <Reference Name="System" AssemblyName="System" />
+      </References>
+    </Build>
+    <Files>
+      <Include>
+        <File RelPath="AssemblyInfo.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Global.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft\Practices\EnterpriseLibrary\Security\Configuration\DBAuthorizationRuleData.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft\Practices\EnterpriseLibrary\Security\DbAuthorizationRuleProvider.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft\Practices\EnterpriseLibrary\Security\Properties\Resources.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft\Practices\EnterpriseLibrary\Security\Configuration\DbAuthorizationRuleProviderData.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft\Practices\EnterpriseLibrary\Security\Configuration\DbAuthorizationRuleProviderAssembler.cs" SubType="Code" BuildAction="Compile" />
+        <File RelPath="Microsoft.Practices.EnterpriseLibrary.Security.Properties.Resources.resources" BuildAction="EmbeddedResource" />
+      </Include>
+    </Files>
+  </CSHARP>
+</VisualStudioProject>

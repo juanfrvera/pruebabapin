@@ -1,0 +1,30 @@
+-----------------------------
+--Historial de versiones
+-----------------------------
+
+-----------------------------
+--Cambios en la version 003--
+-----------------------------
+--*Se modificaron los nombres de las columnas de los montos Estimados y Realizados para reflejar el número del año
+--*Se corrigio el bug por el cual los cubos solo consideraban año actual el 2016
+--*Se revisaron las columnas correspondientes a la apertura presupuestaria, de manera que
+-- NroProyecto = nro de proyecto (proyecto.nro_proyecto)
+-- NroActividad = nro de actividad (si etapa.Nombre='Actividad' then NroActividad = proyectoetapa.NroEtapa)
+-- NroObra = nro de actividad (si etapa.Nombre='Obra' then NroObra = proyectoetapa.NroEtapa)
+--*Se agrega un filtro para que en el cubo no aparezcan los proyecto en estado borrador
+--*Se modifico la columna T:Tipo_Presup, de manera que
+-- T = "Proyecto" si es un proyecto (proyecto.esproyecto = 1) y el nombre de la etapa es Obra (etapa.nombre = Obra)
+-- T = "Actividad" si no es un proyecto (proyecto.esproyecto = 0) y el nombre de la etapa es Actividad (etapa.nombre = Actividad)
+-- T = "Actividad_especifica" si es un proyecto (proyecto.esproyecto = 1) y el nombre de la etapa es Actividad (etapa.nombre = Actividad)
+--* Se modificaron los nombres de las siguientes columnas del cuboxobjeto (para hacerlas homogeneas con el cuboxtotal),
+-- NroProyecto (antes Proy_Cod), NroActividad (antes Activ_Cod) y NroObra (antes Obra_Cod)
+
+--Pendiente para la proxima version,
+--*Agregar la columna Ape_Presup_Act_Espec, para no perder el valor de la actividad especifica en caso que
+--el proyecto tenga obra y activiad. El valor de esta columna sera:
+-- en caso que sea proyecto y tenga actividad, sera el valor de la apertura presupuestaria de la actividad especifica 
+-- en caso que sea proyecto y no tenga actividad, sera el valor de la apertura presupuestaria
+-- en caso que no sea proyecto y sea actividad, sera '-'
+-- en otro caso, sera 'No_clasificado'
+--*Revisar bug por el cual aparentemente no esta tomando correctamente los incisos, ver bapin 59236
+--*Conectar con base matching para levantar los montos devengados de 2016 y 2017

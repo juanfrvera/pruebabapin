@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/mecon/!svn/ver/69/workspace/development/bapin/OpenFlashChart/JSON
+END
+JsonReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/69/workspace/development/bapin/OpenFlashChart/JSON/JsonReader.cs
+END
+License.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/License.txt
+END
+JsonNameAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonNameAttribute.cs
+END
+JsonSpecifiedPropertyAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonSpecifiedPropertyAttribute.cs
+END
+JsonIgnoreAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonIgnoreAttribute.cs
+END
+JsonPropertyAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonPropertyAttribute.cs
+END
+JsonSerializationException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonSerializationException.cs
+END
+JsonWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/69/workspace/development/bapin/OpenFlashChart/JSON/JsonWriter.cs
+END
+ReadMe.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/ReadMe.txt
+END
+IJsonSerializable.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/IJsonSerializable.cs
+END
+Readme too.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/Readme%20too.txt
+END
+JsonToken.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/OpenFlashChart/JSON/JsonToken.cs
+END

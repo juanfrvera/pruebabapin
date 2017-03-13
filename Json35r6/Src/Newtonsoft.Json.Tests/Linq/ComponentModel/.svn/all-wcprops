@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Linq/ComponentModel
+END
+BindingTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Linq/ComponentModel/BindingTests.cs
+END
+JTypeDescriptionProviderTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Linq/ComponentModel/JTypeDescriptionProviderTests.cs
+END
+JTypeDescriptorTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Linq/ComponentModel/JTypeDescriptorTests.cs
+END
+JPropertyDescriptorTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Linq/ComponentModel/JPropertyDescriptorTests.cs
+END

@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization
+END
+JsonProperty.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonProperty.cs
+END
+JsonTypeReflector.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonTypeReflector.cs
+END
+JsonSerializerInternalReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonSerializerInternalReader.cs
+END
+DefaultReferenceResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/DefaultReferenceResolver.cs
+END
+CamelCasePropertyNamesContractResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/CamelCasePropertyNamesContractResolver.cs
+END
+IReferenceResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/IReferenceResolver.cs
+END
+JsonPropertyCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonPropertyCollection.cs
+END
+JsonLinqContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonLinqContract.cs
+END
+JsonSerializerInternalBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonSerializerInternalBase.cs
+END
+DynamicValueProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/DynamicValueProvider.cs
+END
+JsonDictionaryContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonDictionaryContract.cs
+END
+JsonSerializerInternalWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonSerializerInternalWriter.cs
+END
+JsonObjectContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonObjectContract.cs
+END
+ErrorContext.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/ErrorContext.cs
+END
+IValueProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/IValueProvider.cs
+END
+JsonPrimitiveContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonPrimitiveContract.cs
+END
+ReflectionValueProvider.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/ReflectionValueProvider.cs
+END
+DefaultContractResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/DefaultContractResolver.cs
+END
+JsonSerializerProxy.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonSerializerProxy.cs
+END
+JsonArrayContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonArrayContract.cs
+END
+DefaultSerializationBinder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/DefaultSerializationBinder.cs
+END
+CachedAttributeGetter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/CachedAttributeGetter.cs
+END
+JsonContract.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/JsonContract.cs
+END
+IContractResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/IContractResolver.cs
+END
+ErrorEventArgs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/ErrorEventArgs.cs
+END
+OnErrorAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Serialization/OnErrorAttribute.cs
+END

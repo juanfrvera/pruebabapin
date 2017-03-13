@@ -1,0 +1,1103 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/135/workspace/development/bapin/DataAccess/DataAccess
+END
+ClasificacionGastoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ClasificacionGastoTipoData.cs
+END
+PlanTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/131/workspace/development/bapin/DataAccess/DataAccess/PlanTipoData.cs
+END
+AnioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/AnioData.cs
+END
+ActividadPermisoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ActividadPermisoData.cs
+END
+PrestamoModalidadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoModalidadData.cs
+END
+SistemaReporteHistoricoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaReporteHistoricoData.cs
+END
+PrestamoConvenioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoConvenioData.cs
+END
+CargoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/CargoData.cs
+END
+ProyectoEtapaIndicadorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaIndicadorData.cs
+END
+ProyectoGeoreferenciacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoGeoreferenciacionData.cs
+END
+ObjetivoIndicadorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/67/workspace/development/bapin/DataAccess/DataAccess/ObjetivoIndicadorData.cs
+END
+MessageSendData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/72/workspace/development/bapin/DataAccess/DataAccess/MessageSendData.cs
+END
+SistemaEntidadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaEntidadData.cs
+END
+SubJurisdiccionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SubJurisdiccionData.cs
+END
+ProyectoSeguimientoProyectoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoSeguimientoProyectoData.cs
+END
+ComentarioTecnicoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ComentarioTecnicoData.cs
+END
+UnidadMedidaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/UnidadMedidaData.cs
+END
+EvaluacionResultadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EvaluacionResultadoData.cs
+END
+PrestamoProductoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/135/workspace/development/bapin/DataAccess/DataAccess/PrestamoProductoData.cs
+END
+CaracterEconomicoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/CaracterEconomicoData.cs
+END
+ProyectoBeneficiarioIndicadorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoBeneficiarioIndicadorData.cs
+END
+TextData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/TextData.cs
+END
+ProyectoProductoProyectoEtapaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoProductoProyectoEtapaData.cs
+END
+MessageData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MessageData.cs
+END
+ClasificacionGastoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ClasificacionGastoData.cs
+END
+ProyectoBeneficioIndicadorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoBeneficioIndicadorData.cs
+END
+MonedaCotizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MonedaCotizacionData.cs
+END
+EtapaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EtapaData.cs
+END
+IndicadorMedioVerificacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorMedioVerificacionData.cs
+END
+PrestamoEstadoAsociadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoEstadoAsociadoData.cs
+END
+PrestamoDictamenFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoDictamenFileData.cs
+END
+SectorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SectorData.cs
+END
+ProyectoFaseProyectoEtapaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoFaseProyectoEtapaData.cs
+END
+ProyectoEtapaEstimadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaEstimadoData.cs
+END
+GeoreferenciacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/GeoreferenciacionData.cs
+END
+PrestamoFinalidadFuncionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoFinalidadFuncionData.cs
+END
+ProyectoDictamenEstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/74/workspace/development/bapin/DataAccess/DataAccess/ProyectoDictamenEstadoData.cs
+END
+PlanPeriodoVersionActivaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PlanPeriodoVersionActivaData.cs
+END
+MessageConfigurationData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/100/workspace/development/bapin/DataAccess/DataAccess/MessageConfigurationData.cs
+END
+PerfilTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PerfilTipoData.cs
+END
+ObjetivoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ObjetivoData.cs
+END
+EvaluacionTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EvaluacionTipoData.cs
+END
+DictamenData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/DictamenData.cs
+END
+PrestamoObjetivoEspecificoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoObjetivoEspecificoData.cs
+END
+SubConvenioTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SubConvenioTipoData.cs
+END
+ProyectoGeoLocalizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/45/workspace/development/bapin/DataAccess/DataAccess/ProyectoGeoLocalizacionData.cs
+END
+IndicadorTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorTipoData.cs
+END
+TextLanguageData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/TextLanguageData.cs
+END
+PrestamoEstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoEstadoData.cs
+END
+ProyectoEtapaRealizadoPeriodoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaRealizadoPeriodoData.cs
+END
+ClasificacionGastoRubroData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ClasificacionGastoRubroData.cs
+END
+PlanVersionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PlanVersionData.cs
+END
+EntidadTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EntidadTipoData.cs
+END
+SistemaCommandData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaCommandData.cs
+END
+ConfigurationData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ConfigurationData.cs
+END
+MessageAttachData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MessageAttachData.cs
+END
+ProgramaObjetivoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProgramaObjetivoData.cs
+END
+ProcesoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProcesoData.cs
+END
+AuditOperationDetailData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/AuditOperationDetailData.cs
+END
+ProyectoEtapaRealizadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaRealizadoData.cs
+END
+ProyectoEvaluacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEvaluacionData.cs
+END
+SistemaEntidadAccionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaEntidadAccionData.cs
+END
+ProyectoSeguimientoFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoSeguimientoFileData.cs
+END
+ParameterCategoryData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ParameterCategoryData.cs
+END
+TransferenciaDetalleData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/TransferenciaDetalleData.cs
+END
+ProyectoPlanData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoPlanData.cs
+END
+PerfilData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PerfilData.cs
+END
+UsuarioOficinaPerfilData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/113/workspace/development/bapin/DataAccess/DataAccess/UsuarioOficinaPerfilData.cs
+END
+ModalidadContratacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ModalidadContratacionData.cs
+END
+SubProcesoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SubProcesoData.cs
+END
+IndicadorPriorizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorPriorizacionData.cs
+END
+UsuarioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/UsuarioData.cs
+END
+UsuarioPerfilData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/UsuarioPerfilData.cs
+END
+ClasificacionGeograficaTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ClasificacionGeograficaTipoData.cs
+END
+ProyectoOficinaPerfilFuncionarioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoOficinaPerfilFuncionarioData.cs
+END
+OrganismoFinancieroData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OrganismoFinancieroData.cs
+END
+GeoreferenciacionPuntoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/GeoreferenciacionPuntoData.cs
+END
+ProyectoPrioridadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoPrioridadData.cs
+END
+PrestamoSubConvenioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoSubConvenioData.cs
+END
+SistemaReporteData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaReporteData.cs
+END
+IndicadorRubroData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorRubroData.cs
+END
+ProgramaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProgramaData.cs
+END
+ProyectoDictamenData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/74/workspace/development/bapin/DataAccess/DataAccess/ProyectoDictamenData.cs
+END
+EstadoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EstadoTipoData.cs
+END
+IndicadorSectorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorSectorData.cs
+END
+CaracterEconomicoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/CaracterEconomicoTipoData.cs
+END
+ProyectoEtapaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/139/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaData.cs
+END
+IndicadorEvolucionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorEvolucionData.cs
+END
+NumerationData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/73/workspace/development/bapin/DataAccess/DataAccess/NumerationData.cs
+END
+ProyectoPropositoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoPropositoData.cs
+END
+LanguageData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/LanguageData.cs
+END
+AuditOperationData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/AuditOperationData.cs
+END
+ActividadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ActividadData.cs
+END
+EstadoDeDesicionHistoricoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EstadoDeDesicionHistoricoData.cs
+END
+FileInfoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FileInfoData.cs
+END
+PrestamoSubComponenteData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoSubComponenteData.cs
+END
+ProyectoDemoraData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoDemoraData.cs
+END
+SistemaEntidadEstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaEntidadEstadoData.cs
+END
+OrganismoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OrganismoData.cs
+END
+ClasificacionGeograficaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/34/workspace/development/bapin/DataAccess/DataAccess/ClasificacionGeograficaData.cs
+END
+ProyectoFinData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoFinData.cs
+END
+ProyectoFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoFileData.cs
+END
+IndicadorClaseData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorClaseData.cs
+END
+ProyectoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/139/workspace/development/bapin/DataAccess/DataAccess/ProyectoData.cs
+END
+ProyectoSeguimientoLocalizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoSeguimientoLocalizacionData.cs
+END
+OficinaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OficinaData.cs
+END
+ProyectoOrigenFinanciamientoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoOrigenFinanciamientoTipoData.cs
+END
+IndicadorEvolucionInstanciaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorEvolucionInstanciaData.cs
+END
+AuditSessionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/AuditSessionData.cs
+END
+PlanPeriodoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/131/workspace/development/bapin/DataAccess/DataAccess/PlanPeriodoData.cs
+END
+ProyectoSeguimientoEstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/52/workspace/development/bapin/DataAccess/DataAccess/ProyectoSeguimientoEstadoData.cs
+END
+PrioridadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrioridadData.cs
+END
+EstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EstadoData.cs
+END
+DictamenTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/DictamenTipoData.cs
+END
+PriorityData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PriorityData.cs
+END
+TextCategoryData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/TextCategoryData.cs
+END
+PrestamoComponenteData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoComponenteData.cs
+END
+ProyectoDictamenSeguimientoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoDictamenSeguimientoData.cs
+END
+TransferenciaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/TransferenciaData.cs
+END
+MessageMediaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MessageMediaData.cs
+END
+PrestamoOficinaPerfilData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoOficinaPerfilData.cs
+END
+IndicadorDetalleData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorDetalleData.cs
+END
+FinalidadFuncionTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FinalidadFuncionTipoData.cs
+END
+ObjetivoSupuestoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ObjetivoSupuestoData.cs
+END
+ProyectoCalificacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoCalificacionData.cs
+END
+OrganismoPrioridadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OrganismoPrioridadData.cs
+END
+PrestamoObjetivoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoObjetivoData.cs
+END
+PrestamoFinanciamientoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoFinanciamientoData.cs
+END
+PrestamoDictamenData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoDictamenData.cs
+END
+EvaluacionAspectoEvaluacionResultadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EvaluacionAspectoEvaluacionResultadoData.cs
+END
+ProyectoOficinaPerfilData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoOficinaPerfilData.cs
+END
+OficinaSafData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OficinaSafData.cs
+END
+EvaluacionAspectoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EvaluacionAspectoData.cs
+END
+ProyectoCalidadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/3/workspace/development/bapin/DataAccess/DataAccess/ProyectoCalidadData.cs
+END
+ProcesoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProcesoTipoData.cs
+END
+ProyectoIndicadorPriorizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoIndicadorPriorizacionData.cs
+END
+ProyectoIndicadorEconomicoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoIndicadorEconomicoData.cs
+END
+ProyectoOrigenFinanciamientoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoOrigenFinanciamientoData.cs
+END
+ProyectoRelacionTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoRelacionTipoData.cs
+END
+SistemaAccionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SistemaAccionData.cs
+END
+SubProgramaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SubProgramaData.cs
+END
+JurisdiccionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/JurisdiccionData.cs
+END
+ProyectoShapeFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/48/workspace/development/bapin/DataAccess/DataAccess/ProyectoShapeFileData.cs
+END
+PrestamoAlcanceGeograficoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoAlcanceGeograficoData.cs
+END
+ClasificacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ClasificacionData.cs
+END
+FuenteFinanciamientoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FuenteFinanciamientoTipoData.cs
+END
+ProyectoEtapaEstimadoPeriodoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoEtapaEstimadoPeriodoData.cs
+END
+PrestamoFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoFileData.cs
+END
+PrestamoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/113/workspace/development/bapin/DataAccess/DataAccess/PrestamoData.cs
+END
+PerfilActividadData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PerfilActividadData.cs
+END
+OficinaSafProgramaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OficinaSafProgramaData.cs
+END
+ProyectoLocalizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoLocalizacionData.cs
+END
+FinalidadFuncionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FinalidadFuncionData.cs
+END
+IndicadorObjetivoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorObjetivoData.cs
+END
+ModalidadFinancieraData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ModalidadFinancieraData.cs
+END
+ProyectoAlcanceGeograficoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoAlcanceGeograficoData.cs
+END
+MonedaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MonedaData.cs
+END
+ConfigurationCategoryData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ConfigurationCategoryData.cs
+END
+SAFData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/SAFData.cs
+END
+ProyectoSeguimientoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoSeguimientoData.cs
+END
+FaseData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FaseData.cs
+END
+PrestamoCalificacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoCalificacionData.cs
+END
+PrestamoOficinaFuncionarioData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoOficinaFuncionarioData.cs
+END
+ParameterData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ParameterData.cs
+END
+ProyectoRelacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoRelacionData.cs
+END
+IndicadorRelacionRubroData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorRelacionRubroData.cs
+END
+ProyectoProductoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoProductoData.cs
+END
+ProyectoComentarioTecnicoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoComentarioTecnicoData.cs
+END
+OrganismoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/OrganismoTipoData.cs
+END
+FuenteFinanciamientoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/FuenteFinanciamientoData.cs
+END
+IndicadorData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/IndicadorData.cs
+END
+ProyectoCalidadLocalizacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoCalidadLocalizacionData.cs
+END
+PrestamoDictamenEstadoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoDictamenEstadoData.cs
+END
+AdministracionTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/AdministracionTipoData.cs
+END
+ProyectoTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/ProyectoTipoData.cs
+END
+GestionTipoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/GestionTipoData.cs
+END
+EstadoDeDesicionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EstadoDeDesicionData.cs
+END
+PrestamoDesembolsoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PrestamoDesembolsoData.cs
+END
+PersonaData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PersonaData.cs
+END
+EvaluacionTipoEvaluacionAspectoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/EvaluacionTipoEvaluacionAspectoData.cs
+END
+ProyectoDictamenFileData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/74/workspace/development/bapin/DataAccess/DataAccess/ProyectoDictamenFileData.cs
+END
+PermisoData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/PermisoData.cs
+END
+MedioVerificacionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/DataAccess/DataAccess/MedioVerificacionData.cs
+END

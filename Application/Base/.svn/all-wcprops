@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/mecon/!svn/ver/125/workspace/development/bapin/Application/Base
+END
+Page.cd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Page.cd
+END
+Util.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Util.cs
+END
+UIContext.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/69/workspace/development/bapin/Application/Base/UIContext.cs
+END
+Configuration.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Configuration.cs
+END
+Base.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/125/workspace/development/bapin/Application/Base/Base.cs
+END

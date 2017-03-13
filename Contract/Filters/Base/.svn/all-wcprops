@@ -1,0 +1,1121 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/100/workspace/development/bapin/Contract/Filters/Base
+END
+_EvaluacionResultadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EvaluacionResultadoFilter.cs
+END
+_MessageAttachFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MessageAttachFilter.cs
+END
+_ProcesoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProcesoFilter.cs
+END
+_EstadoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EstadoTipoFilter.cs
+END
+_CaracterEconomicoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_CaracterEconomicoFilter.cs
+END
+_EvaluacionTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EvaluacionTipoFilter.cs
+END
+_TransferenciaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TransferenciaFilter.cs
+END
+_IndicadorPriorizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorPriorizacionFilter.cs
+END
+_AnioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_AnioFilter.cs
+END
+_ProyectoEtapaEstimadoPeriodoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaEstimadoPeriodoFilter.cs
+END
+_UsuarioPerfilFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_UsuarioPerfilFilter.cs
+END
+_PrestamoEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoEstadoFilter.cs
+END
+_EtapaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EtapaFilter.cs
+END
+_OrganismoFinancieroFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OrganismoFinancieroFilter.cs
+END
+_TansferenciaDetalleFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TansferenciaDetalleFilter.cs
+END
+_FinalidadFuncionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FinalidadFuncionFilter.cs
+END
+_ProyectoCalidadLocalizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoCalidadLocalizacionFilter.cs
+END
+_ProyectoFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoFileFilter.cs
+END
+_EvaluacionTipoEvaluacionAspectoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EvaluacionTipoEvaluacionAspectoFilter.cs
+END
+_ProyectoEtapaRealizadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaRealizadoFilter.cs
+END
+_PrestamoCalificacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoCalificacionFilter.cs
+END
+_DictamenTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_DictamenTipoFilter.cs
+END
+_ProyectoRelacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoRelacionFilter.cs
+END
+_ProyectoPropositoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoPropositoFilter.cs
+END
+_SubProcesoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SubProcesoFilter.cs
+END
+_MessageMediaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MessageMediaFilter.cs
+END
+_ClasificacionGastoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionGastoFilter.cs
+END
+_ProyectoBeneficioIndicadorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoBeneficioIndicadorFilter.cs
+END
+_ProyectoGeoLocalizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/45/workspace/development/bapin/Contract/Filters/Base/_ProyectoGeoLocalizacionFilter.cs
+END
+_PrestamoModalidadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoModalidadFilter.cs
+END
+_CargoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_CargoFilter.cs
+END
+_FuenteFinanciamientoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FuenteFinanciamientoFilter.cs
+END
+_IndicadorObjetivoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorObjetivoFilter.cs
+END
+_MessageSendFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MessageSendFilter.cs
+END
+_ClasificacionGastoRubroFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionGastoRubroFilter.cs
+END
+_SectorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SectorFilter.cs
+END
+_ProyectoSeguimientoProyectoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoSeguimientoProyectoFilter.cs
+END
+_ComentarioTecnicoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ComentarioTecnicoFilter.cs
+END
+_IndicadorRubroFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorRubroFilter.cs
+END
+_SistemaReporteFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaReporteFilter.cs
+END
+_PrestamoFinalidadFuncionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoFinalidadFuncionFilter.cs
+END
+_PlanPeriodoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PlanPeriodoFilter.cs
+END
+_PerfilTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PerfilTipoFilter.cs
+END
+_IndicadorEvolucionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorEvolucionFilter.cs
+END
+_LanguageFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_LanguageFilter.cs
+END
+_DictamenFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_DictamenFilter.cs
+END
+_MessageFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MessageFilter.cs
+END
+_PrestamoOficinaPerfilFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoOficinaPerfilFilter.cs
+END
+_UsuarioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_UsuarioFilter.cs
+END
+_ProyectoComentarioTecnicoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoComentarioTecnicoFilter.cs
+END
+_PrestamoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoFilter.cs
+END
+_OficinaSafProgramaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OficinaSafProgramaFilter.cs
+END
+_FileInfoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FileInfoFilter.cs
+END
+_ProyectoEtapaIndicadorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaIndicadorFilter.cs
+END
+_ProyectoLocalizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoLocalizacionFilter.cs
+END
+_PrestamoSubConvenioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoSubConvenioFilter.cs
+END
+_ProyectoCalidadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoCalidadFilter.cs
+END
+_AuditOperationDetailFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_AuditOperationDetailFilter.cs
+END
+_UsuarioOficinaPerfilFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_UsuarioOficinaPerfilFilter.cs
+END
+_PrestamoAlcanceGeograficoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoAlcanceGeograficoFilter.cs
+END
+_IndicadorDetalleFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorDetalleFilter.cs
+END
+_ActividadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ActividadFilter.cs
+END
+_FinalidadFuncionTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FinalidadFuncionTipoFilter.cs
+END
+_ProyectoCalificacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoCalificacionFilter.cs
+END
+_PerfilActividadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PerfilActividadFilter.cs
+END
+_ProyectoOficinaPerfilFuncionarioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoOficinaPerfilFuncionarioFilter.cs
+END
+_OrganismoPrioridadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OrganismoPrioridadFilter.cs
+END
+_ObjetivoIndicadorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ObjetivoIndicadorFilter.cs
+END
+_ClasificacionGeograficaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionGeograficaFilter.cs
+END
+_PrestamoDictamenFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoDictamenFileFilter.cs
+END
+_PrestamoDictamenFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoDictamenFilter.cs
+END
+_ProyectoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoTipoFilter.cs
+END
+_ProyectoFinFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoFinFilter.cs
+END
+_ConfigurationCategoryFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ConfigurationCategoryFilter.cs
+END
+_EstadoDeDesicionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EstadoDeDesicionFilter.cs
+END
+_ConfigurationFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ConfigurationFilter.cs
+END
+_PrestamoDesembolsoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoDesembolsoFilter.cs
+END
+_ProgramaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProgramaFilter.cs
+END
+_ProyectoRelacionTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoRelacionTipoFilter.cs
+END
+_ProyectoOrigenFinanciamientoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoOrigenFinanciamientoFilter.cs
+END
+_ClasificacionGastoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionGastoTipoFilter.cs
+END
+_NumerationFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_NumerationFilter.cs
+END
+_ObjetivoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ObjetivoFilter.cs
+END
+_ModalidadContratacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ModalidadContratacionFilter.cs
+END
+_ProyectoProductoProyectoEtapaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoProductoProyectoEtapaFilter.cs
+END
+_JurisdiccionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_JurisdiccionFilter.cs
+END
+_PlanTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PlanTipoFilter.cs
+END
+_PrestamoObjetivoEspecificoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoObjetivoEspecificoFilter.cs
+END
+_FuenteFinanciamientoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FuenteFinanciamientoTipoFilter.cs
+END
+_AuditOperationFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_AuditOperationFilter.cs
+END
+_SistemaEntidadEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaEntidadEstadoFilter.cs
+END
+_SistemaCommandFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaCommandFilter.cs
+END
+_ProyectoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoFilter.cs
+END
+_GestionTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_GestionTipoFilter.cs
+END
+_UnidadMedidaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_UnidadMedidaFilter.cs
+END
+_ProyectoIndicadorPriorizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoIndicadorPriorizacionFilter.cs
+END
+_AuditSessionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_AuditSessionFilter.cs
+END
+_PrestamoProductoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/83/workspace/development/bapin/Contract/Filters/Base/_PrestamoProductoFilter.cs
+END
+_SistemaEntidadAccionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaEntidadAccionFilter.cs
+END
+_IndicadorSectorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorSectorFilter.cs
+END
+_PermisoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PermisoFilter.cs
+END
+_TransferenciaDetalleFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TransferenciaDetalleFilter.cs
+END
+_ProyectoPlanFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoPlanFilter.cs
+END
+_ProyectoEtapaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaFilter.cs
+END
+_MedioVerificacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MedioVerificacionFilter.cs
+END
+_EstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EstadoFilter.cs
+END
+_PrestamoOficinaFuncionarioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoOficinaFuncionarioFilter.cs
+END
+_TextCategoryFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TextCategoryFilter.cs
+END
+_SistemaAccionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaAccionFilter.cs
+END
+_TextFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TextFilter.cs
+END
+_MonedaCotizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MonedaCotizacionFilter.cs
+END
+_IndicadorTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorTipoFilter.cs
+END
+_SistemaReporteHistoricoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaReporteHistoricoFilter.cs
+END
+_ProyectoEtapaRealizadoPeriodoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaRealizadoPeriodoFilter.cs
+END
+_PrestamoObjetivoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoObjetivoFilter.cs
+END
+_PrestamoEstadoAsociadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoEstadoAsociadoFilter.cs
+END
+_PrestamoFinanciamientoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoFinanciamientoFilter.cs
+END
+_AdministracionTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_AdministracionTipoFilter.cs
+END
+_OficinaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OficinaFilter.cs
+END
+_SAFFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SAFFilter.cs
+END
+_ProyectoDictamenEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoDictamenEstadoFilter.cs
+END
+_ProyectoDictamenFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/97/workspace/development/bapin/Contract/Filters/Base/_ProyectoDictamenFilter.cs
+END
+_ProyectoDictamenFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/74/workspace/development/bapin/Contract/Filters/Base/_ProyectoDictamenFileFilter.cs
+END
+_IndicadorEvolucionInstanciaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorEvolucionInstanciaFilter.cs
+END
+_PlanPeriodoVersionActivaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PlanPeriodoVersionActivaFilter.cs
+END
+_MessageConfigurationFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/100/workspace/development/bapin/Contract/Filters/Base/_MessageConfigurationFilter.cs
+END
+_ProyectoSeguimientoEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoSeguimientoEstadoFilter.cs
+END
+_ProyectoIndicadorEconomicoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoIndicadorEconomicoFilter.cs
+END
+_PrioridadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrioridadFilter.cs
+END
+_ProyectoSeguimientoFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoSeguimientoFileFilter.cs
+END
+_ProyectoSeguimientoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoSeguimientoFilter.cs
+END
+_ParameterCategoryFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ParameterCategoryFilter.cs
+END
+_ParameterFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ParameterFilter.cs
+END
+_ProyectoBeneficiarioIndicadorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoBeneficiarioIndicadorFilter.cs
+END
+_ProyectoDictamenSeguimientoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoDictamenSeguimientoFilter.cs
+END
+_ActividadPermisoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ActividadPermisoFilter.cs
+END
+_TextLanguageFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_TextLanguageFilter.cs
+END
+_PrestamoFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoFileFilter.cs
+END
+_OrganismoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OrganismoTipoFilter.cs
+END
+_EtapaEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EtapaEstadoFilter.cs
+END
+_PrestamoConvenioFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoConvenioFilter.cs
+END
+_ClasificacionGeograficaTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionGeograficaTipoFilter.cs
+END
+_ProyectoDemoraFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoDemoraFilter.cs
+END
+_IndicadorFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorFilter.cs
+END
+_SistemaEntidadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SistemaEntidadFilter.cs
+END
+_ProyectoOficinaPerfilFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoOficinaPerfilFilter.cs
+END
+_ProyectoPrioridadFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoPrioridadFilter.cs
+END
+_MonedaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_MonedaFilter.cs
+END
+_ProyectoFaseProyectoEtapaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoFaseProyectoEtapaFilter.cs
+END
+_ProyectoEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEstadoFilter.cs
+END
+_IndicadorClaseFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorClaseFilter.cs
+END
+_ProyectoEtapaEstimadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEtapaEstimadoFilter.cs
+END
+_EvaluacionAspectoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EvaluacionAspectoFilter.cs
+END
+_ProcesoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProcesoTipoFilter.cs
+END
+_PersonaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PersonaFilter.cs
+END
+_GeoreferenciacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_GeoreferenciacionFilter.cs
+END
+_ProyectoOrigenFinanciamientoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoOrigenFinanciamientoTipoFilter.cs
+END
+_ProgramaObjetivoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProgramaObjetivoFilter.cs
+END
+_ProyectoEvaluacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoEvaluacionFilter.cs
+END
+_CaracterEconomicoTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_CaracterEconomicoTipoFilter.cs
+END
+_FaseFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_FaseFilter.cs
+END
+_PriorityFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PriorityFilter.cs
+END
+_PerfilFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PerfilFilter.cs
+END
+_PrestamoComponenteFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoComponenteFilter.cs
+END
+_SubProgramaFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SubProgramaFilter.cs
+END
+_IndicadorRelacionRubroFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorRelacionRubroFilter.cs
+END
+_ProyectoProductoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoProductoFilter.cs
+END
+_ProyectoShapeFileFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/45/workspace/development/bapin/Contract/Filters/Base/_ProyectoShapeFileFilter.cs
+END
+_SubConvenioTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SubConvenioTipoFilter.cs
+END
+_ClasificacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ClasificacionFilter.cs
+END
+_ObjetivoSupuestoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ObjetivoSupuestoFilter.cs
+END
+_EstadoDeDesicionHistoricoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EstadoDeDesicionHistoricoFilter.cs
+END
+_PrestamoSubComponenteFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoSubComponenteFilter.cs
+END
+_IndicadorMedioVerificacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_IndicadorMedioVerificacionFilter.cs
+END
+_ProyectoGeoreferenciacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoGeoreferenciacionFilter.cs
+END
+_GeoreferenciacionPuntoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_GeoreferenciacionPuntoFilter.cs
+END
+_OrganismoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OrganismoFilter.cs
+END
+_ModalidadFinancieraFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ModalidadFinancieraFilter.cs
+END
+_PrestamoDictamenEstadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PrestamoDictamenEstadoFilter.cs
+END
+_EvaluacionAspectoEvaluacionResultadoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EvaluacionAspectoEvaluacionResultadoFilter.cs
+END
+_SubJurisdiccionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_SubJurisdiccionFilter.cs
+END
+_PlanVersionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_PlanVersionFilter.cs
+END
+_ProyectoAlcanceGeograficoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoAlcanceGeograficoFilter.cs
+END
+_OficinaSafFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_OficinaSafFilter.cs
+END
+_EntidadTipoFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_EntidadTipoFilter.cs
+END
+_ProyectoSeguimientoLocalizacionFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Filters/Base/_ProyectoSeguimientoLocalizacionFilter.cs
+END

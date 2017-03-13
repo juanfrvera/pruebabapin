@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode roles="*">
+    <!--Paginas principales -->
+    <siteMapNode url="~/Proyecto/ProyectoPageList.aspx" title="Inversión"  description="Inversion" roles="*"/>
+    <siteMapNode url="~/Prestamo/PrestamoPageList.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+    <siteMapNode url="~/Pages/ProgramaPageList.aspx" title="Programa" description="Programa" roles="*"/>      
+    <siteMapNode url="~/Reportes/PageReport.aspx" title="Reportes"  description="Reportes" roles="*"  />    
+    <siteMapNode title="Parámetros"  description="Parametros" roles="*" >
+        <siteMapNode title="Inversión"  description="Inversion" roles="*" >          
+          <siteMapNode url="~/Proyecto/ProyectoTipoPageList.aspx" title="Tipo de Proyecto"  description="ProyectoTipo" />
+          <siteMapNode url="~/Proyecto/ProyectoTipoPageEdit.aspx" title="Tipo de Proyecto"  description="ProyectoTipo" />
+          <siteMapNode url="~/Pages/ModalidadContratacionPageList.aspx" title="Modalidad de Contratación"  description="ModalidadContratacion" />
+          <siteMapNode url="~/Pages/ModalidadContratacionPageEdit.aspx" title="Modalidad de Contratación"  description="ModalidadContratacion" />
+
+          <siteMapNode url="~/Pages/ProcesoPageList.aspx" title="Procesos"  description="Proceso" />
+          <siteMapNode url="~/Pages/ProcesoPageEdit.aspx" title="Procesos"  description="Proceso" />          
+          <siteMapNode url="~/Pages/PlanTipoPageList.aspx" title="Tipo de Plan"  description="PlanTipo" />
+          <siteMapNode url="~/Pages/PlanTipoPageEdit.aspx" title="Tipo de Plan"  description="PlanTipo" />          
+          <siteMapNode url="~/Pages/PlanVersionPageList.aspx" title="Versiones de Plan"  description="PlanVersion" />
+          <siteMapNode url="~/Pages/PlanVersionPageEdit.aspx" title="Versiones de Plan"  description="PlanVersion" />
+          <siteMapNode url="~/Pages/PlanPeriodoPageList.aspx" title="Período de Plan"  description="Plan" roles="*"/>
+          <siteMapNode url="~/Pages/PlanPeriodoPageEdit.aspx" title="Período de Plan"  description="Plan" roles="*"/>
+          <siteMapNode url="~/Pages/PlanPeriodoVersionActivaPageList.aspx" title="Plan Período Versión Activa"  description="PlanPeriodoVersionActiva" />
+          <siteMapNode url="~/Pages/PlanPeriodoVersionActivaPageedit.aspx" title="Plan Período Versión Activa"  description="PlanPeriodoVersionActiva" />          
+          <siteMapNode url="~/Proyecto/ProyectoRelacionTipoPageList.aspx" title="Tipo de Relación"  description="TipoRelacion" roles="*"/>
+          <siteMapNode url="~/Proyecto/ProyectoRelacionTipoPageEdit.aspx" title="Tipo de Relación"  description="TipoRelacion" roles="*"/>
+          <siteMapNode url="~/Pages/FasePageList.aspx" title="Fases"  description="Fases" roles="*"/>
+          <siteMapNode url="~/Pages/FasePageEdit.aspx" title="Fases"  description="Fases" roles="*"/>          
+          <siteMapNode url="~/Pages/EtapaPageList.aspx" title="Etapas"  description="Etapa" />
+          <siteMapNode url="~/Pages/EtapaPageEdit.aspx" title="Etapas"  description="Etapa" />          
+          <siteMapNode url="~/Pages/ClasificacionPageList.aspx" title="Clasificación"  description="Clasificacion" />
+          <siteMapNode url="~/Pages/ClasificacionPageEdit.aspx" title="Clasificación"  description="Clasificacion" />          
+          <siteMapNode url="~/Pages/OrganismoPrioridadPageList.aspx" title="Prioridad de Organismo"  description="OrganismoPrioridad" />
+          <siteMapNode url="~/Pages/OrganismoPrioridadPageEdit.aspx" title="Prioridad de Organismo"  description="OrganismoPrioridad" />
+          <siteMapNode url="~/Proyecto/ProyectoCalificacionPageList.aspx" title="Calificación de Proyecto"  description="ProyectoCalificacion" />
+          <siteMapNode url="~/Proyecto/ProyectoCalificacionPageEdit.aspx" title="Calificación de Proyecto"  description="ProyectoCalificacion" />
+          <siteMapNode url="~/Pages/PrioridadPageList.aspx" title="Priorización"  description="Prioridad" roles="*"/>
+          <siteMapNode url="~/Pages/PrioridadPageEdit.aspx" title="Priorización"  description="Prioridad" roles="*"/>
+        </siteMapNode>
+        <siteMapNode title="Préstamo"  description="Prestamo y Transferencia" roles="*" >
+          <siteMapNode url="~/Pages/OrganismoPageList.aspx" title="Organismo"  description="Organismo" />
+          <siteMapNode url="~/Pages/OrganismoPageEdit.aspx" title="Organismo"  description="Organismo" />          
+          <siteMapNode url="~/Prestamo/PrestamoCalificacionPageList.aspx" title="Calificación de Préstamos"  description="PrestamoCalificacion" />
+          <siteMapNode url="~/Prestamo/PrestamoCalificacionPageEdit.aspx" title="Calificación de Préstamos"  description="PrestamoCalificacion" />
+          <siteMapNode url="~/Pages/GestionTipoPageList.aspx" title="Tipo de Gestión"  description="GestionTipo" />
+          <siteMapNode url="~/Pages/GestionTipoPageEdit.aspx" title="Tipo de Gestión"  description="GestionTipo" />          
+          <siteMapNode url="~/Pages/SubConvenioTipoPageList.aspx" title="Tipo de Subconvenio"  description="SubConvenioTipo" />
+          <siteMapNode url="~/Pages/SubConvenioTipoPageEdit.aspx" title="Tipo de Subconvenio"  description="SubConvenioTipo" />          
+          <siteMapNode url="~/Pages/OrganismoFinancieroPageList.aspx" title="Organismo Financiero"  description="OrganismoFinanciero" />
+          <siteMapNode url="~/Pages/OrganismoFinancieroPageEdit.aspx" title="Organismo Financiero"  description="OrganismoFinanciero" />
+          <siteMapNode url="~/Pages/ModalidadFinancieraPageList.aspx" title="Modalidad"  description="ModalidadFinanciera" />
+          <siteMapNode url="~/Pages/ModalidadFinancieraPageEdit.aspx" title="Modalidad"  description="ModalidadFinanciera" />
+        </siteMapNode>
+        <siteMapNode title="Presupuestarios"  description="Presupuestarios" roles="*" >
+          <siteMapNode url="~/Pages/SectorPageList.aspx" title="Sector"  description="Sector" />
+          <siteMapNode url="~/Pages/SectorPageEdit.aspx" title="Sector"  description="Sector" />          
+          <siteMapNode url="~/Pages/AdministracionTipoPageList.aspx" title="Tipo de Administración"  description="AdministracionTipo" roles="*" />
+          <siteMapNode url="~/Pages/AdministracionTipoPageEdit.aspx" title="Tipo de Administración"  description="AdministracionTipo" roles="*" />
+          <siteMapNode url="~/Pages/EntidadTipoPageList.aspx" title="Tipo de Entidad"  description="EntidadTipo" />
+          <siteMapNode url="~/Pages/EntidadTipoPageEdit.aspx" title="Tipo de Entidad"  description="EntidadTipo" />
+          <siteMapNode url="~/Pages/OrganismoTipoPageList.aspx" title="Tipo de Organismo"  description="OrganismoTipo" />
+          <siteMapNode url="~/Pages/OrganismoTipoPageEdit.aspx" title="Tipo de Organismo"  description="OrganismoTipo" />
+          <siteMapNode url="~/Pages/JurisdiccionPageList.aspx" title="Jurisdicción"  description="Jurisdiccion" />
+          <siteMapNode url="~/Pages/JurisdiccionPageEdit.aspx" title="Jurisdicción"  description="Jurisdiccion" />
+          <siteMapNode url="~/Pages/SubjurisdiccionPageList.aspx" title="Subjurisdicción"  description="Subjurisdiccion" roles="*" />
+          <siteMapNode url="~/Pages/SubjurisdiccionPageEdit.aspx" title="Subjurisdicción"  description="Subjurisdiccion" roles="*" />
+          <siteMapNode url="~/Pages/SAFPageList.aspx" title="SAF"  description="SAF" />
+          <siteMapNode url="~/Pages/SAFPageEdit.aspx" title="SAF"  description="SAF" />
+          <siteMapNode url="~/Pages/MonedaPageList.aspx" title="Moneda"  description="Moneda" />
+          <siteMapNode url="~/Pages/MonedaPageEdit.aspx" title="Moneda"  description="Moneda" />
+          <siteMapNode url="~/Pages/ClasificacionGastoPageList.aspx" title="Objeto del Gasto"  description="ObjetoDelGasto" roles="*" />
+          <siteMapNode url="~/Pages/ClasificacionGastoPageEdit.aspx" title="Objeto del Gasto"  description="ObjetoDelGasto" roles="*" />
+          <siteMapNode url="~/Pages/FinalidadFuncionPageList.aspx" title="Finalidad-Función"  description="FinalidadFuncion" />
+          <siteMapNode url="~/Pages/FinalidadFuncionPageEdit.aspx" title="Finalidad-Función"  description="FinalidadFuncion" />
+          <siteMapNode url="~/Pages/ClasificacionGeograficaPageList.aspx" title="Clasificación Geográfica"  description="ClasificacionGeografica" />
+          <siteMapNode url="~/Pages/ClasificacionGeograficaPageEdit.aspx" title="Clasificación Geográfica"  description="ClasificacionGeografica" />
+          <siteMapNode url="~/Pages/FuenteFinanciamientoPageList.aspx" title="Fuente de Financiamiento"  description="FuenteFinanciamiento" />
+          <siteMapNode url="~/Pages/FuenteFinanciamientoPageEdit.aspx" title="Fuente de Financiamiento"  description="FuenteFinanciamiento" />
+          <siteMapNode url="~/Pages/CaracterEconomicoPageList.aspx" title="Caracter Económico"  description="CaracterEconomico" roles="*" />
+          <siteMapNode url="~/Pages/CaracterEconomicoPageEdit.aspx" title="Caracter Económico"  description="CaracterEconomico" roles="*" />
+        </siteMapNode>
+        <siteMapNode title="Generales"  description="Generales" roles="*" >
+          <siteMapNode url="~/Pages/MedioVerificacionPageList.aspx" title="Medios de Verificación"  description="MedioVerificacion" />
+          <siteMapNode url="~/Pages/MedioVerificacionPageEdit.aspx" title="Medios de Verificación"  description="MedioVerificacion" />
+          <siteMapNode url="~/Pages/IndicadorClasePageList.aspx" title="Indicadores"  description="IndicadorClase" />
+          <siteMapNode url="~/Pages/IndicadorClasePageEdit.aspx" title="Indicadores"  description="IndicadorClase" />
+          <siteMapNode url="~/Pages/IndicadorRubroPageList.aspx" title="Sector de Indicador"  description="IndicadorRubro" />
+          <siteMapNode url="~/Pages/IndicadorRubroPageEdit.aspx" title="Sector de Indicador"  description="IndicadorRubro" />
+          <siteMapNode url="~/Pages/UnidadMedidaPageList.aspx" title="Unidad de Medida"  description="UnidadMedida" />
+          <siteMapNode url="~/Pages/UnidadMedidaPageEdit.aspx" title="Unidad de Medida"  description="UnidadMedida" />
+          <!--<siteMapNode url="~/Proyecto/ProyectoComentarioTecnicoPageList.aspx" title="Tipo de Comentario Técnico"  description="ProyectoComentarioTecnico" />-->
+          <siteMapNode url="~/Pages/CargoPageList.aspx" title="Cargos"  description="Cargo" />
+          <siteMapNode url="~/Pages/CargoPageEdit.aspx" title="Cargos"  description="Cargo" />
+          <!--<siteMapNode url="~/Pages/SistemaEntidadEstadoPageList.aspx" title="Estado por Entidad"  description="SistemaEntidadEstado" />-->
+          <!--<siteMapNode url="~/Pages/SistemaEntidadEstadoPageEdit.aspx" title="Estado por Entidad"  description="SistemaEntidadEstado" />-->
+        </siteMapNode>
+    </siteMapNode>
+    <siteMapNode title="Configuración"  description="Configuracion" roles="*" ></siteMapNode>      
+    <siteMapNode title="Administración"  description="Administración" roles="*">
+      <siteMapNode url="~/Proyecto/ProyectoComentarioTecnicoPageList.aspx" title="Comentarios Técnicos"  description="ComentariosTecnicos"  />
+      <siteMapNode url="~/Proyecto/ProyectoComentarioTecnicoPageEdit.aspx" title="Comentarios Técnicos"  description="ComentariosTecnicos"  />
+      <siteMapNode url="~/Calidad/AdministracionCalidadPageList.aspx" title="Calidad" description="Calidad" roles="*" />
+      <siteMapNode url="~/Calidad/ProyectoCalidadPriorizacionPageEdit.aspx" title="Calidad" description="Calidad" roles="*" />
+      <siteMapNode url="~/Calidad/AdministracionCalidadPageEdit.aspx" title="Calidad" description="Calidad" roles="*" />      
+      <siteMapNode url="~/Calidad/AdministracionCalidadPriorizacionPageEdit.aspx" title="Calidad" description="Calidad" roles="*" />
+      <siteMapNode url="~/Calidad/AdministracionCalidadPriorizacionEdit.ascx" title="Calidad" description="Calidad" roles="*" />
+      <siteMapNode  title="Inversión"  description="Inversión" roles="*" >
+        <siteMapNode url="~/Proyecto/ProyectoSeguimientoPageList.aspx" title="Evaluación de Factibilidad"  description="EvaluacionFactibilidad"  />
+        <siteMapNode url="~/Proyecto/ProyectoSeguimientoPageEdit.aspx" title="Evaluación de Factibilidad"  description="EvaluacionFactibilidad"  />
+        <siteMapNode url="~/Proyecto/ProyectoSeguimientoEstadoPageEdit" title="Evaluación de Factibilidad"  description="EvaluacionFactibilidad"  />
+        <siteMapNode url="~/Proyecto/ProyectoSeguimientoAdjuntarPageEdit.aspx" title="Evaluación de Factibilidad"  description="EvaluacionFactibilidad"  />
+        <siteMapNode url="~/Proyecto/ProyectoDictamenPageList.aspx" title="Dictamen de Inversión"  description="ProyectoDictamen"   />
+        <siteMapNode url="~/Proyecto/ProyectoDictamenPageEdit.aspx" title="Dictamen de Inversión"  description="ProyectoDictamen"   />
+        <siteMapNode url="~/Proyecto/ProyectoDictamenFactibilidadPageEdit.aspx" title="Dictamen de Inversión"  description="ProyectoDictamen"   />
+        <siteMapNode url="~/Proyecto/ProyectoCambioEstructuraPageList.aspx" title="Cambio Estructura"  description="Proyecto Cambio Estructura" />
+      </siteMapNode>
+      <siteMapNode  title="Préstamo"  description="Préstamo" roles="*" >
+        <siteMapNode url="~/Prestamo/PrestamoDictamenPageList.aspx" title="Dictamen de Préstamo"  description="DictamenPrestamo"  />
+        <siteMapNode url="~/Prestamo/PrestamoDictamenPageEdit.aspx" title="Dictamen de Préstamo"  description="DictamenPrestamo"  />
+        <siteMapNode url="~/Prestamo/PrestamoDictamenSeguimientoPageEdit.aspx" title="Dictamen de Préstamo"  description="DictamenPrestamo"  />
+        <siteMapNode url="~/Prestamo/PrestamoDictamenAdjuntarPageList.aspx" title="Dictamen de Préstamo"  description="DictamenPrestamo"  />
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="~/General/MessageSendPageList.aspx" title="Mensajes"  description="Mensajes" roles="*" />
+    <siteMapNode title="Seguridad"  description="Seguridad" roles="*" >
+      <siteMapNode url="~/Pages/OficinaPageList.aspx" title="Oficina"  description="Oficina" />
+      <siteMapNode url="~/Pages/OficinaPageEdit.aspx" title="Oficina"  description="Oficina" />
+      <siteMapNode url="~/Pages/PersonaPageList.aspx" title="Personas"  description="Personas" />
+      <siteMapNode url="~/Pages/PersonaPageEdit.aspx" title="Personas"  description="Personas" />
+      <siteMapNode url="~/General/PerfilPageList.aspx" title="Perfil"  description="Perfil" />
+      <siteMapNode url="~/General/PerfilPageEdit.aspx" title="Perfil"  description="Perfil" />
+      <siteMapNode url="~/General/ActividadPageList.aspx" title="Actividad"  description="Actividad" />
+      <siteMapNode url="~/General/ActividadPageEdit.aspx" title="Actividad"  description="Actividad" />
+      <!--<siteMapNode url="~/General/PermisoPageList.aspx" title="Permiso"  description="Permiso" />
+      <siteMapNode url="~/General/PermisoPageEdit.aspx" title="Permiso"  description="Permiso" />-->
+    </siteMapNode>
+    <siteMapNode url="~/General/Administracion.aspx" title="Admin. Sistema"  description="Admin. Sistema" roles="*"/>
+    <!--Paginas fuera del Menu -->
+    <siteMapNode >
+        <siteMapNode url="~/Proyecto/ProyectoPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoObjetivosPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoCronogramaPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoEvaluacionPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoDNIPPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoAdjuntarPageList.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoCalidadPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Prestamo/PrestamoPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoAlcanceGeograficoPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoObjetivosPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoConvenioPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoComponentesPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoProductosPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoEditDictamenPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="~/Prestamo/PrestamoAdjuntarPageList.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+        <siteMapNode url="" title="Transferencia"  description="Transferencia" roles="*"/>
+        <siteMapNode url="~/Pages/ProgramaObjetivoPageEdit.aspx" title="Objetivos de Programas" description="Objetivos de Programas" roles="*" />
+          
+          <!--<siteMapNode url="~/Pages/ProgramaPageList.aspx" title="Programa"  description="Programa" />-->
+          <!--<siteMapNode url="~/Pages/ProgramaObjetivoPageList.aspx" title="Objetivo de Programas"  description="Objetivo de Programas" roles="*"/>-->
+        </siteMapNode>
+        <siteMapNode url="~/Pages/ProgramaPageEdit.aspx" title="Programa" description="Programa" roles="*">      
+        <siteMapNode url="General/AuditOperationPageEdit.aspx" title="Auditoría de Operaciones"  description="Auditoría de Operaciones"   />
+        <siteMapNode url="General/AuditOperationPageList.aspx" title="Auditoría de Operaciones"  description="Auditoría de Operaciones"   />
+        <siteMapNode url="General/AuditSessionPageEdit.aspx" title="Auditoría de Sesión"  description="Auditoría de Sesión"       />
+        <siteMapNode url="General/AuditSessionPageList.aspx" title="Auditoría de Sesión"  description="Auditoría de Sesión"       />
+        <siteMapNode url="General/ParameterPageList.aspx" title="Parámetros"  description="Parámetros"  />
+        <siteMapNode url="General/ParameterPageEdit.aspx" title="Parámetros"  description="Parámetros"  />
+        <siteMapNode url="General/UsuarioPageList.aspx" title="Usuarios"  description="Usuarios"  />
+        <siteMapNode url="General/UsuarioPageEdit.aspx" title="Usuarios"  description="Usuarios"  />
+
+        <siteMapNode url="General/PermisoPageList.aspx" title="Permisos"  description="Permisos"  />
+        <siteMapNode url="General/PermisoPageEdit.aspx" title="Permiso"  description="Permiso"  />
+
+        <siteMapNode url="General/CacheManagerPageEdit.aspx" title="Limpiar Caché"  description="Limpiar Caché"  />
+      
+        <siteMapNode url="General/LanguagePageList.aspx" title="Lenguajes"  description="Lenguajes"  />
+        <siteMapNode url="General/LanguagePageEdit.aspx" title="Lenguaje"  description="Lenguaje"  />
+        <siteMapNode url="General/TextCategoryPageList.aspx" title="Categoria de Textos"  description="Categorias de Textos"  />
+        <siteMapNode url="General/TextCategoryPageEdit.aspx" title="Categoria de Texto"  description="Categorias de Texto"  />
+        <siteMapNode url="General/TextPageList.aspx" title="Textos"  description="Textos"  />
+        <siteMapNode url="General/TextPageEdit.aspx" title="Texto"  description="Texto"  />
+        <siteMapNode url="General/TextLanguagePageList.aspx" title="Traducciones"  description="Traducciones"  />
+        <siteMapNode url="General/TextLanguagePageEdit.aspx" title="Traducción"  description="Traducción"  />
+        <siteMapNode url="General/NumerationPageList.aspx" title="Numeraciones"  description="Numeraciones"  />
+        <siteMapNode url="General/NumerationPageEdit.aspx" title="Numeración"  description="Numeración"  />
+        <siteMapNode url="General/ParameterCategoryPageList.aspx" title="Categoria de Parámetros"  description="Categoria de Parámetros"  />
+        <siteMapNode url="General/ParameterCategoryPageEdit.aspx" title="Categoria de Parámetro"  description="Categoria de Parámetro"  />
+        <siteMapNode url="General/ConfigurationPageList.aspx" title="Configuraciones"  description="Configuraciones"  />
+        <siteMapNode url="General/ConfigurationPageEdit.aspx" title="Configuración"  description="Configuración"  />
+        <siteMapNode url="General/ConfigurationCategoryPageList.aspx" title="Categoria deConfiguraciones"  description="Categoria de Configuraciones"  />
+        <siteMapNode url="General/ConfigurationCategoryPageEdit.aspx" title="Categoria deConfiguración"  description="Categoria de Configuración"  />
+        <siteMapNode url="Pages/SistemaEntidadPageList.aspx" title="Entidades"  description="Entidades"  />
+        <siteMapNode url="Pages/SistemaEntidadPageEdit.aspx" title="Entidad"  description="Entidad"  />
+        <siteMapNode url="Pages/SistemaAccionPageList.aspx" title="Acciones"  description="Acciones"  />
+        <siteMapNode url="Pages/SistemaAccionPageEdit.aspx" title="Acción"  description="Acción"  />
+        <siteMapNode url="~/Pages/EstadoPageList.aspx" title="Estados"  description="Estado" />
+        <siteMapNode url="~/Pages/EstadoPageEdit.aspx" title="Estados"  description="Estado" />
+        <siteMapNode url="Pages/SistemaEntidadAccionPageList.aspx" title="Acciones x Entidad"  description="Acciones x Entidad"  />
+        <siteMapNode url="Pages/SistemaEntidadAccionPageEdit.aspx" title="Acción x Entidad"  description="Acción x Entidad"  />
+        <siteMapNode url="Pages/ClasificacionGeograficaTipoPageList.aspx" title="Tipos de Clasificación Geográfica"  description="Tipos de Clasificación Geográfica"  />
+        <siteMapNode url="Pages/ClasificacionGeograficaTipoPageEdit.aspx" title="Tipo de Clasificación Geográfica"  description="Tipo de Clasificación Geográfica"  />
+        <siteMapNode url="Pages/CaracterEconomicoTipoPageList.aspx" title="Tipos de Caracter Económico"  description="Tipos de Caracter Económico"  />
+        <siteMapNode url="Pages/CaracterEconomicoTipoPageEdit.aspx" title="Tipo de Caracter Económico"  description="Tipo de Caracter Económico"  />
+        <siteMapNode url="Pages/FinalidadFuncionTipoPageList.aspx" title="Tipos de Finalidad Función"  description="Tipos de Finalidad Función"  />
+        <siteMapNode url="Pages/FinalidadFuncionTipoPageEdit.aspx" title="Tipo de Finalidad Función"  description="Tipo de Finalidad Función"  />
+        <siteMapNode url="Pages/ClasificacionGastoTipoPageList.aspx" title="Tipos de Clasificación del Gasto"  description="Tipos de Clasificación del Gasto"   />
+        <siteMapNode url="Pages/ClasificacionGastoTipoPageEdit.aspx" title="Tipo de Clasificación del Gasto"  description="Tipo de Clasificación del Gasto"  />
+        <siteMapNode url="Pages/FuenteFinanciamientoTipoPageList.aspx" title="Tipos de Fuente de Financiamiento"  description="Tipos de Fuente de Financiamiento"  />
+        <siteMapNode url="Pages/FuenteFinanciamientoTipoPageEdit.aspx" title="Tipo de Fuente de Financiamiento"  description="Tipo de Fuente de Financiamiento"  />
+        <siteMapNode url="Pages/MonedaCotizacionPageList.aspx" title="Cotizaciones"  description="Cotizaciones"  />
+        <siteMapNode url="Pages/MonedaCotizacionPageEdit.aspx" title="Cotización"  description="Cotización"  />
+        <siteMapNode url="General/SistemaCommandPageList.aspx" title="Excels desde Base de Datos"  description="Excels desde Base de Datos"  />
+        <siteMapNode url="General/SistemaCommandPageEdit.aspx" title="Excel desde Base de Datos"  description="Excel desde Base de Datos"  />
+
+
+        <!--Sección Matching-->
+        <siteMapNode url="~/Matching/Matching_Principal.aspx" title="Matching" description="Matching" roles="*" />
+        <siteMapNode url="~/Matching/Matching_ProyectosNoVinculados.aspx" title="Matching Proyectos No Vinculados" description="Matching" roles="*" />
+        <siteMapNode url="~/Matching/Matching_VinculacionManual.aspx" title="Matching Vinculación Manual" description="Matching" roles="*" />
+        <!--Fin Sección Matching-->
+    
+        <!--Sección Cubos-->
+        <siteMapNode url="~/Cubos/CubosPrincipal.aspx" title="Cubos" description="Cubos" roles="*" />
+        <!--Fin Sección Cubos-->
+        
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

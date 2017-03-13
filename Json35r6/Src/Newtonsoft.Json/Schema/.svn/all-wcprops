@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema
+END
+JsonSchemaModel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaModel.cs
+END
+JsonSchemaResolver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaResolver.cs
+END
+JsonSchemaNodeCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaNodeCollection.cs
+END
+JsonSchemaModelBuilder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaModelBuilder.cs
+END
+JsonSchemaWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaWriter.cs
+END
+JsonSchemaConstants.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaConstants.cs
+END
+ValidationEventHandler.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/ValidationEventHandler.cs
+END
+JsonSchema.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchema.cs
+END
+JsonSchemaType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaType.cs
+END
+Extensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/Extensions.cs
+END
+JsonSchemaNode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaNode.cs
+END
+JsonSchemaGenerator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaGenerator.cs
+END
+JsonSchemaBuilder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaBuilder.cs
+END
+UndefinedSchemaIdHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/UndefinedSchemaIdHandling.cs
+END
+ValidationEventArgs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/ValidationEventArgs.cs
+END
+JsonSchemaException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Schema/JsonSchemaException.cs
+END

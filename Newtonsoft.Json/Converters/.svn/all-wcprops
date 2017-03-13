@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters
+END
+HtmlColorConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/HtmlColorConverter.cs
+END
+JavaScriptDateTimeConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/JavaScriptDateTimeConverter.cs
+END
+BinaryConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/BinaryConverter.cs
+END
+DataSetConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/DataSetConverter.cs
+END
+XmlNodeConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/XmlNodeConverter.cs
+END
+DateTimeConverterBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/DateTimeConverterBase.cs
+END
+IsoDateTimeConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/IsoDateTimeConverter.cs
+END
+StringEnumConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/StringEnumConverter.cs
+END
+EntityKeyMemberConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/EntityKeyMemberConverter.cs
+END
+CustomCreationConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/CustomCreationConverter.cs
+END
+DataTableConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/DataTableConverter.cs
+END
+JsonDateTimeSerializationMode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Newtonsoft.Json/Converters/JsonDateTimeSerializationMode.cs
+END

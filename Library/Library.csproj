@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EA3260AF-C5E1-4A82-AE75-27CE692967FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ajax\AjaxControlToolkit.dll" />
+    <Content Include="Data\CarlosAg.ExcelXmlWriter.dll" />
+    <Content Include="Data\itextsharp.dll" />
+    <Content Include="Data\QiHe.Office.dll" />
+    <Content Include="Enterprise Library\DBAuthorizationRuleProvider.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.Database.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Caching.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapter.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.UI.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Configuration.EnvironmentalOverrides.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.CallHandlers.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.CallHandlers.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.AzMan.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.AzMan.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.Cache.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Validation.Configuration.Design.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Validation.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.ObjectBuilder.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.ObjectBuilder2.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.Unity.Configuration.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.Unity.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.Unity.Interception.Configuration.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.Unity.Interception.dll" />
+    <Content Include="Enterprise Library\Microsoft.Practices.Unity.StaticFactory.dll" />
+    <Content Include="Ingematica\Ingematica.Librerias.Helpers.dll" />
+    <Content Include="Microsoft\System.Web.Entity.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

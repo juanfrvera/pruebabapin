@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/mecon/!svn/ver/23/workspace/development/bapin/Contract/Base
+END
+CacheManagerResult.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/CacheManagerResult.cs
+END
+Result.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Result.cs
+END
+IEntityData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/23/workspace/development/bapin/Contract/Base/IEntityData.cs
+END
+IEntityBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/IEntityBusiness.cs
+END
+IGraphicItemInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/IGraphicItemInfo.cs
+END
+IGraphicInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/IGraphicInfo.cs
+END
+EmailNotificationMessage.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/EmailNotificationMessage.cs
+END
+Filter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/Filter.cs
+END
+IEntityService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/IEntityService.cs
+END
+ReportInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/ReportInfo.cs
+END
+EntitiesCache.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/EntitiesCache.cs
+END
+InfoEntity.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Base/InfoEntity.cs
+END

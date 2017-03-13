@@ -1,0 +1,1181 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/mecon/!svn/ver/135/workspace/development/bapin/Business/Business
+END
+PrestamoDictamenEstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/25/workspace/development/bapin/Business/Business/PrestamoDictamenEstadoBusiness.cs
+END
+ProyectoPrioridadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoPrioridadBusiness.cs
+END
+IndicadorRubroBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorRubroBusiness.cs
+END
+SistemaReporteBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/SistemaReporteBusiness.cs
+END
+PrestamoDesembolsoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/PrestamoDesembolsoBusiness.cs
+END
+PersonaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/130/workspace/development/bapin/Business/Business/PersonaBusiness.cs
+END
+ProgramaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProgramaBusiness.cs
+END
+ProyectoDictamenFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/74/workspace/development/bapin/Business/Business/ProyectoDictamenFileBusiness.cs
+END
+CaracterEconomicoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/CaracterEconomicoTipoBusiness.cs
+END
+IndicadorSectorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/IndicadorSectorBusiness.cs
+END
+MedioVerificacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MedioVerificacionBusiness.cs
+END
+IndicadorEvolucionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorEvolucionBusiness.cs
+END
+ClasificacionGastoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionGastoTipoBusiness.cs
+END
+ActividadPermisoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ActividadPermisoBusiness.cs
+END
+ActividadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ActividadBusiness.cs
+END
+EstadoDeDesicionHistoricoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/EstadoDeDesicionHistoricoBusiness.cs
+END
+CargoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/CargoBusiness.cs
+END
+PrestamoConvenioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoConvenioBusiness.cs
+END
+ProyectoDemoraBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoDemoraBusiness.cs
+END
+PrestamoSubComponenteBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoSubComponenteBusiness.cs
+END
+SistemaEntidadEstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SistemaEntidadEstadoBusiness.cs
+END
+OrganismoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OrganismoBusiness.cs
+END
+SubJurisdiccionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SubJurisdiccionBusiness.cs
+END
+PrestamoDictamenDNIPComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/PrestamoDictamenDNIPComposeBusiness.cs
+END
+ProyectoFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoFileBusiness.cs
+END
+IndicadorClaseBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/58/workspace/development/bapin/Business/Business/IndicadorClaseBusiness.cs
+END
+ProyectoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/139/workspace/development/bapin/Business/Business/ProyectoBusiness.cs
+END
+ComentarioTecnicoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ComentarioTecnicoBusiness.cs
+END
+OficinaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OficinaBusiness.cs
+END
+EvaluacionResultadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EvaluacionResultadoBusiness.cs
+END
+IndicadorEvolucionInstanciaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorEvolucionInstanciaBusiness.cs
+END
+AuditSessionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/AuditSessionBusiness.cs
+END
+PlanPeriodoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/131/workspace/development/bapin/Business/Business/PlanPeriodoBusiness.cs
+END
+DictamenTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/DictamenTipoBusiness.cs
+END
+ProyectoBeneficiarioIndicadorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoBeneficiarioIndicadorBusiness.cs
+END
+PrestamoComponenteBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoComponenteBusiness.cs
+END
+ProyectoDictamenSeguimientoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoDictamenSeguimientoBusiness.cs
+END
+TextCategoryBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/TextCategoryBusiness.cs
+END
+MessageMediaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MessageMediaBusiness.cs
+END
+TransferenciaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/TransferenciaBusiness.cs
+END
+ProyectoBeneficioIndicadorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoBeneficioIndicadorBusiness.cs
+END
+ClasificacionGastoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionGastoBusiness.cs
+END
+PrestamoObjetivoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoObjetivoBusiness.cs
+END
+OrganismoPrioridadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OrganismoPrioridadBusiness.cs
+END
+PrestamoEstadoAsociadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/PrestamoEstadoAsociadoBusiness.cs
+END
+ProgramaComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/23/workspace/development/bapin/Business/Business/ProgramaComposeBusiness.cs
+END
+PrestamoDictamenFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoDictamenFileBusiness.cs
+END
+SectorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SectorBusiness.cs
+END
+ProyectoEvaluacionComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEvaluacionComposeBusiness.cs
+END
+OficinaSafBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OficinaSafBusiness.cs
+END
+ProyectoFaseProyectoEtapaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/ProyectoFaseProyectoEtapaBusiness.cs
+END
+ProyectoEtapaEstimadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaEstimadoBusiness.cs
+END
+ProyectoCalidadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoCalidadBusiness.cs
+END
+IndicadorEvolucionComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/67/workspace/development/bapin/Business/Business/IndicadorEvolucionComposeBusiness.cs
+END
+GeoreferenciacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/GeoreferenciacionBusiness.cs
+END
+ProyectoDictamenEstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/25/workspace/development/bapin/Business/Business/ProyectoDictamenEstadoBusiness.cs
+END
+ProyectoIndicadorPriorizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoIndicadorPriorizacionBusiness.cs
+END
+PerfilTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PerfilTipoBusiness.cs
+END
+ObjetivoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ObjetivoBusiness.cs
+END
+ProyectoEtapaIndicadorComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaIndicadorComposeBusiness.cs
+END
+SistemaAccionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SistemaAccionBusiness.cs
+END
+SubProgramaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SubProgramaBusiness.cs
+END
+ProyectoGeoLocalizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/45/workspace/development/bapin/Business/Business/ProyectoGeoLocalizacionBusiness.cs
+END
+PrestamoFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoFileBusiness.cs
+END
+PerfilActividadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PerfilActividadBusiness.cs
+END
+PrestamoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoBusiness.cs
+END
+ProyectoLocalizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoLocalizacionBusiness.cs
+END
+ModalidadFinancieraBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ModalidadFinancieraBusiness.cs
+END
+IndicadorObjetivoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/IndicadorObjetivoBusiness.cs
+END
+ClasificacionGastoRubroBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionGastoRubroBusiness.cs
+END
+ConfigurationBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ConfigurationBusiness.cs
+END
+ObjetivoComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/67/workspace/development/bapin/Business/Business/ObjetivoComposeBusiness.cs
+END
+MessageAttachBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MessageAttachBusiness.cs
+END
+SistemaEntidadAccionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SistemaEntidadAccionBusiness.cs
+END
+ProyectoEvaluacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEvaluacionBusiness.cs
+END
+ProyectoSeguimientoFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoSeguimientoFileBusiness.cs
+END
+FaseBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/FaseBusiness.cs
+END
+TransferenciaDetalleBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/TransferenciaDetalleBusiness.cs
+END
+ProyectoPlanBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoPlanBusiness.cs
+END
+ParameterBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ParameterBusiness.cs
+END
+PrestamoOficinaFuncionarioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoOficinaFuncionarioBusiness.cs
+END
+PerfilBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PerfilBusiness.cs
+END
+ModalidadContratacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ModalidadContratacionBusiness.cs
+END
+ProyectoProductoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoProductoBusiness.cs
+END
+IndicadorPriorizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/IndicadorPriorizacionBusiness.cs
+END
+UsuarioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/UsuarioBusiness.cs
+END
+UsuarioPerfilBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/UsuarioPerfilBusiness.cs
+END
+OrganismoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OrganismoTipoBusiness.cs
+END
+ProyectoComentarioTecnicoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoComentarioTecnicoBusiness.cs
+END
+ClasificacionGeograficaTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionGeograficaTipoBusiness.cs
+END
+ProyectoObjetivoComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/ProyectoObjetivoComposeBusiness.cs
+END
+IndicadorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorBusiness.cs
+END
+GeoreferenciacionPuntoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/GeoreferenciacionPuntoBusiness.cs
+END
+ProyectoCalidadLocalizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoCalidadLocalizacionBusiness.cs
+END
+ProyectoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoTipoBusiness.cs
+END
+AdministracionTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/AdministracionTipoBusiness.cs
+END
+GestionTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/GestionTipoBusiness.cs
+END
+PrestamoSubConvenioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoSubConvenioBusiness.cs
+END
+EstadoDeDesicionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EstadoDeDesicionBusiness.cs
+END
+EvaluacionTipoEvaluacionAspectoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/EvaluacionTipoEvaluacionAspectoBusiness.cs
+END
+ProyectoDictamenBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/74/workspace/development/bapin/Business/Business/ProyectoDictamenBusiness.cs
+END
+EstadoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/EstadoTipoBusiness.cs
+END
+PermisoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PermisoBusiness.cs
+END
+ProyectoEtapaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaBusiness.cs
+END
+NumerationBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/NumerationBusiness.cs
+END
+ProyectoDictamenFilesComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/74/workspace/development/bapin/Business/Business/ProyectoDictamenFilesComposeBusiness.cs
+END
+ProyectoPropositoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoPropositoBusiness.cs
+END
+LanguageBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/LanguageBusiness.cs
+END
+AnioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/AnioBusiness.cs
+END
+PlanTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/131/workspace/development/bapin/Business/Business/PlanTipoBusiness.cs
+END
+AuditOperationBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/AuditOperationBusiness.cs
+END
+SistemaReporteHistoricoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/SistemaReporteHistoricoBusiness.cs
+END
+ProyectoProductoIntermedioComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/120/workspace/development/bapin/Business/Business/ProyectoProductoIntermedioComposeBusiness.cs
+END
+FileInfoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/FileInfoBusiness.cs
+END
+ProyectoGeoreferenciacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoGeoreferenciacionBusiness.cs
+END
+ProyectoEtapaIndicadorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaIndicadorBusiness.cs
+END
+SistemaEntidadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SistemaEntidadBusiness.cs
+END
+MessageSendBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MessageSendBusiness.cs
+END
+ObjetivoIndicadorBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ObjetivoIndicadorBusiness.cs
+END
+ClasificacionGeograficaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionGeograficaBusiness.cs
+END
+ProyectoFinBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/ProyectoFinBusiness.cs
+END
+ProyectoSeguimientoProyectoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoSeguimientoProyectoBusiness.cs
+END
+ProyectoSeguimientoLocalizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoSeguimientoLocalizacionBusiness.cs
+END
+UnidadMedidaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/UnidadMedidaBusiness.cs
+END
+ProyectoOrigenFinanciamientoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoOrigenFinanciamientoTipoBusiness.cs
+END
+PrestamoProductoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/132/workspace/development/bapin/Business/Business/PrestamoProductoBusiness.cs
+END
+ProyectoSeguimientoEstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/25/workspace/development/bapin/Business/Business/ProyectoSeguimientoEstadoBusiness.cs
+END
+ProyectoFilesComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoFilesComposeBusiness.cs
+END
+PrioridadBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrioridadBusiness.cs
+END
+EstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EstadoBusiness.cs
+END
+CaracterEconomicoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/CaracterEconomicoBusiness.cs
+END
+PriorityBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PriorityBusiness.cs
+END
+MessageBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MessageBusiness.cs
+END
+ProyectoProductoProyectoEtapaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoProductoProyectoEtapaBusiness.cs
+END
+TextBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/TextBusiness.cs
+END
+PrestamoOficinaPerfilBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoOficinaPerfilBusiness.cs
+END
+MonedaCotizacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MonedaCotizacionBusiness.cs
+END
+IndicadorDetalleBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/IndicadorDetalleBusiness.cs
+END
+ProyectoCalificacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoCalificacionBusiness.cs
+END
+ObjetivoSupuestoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ObjetivoSupuestoBusiness.cs
+END
+FinalidadFuncionTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/FinalidadFuncionTipoBusiness.cs
+END
+EtapaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EtapaBusiness.cs
+END
+ProyectoCalidadComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/39/workspace/development/bapin/Business/Business/ProyectoCalidadComposeBusiness.cs
+END
+IndicadorMedioVerificacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorMedioVerificacionBusiness.cs
+END
+PrestamoFinanciamientoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoFinanciamientoBusiness.cs
+END
+PrestamoDictamenBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/25/workspace/development/bapin/Business/Business/PrestamoDictamenBusiness.cs
+END
+EvaluacionAspectoEvaluacionResultadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EvaluacionAspectoEvaluacionResultadoBusiness.cs
+END
+ProyectoOficinaPerfilBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/ProyectoOficinaPerfilBusiness.cs
+END
+EvaluacionAspectoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EvaluacionAspectoBusiness.cs
+END
+PrestamoFinalidadFuncionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoFinalidadFuncionBusiness.cs
+END
+PrestamoDictamenFilesComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoDictamenFilesComposeBusiness.cs
+END
+PlanPeriodoVersionActivaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PlanPeriodoVersionActivaBusiness.cs
+END
+MessageConfigurationBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/100/workspace/development/bapin/Business/Business/MessageConfigurationBusiness.cs
+END
+ProyectoIndicadorEconomicoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoIndicadorEconomicoBusiness.cs
+END
+ProyectoOrigenFinanciamientoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoOrigenFinanciamientoBusiness.cs
+END
+ProyectoRelacionTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoRelacionTipoBusiness.cs
+END
+EvaluacionTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EvaluacionTipoBusiness.cs
+END
+DictamenBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/DictamenBusiness.cs
+END
+JurisdiccionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/JurisdiccionBusiness.cs
+END
+ProyectoShapeFileBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/48/workspace/development/bapin/Business/Business/ProyectoShapeFileBusiness.cs
+END
+PrestamoObjetivoEspecificoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoObjetivoEspecificoBusiness.cs
+END
+SubConvenioTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SubConvenioTipoBusiness.cs
+END
+PrestamoAlcanceGeograficoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoAlcanceGeograficoBusiness.cs
+END
+ClasificacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ClasificacionBusiness.cs
+END
+FuenteFinanciamientoTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/FuenteFinanciamientoTipoBusiness.cs
+END
+ProyectoEtapaEstimadoPeriodoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaEstimadoPeriodoBusiness.cs
+END
+IndicadorTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorTipoBusiness.cs
+END
+TextLanguageBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/TextLanguageBusiness.cs
+END
+ProyectoIntervencionDNIPComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/73/workspace/development/bapin/Business/Business/ProyectoIntervencionDNIPComposeBusiness.cs
+END
+PrestamoEstadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoEstadoBusiness.cs
+END
+OficinaSafProgramaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OficinaSafProgramaBusiness.cs
+END
+ProyectoEtapaRealizadoPeriodoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaRealizadoPeriodoBusiness.cs
+END
+FinalidadFuncionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/FinalidadFuncionBusiness.cs
+END
+PlanVersionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/131/workspace/development/bapin/Business/Business/PlanVersionBusiness.cs
+END
+ProyectoAlcanceGeograficoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoAlcanceGeograficoBusiness.cs
+END
+PrestamoFilesComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoFilesComposeBusiness.cs
+END
+MonedaBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/MonedaBusiness.cs
+END
+ProyectoCronogramaComposeBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/127/workspace/development/bapin/Business/Business/ProyectoCronogramaComposeBusiness.cs
+END
+EntidadTipoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/EntidadTipoBusiness.cs
+END
+SistemaCommandBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SistemaCommandBusiness.cs
+END
+ConfigurationCategoryBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ConfigurationCategoryBusiness.cs
+END
+SAFBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/SAFBusiness.cs
+END
+ProgramaObjetivoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProgramaObjetivoBusiness.cs
+END
+ProcesoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProcesoBusiness.cs
+END
+AuditOperationDetailBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/AuditOperationDetailBusiness.cs
+END
+ProyectoEtapaRealizadoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoEtapaRealizadoBusiness.cs
+END
+ProyectoSeguimientoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/135/workspace/development/bapin/Business/Business/ProyectoSeguimientoBusiness.cs
+END
+ParameterCategoryBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ParameterCategoryBusiness.cs
+END
+PrestamoCalificacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/PrestamoCalificacionBusiness.cs
+END
+ProyectoRelacionBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/ProyectoRelacionBusiness.cs
+END
+UsuarioOficinaPerfilBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/25/workspace/development/bapin/Business/Business/UsuarioOficinaPerfilBusiness.cs
+END
+IndicadorRelacionRubroBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/IndicadorRelacionRubroBusiness.cs
+END
+SubProcesoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/SubProcesoBusiness.cs
+END
+FuenteFinanciamientoBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/FuenteFinanciamientoBusiness.cs
+END
+OrganismoFinancieroBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/38/workspace/development/bapin/Business/Business/OrganismoFinancieroBusiness.cs
+END
+ProyectoOficinaPerfilFuncionarioBusiness.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Business/Business/ProyectoOficinaPerfilFuncionarioBusiness.cs
+END

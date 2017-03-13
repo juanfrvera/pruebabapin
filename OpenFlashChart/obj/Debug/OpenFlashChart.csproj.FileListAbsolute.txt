@@ -1,0 +1,4 @@
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\bin\Debug\OpenFlashChart.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\bin\Debug\OpenFlashChart.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\obj\Debug\OpenFlashChart.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\obj\Debug\OpenFlashChart.pdb

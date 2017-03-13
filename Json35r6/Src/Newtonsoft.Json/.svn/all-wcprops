@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json
+END
+JsonReaderException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonReaderException.cs
+END
+JsonConverterCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonConverterCollection.cs
+END
+JsonSerializerSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonSerializerSettings.cs
+END
+JsonWriterException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonWriterException.cs
+END
+JsonConverterAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonConverterAttribute.cs
+END
+DefaultValueHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/DefaultValueHandling.cs
+END
+TypeNameHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/TypeNameHandling.cs
+END
+mssccprj.scc
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/mssccprj.scc
+END
+ConstructorHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/ConstructorHandling.cs
+END
+JsonReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonReader.cs
+END
+ReferenceLoopHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/ReferenceLoopHandling.cs
+END
+Newtonsoft.Json.Compact.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Newtonsoft.Json.Compact.csproj
+END
+ObjectCreationHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/ObjectCreationHandling.cs
+END
+JsonContainerAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonContainerAttribute.cs
+END
+JsonTextReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonTextReader.cs
+END
+JsonConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonConverter.cs
+END
+SerializationBinder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/SerializationBinder.cs
+END
+JsonIgnoreAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonIgnoreAttribute.cs
+END
+PreserveReferencesHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/PreserveReferencesHandling.cs
+END
+Newtonsoft.Json.Silverlight.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Newtonsoft.Json.Silverlight.csproj
+END
+MemberSerialization.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/MemberSerialization.cs
+END
+JsonWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonWriter.cs
+END
+Dynamic.snk
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Dynamic.snk
+END
+JsonTextWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonTextWriter.cs
+END
+NullValueHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/NullValueHandling.cs
+END
+Required.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Required.cs
+END
+JsonObjectAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonObjectAttribute.cs
+END
+JsonSerializationException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonSerializationException.cs
+END
+JsonArrayAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonArrayAttribute.cs
+END
+StreamingContext.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/StreamingContext.cs
+END
+JsonValidatingReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonValidatingReader.cs
+END
+Newtonsoft.Json.Net20.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Newtonsoft.Json.Net20.csproj
+END
+JsonPropertyAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonPropertyAttribute.cs
+END
+JsonSerializer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonSerializer.cs
+END
+MissingMemberHandling.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/MissingMemberHandling.cs
+END
+IJsonLineInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/IJsonLineInfo.cs
+END
+Newtonsoft.Json.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/Newtonsoft.Json.csproj
+END
+JsonToken.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonToken.cs
+END
+JsonConvert.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json/JsonConvert.cs
+END

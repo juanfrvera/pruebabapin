@@ -1,0 +1,17 @@
+﻿
+
+
+.SolicitudItemInput
+{
+width:230px;    
+}
+
+.cumpleCondicion
+{
+  color: Green;
+}
+
+.noCumpleCondicion
+{
+  color : Red;
+}

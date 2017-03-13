@@ -1,0 +1,204 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="General.master.cs" Inherits="Application.Shared.General" %>
+<%@ Register TagPrefix ="ctlHeader" Src= "~/App_Shared/HeaderGeneral.ascx" TagName ="ctlHeaderGeneral"  %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>BAPIN</title>
+<style type="text/css">
+.imgButton
+{
+    width:23px;
+    height:23px;
+    vertical-align:bottom;
+    padding:0px 0px 0px 0px;
+}
+</style>
+<script id="General" type="text/javascript">
+
+function IsNumeric(sText)
+{
+    if(sText)
+    { 
+       var ValidChars = "0123456789.,";
+       var IsNumber=true;
+       var Char;
+
+     
+       for (i = 0; i < sText.length && IsNumber == true; i++) 
+          { 
+          Char = sText.charAt(i); 
+          if (ValidChars.indexOf(Char) == -1) 
+             {
+             IsNumber = false;
+             }
+          }
+       return IsNumber;
+    }
+   return false;
+}
+
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split(',');
+	x1 = x[0];
+	x2 = x.length > 1 ? ',' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + '.' + '$2');
+	}
+	return x1 + x2;
+}
+
+function setActiveTab(tabName, tabIndex) {
+    var tabs = $find(tabName);
+    if (tabs != null)
+        tabs.set_activeTabIndex(tabIndex);
+    else
+        alert(tabName);
+}
+
+function OnClientCancelClick(docName) {
+    document.form1.action = docName;
+    document.form1.submit();
+}        
+    function contains(arr, element) {        
+        for (var i = 0; i < arr.length; i++)
+            if (arr[i] == element)return true;
+        return false;
+    }
+    function HabilitarBoton2(objectName, buttonName) {
+    var ok = false;
+    var newString;
+    var buttons  = buttonName.split(';');
+    var strOtherObjectName;
+    for(var k = 0, count = buttons.length;k< count;k++ )
+    {
+        var button  = buttons[k];
+        if(button.name != "" && button.name != undefined )
+        {   
+            for (i = 0; i < document.forms[0].elements.length; i++) {
+                elm = document.forms[0].elements[i];
+                var name = elm.name;               
+                if (elm.type == 'submit') {
+
+                    //Ubica y extrae el nombre "real" correspondiente al item que se evalua
+                    //Ej. el control se llama ctl00$ContentPlaceHolder1$GridView1$ctl02$cbSeleccion, pero el nombre asignado en la página es cbSeleccion
+                    //Entonces se obtiene "cbSeleccion"
+                    newString = elm.name;
+                    j = newString.lastIndexOf("$");
+                    if (j >= 0) {
+                        strOtherObjectName = newString.substr(j + 1);
+                    }
+                    else {
+                        strOtherObjectName = newString;
+                    }
+                    //Compara si el checkbox es del mismo grupo que se quiere desmarcar verificando si el nombre "extraido"
+                    //(en el ej. "cbSeleccion" corresponde al nombre que se le asignó en la pagina
+                    if (button.name == strOtherObjectName) {               
+                        elm.disabled = !HayChequeado2(objectName);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function HayChequeado2(objectName) {
+
+    var ok = false;
+    var newString;
+    var strOtherObjectName;
+
+    for (i = 0; i < document.forms[0].elements.length; i++) {
+        elm = document.forms[0].elements[i];
+        if (elm.type == 'checkbox' || elm.type == 'radio') {
+
+            //Ubica y extrae el nombre "real" correspondiente al item que se evalua
+            //Ej. el control se llama ctl00$ContentPlaceHolder1$GridView1$ctl02$cbSeleccion, pero el nombre asignado en la página es cbSeleccion
+            //Entonces se obtiene "cbSeleccion"
+            newString = elm.name;
+            j = newString.lastIndexOf("$");
+            if (j >= 0) {
+                strOtherObjectName = newString.substr(j + 1);
+            }
+            else {
+                strOtherObjectName = newString;
+            }
+
+            //Compara si el checkbox es del mismo grupo que se quiere desmarcar verificando si el nombre "extraido"
+            //(en el ej. "cbSeleccion" corresponde al nombre que se le asignó en la pagina
+            if (strOtherObjectName == objectName) {
+                if (elm.checked) {
+                    ok = true;
+                    break;
+                }
+            }
+        }
+    }
+    return ok;
+}
+</script>
+<script id="doPostBack" >
+//SE COMETA ESTO POR QUE DEJA DE FUNCIONAR EL TAB DE PAGINAS
+//function ___doPostBack(eventTarget, eventArgument) {
+//   document.formMaster.__EVENTTARGET.value = eventTarget;
+//   document.formMaster.__EVENTARGUMENT.value = eventArgument;
+//   document.formMaster.submit();
+//}   
+</script>
+<style type ="text/css" >
+        #sb-loading-inner span{background:url(../Images/loading.gif) no-repeat;padding-left:34px;display:inline-block;}
+</style>
+
+</head>
+<body >
+<form id="formMaster" runat="server"    >
+<ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" EnableScriptGlobalization="true" EnableScriptLocalization="true" EnablePartialRendering="true" />    
+<ctlHeader:ctlHeaderGeneral id="ctlMasterHeader" runat="server" ></ctlHeader:ctlHeaderGeneral>
+    <div  class="navExtendida"  >
+    <div  id="nav"  >
+    <asp:Menu ID="MenuPrincipal" runat="server" Orientation="Horizontal" Width="300px"
+                MaximumDynamicDisplayLevels="2" DynamicEnableDefaultPopOutImage="False" StaticEnableDefaultPopOutImage="False"
+                DynamicHorizontalOffset="-10" DynamicVerticalOffset="3" >
+                <StaticSelectedStyle CssClass="menutopover" />
+                <StaticMenuItemStyle CssClass="menutop" />
+                <DynamicMenuStyle CssClass="menuchild" />
+                <DynamicSelectedStyle CssClass="menuchildover" />
+                <DynamicMenuItemStyle CssClass="menuchild" Height="20px" />
+                <DynamicHoverStyle CssClass="menuchildover" />
+                <StaticHoverStyle CssClass="menutopover" />
+    </asp:Menu>
+    </div>
+    </div> 
+    <div id="ContenidoPrincipal" style ="width:1000px"  >
+            <br/>
+            <asp:SiteMapPath ID="SiteMapPath" ParentLevelsDisplayed="0" runat="server" PathSeparator=""  NodeStyle-CssClass="SitemapNode" ></asp:SiteMapPath>
+            <asp:ContentPlaceHolder ID="ContenidoPrincipal"  runat="server"  />
+            <uc:MessageBar ID="MessageBarForm" runat="server" />
+    </div>
+    <script type="text/javascript">
+    Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest); 
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequest);
+    var oldCursor=undefined; 
+    function BeginRequest(sender, args)
+    {
+        try{          
+            Shadowbox.init({handleOversize: "drag",modal: true}); 
+            Shadowbox.open({content: '../Images/loading.gif',player: 'img',title: '',height: 30,width: 30});
+            oldCursor = document.body.style.cursor;
+            document.body.style.cursor = 'wait';
+        }catch(e){}
+    } 
+    function EndRequest(sender, args) 
+    { 
+        try{
+            Shadowbox.close();
+            document.body.style.cursor = oldCursor;
+        }catch(e){}
+    } 
+    </script>     
+</form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+
+<asp:WebPartZone runat="server" 
+    EmptyZoneText="Agregue contenidos a esta zona" 
+    CssClass="webpartzone" 
+    BorderWidth="0" 
+    WebPartVerbRenderMode="TitleBar"
+    DragHighlightColor="Black">
+
+    <HeaderStyle CssClass="headerbar" />
+    <FooterStyle CssClass="footer" />
+    <PartChromeStyle CssClass="chrome" />
+    <PartStyle CssClass="part" />
+    <PartTitleStyle CssClass="titlebar"  />
+    
+    <CloseVerb Description="Cerrar"  Text="Cerrar" ImageUrl="images/webparts/close.gif" />
+    <MinimizeVerb Description="Minimizar"  Text="Minimizar" ImageUrl="images/webparts/minimize.gif" />
+    <RestoreVerb Description="Restaurar"  Text="Restaurar" ImageUrl="images/webparts/restore.gif" />
+    <EditVerb Description="Editar" Text="Editar"  ImageUrl="images/webparts/edit.gif" />
+    <DeleteVerb Description="Eliminar" Text="Eliminar"  ImageUrl="images/webparts/delete.gif" />
+</asp:WebPartZone>
+
+<asp:CatalogZone runat="server"  EmptyZoneText="No hay catálogos disponibles" 
+    HeaderText="Catálogo" InstructionText="Seleccione un catálogo"
+    SelectTargetZoneText="Agregar a:" 
+    CssClass="webpartzone" VerbButtonType="Link">
+
+    <HeaderStyle CssClass="header" />
+    <FooterStyle CssClass="footer" />
+    <PartStyle CssClass="part" />
+    <PartChromeStyle CssClass="chrome" />
+    <PartTitleStyle CssClass="title" />
+    <EditUIStyle CssClass="edit" />
+    <InstructionTextStyle CssClass="instruction" />
+    <ErrorStyle CssClass="error" />
+    <EmptyZoneTextStyle CssClass="empty" />    
+    <PartLinkStyle CssClass="link" />
+
+    <AddVerb Description="Agrega el contenido a la zona" Text="Agregar" />
+    <CloseVerb Description="Cerrar catálogo" Text="Cerrar" />
+    <HeaderCloseVerb Description="Cerrar zona" Text="Cerrar"/>
+</asp:CatalogZone>
+
+<asp:PageCatalogPart runat="server"  />
+<asp:DeclarativeCatalogPart runat="server" >
+</asp:DeclarativeCatalogPart>
+
+
+<asp:EditorZone runat="server" 
+    VerbButtonType="Link" 
+    EmptyZoneText="No hay editores disponibles" 
+    InstructionText="Modifique las propiedades y haga click en Aceptar o Aplicar"
+    HeaderText="Editor"  
+    CssClass="webpartzone">
+    
+    <HeaderStyle CssClass="header" />
+    <FooterStyle CssClass="footer" />
+    <PartStyle CssClass="part" />
+    <PartChromeStyle CssClass="chrome" />
+    <PartTitleStyle CssClass="wtitle" />
+    <EditUIStyle CssClass="edit" />
+    <InstructionTextStyle CssClass="instruction" />
+    <ErrorStyle CssClass="error" />
+    <EmptyZoneTextStyle CssClass="empty" />
+
+    <HeaderCloseVerb Description="Cerrar editor" Text="Cerrar" />
+    <ApplyVerb Description="Aplicar los cambios" Text="Aplicar" />
+    <CancelVerb Description="Cancelar los cambios" Text="Cancelar"  />
+    <OKVerb Description="Aplicar los cambios y cerrar el editor" Text="Aceptar" />
+    
+</asp:EditorZone>
+
+<asp:Image SkinID="WebPartAddContent" runat="server" 
+     ImageAlign="AbsMiddle"
+     ImageUrl="images/webparts/add.gif" />

@@ -1,0 +1,31 @@
+
+[AssemblyCache]
+"%SystemRoot%\Microsoft.net"
+"%ProgramFiles%\Reference Assemblies"
+"%ProgramFiles%\Microsoft.net"
+"%ProgramFiles%\Microsoft Silverlight"
+
+[AssemblyManager]
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\mscorlib.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Xml.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Data.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Web.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Drawing.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Windows.Forms.dll"
+"%SystemRoot%\Microsoft.net\Framework\v2.0.50727\System.Configuration.dll"
+"C:\Gevenue\TigoBoCpa\Aplicacion\TigoBoCpa\Gevenue.TigoBoCpa.Site\Bin\Gevenue.TigoBoCpa.Web.dll"
+"C:\Gevenue\TigoBoCpa\Aplicacion\TigoBoCpa\Gevenue.TigoBoCpa.Site\Bin\Gevenue.Web.dll"
+"C:\Gevenue\TigoBoCpa\Aplicacion\TigoBoCpa\Gevenue.TigoBoCpa.Site\Bin\Gevenue.Web.Ajax.dll"
+"C:\Gevenue\TigoBoCpa\Aplicacion\TigoBoCpa\Gevenue.TigoBoCpa.Site\Bin\AjaxPro.dll"
+"C:\Gevenue\TigoBoCpa\Aplicacion\TigoBoCpa\Gevenue.TigoBoCpa.Site\Bin\Gevenue.Basic.dll"
+
+[LanguageManager]
+ActiveLanguage="C#"
+
+[WindowManager]
+X="-102"
+Y="12"
+Width="403"
+Height="760"
+Pane="882"

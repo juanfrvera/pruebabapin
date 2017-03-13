@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/jspdf2
+END
+jspdf.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/jspdf2/jspdf.js
+END
+jspdf.plugin.addimage.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/jspdf2/jspdf.plugin.addimage.js
+END
+jspdf.plugin.split_text_to_size.js
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/2/workspace/development/bapin/Application/App_Scripts/jspdf2/jspdf.plugin.split_text_to_size.js
+END

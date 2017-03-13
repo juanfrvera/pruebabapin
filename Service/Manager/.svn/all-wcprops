@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/mecon/!svn/ver/3/workspace/development/bapin/Service/Manager
+END
+ParameterManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/ParameterManager.cs
+END
+DatabaseFileManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/DatabaseFileManager.cs
+END
+DirectoryFileManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/DirectoryFileManager.cs
+END
+MessageManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/MessageManager.cs
+END
+TextManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/3/workspace/development/bapin/Service/Manager/TextManager.cs
+END
+AuditManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/AuditManager.cs
+END
+PerfilCache.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/PerfilCache.cs
+END
+EstadosCache.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/EstadosCache.cs
+END
+AccionesCache.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/AccionesCache.cs
+END
+EmailNotificationManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/EmailNotificationManager.cs
+END
+ExceptionManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/ExceptionManager.cs
+END
+EstadoDeDesicionCache.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Manager/EstadoDeDesicionCache.cs
+END

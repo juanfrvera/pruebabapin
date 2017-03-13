@@ -1,0 +1,26 @@
+﻿.defaultTabPanel
+{
+	border: 10px solid;
+	border-color: Fuchsia;
+	font-size: xx-large;
+}
+.scroll 
+{
+     width:950px;     
+     overflow:scroll;
+}
+.scrollAuto 
+{
+     width:950px;     
+     overflow:auto;
+}
+.scrollHeight
+{
+     width:950px;
+     max-height: 500px;  
+     overflow:auto;
+}
+.FixedHeader {
+     position: absolute;
+     padding: 0 5px;     
+}   

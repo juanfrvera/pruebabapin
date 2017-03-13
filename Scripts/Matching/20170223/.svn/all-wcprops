@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/mecon/!svn/ver/137/workspace/sql/Matching/20170223
+END
+QueryModificacionEstructuraTablas_Presup.sql
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/136/workspace/sql/Matching/20170223/QueryModificacionEstructuraTablas_Presup.sql
+END
+02.sql
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/mecon/!svn/ver/137/workspace/sql/Matching/20170223/02.sql
+END
+03.sql
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/mecon/!svn/ver/137/workspace/sql/Matching/20170223/03.sql
+END
+04.sql
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/mecon/!svn/ver/137/workspace/sql/Matching/20170223/04.sql
+END
+05.sql
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/mecon/!svn/ver/137/workspace/sql/Matching/20170223/05.sql
+END
+SSIS_BAPIN.dtsx
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/mecon/!svn/ver/136/workspace/sql/Matching/20170223/SSIS_BAPIN.dtsx
+END
+SSIS_BAPIN_MATCHING.SSISDeploymentManifest
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/136/workspace/sql/Matching/20170223/SSIS_BAPIN_MATCHING.SSISDeploymentManifest
+END
+SSIS_BAPIN_CONFIG.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/136/workspace/sql/Matching/20170223/SSIS_BAPIN_CONFIG.xml
+END

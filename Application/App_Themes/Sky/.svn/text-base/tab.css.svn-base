@@ -1,0 +1,76 @@
+/* HEADER */
+
+.tab .ajax__tab_header
+{
+	font-weight: bold;
+	border-bottom: 1px solid #6699cc;
+	height:26px;
+	FONT-FAMILY: Verdana;
+}
+
+/* BODY */
+
+.tab .ajax__tab_body
+{
+	color: Black;
+	background-color: white;
+	padding: 10px;
+	border: 1px solid #6699cc;
+	border-top:0px;
+	FONT-FAMILY: Verdana;
+}
+
+/* NORMAL */
+
+.tab .ajax__tab_outer
+{
+	color: #003366;
+	background: url(images/layout/linea2.jpg) #e0ebf6 repeat-x;	
+	border: 1px solid #6699cc;
+	margin: 1px 2px 1px 0px;
+	padding: 5px;
+}
+.tab .ajax__tab_inner
+{
+}
+.tab .ajax__tab_tab
+{
+}
+
+/* ACTIVE */
+
+.tab .ajax__tab_active .ajax__tab_outer
+{
+	color: #336699;
+	background: url(images/layout/linea2.jpg) #ffffff 0px -240px repeat-x;		
+	border: 1px solid #6699cc;
+	margin: 1px 2px 1px 0px;
+	padding: 5px 5px 6px 5px;
+	border-bottom: 0;
+}
+.tab .ajax__tab_active .ajax__tab_inner
+{
+}
+.tab .ajax__tab_active .ajax__tab_tab
+{
+}
+.tab .ajax__tab_active .ajax__tab_outer:hover
+{
+	color: #336699;
+	background-color: white;
+	text-decoration: none;	
+}
+
+/* HOVER */
+
+.tab .ajax__tab_hover .ajax__tab_outer
+{
+	text-decoration: underline;
+}
+.tab .ajax__tab_hover .ajax__tab_inner
+{
+}
+.tab .ajax__tab_hover .ajax__tab_tab
+{
+}
+

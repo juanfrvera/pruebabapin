@@ -1,0 +1,2327 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/mecon/!svn/ver/126/workspace/development/bapin/Application/General
+END
+TextCategoryList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryList.ascx.cs
+END
+PerfilTipoEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoEdit.ascx
+END
+PermisoFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoFilter.ascx
+END
+ActividadList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadList.ascx
+END
+PerfilTipoFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoFilter.ascx.cs
+END
+PermisoPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageList.aspx.cs
+END
+ParameterCategoryEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryEdit.ascx.cs
+END
+LanguageFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageFilter.ascx
+END
+PerfilEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilEdit.ascx.designer.cs
+END
+AuditSessionPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageEdit.aspx
+END
+NumerationPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageList.aspx.designer.cs
+END
+NumerationEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationEdit.ascx.cs
+END
+AnioEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioEdit.ascx
+END
+ParameterPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterPageListEdit.aspx
+END
+AuditOperationFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/140/workspace/development/bapin/Application/General/AuditOperationFilter.ascx
+END
+PermisoPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageListEdit.aspx.designer.cs
+END
+AnioPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageList.aspx.cs
+END
+PerfilPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageEdit.aspx
+END
+TextCategoryPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageEdit.aspx
+END
+NumerationPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageEdit.aspx.designer.cs
+END
+MessageSendEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendEdit.ascx
+END
+MessagePageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageEdit.aspx
+END
+TextPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageEdit.aspx
+END
+TextLanguagePageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageListEdit.aspx.cs
+END
+PerfilActividadPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageEdit.aspx.cs
+END
+PerfilList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilList.ascx.cs
+END
+CacheManagerPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/CacheManagerPageEdit.aspx.cs
+END
+ConfigurationCategoryPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageListEdit.aspx.designer.cs
+END
+TextLanguageList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextLanguageList.ascx.designer.cs
+END
+NumerationPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageList.aspx
+END
+PerfilEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilEdit.ascx
+END
+PerfilTipoPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageList.aspx.cs
+END
+ParameterPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/12/workspace/development/bapin/Application/General/ParameterPageList.aspx.designer.cs
+END
+ParameterPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/12/workspace/development/bapin/Application/General/ParameterPageList.aspx.cs
+END
+TextCategoryPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageList.aspx.cs
+END
+TextLanguagePageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageList.aspx
+END
+TextLanguageEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageEdit.ascx.designer.cs
+END
+ParameterCategoryPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageEdit.aspx.cs
+END
+ParameterPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/12/workspace/development/bapin/Application/General/ParameterPageEdit.aspx.designer.cs
+END
+PerfilActividadPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageEdit.aspx
+END
+NumerationList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/NumerationList.ascx
+END
+ConfigurationCategoryFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryFilter.ascx.designer.cs
+END
+SistemaCommandPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageEdit.aspx
+END
+AuditSessionPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageListEdit.aspx
+END
+TextCategoryPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageListEdit.aspx
+END
+AuditOperationPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageListEdit.aspx.designer.cs
+END
+ConfigurationCategoryFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryFilter.ascx
+END
+TextLanguagePageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageEdit.aspx.cs
+END
+ParameterList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/ParameterList.ascx
+END
+PermisoList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/PermisoList.ascx.designer.cs
+END
+ConfigurationCategoryPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageList.aspx.designer.cs
+END
+AuditOperationDetailEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailEdit.ascx
+END
+AuditOperationDetailFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailFilter.ascx
+END
+ConfigurationPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageList.aspx.designer.cs
+END
+AuditSessionPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageList.aspx.designer.cs
+END
+PermisoPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageList.aspx
+END
+ParameterCategoryEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryEdit.ascx
+END
+PermisoEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoEdit.ascx.designer.cs
+END
+TextLanguageList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageList.ascx.cs
+END
+ConfigurationCategoryPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageEdit.aspx.designer.cs
+END
+ConfigurationPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageEdit.aspx.designer.cs
+END
+TextCategoryPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageList.aspx.designer.cs
+END
+AuditSessionPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageEdit.aspx.designer.cs
+END
+AnioFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioFilter.ascx.designer.cs
+END
+ActividadEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadEdit.ascx.cs
+END
+AuditOperationPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageListEdit.aspx
+END
+TextLanguagePageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageListEdit.aspx
+END
+TextCategoryPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageEdit.aspx.designer.cs
+END
+PerfilActividadPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageListEdit.aspx
+END
+AnioPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageEdit.aspx
+END
+ConfigurationList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationList.ascx.designer.cs
+END
+MessageSendFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/37/workspace/development/bapin/Application/General/MessageSendFilter.ascx.designer.cs
+END
+ActividadPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageEdit.aspx
+END
+AuditOperationPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageEdit.aspx.cs
+END
+ConfigurationCategoryPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageList.aspx
+END
+PerfilTipoList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoList.ascx.cs
+END
+MessageSendPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageEdit.aspx
+END
+ConfigurationEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationEdit.ascx.designer.cs
+END
+ConfigurationPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageList.aspx.cs
+END
+LanguageList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageList.ascx.cs
+END
+AuditOperationDetailFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/140/workspace/development/bapin/Application/General/AuditOperationDetailFilter.ascx.cs
+END
+AuditOperationDetailEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailEdit.ascx.cs
+END
+ConfigurationPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageListEdit.aspx.cs
+END
+ConfigurationPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageEdit.aspx
+END
+LanguagePageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageList.aspx.designer.cs
+END
+PerfilTipoPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageListEdit.aspx.designer.cs
+END
+MessageEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageEdit.ascx.cs
+END
+ActividadFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadFilter.ascx
+END
+TextEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextEdit.ascx.cs
+END
+ConfigurationCategoryList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryList.ascx
+END
+TextLanguagePageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageList.aspx.designer.cs
+END
+PerfilActividadPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageList.aspx.designer.cs
+END
+ConfigurationList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationList.ascx
+END
+PerfilPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageEdit.aspx.cs
+END
+LanguagePageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageEdit.aspx.designer.cs
+END
+AuditSessionList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionList.ascx
+END
+TextLanguagePageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageEdit.aspx.designer.cs
+END
+PerfilActividadPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageEdit.aspx.designer.cs
+END
+MessageSendPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageListEdit.aspx.cs
+END
+TextCategoryList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextCategoryList.ascx
+END
+ConfigurationCategoryFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryFilter.ascx.cs
+END
+ConfigurationEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationEdit.ascx.cs
+END
+LanguageList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/LanguageList.ascx.designer.cs
+END
+PerfilTipoFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoFilter.ascx.designer.cs
+END
+PermisoEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoEdit.ascx.cs
+END
+AuditSessionPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageListEdit.aspx.designer.cs
+END
+MessageEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/37/workspace/development/bapin/Application/General/MessageEdit.ascx
+END
+AuditSessionPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageListEdit.aspx.cs
+END
+TextEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextEdit.ascx
+END
+PerfilFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilFilter.ascx.cs
+END
+LanguageEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageEdit.ascx.designer.cs
+END
+AuditOperationPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageList.aspx
+END
+AuditOperationDetailPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageEdit.aspx.cs
+END
+ParameterPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterPageListEdit.aspx.cs
+END
+AnioEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioEdit.ascx.cs
+END
+PerfilPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageListEdit.aspx.designer.cs
+END
+TextCategoryPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageListEdit.aspx.designer.cs
+END
+AnioPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageListEdit.aspx
+END
+TextLanguageFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageFilter.ascx.cs
+END
+MessagePageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageListEdit.aspx.designer.cs
+END
+LanguagePageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageEdit.aspx
+END
+TextPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageListEdit.aspx.designer.cs
+END
+MessageSendFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendFilter.ascx.cs
+END
+MessageSendPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageListEdit.aspx
+END
+CacheManagerPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/CacheManagerPageEdit.aspx
+END
+SistemaCommandEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandEdit.ascx.cs
+END
+ConfigurationCategoryPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageList.aspx.cs
+END
+LanguageList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/LanguageList.ascx
+END
+PerfilTipoFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoFilter.ascx
+END
+TextLanguageList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextLanguageList.ascx
+END
+PerfilTipoPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageList.aspx.designer.cs
+END
+PerfilActividadList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadList.ascx
+END
+ParameterCategoryFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryFilter.ascx.designer.cs
+END
+AuditOperationDetailPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageEdit.aspx
+END
+TextCategoryFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryFilter.ascx.cs
+END
+TextCategoryEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryEdit.ascx.cs
+END
+AuditOperationEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationEdit.ascx
+END
+ParameterCategoryPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageEdit.aspx
+END
+AnioPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageList.aspx.designer.cs
+END
+PerfilTipoPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageEdit.aspx.designer.cs
+END
+ParameterPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterPageEdit.aspx
+END
+PerfilPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageListEdit.aspx.cs
+END
+PermisoPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageEdit.aspx.cs
+END
+ActividadPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageList.aspx.cs
+END
+MessageSendPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageList.aspx.designer.cs
+END
+PerfilActividadPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageListEdit.aspx.designer.cs
+END
+AnioPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageEdit.aspx.designer.cs
+END
+SistemaCommandEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandEdit.ascx
+END
+PerfilActividadPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageListEdit.aspx.cs
+END
+AnioPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageEdit.aspx.cs
+END
+ConfigurationFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationFilter.ascx
+END
+PerfilesAdministracion.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilesAdministracion.aspx.designer.cs
+END
+MessageSendPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageEdit.aspx.designer.cs
+END
+SistemaCommandPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageListEdit.aspx.designer.cs
+END
+PerfilTipoPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageList.aspx
+END
+ParameterFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterFilter.ascx
+END
+PerfilPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageList.aspx.designer.cs
+END
+NumerationFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/6/workspace/development/bapin/Application/General/NumerationFilter.ascx.designer.cs
+END
+PerfilEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilEdit.ascx.cs
+END
+NumerationPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageList.aspx.cs
+END
+LanguageFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageFilter.ascx.designer.cs
+END
+NumerationPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageListEdit.aspx
+END
+TextPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageList.aspx.cs
+END
+MessagePageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageList.aspx.cs
+END
+MessageSendList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendList.ascx.cs
+END
+ParameterCategoryPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageListEdit.aspx.cs
+END
+AuditOperationFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/140/workspace/development/bapin/Application/General/AuditOperationFilter.ascx.designer.cs
+END
+PerfilTipoPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageEdit.aspx.cs
+END
+ActividadFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadFilter.ascx.designer.cs
+END
+PerfilPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageEdit.aspx.designer.cs
+END
+ParameterPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterPageEdit.aspx.cs
+END
+TextCategoryPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageEdit.aspx.cs
+END
+PerfilTipoList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoList.ascx
+END
+AuditSessionList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionList.ascx.designer.cs
+END
+AuditSessionList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionList.ascx.cs
+END
+PerfilesAdministracion.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilesAdministracion.aspx
+END
+AuditSessionPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageList.aspx
+END
+ParameterList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterList.ascx.cs
+END
+TextCategoryList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextCategoryList.ascx.designer.cs
+END
+Administracion.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/139/workspace/development/bapin/Application/General/Administracion.aspx
+END
+AnioList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioList.ascx
+END
+TextList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextList.ascx.designer.cs
+END
+AuditSessionFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionFilter.ascx.designer.cs
+END
+AuditSessionEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionEdit.ascx.designer.cs
+END
+MessageList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageList.ascx.designer.cs
+END
+PermisoEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoEdit.ascx
+END
+AuditOperationDetailPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageListEdit.aspx
+END
+PerfilPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageList.aspx
+END
+AuditOperationList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationList.ascx.cs
+END
+NumerationFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/37/workspace/development/bapin/Application/General/NumerationFilter.ascx
+END
+TextCategoryPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageList.aspx
+END
+ParameterCategoryFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryFilter.ascx.cs
+END
+TextPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageList.aspx
+END
+MessagePageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageList.aspx
+END
+MessageSendList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendList.ascx
+END
+ParameterCategoryPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageListEdit.aspx
+END
+TextCategoryFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryFilter.ascx.designer.cs
+END
+TextCategoryEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryEdit.ascx.designer.cs
+END
+AnioFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioFilter.ascx
+END
+TextEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextEdit.ascx.designer.cs
+END
+MessageEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageEdit.ascx.designer.cs
+END
+TextFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextFilter.ascx.cs
+END
+ActividadEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadEdit.ascx
+END
+MessageFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageFilter.ascx.cs
+END
+AuditOperationFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/140/workspace/development/bapin/Application/General/AuditOperationFilter.ascx.cs
+END
+MessageSendFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/37/workspace/development/bapin/Application/General/MessageSendFilter.ascx
+END
+ConfigurationCategoryList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryList.ascx.cs
+END
+AnioPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageListEdit.aspx.designer.cs
+END
+ActividadPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageListEdit.aspx.designer.cs
+END
+MessageSendPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageList.aspx.cs
+END
+PerfilList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilList.ascx
+END
+MessageSendPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageListEdit.aspx.designer.cs
+END
+SistemaCommandPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageList.aspx.cs
+END
+NumerationList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/NumerationList.ascx.designer.cs
+END
+CacheManagerPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/CacheManagerPageEdit.aspx.designer.cs
+END
+AuditOperationDetailPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageList.aspx.designer.cs
+END
+AuditSessionPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageList.aspx.cs
+END
+ConfigurationPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageListEdit.aspx.designer.cs
+END
+ParameterCategoryPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageList.aspx.designer.cs
+END
+PerfilActividadList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadList.ascx.designer.cs
+END
+TextFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextFilter.ascx
+END
+MessageFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageFilter.ascx
+END
+NumerationEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/6/workspace/development/bapin/Application/General/NumerationEdit.ascx.designer.cs
+END
+PerfilActividadList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadList.ascx.cs
+END
+PerfilTipoPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageListEdit.aspx.cs
+END
+AuditOperationDetailPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageEdit.aspx.designer.cs
+END
+LanguagePageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageList.aspx.cs
+END
+PerfilActividadPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageList.aspx
+END
+NumerationPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageEdit.aspx
+END
+ParameterCategoryPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageEdit.aspx.designer.cs
+END
+TextLanguageEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageEdit.ascx.cs
+END
+SistemaCommandList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/SistemaCommandList.ascx.designer.cs
+END
+LanguagePageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageListEdit.aspx.cs
+END
+PerfilActividadEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadEdit.ascx.designer.cs
+END
+PerfilActividadFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadFilter.ascx.designer.cs
+END
+TextLanguagePageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageEdit.aspx
+END
+SistemaCommandPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageList.aspx
+END
+SistemaCommandEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandEdit.ascx.designer.cs
+END
+SistemaCommandFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandFilter.ascx.cs
+END
+ParameterCategoryList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryList.ascx.cs
+END
+PerfilesAdministracion.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilesAdministracion.aspx.cs
+END
+ConfigurationCategoryPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageListEdit.aspx
+END
+NumerationList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationList.ascx.cs
+END
+ConfigurationPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageListEdit.aspx
+END
+PerfilTipoEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoEdit.ascx.cs
+END
+NumerationEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/37/workspace/development/bapin/Application/General/NumerationEdit.ascx
+END
+ParameterFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterFilter.ascx.designer.cs
+END
+ParameterFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterFilter.ascx.cs
+END
+ConfigurationPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageEdit.aspx.cs
+END
+LanguageEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageEdit.ascx.cs
+END
+TextLanguageFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageFilter.ascx
+END
+TextPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageListEdit.aspx
+END
+MessagePageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageListEdit.aspx
+END
+LanguagePageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageListEdit.aspx.designer.cs
+END
+PerfilActividadPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadPageList.aspx.cs
+END
+AuditOperationDetailList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailList.ascx
+END
+ActividadPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageListEdit.aspx.cs
+END
+ParameterCategoryList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/ParameterCategoryList.ascx
+END
+SistemaCommandFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandFilter.ascx
+END
+ParameterCategoryFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryFilter.ascx
+END
+AnioList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioList.ascx.designer.cs
+END
+ParameterEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterEdit.ascx
+END
+ActividadList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadList.ascx.designer.cs
+END
+PermisoFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoFilter.ascx.designer.cs
+END
+ParameterCategoryPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageList.aspx.cs
+END
+AuditOperationDetailPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageListEdit.aspx.designer.cs
+END
+AuditOperationDetailPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageListEdit.aspx.cs
+END
+AnioPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageList.aspx
+END
+ParameterCategoryPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageListEdit.aspx.designer.cs
+END
+MessageSendList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendList.ascx.designer.cs
+END
+MessagePageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageList.aspx.designer.cs
+END
+TextPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageList.aspx.designer.cs
+END
+ActividadPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageList.aspx
+END
+PermisoPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageEdit.aspx
+END
+ParameterPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterPageListEdit.aspx.designer.cs
+END
+LanguagePageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageListEdit.aspx
+END
+AnioEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioEdit.ascx.designer.cs
+END
+ActividadEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadEdit.ascx.designer.cs
+END
+MessageSendPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageList.aspx
+END
+MessagePageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageListEdit.aspx.cs
+END
+ConfigurationCategoryList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryList.ascx.designer.cs
+END
+TextPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageListEdit.aspx.cs
+END
+MessageSendEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendEdit.ascx.designer.cs
+END
+MessagePageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageEdit.aspx.designer.cs
+END
+TextPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageEdit.aspx.designer.cs
+END
+ConfigurationPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationPageList.aspx
+END
+ConfigurationCategoryEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryEdit.ascx.designer.cs
+END
+SistemaCommandPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageListEdit.aspx
+END
+Administracion.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/126/workspace/development/bapin/Application/General/Administracion.aspx.cs
+END
+ConfigurationCategoryPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageEdit.aspx
+END
+ConfigurationCategoryPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageEdit.aspx.cs
+END
+MessageFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageFilter.ascx.designer.cs
+END
+LanguageFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageFilter.ascx.cs
+END
+TextFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextFilter.ascx.designer.cs
+END
+PermisoPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageListEdit.aspx.cs
+END
+AuditOperationPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageList.aspx.designer.cs
+END
+TextLanguagePageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageList.aspx.cs
+END
+AnioPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioPageListEdit.aspx.cs
+END
+AuditOperationPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageEdit.aspx.designer.cs
+END
+ConfigurationCategoryEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryEdit.ascx
+END
+ActividadPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageEdit.aspx.cs
+END
+ConfigurationEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationEdit.ascx
+END
+SistemaCommandPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageList.aspx.designer.cs
+END
+MessageList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageList.ascx
+END
+AuditSessionEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionEdit.ascx
+END
+AuditSessionFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionFilter.ascx
+END
+TextList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/TextList.ascx
+END
+SistemaCommandPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageListEdit.aspx.cs
+END
+AuditOperationList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationList.ascx.designer.cs
+END
+SistemaCommandPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageEdit.aspx.designer.cs
+END
+ActividadList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadList.ascx.cs
+END
+PermisoFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoFilter.ascx.cs
+END
+TextCategoryEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryEdit.ascx
+END
+TextCategoryFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryFilter.ascx
+END
+LanguagePageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageList.aspx
+END
+PerfilTipoPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageListEdit.aspx
+END
+PermisoPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageListEdit.aspx
+END
+AuditOperationEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationEdit.ascx.designer.cs
+END
+AnioFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioFilter.ascx.cs
+END
+AuditOperationPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageList.aspx.cs
+END
+TextLanguageFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageFilter.ascx.designer.cs
+END
+TextCategoryPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextCategoryPageListEdit.aspx.cs
+END
+ActividadPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageListEdit.aspx
+END
+NumerationPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageEdit.aspx.cs
+END
+AuditOperationPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageEdit.aspx
+END
+AuditOperationPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationPageListEdit.aspx.cs
+END
+MessageSendEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendEdit.ascx.cs
+END
+MessagePageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessagePageEdit.aspx.cs
+END
+TextPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextPageEdit.aspx.cs
+END
+AuditOperationDetailList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailList.ascx.designer.cs
+END
+AuditOperationDetailList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailList.ascx.cs
+END
+ParameterCategoryList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/ParameterCategoryList.ascx.designer.cs
+END
+SistemaCommandFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandFilter.ascx.designer.cs
+END
+ParameterList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/ParameterList.ascx.designer.cs
+END
+AuditOperationDetailPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageList.aspx
+END
+ConfigurationFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationFilter.ascx.designer.cs
+END
+AuditOperationList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationList.ascx
+END
+AuditOperationDetailFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/140/workspace/development/bapin/Application/General/AuditOperationDetailFilter.ascx.designer.cs
+END
+AuditOperationDetailEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailEdit.ascx.designer.cs
+END
+ParameterCategoryPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryPageList.aspx
+END
+MessageList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageList.ascx.cs
+END
+AuditSessionEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionEdit.ascx.cs
+END
+AuditSessionFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionFilter.ascx.cs
+END
+TextList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextList.ascx.cs
+END
+ConfigurationCategoryPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryPageListEdit.aspx.cs
+END
+ParameterPageList.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/12/workspace/development/bapin/Application/General/ParameterPageList.aspx
+END
+ParameterCategoryEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterCategoryEdit.ascx.designer.cs
+END
+PermisoPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageList.aspx.designer.cs
+END
+ParameterEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterEdit.ascx.designer.cs
+END
+LanguageEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguageEdit.ascx
+END
+ParameterEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ParameterEdit.ascx.cs
+END
+PerfilFilter.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilFilter.ascx.designer.cs
+END
+NumerationFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationFilter.ascx.cs
+END
+PerfilPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageList.aspx.cs
+END
+PerfilPageListEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilPageListEdit.aspx
+END
+TextLanguageEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguageEdit.ascx
+END
+PerfilActividadFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadFilter.ascx
+END
+PerfilActividadEdit.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadEdit.ascx
+END
+NumerationPageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageListEdit.aspx.designer.cs
+END
+SistemaCommandList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/SistemaCommandList.ascx
+END
+AuditOperationEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationEdit.ascx.cs
+END
+ActividadPageList.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageList.aspx.designer.cs
+END
+PermisoPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoPageEdit.aspx.designer.cs
+END
+ConfigurationList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationList.ascx.cs
+END
+TextLanguagePageListEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/TextLanguagePageListEdit.aspx.designer.cs
+END
+ActividadPageEdit.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadPageEdit.aspx.designer.cs
+END
+PerfilTipoList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoList.ascx.designer.cs
+END
+PermisoList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PermisoList.ascx.cs
+END
+ConfigurationCategoryEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationCategoryEdit.ascx.cs
+END
+ConfigurationFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ConfigurationFilter.ascx.cs
+END
+MessageSendPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/MessageSendPageEdit.aspx.cs
+END
+AuditOperationDetailPageList.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditOperationDetailPageList.aspx.cs
+END
+Administracion.aspx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/139/workspace/development/bapin/Application/General/Administracion.aspx.designer.cs
+END
+AnioList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AnioList.ascx.cs
+END
+PerfilTipoEdit.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoEdit.ascx.designer.cs
+END
+PerfilFilter.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilFilter.ascx
+END
+SistemaCommandPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandPageEdit.aspx.cs
+END
+PerfilTipoPageEdit.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilTipoPageEdit.aspx
+END
+AuditSessionPageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/AuditSessionPageEdit.aspx.cs
+END
+NumerationPageListEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/NumerationPageListEdit.aspx.cs
+END
+ActividadFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/ActividadFilter.ascx.cs
+END
+PerfilActividadFilter.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadFilter.ascx.cs
+END
+PerfilActividadEdit.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilActividadEdit.ascx.cs
+END
+SistemaCommandList.ascx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/SistemaCommandList.ascx.cs
+END
+LanguagePageEdit.aspx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/LanguagePageEdit.aspx.cs
+END
+PermisoList.ascx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/13/workspace/development/bapin/Application/General/PermisoList.ascx
+END
+PerfilList.ascx.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Application/General/PerfilList.ascx.designer.cs
+END

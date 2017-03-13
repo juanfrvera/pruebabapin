@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Manager
+END
+AuthorizationManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Manager/AuthorizationManager.cs
+END
+ExceptionsHandler.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Manager/ExceptionsHandler.cs
+END
+WebSessionRepository.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Manager/WebSessionRepository.cs
+END
+Autorizacion.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Application/Base/Manager/Autorizacion.cs
+END

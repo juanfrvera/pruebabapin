@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums
+END
+StreamType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/StreamType.cs
+END
+RecordType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/RecordType.cs
+END
+ErrorCode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/ErrorCode.cs
+END
+PropertyIDs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/PropertyIDs.cs
+END
+EscherRecordType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/EscherRecordType.cs
+END
+SheetType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/SheetType.cs
+END
+SubRecordType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/QiHe.Office/Office/Excel/Enums/SubRecordType.cs
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters
+END
+DataTableConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/DataTableConverterTests.cs
+END
+JavaScriptDateTimeConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/JavaScriptDateTimeConverterTests.cs
+END
+XmlNodeConverterTest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/XmlNodeConverterTest.cs
+END
+BinaryConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/BinaryConverterTests.cs
+END
+DataSetConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/DataSetConverterTests.cs
+END
+IsoDateTimeConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/IsoDateTimeConverterTests.cs
+END
+StringEnumConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/StringEnumConverterTests.cs
+END
+CustomCreationConverterTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/Converters/CustomCreationConverterTests.cs
+END

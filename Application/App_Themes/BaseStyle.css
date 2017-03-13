@@ -1,0 +1,190 @@
+﻿/*
+html
+{
+    color: #000;
+    background: #FFF;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td
+{
+    margin: 0;
+    padding: 0;
+    font-family:Calibri;
+    font-size:12px;   
+    
+}
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img
+{
+    border: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var, optgroup
+{
+    font-style: inherit;
+    font-weight: inherit;
+}
+del, ins
+{
+    text-decoration: none;
+}
+li
+{
+    list-style: none;
+}
+caption, th
+{
+    text-align: left;
+}
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+q:before, q:after
+{
+    content: '';
+}
+abbr, acronym
+{
+    border: 0;
+    font-variant: normal;
+}
+sup
+{
+    vertical-align: baseline;
+}
+sub
+{
+    vertical-align: baseline;
+}
+legend
+{
+    color: #000;
+}
+input, button, textarea, select, optgroup, option
+{
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+input, button, textarea, select
+{ *font-size:100%;}
+
+html
+{
+    text-align: center;
+    background-image: url('fondo.png');
+    background-position: left top;
+    background-color: #A4C2EA;
+    background-repeat: repeat-x;    
+    width: 100%;
+    height: 100%;    
+}
+.Content
+{
+    margin: 10px Auto;
+    width: 790px;
+    text-align:left;
+    background-color: White;
+    background-image: none;
+    overflow:hidden;
+}
+
+.Header
+{
+    background-color:White;
+    border-bottom:solid 4px #A7A8AA;
+    width:100%;
+    height:104px;
+    background-image: url(logo.png);
+    background-repeat:no-repeat;
+    background-position:left top;
+    overflow:hidden;
+    
+}
+
+.Searchbar
+{
+    background-color:White;
+    border-top:3px solid #D0D0D0;
+    height:auto;
+    margin-top:2px;
+    width:100%;
+    overflow:hidden;
+}
+
+.ChartBar
+{
+    clear:both;
+    width:100%;
+    text-align:center;
+    overflow:hidden;
+}
+
+.Row
+{
+    
+}
+
+.Row .Label
+{
+        
+}
+
+.Row .Field
+{
+        
+}
+
+.ChartBox
+{
+    width:360px;
+    height:280px;
+    border: solid 3px #4F81BD;
+    clear:none;
+    float:left;
+    margin:14px;
+    overflow:hidden;
+    background-color:White;
+}
+
+.ChartBox .ChartBoxC
+{
+    width:360px;
+    height:280px;    
+}
+
+.DynamicChartBox
+{
+    width:360px;
+    height:280px;
+    border: solid 3px #4F81BD;
+    clear:none;
+    float:left;
+    margin:14px;
+    overflow:hidden;
+    
+    background-color:White;
+}
+
+.DynamicChartBox .ChartBoxC
+{
+    width:360px;
+    height:280px;    
+    overflow-y:scroll;    
+}
+
+.ProfilePicture
+{
+	width:auto;
+	height:auto;
+	float:left;
+	clear:none;	
+	overflow:hidden;
+	margin:4px;
+}
+*/

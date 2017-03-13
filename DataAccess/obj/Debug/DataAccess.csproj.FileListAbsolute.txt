@@ -1,0 +1,16 @@
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\DataAccess.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\DataAccess.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Contract.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Core.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\itextsharp.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\CarlosAg.ExcelXmlWriter.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\QiHe.Office.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Microsoft.Practices.ObjectBuilder2.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Contract.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\bin\Debug\Core.pdb
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\obj\Debug\DataAccess.dll
+C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\DataAccess\obj\Debug\DataAccess.pdb

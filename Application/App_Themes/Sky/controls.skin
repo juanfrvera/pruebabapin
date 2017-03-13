@@ -1,0 +1,41 @@
+<asp:Image runat="server" SkinID="WarningIcon" ImageUrl="images/icons/warning.gif" />
+<asp:ImageButton runat="server" SkinID="NextPageImageButton" ImageUrl="images/icons/page_next.gif"  ImageAlign="Middle"/>
+<asp:ImageButton runat="server" SkinID="PrevPageImageButton" ImageUrl="images/icons/page_prev.gif"  ImageAlign="Middle"/>
+<asp:Button runat="server" CssClass="button" />
+<asp:Button SkinID="LightButton" runat="server" CssClass="lightButton" />
+<asp:DropDownList runat="server" width="205px" />
+<asp:DropDownList runat="server" SkinID="AnchoLibre" />
+<asp:Panel runat="server" CssClass="FilterPanel" />
+<asp:DataList runat="server">
+<ItemStyle Height="25px" />
+</asp:DataList>
+
+<asp:GridView runat="server" 
+    CssClass="defaultGrid" 
+    GridLines="None" 
+    CellPadding="2" 
+    CellSpacing="0" >
+    <HeaderStyle HorizontalAlign="Left" />
+    <SelectedRowStyle CssClass="selected" />
+    <EmptyDataRowStyle CssClass="empty" />
+    <AlternatingRowStyle BackColor="#F8F8F8" />
+    <PagerStyle CssClass="pager" />
+</asp:GridView>
+
+<asp:GridView runat="server" SkinID="SimpleGridView"
+    CssClass="simpleGrid" 
+    GridLines="None" 
+    CellPadding="1" 
+    CellSpacing="0" 
+    ShowHeader="false">
+    <PagerStyle CssClass="pager" />
+</asp:GridView>
+
+<asp:GridView runat="server" SkinID="ChildGridView"
+    CssClass="childGrid" 
+    GridLines="None" 
+    CellPadding="1" 
+    CellSpacing="0" 
+    BorderWidth="0"
+    ShowHeader="false">
+</asp:GridView>

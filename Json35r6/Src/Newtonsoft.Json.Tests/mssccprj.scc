@@ -1,0 +1,17 @@
+SCC = This is a Source Code Control file
+
+[Newtonsoft.Json.Tests.Compact.csproj]
+SCC_Aux_Path = "R:\VSS 2008\MinisterioEconomia.Bapin"
+SCC_Project_Name = "$/Bapin/Json35r6/Src/Newtonsoft.Json.Tests", WCCAAAAA
+
+[Newtonsoft.Json.Tests.csproj]
+SCC_Aux_Path = "R:\VSS 2008\MinisterioEconomia.Bapin"
+SCC_Project_Name = "$/Bapin/Json35r6/Src/Newtonsoft.Json.Tests", WCCAAAAA
+
+[Newtonsoft.Json.Tests.Net20.csproj]
+SCC_Aux_Path = "R:\VSS 2008\MinisterioEconomia.Bapin"
+SCC_Project_Name = "$/Bapin/Json35r6/Src/Newtonsoft.Json.Tests", WCCAAAAA
+
+[Newtonsoft.Json.Tests.Silverlight.csproj]
+SCC_Aux_Path = "R:\VSS 2008\MinisterioEconomia.Bapin"
+SCC_Project_Name = "$/Bapin/Json35r6/Src/Newtonsoft.Json.Tests", WCCAAAAA

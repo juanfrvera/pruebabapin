@@ -1,0 +1,204 @@
+﻿
+.newLink
+{
+	background-image: url(images/icons/new.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.addLink
+{
+	background-image: url(images/icons/add.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.removeLink
+{
+	background-image: url(images/icons/delete.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.saveLink
+{
+	background-image: url(images/icons/save.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.clearLink
+{
+	background-image: url(images/icons/clear.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.okLink
+{
+	background-image: url(images/icons/ok.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.cancelLink
+{
+	background-image: url(images/icons/cancel.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.approveLink
+{
+	background-image: url(images/icons/approve.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.rejectLink
+{
+	background-image: url(images/icons/reject.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.findLink
+{
+	background-image: url(images/icons/find.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.adminLink
+{
+	background-image: url(images/icons/admin.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.conciliateLink
+{
+	background-image: url(images/icons/conciliate.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.reportLink
+{
+	background-image: url(images/icons/report.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.importLink
+{
+	background-image: url(images/icons/import.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+
+.exportLink
+{
+	background-image: url(images/icons/export.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.noteLink
+{
+	background-image: url(images/icons/note.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.layoutNormalLink
+{
+	background-image: url(images/icons/layout.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.layoutEditLink
+{
+	background-image: url(images/icons/layout_edit.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.infoLink
+{
+	background-image: url(images/icons/information.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.userLink
+{
+	background-image: url(images/icons/user_on.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.loginLink
+{
+	background-image: url(images/icons/login.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.recoveryPasswordLink
+{
+	background-image: url(images/icons/recovery.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.expenseLink
+{
+	background-image: url(images/icons/page.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.cardAccountLink
+{
+	background-image: url(images/icons/card.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.cashLink
+{
+	background-image: url(images/icons/cash.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.companyLink
+{
+	background-image: url(images/icons/company.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.costCenterLink
+{
+	background-image: url(images/icons/costcenter.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.expenseAccountLink
+{
+	background-image: url(images/icons/expense_account.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}
+
+.supplierLink
+{
+	background-image: url(images/icons/supplier.gif);
+	background-repeat: no-repeat;
+	padding: 1px 5px 1px 20px;
+}

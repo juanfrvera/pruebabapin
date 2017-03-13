@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Contract;
+using nc=Contract;
+using Service;
+
+namespace UI.Web
+{
+    public partial class CaracterEconomicoTipoEdit : WebControlEdit<nc.CaracterEconomicoTipo>
+    { 
+		protected override void _Initialize()
+        {
+            base._Initialize();
+			revNombre.ValidationExpression=Contract.DataHelper.GetExpRegString(50);
+            revNivel.ValidationExpression = Contract.DataHelper.GetExpRegNumber();
+            revNivel.ErrorMessage = TranslateFormat("InvalidField", "Nivel");
+            revNombre.ErrorMessage = TranslateFormat("InvalidField", "Nombre");
+            rfvNivel.ErrorMessage = TranslateFormat("FieldIsNull", "Nivel");
+            rfvNombre.ErrorMessage = TranslateFormat("FieldIsNull", "Nombre");
+			
+		}
+		public override void Clear()
+        {	
+            txtNombre.Focus();
+				UIHelper.Clear(txtNombre);
+			UIHelper.Clear(txtNivel);
+				
+        }		
+		public override void SetValue()
+        {			
+			txtNombre.Focus();
+				UIHelper.SetValue(txtNombre, Entity.Nombre);
+			UIHelper.SetValue(txtNivel, Entity.Nivel);
+				
+        }	
+        public override void GetValue()
+        {
+			Entity.Nombre =UIHelper.GetString(txtNombre);
+			Entity.Nivel=UIHelper.GetInt(txtNivel);
+        }
+    }
+}

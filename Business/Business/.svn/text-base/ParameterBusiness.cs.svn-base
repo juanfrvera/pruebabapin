@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Contract;
+using DataAccess;
+using Business.Base;
+
+namespace Business
+{
+    public class ParameterBusiness : _ParameterBusiness 
+    {   
+	   #region Singleton
+	   private static volatile ParameterBusiness current;
+	   private static object syncRoot = new Object();
+
+	   //private ParameterBusiness() {}
+	   public static ParameterBusiness Current
+	   {
+		  get 
+		  {
+			 if (current == null) 
+			 {
+				lock (syncRoot) 
+				{
+				   if (current == null) 
+					   current = new ParameterBusiness();
+				}
+			 }
+			 return current;
+		  }
+	   }
+	   #endregion
+
+       #region Actions
+
+       public override void Add(Parameter entity, IContextUser contextUser)
+       {
+           base.Add(entity, contextUser);
+           Refresh();
+       }
+       public override void Validate(Parameter entity, string actionName, IContextUser contextUser, System.Collections.Hashtable args)
+       {
+           base.Validate(entity, actionName, contextUser, args);
+           Refresh();
+       }
+       public override void Delete(int id, IContextUser contextUser)
+       {
+           base.Delete(id, contextUser);
+           Refresh();
+       }
+       public override void Delete(Parameter entity, IContextUser contextUser)
+       {
+           base.Delete(entity, contextUser);
+           Refresh();
+       }
+       void Refresh()
+       {
+           if (SolutionContext.Current.ParameterManager != null)
+               SolutionContext.Current.ParameterManager.Refresh();
+       }
+
+       public override void Update(Parameter entity, IContextUser contextUser)
+       {
+           base.Update(entity, contextUser);
+           SingletonsBusiness.COUNT_CHANGES += Singletons.COUNT_CHANGES;
+           Singletons.COUNT_CHANGES = 0;
+
+       }
+
+       #endregion
+
+
+    }
+}

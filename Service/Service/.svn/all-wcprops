@@ -1,0 +1,1163 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/mecon/!svn/ver/131/workspace/development/bapin/Service/Service
+END
+ProyectoComentarioTecnicoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoComentarioTecnicoService.cs
+END
+OrganismoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OrganismoTipoService.cs
+END
+FileInfoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FileInfoService.cs
+END
+ProyectoCalidadComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoCalidadComposeService.cs
+END
+IndicadorMedioVerificacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorMedioVerificacionService.cs
+END
+FinalidadFuncionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FinalidadFuncionService.cs
+END
+SubJurisdiccionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SubJurisdiccionService.cs
+END
+ConfigurationCategoryService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ConfigurationCategoryService.cs
+END
+IndicadorRubroService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorRubroService.cs
+END
+SistemaReporteService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaReporteService.cs
+END
+MessageAttachService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MessageAttachService.cs
+END
+MessageConfigurationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/100/workspace/development/bapin/Service/Service/MessageConfigurationService.cs
+END
+ProyectoSeguimientoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoSeguimientoService.cs
+END
+PerfilService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PerfilService.cs
+END
+DictamenService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/DictamenService.cs
+END
+UsuarioPerfilService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/UsuarioPerfilService.cs
+END
+SistemaReporteHistoricoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaReporteHistoricoService.cs
+END
+ProyectoProductoIntermedioComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoProductoIntermedioComposeService.cs
+END
+ProyectoEtapaRealizadoPeriodoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaRealizadoPeriodoService.cs
+END
+SistemaEntidadEstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaEntidadEstadoService.cs
+END
+OrganismoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OrganismoService.cs
+END
+SectorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SectorService.cs
+END
+PrestamoDictamenFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoDictamenFileService.cs
+END
+ProyectoSeguimientoProyectoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoSeguimientoProyectoService.cs
+END
+SistemaCommandService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaCommandService.cs
+END
+EntidadTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EntidadTipoService.cs
+END
+GeoreferenciacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/GeoreferenciacionService.cs
+END
+ProyectoDictamenService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoDictamenService.cs
+END
+PrestamoProductoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoProductoService.cs
+END
+ParameterService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ParameterService.cs
+END
+PrestamoOficinaFuncionarioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoOficinaFuncionarioService.cs
+END
+NumerationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/NumerationService.cs
+END
+SubProcesoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SubProcesoService.cs
+END
+ProyectoGeoLocalizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/45/workspace/development/bapin/Service/Service/ProyectoGeoLocalizacionService.cs
+END
+EtapaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EtapaService.cs
+END
+OficinaSafProgramaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OficinaSafProgramaService.cs
+END
+OrganismoFinancieroService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OrganismoFinancieroService.cs
+END
+ProyectoOficinaPerfilFuncionarioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoOficinaPerfilFuncionarioService.cs
+END
+ProgramaComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProgramaComposeService.cs
+END
+ClasificacionGastoRubroService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionGastoRubroService.cs
+END
+AdministracionTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/AdministracionTipoService.cs
+END
+ProyectoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoTipoService.cs
+END
+ProyectoFinService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoFinService.cs
+END
+ProyectoCronogramaComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoCronogramaComposeService.cs
+END
+MonedaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MonedaService.cs
+END
+ComentarioTecnicoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ComentarioTecnicoService.cs
+END
+ProyectoCalidadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoCalidadService.cs
+END
+ConfigurationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ConfigurationService.cs
+END
+EvaluacionTipoEvaluacionAspectoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EvaluacionTipoEvaluacionAspectoService.cs
+END
+ProyectoOrigenFinanciamientoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoOrigenFinanciamientoTipoService.cs
+END
+PlanPeriodoVersionActivaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PlanPeriodoVersionActivaService.cs
+END
+CaracterEconomicoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/CaracterEconomicoTipoService.cs
+END
+IndicadorSectorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorSectorService.cs
+END
+ProyectoPlanService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoPlanService.cs
+END
+TransferenciaDetalleService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/TransferenciaDetalleService.cs
+END
+PriorityService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PriorityService.cs
+END
+EvaluacionTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EvaluacionTipoService.cs
+END
+IndicadorRelacionRubroService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorRelacionRubroService.cs
+END
+ProyectoBeneficioIndicadorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoBeneficioIndicadorService.cs
+END
+ClasificacionGastoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionGastoService.cs
+END
+UsuarioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/30/workspace/development/bapin/Service/Service/UsuarioService.cs
+END
+ProyectoCalificacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoCalificacionService.cs
+END
+ObjetivoSupuestoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ObjetivoSupuestoService.cs
+END
+FinalidadFuncionTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FinalidadFuncionTipoService.cs
+END
+PrestamoEstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoEstadoService.cs
+END
+FuenteFinanciamientoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FuenteFinanciamientoService.cs
+END
+PrestamoSubComponenteService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoSubComponenteService.cs
+END
+ProyectoDemoraService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoDemoraService.cs
+END
+PrestamoEstadoAsociadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoEstadoAsociadoService.cs
+END
+ModalidadFinancieraService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ModalidadFinancieraService.cs
+END
+IndicadorObjetivoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorObjetivoService.cs
+END
+PrestamoProductoComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoProductoComposeService.cs
+END
+ProyectoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/102/workspace/development/bapin/Service/Service/ProyectoService.cs
+END
+ProyectoFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoFileService.cs
+END
+IndicadorClaseService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorClaseService.cs
+END
+ProyectoEtapaEstimadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaEstimadoService.cs
+END
+UnidadMedidaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/UnidadMedidaService.cs
+END
+ProyectoEtapaRealizadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaRealizadoService.cs
+END
+AuditOperationDetailService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/AuditOperationDetailService.cs
+END
+ProcesoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProcesoService.cs
+END
+ProgramaObjetivoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProgramaObjetivoService.cs
+END
+PlanPeriodoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/131/workspace/development/bapin/Service/Service/PlanPeriodoService.cs
+END
+PerfilTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PerfilTipoService.cs
+END
+FaseService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FaseService.cs
+END
+ProyectoObjetivosComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoObjetivosComposeService.cs
+END
+ProyectoEtapaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaService.cs
+END
+CaracterEconomicoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/CaracterEconomicoService.cs
+END
+UsuarioOficinaPerfilService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/UsuarioOficinaPerfilService.cs
+END
+TransferenciaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/TransferenciaService.cs
+END
+MessageMediaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MessageMediaService.cs
+END
+AuditOperationService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/AuditOperationService.cs
+END
+ProyectoIntervencionDNIPComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoIntervencionDNIPComposeService.cs
+END
+CargoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/CargoService.cs
+END
+PrestamoConvenioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoConvenioService.cs
+END
+OrganismoPrioridadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OrganismoPrioridadService.cs
+END
+PrestamoObjetivoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoObjetivoService.cs
+END
+ProyectoCalidadLocalizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoCalidadLocalizacionService.cs
+END
+ClasificacionGeograficaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionGeograficaService.cs
+END
+ProyectoAlcanceGeograficoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoAlcanceGeograficoService.cs
+END
+ProyectoPrioridadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoPrioridadService.cs
+END
+EstadoDeDesicionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EstadoDeDesicionService.cs
+END
+PrestamoFinalidadFuncionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoFinalidadFuncionService.cs
+END
+SAFService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SAFService.cs
+END
+ProyectoSeguimientoFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoSeguimientoFileService.cs
+END
+PermisoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PermisoService.cs
+END
+EstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EstadoService.cs
+END
+ProyectoRelacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoRelacionService.cs
+END
+IndicadorPriorizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorPriorizacionService.cs
+END
+AnioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/AnioService.cs
+END
+PlanTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/131/workspace/development/bapin/Service/Service/PlanTipoService.cs
+END
+IndicadorDetalleService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorDetalleService.cs
+END
+TextLanguageService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/TextLanguageService.cs
+END
+IndicadorTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorTipoService.cs
+END
+EstadoDeDesicionHistoricoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EstadoDeDesicionHistoricoService.cs
+END
+ProyectoLocalizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoLocalizacionService.cs
+END
+GeoreferenciacionPuntoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/GeoreferenciacionPuntoService.cs
+END
+SistemaEntidadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaEntidadService.cs
+END
+MessageSendService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MessageSendService.cs
+END
+ObjetivoIndicadorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ObjetivoIndicadorService.cs
+END
+ProyectoOficinaPerfilService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoOficinaPerfilService.cs
+END
+EvaluacionAspectoEvaluacionResultadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EvaluacionAspectoEvaluacionResultadoService.cs
+END
+PrestamoDictamenService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoDictamenService.cs
+END
+PrestamoFinanciamientoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoFinanciamientoService.cs
+END
+PlanVersionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PlanVersionService.cs
+END
+ProyectoFaseProyectoEtapaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoFaseProyectoEtapaService.cs
+END
+PrestamoSubConvenioService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoSubConvenioService.cs
+END
+ProyectoDictamenFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/74/workspace/development/bapin/Service/Service/ProyectoDictamenFileService.cs
+END
+AuditSessionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/AuditSessionService.cs
+END
+IndicadorEvolucionInstanciaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorEvolucionInstanciaService.cs
+END
+ClasificacionGastoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionGastoTipoService.cs
+END
+PrestamoComponenteService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoComponenteService.cs
+END
+ProyectoDictamenSeguimientoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoDictamenSeguimientoService.cs
+END
+TextCategoryService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/TextCategoryService.cs
+END
+ProyectoProductoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoProductoService.cs
+END
+MonedaCotizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MonedaCotizacionService.cs
+END
+PrestamoAlcanceGeograficoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoAlcanceGeograficoService.cs
+END
+ClasificacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionService.cs
+END
+FuenteFinanciamientoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/FuenteFinanciamientoTipoService.cs
+END
+ProyectoEtapaEstimadoPeriodoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaEstimadoPeriodoService.cs
+END
+IndicadorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorService.cs
+END
+OficinaSafService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OficinaSafService.cs
+END
+GestionTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/GestionTipoService.cs
+END
+ProyectoSeguimientoLocalizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoSeguimientoLocalizacionService.cs
+END
+ProgramaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProgramaService.cs
+END
+EvaluacionResultadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EvaluacionResultadoService.cs
+END
+ProyectoIndicadorPriorizacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoIndicadorPriorizacionService.cs
+END
+ProyectoEvaluacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEvaluacionService.cs
+END
+SistemaEntidadAccionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaEntidadAccionService.cs
+END
+PrioridadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrioridadService.cs
+END
+ProyectoFilesComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoFilesComposeService.cs
+END
+ProyectoSeguimientoEstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoSeguimientoEstadoService.cs
+END
+PrestamoCalificacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoCalificacionService.cs
+END
+IndicadorEvolucionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/IndicadorEvolucionService.cs
+END
+ProyectoBeneficiarioIndicadorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoBeneficiarioIndicadorService.cs
+END
+SistemaAccionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SistemaAccionService.cs
+END
+SubProgramaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SubProgramaService.cs
+END
+ProgramaObjetivosComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProgramaObjetivosComposeService.cs
+END
+ModalidadContratacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ModalidadContratacionService.cs
+END
+PrestamoOficinaPerfilService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoOficinaPerfilService.cs
+END
+PrestamoObjetivoEspecificoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoObjetivoEspecificoService.cs
+END
+SubConvenioTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/SubConvenioTipoService.cs
+END
+ActividadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ActividadService.cs
+END
+PrestamoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoService.cs
+END
+PrestamoFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoFileService.cs
+END
+PerfilActividadService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PerfilActividadService.cs
+END
+ClasificacionGeograficaTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ClasificacionGeograficaTipoService.cs
+END
+ProyectoEtapaIndicadorService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEtapaIndicadorService.cs
+END
+ProyectoGeoreferenciacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoGeoreferenciacionService.cs
+END
+PrestamoDictamenEstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoDictamenEstadoService.cs
+END
+PrestamoDictamenDNIPComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoDictamenDNIPComposeService.cs
+END
+ProyectoEvaluacionComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoEvaluacionComposeService.cs
+END
+PrestamoObjetivosComposeService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoObjetivosComposeService.cs
+END
+EvaluacionAspectoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EvaluacionAspectoService.cs
+END
+PrestamoDesembolsoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PrestamoDesembolsoService.cs
+END
+PersonaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/PersonaService.cs
+END
+OficinaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/OficinaService.cs
+END
+ProyectoDictamenEstadoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoDictamenEstadoService.cs
+END
+EstadoTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/EstadoTipoService.cs
+END
+ProyectoIndicadorEconomicoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoIndicadorEconomicoService.cs
+END
+ProyectoOrigenFinanciamientoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoOrigenFinanciamientoService.cs
+END
+ProyectoRelacionTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoRelacionTipoService.cs
+END
+ParameterCategoryService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ParameterCategoryService.cs
+END
+MedioVerificacionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MedioVerificacionService.cs
+END
+DictamenTipoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/DictamenTipoService.cs
+END
+ObjetivoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ObjetivoService.cs
+END
+LanguageService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/LanguageService.cs
+END
+ProyectoPropositoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoPropositoService.cs
+END
+MessageService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/MessageService.cs
+END
+ProyectoProductoProyectoEtapaService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ProyectoProductoProyectoEtapaService.cs
+END
+TextService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/TextService.cs
+END
+JurisdiccionService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/JurisdiccionService.cs
+END
+ProyectoShapeFileService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/mecon/!svn/ver/48/workspace/development/bapin/Service/Service/ProyectoShapeFileService.cs
+END
+ActividadPermisoService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/mecon/!svn/ver/2/workspace/development/bapin/Service/Service/ActividadPermisoService.cs
+END

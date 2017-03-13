@@ -1,0 +1,533 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects
+END
+BadJsonPropertyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/BadJsonPropertyClass.cs
+END
+Product.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Product.cs
+END
+PersonRaw.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PersonRaw.cs
+END
+MethodExecutorObject.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/MethodExecutorObject.cs
+END
+MemberConverterPrecedenceClassConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/MemberConverterPrecedenceClassConverter.cs
+END
+StoreColor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/StoreColor.cs
+END
+PrivateConstructorWithPublicParametizedConstructorTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PrivateConstructorWithPublicParametizedConstructorTestClass.cs
+END
+UserNullable.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/UserNullable.cs
+END
+NonRequest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/NonRequest.cs
+END
+ConverterPrecedenceClassConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ConverterPrecedenceClassConverter.cs
+END
+Car.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Car.cs
+END
+TypeClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/TypeClass.cs
+END
+DateTimeErrorObjectCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/DateTimeErrorObjectCollection.cs
+END
+ConstructorReadonlyFields.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ConstructorReadonlyFields.cs
+END
+ClassWithGuid.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ClassWithGuid.cs
+END
+WagePerson.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/WagePerson.cs
+END
+MyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/MyClass.cs
+END
+ConverterPrecedenceClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ConverterPrecedenceClass.cs
+END
+GetOnlyPropertyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/GetOnlyPropertyClass.cs
+END
+Shortie.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Shortie.cs
+END
+Movie.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Movie.cs
+END
+PersonError.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PersonError.cs
+END
+PropertyCase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PropertyCase.cs
+END
+PhoneNumber.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PhoneNumber.cs
+END
+DateTimeTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/DateTimeTestClass.cs
+END
+MemberConverterClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/MemberConverterClass.cs
+END
+ListErrorObjectCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ListErrorObjectCollection.cs
+END
+SetOnlyPropertyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SetOnlyPropertyClass.cs
+END
+ClassConverterPrecedenceClassConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ClassConverterPrecedenceClassConverter.cs
+END
+AbstractGenericBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/AbstractGenericBase.cs
+END
+EmployeeReference.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/EmployeeReference.cs
+END
+JsonPropertyWithHandlingValues.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/JsonPropertyWithHandlingValues.cs
+END
+ProductShort.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ProductShort.cs
+END
+PersonPropertyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PersonPropertyClass.cs
+END
+NullableDateTimeTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/NullableDateTimeTestClass.cs
+END
+ListTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ListTestClass.cs
+END
+LogEntry.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/LogEntry.cs
+END
+RoleTransfer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/RoleTransfer.cs
+END
+ObjectArrayPropertyTest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ObjectArrayPropertyTest.cs
+END
+IncompatibleJsonAttributeClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/IncompatibleJsonAttributeClass.cs
+END
+SetOnlyPropertyClass2.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SetOnlyPropertyClass2.cs
+END
+TypedSubHashtable.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/TypedSubHashtable.cs
+END
+ListErrorObject.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ListErrorObject.cs
+END
+ConstructorCaseSensitivityClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ConstructorCaseSensitivityClass.cs
+END
+CircularReferenceWithIdClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/CircularReferenceWithIdClass.cs
+END
+Container.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Container.cs
+END
+Article.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Article.cs
+END
+VersionKeyedCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/VersionKeyedCollection.cs
+END
+StructTest.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/StructTest.cs
+END
+SubKlass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SubKlass.cs
+END
+RequestOnly.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/RequestOnly.cs
+END
+ConverableMembers.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ConverableMembers.cs
+END
+DefaultValueAttributeTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/DefaultValueAttributeTestClass.cs
+END
+Invoice.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Invoice.cs
+END
+Store.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Store.cs
+END
+SuperKlass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SuperKlass.cs
+END
+Computer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Computer.cs
+END
+GenericImpl.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/GenericImpl.cs
+END
+ListOfIds.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ListOfIds.cs
+END
+GoogleMapGeocoderStructure.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/GoogleMapGeocoderStructure.cs
+END
+JsonPropertyClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/JsonPropertyClass.cs
+END
+SearchResult.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SearchResult.cs
+END
+PrivateConstructorTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PrivateConstructorTestClass.cs
+END
+Person.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Person.cs
+END
+SerializationEventTestObject.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SerializationEventTestObject.cs
+END
+SerializationEventTestObjectWithConstructor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SerializationEventTestObjectWithConstructor.cs
+END
+PrivateMembersClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/PrivateMembersClass.cs
+END
+SerializationEventTestList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SerializationEventTestList.cs
+END
+DictionaryInterfaceClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/DictionaryInterfaceClass.cs
+END
+GenericListAndDictionaryInterfaceProperties.cs
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/GenericListAndDictionaryInterfaceProperties.cs
+END
+Name.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Name.cs
+END
+JaggedArray.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/JaggedArray.cs
+END
+Event.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Event.cs
+END
+RequiredMembersClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/RequiredMembersClass.cs
+END
+Foo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Foo.cs
+END
+JsonIgnoreAttributeTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/JsonIgnoreAttributeTestClass.cs
+END
+InterfacePropertyTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/InterfacePropertyTestClass.cs
+END
+ProductCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ProductCollection.cs
+END
+ClassAndMemberConverterClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ClassAndMemberConverterClass.cs
+END
+ArticleCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ArticleCollection.cs
+END
+ClassWithArray.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ClassWithArray.cs
+END
+DoubleClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/DoubleClass.cs
+END
+Bar.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Bar.cs
+END
+SerializationEventTestDictionary.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/SerializationEventTestDictionary.cs
+END
+ArgumentConverterPrecedenceClassConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/ArgumentConverterPrecedenceClassConverter.cs
+END
+CircularReferenceClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/CircularReferenceClass.cs
+END
+JsonIgnoreAttributeOnClassTestClass.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/JsonIgnoreAttributeOnClassTestClass.cs
+END
+Content.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/mecon/!svn/ver/2/workspace/development/bapin/Json35r6/Src/Newtonsoft.Json.Tests/TestObjects/Content.cs
+END

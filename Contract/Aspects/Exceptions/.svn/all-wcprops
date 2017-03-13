@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Aspects/Exceptions
+END
+ServiceException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Aspects/Exceptions/ServiceException.cs
+END
+MembershipException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/mecon/!svn/ver/2/workspace/development/bapin/Contract/Aspects/Exceptions/MembershipException.cs
+END

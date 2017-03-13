@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UnSecure.Master.cs" Inherits="Application.Shared.UnSecure" %>
+<%@ Register TagPrefix ="ctl" Src= "~/App_Shared/HeaderUnsecure.ascx" TagName ="CtlHeader"  %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Reportes</title>
+<script type="text/javascript">
+function setActiveTab(tabName, tabIndex) {
+    var tabs = $find(tabName);
+    if (tabs != null)
+        tabs.set_activeTabIndex(tabIndex);
+    else
+        alert(tabName);
+}
+function OnClientCancelClick(docName) {
+    document.form1.action = docName;
+    document.form1.submit();
+}        
+</script>
+</head>
+<body>
+<form id="formMaster" runat="server">
+    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" EnableScriptGlobalization="true"
+        EnableScriptLocalization="true" EnablePartialRendering="true" />
+
+    <!---HEADER-->
+    
+        <ctl:CtlHeader id="ctlHeader" runat="server" ></ctl:CtlHeader>
+     
+    <!---END HEADER-->
+
+<div id="ContenidoPrincipal" >
+<asp:ContentPlaceHolder ID="ContenidoPrincipal" runat="server" />
+</div>
+<div class="blanco">
+    <div id="contenido">
+        <uc:MessageBar ID="MessageBarForm" runat="server" />
+    </div>
+</div>
+
+</form>
+</body>
+</html>
