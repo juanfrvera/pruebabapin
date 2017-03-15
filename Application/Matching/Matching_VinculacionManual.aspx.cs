@@ -332,7 +332,8 @@ namespace UI.Web.Matching
             //Método para la gestión del páginado de los resultados
             grdProyectosAutomatch.PageIndex = e.NewPageIndex;
 
-            LlenarGrillaResultados();
+            LlenarGrillaResultadosFiltros(ddlJurisdiccion.SelectedValue, ddlSAF.SelectedValue, ddlPrograma.SelectedValue, ddlSubPrograma.SelectedValue);
+
             this.grdProyectosAutomatch.DataBind();
         }
 
@@ -372,8 +373,6 @@ namespace UI.Web.Matching
                 //Ejecuta el comando
                 con.Open();
                 cmd.ExecuteNonQuery();
-
-                con.Close();
                 con.Close();
                 ClientScript.RegisterStartupScript(this.GetType(), "Mensaje Ok", "alert('El proyecto se ha vinculado correctamente.' );", true);
                 Response.Redirect("Matching_ProyectosNoVinculados.aspx");

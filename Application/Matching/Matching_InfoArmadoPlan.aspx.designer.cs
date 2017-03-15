@@ -10,70 +10,88 @@
 namespace UI.Web.Matching {
     
     
-    public partial class Matching_ProyectosBapinPlanSinSidif {
+    public partial class Matching_InfoArmadoPlan {
         
         /// <summary>
-        /// Control Literal1.
+        /// Control litFiltros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.Literal litFiltros;
         
         /// <summary>
-        /// Control lblUltimaActualizacion.
+        /// Control Literal3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUltimaActualizacion;
+        protected global::System.Web.UI.WebControls.Literal Literal3;
         
         /// <summary>
-        /// Control sqlProyectosAutomatch.
+        /// Control ddlEjercicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlProyectosAutomatch;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEjercicio;
         
         /// <summary>
-        /// Control grdProyectosBapinSinSidif.
+        /// Control Literal4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdProyectosBapinSinSidif;
+        protected global::System.Web.UI.WebControls.Literal Literal4;
         
         /// <summary>
-        /// Control cmdExportarExcel.
+        /// Control ddlMes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdExportarExcel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMes;
         
         /// <summary>
-        /// Control lblExportExcel.
+        /// Control cmdArmPlanAgrup.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExportExcel;
+        protected global::System.Web.UI.WebControls.Button cmdArmPlanAgrup;
         
         /// <summary>
-        /// Control Literal2.
+        /// Control cmdInfoSidifNoVinculado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal2;
+        protected global::System.Web.UI.WebControls.Button cmdInfoSidifNoVinculado;
+        
+        /// <summary>
+        /// Control cmdInfoSidifVinculados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdInfoSidifVinculados;
+        
+        /// <summary>
+        /// Control cmdInfoSidifVinculadosND.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cmdInfoSidifVinculadosND;
         
         /// <summary>
         /// Control cmdVolver.

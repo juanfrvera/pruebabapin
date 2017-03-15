@@ -27,8 +27,9 @@ namespace UI.Web.Matching
             {
                 /* Proceso para la carga del Dropdown de ejercicio*/
                 LlenarDropDownEjercicio();
-                /*Proceso para llenar el DropDown del Mes*/
-                LlenarDropdownMes();
+                LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+
+
 
                 ddlJurisdiccion.AppendDataBoundItems = true;
                 string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
@@ -306,14 +307,14 @@ namespace UI.Web.Matching
 
         }
 
-        private void LlenarDropdownMes()
+        private void LlenarDropdownMes(Int32 intEjercicioPresupuestario)
         {
 
             /*Proceso para llenar el dropdown del mes*/
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado";
+            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario=" + intEjercicioPresupuestario;
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -649,5 +650,9 @@ namespace UI.Web.Matching
             /* Verifica que el control se haya renderizado*/
         }
 
+        protected void ddlEjercicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+        }
     }
 }

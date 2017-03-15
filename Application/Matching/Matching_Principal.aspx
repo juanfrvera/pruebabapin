@@ -32,7 +32,7 @@
 	            <td class="tdFilter" style=" width:230px" >
 	                <div ><asp:Literal ID="Literal3" Text="Año Ejercicio:" runat="server" ></asp:Literal>&nbsp;</div>
 		            <div><asp:DropDownList ID="ddlEjercicio" runat="server" CssClass="field_input"  
-		                    AutoPostBack ="true" SkinID="AnchoLibre" Width="230px" ></asp:DropDownList></div>
+		                    AutoPostBack ="true" SkinID="AnchoLibre" Width="230px" OnSelectedIndexChanged="ddlEjercicio_SelectedIndexChanged" ></asp:DropDownList></div>
 	            </td>
             <td class="tdFilter" style=" width:230px" >
 	                <div ><asp:Literal ID="Literal4" Text="Mes:" runat="server" ></asp:Literal>&nbsp;</div>
@@ -151,6 +151,7 @@
             <td><asp:Button OnClick="cmdNovinculados_Click" ID="cmdNovinculados" Text="Líneas SIDIF no vinculadas" runat="server" /></td>
             <td><asp:Button ID="cmdProyectosND" Text="Líneas SIDIF ND" OnClick="cmdProyectosND_Click" runat="server" /></td>    
             <td><asp:Button ID="cmdProyectosBapinSinSidif" Text="Ver Proyectos Bapin sin Sidif"  OnClick="cmdProyectosBapinSinSidif_Click" runat="server" /></td>    
+            <td><asp:Button ID="cmdProyectosArmadoPlan" Text="Información para Armado de Plan"  OnClick="cmdProyectosArmadoPlan_Click" runat="server" /></td>    
             </tr>
         </table>    
         

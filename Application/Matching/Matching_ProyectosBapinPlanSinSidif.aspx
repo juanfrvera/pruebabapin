@@ -17,7 +17,7 @@
       <!--Tabla de Resultados-->
 
     <fieldset>
-     <legend><asp:Literal ID="Literal1" Text="Vinculados Autómaticos" runat="server" ></asp:Literal></legend>
+     <legend><asp:Literal ID="Literal1" Text="Proyectos Bapin Marca Plan sin Sidif Asignado" runat="server" ></asp:Literal></legend>
         <table width="100%">
              
         <tr><td>Ultima actualización: <strong><em>

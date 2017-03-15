@@ -28,7 +28,7 @@
 	            <td class="tdFilter" style=" width:230px" >
 	                <div ><asp:Literal ID="Literal3" Text="Año Ejercicio:" runat="server" ></asp:Literal>&nbsp;</div>
 		            <div><asp:DropDownList ID="ddlEjercicio" runat="server" CssClass="field_input"  
-		                    AutoPostBack ="true" SkinID="AnchoLibre" Width="230px" ></asp:DropDownList></div>
+		                    AutoPostBack ="true" SkinID="AnchoLibre" Width="230px" OnSelectedIndexChanged="ddlEjercicio_SelectedIndexChanged" ></asp:DropDownList></div>
 	            </td>
             <td class="tdFilter" style=" width:230px" >
 	                <div ><asp:Literal ID="Literal4" Text="Mes:" runat="server" ></asp:Literal>&nbsp;</div>
@@ -90,7 +90,7 @@
      <!--Tabla de Resultados-->
 
     <fieldset>
-     <legend><asp:Literal ID="Literal1" Text="Vinculados Autómaticos" runat="server" ></asp:Literal></legend>
+     <legend><asp:Literal ID="Literal1" Text="Proyectos Vinculados ND" runat="server" ></asp:Literal></legend>
         <table width="100%">
              
         <tr><td>Ultima actualización: <strong><em>

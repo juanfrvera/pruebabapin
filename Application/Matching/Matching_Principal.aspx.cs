@@ -31,7 +31,7 @@ namespace UI.Web.Matching
                 /* Proceso para la carga del Dropdown de ejercicio*/
                 LlenarDropDownEjercicio();
                 /*Proceso para llenar el DropDown del Mes*/
-                LlenarDropdownMes();
+                LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
 
 
                 ddlJurisdiccion.AppendDataBoundItems = true;
@@ -514,13 +514,13 @@ namespace UI.Web.Matching
         }
 
 
-        private void LlenarDropdownMes() {
+        private void LlenarDropdownMes(Int32 intEjercicioPresup) {
 
             /*Proceso para llenar el dropdown del mes*/
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado";
+            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario="+ intEjercicioPresup;
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -688,7 +688,7 @@ namespace UI.Web.Matching
                 LlenarGrillaResultadosFiltros(Convert.ToInt32(ddlEjercicio.SelectedValue), Convert.ToInt32(ddlMes.SelectedValue), ddlJurisdiccion.SelectedValue, ddlSAF.SelectedValue, ddlPrograma.SelectedValue, ddlSubPrograma.SelectedValue);
 
                 grdProyectosAutomatch.HeaderRow.BackColor = System.Drawing.Color.White;
-                grdProyectosAutomatch.Columns[8].Visible = false;
+                grdProyectosAutomatch.Columns[10].Visible = false;
 
                 foreach (TableCell cell in grdProyectosAutomatch.HeaderRow.Cells)
                 {
@@ -767,6 +767,18 @@ namespace UI.Web.Matching
         protected void cmdProyectosBapinSinSidif_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Matching/Matching_ProyectosBapinPlanSinSidif.aspx");
+        }
+
+        protected void ddlEjercicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*Proceso para llenar el DropDown del Mes*/
+            LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+
+        }
+
+        protected void cmdProyectosArmadoPlan_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Matching/Matching_InfoArmadoPlan.aspx");
         }
     }
 }
