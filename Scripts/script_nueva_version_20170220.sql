@@ -1,12 +1,12 @@
 
 ----------------------------------------------------
--- Actualiza texto Préstamo
+-- Actualiza texto PrÃ©stamo
 
 select * from ProyectoOrigenFinanciamiento
 select * from ProyectoOrigenFinanciamientoTipo
 
 update ProyectoOrigenFinanciamientoTipo
-set Nombre = 'Préstamo'
+set Nombre = 'PrÃ©stamo'
 where Nombre = 'Prestamo'
 
 
@@ -58,6 +58,10 @@ inner join	Saf		ss			on ss.IdSaf=s.IdSaf
 where	Programa.IdSAF = ss.IdSaf
 )
 
+
+
+----------------------------------------------------
+-- Aumentaron la cantidad de char's del campo ProyectoDictamenX . Numero a "Varchar(35)"
 
 
 ----------------------------------------------------

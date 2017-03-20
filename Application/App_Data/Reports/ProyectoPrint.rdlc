@@ -19735,16 +19735,16 @@ OR iif(Fields!ClasificacionGeografica_Descripcion.Value="",true,false)</Hidden>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.64302cm</Width>
+                  <Width>3.43004cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.69842cm</Width>
+                  <Width>2.3317cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.85185cm</Width>
+                  <Width>4.90758cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.64734cm</Width>
+                  <Width>3.30338cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.59014cm</Width>
@@ -19753,7 +19753,7 @@ OR iif(Fields!ClasificacionGeografica_Descripcion.Value="",true,false)</Hidden>
                   <Width>2.56614cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.81482cm</Width>
+                  <Width>6.6667cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -20304,7 +20304,7 @@ OR iif(Fields!ClasificacionGeografica_Descripcion.Value="",true,false)</Hidden>
             <Top>2.4cm</Top>
             <Left>0.51cm</Left>
             <Height>0.8795cm</Height>
-            <Width>25.81173cm</Width>
+            <Width>25.79568cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -21244,7 +21244,7 @@ OR iif(Fields!ClasificacionGeografica_Descripcion.Value="",true,false)</Hidden>
         <DataElementOutput>ContentsOnly</DataElementOutput>
         <Top>108.77937cm</Top>
         <Height>7.54924cm</Height>
-        <Width>26.98677cm</Width>
+        <Width>27.1517cm</Width>
         <ZIndex>8</ZIndex>
         <Visibility>
           <Hidden>=iif(Parameters!IntervencionDNIP.Value = "False",true,false)</Hidden>

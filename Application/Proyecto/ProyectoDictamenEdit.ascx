@@ -38,7 +38,7 @@
                         <td>&nbsp;
                         </td>
                         <td class="filaInput">
-                            <asp:TextBox ID="txtNumero" Width="120px" type="text" min="0" MaxLength="10" runat="server" CssClass="field_input"></asp:TextBox>
+                            <asp:TextBox ID="txtNumero" Width="240px" type="text" min="0" MaxLength="35" runat="server" CssClass="field_input"></asp:TextBox>
                         </td>
                         <td class="filaValidator">&nbsp;
                             <asp:RegularExpressionValidator ID="revNumero" runat="server" ControlToValidate="txtNumero"
@@ -86,7 +86,7 @@
                             ValidationGroup="EditionProyectoDictamen" Text="*" Width="1px" Height="1px" ErrorMessage="El Informe Técnico no es válido"></asp:RegularExpressionValidator>
                         </td>
                         <td class="filaInput">
-                            <asp:TextBox ID="txtInformeTecnico" Width="195px" MaxLength="50" runat="server" CssClass="field_input"></asp:TextBox>
+                            <asp:TextBox ID="txtInformeTecnico" Width="240px" MaxLength="50" runat="server" CssClass="field_input"></asp:TextBox>
                         </td>
                         <td></td>
                         <td class="style5"></td>
@@ -129,7 +129,7 @@
                         </td>
                         <td class="filaInput">
                             <%--<asp:TextBox ID="txtMontoInversionAprobada" Width="150px" runat="server" CssClass="field_input" onchange="javascript: ChangedWithThousandsFormat( this );"   ></asp:TextBox>--%>
-                            <cc:NumericTextBox ID="txtMontoInversionAprobada" Width="150px" runat="server" ValidationGroup="vgEtapasEstimadas" DataFormatString="{0:N0}" AutoPostBack="true" UseSeparadorMiles="true" InputType="PositiveInteger"></cc:NumericTextBox>
+                            <cc:NumericTextBox ID="txtMontoInversionAprobada" Width="240px" runat="server" ValidationGroup="vgEtapasEstimadas" DataFormatString="{0:N0}" AutoPostBack="true" UseSeparadorMiles="true" InputType="PositiveInteger"></cc:NumericTextBox>
                         </td>
                         <td></td>
                         <td class="style5"></td>

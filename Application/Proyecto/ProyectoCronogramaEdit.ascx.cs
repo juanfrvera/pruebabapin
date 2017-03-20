@@ -757,18 +757,22 @@ namespace UI.Web
             //FinMatias 20170214 - Ticket #REQ318684
 
             gridEtapasEstimadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaEstimadaUpdate);
-            if (dataTable.Columns.Count > 6)
-            {
-                gridEtapasEstimadas.Width = new Unit(620 + ((dataTable.Columns.Count - 2) * 52 /*Matias - #REQ318684 - orig: 80 - Matias: 52*/), UnitType.Pixel);
-                scrollDivEstimadas = "scroll";
-            }
-            else
-            {
-                gridEtapasEstimadas.Width = new Unit(100, UnitType.Percentage);
-                scrollDivEstimadas = "scrollAuto";
-            }
 
-            //Matias - #REQ318684
+            //Matias - #REQ318684            
+            //if (dataTable.Columns.Count > 6)
+            //{
+            //    gridEtapasEstimadas.Width = new Unit(620 + ((dataTable.Columns.Count - 2) * 52 /*Matias - #REQ318684 - orig: 80 - Matias: 52*/), UnitType.Pixel);
+            //    scrollDivEstimadas = "scroll";
+            //}
+            //else
+            //{
+            //    gridEtapasEstimadas.Width = new Unit(100, UnitType.Percentage);
+            //    scrollDivEstimadas = "scrollAuto";
+            //}
+            // Nunca va a haber mas de 6 columnas, por eso siempre va "scrollAuto" (con esta modificacion que muestra gastos dinámicamente de acuerdo al año seleccionado.
+            gridEtapasEstimadas.Width = new Unit(100, UnitType.Percentage);
+            scrollDivEstimadas = "scrollAuto";
+
             if (dataTable.Rows.Count > 20)
             {
                 scrollDivEstimadas = "scrollHeight";

@@ -55650,7 +55650,7 @@ namespace Contract
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Numero", DbType = "VarChar(10)", UpdateCheck = UpdateCheck.Never)]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Numero", DbType = "VarChar(35)", UpdateCheck = UpdateCheck.Never)]
         [global::System.Runtime.Serialization.DataMemberAttribute(Order = 16)]
         public string Numero
         {

@@ -33,7 +33,7 @@ namespace UI.Web
             revRecomendacion.ErrorMessage = TranslateFormat("InvalidFiled", "Recomendación");
             revRespuestaOrganismo.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
             revRespuestaOrganismo.ErrorMessage = TranslateFormat("InvalidFiled", "Respuesta Organismo");
-            revNumero.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(10);
+            revNumero.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(35); //Matias 20170317 - Ticket REQ170317_1 - Antes (10)
             diFecha.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha");
             Int32 anio_from = DateTime.Now.Year - 3;
             UIHelper.Load<nc.Anio>(ddlEjercicioInicioEjecucion, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true, IdAnio = anio_from, IdAnio_To = DateTime.Now.Year + 4 }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new nc.Anio() { Nombre = "Seleccione Año" }, false);
