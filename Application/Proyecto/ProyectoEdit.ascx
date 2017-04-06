@@ -41,17 +41,18 @@
 <asp:UpdatePanel ID="upDatosGenerales" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:Panel ID="pnlDatosGenerales" runat="server" GroupingText="Datos Generales">
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        <table width="100%" cellpadding="0" cellspacing="5px" border="0" style="height: 160px">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="height: 100px">
                             <tr>
-                                <td style="width: 158px">
+                                <td style="width: 110px">
                                     <asp:Literal ID="liTipoProyecto" Text="Tipo de Proyecto" runat="server"></asp:Literal></td>
-                                <td>&nbsp;</td>
-                                <td style="width: 220px">
-                                    <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="125px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
-                                    <asp:CheckBox ID="chkBorrador" runat="server" Text="Borrador" TabIndex="2"  />
+                                <td>
+                                    <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="200px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
+                                    <asp:CheckBox ID="chkBorrador" runat="server" Text="Borrador" TabIndex="2"  /> &nbsp;
+                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Text="Activo" TabIndex="3" /> &nbsp;
+                                    <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="Requiere Dictamen" TabIndex="4" />
                                 </td>
                                 <td class="filaValidator">&nbsp;
 	                            <%--<asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" InitialValue="0"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>--%>
@@ -63,15 +64,13 @@
 
                             </tr>
                             <tr>
-                                <td>
+                                <td style="width: 110px">
                                     <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal></td>
-                                <td>&nbsp;</td>
-                                <td style="width: 300px">
-                                    <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="250px" TabIndex="3"></cc:ExtendedDropDownList>
-
+                                <td>
+                                    <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
                                     <%--   <uc:Autocomplete runat="server" ID="acSaf" 
-                           WebServiceName="../Services/wsSaf.asmx" MinimumPrefixLength="3" ServiceMethod ="GetSimpleList"  
-                            ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionProyecto" Width="245">
+                                    WebServiceName="../Services/wsSaf.asmx" MinimumPrefixLength="3" ServiceMethod ="GetSimpleList"  
+                                    ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionProyecto" Width="245">
                                     </uc:Autocomplete>  --%>		        
                                 </td>
                                 <td class="filaValidator">&nbsp;
@@ -79,11 +78,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="width: 110px">
                                     <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal></td>
-                                <td>&nbsp;</td>
                                 <td>
-                                    <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="250px" TabIndex="4"></cc:ExtendedDropDownList>
+                                    <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator">&nbsp;
 	                             <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
@@ -91,11 +89,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td style="width: 110px">
                                     <asp:Literal ID="liSubPrograma" Text="Subprograma" runat="server"></asp:Literal></td>
-                                <td>&nbsp;</td>
                                 <td>
-                                    <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="250px" TabIndex="5"></cc:ExtendedDropDownList>
+                                    <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator">&nbsp;
 	                             <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
@@ -104,10 +101,79 @@
                                 </td>
                             </tr>
                         </table>
+                    </td>                    
+                </tr>
+            </table>            
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="width: 110px">
+                        <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal></td>
+
+                    <td>
+                        <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
                     </td>
-                    <td style="width: 550px">
-                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="550px">
-                            <table cellpadding="0" cellspacing="0px" border="0" style="height: 120px">
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
+                    </td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="1px" border="0">                
+                <tr>
+                    <td>
+                        <asp:Literal ID="liProceso" Text="Proceso" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14"></cc:ExtendedDropDownList>
+                    </td>
+                    <td>
+                        &nbsp;                
+                    </td>
+                    <td>
+                        <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
+                    </td>
+                    <td colspan="2">
+                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18"></cc:ExtendedDropDownList>
+                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="liEstado" Text="Estado Financiero" runat="server"></asp:Literal></td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15"></cc:ExtendedDropDownList>
+                    </td>
+                    <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+
+                    <td>
+                        <asp:Literal ID="liModalidadContratacion" Text="Modalidad de Contratación" runat="server"></asp:Literal></td>
+                    </td>
+                    <td colspan="3">
+                        <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16"></cc:ExtendedDropDownList>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
+                    <td>&nbsp;</td>
+                    <td colspan="6">
+                        <uc:TreeFinalidadFuncion runat="server" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
+                            ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionFinalidadFuncion"
+                            Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>                        
+                    </td>
+                </tr>
+            </table>
+            <table width="100%" cellpadding="5px" cellspacing="0" border="0">
+                <tr>
+                    <td style="width: 810px">
+                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="810px">
+                            <table cellpadding="0" cellspacing="0px" border="0" style="height: 100px">
                                 <tr>
                                     <td class="tdLabel">
                                         <asp:Literal ID="liIniciador" Text="Iniciador" runat="server"></asp:Literal></td>
@@ -174,82 +240,6 @@
                                 </tr>
                             </table>
                         </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td style="width: 110px">
-                        <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal></td>
-
-                    <td>
-                        <asp:TextBox ID="txtDenominacion" runat="server" Rows="3" TextMode="MultiLine" Width="780px" TabIndex="13"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
-                    </td>
-
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td style="width: 180px"></td>
-                    <td></td>
-                    <td>
-                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="Requiere Dictamen" TabIndex="17" />
-                    </td>
-                    <td width="100px"></td>
-                    <td></td>
-
-                    <td>
-                        <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Text="Activo" TabIndex="17" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Literal ID="liProceso" Text="Proceso" runat="server"></asp:Literal></td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14"></cc:ExtendedDropDownList>
-                    </td>
-                    <td>&nbsp;
-                
-                    </td>
-                    <td>
-                        <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
-                    </td>
-                    <td colspan="2">
-                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18"></cc:ExtendedDropDownList>
-                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Literal ID="liEstado" Text="Estado Financiero" runat="server"></asp:Literal></td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15"></cc:ExtendedDropDownList>
-                    </td>
-                    <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
-
-                    <td>
-                        <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
-                    </td>
-                    <td colspan="3">
-                        <uc:TreeFinalidadFuncion runat="server" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
-                            ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionFinalidadFuncion"
-                            Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Literal ID="liModalidadContratacion" Text="Modalidad de Contratación" runat="server"></asp:Literal></td>
-                    <td>&nbsp;</td>
-                    <td colspan="6" align="left">
-                        <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16"></cc:ExtendedDropDownList>
                     </td>
                 </tr>
             </table>

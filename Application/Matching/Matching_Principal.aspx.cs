@@ -28,12 +28,6 @@ namespace UI.Web.Matching
             /*Proceso para la carga del dropdown Jurisdiccion */
 
             if (!IsPostBack) {
-                /* Proceso para la carga del Dropdown de ejercicio*/
-                LlenarDropDownEjercicio();
-                /*Proceso para llenar el DropDown del Mes*/
-                LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
-
-
                 ddlJurisdiccion.AppendDataBoundItems = true;
                 string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
                 String strQuery = "exec [dbo].[sp_Matching_Filtro_Jurisdiccion]";
@@ -42,8 +36,17 @@ namespace UI.Web.Matching
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = strQuery;
                 cmd.Connection = con;
+
                 try
                 {
+                    /* Proceso para la carga del Dropdown de ejercicio*/
+                    LlenarDropDownEjercicio();
+                    /*Proceso para llenar el DropDown del Mes*/
+                    LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+
+
+       
+
                     con.Open();
                     ddlJurisdiccion.DataSource = cmd.ExecuteReader();
 
@@ -330,7 +333,7 @@ namespace UI.Web.Matching
             ddlEjercicio.Items.Clear();
             ddlEjercicio.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado";
+            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -520,7 +523,7 @@ namespace UI.Web.Matching
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario="+ intEjercicioPresup;
+            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario="+ intEjercicioPresup + " order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;

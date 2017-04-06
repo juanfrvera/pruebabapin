@@ -26,11 +26,7 @@ namespace UI.Web.Matching
 
             if (!IsPostBack)
             {
-                /* Proceso para la carga del Dropdown de ejercicio*/
-                LlenarDropDownEjercicio();
-                /*Proceso para llenar el DropDown del Mes*/
-                LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
-
+               
 
 
                 ddlJurisdiccion.AppendDataBoundItems = true;
@@ -43,6 +39,11 @@ namespace UI.Web.Matching
                 cmd.Connection = con;
                 try
                 {
+                    /* Proceso para la carga del Dropdown de ejercicio*/
+                    LlenarDropDownEjercicio();
+                    /*Proceso para llenar el DropDown del Mes*/
+                    LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+
                     con.Open();
                     ddlJurisdiccion.DataSource = cmd.ExecuteReader();
 
@@ -145,7 +146,7 @@ namespace UI.Web.Matching
             ddlEjercicio.Items.Clear();
             ddlEjercicio.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select Distinct EjercicioPresupuestario from Matching_ProyectosVinculadosND";
+            String strQuery = "select Distinct EjercicioPresupuestario from Matching_ProyectosVinculadosND order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -180,7 +181,7 @@ namespace UI.Web.Matching
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_ProyectosVinculadosND where EjercicioPresupuestario=" + intEjercicioPresup ;
+            String strQuery = "select distinct MesSidif from Matching_ProyectosVinculadosND where EjercicioPresupuestario=" + intEjercicioPresup + "order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;

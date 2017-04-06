@@ -259,6 +259,7 @@
     <Content Include="Matching\bootstrap\js\bootstrap.min.js" />
     <Content Include="Matching\bootstrap\js\npm.js" />
     <Content Include="Matching\Matching_Config.aspx" />
+    <Content Include="Matching\Matching_InfoArmadoPlan.aspx" />
     <Content Include="Matching\Matching_Principal.aspx" />
     <Content Include="Matching\Matching_ProyectosBapinPlanSinSidif.aspx" />
     <Content Include="Matching\Matching_ProyectosND.aspx" />
@@ -1221,6 +1222,13 @@
     </Compile>
     <Compile Include="Matching\Matching_Config.aspx.designer.cs">
       <DependentUpon>Matching_Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Matching\Matching_InfoArmadoPlan.aspx.cs">
+      <DependentUpon>Matching_InfoArmadoPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Matching\Matching_InfoArmadoPlan.aspx.designer.cs">
+      <DependentUpon>Matching_InfoArmadoPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Matching\Matching_Principal.aspx.cs">
       <DependentUpon>Matching_Principal.aspx</DependentUpon>

@@ -85,42 +85,6 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPrograma;
         
         /// <summary>
-        /// pnlOficinasYFuncionarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlOficinasYFuncionarios;
-        
-        /// <summary>
-        /// liResponsable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal liResponsable;
-        
-        /// <summary>
-        /// toResponsable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.WebControl_Oficinas toResponsable;
-        
-        /// <summary>
-        /// imgFuncionarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgFuncionarios;
-        
-        /// <summary>
         /// liDenominacion control.
         /// </summary>
         /// <remarks>
@@ -263,6 +227,42 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revCodigoVinculacion2;
+        
+        /// <summary>
+        /// pnlOficinasYFuncionarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlOficinasYFuncionarios;
+        
+        /// <summary>
+        /// liResponsable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal liResponsable;
+        
+        /// <summary>
+        /// toResponsable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Web.WebControl_Oficinas toResponsable;
+        
+        /// <summary>
+        /// imgFuncionarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgFuncionarios;
         
         /// <summary>
         /// Panel2 control.

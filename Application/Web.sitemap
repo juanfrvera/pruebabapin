@@ -6,11 +6,12 @@
     <siteMapNode url="~/Prestamo/PrestamoPageList.aspx" title="Préstamo"  description="Prestamo" roles="*" />
     <siteMapNode url="~/Pages/ProgramaPageList.aspx" title="Programa" description="Programa" roles="*"/>      
     <siteMapNode url="~/Reportes/PageReport.aspx" title="Reportes"  description="Reportes" roles="*"  />
-    <!--Sección Matching-->
-    <siteMapNode url="~/Matching/Matching_Principal.aspx" title="Matching" description="Matching Vinculados automáticamente" roles="*" />
+     <!--Sección Matching-->
+    <siteMapNode url="~/Matching/Matching_Principal.aspx" title="Líneas Sidif Vinculadas" description="Líneas Sidif Vinculadas" roles="*" />
     <siteMapNode url="~/Matching/Matching_ProyectosNoVinculados.aspx" title="Líneas Sidif No Vinculadas" description="Matching" roles="*" />
     <siteMapNode url="~/Matching/Matching_VinculacionManual.aspx" title="Matching Vinculación Manual" description="Matching" roles="*" />
     <siteMapNode url="~/Matching/Matching_ProyectosND.aspx" title="Líneas SIDIF ND" description="Matching" roles="*" />
+    <siteMapNode url="~/Matching/Matching_InfoArmadoPlan.aspx" title="Informaciòn Armado de Plan" description="Matching" roles="*" />    
     <!--Fin Sección Matching-->
 
     <!--Sección Cubos-->

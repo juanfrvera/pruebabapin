@@ -2,3 +2,8 @@ C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\b
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\bin\Debug\Documentation.pdb
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\obj\Debug\Documentation.dll
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Documentation\obj\Debug\Documentation.pdb
+C:\Bapin\Codigo\BAPIN-N\Documentation\bin\Debug\Documentation.dll
+C:\Bapin\Codigo\BAPIN-N\Documentation\bin\Debug\Documentation.pdb
+C:\Bapin\Codigo\BAPIN-N\Documentation\obj\Debug\Documentation.csprojResolveAssemblyReference.cache
+C:\Bapin\Codigo\BAPIN-N\Documentation\obj\Debug\Documentation.dll
+C:\Bapin\Codigo\BAPIN-N\Documentation\obj\Debug\Documentation.pdb

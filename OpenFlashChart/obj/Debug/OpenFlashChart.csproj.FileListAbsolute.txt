@@ -2,3 +2,8 @@ C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\bin\Debug\OpenFlashChart.pdb
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\obj\Debug\OpenFlashChart.dll
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\OpenFlashChart\obj\Debug\OpenFlashChart.pdb
+C:\Bapin\Codigo\BAPIN-N\OpenFlashChart\bin\Debug\OpenFlashChart.dll
+C:\Bapin\Codigo\BAPIN-N\OpenFlashChart\bin\Debug\OpenFlashChart.pdb
+C:\Bapin\Codigo\BAPIN-N\OpenFlashChart\obj\Debug\OpenFlashChart.csprojResolveAssemblyReference.cache
+C:\Bapin\Codigo\BAPIN-N\OpenFlashChart\obj\Debug\OpenFlashChart.dll
+C:\Bapin\Codigo\BAPIN-N\OpenFlashChart\obj\Debug\OpenFlashChart.pdb

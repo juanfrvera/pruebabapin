@@ -67,9 +67,6 @@ namespace UI.Web
                 lsr = SafService.Current.GetResult(new nc.SafFilter() { Activo = true, IdSaf = ActualOficina.IdSaf });
             UIHelper.Load<nc.SafResult>(ddlSAF, lsr, "CodigoDenominacion", "IdSaf", new SafResult() { IdSaf = 0, Codigo = "", Denominacion = "Seleccione Saf" }, true, "CodigoInt",typeof(Int32));
 
-            ddlSAF.Width = 280;
-            ddlPrograma.Width = 280;
-
             UIHelper.SetValue(diFechaEstimada, DateTime.Now);
             diFechaEstimada.RangeErrorMessage = TranslateFormat("InvalidField", "Fecha");
             diFechaEstimada.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha");

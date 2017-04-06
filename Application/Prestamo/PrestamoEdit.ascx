@@ -12,17 +12,16 @@
 <asp:UpdatePanel ID="upDatosGenerales" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:Panel ID="pnlDatosGenerales" runat="server" GroupingText="Datos Generales" Width="100%">
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td valign="top" style="width: 40%;">
-                        <table cellpadding="0" cellspacing="5px" border="0">
+                    <td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
                             <tr>
-                                <td class="tdLabel" style="width: 110px">
+                                <td class="tdLabel" style="width: 140px">
                                     <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
                                 </td>
-                                <td class="filaInput">
-                                    <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged"
-                                        AutoPostBack="true">
+                                <td>
+                                    <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="770px">
                                     </cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator" style="width: 5px">
@@ -32,12 +31,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tdLabel" style="width: 110px">
+                                <td class="tdLabel" style="width: 140px">
                                     <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal>
                                 </td>
                                 <td class="filaInput">
-                                    <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" AutoPostBack="true"
-                                        Enabled="false">
+                                    <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="770px">
                                     </cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator" style="width: 5px">
@@ -47,37 +45,16 @@
                                 </td>
                             </tr>
                         </table>
-                    </td>
-                    <td valign="top" style="width: 60%;" align="left">
-                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios"
-                            Width="100%">
-                            <table cellpadding="0" cellspacing="0px" border="0">
-                                <tr>
-                                    <td class="filaInput" style="width: 110px">
-                                        <asp:Literal ID="liResponsable" Text="Responsable" runat="server"></asp:Literal><br />
-                                    </td>
-                                    <td class="filaInput" valign="bottom">
-                                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="440px" OnValueChanged="toResponsable_OnValueChanged"
-                                            SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue" Autopostback="true"    >
-                                        </uc:TreeOficinas>
-                                    </td>
-                                    <td class="filaInput" valign="middle">
-                                        <asp:ImageButton ID="imgFuncionarios" runat="server" ImageUrl="~/Images/funcionario.png"
-                                            ToolTip="Funcionarios" OnClick="funcionarios_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </td>
+                    </td>                    
                 </tr>
             </table>
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td style="width: 124px">
+                    <td style="width: 140px">
                         <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtDenominacion" runat="server" Rows="3" TextMode="MultiLine" Width="770px"></asp:TextBox>
+                        <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="765px"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;<asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion"
@@ -87,9 +64,9 @@
                     </td>
                 </tr>
             </table>
-            <table width="100%">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td style="width: 128px">
+                    <td style="width: 140px">
                         <asp:Literal ID="liResponsablePolítico" Text="Responsable Político" runat="server"></asp:Literal>
                     </td>
                     <td>
@@ -109,7 +86,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 128px">
+                    <td style="width: 140px">
                         <asp:Literal ID="liResponsableTecnico" Text="Responsable Técnico" runat="server"></asp:Literal>
                     </td>
                     <td>
@@ -133,6 +110,32 @@
                     </td>
                 </tr>
             </table>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td valign="top" style="width: 60%;" align="left">
+                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficina y Funcionarios"
+                            Width="100%">
+                            <table cellpadding="0" cellspacing="0px" border="0">
+                                <tr>
+                                    <td class="filaInput" style="width: 110px">
+                                        <asp:Literal ID="liResponsable" Text="Responsable" runat="server"></asp:Literal><br />
+                                    </td>
+                                    <td class="filaInput" valign="bottom">
+                                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="440px" OnValueChanged="toResponsable_OnValueChanged"
+                                            SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue" Autopostback="true"    >
+                                        </uc:TreeOficinas>
+                                    </td>
+                                    <td class="filaInput" valign="middle">
+                                        <asp:ImageButton ID="imgFuncionarios" runat="server" ImageUrl="~/Images/funcionario.png"
+                                            ToolTip="Funcionarios" OnClick="funcionarios_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                    </td>
+                </tr>
+            </table>
+
             <asp:Panel ID="Panel2" runat="server" GroupingText="Estados" Width="100%">
                 <table width="100%">
                     <tr>

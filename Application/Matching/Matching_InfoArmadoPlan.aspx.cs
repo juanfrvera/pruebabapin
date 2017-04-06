@@ -47,7 +47,7 @@ namespace UI.Web.Matching
             ddlEjercicio.Items.Clear();
             ddlEjercicio.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado";
+            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -82,7 +82,7 @@ namespace UI.Web.Matching
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario=" + intEjercicioPresup;
+            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario=" + intEjercicioPresup + "  order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -349,7 +349,16 @@ namespace UI.Web.Matching
 
         protected void ddlEjercicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+            try
+            {
+                LlenarDropdownMes(Convert.ToInt32(ddlEjercicio.SelectedValue.ToString()));
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
         }
 
         protected void cmdArmPlanAgrup_Click(object sender, EventArgs e)

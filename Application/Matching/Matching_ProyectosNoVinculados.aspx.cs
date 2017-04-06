@@ -279,7 +279,7 @@ namespace UI.Web.Matching
             ddlEjercicio.Items.Clear();
             ddlEjercicio.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado";
+            String strQuery = "select Distinct EjercicioPresupuestario from Matching_InfoPresupuestoAgrupado order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -314,7 +314,7 @@ namespace UI.Web.Matching
             ddlMes.Items.Clear();
             ddlMes.AppendDataBoundItems = true;
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario=" + intEjercicioPresupuestario;
+            String strQuery = "select distinct MesSidif from Matching_InfoPresupuestoAgrupado where EjercicioPresupuestario=" + intEjercicioPresupuestario + "order by 1 DESC";
             SqlConnection con = new SqlConnection(strConexion);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;

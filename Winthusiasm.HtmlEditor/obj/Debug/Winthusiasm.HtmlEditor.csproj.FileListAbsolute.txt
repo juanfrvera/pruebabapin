@@ -3,3 +3,8 @@ C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Winthusiasm.Htm
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.dll
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.pdb
 C:\Bapin\Codigo\B3-N-2016-Consultora\workspace\development\bapin\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.csprojResolveAssemblyReference.cache
+C:\Bapin\Codigo\BAPIN-N\Winthusiasm.HtmlEditor\bin\Debug\Winthusiasm.HtmlEditor.dll
+C:\Bapin\Codigo\BAPIN-N\Winthusiasm.HtmlEditor\bin\Debug\Winthusiasm.HtmlEditor.pdb
+C:\Bapin\Codigo\BAPIN-N\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.csprojResolveAssemblyReference.cache
+C:\Bapin\Codigo\BAPIN-N\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.dll
+C:\Bapin\Codigo\BAPIN-N\Winthusiasm.HtmlEditor\obj\Debug\Winthusiasm.HtmlEditor.pdb
