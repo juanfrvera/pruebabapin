@@ -1257,7 +1257,7 @@ namespace Business
             //Cronograma
             List<ProyectoEtapaResult> proyectoEtapaResultCronograma = ProyectoEtapaBusiness.Current.ProyectoEtapaConTotales(new ProyectoEtapaFilter() { IdProyecto = IdProyecto });
             
-            string descripcion = proyectoEtapaResultCronograma[0].Descripcion;
+            //string descripcion = proyectoEtapaResultCronograma[0].Descripcion;
             
             List<ProyectoCronogramaReportResult> proyectoCronogramaReportResult = GetCronograma(new ProyectoFilter() { IdProyecto = IdProyecto });
             

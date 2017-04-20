@@ -130,6 +130,7 @@ namespace DataAccess
                 SqlCommand command = connection.CreateCommand();
                 command.CommandType = commandType;
                 command.CommandText = commandText;
+
                 connection.Open();
 
                 if (_object != null)
