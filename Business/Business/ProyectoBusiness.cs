@@ -1091,7 +1091,7 @@ namespace Business
                 prer = ProyectoData.Current.GetRealizado(filter.reportFilter);
             else
             {
-                //Matias 20131107 - Tarea 72
+                //Matias 20131107 - Tarea 72 - Algo
                 /*prer = ProyectoData.Current.GetEstimado(filter.reportFilter);
                 prer.AddRange(ProyectoData.Current.GetRealizado(filter.reportFilter));
                  */
