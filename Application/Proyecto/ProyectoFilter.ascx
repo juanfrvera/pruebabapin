@@ -265,11 +265,11 @@
                     <td class="tdFilter" colspan="3">
                         <asp:Panel runat="server" GroupingText="Oficinas"  ID="PnlOficinas" width="715px"   >
                             <table width="100%"  cellpadding="0" cellspacing="0" border="0" >
-                                <tr>
-                                    <td colspan="2">
-                                        <div><uc:TreeOficinas runat="server" ID="toOficinas" SelectOption="OnlySelectedDefined" ShowOption="All" OnValueChanged="toOficina_OnValueChanged" Autopostback="true"></uc:TreeOficinas></div>
-	                                    <%-- <asp:RequiredFieldValidator ID="rfvOficina" runat="server" ControlToValidate="ddlOficina"  ValidationGroup="FilterProyecto" Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>
-	                                    <asp:DropDownList ID="ddlOficina" runat="server"  Width="180px"  SkinID="AnchoLibre"></asp:DropDownList> --%>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div><uc:TreeOficinas runat="server" ID="toOficinas" SelectOption="OnlySelectedDefined" ShowOption="All" OnValueChanged="toOficina_OnValueChanged" Autopostback="true"></uc:TreeOficinas></div>
+	                                        <%-- <asp:RequiredFieldValidator ID="rfvOficina" runat="server" ControlToValidate="ddlOficina"  ValidationGroup="FilterProyecto" Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>
+	                                        <asp:DropDownList ID="ddlOficina" runat="server"  Width="180px"  SkinID="AnchoLibre"></asp:DropDownList> --%>
 	                                    </td>
 	                                </tr>
                                     <tr>
@@ -278,9 +278,9 @@
                                                 CssClass="field_input" ></asp:CheckBox>
                                         </td>
 	                                
-                                    <td class="tdFilter" Width="240px"  >
-                                    <div><asp:Literal ID="liRol" Text="Rol" runat="server" ></asp:Literal></div>
-                                    <div><asp:DropDownList ID="ddlRol" runat="server" SkinID="AnchoLibre" Width="200px"  ></asp:DropDownList></div>
+                                    <td class="tdFilter" Width="240px">
+                                        <div><asp:Literal ID="liRol" Text="Rol" runat="server" ></asp:Literal></div>
+                                        <div><asp:DropDownList ID="ddlRol" runat="server" SkinID="AnchoLibre" Width="200px"  ></asp:DropDownList></div>
 	                                </td>
 	                            </tr>
 	                        </table>

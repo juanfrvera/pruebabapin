@@ -41,7 +41,8 @@
 <asp:UpdatePanel ID="upDatosGenerales" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:Panel ID="pnlDatosGenerales" runat="server" GroupingText="Datos Generales">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+            <table width="100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
                     <td>
                         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="height: 100px">
@@ -104,7 +105,7 @@
                     </td>                    
                 </tr>
             </table>            
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
                     <td style="width: 110px">
                         <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal></td>
@@ -118,7 +119,7 @@
                     </td>
                 </tr>
             </table>
-            <table cellpadding="0" cellspacing="1px" border="0">                
+            <table cellpadding="0" cellspacing="2px" border="0">                
                 <tr>
                     <td>
                         <asp:Literal ID="liProceso" Text="Proceso" runat="server"></asp:Literal>
@@ -127,7 +128,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>
                         &nbsp;                
@@ -136,7 +137,7 @@
                         <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
                     </td>
                     <td colspan="2">
-                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18" Width="200px"></cc:ExtendedDropDownList>
                         <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
                     </td>
@@ -146,7 +147,7 @@
                         <asp:Literal ID="liEstado" Text="Estado Financiero" runat="server"></asp:Literal></td>
                     <td>&nbsp;</td>
                     <td>
-                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
 
@@ -154,7 +155,7 @@
                         <asp:Literal ID="liModalidadContratacion" Text="Modalidad de Contratación" runat="server"></asp:Literal></td>
                     </td>
                     <td colspan="3">
-                        <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16" Width="200px"> </cc:ExtendedDropDownList>
                     </td>
 
                 </tr>
@@ -169,11 +170,12 @@
                     </td>
                 </tr>
             </table>
-            <table width="100%" cellpadding="5px" cellspacing="0" border="0">
+            <table width="100%" cellpadding="5px" cellspacing="2px" border="0">
                 <tr>
-                    <td style="width: 810px">
-                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="810px">
-                            <table cellpadding="0" cellspacing="0px" border="0" style="height: 100px">
+                    <td style="width: 650px">
+                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="640px">
+                            
+                            <table cellpadding="0" cellspacing="0" border="0px" style="height: 100px">
                                 <tr>
                                     <td class="tdLabel">
                                         <asp:Literal ID="liIniciador" Text="Iniciador" runat="server"></asp:Literal></td>
@@ -182,7 +184,7 @@
                                         <%--<asp:DropDownList ID="ddlIniciador" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
                                         <%--Matias 20140702 - Tarea 150--%>
                                         <%--<uc:TreeOficinas runat="server" ID="toIniciador" Width ="250px" TabIndex ="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true"></uc:TreeOficinas>--%>
-                                        <uc:TreeOficinas runat="server" ID="toIniciador" Width="250px" TabIndex="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                                        <uc:TreeOficinas runat="server" ID="toIniciador" TabIndex="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
                                         <%--FinMatias 20140702 - Tarea 150--%>
                                         <%--<asp:ImageButton ID="imgFuncionario1" runat ="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" />--%>
                                     </td>
@@ -243,6 +245,8 @@
                     </td>
                 </tr>
             </table>
+        
+        
         </asp:Panel>
         <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Plan">
             <table width="100%">
