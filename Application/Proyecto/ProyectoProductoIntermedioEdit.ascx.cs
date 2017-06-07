@@ -222,7 +222,10 @@ namespace UI.Web
 
             List<EtapaResult> etapas = new List<EtapaResult>();
 
-            if (Entity.EsProyecto && (esModificacion || Entity.EtapasCantidadMaxima > CantidadObra) && !Entity.EsEquipamientoBasico)
+            // Matias 20170607 - Bug que permite editar una IF y agregar mas de una Obra.
+            //if (Entity.EsProyecto && (esModificacion || Entity.EtapasCantidadMaxima > CantidadObra) && !Entity.EsEquipamientoBasico)
+            if (Entity.EsProyecto && ((esModificacion && ActualProyectoEjecucion.EsObra) || Entity.EtapasCantidadMaxima > CantidadObra) && !Entity.EsEquipamientoBasico)
+            // FinMatias 20170607 
             {
                 etapas.Add(EtapaObra);
             }

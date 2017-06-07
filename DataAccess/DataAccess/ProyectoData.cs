@@ -402,12 +402,14 @@ namespace DataAccess
                                               //filtra los proyectos por las oficinas del usuario   
                                                (filter.IdsOficinaByUsuario == null || filter.IdsOficinaByUsuario.Count == 0 || (from pop in this.Context.ProyectoOficinaPerfils where filter.IdsOficinaByUsuario.Contains(pop.IdOficina) select pop.IdProyecto).Contains(o.IdProyecto))
 
-                                           )
+                                          )
 
                                           ||
-                                           (
-                                          #region Filter
-(filter.Codigo == null || filter.Codigo == o.Codigo)
+
+                                          (
+                                              
+                                           #region Filter
+                                              (filter.Codigo == null || filter.Codigo == o.Codigo)
                                               && (filter.IdProyecto == null || filter.IdProyecto == 0 || o.IdProyecto == filter.IdProyecto)
                                               && (filter.IdTipoProyecto == null || filter.IdTipoProyecto == 0 || o.IdTipoProyecto == filter.IdTipoProyecto)
                                               && (filter.IdSubPrograma == null || filter.IdSubPrograma == 0 || o.IdSubPrograma == filter.IdSubPrograma)
@@ -416,7 +418,7 @@ namespace DataAccess
 
                                               && (filter.ProyectoDescripcion == null || filter.ProyectoDescripcion.Trim() == string.Empty || filter.ProyectoDescripcion.Trim() == "%" || (filter.ProyectoDescripcion.EndsWith("%") && filter.ProyectoDescripcion.StartsWith("%") && (o.ProyectoDescripcion.Contains(filter.ProyectoDescripcion.Replace("%", "")))) || (filter.ProyectoDescripcion.EndsWith("%") && o.ProyectoDescripcion.StartsWith(filter.ProyectoDescripcion.Replace("%", ""))) || (filter.ProyectoDescripcion.StartsWith("%") && o.ProyectoDescripcion.EndsWith(filter.ProyectoDescripcion.Replace("%", ""))) || o.ProyectoDescripcion == filter.ProyectoDescripcion)
 
-                                            /*  && (filter.ProyectoDescripcion == null || filter.ProyectoDescripcion.Trim() == string.Empty || filter.ProyectoDescripcion.Trim() == "%" ||
+                                              /*&& (filter.ProyectoDescripcion == null || filter.ProyectoDescripcion.Trim() == string.Empty || filter.ProyectoDescripcion.Trim() == "%" ||
                                               ((filter.ProyectoDescripcion.StartsWith("%") == false || filter.ProyectoDescripcion.EndsWith("%") == false || o.ProyectoDescripcion.Contains(filter.ProyectoDescripcion.Replace("%", "")))
                                               && (filter.ProyectoDescripcion.StartsWith("%") == true || filter.ProyectoDescripcion.EndsWith("%") == false || o.ProyectoDescripcion.StartsWith(filter.ProyectoDescripcion.Replace("%", "")))
                                               && (filter.ProyectoDescripcion.StartsWith("%") == false || filter.ProyectoDescripcion.EndsWith("%") == true || o.ProyectoDescripcion.EndsWith(filter.ProyectoDescripcion.Replace("%", "")))
@@ -465,6 +467,7 @@ namespace DataAccess
                                                  where filter.Anio == pd.Fecha.Value.Year && (pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.Terminado || pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.EnEsperaRespuesta || pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.Migracion ) /*Estado utilizado unicamente para la migración inicial - Matias - DictamenMigracion - 20160930 */
                                                  select psp.IdProyecto).Contains(o.IdProyecto)
                                                  )
+
                                               && (filter.IdsCalificacionDictamen == null || filter.IdsCalificacionDictamen.Count == 0 ||
 
                                                         (from pd in this.Context.ProyectoDictamens
@@ -473,7 +476,6 @@ namespace DataAccess
                                                          join pde in this.Context.ProyectoDictamenEstados on pd.IdProyectoDictamenEstadoUltimo equals pde.IdProyectoDictamenEstado
                                                          where filter.IdsCalificacionDictamen.Contains(pd.IdProyectoCalificacion.Value) && (pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.Terminado || pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.EnEsperaRespuesta || pde.IdEstado == (int)ProyectoDicatamenEstadoEnum.Migracion ) /*Estado utilizado unicamente para la migración inicial - Matias - DictamenMigracion - 20160930 */
                                                          select psp.IdProyecto).Contains(o.IdProyecto)
-
                                               )
 
                                               && (filter.IdSectorialista == null || filter.IdSectorialista == 0 || (from sp in this.Context.SubProgramas where (from pr in this.Context.Programas where pr.IdSectorialista == filter.IdSectorialista select pr.IdPrograma).Contains(sp.IdPrograma) select sp.IdSubPrograma).Contains(o.IdSubPrograma))
@@ -526,44 +528,47 @@ namespace DataAccess
                                                       ).Contains(o.IdProyecto))
                                               && (filter.CalidadPendiente == null || filter.CalidadPendiente == false ||
                                                       (from pc in this.Context.ProyectoCalidads where pc.IdEstado == (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_PROYECTOCALIDAD_ESTADO_PARACONTROLAR") select pc.IdProyecto).Contains(o.IdProyecto))
-                                               && (filter.RequiereDictamen == null || filter.RequiereDictamen == false ||
+                                              && (filter.RequiereDictamen == null || filter.RequiereDictamen == false ||
                                                       (from pc in this.Context.ProyectoCalidads where pc.ReqDictamen == filter.RequiereDictamen select pc.IdProyecto).Contains(o.IdProyecto))
-                                          #region filtra los proyectos por las oficinas del usuario
- && (filter.IdsOficinaByUsuario == null || filter.IdsOficinaByUsuario.Count == 0 || filter.IdsOficinaPropiaByUsuario == null || filter.IdsOficinaPropiaByUsuario.Count == 0
+                                          
+                                             #region filtra los proyectos por las oficinas del usuario
+                                             && (filter.IdsOficinaByUsuario == null || filter.IdsOficinaByUsuario.Count == 0 || filter.IdsOficinaPropiaByUsuario == null || filter.IdsOficinaPropiaByUsuario.Count == 0
                                                     || (from pop in this.Context.ProyectoOficinaPerfils where filter.IdsOficinaPropiaByUsuario.Contains(pop.IdOficina) select pop.IdProyecto).Contains(o.IdProyecto)
                                                     || (o.EsBorrador == false &&
                                                        (from pop in this.Context.ProyectoOficinaPerfils where filter.IdsOficinaByUsuario.Contains(pop.IdOficina) select pop.IdProyecto).Contains(o.IdProyecto)
                                                        )
                                                   )
-                                          #endregion
- && (filter.IdOficina == null || filter.IdOficina == 0 || filter.IncluirOficinasInteriores == true ||
+                                             #endregion
+                                             && (filter.IdOficina == null || filter.IdOficina == 0 || filter.IncluirOficinasInteriores == true ||
                                                       ((filter.IdRol == null || filter.IdRol == 0) &&
                                                        (from pop in this.Context.ProyectoOficinaPerfils where filter.IdOficina == pop.IdOficina select pop.IdProyecto).Contains(o.IdProyecto))
                                                        ||
                                                        (filter.IdRol != null && filter.IdRol != 0 &&
                                                        (from pop in this.Context.ProyectoOficinaPerfils where filter.IdOficina == pop.IdOficina && filter.IdRol == pop.IdPerfil select pop.IdProyecto).Contains(o.IdProyecto)))
-                                               && (filter.IncluirOficinasInteriores == null || filter.IncluirOficinasInteriores == false || filter.IdOficina == null || strIdParent == string.Empty
-                                                       ||
-                                                       ((filter.IdRol == null || filter.IdRol == 0) &&
-                                                       (from pop in this.Context.ProyectoOficinaPerfils join of in this.Context.Oficinas on pop.IdOficina equals of.IdOficina where of.BreadcrumbId.Contains(strIdParent) select pop.IdProyecto).Contains(o.IdProyecto))
-                                                       ||
-                                                       (filter.IdRol != null && filter.IdRol != 0 &&
-                                                       (from pop in this.Context.ProyectoOficinaPerfils join of in this.Context.Oficinas on pop.IdOficina equals of.IdOficina where of.BreadcrumbId.Contains(strIdParent) && pop.IdPerfil == filter.IdRol select pop.IdProyecto).Contains(o.IdProyecto)))
+                                             && (filter.IncluirOficinasInteriores == null || filter.IncluirOficinasInteriores == false || filter.IdOficina == null || strIdParent == string.Empty
+                                                    ||
+                                                    ((filter.IdRol == null || filter.IdRol == 0) &&
+                                                    (from pop in this.Context.ProyectoOficinaPerfils join of in this.Context.Oficinas on pop.IdOficina equals of.IdOficina where of.BreadcrumbId.Contains(strIdParent) select pop.IdProyecto).Contains(o.IdProyecto))
+                                                    ||
+                                                    (filter.IdRol != null && filter.IdRol != 0 &&
+                                                    (from pop in this.Context.ProyectoOficinaPerfils join of in this.Context.Oficinas on pop.IdOficina equals of.IdOficina where of.BreadcrumbId.Contains(strIdParent) && pop.IdPerfil == filter.IdRol select pop.IdProyecto).Contains(o.IdProyecto)))
 
-                                              && (filter.IdProyectoSeguimiento == 0 || filter.IdProyectoSeguimiento == null ||
-                                                   (from psp in this.Context.ProyectoSeguimientoProyectos
-                                                    where psp.IdProyectoSeguimiento == filter.IdProyectoSeguimiento
-                                                    select psp.IdProyecto).Contains(o.IdProyecto))
+                                             && (filter.IdProyectoSeguimiento == 0 || filter.IdProyectoSeguimiento == null ||
+                                                (from psp in this.Context.ProyectoSeguimientoProyectos
+                                                where psp.IdProyectoSeguimiento == filter.IdProyectoSeguimiento
+                                                select psp.IdProyecto).Contains(o.IdProyecto))
 
-                                              && (filter.IdPrioridad == null || filter.IdPrioridad == 0 ||
-                                                       (from pp in this.Context.ProyectoPrioridads
-                                                        where pp.IdPrioridad == filter.IdPrioridad
-                                                        select pp.IdProyecto).Contains(o.IdProyecto)
-                                                       )
-                                              && (filter.Ids == null || filter.Ids.Count == 0 || filter.Ids.Contains(o.IdProyecto))
+                                             && (filter.IdPrioridad == null || filter.IdPrioridad == 0 ||
+                                                    (from pp in this.Context.ProyectoPrioridads
+                                                    where pp.IdPrioridad == filter.IdPrioridad
+                                                    select pp.IdProyecto).Contains(o.IdProyecto)
+                                                    )
+                                             && (filter.Ids == null || filter.Ids.Count == 0 || filter.Ids.Contains(o.IdProyecto))
 
                                           #endregion
-)
+                                            
+                                          )
+                                          
                                           select o
                     ).AsQueryable();
             return query;
