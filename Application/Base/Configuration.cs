@@ -15,6 +15,7 @@ namespace AUI.Web
         public static string TextProvider = ConfigurationManager.AppSettings.Get("TextProvider");
         public static int DisplayRows = Convert.ToInt32(ConfigurationManager.AppSettings.Get("DisplayRows"));
         public static string DropDownAll = "dropDownAll";
-        public static string valueAlreadyExists = "valueAlreadyExists"; 
+        public static string valueAlreadyExists = "valueAlreadyExists";
+        public static Boolean Filtrar_Busqueda_Proyecto_Periodo_Stress = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("Filtrar_Busqueda_Proyecto_Periodo_Stress"));
     }
 }

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Contract;
 using nc=Contract;
 using Service;
+using AUI.Web;
 
 namespace UI.Web
 {
@@ -69,7 +70,28 @@ namespace UI.Web
             CargarJurisdicciones();
             SetearDatosOficina();
             UIHelper.Load<nc.EstadoDeDesicion>(ddlEstadoDeDesicion, EstadoDeDesicionService.Current.GetList(new EstadoDeDesicionFilter() { Activo = true }), "Nombre", "IdEstadoDeDesicion", new EstadoDeDesicion() { IdEstadoDeDesicion = 0, Nombre = "Seleccione Estado de Decisión" });
+            if (esPeriodoDeStress())
+            {
+                ocultarControlesPorPeriodoDeStress();
+            }
+
         }
+
+        private void ocultarControlesPorPeriodoDeStress()
+        {
+            Panel1.Visible = false;
+            btHistoricoPorPlan.Visible = false;
+            PnlFechaIngreso.Visible = false;
+            PnlProcesos.Visible = false;
+            Panel4.Visible = false;
+            liRol.Visible = false;
+            ddlRol.Visible = false;
+            Panel2.Visible = false;
+            PnlDescripcionProyecto.Visible = false;
+
+
+        }
+
 		protected override void Clear()
         {
             ddlSubPrograma.Focus();
@@ -124,14 +146,13 @@ namespace UI.Web
             UIHelper.SetValue(ddlSubPrograma, Filter.IdSubPrograma);
 
             UIHelper.SetValueFilter(txtProyectoDenominacion, Filter.ProyectoDenominacion);
-            UIHelper.SetValueBetweenFilter(txtProyectoDescripcion, Filter.ProyectoDescripcion);
 
-            UIHelper.SetValue(toLocalizacionGeografica, Filter.IdClasificacionGeografica);
+
+            
             UIHelper.SetValue(chkIncluirLocalizacionesInteriores, Filter.IncluirClasificacionGeoInteriores);
             UIHelper.SetValue(toOficinas, Filter.IdOficina);
             UIHelper.SetValue(chkIncluirOficinasInteriores, Filter.IncluirOficinasInteriores);
-            UIHelper.SetValue(toFinalidadFuncion, Filter.IdFinalidadFuncion);
-            UIHelper.SetValue(chkIncluirFinalidadFuncion, Filter.IncluirFinalidadFunInteriores);
+
 
             UIHelper.SetValue(ddlPlanTipo, Filter.IdPlanTipo);
             BuscarPlan();
@@ -139,23 +160,16 @@ namespace UI.Web
             UIHelper.SetValue(ddlPlanVersion, Filter.IdPlanVersion);
 
             UIHelper.SetValue(ddlProceso, Filter.IdProceso);
-            CargarProcesos();
-            UIHelper.SetValue(ddlTipoProyecto, Filter.IdTipoProyecto);
-            UIHelper.SetValue(ddlRol, Filter.IdRol);
+
 
             UIHelper.SetValue(chkBorrador, Filter.EsBorrador);
             UIHelper.SetValue(chkActivo, Filter.Activo);
 
-            UIHelper.SetValue(ddlSectorialista, Filter.IdSectorialista);
-            string anio = Filter.Anio.ToString();
-            if(anio != null && anio != "")
-                UIHelper.SetValue(ddlAnio, AnioService.Current.GetList(new nc.AnioFilter() { Nombre =  anio }).First().IdAnio);
-            UIHelper.SetValue(ddlPriorizacion, Filter.IdPrioridad);
-            UIHelper.SetValue(chkRequiereDictamen, Filter.RequiereDictamen);
-            UIHelper.SetValue(chkRequiereArt15, Filter.RequiereArt15);
-            UIHelper.SetValue(chkCalidadPendiente, Filter.CalidadPendiente);
+            
+              
+
             UIHelper.SetValue(txtNroProyecto, Filter.Codigo);
-            UIHelper.SetValue(lbxCalificacionDictamen,Filter.IdsCalificacionDictamen);
+            
             UIHelper.SetValue(lbxEstado, Filter.IdsEstado);
 
             //UIHelper.SetValue(diFechaInicioDesde, Filter.FechaInicioEjecucionCalculada);
@@ -163,11 +177,33 @@ namespace UI.Web
             //UIHelper.SetValue(diFechaModificacionDesde, Filter.FechaModificacion);
             //UIHelper.SetValue(diFechaModificacionHasta, Filter.FechaModificacion_To);
 
-            UIHelper.SetValue<DateTime?>(rdFechaInicio, Filter.FechaAlta, Filter.FechaAlta_To);
+            
             UIHelper.SetValue<DateTime?>(rdFechaModificacion, Filter.FechaModificacion, Filter.FechaModificacion_To);
 
-            UIHelper.SetValue(ddlEstadoDeDesicion, Filter.IdEstadoDeDesicion);
-            
+
+
+            if (!esPeriodoDeStress())
+            {
+                UIHelper.SetValue(toLocalizacionGeografica, Filter.IdClasificacionGeografica);
+                UIHelper.SetValue<DateTime?>(rdFechaInicio, Filter.FechaAlta, Filter.FechaAlta_To);
+                CargarProcesos();
+                UIHelper.SetValue(ddlTipoProyecto, Filter.IdTipoProyecto);
+                UIHelper.SetValue(ddlRol, Filter.IdRol);
+                UIHelper.SetValue(toFinalidadFuncion, Filter.IdFinalidadFuncion);
+                UIHelper.SetValue(chkIncluirFinalidadFuncion, Filter.IncluirFinalidadFunInteriores);
+                UIHelper.SetValue(ddlEstadoDeDesicion, Filter.IdEstadoDeDesicion);
+                UIHelper.SetValueBetweenFilter(txtProyectoDescripcion, Filter.ProyectoDescripcion);
+                UIHelper.SetValue(ddlPriorizacion, Filter.IdPrioridad);
+                UIHelper.SetValue(lbxCalificacionDictamen, Filter.IdsCalificacionDictamen);
+                UIHelper.SetValue(chkRequiereDictamen, Filter.RequiereDictamen);
+                UIHelper.SetValue(chkRequiereArt15, Filter.RequiereArt15);
+                UIHelper.SetValue(chkCalidadPendiente, Filter.CalidadPendiente);
+                string anio = Filter.Anio.ToString();
+                if (anio != null && anio != "")
+                    UIHelper.SetValue(ddlAnio, AnioService.Current.GetList(new nc.AnioFilter() { Nombre = anio }).First().IdAnio);
+                UIHelper.SetValue(ddlSectorialista, Filter.IdSectorialista);
+          
+            }
         }
         //Matias 20140512 - Tarea 133
         private string GetSelectedTexts(ListBox control)
@@ -276,14 +312,6 @@ namespace UI.Web
             if (Filter.IdSubPrograma != null && Filter.IdSubPrograma != 0) Filter.Visualizacion.Add("SubPrograma", ddlSubPrograma.SelectedItem.Text);
             Filter.ProyectoDenominacion = UIHelper.GetStringBetweenFilter(txtProyectoDenominacion);
             if (Filter.ProyectoDenominacion != null && Filter.ProyectoDenominacion != string.Empty) Filter.Visualizacion.Add("Denominacion", txtProyectoDenominacion.Text);
-            Filter.IdClasificacionGeografica = UIHelper.GetIntNullable(toLocalizacionGeografica);
-            if (Filter.IdClasificacionGeografica != null) Filter.Visualizacion.Add("Localizacion Geografica", toLocalizacionGeografica.Value.Descripcion.Trim());
-            Filter.IncluirClasificacionGeoInteriores = UIHelper.GetBooleanNullable(chkIncluirLocalizacionesInteriores);
-            if (Filter.IncluirClasificacionGeoInteriores != null && chkIncluirLocalizacionesInteriores.Checked) Filter.Visualizacion.Add("Incluir Clasificacion Geo Interiores", "Si");
-            Filter.IdFinalidadFuncion = UIHelper.GetIntNullable(toFinalidadFuncion);
-            if (Filter.IdFinalidadFuncion != null) Filter.Visualizacion.Add("Finalidad Funcion", toFinalidadFuncion.Value.Descripcion.Trim());
-            Filter.IncluirFinalidadFunInteriores = UIHelper.GetBooleanNullable(chkIncluirFinalidadFuncion);
-            if (Filter.IncluirFinalidadFunInteriores != null && chkIncluirFinalidadFuncion.Checked) Filter.Visualizacion.Add("Incluir Finalidad Func. Interiores", "Si");
             Filter.IdOficina = UIHelper.GetIntNullable(toOficinas);
             if (Filter.IdOficina != null) Filter.Visualizacion.Add("Oficinas", toOficinas.Value.Descripcion.Trim());
             Filter.IncluirOficinasInteriores = UIHelper.GetBooleanNullable(chkIncluirOficinasInteriores);
@@ -296,11 +324,8 @@ namespace UI.Web
             if (Filter.IdPlanTipo != null && Filter.IdPlanTipo != 0) Filter.Visualizacion.Add("Tipo Plan", ddlPlanTipo.SelectedItem.Text);
             Filter.IdProceso = UIHelper.GetIntNullable(ddlProceso);
             if (Filter.IdProceso != null && Filter.IdProceso != 0) Filter.Visualizacion.Add("Proceso", ddlProceso.SelectedItem.Text);
-            Filter.IdTipoProyecto = UIHelper.GetInt(ddlTipoProyecto);
-            if (Filter.IdTipoProyecto != null && Filter.IdTipoProyecto != 0) Filter.Visualizacion.Add("Tipo Proyecto", ddlTipoProyecto.SelectedItem.Text);
-            Filter.IdSectorialista = UIHelper.GetInt(ddlSectorialista);
-            if (Filter.IdSectorialista != null && Filter.IdSectorialista != 0) Filter.Visualizacion.Add("Sectorialista", ddlSectorialista.SelectedItem.Text);
-            Filter.EsBorrador = UIHelper.GetBooleanNullable(chkBorrador);
+            
+             Filter.EsBorrador = UIHelper.GetBooleanNullable(chkBorrador);
             if (Filter.EsBorrador == null) Filter.Visualizacion.Add("Es Borrador", "Todos");
             else if (Convert.ToBoolean(Filter.EsBorrador)) Filter.Visualizacion.Add("Es Borrador", "SI");
             else Filter.Visualizacion.Add("Es Borrador", "NO");
@@ -308,41 +333,19 @@ namespace UI.Web
             if (Filter.Activo == null) Filter.Visualizacion.Add("Activo", "Todos");
             else if (Convert.ToBoolean(Filter.Activo)) Filter.Visualizacion.Add("Activo", "SI");
             else Filter.Visualizacion.Add("Activo", "NO");
-            Filter.IdRol = UIHelper.GetIntNullable(ddlRol);
-            if (Filter.IdRol != null && Filter.IdPrograma != 0) Filter.Visualizacion.Add("Rol", ddlRol.SelectedItem.Text);
-            Filter.IdPrioridad = UIHelper.GetIntNullable(ddlPriorizacion);
-            if (Filter.IdPrioridad != null && Filter.IdPrioridad != 0) Filter.Visualizacion.Add("Prioridad", ddlPriorizacion.SelectedItem.Text);
-            Filter.IdsCalificacionDictamen = UIHelper.GetSelectedIntValues(lbxCalificacionDictamen);
-            if (Filter.IdsCalificacionDictamen != null && Filter.IdsCalificacionDictamen.Count != 0) Filter.Visualizacion.Add("Clasificaciones Dictamen", this.GetSelectedTexts(lbxCalificacionDictamen));
-            Filter.ProyectoDescripcion = UIHelper.GetStringBetweenFilter(txtProyectoDescripcion);
-            if (Filter.ProyectoDescripcion != null && Filter.ProyectoDescripcion.Trim() != string.Empty) Filter.Visualizacion.Add("Descripcion", txtProyectoDescripcion.Text);
-            Filter.RequiereDictamen = UIHelper.GetBooleanNullable(chkRequiereDictamen);
-            if (Filter.RequiereDictamen != null && chkRequiereDictamen.Checked) Filter.Visualizacion.Add("Requiere Dictamen", "Si");
-            Filter.RequiereArt15 = UIHelper.GetBooleanNullable(chkRequiereArt15);
-            if (Filter.RequiereArt15 != null && chkRequiereArt15.Checked) Filter.Visualizacion.Add("Requiere Art 15", "Si");
-            Filter.CalidadPendiente = UIHelper.GetBooleanNullable(chkCalidadPendiente);
-            if (Filter.CalidadPendiente != null && chkCalidadPendiente.Checked) Filter.Visualizacion.Add("Calidad Pendiente", "Si");
             Filter.Codigo = UIHelper.GetIntNullable(txtNroProyecto);
             if (Filter.Codigo != null) Filter.Visualizacion.Add("Codigo", txtNroProyecto.Text);
             Filter.IdsEstado = UIHelper.GetSelectedIntValues(lbxEstado);
             if (Filter.IdsEstado != null && Filter.IdsEstado.Count != 0) Filter.Visualizacion.Add("Estados", this.GetSelectedTexts(lbxEstado));
-            int anio = 0;
-            int.TryParse(UIHelper.GetString(ddlAnio), out anio);
-            Filter.Anio = anio == 0 ? null : (int?)anio;
-            if (Filter.Anio != null) Filter.Visualizacion.Add("Anio", Filter.Anio);
+           
             Filter.IdUsusarioLogeado = UIContext.Current.ContextUser.User.IdUsuario;
             Filter.UnicamentePorCodigo = true;
-            Filter.FechaAlta = UIHelper.GetValueFromDate(rdFechaInicio);
-            if (Filter.FechaAlta != null) Filter.Visualizacion.Add("Fecha Alta Desde", Filter.FechaAlta.ToString());
-            Filter.FechaAlta_To = UIHelper.GetValueToDate(rdFechaInicio);
-            if (Filter.FechaAlta_To != null) Filter.Visualizacion.Add("Fecha Alta Hasta", Filter.FechaAlta_To.ToString());
+            
             Filter.FechaModificacion = UIHelper.GetValueFromDate(rdFechaModificacion);
             if (Filter.FechaModificacion != null) Filter.Visualizacion.Add("Fecha Modificacion Desde", Filter.FechaModificacion.ToString());
             Filter.FechaModificacion_To = UIHelper.GetValueToDate(rdFechaModificacion);
             if (Filter.FechaModificacion_To != null) Filter.Visualizacion.Add("Fecha Modificacion Hasta", Filter.FechaModificacion_To.ToString());
-            Filter.IdEstadoDeDesicion = UIHelper.GetIntNullable(ddlEstadoDeDesicion);
-            if (Filter.IdEstadoDeDesicion != null && Filter.IdEstadoDeDesicion != 0) Filter.Visualizacion.Add("Estado Decision", ddlEstadoDeDesicion.SelectedItem.Text);
-            #region old
+             #region old
             //Filter.IdTipoProyecto =UIHelper.GetIntNullable(ddlTipoProyecto);
 
             //Filter.ProyectoSituacionActual =UIHelper.GetStringFilter(txtProyectoSituacionActual);
@@ -367,9 +370,71 @@ namespace UI.Web
 
             //Filter.IdUsuarioModificacion=UIHelper.GetIntNullable(txtIdUsuarioModificacion);
             #endregion
+
+
+            if (!esPeriodoDeStress())
+            {
+                Filter.IdClasificacionGeografica = UIHelper.GetIntNullable(toLocalizacionGeografica);
+                if (Filter.IdClasificacionGeografica != null) Filter.Visualizacion.Add("Localizacion Geografica", toLocalizacionGeografica.Value.Descripcion.Trim());
+                Filter.IncluirClasificacionGeoInteriores = UIHelper.GetBooleanNullable(chkIncluirLocalizacionesInteriores);
+                if (Filter.IncluirClasificacionGeoInteriores != null && chkIncluirLocalizacionesInteriores.Checked) Filter.Visualizacion.Add("Incluir Clasificacion Geo Interiores", "Si");
+
+                Filter.FechaAlta = UIHelper.GetValueFromDate(rdFechaInicio);
+                if (Filter.FechaAlta != null) Filter.Visualizacion.Add("Fecha Alta Desde", Filter.FechaAlta.ToString());
+                Filter.FechaAlta_To = UIHelper.GetValueToDate(rdFechaInicio);
+                if (Filter.FechaAlta_To != null) Filter.Visualizacion.Add("Fecha Alta Hasta", Filter.FechaAlta_To.ToString());
+
+                Filter.IdTipoProyecto = UIHelper.GetInt(ddlTipoProyecto);
+                if (Filter.IdTipoProyecto != null && Filter.IdTipoProyecto != 0) Filter.Visualizacion.Add("Tipo Proyecto", ddlTipoProyecto.SelectedItem.Text);
+
+                Filter.IdRol = UIHelper.GetIntNullable(ddlRol);
+                if (Filter.IdRol != null && Filter.IdPrograma != 0) Filter.Visualizacion.Add("Rol", ddlRol.SelectedItem.Text);
+
+                Filter.IdFinalidadFuncion = UIHelper.GetIntNullable(toFinalidadFuncion);
+                if (Filter.IdFinalidadFuncion != null) Filter.Visualizacion.Add("Finalidad Funcion", toFinalidadFuncion.Value.Descripcion.Trim());
+                Filter.IncluirFinalidadFunInteriores = UIHelper.GetBooleanNullable(chkIncluirFinalidadFuncion);
+                if (Filter.IncluirFinalidadFunInteriores != null && chkIncluirFinalidadFuncion.Checked) Filter.Visualizacion.Add("Incluir Finalidad Func. Interiores", "Si");
+
+
+                Filter.IdEstadoDeDesicion = UIHelper.GetIntNullable(ddlEstadoDeDesicion);
+                if (Filter.IdEstadoDeDesicion != null && Filter.IdEstadoDeDesicion != 0) Filter.Visualizacion.Add("Estado Decision", ddlEstadoDeDesicion.SelectedItem.Text);
+
+                Filter.ProyectoDescripcion = UIHelper.GetStringBetweenFilter(txtProyectoDescripcion);
+                if (Filter.ProyectoDescripcion != null && Filter.ProyectoDescripcion.Trim() != string.Empty) Filter.Visualizacion.Add("Descripcion", txtProyectoDescripcion.Text);
+
+                Filter.IdPrioridad = UIHelper.GetIntNullable(ddlPriorizacion);
+                if (Filter.IdPrioridad != null && Filter.IdPrioridad != 0) Filter.Visualizacion.Add("Prioridad", ddlPriorizacion.SelectedItem.Text);
+
+                Filter.IdsCalificacionDictamen = UIHelper.GetSelectedIntValues(lbxCalificacionDictamen);
+                if (Filter.IdsCalificacionDictamen != null && Filter.IdsCalificacionDictamen.Count != 0) Filter.Visualizacion.Add("Clasificaciones Dictamen", this.GetSelectedTexts(lbxCalificacionDictamen));
+                Filter.RequiereDictamen = UIHelper.GetBooleanNullable(chkRequiereDictamen);
+                if (Filter.RequiereDictamen != null && chkRequiereDictamen.Checked) Filter.Visualizacion.Add("Requiere Dictamen", "Si");
+                Filter.RequiereArt15 = UIHelper.GetBooleanNullable(chkRequiereArt15);
+                if (Filter.RequiereArt15 != null && chkRequiereArt15.Checked) Filter.Visualizacion.Add("Requiere Art 15", "Si");
+                Filter.CalidadPendiente = UIHelper.GetBooleanNullable(chkCalidadPendiente);
+                if (Filter.CalidadPendiente != null && chkCalidadPendiente.Checked) Filter.Visualizacion.Add("Calidad Pendiente", "Si");
+
+                int anio = 0;
+                int.TryParse(UIHelper.GetString(ddlAnio), out anio);
+                Filter.Anio = anio == 0 ? null : (int?)anio;
+                if (Filter.Anio != null) Filter.Visualizacion.Add("Anio", Filter.Anio);
+
+                Filter.IdSectorialista = UIHelper.GetInt(ddlSectorialista);
+                if (Filter.IdSectorialista != null && Filter.IdSectorialista != 0) Filter.Visualizacion.Add("Sectorialista", ddlSectorialista.SelectedItem.Text);
+           
+           
+            }
         }
         //FinMatias 20140512 - Tarea 133
-        
+
+        private Boolean esPeriodoDeStress()
+        {
+            bool esAdministrador = (UIContext.Current.ContextUser.Perfiles.Where(perf => perf.Codigo == "ADMIN").FirstOrDefault() != null) ? true : false;
+            bool accesoTotal = UIContext.Current.ContextUser.User.AccesoTotal;
+            bool proyectoPeriodoStress = AUI.Web.Configuration.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+
+            return proyectoPeriodoStress /*&& (!esAdministrador && !accesoTotal)*/;
+        }
 
         #endregion
 

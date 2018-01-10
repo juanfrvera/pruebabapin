@@ -2116,6 +2116,62 @@ namespace Contract
         {
             return this.CreateMethodCallQuery<fnGetProyectoDetalladoPorDictamenResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idProyectoDictamenParametro);
         }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.sp_Proyectos_Count")]
+        public int sp_Proyectos_Count(
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "CodigoBapin", DbType = "Int")] System.Nullable<int> codigoBapin,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdJurisdiccion", DbType = "Int")] System.Nullable<int> idJurisdiccion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdSaf", DbType = "Int")] System.Nullable<int> idSaf,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPrograma", DbType = "Int")] System.Nullable<int> idPrograma,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdSubprograma", DbType = "Int")] System.Nullable<int> idSubprograma,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "ProyectoDenominacion", DbType = "VarChar(8000)")] string proyectoDenominacion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "EsBorrador", DbType = "Bit")] System.Nullable<bool> esBorrador,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "FechaModificacionDesde", DbType = "DateTime")] System.Nullable<System.DateTime> fechaModificacionDesde,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "FechaModificacionHasta", DbType = "DateTime")] System.Nullable<System.DateTime> fechaModificacionHasta,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdEstados", DbType = "VarChar(255)")] string idEstados,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Activo", DbType = "Bit")] System.Nullable<bool> activo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanTipo", DbType = "Int")] System.Nullable<int> idPlanTipo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanPeriodo", DbType = "Int")] System.Nullable<int> idPlanPeriodo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanVersion", DbType = "Int")] System.Nullable<int> idPlanVersion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdOficina", DbType = "Int")] System.Nullable<int> idOficina,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Oficina", DbType = "VarChar(8000)")] string oficina)
+        {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), codigoBapin, idJurisdiccion, idSaf, idPrograma, idSubprograma, proyectoDenominacion, esBorrador, fechaModificacionDesde, fechaModificacionHasta, idEstados, activo, idPlanTipo, idPlanPeriodo, idPlanVersion, idOficina, oficina);
+            return ((int)(result.ReturnValue));
+        }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.sp_Proyectos_List")]
+        public ISingleResult<sp_Proyectos_ListResult> sp_Proyectos_List(
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "CodigoBapin", DbType = "Int")] System.Nullable<int> codigoBapin,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdJurisdiccion", DbType = "Int")] System.Nullable<int> idJurisdiccion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdSaf", DbType = "Int")] System.Nullable<int> idSaf,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPrograma", DbType = "Int")] System.Nullable<int> idPrograma,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdSubprograma", DbType = "Int")] System.Nullable<int> idSubprograma,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "ProyectoDenominacion", DbType = "VarChar(8000)")] string proyectoDenominacion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "EsBorrador", DbType = "Bit")] System.Nullable<bool> esBorrador,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "FechaModificacionDesde", DbType = "DateTime")] System.Nullable<System.DateTime> fechaModificacionDesde,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "FechaModificacionHasta", DbType = "DateTime")] System.Nullable<System.DateTime> fechaModificacionHasta,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdEstados", DbType = "VarChar(255)")] string idEstados,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Activo", DbType = "Bit")] System.Nullable<bool> activo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanTipo", DbType = "Int")] System.Nullable<int> idPlanTipo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanPeriodo", DbType = "Int")] System.Nullable<int> idPlanPeriodo,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdPlanVersion", DbType = "Int")] System.Nullable<int> idPlanVersion,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdOficina", DbType = "Int")] System.Nullable<int> idOficina,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Oficina", DbType = "VarChar(8000)")] string oficina,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Desde", DbType = "Int")] System.Nullable<int> desde,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Hasta", DbType = "Int")] System.Nullable<int> hasta)
+        {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), codigoBapin, idJurisdiccion, idSaf, idPrograma, idSubprograma, proyectoDenominacion, esBorrador, fechaModificacionDesde, fechaModificacionHasta, idEstados, activo, idPlanTipo, idPlanPeriodo, idPlanVersion, idOficina, oficina, desde, hasta);
+            return ((ISingleResult<sp_Proyectos_ListResult>)(result.ReturnValue));
+        }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.sp_Proyectos_Get")]
+        public ISingleResult<sp_Proyectos_GetResult> sp_Proyectos_Get([global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IdProyecto", DbType = "Int")] System.Nullable<int> idProyecto)
+        {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idProyecto);
+            return ((ISingleResult<sp_Proyectos_GetResult>)(result.ReturnValue));
+        }
+
     }
 
     [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Actividad")]
@@ -58644,6 +58700,2000 @@ namespace Contract
                 if ((this._Proyecto != value))
                 {
                     this._Proyecto = value;
+                }
+            }
+        }
+    }
+
+    [global::System.Runtime.Serialization.DataContractAttribute()]
+    public partial class sp_Proyectos_ListResult
+    {
+
+        private int _IdProyecto;
+
+        private int _IdTipoProyecto;
+
+        private int _IdSubPrograma;
+
+        private int _Codigo;
+
+        private string _ProyectoDenominacion;
+
+        private string _ProyectoSituacionActual;
+
+        private string _ProyectoDescripcion;
+
+        private string _ProyectoObservacion;
+
+        private int _IdEstado;
+
+        private System.Nullable<int> _IdProceso;
+
+        private System.Nullable<int> _IdModalidadContratacion;
+
+        private System.Nullable<int> _IdFinalidadFuncion;
+
+        private System.Nullable<int> _IdOrganismoPrioridad;
+
+        private System.Nullable<int> _SubPrioridad;
+
+        private bool _EsBorrador;
+
+        private System.Nullable<bool> _EsProyecto;
+
+        private System.Nullable<int> _NroProyecto;
+
+        private System.Nullable<int> _AnioCorriente;
+
+        private System.Nullable<System.DateTime> _FechaInicioEjecucionCalculada;
+
+        private System.Nullable<System.DateTime> _FechaFinEjecucionCalculada;
+
+        private System.DateTime _FechaAlta;
+
+        private System.DateTime _FechaModificacion;
+
+        private int _IdUsuarioModificacion;
+
+        private System.Nullable<int> _IdProyectoPlan;
+
+        private bool _EvaluarValidaciones;
+
+        private bool _Activo;
+
+        private System.Nullable<int> _IdEstadoDeDesicion;
+
+        private string _Estado_Nombre;
+
+        private string _Proceso_Nombre;
+
+        private string _TipoProyecto_Nombre;
+
+        private string _SubPrograma_Codigo;
+
+        private string _SubPrograma_Nombre;
+
+        private string _ModalidadContratacion_Nombre;
+
+        private string _FinalidadFuncion_DescripcionInvertida;
+
+        private string _FinalidadFuncion_BreadcrumbCode;
+
+        private string _OrganismoPrioridad_Nombre;
+
+        private int _IdSAF;
+
+        private int _IdPrograma;
+
+        private System.Nullable<int> _RequiereDictamen;
+
+        private string _Programa_Nombre;
+
+        private string _Programa_Codigo;
+
+        private string _Saf_Nombre;
+
+        private string _Saf_Codigo;
+
+        private string _Jurisdiccion_Nombre;
+
+        private string _Jurisdiccion_Codigo;
+
+        private string _Plan_Ultimo;
+
+        private string _Apertura;
+
+        private System.Nullable<int> _value9;
+
+        private System.Nullable<int> _CalidadACorregir;
+
+        private string _Saf_SectorNombre;
+
+        private string _Saf_AdministracionTipoNombre;
+
+        private string _Saf_EntidadTipoNombre;
+
+        public sp_Proyectos_ListResult()
+        {
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProyecto", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 1)]
+        public int IdProyecto
+        {
+            get
+            {
+                return this._IdProyecto;
+            }
+            set
+            {
+                if ((this._IdProyecto != value))
+                {
+                    this._IdProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdTipoProyecto", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 2)]
+        public int IdTipoProyecto
+        {
+            get
+            {
+                return this._IdTipoProyecto;
+            }
+            set
+            {
+                if ((this._IdTipoProyecto != value))
+                {
+                    this._IdTipoProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdSubPrograma", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
+        public int IdSubPrograma
+        {
+            get
+            {
+                return this._IdSubPrograma;
+            }
+            set
+            {
+                if ((this._IdSubPrograma != value))
+                {
+                    this._IdSubPrograma = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Codigo", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
+        public int Codigo
+        {
+            get
+            {
+                return this._Codigo;
+            }
+            set
+            {
+                if ((this._Codigo != value))
+                {
+                    this._Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoDenominacion", DbType = "VarChar(500) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
+        public string ProyectoDenominacion
+        {
+            get
+            {
+                return this._ProyectoDenominacion;
+            }
+            set
+            {
+                if ((this._ProyectoDenominacion != value))
+                {
+                    this._ProyectoDenominacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoSituacionActual", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
+        public string ProyectoSituacionActual
+        {
+            get
+            {
+                return this._ProyectoSituacionActual;
+            }
+            set
+            {
+                if ((this._ProyectoSituacionActual != value))
+                {
+                    this._ProyectoSituacionActual = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoDescripcion", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 7)]
+        public string ProyectoDescripcion
+        {
+            get
+            {
+                return this._ProyectoDescripcion;
+            }
+            set
+            {
+                if ((this._ProyectoDescripcion != value))
+                {
+                    this._ProyectoDescripcion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoObservacion", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 8)]
+        public string ProyectoObservacion
+        {
+            get
+            {
+                return this._ProyectoObservacion;
+            }
+            set
+            {
+                if ((this._ProyectoObservacion != value))
+                {
+                    this._ProyectoObservacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdEstado", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 9)]
+        public int IdEstado
+        {
+            get
+            {
+                return this._IdEstado;
+            }
+            set
+            {
+                if ((this._IdEstado != value))
+                {
+                    this._IdEstado = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProceso", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 10)]
+        public System.Nullable<int> IdProceso
+        {
+            get
+            {
+                return this._IdProceso;
+            }
+            set
+            {
+                if ((this._IdProceso != value))
+                {
+                    this._IdProceso = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdModalidadContratacion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 11)]
+        public System.Nullable<int> IdModalidadContratacion
+        {
+            get
+            {
+                return this._IdModalidadContratacion;
+            }
+            set
+            {
+                if ((this._IdModalidadContratacion != value))
+                {
+                    this._IdModalidadContratacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdFinalidadFuncion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 12)]
+        public System.Nullable<int> IdFinalidadFuncion
+        {
+            get
+            {
+                return this._IdFinalidadFuncion;
+            }
+            set
+            {
+                if ((this._IdFinalidadFuncion != value))
+                {
+                    this._IdFinalidadFuncion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdOrganismoPrioridad", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 13)]
+        public System.Nullable<int> IdOrganismoPrioridad
+        {
+            get
+            {
+                return this._IdOrganismoPrioridad;
+            }
+            set
+            {
+                if ((this._IdOrganismoPrioridad != value))
+                {
+                    this._IdOrganismoPrioridad = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrioridad", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 14)]
+        public System.Nullable<int> SubPrioridad
+        {
+            get
+            {
+                return this._SubPrioridad;
+            }
+            set
+            {
+                if ((this._SubPrioridad != value))
+                {
+                    this._SubPrioridad = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EsBorrador", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 15)]
+        public bool EsBorrador
+        {
+            get
+            {
+                return this._EsBorrador;
+            }
+            set
+            {
+                if ((this._EsBorrador != value))
+                {
+                    this._EsBorrador = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EsProyecto", DbType = "Bit")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 16)]
+        public System.Nullable<bool> EsProyecto
+        {
+            get
+            {
+                return this._EsProyecto;
+            }
+            set
+            {
+                if ((this._EsProyecto != value))
+                {
+                    this._EsProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_NroProyecto", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 17)]
+        public System.Nullable<int> NroProyecto
+        {
+            get
+            {
+                return this._NroProyecto;
+            }
+            set
+            {
+                if ((this._NroProyecto != value))
+                {
+                    this._NroProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AnioCorriente", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 18)]
+        public System.Nullable<int> AnioCorriente
+        {
+            get
+            {
+                return this._AnioCorriente;
+            }
+            set
+            {
+                if ((this._AnioCorriente != value))
+                {
+                    this._AnioCorriente = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaInicioEjecucionCalculada", DbType = "SmallDateTime")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 19)]
+        public System.Nullable<System.DateTime> FechaInicioEjecucionCalculada
+        {
+            get
+            {
+                return this._FechaInicioEjecucionCalculada;
+            }
+            set
+            {
+                if ((this._FechaInicioEjecucionCalculada != value))
+                {
+                    this._FechaInicioEjecucionCalculada = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaFinEjecucionCalculada", DbType = "SmallDateTime")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 20)]
+        public System.Nullable<System.DateTime> FechaFinEjecucionCalculada
+        {
+            get
+            {
+                return this._FechaFinEjecucionCalculada;
+            }
+            set
+            {
+                if ((this._FechaFinEjecucionCalculada != value))
+                {
+                    this._FechaFinEjecucionCalculada = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaAlta", DbType = "SmallDateTime NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 21)]
+        public System.DateTime FechaAlta
+        {
+            get
+            {
+                return this._FechaAlta;
+            }
+            set
+            {
+                if ((this._FechaAlta != value))
+                {
+                    this._FechaAlta = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaModificacion", DbType = "SmallDateTime NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 22)]
+        public System.DateTime FechaModificacion
+        {
+            get
+            {
+                return this._FechaModificacion;
+            }
+            set
+            {
+                if ((this._FechaModificacion != value))
+                {
+                    this._FechaModificacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdUsuarioModificacion", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 23)]
+        public int IdUsuarioModificacion
+        {
+            get
+            {
+                return this._IdUsuarioModificacion;
+            }
+            set
+            {
+                if ((this._IdUsuarioModificacion != value))
+                {
+                    this._IdUsuarioModificacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProyectoPlan", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 24)]
+        public System.Nullable<int> IdProyectoPlan
+        {
+            get
+            {
+                return this._IdProyectoPlan;
+            }
+            set
+            {
+                if ((this._IdProyectoPlan != value))
+                {
+                    this._IdProyectoPlan = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EvaluarValidaciones", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 25)]
+        public bool EvaluarValidaciones
+        {
+            get
+            {
+                return this._EvaluarValidaciones;
+            }
+            set
+            {
+                if ((this._EvaluarValidaciones != value))
+                {
+                    this._EvaluarValidaciones = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Activo", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 26)]
+        public bool Activo
+        {
+            get
+            {
+                return this._Activo;
+            }
+            set
+            {
+                if ((this._Activo != value))
+                {
+                    this._Activo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdEstadoDeDesicion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 27)]
+        public System.Nullable<int> IdEstadoDeDesicion
+        {
+            get
+            {
+                return this._IdEstadoDeDesicion;
+            }
+            set
+            {
+                if ((this._IdEstadoDeDesicion != value))
+                {
+                    this._IdEstadoDeDesicion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Estado_Nombre", DbType = "VarChar(70) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 28)]
+        public string Estado_Nombre
+        {
+            get
+            {
+                return this._Estado_Nombre;
+            }
+            set
+            {
+                if ((this._Estado_Nombre != value))
+                {
+                    this._Estado_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Proceso_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 29)]
+        public string Proceso_Nombre
+        {
+            get
+            {
+                return this._Proceso_Nombre;
+            }
+            set
+            {
+                if ((this._Proceso_Nombre != value))
+                {
+                    this._Proceso_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TipoProyecto_Nombre", DbType = "VarChar(50) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 30)]
+        public string TipoProyecto_Nombre
+        {
+            get
+            {
+                return this._TipoProyecto_Nombre;
+            }
+            set
+            {
+                if ((this._TipoProyecto_Nombre != value))
+                {
+                    this._TipoProyecto_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrograma_Codigo", DbType = "VarChar(3) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 31)]
+        public string SubPrograma_Codigo
+        {
+            get
+            {
+                return this._SubPrograma_Codigo;
+            }
+            set
+            {
+                if ((this._SubPrograma_Codigo != value))
+                {
+                    this._SubPrograma_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrograma_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 32)]
+        public string SubPrograma_Nombre
+        {
+            get
+            {
+                return this._SubPrograma_Nombre;
+            }
+            set
+            {
+                if ((this._SubPrograma_Nombre != value))
+                {
+                    this._SubPrograma_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ModalidadContratacion_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 33)]
+        public string ModalidadContratacion_Nombre
+        {
+            get
+            {
+                return this._ModalidadContratacion_Nombre;
+            }
+            set
+            {
+                if ((this._ModalidadContratacion_Nombre != value))
+                {
+                    this._ModalidadContratacion_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FinalidadFuncion_DescripcionInvertida", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 34)]
+        public string FinalidadFuncion_DescripcionInvertida
+        {
+            get
+            {
+                return this._FinalidadFuncion_DescripcionInvertida;
+            }
+            set
+            {
+                if ((this._FinalidadFuncion_DescripcionInvertida != value))
+                {
+                    this._FinalidadFuncion_DescripcionInvertida = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FinalidadFuncion_BreadcrumbCode", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 35)]
+        public string FinalidadFuncion_BreadcrumbCode
+        {
+            get
+            {
+                return this._FinalidadFuncion_BreadcrumbCode;
+            }
+            set
+            {
+                if ((this._FinalidadFuncion_BreadcrumbCode != value))
+                {
+                    this._FinalidadFuncion_BreadcrumbCode = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_OrganismoPrioridad_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 36)]
+        public string OrganismoPrioridad_Nombre
+        {
+            get
+            {
+                return this._OrganismoPrioridad_Nombre;
+            }
+            set
+            {
+                if ((this._OrganismoPrioridad_Nombre != value))
+                {
+                    this._OrganismoPrioridad_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdSAF", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 37)]
+        public int IdSAF
+        {
+            get
+            {
+                return this._IdSAF;
+            }
+            set
+            {
+                if ((this._IdSAF != value))
+                {
+                    this._IdSAF = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdPrograma", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 38)]
+        public int IdPrograma
+        {
+            get
+            {
+                return this._IdPrograma;
+            }
+            set
+            {
+                if ((this._IdPrograma != value))
+                {
+                    this._IdPrograma = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RequiereDictamen", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 39)]
+        public System.Nullable<int> RequiereDictamen
+        {
+            get
+            {
+                return this._RequiereDictamen;
+            }
+            set
+            {
+                if ((this._RequiereDictamen != value))
+                {
+                    this._RequiereDictamen = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Programa_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 40)]
+        public string Programa_Nombre
+        {
+            get
+            {
+                return this._Programa_Nombre;
+            }
+            set
+            {
+                if ((this._Programa_Nombre != value))
+                {
+                    this._Programa_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Programa_Codigo", DbType = "VarChar(3) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 41)]
+        public string Programa_Codigo
+        {
+            get
+            {
+                return this._Programa_Codigo;
+            }
+            set
+            {
+                if ((this._Programa_Codigo != value))
+                {
+                    this._Programa_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 42)]
+        public string Saf_Nombre
+        {
+            get
+            {
+                return this._Saf_Nombre;
+            }
+            set
+            {
+                if ((this._Saf_Nombre != value))
+                {
+                    this._Saf_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_Codigo", DbType = "VarChar(5) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 43)]
+        public string Saf_Codigo
+        {
+            get
+            {
+                return this._Saf_Codigo;
+            }
+            set
+            {
+                if ((this._Saf_Codigo != value))
+                {
+                    this._Saf_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Jurisdiccion_Nombre", DbType = "VarChar(120)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 44)]
+        public string Jurisdiccion_Nombre
+        {
+            get
+            {
+                return this._Jurisdiccion_Nombre;
+            }
+            set
+            {
+                if ((this._Jurisdiccion_Nombre != value))
+                {
+                    this._Jurisdiccion_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Jurisdiccion_Codigo", DbType = "VarChar(15)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 45)]
+        public string Jurisdiccion_Codigo
+        {
+            get
+            {
+                return this._Jurisdiccion_Codigo;
+            }
+            set
+            {
+                if ((this._Jurisdiccion_Codigo != value))
+                {
+                    this._Jurisdiccion_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Plan_Ultimo", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 46)]
+        public string Plan_Ultimo
+        {
+            get
+            {
+                return this._Plan_Ultimo;
+            }
+            set
+            {
+                if ((this._Plan_Ultimo != value))
+                {
+                    this._Plan_Ultimo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Apertura", DbType = "NVarChar(4000)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 47)]
+        public string Apertura
+        {
+            get
+            {
+                return this._Apertura;
+            }
+            set
+            {
+                if ((this._Apertura != value))
+                {
+                    this._Apertura = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_value9", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 48)]
+        public System.Nullable<int> value9
+        {
+            get
+            {
+                return this._value9;
+            }
+            set
+            {
+                if ((this._value9 != value))
+                {
+                    this._value9 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CalidadACorregir", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 49)]
+        public System.Nullable<int> CalidadACorregir
+        {
+            get
+            {
+                return this._CalidadACorregir;
+            }
+            set
+            {
+                if ((this._CalidadACorregir != value))
+                {
+                    this._CalidadACorregir = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_SectorNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 50)]
+        public string Saf_SectorNombre
+        {
+            get
+            {
+                return this._Saf_SectorNombre;
+            }
+            set
+            {
+                if ((this._Saf_SectorNombre != value))
+                {
+                    this._Saf_SectorNombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_AdministracionTipoNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 51)]
+        public string Saf_AdministracionTipoNombre
+        {
+            get
+            {
+                return this._Saf_AdministracionTipoNombre;
+            }
+            set
+            {
+                if ((this._Saf_AdministracionTipoNombre != value))
+                {
+                    this._Saf_AdministracionTipoNombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_EntidadTipoNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 52)]
+        public string Saf_EntidadTipoNombre
+        {
+            get
+            {
+                return this._Saf_EntidadTipoNombre;
+            }
+            set
+            {
+                if ((this._Saf_EntidadTipoNombre != value))
+                {
+                    this._Saf_EntidadTipoNombre = value;
+                }
+            }
+        }
+    }
+
+    [global::System.Runtime.Serialization.DataContractAttribute()]
+    public partial class sp_Proyectos_GetResult
+    {
+
+        private int _IdProyecto;
+
+        private int _IdTipoProyecto;
+
+        private int _IdSubPrograma;
+
+        private int _Codigo;
+
+        private string _ProyectoDenominacion;
+
+        private string _ProyectoSituacionActual;
+
+        private string _ProyectoDescripcion;
+
+        private string _ProyectoObservacion;
+
+        private int _IdEstado;
+
+        private System.Nullable<int> _IdProceso;
+
+        private System.Nullable<int> _IdModalidadContratacion;
+
+        private System.Nullable<int> _IdFinalidadFuncion;
+
+        private System.Nullable<int> _IdOrganismoPrioridad;
+
+        private System.Nullable<int> _SubPrioridad;
+
+        private bool _EsBorrador;
+
+        private System.Nullable<bool> _EsProyecto;
+
+        private System.Nullable<int> _NroProyecto;
+
+        private System.Nullable<int> _AnioCorriente;
+
+        private System.Nullable<System.DateTime> _FechaInicioEjecucionCalculada;
+
+        private System.Nullable<System.DateTime> _FechaFinEjecucionCalculada;
+
+        private System.DateTime _FechaAlta;
+
+        private System.DateTime _FechaModificacion;
+
+        private int _IdUsuarioModificacion;
+
+        private System.Nullable<int> _IdProyectoPlan;
+
+        private bool _EvaluarValidaciones;
+
+        private bool _Activo;
+
+        private System.Nullable<int> _IdEstadoDeDesicion;
+
+        private string _Estado_Nombre;
+
+        private string _Proceso_Nombre;
+
+        private string _TipoProyecto_Nombre;
+
+        private string _SubPrograma_Codigo;
+
+        private string _SubPrograma_Nombre;
+
+        private string _ModalidadContratacion_Nombre;
+
+        private string _FinalidadFuncion_DescripcionInvertida;
+
+        private string _FinalidadFuncion_BreadcrumbCode;
+
+        private string _OrganismoPrioridad_Nombre;
+
+        private int _IdSAF;
+
+        private int _IdPrograma;
+
+        private System.Nullable<int> _RequiereDictamen;
+
+        private string _Programa_Nombre;
+
+        private string _Programa_Codigo;
+
+        private string _Saf_Nombre;
+
+        private string _Saf_Codigo;
+
+        private string _Jurisdiccion_Nombre;
+
+        private string _Jurisdiccion_Codigo;
+
+        private string _Plan_Ultimo;
+
+        private string _Apertura;
+
+        private System.Nullable<int> _value;
+
+        private System.Nullable<int> _CalidadACorregir;
+
+        private string _Saf_SectorNombre;
+
+        private string _Saf_AdministracionTipoNombre;
+
+        private string _Saf_EntidadTipoNombre;
+
+        public sp_Proyectos_GetResult()
+        {
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProyecto", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 1)]
+        public int IdProyecto
+        {
+            get
+            {
+                return this._IdProyecto;
+            }
+            set
+            {
+                if ((this._IdProyecto != value))
+                {
+                    this._IdProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdTipoProyecto", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 2)]
+        public int IdTipoProyecto
+        {
+            get
+            {
+                return this._IdTipoProyecto;
+            }
+            set
+            {
+                if ((this._IdTipoProyecto != value))
+                {
+                    this._IdTipoProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdSubPrograma", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
+        public int IdSubPrograma
+        {
+            get
+            {
+                return this._IdSubPrograma;
+            }
+            set
+            {
+                if ((this._IdSubPrograma != value))
+                {
+                    this._IdSubPrograma = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Codigo", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
+        public int Codigo
+        {
+            get
+            {
+                return this._Codigo;
+            }
+            set
+            {
+                if ((this._Codigo != value))
+                {
+                    this._Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoDenominacion", DbType = "VarChar(500) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
+        public string ProyectoDenominacion
+        {
+            get
+            {
+                return this._ProyectoDenominacion;
+            }
+            set
+            {
+                if ((this._ProyectoDenominacion != value))
+                {
+                    this._ProyectoDenominacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoSituacionActual", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
+        public string ProyectoSituacionActual
+        {
+            get
+            {
+                return this._ProyectoSituacionActual;
+            }
+            set
+            {
+                if ((this._ProyectoSituacionActual != value))
+                {
+                    this._ProyectoSituacionActual = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoDescripcion", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 7)]
+        public string ProyectoDescripcion
+        {
+            get
+            {
+                return this._ProyectoDescripcion;
+            }
+            set
+            {
+                if ((this._ProyectoDescripcion != value))
+                {
+                    this._ProyectoDescripcion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ProyectoObservacion", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 8)]
+        public string ProyectoObservacion
+        {
+            get
+            {
+                return this._ProyectoObservacion;
+            }
+            set
+            {
+                if ((this._ProyectoObservacion != value))
+                {
+                    this._ProyectoObservacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdEstado", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 9)]
+        public int IdEstado
+        {
+            get
+            {
+                return this._IdEstado;
+            }
+            set
+            {
+                if ((this._IdEstado != value))
+                {
+                    this._IdEstado = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProceso", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 10)]
+        public System.Nullable<int> IdProceso
+        {
+            get
+            {
+                return this._IdProceso;
+            }
+            set
+            {
+                if ((this._IdProceso != value))
+                {
+                    this._IdProceso = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdModalidadContratacion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 11)]
+        public System.Nullable<int> IdModalidadContratacion
+        {
+            get
+            {
+                return this._IdModalidadContratacion;
+            }
+            set
+            {
+                if ((this._IdModalidadContratacion != value))
+                {
+                    this._IdModalidadContratacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdFinalidadFuncion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 12)]
+        public System.Nullable<int> IdFinalidadFuncion
+        {
+            get
+            {
+                return this._IdFinalidadFuncion;
+            }
+            set
+            {
+                if ((this._IdFinalidadFuncion != value))
+                {
+                    this._IdFinalidadFuncion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdOrganismoPrioridad", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 13)]
+        public System.Nullable<int> IdOrganismoPrioridad
+        {
+            get
+            {
+                return this._IdOrganismoPrioridad;
+            }
+            set
+            {
+                if ((this._IdOrganismoPrioridad != value))
+                {
+                    this._IdOrganismoPrioridad = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrioridad", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 14)]
+        public System.Nullable<int> SubPrioridad
+        {
+            get
+            {
+                return this._SubPrioridad;
+            }
+            set
+            {
+                if ((this._SubPrioridad != value))
+                {
+                    this._SubPrioridad = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EsBorrador", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 15)]
+        public bool EsBorrador
+        {
+            get
+            {
+                return this._EsBorrador;
+            }
+            set
+            {
+                if ((this._EsBorrador != value))
+                {
+                    this._EsBorrador = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EsProyecto", DbType = "Bit")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 16)]
+        public System.Nullable<bool> EsProyecto
+        {
+            get
+            {
+                return this._EsProyecto;
+            }
+            set
+            {
+                if ((this._EsProyecto != value))
+                {
+                    this._EsProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_NroProyecto", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 17)]
+        public System.Nullable<int> NroProyecto
+        {
+            get
+            {
+                return this._NroProyecto;
+            }
+            set
+            {
+                if ((this._NroProyecto != value))
+                {
+                    this._NroProyecto = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AnioCorriente", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 18)]
+        public System.Nullable<int> AnioCorriente
+        {
+            get
+            {
+                return this._AnioCorriente;
+            }
+            set
+            {
+                if ((this._AnioCorriente != value))
+                {
+                    this._AnioCorriente = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaInicioEjecucionCalculada", DbType = "SmallDateTime")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 19)]
+        public System.Nullable<System.DateTime> FechaInicioEjecucionCalculada
+        {
+            get
+            {
+                return this._FechaInicioEjecucionCalculada;
+            }
+            set
+            {
+                if ((this._FechaInicioEjecucionCalculada != value))
+                {
+                    this._FechaInicioEjecucionCalculada = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaFinEjecucionCalculada", DbType = "SmallDateTime")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 20)]
+        public System.Nullable<System.DateTime> FechaFinEjecucionCalculada
+        {
+            get
+            {
+                return this._FechaFinEjecucionCalculada;
+            }
+            set
+            {
+                if ((this._FechaFinEjecucionCalculada != value))
+                {
+                    this._FechaFinEjecucionCalculada = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaAlta", DbType = "SmallDateTime NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 21)]
+        public System.DateTime FechaAlta
+        {
+            get
+            {
+                return this._FechaAlta;
+            }
+            set
+            {
+                if ((this._FechaAlta != value))
+                {
+                    this._FechaAlta = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FechaModificacion", DbType = "SmallDateTime NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 22)]
+        public System.DateTime FechaModificacion
+        {
+            get
+            {
+                return this._FechaModificacion;
+            }
+            set
+            {
+                if ((this._FechaModificacion != value))
+                {
+                    this._FechaModificacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdUsuarioModificacion", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 23)]
+        public int IdUsuarioModificacion
+        {
+            get
+            {
+                return this._IdUsuarioModificacion;
+            }
+            set
+            {
+                if ((this._IdUsuarioModificacion != value))
+                {
+                    this._IdUsuarioModificacion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdProyectoPlan", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 24)]
+        public System.Nullable<int> IdProyectoPlan
+        {
+            get
+            {
+                return this._IdProyectoPlan;
+            }
+            set
+            {
+                if ((this._IdProyectoPlan != value))
+                {
+                    this._IdProyectoPlan = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_EvaluarValidaciones", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 25)]
+        public bool EvaluarValidaciones
+        {
+            get
+            {
+                return this._EvaluarValidaciones;
+            }
+            set
+            {
+                if ((this._EvaluarValidaciones != value))
+                {
+                    this._EvaluarValidaciones = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Activo", DbType = "Bit NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 26)]
+        public bool Activo
+        {
+            get
+            {
+                return this._Activo;
+            }
+            set
+            {
+                if ((this._Activo != value))
+                {
+                    this._Activo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdEstadoDeDesicion", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 27)]
+        public System.Nullable<int> IdEstadoDeDesicion
+        {
+            get
+            {
+                return this._IdEstadoDeDesicion;
+            }
+            set
+            {
+                if ((this._IdEstadoDeDesicion != value))
+                {
+                    this._IdEstadoDeDesicion = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Estado_Nombre", DbType = "VarChar(70) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 28)]
+        public string Estado_Nombre
+        {
+            get
+            {
+                return this._Estado_Nombre;
+            }
+            set
+            {
+                if ((this._Estado_Nombre != value))
+                {
+                    this._Estado_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Proceso_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 29)]
+        public string Proceso_Nombre
+        {
+            get
+            {
+                return this._Proceso_Nombre;
+            }
+            set
+            {
+                if ((this._Proceso_Nombre != value))
+                {
+                    this._Proceso_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TipoProyecto_Nombre", DbType = "VarChar(50) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 30)]
+        public string TipoProyecto_Nombre
+        {
+            get
+            {
+                return this._TipoProyecto_Nombre;
+            }
+            set
+            {
+                if ((this._TipoProyecto_Nombre != value))
+                {
+                    this._TipoProyecto_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrograma_Codigo", DbType = "VarChar(3) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 31)]
+        public string SubPrograma_Codigo
+        {
+            get
+            {
+                return this._SubPrograma_Codigo;
+            }
+            set
+            {
+                if ((this._SubPrograma_Codigo != value))
+                {
+                    this._SubPrograma_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_SubPrograma_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 32)]
+        public string SubPrograma_Nombre
+        {
+            get
+            {
+                return this._SubPrograma_Nombre;
+            }
+            set
+            {
+                if ((this._SubPrograma_Nombre != value))
+                {
+                    this._SubPrograma_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ModalidadContratacion_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 33)]
+        public string ModalidadContratacion_Nombre
+        {
+            get
+            {
+                return this._ModalidadContratacion_Nombre;
+            }
+            set
+            {
+                if ((this._ModalidadContratacion_Nombre != value))
+                {
+                    this._ModalidadContratacion_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FinalidadFuncion_DescripcionInvertida", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 34)]
+        public string FinalidadFuncion_DescripcionInvertida
+        {
+            get
+            {
+                return this._FinalidadFuncion_DescripcionInvertida;
+            }
+            set
+            {
+                if ((this._FinalidadFuncion_DescripcionInvertida != value))
+                {
+                    this._FinalidadFuncion_DescripcionInvertida = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_FinalidadFuncion_BreadcrumbCode", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 35)]
+        public string FinalidadFuncion_BreadcrumbCode
+        {
+            get
+            {
+                return this._FinalidadFuncion_BreadcrumbCode;
+            }
+            set
+            {
+                if ((this._FinalidadFuncion_BreadcrumbCode != value))
+                {
+                    this._FinalidadFuncion_BreadcrumbCode = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_OrganismoPrioridad_Nombre", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 36)]
+        public string OrganismoPrioridad_Nombre
+        {
+            get
+            {
+                return this._OrganismoPrioridad_Nombre;
+            }
+            set
+            {
+                if ((this._OrganismoPrioridad_Nombre != value))
+                {
+                    this._OrganismoPrioridad_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdSAF", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 37)]
+        public int IdSAF
+        {
+            get
+            {
+                return this._IdSAF;
+            }
+            set
+            {
+                if ((this._IdSAF != value))
+                {
+                    this._IdSAF = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IdPrograma", DbType = "Int NOT NULL")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 38)]
+        public int IdPrograma
+        {
+            get
+            {
+                return this._IdPrograma;
+            }
+            set
+            {
+                if ((this._IdPrograma != value))
+                {
+                    this._IdPrograma = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RequiereDictamen", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 39)]
+        public System.Nullable<int> RequiereDictamen
+        {
+            get
+            {
+                return this._RequiereDictamen;
+            }
+            set
+            {
+                if ((this._RequiereDictamen != value))
+                {
+                    this._RequiereDictamen = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Programa_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 40)]
+        public string Programa_Nombre
+        {
+            get
+            {
+                return this._Programa_Nombre;
+            }
+            set
+            {
+                if ((this._Programa_Nombre != value))
+                {
+                    this._Programa_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Programa_Codigo", DbType = "VarChar(3) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 41)]
+        public string Programa_Codigo
+        {
+            get
+            {
+                return this._Programa_Codigo;
+            }
+            set
+            {
+                if ((this._Programa_Codigo != value))
+                {
+                    this._Programa_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_Nombre", DbType = "VarChar(255) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 42)]
+        public string Saf_Nombre
+        {
+            get
+            {
+                return this._Saf_Nombre;
+            }
+            set
+            {
+                if ((this._Saf_Nombre != value))
+                {
+                    this._Saf_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_Codigo", DbType = "VarChar(5) NOT NULL", CanBeNull = false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 43)]
+        public string Saf_Codigo
+        {
+            get
+            {
+                return this._Saf_Codigo;
+            }
+            set
+            {
+                if ((this._Saf_Codigo != value))
+                {
+                    this._Saf_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Jurisdiccion_Nombre", DbType = "VarChar(120)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 44)]
+        public string Jurisdiccion_Nombre
+        {
+            get
+            {
+                return this._Jurisdiccion_Nombre;
+            }
+            set
+            {
+                if ((this._Jurisdiccion_Nombre != value))
+                {
+                    this._Jurisdiccion_Nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Jurisdiccion_Codigo", DbType = "VarChar(15)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 45)]
+        public string Jurisdiccion_Codigo
+        {
+            get
+            {
+                return this._Jurisdiccion_Codigo;
+            }
+            set
+            {
+                if ((this._Jurisdiccion_Codigo != value))
+                {
+                    this._Jurisdiccion_Codigo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Plan_Ultimo", DbType = "NVarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 46)]
+        public string Plan_Ultimo
+        {
+            get
+            {
+                return this._Plan_Ultimo;
+            }
+            set
+            {
+                if ((this._Plan_Ultimo != value))
+                {
+                    this._Plan_Ultimo = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Apertura", DbType = "NVarChar(4000)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 47)]
+        public string Apertura
+        {
+            get
+            {
+                return this._Apertura;
+            }
+            set
+            {
+                if ((this._Apertura != value))
+                {
+                    this._Apertura = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_value", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 48)]
+        public System.Nullable<int> value
+        {
+            get
+            {
+                return this._value;
+            }
+            set
+            {
+                if ((this._value != value))
+                {
+                    this._value = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_CalidadACorregir", DbType = "Int")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 49)]
+        public System.Nullable<int> CalidadACorregir
+        {
+            get
+            {
+                return this._CalidadACorregir;
+            }
+            set
+            {
+                if ((this._CalidadACorregir != value))
+                {
+                    this._CalidadACorregir = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_SectorNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 50)]
+        public string Saf_SectorNombre
+        {
+            get
+            {
+                return this._Saf_SectorNombre;
+            }
+            set
+            {
+                if ((this._Saf_SectorNombre != value))
+                {
+                    this._Saf_SectorNombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_AdministracionTipoNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 51)]
+        public string Saf_AdministracionTipoNombre
+        {
+            get
+            {
+                return this._Saf_AdministracionTipoNombre;
+            }
+            set
+            {
+                if ((this._Saf_AdministracionTipoNombre != value))
+                {
+                    this._Saf_AdministracionTipoNombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Saf_EntidadTipoNombre", DbType = "NVarChar(50)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 52)]
+        public string Saf_EntidadTipoNombre
+        {
+            get
+            {
+                return this._Saf_EntidadTipoNombre;
+            }
+            set
+            {
+                if ((this._Saf_EntidadTipoNombre != value))
+                {
+                    this._Saf_EntidadTipoNombre = value;
                 }
             }
         }
