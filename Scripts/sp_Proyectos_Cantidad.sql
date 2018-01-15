@@ -103,7 +103,9 @@ exec sp_Proyectos_Cantidad @Oficina = '%.1386.%' , @Activo = 1 7 OK
 
 SET NOCOUNT ON;
 
-SET @RETURN_VALUE = (SELECT COUNT(1) AS [value]
+declare @ret int
+
+set @Ret = (SELECT COUNT(1) AS [value]
 
 FROM [dbo].[Proyecto] AS [t0]
 INNER JOIN [dbo].[Estado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
@@ -192,6 +194,8 @@ WHERE
 			))
     ) OR 
     ([t0].[Codigo] = @CodigoBapin))
+    
+    return @Ret
 GO
 
 
