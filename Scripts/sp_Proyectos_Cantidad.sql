@@ -33,8 +33,7 @@ Create procedure [dbo].[sp_Proyectos_Count]
 @IdPlanPeriodo int = NULL,
 @IdPlanVersion int = NULL,
 @IdOficina int = null,
-@Oficina varchar(8000)  = NULL,
-@RETURN_VALUE int output
+@Oficina varchar(8000)  = NULL
 
 as
 /*
