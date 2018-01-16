@@ -40,6 +40,8 @@ Create procedure [dbo].[sp_Proyectos_List]
 
 as
 
+SET NOCOUNT ON;
+
 declare
 @p0 nvarchar(4000),
 @p1 nvarchar(4000),
@@ -370,7 +372,11 @@ FROM (
 		([t38].[Codigo] = @CodigoBapin)
     ) AS [t41]
 WHERE (@Desde is null and @Hasta is null ) or ([t41].[ROW_NUMBER] BETWEEN @Desde + 1 AND @Desde + @Hasta)
-ORDER BY [t41].[ROW_NUMBER]
+ORDER BY [t41].[Codigo5],
+[t41].[Codigo4] ,
+[t41].[Codigo3],
+[t41].[Codigo2],
+[t41].Codigo
 
 --',N'@p0 nvarchar(4000),@p1 nvarchar(4000),@p2 varchar(8000),@p3 int,@p4 varchar(8000),@p5 int,@p6 int,@p7 nchar(1),@p8 nvarchar(4000),@p9 int,@p10 nchar(1),@p11 nvarchar(4000),@p12 int,@p13 nchar(1),@p14 int,@p15 int,@p16 int,@p17 int,@p18 nvarchar(4000),@p19 nvarchar(4000),@p20 nvarchar(4000),@p21 int,@p22 varchar(8000),@p23 int,@p24 int',
 

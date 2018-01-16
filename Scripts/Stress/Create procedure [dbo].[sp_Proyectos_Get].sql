@@ -23,6 +23,8 @@ Create procedure [dbo].[sp_Proyectos_Get]
 
 as
 
+SET NOCOUNT ON;
+
 declare 
 @p1 nvarchar(4000),
 @p2 nvarchar(4000),

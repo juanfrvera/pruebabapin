@@ -431,7 +431,7 @@ namespace UI.Web
         {
             bool esAdministrador = (UIContext.Current.ContextUser.Perfiles.Where(perf => perf.Codigo == "ADMIN").FirstOrDefault() != null) ? true : false;
             bool accesoTotal = UIContext.Current.ContextUser.User.AccesoTotal;
-            bool proyectoPeriodoStress = AUI.Web.Configuration.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+            bool proyectoPeriodoStress = SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress ;
 
             return proyectoPeriodoStress /*&& (!esAdministrador && !accesoTotal)*/;
         }

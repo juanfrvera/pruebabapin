@@ -98,7 +98,7 @@ namespace UI.Web
         {
             bool enableFilterOffice = SolutionContext.Current.ParameterManager.GetBooleanValue("OFFICE_FILTER_ENABLE");
             SetParameter(FilterKey, Filter);
-            bool proyectoPeriodoStress = AUI.Web.Configuration.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+            bool proyectoPeriodoStress = SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress;
             if (proyectoPeriodoStress)
             {
                 Filter.IdsOficinaByUsuario = null;
