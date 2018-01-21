@@ -108,6 +108,19 @@ namespace Contract
             get { return systemUser; }
             set { systemUser = value; }
         }
+
+        protected Boolean filtrar_Busqueda_Proyecto_Periodo_Stress;
+        public Boolean Filtrar_Busqueda_Proyecto_Periodo_Stress
+        {
+            get
+            {
+                if (SolutionContext.Current.ParameterManager != null)
+                    filtrar_Busqueda_Proyecto_Periodo_Stress = SolutionContext.Current.ParameterManager.GetBooleanValue("FILTRAR_BUSQUEDA_PROYECTO_PERIODO_STRESS");
+                return filtrar_Busqueda_Proyecto_Periodo_Stress != null ? filtrar_Busqueda_Proyecto_Periodo_Stress : false;
+
+            }
+        }
+
  
 
         #endregion

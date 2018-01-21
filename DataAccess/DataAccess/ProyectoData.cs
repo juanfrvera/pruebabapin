@@ -385,6 +385,215 @@ namespace DataAccess
         #endregion
         #region Query
 
+        public int QueryCountSP(ProyectoFilter filter)
+        {
+            int? codigoBapin;
+            int? idJurisdiccion;
+            int? idSaf;
+            int? idPrograma;
+            int? idSubprograma;
+            string proyectoDenominacion;
+            bool? esBorrador;
+            DateTime? fechaModificacionDesde;
+            DateTime? fechaModificacionHasta;
+            string idEstados;
+            bool? activo;
+            int? idPlanTipo;
+            int? idPlanPeriodo;
+            int? idPlanVersion;
+            int? idOficina;
+            string oficina;
+
+
+
+            codigoBapin = filter.Codigo;
+            idJurisdiccion = filter.IdJurisdiccion;
+            idSaf = filter.IdSaf;
+            idPrograma = filter.IdPrograma;
+            idSubprograma = filter.IdSubPrograma;
+            proyectoDenominacion = filter.ProyectoDenominacion == String.Empty ? null : filter.ProyectoDenominacion;
+            esBorrador = filter.EsBorrador;
+            fechaModificacionDesde = filter.FechaModificacion;
+            fechaModificacionHasta = filter.FechaModificacion_To;
+            idEstados = String.Join(",", filter.IdsEstado.Select(x => x.ToString()).ToArray());
+            idEstados = idEstados == String.Empty ? null : idEstados;
+            activo = filter.Activo;
+            idPlanTipo = filter.IdPlanTipo == 0 ? null : filter.IdPlanTipo;
+            idPlanPeriodo = filter.IdPlanPeriodo == 0 ? null : filter.IdPlanTipo;
+            idPlanVersion = filter.IdPlanVersion == 0 ? null : filter.IdPlanVersion;
+            idOficina = filter.IdOficina == 0 ? null : filter.IdOficina;
+            oficina = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : null;
+
+
+
+            int result = this.Context.sp_Proyectos_Count(
+                    codigoBapin,
+                    idJurisdiccion,
+                    idSaf,
+                    idPrograma,
+                    idSubprograma,
+                    proyectoDenominacion,
+                    esBorrador,
+                    fechaModificacionDesde,
+                    fechaModificacionHasta,
+                    idEstados,
+                    activo,
+                    idPlanTipo,
+                    idPlanPeriodo,
+                    idPlanVersion,
+                    idOficina,
+                    oficina);
+
+
+
+           
+            return result;
+        }
+
+        public ListPaged<ProyectoResult> QuerySP(ProyectoFilter filter)
+        {
+            int? codigoBapin;
+            int? idJurisdiccion;
+            int? idSaf;
+            int? idPrograma;
+            int? idSubprograma;
+            string proyectoDenominacion;
+            bool? esBorrador;
+            DateTime? fechaModificacionDesde;
+            DateTime? fechaModificacionHasta;
+            string idEstados;
+            bool? activo;
+            int? idPlanTipo;
+            int? idPlanPeriodo;
+            int? idPlanVersion;
+            int? idOficina;
+            string oficina;
+            int desde;
+            int hasta;
+
+            int? totalRows = null;
+            if (filter.GetTotaRowsCount)
+            {
+                totalRows = this.QueryCountSP(filter);
+                if (totalRows.HasValue)
+                {
+                    if (filter.PageNumber * filter.PageSize >= totalRows + filter.PageSize)
+                        filter.PageNumber = 1;
+                }
+            }
+
+            desde = filter.PageSize * (filter.PageNumber - 1);
+            hasta = filter.PageSize;
+ 
+
+            codigoBapin = filter.Codigo;
+            idJurisdiccion = filter.IdJurisdiccion;
+            idSaf = filter.IdSaf;
+            idPrograma = filter.IdPrograma;
+            idSubprograma = filter.IdSubPrograma;
+            proyectoDenominacion = filter.ProyectoDenominacion == String.Empty ? null : filter.ProyectoDenominacion;
+            esBorrador = filter.EsBorrador;
+            fechaModificacionDesde = filter.FechaModificacion;
+            fechaModificacionHasta = filter.FechaModificacion_To;
+            idEstados = String.Join(",", filter.IdsEstado.Select(x => x.ToString()).ToArray());
+            idEstados = idEstados == String.Empty ? null : idEstados;
+            activo = filter.Activo;
+            idPlanTipo = filter.IdPlanTipo == 0 ? null : filter.IdPlanTipo;
+            idPlanPeriodo = filter.IdPlanPeriodo == 0 ? null : filter.IdPlanTipo;
+            idPlanVersion = filter.IdPlanVersion == 0 ? null : filter.IdPlanVersion;
+            idOficina = filter.IdOficina == 0 ? null : filter.IdOficina;
+            oficina = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : null;
+
+
+            List<sp_Proyectos_ListResult> result = this.Context.sp_Proyectos_List(
+                    codigoBapin,
+                    idJurisdiccion,
+                    idSaf,
+                    idPrograma,
+                    idSubprograma,
+                    proyectoDenominacion,
+                    esBorrador,
+                    fechaModificacionDesde,
+                    fechaModificacionHasta,
+                    idEstados,
+                    activo,
+                    idPlanTipo,
+                    idPlanPeriodo,
+                    idPlanVersion,
+                    idOficina,
+                    oficina,
+                    desde,
+                    hasta).ToList();
+
+            List<ProyectoResult> results = new List<ProyectoResult>();
+
+            foreach (sp_Proyectos_ListResult res in result)
+            {
+                ProyectoResult proyectoResult = new ProyectoResult()
+                          {
+                              IdProyecto = res.IdProyecto,
+                              IdTipoProyecto = res.IdTipoProyecto,
+                              IdSubPrograma = res.IdSubPrograma,
+                              Codigo = res.Codigo,
+                              ProyectoDenominacion = res.ProyectoDenominacion,
+                              ProyectoSituacionActual = res.ProyectoSituacionActual,
+                              ProyectoDescripcion = res.ProyectoDescripcion,
+                              ProyectoObservacion = res.ProyectoObservacion,
+                              IdEstado = res.IdEstado,
+                              IdProceso = res.IdProceso,
+                              IdModalidadContratacion = res.IdModalidadContratacion,
+                              ModalidadContratacion_Nombre = res.ModalidadContratacion_Nombre,
+                              IdFinalidadFuncion = res.IdFinalidadFuncion,
+                              FinalidadFuncion_BreadcrumbCode = res.FinalidadFuncion_BreadcrumbCode,
+                              FinalidadFuncion_DescripcionInvertida = res.FinalidadFuncion_DescripcionInvertida,
+                              IdOrganismoPrioridad = res.IdOrganismoPrioridad,
+                              OrganismoPrioridad_Nombre = res.OrganismoPrioridad_Nombre,
+                              SubPrioridad = res.SubPrioridad,
+                              EsBorrador = res.EsBorrador,
+                              EsProyecto = res.EsProyecto,
+                              NroProyecto = res.NroProyecto,
+                              AnioCorriente = res.AnioCorriente,
+                              FechaInicioEjecucionCalculada = res.FechaInicioEjecucionCalculada,
+                              FechaFinEjecucionCalculada = res.FechaFinEjecucionCalculada,
+                              FechaAlta = res.FechaAlta,
+                              FechaModificacion = res.FechaModificacion,
+                              IdUsuarioModificacion = res.IdUsuarioModificacion,
+                              IdProyectoPlan = res.IdProyectoPlan,
+                              IdEstadoDeDesicion = res.IdEstadoDeDesicion,
+                              Estado_Nombre = res.Estado_Nombre,
+                              EvaluarValidaciones = res.EvaluarValidaciones,
+                              Proceso_Nombre = res.Proceso_Nombre,
+                              TipoProyecto_Nombre = res.TipoProyecto_Nombre,
+                              SubPrograma_Codigo = res.SubPrograma_Codigo,
+                              SubPrograma_Nombre = res.SubPrograma_Nombre,
+                              IdSAF = res.IdSAF,
+                              IdPrograma = res.IdPrograma,
+                              Programa_Codigo = res.Programa_Codigo,
+                              Programa_Nombre = res.Programa_Nombre,
+                              Saf_Nombre = res.Saf_Nombre,
+                              Saf_Codigo = res.Saf_Codigo,
+                              Jurisdiccion_Codigo = res.Jurisdiccion_Codigo,
+                              Jurisdiccion_Nombre = res.Jurisdiccion_Nombre,
+                              RequiereDictamen = res.RequiereDictamen.HasValue ? Convert.ToBoolean(res.RequiereDictamen.Value) : false,
+                              Plan_Ultimo =res.Plan_Ultimo,
+                              Apertura = res.Apertura,
+                              Activo = res.Activo,
+                              Saf_SectorNombre = res.Saf_SectorNombre,
+                              Saf_AdministracionTipoNombre = res.Saf_AdministracionTipoNombre,
+                              Saf_EntidadTipoNombre = res.Saf_EntidadTipoNombre,
+                              Color = res.EsBorrador ? (System.Drawing.Color.Red) :
+                                                res.value9 != 0 ? (System.Drawing.Color.Blue) : (System.Drawing.Color.Black),
+                              CalidadACorregir = res.CalidadACorregir != null? Convert.ToBoolean(res.CalidadACorregir.Value) : false
+                              //Aca se modifica el Color!
+                              //http://devnet.asna.com/documentation/Help_Files/AVR72/AVR72_web/avrlrfSettingColors.htm
+                          };
+                results.Add(proyectoResult);
+            }
+            ListPaged<ProyectoResult> list = new ListPaged<ProyectoResult>(results);
+            list.TotalRows = totalRows;
+            return list;
+        }
+
         protected override IQueryable<Proyecto> Query(ProyectoFilter filter)
         {
             string strIdParent = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : string.Empty;
@@ -961,6 +1170,7 @@ namespace DataAccess
             return query;
         }
         //FinMatias 20141014 - Tarea 158
+
 
         protected override IQueryable<ProyectoResult> QueryResult(ProyectoFilter filter)
         {

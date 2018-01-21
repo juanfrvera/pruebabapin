@@ -98,19 +98,27 @@ namespace UI.Web
         {
             bool enableFilterOffice = SolutionContext.Current.ParameterManager.GetBooleanValue("OFFICE_FILTER_ENABLE");
             SetParameter(FilterKey, Filter);
-            if (enableFilterOffice && UIContext.Current.ContextUser.User.AccesoTotal == false)
+            bool proyectoPeriodoStress = SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+            if (proyectoPeriodoStress)
             {
-                Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);
-                Filter.IdsOficinaPropiaByUsuario = (from o in UIContext.Current.ContextUser.PerfilesPorOficina select o.IdOficina).ToList();
-                List = ProyectoService.Current.GetResultWithOfficePerfil(Filter);
-            }
-            else
-            {
-                // Filter.IdOficina = null;
                 Filter.IdsOficinaByUsuario = null;
                 Filter.IdsOficinaPropiaByUsuario = null;
-                List = ProyectoService.Current.GetResult(Filter);
+                List = ProyectoService.Current.GetResultSP(Filter);
             }
+            else 
+                if (enableFilterOffice && UIContext.Current.ContextUser.User.AccesoTotal == false)
+                {
+                    Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);
+                    Filter.IdsOficinaPropiaByUsuario = (from o in UIContext.Current.ContextUser.PerfilesPorOficina select o.IdOficina).ToList();
+                    List = ProyectoService.Current.GetResultWithOfficePerfil(Filter);
+                }
+                else
+                {
+                    // Filter.IdOficina = null;
+                    Filter.IdsOficinaByUsuario = null;
+                    Filter.IdsOficinaPropiaByUsuario = null;
+                    List = ProyectoService.Current.GetResult(Filter);
+                }
             if (List.TotalRows.HasValue) this.webControlPaggingButtons.RefreshPagging(List.TotalRows.Value);
             webControlList.DataSource = List;
             webControlList.DataBind();
