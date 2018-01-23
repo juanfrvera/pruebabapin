@@ -118,10 +118,20 @@ namespace UI.Web
 
         protected override void GenerateExcel()
         {
-
             SetearUsuarioLogueado();
             base.GenerateExcel();
+        }
 
+        protected override void ExportTemplate()
+        {
+            SetearUsuarioLogueado();
+            base.ExportTemplate();
+        }
+
+        protected override void ImportTemplate()
+        {
+            SetearUsuarioLogueado();
+            base.ImportTemplate();
         }
 
         protected override void CommandOthers()
@@ -219,6 +229,17 @@ namespace UI.Web
         {
             ControlCommand(Command.EXPORT_EXCEL);
         }
+        //ALO 20180118
+        protected void bExportTemplate_OnClick(object sender, EventArgs e)
+        {
+            ControlCommand(Command.EXPORT_TEMPLATE, GetExample());
+        }
+        protected void bImportTemplate_OnClick(object sender, EventArgs e)
+        {
+            ControlCommand(Command.IMPORT_TEMPLATE);
+        }
+        //FinALO 20180118
+
         //Matias 20140512 - Tarea 133
         protected void btVisualizarGraficos_OnClick(object sender, EventArgs e)
         {

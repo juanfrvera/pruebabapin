@@ -1029,6 +1029,12 @@ namespace UI.Web
                     case Command.EXPORT_EXCEL:
                         CommandExportExcel();
                         break;
+                    case Command.EXPORT_TEMPLATE:
+                        CommandExportTemplate();
+                        break;
+                    case Command.IMPORT_TEMPLATE:
+                        CommandImportTemplate();
+                        break;
                     case Command.EXPORT_PDF:
                         CommandExportPdf();
                         break;
@@ -1143,6 +1149,18 @@ namespace UI.Web
         {
             this.Search();
             this.GenerateExcel();
+            this.ShowDownLoadExport();
+        }
+        protected virtual void CommandExportTemplate()
+        {
+            this.Search();
+            this.ExportTemplate();
+            this.ShowDownLoadExport();
+        }
+        protected virtual void CommandImportTemplate()
+        {
+            this.Search();
+            this.ImportTemplate();
             this.ShowDownLoadExport();
         }
         protected virtual void CommandExportPdf()
@@ -1282,6 +1300,9 @@ namespace UI.Web
                     return Controls[i] as WebControlPopup;
             return null;
         }
+
+        protected virtual void ImportTemplate() { }
+        protected virtual void ExportTemplate() { }
 
         protected virtual void GenerateExcel() { }
         protected virtual void GenerateStoreReport() { }

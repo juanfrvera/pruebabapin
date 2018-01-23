@@ -139,8 +139,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.VS2010.10.0.40219.1\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.VS2010.10.0.40219.1\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -5204,8 +5210,8 @@
       <DependentUpon>WebControl_DateInput.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -6645,6 +6651,7 @@
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
     <None Include="UserControls.cd" />
     <Content Include="Images\imprimir.png" />
     <Content Include="Images\postular.png" />

@@ -101,6 +101,9 @@ public class Command
     public const string EXPORT_PDF = "_ExportPdf";
     public const string EXPORT_EXCEL = "_ExportExcel";
 
+    public const string EXPORT_TEMPLATE = "_ExportTemplate";
+    public const string IMPORT_TEMPLATE = "_ImportTemplate";
+
     public const string PAGE_NEXT = "_PageNext";
     public const string PAGE_PREVIUOS = "_PagePrevious";
     public const string PAGE_LAST = "_PageLast";

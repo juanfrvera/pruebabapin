@@ -261,6 +261,58 @@ namespace UI.Web
             SortExpression = string.Empty;            
         }
 
+        //ALO 20180122
+        protected override void ExportTemplate()
+        {
+            //Filter = webControlFilter.GetFilter();
+            int auxPageSize = Filter.PageSize;
+            int auxPageNumber = Filter.PageNumber;
+            bool auxGetTotaRowsCount = Filter.GetTotaRowsCount;
+            Filter.PageSize = 0;
+            Filter.PageNumber = 1;
+            if (SortExpression == string.Empty && OrderBys.Count > 0)
+            {
+                Filter.OrderBys = OrderBys;
+            }
+            else
+            {
+                Filter.OrderByProperty = SortExpression;
+                Filter.OrderByDesc = (SortDirection == SortDirection.Descending);
+            }
+            List = EntityService.GetResult(Filter);
+
+            var idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
+
+            if (idLastTemplateVersion > 0)
+            {
+                var templateFileInfo = FileInfoService.Current.GetById(idLastTemplateVersion);
+                
+                DataTableMapping mapping = GetDataTableMapping();
+                MemoryStream stream = new MemoryStream();
+                byte[] templateByte = templateFileInfo.Data.ToArray();
+                stream.Write(templateByte, 0, templateByte.Length);
+
+                //TODO: tomar los datos de los proyectos seleccionados y agregarlos al template
+ 
+                HttpContext.Current.Session["OpenXmlStreamInput"] = stream;
+                HttpContext.Current.Session["OpenXmlFileContentType"] = templateFileInfo.FileType; //"application/vnd.ms-excel";
+                HttpContext.Current.Session["OpenXmlFileName"] = templateFileInfo.FileName;
+                Filter.PageSize = auxPageSize;
+                Filter.PageNumber = auxPageNumber;
+                Filter.GetTotaRowsCount = auxGetTotaRowsCount;
+                int rows = List.Count();
+                Filter.Rows = rows;
+                this.webControlPaggingButtons.RefreshPagging(rows);
+                SetParameter(FilterKey, Filter);
+            }
+        }
+        protected override void ImportTemplate()
+        {
+            //Importar template
+            throw(new NotImplementedException());
+        }
+        //FinALO 20180122
+
         #region Export
         protected override void GenerateExcel()
         {
