@@ -104,7 +104,9 @@ namespace Business
 
         public virtual ListPaged<ProyectoResult> GetResultSP(ProyectoFilter filter)
         {
-            return ProyectoData.Current.QuerySP(filter);
+            ListPaged<ProyectoResult> result = ProyectoData.Current.QuerySP(filter);
+            LoadPerfilOficinas(result);
+            return result;
         }
         #endregion
 
