@@ -129,7 +129,9 @@ namespace UI.Web
         protected void btSistemaCommand_OnClick(object sender, EventArgs e) { Response.Redirect(GeneralPath + "SistemaCommandPageList.aspx", false); }
         protected void btCacheManager_OnClick(object sender, EventArgs e) { Response.Redirect(GeneralPath + "CacheManagerPageEdit.aspx", false); }
 
-
+        protected void btLBListarProyectos_Click(object sender, EventArgs e) { Response.Redirect(GeneralPath + "CacheManagerPageEdit.aspx", false); }
+        protected void btLBActualizarTemplate_Click(object sender, EventArgs e) { Response.Redirect(GeneralPath + "CacheManagerPageEdit.aspx", false); }
+        protected void btLBSubirTemplate_Click(object sender, EventArgs e) { Response.Redirect(GeneralPath + "AdministracionTemplate.aspx", false); }
 
         #endregion Command Events
 

@@ -75,7 +75,14 @@ namespace Service
             {
                 if (parameters == null)
                 {
-                    parameters = SolutionContext.Current.CacheByApplicationManager["SLTN_PARAMETERS"] as List<ParameterResult>;
+                    try
+                    {
+                        parameters = SolutionContext.Current.CacheByApplicationManager["SLTN_PARAMETERS"] as List<ParameterResult>;
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                    }
+
                     if (parameters == null)
                     {
                         parameters = ParameterService.Current.GetResult();

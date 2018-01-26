@@ -161,5 +161,26 @@
         
     </table>
 
+        <table width="100%">
+        <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal3" Text="Importación de proyectos" runat="server" ></asp:Literal></div></td></tr>
+        
+        <tr>
+            <td>
+                <ul>
+                    <li id="liListarProyectos" runat="server">
+                        <asp:LinkButton ID="btLBListarProyectos" runat="server" OnClick="btLBListarProyectos_Click" Text="Listados"></asp:LinkButton>
+                    </li>
+                    <li id="liActualizarTemplate" runat="server">
+                        <asp:LinkButton ID="btLBActualizarTemplate" runat="server" OnClick="btLBActualizarTemplate_Click" Text="Actualizar datos template. Advertencia: sobrecarga en BD."></asp:LinkButton>
+                    </li>
+                    <li id="liSubirTemplate" runat="server">
+                        <asp:LinkButton ID="btLBSubirTemplate" runat="server" OnClick="btLBSubirTemplate_Click" Text="Subir nuevo template"></asp:LinkButton>
+                    </li>
+                </ul>
+                
+            </td>
+        </tr>       
+        
+    </table>
 
 </asp:Content> 

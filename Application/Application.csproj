@@ -252,6 +252,8 @@
     <Content Include="Controls\MessageBar.ascx" />
     <Content Include="Cubos\CubosPrincipal.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="General\AdministracionTemplateUpload.ascx" />
+    <Content Include="General\AdministracionTemplate.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Graficos\ProyectoGraficos.aspx" />
     <Content Include="Graficos\ProyectoGraficosZoom.aspx" />
@@ -883,6 +885,13 @@
     <Compile Include="General\AnioPageListEdit.aspx.designer.cs">
       <DependentUpon>AnioPageListEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="General\AdministracionTemplate.aspx.cs">
+      <DependentUpon>AdministracionTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="General\AdministracionTemplate.aspx.designer.cs">
+      <DependentUpon>AdministracionTemplate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="General\LanguageEdit.ascx.cs">
       <DependentUpon>LanguageEdit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -966,6 +975,13 @@
     </Compile>
     <Compile Include="General\PermisoPageListEdit.aspx.designer.cs">
       <DependentUpon>PermisoPageListEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="General\AdministracionTemplateUpload.ascx.cs">
+      <DependentUpon>AdministracionTemplateUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="General\AdministracionTemplateUpload.ascx.designer.cs">
+      <DependentUpon>AdministracionTemplateUpload.ascx</DependentUpon>
     </Compile>
     <Compile Include="General\SistemaCommandEdit.ascx.cs">
       <DependentUpon>SistemaCommandEdit.ascx</DependentUpon>

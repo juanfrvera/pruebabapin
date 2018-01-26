@@ -229,7 +229,7 @@
         <siteMapNode url="General/SistemaCommandPageEdit.aspx" title="Excel desde Base de Datos"  description="Excel desde Base de Datos"  />
         <siteMapNode url="~/Pages/ConfigMensajesPageEdit.aspx" title="Configuración de mensajes"  description="Configuración de mensajes" />
         <siteMapNode url="~/Pages/ConfigMensajesPageList.aspx" title="Configuración de mensajes"  description="Configuración de mensajes" />
-
+        <siteMapNode url="General/AdministracionTemplate.aspx" title="Administracion Template"  description="Administracion Template Importación de proyectos"  />
     
         
     </siteMapNode>

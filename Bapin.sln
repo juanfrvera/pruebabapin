@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Contract", "2_Contract", "{8E3502AE-2D8B-42C8-BEEA-7BC470547769}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Data", "3_Data", "{AAD06F35-D6C6-42B5-9A9C-B2159C6B3BA3}"
@@ -49,69 +47,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Documentation", "Documentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winthusiasm.HtmlEditor", "Winthusiasm.HtmlEditor\Winthusiasm.HtmlEditor.csproj", "{BC99173D-2EF8-4D7E-B0AE-3BC1CC55E3B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9_WinService", "9_WinService", "{03700217-5B78-4D1F-B2B7-65BBC514C428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bapin.WindowsService", "Bapin.WindowsService\Bapin.WindowsService.csproj", "{59299924-5BFF-4E6D-B6AE-3FEE90809172}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://dtfs2010.ingematica.local:8080/tfs/ministerioeconomia
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Contract\\Contract.csproj
-		SccProjectTopLevelParentUniqueName1 = Bapin.sln
-		SccProjectName1 = Contract
-		SccLocalPath1 = Contract
-		SccProjectUniqueName2 = DataAccess\\DataAccess.csproj
-		SccProjectTopLevelParentUniqueName2 = Bapin.sln
-		SccProjectName2 = DataAccess
-		SccLocalPath2 = DataAccess
-		SccProjectUniqueName3 = Business\\Business.csproj
-		SccProjectTopLevelParentUniqueName3 = Bapin.sln
-		SccProjectName3 = Business
-		SccLocalPath3 = Business
-		SccProjectUniqueName4 = Service\\Service.csproj
-		SccProjectTopLevelParentUniqueName4 = Bapin.sln
-		SccProjectName4 = Service
-		SccLocalPath4 = Service
-		SccProjectUniqueName5 = Application\\Application.csproj
-		SccProjectTopLevelParentUniqueName5 = Bapin.sln
-		SccProjectName5 = Application
-		SccLocalPath5 = Application
-		SccProjectUniqueName6 = Core\\Core.csproj
-		SccProjectTopLevelParentUniqueName6 = Bapin.sln
-		SccProjectName6 = Core
-		SccLocalPath6 = Core
-		SccProjectUniqueName7 = Library\\Library.csproj
-		SccProjectTopLevelParentUniqueName7 = Bapin.sln
-		SccProjectName7 = Library
-		SccLocalPath7 = Library
-		SccProjectUniqueName8 = QiHe.Office\\QiHe.Office.csproj
-		SccProjectTopLevelParentUniqueName8 = Bapin.sln
-		SccProjectName8 = QiHe.Office
-		SccLocalPath8 = QiHe.Office
-		SccProjectUniqueName9 = Newtonsoft.Json\\Newtonsoft.Json.csproj
-		SccProjectTopLevelParentUniqueName9 = Bapin.sln
-		SccProjectName9 = Newtonsoft.Json
-		SccLocalPath9 = Newtonsoft.Json
-		SccProjectUniqueName10 = Tools\\Tools.csproj
-		SccProjectTopLevelParentUniqueName10 = Bapin.sln
-		SccProjectName10 = Tools
-		SccLocalPath10 = Tools
-		SccProjectUniqueName11 = Test\\Test.csproj
-		SccProjectTopLevelParentUniqueName11 = Bapin.sln
-		SccProjectName11 = Test
-		SccLocalPath11 = Test
-		SccProjectUniqueName12 = OpenFlashChart\\OpenFlashChart.csproj
-		SccProjectTopLevelParentUniqueName12 = Bapin.sln
-		SccProjectName12 = OpenFlashChart
-		SccLocalPath12 = OpenFlashChart
-		SccProjectUniqueName13 = Documentation\\Documentation.csproj
-		SccProjectTopLevelParentUniqueName13 = Bapin.sln
-		SccProjectName13 = Documentation
-		SccLocalPath13 = Documentation
-		SccProjectUniqueName14 = Winthusiasm.HtmlEditor\\Winthusiasm.HtmlEditor.csproj
-		SccProjectTopLevelParentUniqueName14 = Bapin.sln
-		SccProjectName14 = Winthusiasm.HtmlEditor
-		SccLocalPath14 = Winthusiasm.HtmlEditor
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -258,6 +198,16 @@ Global
 		{BC99173D-2EF8-4D7E-B0AE-3BC1CC55E3B6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BC99173D-2EF8-4D7E-B0AE-3BC1CC55E3B6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BC99173D-2EF8-4D7E-B0AE-3BC1CC55E3B6}.Release|Win32.ActiveCfg = Release|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -268,14 +218,15 @@ Global
 		{C8BC04B2-8301-476D-825A-955AAAB83241} = {9D17C3F4-7E2A-4DCD-96DC-508266139E09}
 		{0846CC81-3446-4220-B3CA-CADDADB8D91F} = {272619EE-ABC6-4BEF-87F7-18D6E8D4D8DF}
 		{3C6CA1CF-282F-4F2F-95CB-BE660773F0A8} = {E81609FB-3623-4129-AE19-7CC977974968}
+		{B91FE87B-F731-448E-B0D4-007504D2601A} = {E81609FB-3623-4129-AE19-7CC977974968}
 		{502770AF-5356-4C46-9F61-90890936E0F8} = {75A43414-0B4E-488F-AE07-CA15F4832955}
 		{EA3260AF-C5E1-4A82-AE75-27CE692967FB} = {75A43414-0B4E-488F-AE07-CA15F4832955}
 		{7EE7E1D8-0922-4CC3-9DF4-9FBFFB2BD2BF} = {75A43414-0B4E-488F-AE07-CA15F4832955}
 		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D} = {75A43414-0B4E-488F-AE07-CA15F4832955}
-		{A543FED3-EBCE-452C-944F-E5F72A381A9D} = {8C1E9B22-3EC8-48C2-B7F5-08EA178F8943}
-		{B91FE87B-F731-448E-B0D4-007504D2601A} = {E81609FB-3623-4129-AE19-7CC977974968}
 		{213ABC3E-F51E-4A09-A053-BC17E4797BA8} = {75A43414-0B4E-488F-AE07-CA15F4832955}
-		{9D50DCF0-2590-43C1-9603-C4FAE636445C} = {B4336695-564B-46E4-801D-394405B97980}
 		{BC99173D-2EF8-4D7E-B0AE-3BC1CC55E3B6} = {75A43414-0B4E-488F-AE07-CA15F4832955}
+		{A543FED3-EBCE-452C-944F-E5F72A381A9D} = {8C1E9B22-3EC8-48C2-B7F5-08EA178F8943}
+		{9D50DCF0-2590-43C1-9603-C4FAE636445C} = {B4336695-564B-46E4-801D-394405B97980}
+		{59299924-5BFF-4E6D-B6AE-3FEE90809172} = {03700217-5B78-4D1F-B2B7-65BBC514C428}
 	EndGlobalSection
 EndGlobal
