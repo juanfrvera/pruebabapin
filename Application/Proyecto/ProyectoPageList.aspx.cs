@@ -101,8 +101,8 @@ namespace UI.Web
             bool proyectoPeriodoStress = SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress;
             if (proyectoPeriodoStress)
             {
-                Filter.IdsOficinaByUsuario = null;
-                Filter.IdsOficinaPropiaByUsuario = null;
+                Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);
+                Filter.IdsOficinaPropiaByUsuario = (from o in UIContext.Current.ContextUser.PerfilesPorOficina select o.IdOficina).ToList();
                 List = ProyectoService.Current.GetResultSP(Filter);
             }
             else 
