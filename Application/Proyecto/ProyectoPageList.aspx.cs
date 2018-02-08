@@ -98,6 +98,14 @@ namespace UI.Web
         {
             bool enableFilterOffice = SolutionContext.Current.ParameterManager.GetBooleanValue("OFFICE_FILTER_ENABLE");
             SetParameter(FilterKey, Filter);
+            bool proyectoPeriodoStress = SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+            if (proyectoPeriodoStress)
+            {
+                Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);
+                Filter.IdsOficinaPropiaByUsuario = (from o in UIContext.Current.ContextUser.PerfilesPorOficina select o.IdOficina).ToList();
+                List = ProyectoService.Current.GetResultSP(Filter);
+            }
+            else 
             if (enableFilterOffice && UIContext.Current.ContextUser.User.AccesoTotal == false)
             {
                 Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);

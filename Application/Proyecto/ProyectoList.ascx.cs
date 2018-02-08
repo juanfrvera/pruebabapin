@@ -223,6 +223,14 @@ namespace UI.Web
 
         #region Overrides
 
+
+        protected override void _Initialize()
+        {
+            base._Initialize();
+            GridView.AllowSorting = !SolutionContext.Current.Filtrar_Busqueda_Proyecto_Periodo_Stress;
+        }
+
+
         protected override void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
