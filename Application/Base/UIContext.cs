@@ -304,6 +304,17 @@ namespace UI.Web
             UIContext.Current.ContextUser = userContext;
 
         }
+        public void LoginWS(string userName, string password)
+        {
+            ContextUser userContext = new ContextUser();
+            UsuarioResult usuario = UsuarioService.Current.GetResult(new nc.UsuarioFilter() { NombreUsuario = userName, Clave = password }).FirstOrDefault();
+            DataHelper.Validate(usuario != null, "Usuario o Clave inválida");
+            DataHelper.Validate(usuario.Activo == true, "El usuario no esta activo");
+            userContext.User = usuario;
+            userContext.Perfiles = PerfilService.Current.GetResult(new nc.PerfilFilter() { IdUsuario = userContext.User.IdUsuario });
+            userContext.PerfilesPorOficina = UsuarioOficinaPerfilService.Current.GetResultSimple(new nc.UsuarioOficinaPerfilFilter() { IdUsuario = userContext.User.IdUsuario });
+            Audit(userContext);
+        }
         public void Logout()
         {
             if (IsLogin)
@@ -367,7 +378,15 @@ namespace UI.Web
             AuditSession audit = AuditSessionService.Current.GetNew();
             audit.UserName = userContext.User.NombreUsuario;
             audit.StartDate = DateTime.Now;
-            audit.SessionId = HttpContext.Current.Session.SessionID;
+            if (HttpContext.Current.Session != null)
+            {
+                audit.SessionId = HttpContext.Current.Session.SessionID;
+            }
+            else
+            {
+                //Web services
+                audit.SessionId = "NONSESSION";
+            }
             audit.Login = userContext.User.NombreUsuario;
             audit.Rols = string.Join(", ", (from o in userContext.Perfiles select o.Nombre).ToArray());
             audit.Area = "";

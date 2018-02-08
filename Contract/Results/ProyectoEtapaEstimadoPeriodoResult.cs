@@ -10,6 +10,7 @@ namespace Contract
     public class ProyectoEtapaEstimadoPeriodoResult : _ProyectoEtapaEstimadoPeriodoResult
     {
         public Int32 IdMonedaProyectoEtapaEstimado { set; get; }
+        public bool Bloqueado { set; get; }
         public bool UsaMonedaBase
         {
             get

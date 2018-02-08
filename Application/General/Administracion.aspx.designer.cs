@@ -517,24 +517,6 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.LinkButton btLBListarProyectos;
         
         /// <summary>
-        /// liActualizarTemplate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liActualizarTemplate;
-        
-        /// <summary>
-        /// btLBActualizarTemplate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btLBActualizarTemplate;
-        
-        /// <summary>
         /// liSubirTemplate control.
         /// </summary>
         /// <remarks>

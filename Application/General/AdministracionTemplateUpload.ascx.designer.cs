@@ -22,6 +22,24 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Panel pnlTemplateFiles;
         
         /// <summary>
+        /// pnlRegenerarTemplateFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel pnlRegenerarTemplateFile;
+        
+        /// <summary>
+        /// btRegenerarTemplateFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btRegenerarTemplateFile;
+        
+        /// <summary>
         /// pnlAgregarTemplateFile control.
         /// </summary>
         /// <remarks>

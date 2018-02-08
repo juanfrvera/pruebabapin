@@ -31,12 +31,12 @@ namespace UI.Web.Cubos {
         protected global::System.Web.UI.UpdatePanel upEditArchivo;
         
         /// <summary>
-        /// editPrestamoAdjuntar control.
+        /// editTemplateAdjuntar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UI.Web.AdministracionTemplateUpload editPrestamoAdjuntar;
+        protected global::UI.Web.AdministracionTemplateUpload editTemplateAdjuntar;
     }
 }

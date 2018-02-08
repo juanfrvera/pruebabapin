@@ -282,6 +282,7 @@
     <Content Include="Proyecto\ProyectoAlcanceGeograficoEditWebService.asmx" />
     <Content Include="Proyecto\ProyectoDictamenFileEdit.ascx" />
     <Content Include="Proyecto\ProyectoDictamenFilePageList.aspx" />
+    <Content Include="Services\wsConsultarBapin.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -5066,6 +5067,10 @@
     </Compile>
     <Compile Include="Security\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\wsConsultarBapin.asmx.cs">
+      <DependentUpon>wsConsultarBapin.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\wsProyecto.asmx.cs">
       <DependentUpon>wsProyecto.asmx</DependentUpon>

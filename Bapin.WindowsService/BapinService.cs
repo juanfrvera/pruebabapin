@@ -108,8 +108,6 @@ namespace Bapin.WindowsService
 
         protected override void OnStop()
         {
-            //SetupHandlers();
-
             foreach(var handler in handlers)
             {
                 handler.StopProcess();

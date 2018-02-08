@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using log4net;
 using log4net.Config;
 using Contract;
-using Service;
 
 namespace Bapin.WindowsService
 {
@@ -104,14 +103,6 @@ namespace Bapin.WindowsService
         private static void LoadInitialSettings()
         {
             WinServiceContext.Current.LoadManagers();
-            //Get Template ID
-            var idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
-            Log.Info("idLastTemplateVersion=" + idLastTemplateVersion);
-            if (idLastTemplateVersion > 0)
-            {
-                var templateFileInfo = FileInfoService.Current.GetById(idLastTemplateVersion);
-                Log.Info("templateFileInfo=" + templateFileInfo.FileName);
-            }
         }
     }
 }

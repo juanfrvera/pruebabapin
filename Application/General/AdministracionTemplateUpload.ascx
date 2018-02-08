@@ -8,8 +8,15 @@
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="5px" border="0"  width="100%">	  	
-                    <tr>                      
-	                    <td  align ="right" >
+                    <tr>
+                        <td style="text-align:left" >
+                            <asp:UpdatePanel ID="pnlRegenerarTemplateFile" runat = "server" UpdateMode ="Conditional" >
+                            <ContentTemplate>
+                                <asp:Button ID="btRegenerarTemplateFile" runat ="server" Text="Regenerar" OnClientClick="return confirm('Está seguro que desea regenerar el template?');" OnClick="btRegenerarTemplateFile_Click" TabIndex ="1"/> 
+                            </ContentTemplate>
+                            </asp:UpdatePanel>	                    
+	                    </td>                      
+	                    <td style="text-align:right" >
                             <asp:UpdatePanel ID="pnlAgregarTemplateFile" runat = "server" UpdateMode ="Conditional" >
                             <ContentTemplate>
                                 <asp:Button ID="btAgregarTemplateFile" runat ="server" Text="Subir" OnClick="btAgregarTemplateFile_Click" TabIndex ="1"/> 
@@ -31,8 +38,8 @@
             EmptyDataText="No hay Template cargado" 
             Width ="100%">
             <Columns>
-                <asp:BoundField HeaderText ="Fecha" DataField ="Date" SortExpression ="Date" HeaderStyle-Width ="10%"  DataFormatString="{0:dd/MM/yyyy}" />
-                <asp:BoundField HeaderText ="Nombre" DataField ="FileName" SortExpression ="FileName" HeaderStyle-Width ="83%" />
+                <asp:BoundField HeaderText ="Fecha" DataField ="Date" SortExpression ="Date" HeaderStyle-Width ="15%"  DataFormatString="{0:dd/MM/yyyy HH:mm:ss}" />
+                <asp:BoundField HeaderText ="Nombre" DataField ="FileName" SortExpression ="FileName" HeaderStyle-Width ="78%" />
                 <asp:TemplateField HeaderStyle-Width ="7%" >
                     <HeaderTemplate>
                     </HeaderTemplate>

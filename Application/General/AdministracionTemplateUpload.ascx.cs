@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Contract;
 using nc=Contract;
 using Service;
+using Business.Managers;
 
 namespace UI.Web
 {
@@ -150,24 +151,20 @@ namespace UI.Web
                     pr.Code = "ID_TEMPLATE_IMPORTACION";
                     pr.IdParameterCategory = 3; //Business
                     ParameterService.Current.Save(pr, UIContext.Current.ContextUser);
-                    idLastTemplateVersion = pr.IdParameter;
+                    idLastTemplateVersion = (int)pr.NumberValue;
                 }
                 else
                 {
                     nc.Parameter pr = ParameterService.Current.GetById(prResult.IdParameter);
                     FileInfoService.Current.Delete(FileInfoService.Current.GetById((Int32)pr.NumberValue), UIContext.Current.ContextUser);
                     pr.NumberValue = Entity.IdFile;
-                    ParameterService.Current.Update(pr, UIContext.Current.ContextUser);                    
-                    idLastTemplateVersion = pr.IdParameter;
+                    ParameterService.Current.Update(pr, UIContext.Current.ContextUser);
+                    idLastTemplateVersion = (int)pr.NumberValue;
                 }
                 SolutionContext.Current.ParameterManager.Parameters.Where(x => x.Code == "ID_TEMPLATE_IMPORTACION").FirstOrDefault().NumberValue = idLastTemplateVersion;
  
-
                 TemplateFileClear();
-                var a = Entity.IdFile;
                 TemplateFileRefresh();
-                var b = Entity.IdFile;
-                var c = a + b;
             }
             else
             {
@@ -202,6 +199,19 @@ namespace UI.Web
             UIHelper.SetValue(lblError, "");
             fuArchivo.Focus();
             ModalPopupExtenderTemplateFiles.Show();
+        }
+        protected void btRegenerarTemplateFile_Click(object sender, EventArgs e)
+        {
+            UIHelper.SetValue(lblError, "");
+            //Get Template ID
+            var idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
+            if (idLastTemplateVersion > 0)
+            {
+                TemplateProjectManager.UpdateTemplateProjects(idLastTemplateVersion);
+                Entity = Service.ToResult(FileInfoService.Current.GetById(idLastTemplateVersion));
+                TemplateFileClear();
+                TemplateFileRefresh();
+            }
         }
         #endregion
 

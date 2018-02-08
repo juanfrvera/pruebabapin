@@ -188,42 +188,42 @@ namespace Bapin.WindowsService
             //SolutionContext.Current.EstadoDeDesicionCache = EstadoDeDesicionCache.Current;
         }
         /*
-        public IContextUser ContextUser
+public IContextUser ContextUser
+{
+    get {
+        IContextUser contextUser = null;
+        if (HttpContext.Current != null  
+        &&  (  HttpContext.Current.Session["contextUser"] != null)
+        && ((HttpContext.Current.Session["contextUser"] as IContextUser) != null)
+        && ((HttpContext.Current.Session["contextUser"] as IContextUser).User != null))
         {
-            get {
-                IContextUser contextUser = null;
-                if (HttpContext.Current != null  
-                &&  (  HttpContext.Current.Session["contextUser"] != null)
-                && ((HttpContext.Current.Session["contextUser"] as IContextUser) != null)
-                && ((HttpContext.Current.Session["contextUser"] as IContextUser).User != null))
-                {
-                    contextUser = HttpContext.Current.Session["contextUser"] as IContextUser;
-                }
-                if(contextUser != null)
-                {
-                    contextUser.FormContext.FromName = Path.GetFileNameWithoutExtension(HttpContext.Current.Request.Path);
-                    if (HttpContext.Current.Request.ApplicationPath !=@"/")
-                        contextUser.FormContext.FromPath = HttpContext.Current.Request.Path.Replace(HttpContext.Current.Request.ApplicationPath,string.Empty);
-                    else
-                        contextUser.FormContext.FromPath = HttpContext.Current.Request.Path;
-                    contextUser.FormContext.ApplicationName = ApplicationName;
-                }
-                return contextUser;
-            }
-            set { HttpContext.Current.Session["contextUser"] = value; }
-        }        
-        public bool HadTranslate
-        {//solo debe traducir si el lenguiaje es distinto al lenguaje del sistema
-            get { return LanguageCode != SolutionContext.Current.SystemLanguage; }
+            contextUser = HttpContext.Current.Session["contextUser"] as IContextUser;
         }
-        public string LanguageCode
+        if(contextUser != null)
         {
-            get
-            {
-                return IsLogin ? ContextUser.User.Language_Code : SolutionContext.Current.DefaultLanguage;                
-            }
+            contextUser.FormContext.FromName = Path.GetFileNameWithoutExtension(HttpContext.Current.Request.Path);
+            if (HttpContext.Current.Request.ApplicationPath !=@"/")
+                contextUser.FormContext.FromPath = HttpContext.Current.Request.Path.Replace(HttpContext.Current.Request.ApplicationPath,string.Empty);
+            else
+                contextUser.FormContext.FromPath = HttpContext.Current.Request.Path;
+            contextUser.FormContext.ApplicationName = ApplicationName;
         }
-        */
+        return contextUser;
+    }
+    set { HttpContext.Current.Session["contextUser"] = value; }
+}       
+public bool HadTranslate
+{//solo debe traducir si el lenguiaje es distinto al lenguaje del sistema
+    get { return LanguageCode != SolutionContext.Current.SystemLanguage; }
+}
+public string LanguageCode
+{
+    get
+    {
+        return IsLogin ? ContextUser.User.Language_Code : SolutionContext.Current.DefaultLanguage;                
+    }
+}
+*/
         private LanguageResult defaultLanguage;
         public LanguageResult DefaultLanguage
         {

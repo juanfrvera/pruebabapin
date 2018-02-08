@@ -110,10 +110,9 @@
         <ContentTemplate>
         
       <div class="<%= scrollDivEstimadas %>">
-      
-            <asp:GridView ID="gridEtapasEstimadas" runat = "server"
+      <asp:GridView ID="gridEtapasEstimadas" runat = "server"
                 AutoGenerateColumns="True" DataKeyNames="ID"   
-                OnRowCommand="GridEtapasEstimadas_RowCommand"  
+                OnRowCommand="GridEtapasEstimadas_RowCommand"
                 EmptyDataText="Para cargar los Gastos Estimados, las Fechas Estimadas del Cronograma deben estar definidas." >
                 <Columns>                   
                    <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
@@ -121,7 +120,7 @@
                         <ItemTemplate>
                             <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate %>'   CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
                             &nbsp;
-                            <asp:ImageButton ID ="imgDelete" runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate %>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
+                            <asp:ImageButton ID ='imgDelete' runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate%>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
                         </ItemTemplate> 
                     </asp:TemplateField>
                     
@@ -333,7 +332,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField   HeaderText="Monto"  HeaderStyle-Width ="18%" >            
                                                     <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtMontoEstimado" runat="server" ValidationGroup="vgEtapasEstimadas"   DataFormatString="{0:N0}" Text='<%#string.Format("{0:N0}",Eval("MontoCalculadoPeriodo")) %>'  Enabled='<%#Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtMontoEstimado" runat="server" ValidationGroup="vgEtapasEstimadas"   DataFormatString="{0:N0}" Text='<%#string.Format("{0:N0}",Eval("MontoCalculadoPeriodo")) %>'  Enabled='<%#!(bool)Eval("Bloqueado") && (bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>			                                   
                                             </Columns>
@@ -391,7 +390,7 @@
                                                 <td valign="top"><asp:RadioButton ID="rbPorDescripcionRealizada" runat="server" Text="Por Descripción" GroupName="obrGroup"  OnCheckedChanged="rbPorCodigoRealizada_OnCheckedChanged" AutoPostBack="true"/></td>
                                             </tr>--%>
                                             <tr>
-                                            <td valign="top" colspan="2">
+                                            <td valign="top">
                                                 <%--<uc:Autocomplete runat="server" ID="acGastosRealizada" AutoPostback="true" Width="280" MinimumPrefixLength="2" ></uc:Autocomplete>--%>
                                                 <uc:TreeControl runat="server" ID="acGastosRealizada" Width="370px" ></uc:TreeControl>
                                             </td></tr></table>

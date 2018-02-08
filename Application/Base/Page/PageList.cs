@@ -293,7 +293,9 @@ namespace UI.Web
                 stream.Write(templateByte, 0, templateByte.Length);
 
                 //TODO: tomar los datos de los proyectos seleccionados y agregarlos al template
- 
+                //List = EntityService.GetResult(Filter); 
+                //DataHelper.Write<TResult>(stream, List, mapping, ReportEnum.Excel);
+
                 HttpContext.Current.Session["OpenXmlStreamInput"] = stream;
                 HttpContext.Current.Session["OpenXmlFileContentType"] = templateFileInfo.FileType; //"application/vnd.ms-excel";
                 HttpContext.Current.Session["OpenXmlFileName"] = templateFileInfo.FileName;
