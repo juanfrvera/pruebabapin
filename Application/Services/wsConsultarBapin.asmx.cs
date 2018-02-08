@@ -29,11 +29,11 @@ namespace Application.Services
         /// 
         /// </summary>
         /// <param name="ejercicio">(Long)  [*]</param>
-        /// <param name="estado">(Enumerativo: DEMANDA, PLAN, PLAN SEGÚN EJECUCION) [*]</param>
+        /// <param name="estado">(string Enumerativo: DEMANDA, PLAN, PLAN_SEGUN_EJECUCION) (lista string pipe separator) [*]</param>
         /// <param name="jurisdicción">(Long) [*]</param>
         /// <param name="bapin">(Long) </param>
         /// <param name="saf">(Long)</param>
-        /// <param name="programas">(Long) (lista)</param>
+        /// <param name="programas">(string) (lista long pipe separator)</param>
         /// <returns>xml -->
         /// bapin (Long)
         /// denominacion (String) 
