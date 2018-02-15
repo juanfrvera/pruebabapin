@@ -16,16 +16,14 @@ namespace UI.Web
     #region GridView
     public class GridViewButtonsTemplate : ITemplate
     {
-        bool _disableDelete = false;
-        public GridViewButtonsTemplate(bool disableDelete)
+        public GridViewButtonsTemplate()
         {
-            _disableDelete = disableDelete;
         }
         
         void ITemplate.InstantiateIn(System.Web.UI.Control container)
         {
             ImageButton imEdit = new ImageButton();
-            imEdit.ID = "imgEdit"; //+Guid.NewGuid().ToString("N");
+            imEdit.ID = "imgEdit";
             imEdit.ImageUrl = "../Images/edit.png";
             imEdit.ToolTip = "Editar";
             imEdit.CommandName = Command.EDIT;
@@ -37,37 +35,28 @@ namespace UI.Web
             container.Controls.Add(imEdit);
 
             ImageButton imDel = new ImageButton();
-            imDel.ID = "imgDelete"; //+Guid.NewGuid().ToString("N");
+            imDel.ID = "imgDelete";
             imDel.ImageUrl = "../Images/delete.jpg";
             imDel.ToolTip = "Eliminar";
             imDel.CommandName = Command.DELETE;
             //imEdit.CommandArgument = idRefered;
             imDel.CausesValidation = false;
-            imDel.Visible = !_disableDelete;
             imDel.OnClientClick = "return confirm('Está seguro de eliminar?');";
             container.Controls.Add(imDel);
         }
     }
     public class ColumnGenerator : IAutoFieldGenerator
     {
-        private int mode = 0;
-        //private int? IdProyecto = 0;
-        List<PlanPeriodo> planPeriodosBloqueados = new List<PlanPeriodo>();
-        List<OrganismoTipo> organismoTipoBloqueados = new List<OrganismoTipo>();
-        int? tipoOrganismoProyecto = 0;
+        //private int mode = 0;
+        //List<PlanPeriodo> planPeriodosBloqueados = new List<PlanPeriodo>();
+        //List<OrganismoTipo> organismoTipoBloqueados = new List<OrganismoTipo>();
+        //int? tipoOrganismoProyecto = 0;
         private DataColumnCollection DataColumns;
         private bool ShowEditionButtons;
-        //protected const string BLOQUEAR_GASTOS_ESTIMADOS = "BLOQUEAR_GASTOS_ESTIMADOS";
-        //protected const string BLOQUEAR_GASTOS_ESTIMADOS_PLANES = "BLOQUEAR_GASTOS_ESTIMADOS_PLANES";
-        //protected const string BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS = "BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS";
 
-        public ColumnGenerator(DataColumnCollection dataColumns, bool showEditionButtons, int? tipoOrganismoProyecto, List<PlanPeriodo> planPeriodosBloqueados, List<OrganismoTipo> organismoTipoBloqueados)
+        public ColumnGenerator(DataColumnCollection dataColumns, bool showEditionButtons)
         {
             this.DataColumns = dataColumns;
-            //this.IdProyecto = idProyecto;
-            this.planPeriodosBloqueados = planPeriodosBloqueados;
-            this.organismoTipoBloqueados = organismoTipoBloqueados;
-            this.tipoOrganismoProyecto = tipoOrganismoProyecto;
             //Matias 20170301 - Ticket #ER682004
             //Esta linea define la visibilidad de los botones edit y delete de cada gasto (la DNIP solicita que esta siempre visible).
             //this.ShowEditionButtons = showEditionButtons; 
@@ -80,60 +69,12 @@ namespace UI.Web
 
             DataControlFieldCollection columns = new DataControlFieldCollection();
 
-            //Modificado por ALO 2018-02-07
-
-            //List<PlanPeriodo> planPeriodosBloqueados = new List<PlanPeriodo>();
-            //List<OrganismoTipo> organismoTipoBloqueados = new List<OrganismoTipo>();
-            //int tipoOrganismoProyecto = 0;
-            /*
-            if (IdProyecto.HasValue)
-            {
-                //Bloquear gastos estimados
-                var proyecto = Business.ProyectoBusiness.Current.GetList(new nc.ProyectoFilter() { IdProyecto = this.IdProyecto }).FirstOrDefault();
-                tipoOrganismoProyecto = proyecto.SubPrograma.Programa.Saf.IdTipoOrganismo;
-                if (SolutionContext.Current.ParameterManager.GetBooleanValue(BLOQUEAR_GASTOS_ESTIMADOS))
-                {
-                    //Planes bloqueados config
-                    var bloquear_gastos_estimados_planes = SolutionContext.Current.ParameterManager.GetStringValue(BLOQUEAR_GASTOS_ESTIMADOS_PLANES);
-                    //Todos los planes
-                    var allPlanPeriodos = PlanPeriodoService.Current.GetList();
-                    var bloquear_gastos_estimados_planes_list = bloquear_gastos_estimados_planes.Replace(" ", string.Empty).Split(',').ToList();
-                    //Los planes bloqueados filtrando por los del config
-                    planPeriodosBloqueados = allPlanPeriodos.Where(x => bloquear_gastos_estimados_planes_list.Any(n => n.Equals(x.Nombre))).ToList();
-
-                    //Tipo organismos bloqueados config
-                    var bloquear_gastos_estimados_tipo_organismos = SolutionContext.Current.ParameterManager.GetStringValue(BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS);
-                    //Todos los tipos organismo
-                    var allOrganismoTipo = OrganismoTipoService.Current.GetList();
-                    var bloquear_gastos_estimados_tipo_organismos_list = bloquear_gastos_estimados_tipo_organismos.Replace(" ", string.Empty).Split(',').ToList();
-                    //Los tipos organismo bloqueados filtrando por los del config
-                    organismoTipoBloqueados = allOrganismoTipo.Where(x => bloquear_gastos_estimados_tipo_organismos_list.Any(n => n.Equals(x.IdOrganismoTipo.ToString()))).ToList();
-                }
-            }
-            */
             //FinModificado por ALO 2018-02-07
 
-            var disableDelete = false;
-
+            //var disableDelete = false;
             foreach (DataColumn dataColumn in this.DataColumns)
             {
                 if (dataColumn.ColumnName == "ID") continue;
-
-                //Modificado por ALO 2018-02-07
-                //debo tener ambos parametros para considerarlos
-                if (tipoOrganismoProyecto != null && planPeriodosBloqueados != null && organismoTipoBloqueados != null 
-                    && planPeriodosBloqueados.Count > 0 && organismoTipoBloqueados.Count > 0)
-                {
-                    if ((planPeriodosBloqueados.Where(x => x.AnioInicial.ToString().Equals(dataColumn.ColumnName)).Any())
-                        && (organismoTipoBloqueados.Where(x => x.IdOrganismoTipo == tipoOrganismoProyecto).Any()))
-                    {
-                        //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
-                        //dataColumn.ColumnName == "2018"
-                        //deshabilita - oculta boton delete
-                        disableDelete = true;
-                    }
-                }
-                //FinModificado por ALO 2018-02-07
 
                 Int32 t = 0;
                 BoundField bf = new BoundField() { DataField = dataColumn.ColumnName, HeaderText = dataColumn.ColumnName };
@@ -172,16 +113,14 @@ namespace UI.Web
             }
             if (ShowEditionButtons)
             {
-                columns.Add(GetTemplateButtons(disableDelete));                
+                columns.Add(GetTemplateButtons());
             }
             return columns;
         }
-        TemplateField GetTemplateButtons(bool disableDelete)
+        TemplateField GetTemplateButtons()
         {
             TemplateField template = new TemplateField();
-            //Modificado por ALO 2018-02-07
-            template.ItemTemplate = new GridViewButtonsTemplate(disableDelete);
-            //FinModificado por ALO 2018-02-07
+            template.ItemTemplate = new GridViewButtonsTemplate();
 
             //Matias 20170215 - Ticket #REQ318684
             template.ItemStyle.Width = 50;
@@ -721,8 +660,12 @@ namespace UI.Web
         }
         void SetearBloqueos(ActionEnum action)
         {
-            if (PlanPeriodosBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
             //Modificado por ALO 2018-02-07
+            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
+
+            //Solo opera el bloqueo si tengo los dos bloqueos
+            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) return;
+
             if (PlanPeriodosBloqueados.Count > 0 && OrganismoTipoBloqueados.Count > 0)
             {
                 var tieneBloqueo = false;
@@ -838,8 +781,9 @@ namespace UI.Web
             DataTable dataTable = Entity.ToDatatableEtapasEstimadasDinamico(ActualProyectoEtapa.IdProyectoEtapa, filterAnio);
             //FinMatias 20170214 - Ticket #REQ318684           
 
-            if (PlanPeriodosBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
-            gridEtapasEstimadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaEstimadaUpdate, TipoOrganismoProyecto, PlanPeriodosBloqueados, OrganismoTipoBloqueados);
+            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
+            gridEtapasEstimadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaEstimadaUpdate);
+
             //Matias - #REQ318684            
             //if (dataTable.Columns.Count > 6)
             //{
@@ -862,6 +806,47 @@ namespace UI.Web
             //FinMatias - #REQ318684
 
             UIHelper.Load(gridEtapasEstimadas, dataTable);
+
+            //debo tener ambos parametros para considerarlos
+            if (TipoOrganismoProyecto != null && PlanPeriodosBloqueados != null && OrganismoTipoBloqueados != null
+                && PlanPeriodosBloqueados.Count > 0 && OrganismoTipoBloqueados.Count > 0)
+            {
+            
+                foreach (GridViewRow row in gridEtapasEstimadas.Rows)
+                {
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        var totalMount = 0.00;
+                        Control controlABloquear = null;
+                        if ((PlanPeriodosBloqueados.Where(x => x.AnioInicial.ToString().Equals(gridEtapasEstimadas.HeaderRow.Cells[row.Cells.GetCellIndex(cell)].Text)).Any())
+                            && (OrganismoTipoBloqueados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
+                        {
+                            //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
+                            //dataColumn.ColumnName == "2018"
+                            totalMount = Double.Parse(cell.Text);
+                            //deshabilita - oculta boton delete
+                            foreach (Control control in row.Cells[row.Cells.Count - 1].Controls)
+                            {
+                                //gridEtapasEstimadas.Rows[0].Cells[6].Controls[2]
+                                if (control.ID != null && control.ID.Equals("imgDelete"))
+                                {
+                                    //bloquear o no bloquear, esa es la cuestión
+                                    control.Visible = false;
+                                    controlABloquear = control;
+                                }
+                            }
+                            //sumMontosPeriodos = Int32.Parse(dataColumn.ToString());
+                        }
+                        if (totalMount <= 0.00 && controlABloquear != null)
+                        {
+                            controlABloquear.Visible = true;
+                        }
+                    }
+
+                }
+            }
+            
+
             upGridEtapasEstimadas.Update();
         }
 
@@ -1476,7 +1461,7 @@ namespace UI.Web
             }
             //FinMatias - #REQ318684
 
-            gridEtapasRealizadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaRealizadaUpdate, null, null, null);
+            gridEtapasRealizadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaRealizadaUpdate);
 
             //List<ProyectoOrigenFinanciamientoResult> origenesResult = ProyectoOrigenFinanciamientoService.Current.GetOrigenes(new nc.ProyectoOrigenFinanciamientoFilter() { IdProyecto = Entity.IdProyecto });
             //if (origenesResult.Count > 0)

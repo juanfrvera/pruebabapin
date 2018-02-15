@@ -130,7 +130,6 @@ namespace Contract
                         row[y] = 0;
                     }
 
-
                     foreach (ProyectoEtapaEstimadoPeriodoResult periodo in item.Periodos)
                     {
                         if (dicAnios.ContainsKey(periodo.Periodo))
