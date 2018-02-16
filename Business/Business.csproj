@@ -94,6 +94,7 @@
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -466,6 +467,7 @@
     <Compile Include="Business\UsuarioBusiness.cs" />
     <Compile Include="Business\UsuarioOficinaPerfilBusiness.cs" />
     <Compile Include="Business\UsuarioPerfilBusiness.cs" />
+    <Compile Include="Managers\EsidifManager.cs" />
     <Compile Include="Managers\TemplateProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

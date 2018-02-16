@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Contract;
-using nc=Contract;
-//using System.Web.Security;
+using nc = Contract;
 using Service;
 using System.Security.Principal;
 using System.IO;
 
-namespace Bapin.WindowsService
+namespace Test
 {
     /*
     public class UIWebCacheBySessionManager : ICacheBySessionManager
@@ -45,7 +44,7 @@ namespace Bapin.WindowsService
         }    
     }
      */
- 
+
     public class UIWebCacheByApplicationManager : ICacheByApplicationManager
     {
         #region Singleton
@@ -118,23 +117,23 @@ namespace Bapin.WindowsService
             }
             set { perfilesPorOficina = value; }
         }
-        public List<int> IdsOficina { get; set; } 
+        public List<int> IdsOficina { get; set; }
     }
     public class MembershipContextUser : ContextUser
     {
-        public IPrincipal Principal { get; set; }        
+        public IPrincipal Principal { get; set; }
     }
-    
+
     #endregion
 
-    public class WinServiceContext
+    public class TestContext
     {
         #region Singleton
-        private static volatile WinServiceContext current;
+        private static volatile TestContext current;
         private static object syncRoot = new Object();
 
         //private PublicidadService() {}
-        public static WinServiceContext Current
+        public static TestContext Current
         {
             get
             {
@@ -143,7 +142,7 @@ namespace Bapin.WindowsService
                     lock (syncRoot)
                     {
                         if (current == null)
-                            current = new WinServiceContext();
+                            current = new TestContext();
                     }
                 }
                 return current;
@@ -151,15 +150,15 @@ namespace Bapin.WindowsService
         }
         #endregion
         //#region Instance by Session
-        //private static volatile WinServiceContext current;
-        //private const string WinServiceContext_KEY= "WinServiceContext";
-        //public static WinServiceContext Current
+        //private static volatile TestContext current;
+        //private const string TestContext_KEY= "TestContext";
+        //public static TestContext Current
         //{
         //    get
         //    {
-        //        if (HttpContext.Current != null && HttpContext.Current.Session != null && HttpContext.Current.Session[WinServiceContext_KEY] == null)
-        //            HttpContext.Current.Session[WinServiceContext_KEY] = new WinServiceContext();
-        //        return HttpContext.Current.Session[WinServiceContext_KEY] as WinServiceContext;
+        //        if (HttpContext.Current != null && HttpContext.Current.Session != null && HttpContext.Current.Session[TestContext_KEY] == null)
+        //            HttpContext.Current.Session[TestContext_KEY] = new TestContext();
+        //        return HttpContext.Current.Session[TestContext_KEY] as TestContext;
         //    }
         //}
         //#endregion
@@ -176,12 +175,12 @@ namespace Bapin.WindowsService
             //SolutionContext.Current.TextManager = TextManager.Current;
             //SolutionContext.Current.NotificationManager = EmailNotificationManager.Current;
             //SolutionContext.Current.AuditManager = AuditManager.Current;
-            SolutionContext.Current.ParameterManager = ParameterManager.Current;           
+            SolutionContext.Current.ParameterManager = ParameterManager.Current;
             //SolutionContext.Current.AuthorizationManager = AuthorizationManager.Current;
             //SolutionContext.Current.MessageManager = MessageManager.Current;
             //SolutionContext.Current.FileManager = DatabaseFileManager.Current;           
             //poner en parametros el nombre de usuario del sistema
-            SolutionContext.Current.SystemUser = UsuarioService.Current.FirstOrDefault(new Contract.UsuarioFilter(){ NombreUsuario = "Admin"});
+            SolutionContext.Current.SystemUser = UsuarioService.Current.FirstOrDefault(new Contract.UsuarioFilter() { NombreUsuario = "Admin" });
             //SolutionContext.Current.EstadosCache = EstadosCache.Current;
             //SolutionContext.Current.AccionesCache = AccionesCache.Current;
             //SolutionContext.Current.PerfilCache = PerfilCache.Current;
@@ -229,7 +228,7 @@ public string LanguageCode
         {
             get
             {
-                if ( defaultLanguage == null ) 
+                if (defaultLanguage == null)
                     defaultLanguage = LanguageService.Current.GetResult(new nc.LanguageFilter() { Code = SolutionContext.Current.DefaultLanguage }).SingleOrDefault();
                 return defaultLanguage;
             }
@@ -309,7 +308,7 @@ public string LanguageCode
             userContext.Perfiles = PerfilService.Current.GetResult(new nc.PerfilFilter() { IdUsuario = userContext.User.IdUsuario });
             userContext.PerfilesPorOficina = UsuarioOficinaPerfilService.Current.GetResultSimple(new nc.UsuarioOficinaPerfilFilter() { IdUsuario = userContext.User.IdUsuario });
             Audit(userContext);
-            WinServiceContext.Current.ContextUser = userContext;
+            TestContext.Current.ContextUser = userContext;
 
         }
         public void Logout()
@@ -321,7 +320,7 @@ public string LanguageCode
         {
             get
             {
-                IContextUser contextUser = WinServiceContext.Current.ContextUser;
+                IContextUser contextUser = TestContext.Current.ContextUser;
                 return !(contextUser == null || contextUser.User == null);
             }
         }
@@ -340,13 +339,13 @@ public string LanguageCode
         }
         public void UnRegisterUser(AuditMandateEnum manate, string message)
         {
-            if (WinServiceContext.Current.ContextUser == null
-            || WinServiceContext.Current.ContextUser.AuditSession == null
-            || WinServiceContext.Current.ContextUser.AuditSession.IdAuditSession <= 0) return;
-            CloseAudit(WinServiceContext.Current.ContextUser.AuditSession.IdAuditSession, manate, message);
+            if (TestContext.Current.ContextUser == null
+            || TestContext.Current.ContextUser.AuditSession == null
+            || TestContext.Current.ContextUser.AuditSession.IdAuditSession <= 0) return;
+            CloseAudit(TestContext.Current.ContextUser.AuditSession.IdAuditSession, manate, message);
 
             RemoveSession(HttpContext.Current.Session.SessionID);
-            WinServiceContext.Current.ContextUser = null;
+            TestContext.Current.ContextUser = null;
             HttpContext.Current.Session.Clear();
             FormsAuthentication.SignOut();
         }
@@ -356,19 +355,19 @@ public string LanguageCode
         #region manager Sessions
         public static void AddSession(string sessionId, string userName)
         {
-            if (WinServiceContext.Current.ActiveSessions.ContainsKey(sessionId))
-                WinServiceContext.Current.ActiveSessions[sessionId] = userName;
+            if (TestContext.Current.ActiveSessions.ContainsKey(sessionId))
+                TestContext.Current.ActiveSessions[sessionId] = userName;
             else
-                WinServiceContext.Current.ActiveSessions.Add(sessionId, userName);
+                TestContext.Current.ActiveSessions.Add(sessionId, userName);
         }
         public static void RemoveSession(string sessionId)
         {
-            if (WinServiceContext.Current.ActiveSessions.ContainsKey(sessionId))
-                WinServiceContext.Current.ActiveSessions.Remove(sessionId);
+            if (TestContext.Current.ActiveSessions.ContainsKey(sessionId))
+                TestContext.Current.ActiveSessions.Remove(sessionId);
         }
         public static int SessionActives(string userName)
         {
-            return (from o in WinServiceContext.Current.ActiveSessions where o.Value == userName select o.Key).Count();
+            return (from o in TestContext.Current.ActiveSessions where o.Value == userName select o.Key).Count();
         }
         #endregion
 
@@ -419,11 +418,11 @@ public string LanguageCode
 
 
 
-    public class PagesParameters: Dictionary<string, PageParameters>
+    public class PagesParameters : Dictionary<string, PageParameters>
     {
-        
+
     }
-    public class Parameters: Dictionary<string,object>
+    public class Parameters : Dictionary<string, object>
     {
     }
     public class PageParameters
@@ -435,7 +434,7 @@ public string LanguageCode
             this.Parameters = parameters;
         }
         public string Page { get; set; }
-        public Parameters Parameters { get; set;} 
+        public Parameters Parameters { get; set; }
     }
 
 

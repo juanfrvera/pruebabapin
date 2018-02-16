@@ -128,6 +128,7 @@
     <Content Include="Enterprise Library\Microsoft.Practices.Unity.Interception.dll" />
     <Content Include="Enterprise Library\Microsoft.Practices.Unity.StaticFactory.dll" />
     <Content Include="Ingematica\Ingematica.Librerias.Helpers.dll" />
+    <Content Include="Microsoft\Microsoft.Web.Services3.dll" />
     <Content Include="Microsoft\System.Web.Entity.dll" />
   </ItemGroup>
   <ItemGroup>
