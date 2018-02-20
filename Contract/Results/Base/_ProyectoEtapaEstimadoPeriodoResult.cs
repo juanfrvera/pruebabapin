@@ -14,6 +14,10 @@ namespace Contract.Base
 		 public decimal Monto{get;set;}
 		 public decimal? Cotizacion{get;set;}
 		 public decimal MontoCalculado{get;set;}
+         public decimal MontoInicial{ get; set; }
+         public decimal MontoVigente { get; set; }
+         public decimal MontoDevengado { get; set; }
+         public bool MontoVigenteEstimativo { get; set; }
 		 
 		 public int ProyectoEtapaEstimado_IdProyectoEtapa{get;set;}	
 	public int ProyectoEtapaEstimado_IdClasificacionGasto{get;set;}	
@@ -29,6 +33,10 @@ namespace Contract.Base
 		 _ProyectoEtapaEstimadoPeriodo.Monto = this.Monto;
 		 _ProyectoEtapaEstimadoPeriodo.Cotizacion = this.Cotizacion;
 		 _ProyectoEtapaEstimadoPeriodo.MontoCalculado = this.MontoCalculado;
+         _ProyectoEtapaEstimadoPeriodo.MontoInicial = this.MontoInicial;
+         _ProyectoEtapaEstimadoPeriodo.MontoVigente = this.MontoVigente;
+         _ProyectoEtapaEstimadoPeriodo.MontoDevengado = this.MontoDevengado;
+         _ProyectoEtapaEstimadoPeriodo.MontoVigenteEstimativo = this.MontoVigenteEstimativo;
 		 
 		  return _ProyectoEtapaEstimadoPeriodo;
 		}		
@@ -40,6 +48,10 @@ namespace Contract.Base
 		  this.Monto= entity.Monto ;
 		  this.Cotizacion= entity.Cotizacion ;
 		  this.MontoCalculado= entity.MontoCalculado ;
+          this.MontoInicial = entity.MontoInicial;
+          this.MontoVigente = entity.MontoVigente;
+          this.MontoDevengado = entity.MontoDevengado;
+          this.MontoVigenteEstimativo = entity.MontoVigenteEstimativo;
 		 		  
 		}		
 		public virtual bool Equals(ProyectoEtapaEstimadoPeriodo entity)
@@ -51,7 +63,10 @@ namespace Contract.Base
 		  if(!entity.Monto.Equals(this.Monto))return false;
 		  if((entity.Cotizacion == null)?this.Cotizacion!=null:!entity.Cotizacion.Equals(this.Cotizacion))return false;
 			 if(!entity.MontoCalculado.Equals(this.MontoCalculado))return false;
-		 
+             if (!entity.MontoInicial.Equals(this.MontoInicial)) return false;
+             if (!entity.MontoVigente.Equals(this.MontoVigente)) return false;
+             if (!entity.MontoDevengado.Equals(this.MontoDevengado)) return false;
+             if (!entity.MontoVigenteEstimativo.Equals(this.MontoVigenteEstimativo)) return false;
 		  return true;
         }
 		
@@ -63,6 +78,10 @@ namespace Contract.Base
 			,new DataColumnMapping("Monto","Monto")
 			,new DataColumnMapping("Cotizacion","Cotizacion")
 			,new DataColumnMapping("MontoCalculado","MontoCalculado")
+            ,new DataColumnMapping("MontoInicial","MontoInicial")
+            ,new DataColumnMapping("MontoVigente","MontoVigente")
+            ,new DataColumnMapping("MontoDevengado","MontoDevengado")
+            ,new DataColumnMapping("MontoVigenteEstimativo","MontoVigenteEstimativo")
 			}));
 		}
 	}

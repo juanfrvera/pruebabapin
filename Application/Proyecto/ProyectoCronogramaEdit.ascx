@@ -88,6 +88,27 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:panel>
+
+<asp:panel id="pnlInformacionPresupuestaria" runat="server" groupingtext="Información Presupuestaria">
+    <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
+        <tr>
+            <td>
+                <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
+                    <tr>                      
+                        <td>
+                            <asp:UpdatePanel ID="pnlVerInfoPresupuestaria" runat = "server" UpdateMode ="Conditional" >
+                            <ContentTemplate>
+                                <asp:Button ID="btVerInfoPresupuestaria" runat ="server" Text="Ver información presupuestaria" OnClick="btVerInfoPresupuestaria_Click" CausesValidation="false" TabIndex ="2"/> 
+                            </ContentTemplate>
+                            </asp:UpdatePanel>	                    
+                        </td>
+                    </tr>
+                </table>        
+            </td>
+        </tr>        
+    </table>
+</asp:panel>
+
     <asp:panel id="pnlEtapaEstimada" runat="server" groupingtext="Gastos Estimados">
     <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
         <tr>
@@ -179,6 +200,80 @@
 </asp:panel>
 <cc:NumericTextBox id="txtMontoXXX" runat="server" Visible="False"  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
 </div>
+
+
+<%--PANEL INFO PRESUPUESTARIA --%>
+<asp:panel id="PopUpInfoPresupuestaria" runat="server" width="800px" style="background-color: #ffffff;
+    border: solid 2px #ffffff; border-color: Gray;">
+    <asp:Panel ID="InfoPresupuestariaPopUpDragHandle" runat="server" Style="cursor: move;">
+        <table width="100%" cellpadding="0" cellspacing="5">
+            <tr class="menutoppopup">
+                    <th align="center" height="10">
+                                <asp:Label ID="Label1" runat="server" Text="Información Presupuestaria" />
+                    </th>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnInfoPresupuestaria" DefaultButton="btCancelTotales" runat="server">
+        <asp:UpdatePanel ID="upInfoPresupuestariaPopUp" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            &nbsp;
+                            <asp:Label ID="Label2" runat ="server" Text ="Año Presupuestario"></asp:Label>
+                            &nbsp;
+                            <asp:Label ID="lblAnioPresupuestario" runat ="server" Text =""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <asp:GridView ID="gvInfoPresupuestaria" runat="server"  Width="100%" DataKeyNames="ID"
+                            AutoGenerateColumns="False" AllowSorting="False" EmptyDataText="No se registran datos con montos mayores a cero.">                                          
+                            <Columns> 
+                                <asp:BoundField HeaderText ="Obj.del Gasto" DataField ="ObjDelGasto" SortExpression ="ObjDelGasto"  HeaderStyle-Width ="35%" />
+                                <asp:BoundField HeaderText ="F.Financiamiento" DataField ="FFinanciamiento" SortExpression ="FFinanciamiento"  HeaderStyle-Width ="20%" />
+                                <asp:TemplateField   HeaderText="Monto Inicial"  HeaderStyle-Width ="10%" >            
+                                    <ItemTemplate>                        
+                                        <cc:NumericTextBox id="txtc" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoInicial")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField   HeaderText="Monto Vigente"  HeaderStyle-Width ="10%" >            
+                                    <ItemTemplate>                        
+                                        <cc:NumericTextBox id="txtMontoVigente" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoVigente")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>	
+                                <asp:TemplateField   HeaderText="MVE (*)"  HeaderStyle-Width ="8%" >            
+                                    <ItemTemplate>                        
+                                        <asp:CheckBox id="cbMontoVigenteEstimativo" runat="server" Enabled='false' Checked='<%# Convert.ToBoolean(Eval("MontoVigenteEstimativo")) %>'></asp:CheckBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField   HeaderText="Monto Devengado"  HeaderStyle-Width ="10%" >            
+                                    <ItemTemplate>                        
+                                        <cc:NumericTextBox id="txtMontoDevengado" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoDevengado")) %>' Enabled='false' UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>		                                   
+                            </Columns>
+                        </asp:GridView> 
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td align="center">                                
+                          
+                            <asp:Button ID="Button8" Text="Cerrar" OnClick="btCerrarInfoPresupuestaria_Click" CausesValidation="false" 
+                                runat="server" Width="60px" />                                
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <asp:Button ID="btnInfoPresupuestaria" runat="server" Text="Button" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderInfoPresupuestaria" runat="server" CancelControlID="btnInfoPresupuestaria"
+        PopupDragHandleControlID="InfoPresupuestariaPopUpDragHandle" PopupControlID="PopUpInfoPresupuestaria"
+        OkControlID="btnInfoPresupuestaria" TargetControlID="btnInfoPresupuestaria" BackgroundCssClass="modalBackground" />
+</asp:panel>
+
 <%--PANEL ALTA ETAPAS --%>
 <asp:panel id="PopUpEtapas" runat="server" width="800px" style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
@@ -317,27 +412,52 @@
                                 <tr>
                                 <td colspan="2" >
                                         <asp:GridView ID="GridPeriodoEstimado" runat="server"  Width="100%" DataKeyNames="ID"
-                                            AutoGenerateColumns="False" AllowSorting="False" >                                          
+                                            AutoGenerateColumns="False" AllowSorting="False" OnDataBound ="GridPeriodoEstimado_OnDataBound">                                          
                                             <Columns> 
-                                                <asp:BoundField HeaderText ="" DataField ="Periodo" SortExpression ="Periodo"  HeaderStyle-Width ="7%" />
-                                                <asp:TemplateField   HeaderText="Moneda Externa" HeaderStyle-Width ="18%" >            
+                                                <asp:BoundField HeaderText ="" DataField ="Periodo" SortExpression ="Periodo"  HeaderStyle-Width ="6%" />
+                                                <asp:TemplateField   HeaderText="Moneda Externa" HeaderStyle-Width ="17%" >            
                                                     <ItemTemplate>                         
-                                                        <cc:NumericTextBox id="txtMonedaEstimado" runat="server"  DataFormatString="{0:F2}"  Text='<%# string.Format("{0:F2}",Eval("MontoPeriodo")) %>'  Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtMonedaEstimado" runat="server"  Width="120px" DataFormatString="{0:F2}"  Text='<%# string.Format("{0:F2}",Eval("MontoPeriodo")) %>'  Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField   HeaderText="Tipo de Cambio"  HeaderStyle-Width ="18%" >            
+                                                <asp:TemplateField   HeaderText="Tipo de Cambio"  HeaderStyle-Width ="17%" >            
                                                     <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtTipoCambioEstimado" runat="server"   DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("CotizacionPeriodo")) %>' Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtTipoCambioEstimado" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("CotizacionPeriodo")) %>' Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField   HeaderText="Monto"  HeaderStyle-Width ="18%" >            
+                                                <asp:TemplateField   HeaderText="Monto"  HeaderStyle-Width ="17%" >            
                                                     <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtMontoEstimado" runat="server" ValidationGroup="vgEtapasEstimadas"   DataFormatString="{0:N0}" Text='<%#string.Format("{0:N0}",Eval("MontoCalculadoPeriodo")) %>'  Enabled='<%#!(bool)Eval("Bloqueado") && (bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtMontoEstimado" runat="server" ValidationGroup="vgEtapasEstimadas" Width="120px" DataFormatString="{0:N0}" Text='<%#string.Format("{0:N0}",Eval("MontoCalculadoPeriodo")) %>'  Enabled='<%#!(bool)Eval("Bloqueado") && (bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
                                                     </ItemTemplate>
-                                                </asp:TemplateField>			                                   
+                                                </asp:TemplateField>	
+                                                <asp:TemplateField   HeaderText="Monto Inicial"  HeaderStyle-Width ="17%" >            
+                                                    <ItemTemplate>                        
+                                                        <cc:NumericTextBox id="txtc" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoInicial")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField   HeaderText="Monto Vigente"  HeaderStyle-Width ="17%" >            
+                                                    <ItemTemplate>                        
+                                                        <cc:NumericTextBox id="txtMontoVigente" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoVigente")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>	
+                                                <asp:TemplateField   HeaderText="MVE (*)"  HeaderStyle-Width ="9%" >            
+                                                    <ItemTemplate>                        
+                                                        <asp:CheckBox id="cbMontoVigenteEstimativo" runat="server" Enabled='false' Checked='<%# Convert.ToBoolean(Eval("MontoVigente")) %>'></asp:CheckBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField   HeaderText="Monto Devengado"  HeaderStyle-Width ="1%" Visible="false" >            
+                                                    <ItemTemplate>                        
+                                                        <cc:NumericTextBox id="txtMontoDevengado" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoDevengado")) %>' Enabled='false' Visible='false' UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>		                                   
                                             </Columns>
                                         </asp:GridView> 
                                 </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:right">
+                                                                            (*) MVE: Monto Vigente Estimativo.
+                                    </td>
                                 </tr>
                             </table>
                         </td>                        

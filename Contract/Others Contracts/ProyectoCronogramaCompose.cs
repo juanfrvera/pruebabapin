@@ -27,7 +27,7 @@ namespace Contract
         public Int32? ProyectoIdProceso { get; set; }
         public Int32? ProyectoIdTipoPlan { get; set; }
 
-
+        /*
         public DataTable ToDatatableEtapasEstimadas(int idProyectoEtapa)
         {
             List<ProyectoEtapaEstimadoResult> list = EtapasEstimadas.Where(i => i.IdProyectoEtapa == idProyectoEtapa).ToList();
@@ -85,7 +85,47 @@ namespace Contract
             }
             return table;
         }
+        */
 
+        public DataTable ToDatatableEtapasEstimadasPeriodos(int idProyectoEtapa)
+        {
+            List<ProyectoEtapaEstimadoResult> list = EtapasEstimadas.Where(i => i.IdProyectoEtapa == idProyectoEtapa).ToList();
+
+            DataTable table = new DataTable("EtapasEstimadasPeriodoso");
+            table.Columns.Add(new DataColumn("ID", typeof(int)));
+            table.Columns.Add(new DataColumn("ObjDelGasto", typeof(string)));
+            table.Columns.Add(new DataColumn("FFinanciamiento", typeof(string)));
+
+            table.Columns.Add(new DataColumn("MontoInicial", typeof(string)));
+            table.Columns.Add(new DataColumn("MontoVigente", typeof(string)));
+            table.Columns.Add(new DataColumn("MontoDevengado", typeof(string)));
+            table.Columns.Add(new DataColumn("MontoVigenteEstimativo", typeof(string)));
+
+            if (list.Count > 0)
+            {
+                foreach (ProyectoEtapaEstimadoResult item in list)
+                {
+                    foreach (ProyectoEtapaEstimadoPeriodoResult periodo in item.Periodos)
+                    {
+                        if (periodo.MontoInicial > 0 || periodo.MontoVigente > 0 || periodo.MontoDevengado > 0)
+                        {
+                            DataRow row = table.NewRow();
+                            row[0] = item.ID;
+                            row[1] = item.ObjetoGasto;
+                            row[2] = item.FuenteFinanciemiento;
+                            row[3] = periodo.MontoInicial;
+                            row[4] = periodo.MontoVigente;
+                            row[5] = periodo.MontoDevengado;
+                            row[6] = periodo.MontoVigenteEstimativo;
+                            table.Rows.Add(row);
+                        }
+                    }
+                }
+            }
+            return table;
+        }
+
+        
         //Matias 20170214 - Ticket #REQ318684
         public DataTable ToDatatableEtapasEstimadasDinamico(int idProyectoEtapa, int filterAnio)
         {

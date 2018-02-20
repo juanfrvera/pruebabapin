@@ -104,6 +104,10 @@ namespace DataAccess
                         peepr.Monto = peep.Monto;
                         peepr.Cotizacion = peep.Cotizacion;
                         peepr.MontoCalculado = peep.MontoCalculado;
+                        peepr.MontoInicial = peep.MontoInicial;
+                        peepr.MontoVigente = peep.MontoVigente;
+                        peepr.MontoDevengado = peep.MontoDevengado;
+                        peepr.MontoVigenteEstimativo = peep.MontoVigenteEstimativo;
                         peer.Periodos.Add(peepr);
                     }
 

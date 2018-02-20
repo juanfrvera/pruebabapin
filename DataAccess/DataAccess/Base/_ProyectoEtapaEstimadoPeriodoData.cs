@@ -43,6 +43,10 @@ namespace DataAccess.Base
 					  && (filter.Cotizacion == null || o.Cotizacion >=  filter.Cotizacion) && (filter.Cotizacion_To == null || o.Cotizacion <= filter.Cotizacion_To)
 					  && (filter.CotizacionIsNull == null || filter.CotizacionIsNull == true || o.Cotizacion != null ) && (filter.CotizacionIsNull == null || filter.CotizacionIsNull == false || o.Cotizacion == null)
 					  && (filter.MontoCalculado == null || o.MontoCalculado >=  filter.MontoCalculado) && (filter.MontoCalculado_To == null || o.MontoCalculado <= filter.MontoCalculado_To)
+                      && (filter.MontoInicial == null || o.MontoInicial >= filter.MontoInicial) && (filter.MontoInicial_To == null || o.MontoInicial <= filter.MontoInicial_To)
+                      && (filter.MontoDevengado == null || o.MontoDevengado >= filter.MontoDevengado) && (filter.MontoDevengado_To == null || o.MontoDevengado <= filter.MontoDevengado_To)
+                      && (filter.MontoVigenteEstimativo == null || o.MontoVigenteEstimativo == filter.MontoVigenteEstimativo) && (filter.MontoVigenteEstimativo_To == null || o.MontoVigenteEstimativo == filter.MontoVigenteEstimativo_To)
+                      && (filter.MontoVigente == null || o.MontoVigente >= filter.MontoVigente) && (filter.MontoVigente_To == null || o.MontoVigente <= filter.MontoVigente_To)
 					  select o
                     ).AsQueryable();
         }	
@@ -57,6 +61,10 @@ namespace DataAccess.Base
 					 ,Monto=o.Monto
 					 ,Cotizacion=o.Cotizacion
 					 ,MontoCalculado=o.MontoCalculado
+                     ,MontoInicial = o.MontoInicial
+                     ,MontoVigente = o.MontoVigente
+                     ,MontoDevengado = o.MontoDevengado
+                     ,MontoVigenteEstimativo = o.MontoVigenteEstimativo
 					,ProyectoEtapaEstimado_IdProyectoEtapa= t1.IdProyectoEtapa	
 						,ProyectoEtapaEstimado_IdClasificacionGasto= t1.IdClasificacionGasto	
 						,ProyectoEtapaEstimado_IdFuenteFinanciamiento= t1.IdFuenteFinanciamiento	
@@ -74,6 +82,10 @@ namespace DataAccess.Base
 		 _new.Monto= entity.Monto;
 		 _new.Cotizacion= entity.Cotizacion;
 		 _new.MontoCalculado= entity.MontoCalculado;
+         _new.MontoInicial = entity.MontoInicial;
+         _new.MontoVigente = entity.MontoVigente;
+         _new.MontoDevengado = entity.MontoDevengado;
+         _new.MontoVigenteEstimativo = entity.MontoVigenteEstimativo;
 		return _new;			
         }
 		public override int CopyAndSave(ProyectoEtapaEstimadoPeriodo entity,string renameFormat)
@@ -96,7 +108,10 @@ namespace DataAccess.Base
 		 target.Monto= source.Monto ;
 		 target.Cotizacion= source.Cotizacion ;
 		 target.MontoCalculado= source.MontoCalculado ;
-		 		  
+         target.MontoInicial = source.MontoInicial;
+         target.MontoVigente = source.MontoVigente;
+         target.MontoDevengado = source.MontoDevengado;
+         target.MontoVigenteEstimativo = source.MontoVigenteEstimativo;
 		}
 		public override void Set(ProyectoEtapaEstimadoPeriodoResult source,ProyectoEtapaEstimadoPeriodo target,bool hadSetId)
 		{		   
@@ -106,6 +121,10 @@ namespace DataAccess.Base
 		 target.Monto= source.Monto ;
 		 target.Cotizacion= source.Cotizacion ;
 		 target.MontoCalculado= source.MontoCalculado ;
+         target.MontoInicial     = source.MontoInicial;
+         target.MontoVigente = source.MontoVigente;
+         target.MontoDevengado = source.MontoDevengado;
+         target.MontoVigenteEstimativo = source.MontoVigenteEstimativo;
 		 
 		}
 		public override void Set(ProyectoEtapaEstimadoPeriodo source,ProyectoEtapaEstimadoPeriodoResult target,bool hadSetId)
@@ -116,7 +135,8 @@ namespace DataAccess.Base
 		 target.Monto= source.Monto ;
 		 target.Cotizacion= source.Cotizacion ;
 		 target.MontoCalculado= source.MontoCalculado ;
-		 	
+         target.MontoInicial = source.MontoInicial;
+         target.MontoVigente = source.MontoVigente;
 		}		
 		public override void Set(ProyectoEtapaEstimadoPeriodoResult source,ProyectoEtapaEstimadoPeriodoResult target,bool hadSetId)
 		{		   
@@ -126,6 +146,10 @@ namespace DataAccess.Base
 		 target.Monto= source.Monto ;
 		 target.Cotizacion= source.Cotizacion ;
 		 target.MontoCalculado= source.MontoCalculado ;
+         target.MontoInicial = source.MontoInicial;
+         target.MontoVigente = source.MontoVigente;
+         target.MontoDevengado = source.MontoDevengado;
+         target.MontoVigenteEstimativo = source.MontoVigenteEstimativo;
 		 target.ProyectoEtapaEstimado_IdProyectoEtapa= source.ProyectoEtapaEstimado_IdProyectoEtapa;	
 			target.ProyectoEtapaEstimado_IdClasificacionGasto= source.ProyectoEtapaEstimado_IdClasificacionGasto;	
 			target.ProyectoEtapaEstimado_IdFuenteFinanciamiento= source.ProyectoEtapaEstimado_IdFuenteFinanciamiento;	
@@ -145,7 +169,10 @@ namespace DataAccess.Base
 		  if(!source.Monto.Equals(target.Monto))return false;
 		  if((source.Cotizacion == null)?(target.Cotizacion.HasValue):!source.Cotizacion.Equals(target.Cotizacion))return false;
 			 if(!source.MontoCalculado.Equals(target.MontoCalculado))return false;
-		 
+             if (!source.MontoInicial.Equals(target.MontoInicial)) return false;
+             if (!source.MontoVigente.Equals(target.MontoVigente)) return false;
+             if (!source.MontoDevengado.Equals(target.MontoDevengado)) return false;
+             if (!source.MontoVigenteEstimativo.Equals(target.MontoVigenteEstimativo)) return false;
 		  return true;
         }
 		public override bool Equals(ProyectoEtapaEstimadoPeriodoResult source,ProyectoEtapaEstimadoPeriodoResult target)
@@ -159,6 +186,10 @@ namespace DataAccess.Base
 		  if(!source.Monto.Equals(target.Monto))return false;
 		  if((source.Cotizacion == null)?(target.Cotizacion.HasValue):!source.Cotizacion.Equals(target.Cotizacion))return false;
 			 if(!source.MontoCalculado.Equals(target.MontoCalculado))return false;
+             if (!source.MontoInicial.Equals(target.MontoInicial)) return false;
+             if (!source.MontoVigente.Equals(target.MontoVigente)) return false;
+             if (!source.MontoDevengado.Equals(target.MontoDevengado)) return false;
+             if (!source.MontoVigenteEstimativo.Equals(target.MontoVigenteEstimativo)) return false;
 		  if(!source.ProyectoEtapaEstimado_IdProyectoEtapa.Equals(target.ProyectoEtapaEstimado_IdProyectoEtapa))return false;
 					  if(!source.ProyectoEtapaEstimado_IdClasificacionGasto.Equals(target.ProyectoEtapaEstimado_IdClasificacionGasto))return false;
 					  if(!source.ProyectoEtapaEstimado_IdFuenteFinanciamiento.Equals(target.ProyectoEtapaEstimado_IdFuenteFinanciamiento))return false;

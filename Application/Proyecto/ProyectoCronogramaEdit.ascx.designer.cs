@@ -193,6 +193,33 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.GridView gridEtapas;
         
         /// <summary>
+        /// pnlInformacionPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlInformacionPresupuestaria;
+        
+        /// <summary>
+        /// pnlVerInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel pnlVerInfoPresupuestaria;
+        
+        /// <summary>
+        /// btVerInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVerInfoPresupuestaria;
+        
+        /// <summary>
         /// pnlEtapaEstimada control.
         /// </summary>
         /// <remarks>
@@ -290,6 +317,105 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Web.NumericTextBox txtMontoXXX;
+        
+        /// <summary>
+        /// PopUpInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PopUpInfoPresupuestaria;
+        
+        /// <summary>
+        /// InfoPresupuestariaPopUpDragHandle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel InfoPresupuestariaPopUpDragHandle;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// pnInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnInfoPresupuestaria;
+        
+        /// <summary>
+        /// upInfoPresupuestariaPopUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upInfoPresupuestariaPopUp;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// lblAnioPresupuestario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAnioPresupuestario;
+        
+        /// <summary>
+        /// gvInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvInfoPresupuestaria;
+        
+        /// <summary>
+        /// Button8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button8;
+        
+        /// <summary>
+        /// btnInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInfoPresupuestaria;
+        
+        /// <summary>
+        /// ModalPopupExtenderInfoPresupuestaria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtenderInfoPresupuestaria;
         
         /// <summary>
         /// PopUpEtapas control.

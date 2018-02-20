@@ -139,6 +139,9 @@ namespace UI.Web
         protected const string BLOQUEAR_GASTOS_ESTIMADOS = "BLOQUEAR_GASTOS_ESTIMADOS";
         protected const string BLOQUEAR_GASTOS_ESTIMADOS_PLANES = "BLOQUEAR_GASTOS_ESTIMADOS_PLANES";
         protected const string BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS = "BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS";
+        protected const string INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO = "INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO";
+        protected const string INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE = "INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE";
+        
         #endregion Propiedades
 
         #region Override WebControlEdit
@@ -172,6 +175,14 @@ namespace UI.Web
             //UIHelper.Load<nc.FuenteFinanciamientoResult>(ddlFFinanciamientoRealizada, FuenteFinanciamientoService.Current.GetResult(new nc.FuenteFinanciamientoFilter() { Activo = true }), "Descripcion2", "IdFuenteFinanciamiento");
             //diFechaRealizada.Width = 80;
             //rbPorCodigoRealizada.Checked = true;
+
+            int anioVisible = DateTime.Now.Year;
+            if(SolutionContext.Current.ParameterManager.GetNumberValue(INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE).HasValue && SolutionContext.Current.ParameterManager.GetNumberValue(INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE).Value > 0)
+            {
+                anioVisible = (int)SolutionContext.Current.ParameterManager.GetNumberValue(INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE).Value;
+            }
+            btVerInfoPresupuestaria.Text = "Ver Inicial / Vigente / Devengado " + anioVisible.ToString();
+            lblAnioPresupuestario.Text = anioVisible.ToString();
         }
         public override void Clear() { }
         public override void GetValue()
@@ -566,6 +577,24 @@ namespace UI.Web
                 ((RadioButton)e.Row.Cells[0].FindControl("rbEtapa")).Checked = true;
         }
 
+        protected void GridPeriodoEstimado_OnDataBound(object sender, EventArgs e)
+        {
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+            TableHeaderCell cell = new TableHeaderCell();
+            cell.Text = "";
+            cell.ColumnSpan = 4;
+            row.Controls.Add(cell);
+
+            cell = new TableHeaderCell();
+            cell.ColumnSpan = 4;
+            cell.Text = "Información Presupuestaria " + SolutionContext.Current.ParameterManager.GetStringValue(INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO);
+            cell.Attributes.Add("style", "text-align:center !important;");
+            row.Controls.Add(cell);
+
+            GridPeriodoEstimado.HeaderRow.Parent.Controls.AddAt(0, row);
+        }
+        
+
         public void ddlFase_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             CallTryMethod(ChangeFase);
@@ -682,7 +711,14 @@ namespace UI.Web
                         //dataColumn.ColumnName == "2018"
                         proyectoEtapaEstimadaValue.Bloqueado = true;
                         tieneBloqueo = true;
+                    } 
+
+                    //Condicion de bloqueo adicional
+                    if (proyectoEtapaEstimadaValue.MontoInicial > 0 || proyectoEtapaEstimadaValue.MontoVigente > 0 || proyectoEtapaEstimadaValue.MontoDevengado > 0)
+                    {
+                        tieneBloqueo = true;
                     }
+
                 }
                 if (tieneBloqueo && action == ActionEnum.Update)
                 {
@@ -779,7 +815,7 @@ namespace UI.Web
             else
                 filterAnio = DateTime.Now.Year;
             DataTable dataTable = Entity.ToDatatableEtapasEstimadasDinamico(ActualProyectoEtapa.IdProyectoEtapa, filterAnio);
-            //FinMatias 20170214 - Ticket #REQ318684           
+            //FinMatias 20170214 - Ticket #REQ318684  
 
             if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
             gridEtapasEstimadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaEstimadaUpdate);
@@ -835,7 +871,6 @@ namespace UI.Web
                                     controlABloquear = control;
                                 }
                             }
-                            //sumMontosPeriodos = Int32.Parse(dataColumn.ToString());
                         }
                         if (totalMount <= 0.00 && controlABloquear != null)
                         {
@@ -845,7 +880,24 @@ namespace UI.Web
 
                 }
             }
-            
+
+            foreach (GridViewRow row in gridEtapasEstimadas.Rows)
+            {
+                int rowID = Int32.Parse(gridEtapasEstimadas.DataKeys[row.RowIndex][0].ToString());
+                
+                //Condicion de bloqueo adicional
+                if (Entity.EtapasEstimadas.Where(e => e.ID == rowID).FirstOrDefault().Periodos.Where(x => x.MontoInicial > 0 || x.MontoVigente > 0 || x.MontoDevengado > 0).Any())
+                {
+                    foreach (Control control in row.Cells[row.Cells.Count - 1].Controls)
+                    {
+                        if (control.ID != null && control.ID.Equals("imgDelete"))
+                        {
+                            //bloquear o no bloquear, esa es la cuestión
+                            control.Visible = false;
+                        }
+                    }
+                }
+            }
 
             upGridEtapasEstimadas.Update();
         }
@@ -1154,6 +1206,19 @@ namespace UI.Web
         {
             UIHelper.CallTryMethod(BackEtapaEstimada);
         }
+
+        protected void btVerInfoPresupuestaria_Click(object sender, EventArgs e)
+        {
+            //gvInfoPresupuestaria
+            UIHelper.Load(gvInfoPresupuestaria, Entity.ToDatatableEtapasEstimadasPeriodos(ActualProyectoEtapa.IdProyectoEtapa));
+            ModalPopupExtenderInfoPresupuestaria.Show();
+            upInfoPresupuestariaPopUp.Update();
+        }
+        protected void btCerrarInfoPresupuestaria_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtenderInfoPresupuestaria.Hide();
+        }
+
         protected void btLastEtapaEstimada_Click(object sender, EventArgs e)
         {
             UIHelper.CallTryMethod(LastEtapaEstimada);
@@ -1603,6 +1668,7 @@ namespace UI.Web
             ActualizarControlesMoneda(UIHelper.GetInt(ddlMonedaRealizada));
             //FinMatias 20140121 - Tarea 107
         }
+        
 
         protected void ddlMonedaRealizada_OnSelectedIndexChanged(object sender, EventArgs e)
         {
