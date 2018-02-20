@@ -85,7 +85,7 @@ namespace Business.Managers
                     {
                         SAF = string.Format("{0} - {1} ({2})", x.Programa.Saf.Codigo, x.Programa.Saf.Denominacion, x.Programa.IdSAF.ToString().ToUpper()),
                         PROGRAMA = string.Format("{0} - {1} ({2})", x.Programa.Codigo, x.Programa.Nombre, x.Programa.IdPrograma.ToString().ToUpper()),
-                        SUBPROGRAMA = string.Format("{0} - {1} ({2})", x.Codigo, x.Nombre, x.IdPrograma.ToString().ToUpper()),
+                        SUBPROGRAMA = string.Format("{0} - {1} ({2})", x.Codigo, x.Nombre, x.IdSubPrograma.ToString().ToUpper())
                     }).OrderBy(x => x.SAF).ThenBy(x => x.PROGRAMA).ThenBy(x => x.SUBPROGRAMA);
                     subProgramaSafRange.LoadFromCollection(subprogramasOrdenados.Select(x => x.SAF).ToArray());
                     subProgramaProgramaRange.LoadFromCollection(subprogramasOrdenados.Select(x => x.PROGRAMA).ToArray());
