@@ -6673,6 +6673,7 @@
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="UserControls.cd" />
     <Content Include="Images\imprimir.png" />
     <Content Include="Images\postular.png" />

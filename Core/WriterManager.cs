@@ -12,9 +12,10 @@ using System.Data;
 using QiHe.CodeLib;
 using QiHe.Office.CompoundDocumentFormat;
 using QiHe.Office.Excel;
-using CarlosAg.ExcelXmlWriter;
-
-
+//using CarlosAg.ExcelXmlWriter;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.Drawing;
 
 namespace Contract
 {
@@ -24,6 +25,16 @@ namespace Contract
     , Excel     = 1
     , CSV       = 2 
     , Pdf       = 3
+    }
+    public enum DataType
+    {
+        NotSet = 0,
+        String = 1,
+        Number = 2,
+        DateTime = 3,
+        Boolean = 4,
+        Integer = 5,
+        Error = 999,
     }
     public class ReportConfig
     {
@@ -101,7 +112,7 @@ namespace Contract
             switch (reportEnum)
             {
                 case ReportEnum.CSV: return new WriterCSV(stream);
-                case ReportEnum.Excel: return new WriterEXCELWhitCarlosAg(stream);
+                case ReportEnum.Excel: return new WriterEXCELEPplus(stream);
                 case ReportEnum.Pdf: return new WriterPDF(stream); 
             }
             return null;
@@ -240,74 +251,79 @@ namespace Contract
         {            
         }
     }
-    public class WriterEXCELWhitCarlosAg : Writer
+    public class WriterEXCELEPplus : Writer
     {
-        public WriterEXCELWhitCarlosAg(Stream stream)
+        public WriterEXCELEPplus(Stream stream)
         {
             this.Stream = stream;
         }
         public override void Write(DataTable dataSource)
         {    
-            #region Documento
-            CarlosAg.ExcelXmlWriter.Workbook excelBook = new CarlosAg.ExcelXmlWriter.Workbook();
-            excelBook.Properties.Title = dataSource.TableName;
-            excelBook.Properties.Created = DateTime.Now;
-            excelBook.Properties.Author = "Ingematica";
-
-            CarlosAg.ExcelXmlWriter.Worksheet excelSheet = excelBook.Worksheets.Add("Sheet1");
-            excelSheet.Options.SplitHorizontal = 1;
-            excelSheet.Options.FreezePanes = true;
-            excelSheet.Options.TopRowBottomPane = 1;
-
-            CarlosAg.ExcelXmlWriter.WorksheetRow excelRow = excelSheet.Table.Rows.Add();
-
-            CarlosAg.ExcelXmlWriter.WorksheetStyle excelHeaderStyle = excelBook.Styles.Add("HeaderRowStyle");
-            excelHeaderStyle.Font.Bold = true;
-            excelHeaderStyle.Font.FontName = "Verdana";
-            excelHeaderStyle.Font.Size = 8;
-            excelHeaderStyle.Font.Bold = true; 
-            excelHeaderStyle.Font.Color = "#000000";
-            excelHeaderStyle.Interior.Color = "#FFFFFF";
-            //excelHeaderStyle.Interior.Pattern = StyleInteriorPattern.Solid;
-
-            CarlosAg.ExcelXmlWriter.WorksheetStyle excelRowStyle = excelBook.Styles.Add("RowStyle");
-            excelRowStyle.Font.Bold = false;
-            excelRowStyle.Font.FontName = "Verdana";
-            excelRowStyle.Font.Size = 8;
-            excelRowStyle.Font.Color = "#000000";
-            excelRowStyle.Interior.Color = "#FFFFFF";
-            //excelRowStyle.Interior.Pattern = StyleInteriorPattern.Solid;
-            #endregion
-
-            //trabajo con header
-            int colCount = dataSource.Columns.Count;
-            Dictionary<string,DataType> columnsType= new Dictionary<string,DataType>(colCount);            
-            foreach (DataColumn dataColumn in dataSource.Columns)
-            {               
-                columnsType.Add(dataColumn.ColumnName,ExcelDataType(dataColumn));
-                excelRow.Cells.Add(new WorksheetCell(dataColumn.ColumnName, "HeaderRowStyle"));
-                WorksheetColumn worksheetColumn = excelSheet.Table.Columns.Add((int)DataHelper.ColumnSize(dataColumn));
-            }           
-            foreach (DataRow datarow in dataSource.Rows)
+            using (ExcelPackage package = new ExcelPackage(this.Stream))
             {
-                excelRow = excelSheet.Table.Rows.Add();
+                var excelBook = package.Workbook;
+                excelBook.Properties.Title = dataSource.TableName;
+                excelBook.Properties.Created = DateTime.Now;
+                excelBook.Properties.Author = "Ingematica";
+
+                var excelSheet = excelBook.Worksheets.Add("Sheet1");
+                excelSheet.View.FreezePanes(2,1);
+
+                //Add a HyperLink to the statistics sheet. 
+                var excelHeaderStyle = package.Workbook.Styles.CreateNamedStyle("HeaderRowStyle");
+                excelHeaderStyle.Style.Font.Bold = true;
+                excelHeaderStyle.Style.Font.Name = "Verdana";
+                excelHeaderStyle.Style.Font.Size = 8;
+                excelHeaderStyle.Style.Font.Bold = true;
+                excelHeaderStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                excelHeaderStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                excelHeaderStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
+
+                var excelRowStyle = package.Workbook.Styles.CreateNamedStyle("RowStyle");
+                excelRowStyle.Style.Font.Bold = false;
+                excelRowStyle.Style.Font.Name = "Verdana";
+                excelRowStyle.Style.Font.Size = 8;
+                excelRowStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                excelRowStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                excelRowStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
+
+                //trabajo con header
+                int colCount = dataSource.Columns.Count;
+                Dictionary<string, DataType> columnsType = new Dictionary<string, DataType>(colCount);
+                int i = 0;
                 foreach (DataColumn dataColumn in dataSource.Columns)
                 {
-                    string value="";
-                    DataType dataType = columnsType[dataColumn.ColumnName];
-                    switch (dataType)
-                    { 
-                        case DataType.Boolean:
-                            value = datarow[dataColumn].ToString() == "True" ? "1" : "0";
-                            break;
-                        default:
-                            value = datarow[dataColumn].ToString();
-                            break;    
-                    }       
-                    excelRow.Cells.Add(new WorksheetCell(value,dataType, "RowStyle"));
+                    i++;
+                    columnsType.Add(dataColumn.ColumnName, ExcelDataType(dataColumn));
+                    excelSheet.Cells[1,i].StyleName = "HeaderRowStyle";
+                    excelSheet.Cells[1,i].Value = dataColumn.ColumnName;
+                    excelSheet.Column(i).Width = (int)DataHelper.ColumnSize(dataColumn);
                 }
-            }           
-            excelBook.Save(this.Stream);
+                int r = 1;
+                foreach (DataRow datarow in dataSource.Rows)
+                {
+                    r++;
+                    int c = 0;
+                    foreach (DataColumn dataColumn in dataSource.Columns)
+                    {
+                        c++;
+                        string value = "";
+                        DataType dataType = columnsType[dataColumn.ColumnName];
+                        switch (dataType)
+                        {
+                            case DataType.Boolean:
+                                value = datarow[dataColumn].ToString() == "True" ? "1" : "0";
+                                break;
+                            default:
+                                value = datarow[dataColumn].ToString();
+                                break;
+                        }
+                        excelSheet.Cells[r, c].Value = value;
+                        excelSheet.Cells[r, c].StyleName = "RowStyle";
+                    }
+                }
+                package.Save();
+            }
         }
        
         protected  DataType ExcelDataType(DataColumn dataColumn)

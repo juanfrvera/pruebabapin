@@ -385,7 +385,8 @@ namespace UI.Web
             DataHelper.Write(stream, dataTable, ReportEnum.Excel);
             HttpContext.Current.Session["OpenXmlStreamInput"] = stream;
             HttpContext.Current.Session["OpenXmlFileContentType"] = "application/vnd.ms-excel";
-            HttpContext.Current.Session["OpenXmlFileName"] = sistemaCommand.Nombre + ".xls";            
+            //HttpContext.Current.Session["OpenXmlFileContentType"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";            
+            HttpContext.Current.Session["OpenXmlFileName"] = sistemaCommand.Nombre + ".xlsx";
         }        
         protected virtual DataTableMapping GetDataTableMapping()
         {
