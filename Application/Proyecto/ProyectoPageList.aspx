@@ -57,11 +57,11 @@
                             </tr>
                             <tr>
                                 <td align="left" style="width: 658px">
-                                    <asp:Button ID="bExportTemplate" runat="server" Text="Exportar Proyectos (template)" OnClick="bExportTemplate_OnClick" />
-                                    <asp:Button ID="bImportTemplate" runat="server" Text="Importar Proyectos (desde template)" OnClick="bImportTemplate_OnClick" />
+                                    <asp:Button ID="bExportTemplate" runat="server" Text="Exportar Proyectos (template)" Visible="false" OnClick="bExportTemplate_OnClick" />
+                                    <asp:Button ID="bImportTemplate" runat="server" Text="Importar Proyectos (desde template)" Visible="false" OnClick="bImportTemplate_OnClick" />
                                 </td>
                             </tr>
-                        </table>
+                            </table>                       
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </td>

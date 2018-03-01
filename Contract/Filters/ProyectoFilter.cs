@@ -99,6 +99,13 @@ namespace Contract
             }
             set { ids = value; }
         }
+        public string IdsString
+        {
+            get
+            {
+                return string.Join("|", ids.ToArray());
+            }
+        }
 
         public int? IdSectorialista { get; set; }
         public int? IdSaf { get; set; }

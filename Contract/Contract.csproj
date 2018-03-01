@@ -566,6 +566,7 @@
     <Compile Include="Helper\ContractHelper.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="Others Contracts\ActividadCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoTemplateCompose.cs" />
     <Compile Include="Others Contracts\DetalleCalidadCompose.cs" />
     <Compile Include="Others Contracts\MessageConfigurationCompose.cs" />
     <Compile Include="Others Contracts\ParameterCompose.cs" />

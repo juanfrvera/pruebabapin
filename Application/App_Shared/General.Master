@@ -155,7 +155,7 @@ function HayChequeado2(objectName) {
 </head>
 <body >
 <form id="formMaster" runat="server"    >
-<ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" EnableScriptGlobalization="true" EnableScriptLocalization="true" EnablePartialRendering="true" />    
+<ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" AsyncPostBackTimeOut= "360000" EnableScriptGlobalization="true" EnableScriptLocalization="true" EnablePartialRendering="true" />    
 <ctlHeader:ctlHeaderGeneral id="ctlMasterHeader" runat="server" ></ctlHeader:ctlHeaderGeneral>
     <div  class="navExtendida"  >
     <div  id="nav"  >
@@ -181,6 +181,7 @@ function HayChequeado2(objectName) {
     <script type="text/javascript">
     Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest); 
     Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequest);
+    AsyncPostBackTimeout = "360000"
     var oldCursor=undefined; 
     function BeginRequest(sender, args)
     {

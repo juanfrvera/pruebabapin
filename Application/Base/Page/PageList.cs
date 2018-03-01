@@ -279,24 +279,32 @@ namespace UI.Web
                 Filter.OrderByProperty = SortExpression;
                 Filter.OrderByDesc = (SortDirection == SortDirection.Descending);
             }
-            List = EntityService.GetResult(Filter);
 
             var idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
-
             if (idLastTemplateVersion > 0)
             {
                 var templateFileInfo = FileInfoService.Current.GetById(idLastTemplateVersion);
-                
-                DataTableMapping mapping = GetDataTableMapping();
+
                 MemoryStream stream = new MemoryStream();
                 byte[] templateByte = templateFileInfo.Data.ToArray();
                 stream.Write(templateByte, 0, templateByte.Length);
 
-                //TODO: tomar los datos de los proyectos seleccionados y agregarlos al template
-                //List = EntityService.GetResult(Filter); 
-                //DataHelper.Write<TResult>(stream, List, mapping, ReportEnum.Excel);
+                //Obtener los proyectos
 
-                HttpContext.Current.Session["OpenXmlStreamInput"] = stream;
+                var proyectos = EntityService.GetResultFromList(Filter);
+                List<int> proyectosIds = proyectos.Select(x => Int32.Parse(x.ID.ToString())).ToList();
+
+                SistemaCommand sistemaCommand = SistemaCommandService.Current.GetList(new nc.SistemaCommandFilter() { Nombre = "Proyectos Template"} ).FirstOrDefault();//.GetById(14)
+
+                if (sistemaCommand == null) return;
+                
+                (Filter as Contract.ProyectoFilter).Ids.Clear();
+                (Filter as Contract.ProyectoFilter).Ids.AddRange(proyectosIds);
+
+                DataTable dataTable = EntityService.GetFromStoreProcedure(sistemaCommand.CommandText, Filter);
+
+                //HttpContext.Current.Session["OpenXmlStreamInput"] = DataHelper.WriteTemplate(stream, list, mapping, ReportEnum.Excel);
+                HttpContext.Current.Session["OpenXmlStreamInput"] = DataHelper.WriteTemplate(stream, dataTable, ReportEnum.Excel);
                 HttpContext.Current.Session["OpenXmlFileContentType"] = templateFileInfo.FileType; //"application/vnd.ms-excel";
                 HttpContext.Current.Session["OpenXmlFileName"] = templateFileInfo.FileName;
                 Filter.PageSize = auxPageSize;
@@ -392,6 +400,7 @@ namespace UI.Web
         {
             return (new TResult().ToMapping());
         }
+
         #endregion
 
         protected override void ShowReport()

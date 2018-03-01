@@ -259,25 +259,43 @@ namespace Contract
         }
         public override void Write(DataTable dataSource)
         {    
-            using (ExcelPackage package = new ExcelPackage(this.Stream))
+            using (ExcelPackage package = new ExcelPackage())
             {
+                package.Load(this.Stream);
+                //Filas
+                int r = 1;
+
                 var excelBook = package.Workbook;
                 excelBook.Properties.Title = dataSource.TableName;
                 excelBook.Properties.Created = DateTime.Now;
                 excelBook.Properties.Author = "Ingematica";
 
-                var excelSheet = excelBook.Worksheets.Add("Sheet1");
+                var esTemplate = false;
+                ExcelWorksheet excelSheet;
+                if (excelBook.Worksheets["Proyectos"] != null)
+                {
+                    //Export template
+                    excelSheet = excelBook.Worksheets["Proyectos"];
+                    if(excelSheet == null) excelSheet = excelBook.Worksheets[excelBook.Worksheets.Count-1];
+                    esTemplate = true;
+                    r = 6;
+                }
+                else
+                {
+                    excelSheet = excelBook.Worksheets.Add("Sheet1");
+
+                    //Add a HyperLink to the statistics sheet. 
+                    var excelHeaderStyle = package.Workbook.Styles.CreateNamedStyle("HeaderRowStyle");
+                    excelHeaderStyle.Style.Font.Bold = true;
+                    excelHeaderStyle.Style.Font.Name = "Verdana";
+                    excelHeaderStyle.Style.Font.Size = 8;
+                    excelHeaderStyle.Style.Font.Bold = true;
+                    excelHeaderStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                    excelHeaderStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    excelHeaderStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
+                }
                 excelSheet.View.FreezePanes(2,1);
 
-                //Add a HyperLink to the statistics sheet. 
-                var excelHeaderStyle = package.Workbook.Styles.CreateNamedStyle("HeaderRowStyle");
-                excelHeaderStyle.Style.Font.Bold = true;
-                excelHeaderStyle.Style.Font.Name = "Verdana";
-                excelHeaderStyle.Style.Font.Size = 8;
-                excelHeaderStyle.Style.Font.Bold = true;
-                excelHeaderStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
-                excelHeaderStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                excelHeaderStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
 
                 var excelRowStyle = package.Workbook.Styles.CreateNamedStyle("RowStyle");
                 excelRowStyle.Style.Font.Bold = false;
@@ -287,6 +305,8 @@ namespace Contract
                 excelRowStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
                 excelRowStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
 
+
+
                 //trabajo con header
                 int colCount = dataSource.Columns.Count;
                 Dictionary<string, DataType> columnsType = new Dictionary<string, DataType>(colCount);
@@ -295,11 +315,15 @@ namespace Contract
                 {
                     i++;
                     columnsType.Add(dataColumn.ColumnName, ExcelDataType(dataColumn));
-                    excelSheet.Cells[1,i].StyleName = "HeaderRowStyle";
-                    excelSheet.Cells[1,i].Value = dataColumn.ColumnName;
+                    if (!esTemplate)
+                    {
+                        excelSheet.Cells[1, i].StyleName = "HeaderRowStyle";
+                        excelSheet.Cells[1, i].Value = dataColumn.ColumnName;
+                    }
                     excelSheet.Column(i).Width = (int)DataHelper.ColumnSize(dataColumn);
                 }
-                int r = 1;
+                //trabajo con las filas
+                
                 foreach (DataRow datarow in dataSource.Rows)
                 {
                     r++;
@@ -322,10 +346,105 @@ namespace Contract
                         excelSheet.Cells[r, c].StyleName = "RowStyle";
                     }
                 }
+
                 package.Save();
             }
         }
-       
+
+        public void WriteTemplate(DataTable dataSource)
+        {
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                package.Load(this.Stream);
+                //Filas
+                int r = 1;
+
+                var excelBook = package.Workbook;
+                excelBook.Properties.Title = dataSource.TableName;
+                excelBook.Properties.Created = DateTime.Now;
+                excelBook.Properties.Author = "Ingematica";
+
+                var esTemplate = false;
+                ExcelWorksheet excelSheet;
+                if (excelBook.Worksheets["Proyectos"] != null)
+                {
+                    //Export template
+                    excelSheet = excelBook.Worksheets["Proyectos"];
+                    if (excelSheet == null) excelSheet = excelBook.Worksheets[excelBook.Worksheets.Count - 1];
+                    esTemplate = true;
+                    r = 6;
+                }
+                else
+                {
+                    excelSheet = excelBook.Worksheets.Add("Sheet1");
+
+                    //Add a HyperLink to the statistics sheet. 
+                    var excelHeaderStyle = package.Workbook.Styles.CreateNamedStyle("HeaderRowStyle");
+                    excelHeaderStyle.Style.Font.Bold = true;
+                    excelHeaderStyle.Style.Font.Name = "Verdana";
+                    excelHeaderStyle.Style.Font.Size = 8;
+                    excelHeaderStyle.Style.Font.Bold = true;
+                    excelHeaderStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                    excelHeaderStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    excelHeaderStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
+                }
+                excelSheet.View.FreezePanes(2, 1);
+
+
+                var excelRowStyle = package.Workbook.Styles.CreateNamedStyle("RowStyle");
+                excelRowStyle.Style.Font.Bold = false;
+                excelRowStyle.Style.Font.Name = "Verdana";
+                excelRowStyle.Style.Font.Size = 8;
+                excelRowStyle.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                excelRowStyle.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                excelRowStyle.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
+
+
+
+                //trabajo con header
+                int colCount = dataSource.Columns.Count;
+                Dictionary<string, DataType> columnsType = new Dictionary<string, DataType>(colCount);
+                int i = 0;
+                foreach (DataColumn dataColumn in dataSource.Columns)
+                {
+                    i++;
+                    columnsType.Add(dataColumn.ColumnName, ExcelDataType(dataColumn));
+                    if (!esTemplate)
+                    {
+                        excelSheet.Cells[1, i].StyleName = "HeaderRowStyle";
+                        excelSheet.Cells[1, i].Value = dataColumn.ColumnName;
+                    }
+                    excelSheet.Column(i).Width = (int)DataHelper.ColumnSize(dataColumn);
+                }
+                //trabajo con las filas
+
+                foreach (DataRow datarow in dataSource.Rows)
+                {
+                    r++;
+                    int c = 0;
+                    foreach (DataColumn dataColumn in dataSource.Columns)
+                    {
+                        c++;
+                        string value = "";
+                        DataType dataType = columnsType[dataColumn.ColumnName];
+                        switch (dataType)
+                        {
+                            case DataType.Boolean:
+                                value = datarow[dataColumn].ToString() == "True" ? "1" : "0";
+                                break;
+                            default:
+                                value = datarow[dataColumn].ToString();
+                                break;
+                        }
+                        excelSheet.Cells[r, c].Value = value;
+                        excelSheet.Cells[r, c].StyleName = "RowStyle";
+                    }
+                }
+
+                package.SaveAs(this.Stream);
+            }
+        }
+
         protected  DataType ExcelDataType(DataColumn dataColumn)
         {
             switch (dataColumn.DataType.FullName)
@@ -349,6 +468,63 @@ namespace Contract
 
         protected override void _Dispose()
         {            
+        }
+    }
+    public class WriterEXCELTemplate
+    {
+        Stream Stream;
+        public WriterEXCELTemplate(Stream stream)
+        {
+            this.Stream = stream;
+        }
+        public Stream Write(DataTable dataSource)
+        {
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                package.Load(this.Stream);
+                //Filas
+                int r = 1;
+
+                var excelBook = package.Workbook;
+                excelBook.Properties.Title = dataSource.TableName;
+                excelBook.Properties.Created = DateTime.Now;
+                excelBook.Properties.Author = "Ingematica";
+
+                //Export template
+                var excelSheet = excelBook.Worksheets["Proyectos"];
+                if (excelSheet == null) excelSheet = excelBook.Worksheets[excelBook.Worksheets.Count - 1];
+
+                //Fila de datos inicial
+                r = 5;
+
+                excelSheet.View.FreezePanes(r+1, 1);
+
+                //Load data in one step
+                excelSheet.Cells[r+1, 1].LoadFromDataTable(dataSource, false);
+
+                package.Save();
+                this.Stream = package.Stream;
+            }
+            return this.Stream;
+        }
+
+        protected DataType ExcelDataType(DataColumn dataColumn)
+        {
+            switch (dataColumn.DataType.FullName)
+            {
+                case "System.Decimal":
+                case "System.Int32":
+                    return DataType.Number;
+                case "System.DataTime":
+                    return DataType.String;//return DataType.DateTime;
+                case "System.Boolean":
+                    return DataType.Boolean;
+                case "System.Object":
+                case "System.String":
+                    return DataType.String;
+                default:
+                    return DataType.String;//return  DataType.NotSet;
+            }
         }
     }
     public class WriterXMLExcel : Writer

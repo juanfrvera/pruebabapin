@@ -118,7 +118,7 @@ namespace Business.Managers
                     
                     //S “EstadoFinanciero”.
                     var sistemaEntidadEstadoRange = worksheetBD.Cells["S2:S" + (sistemaEntidadEstados.Count + 1)];
-                    var sistemaEntidadEstadoValues = sistemaEntidadEstados.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdSistemaEntidadEstado.ToString().ToUpper())).OrderBy(x => x).ToArray();
+                    var sistemaEntidadEstadoValues = sistemaEntidadEstados.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdEstado.ToString().ToUpper())).OrderBy(x => x).ToArray();
                     sistemaEntidadEstadoRange.LoadFromCollection(sistemaEntidadEstadoValues);
                     package.Workbook.Names["EstadoFinanciero"].Address = sistemaEntidadEstadoRange.Address;
 
@@ -136,7 +136,7 @@ namespace Business.Managers
 
                     //Z “Oficina”.
                     var oficinasRange = worksheetBD.Cells["Z2:Z" + (oficinas.Count + 1)];
-                    var oficinasValues = oficinas.OrderBy(x => x.Descripcion).Select(x => string.Format("{0} - ({1})", x.Descripcion, x.IdOficina.ToString().ToUpper())).ToArray();
+                    var oficinasValues = oficinas.OrderBy(x => x.Descripcion).Select(x => string.Format("{0} ({1})", x.Descripcion, x.IdOficina.ToString().ToUpper())).ToArray();
                     oficinasRange.LoadFromCollection(oficinasValues);
                     package.Workbook.Names["Oficina"].Address = oficinasRange.Address;
 
@@ -160,7 +160,7 @@ namespace Business.Managers
 
                     //AP “Moneda”.                      
                     var monedasRange = worksheetBD.Cells["AP2:AP" + (monedas.Count + 1)];
-                    var monedasValues = monedas.OrderBy(x => x.Nombre).Select(x => string.Format("{0} - ({1})", x.Nombre, x.IdMoneda.ToString().ToUpper())).ToArray();
+                    var monedasValues = monedas.OrderBy(x => x.Nombre).Select(x => string.Format("{0} ({1})", x.Nombre, x.IdMoneda.ToString().ToUpper())).ToArray();
                     monedasRange.LoadFromCollection(monedasValues);
                     package.Workbook.Names["Moneda"].Address = monedasRange.Address;
 

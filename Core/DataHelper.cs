@@ -372,7 +372,27 @@ namespace Contract
             }
             if (stream.CanWrite)
                 stream.Flush();
-        }       
+        }
+
+        public static Stream WriteTemplate<T>(Stream stream, List<T> list, DataTableMapping mapping, ReportEnum reportEnum) where T : class, new()
+        {
+            DataTable dataTable = ToDataTable<T>(list, mapping);
+            return WriteTemplate(stream, dataTable, ReportEnum.Excel);
+        }
+        public static Stream WriteTemplate(Stream stream, DataTable dataSource, ReportEnum reportEnum)
+        {
+            WriterEXCELTemplate writer = new WriterEXCELTemplate(stream);
+            return writer.Write(dataSource);
+        }
+        private static void CopyStream(Stream input, Stream output)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            int read;
+            while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, read);
+            }
+        }
         
         #region IsEmpty
         public static bool IsEmpty(int field)
