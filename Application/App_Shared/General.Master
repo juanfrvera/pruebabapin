@@ -12,6 +12,7 @@
     vertical-align:bottom;
     padding:0px 0px 0px 0px;
 }
+#sb-nav-close{visibility:hidden;background-image:url(close.png);}
 </style>
 <script id="General" type="text/javascript">
 
@@ -185,8 +186,14 @@ function HayChequeado2(objectName) {
     var oldCursor=undefined; 
     function BeginRequest(sender, args)
     {
-        try{          
-            Shadowbox.init({handleOversize: "drag",modal: true}); 
+        try {
+            var options = {
+                overlayColor: '#ffffff',
+                overlayOpacity: '0.1',
+                handleOversize: "drag",
+                modal: true
+            };
+            Shadowbox.init(options); 
             Shadowbox.open({content: '../Images/loading.gif',player: 'img',title: '',height: 30,width: 30});
             oldCursor = document.body.style.cursor;
             document.body.style.cursor = 'wait';
