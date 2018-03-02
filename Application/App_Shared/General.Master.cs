@@ -92,8 +92,52 @@ namespace Application.Shared
         #region Menu
         public void LoadMenu()
         {
+            var isParent = false;
             foreach (MenuItem menu in MenuItems)
+            {
                 MenuPrincipal.Items.Add(menu);
+                if (SiteMap.CurrentNode != null)
+                {
+                    if (menu.Text == SiteMap.CurrentNode.Title)
+                    {
+                        menu.Selected = true;
+                        isParent = true;
+                    }
+                }
+            }
+            if(!isParent) SetParentMenuItemSelected();
+        }
+        private void SetParentMenuItemSelected()
+        {
+            var isSon = false;
+            foreach (MenuItem menu in MenuItems)
+            {
+                foreach (MenuItem menuChild in menu.ChildItems)
+                {
+                    if (menuChild.Text == SiteMap.CurrentNode.Title)
+                    {
+                        menu.Selected = true;
+                        isSon = true;
+                    }
+                }
+            }
+            if (!isSon) SetGrandParentMenuItemSelected();
+        }
+        private void SetGrandParentMenuItemSelected()
+        {
+            foreach (MenuItem menu in MenuItems)
+            {
+                foreach (MenuItem menuChild in menu.ChildItems)
+                {
+                    foreach (MenuItem menuGrandChild in menuChild.ChildItems)
+                    {
+                        if (menuGrandChild.Text == SiteMap.CurrentNode.Title)
+                        {
+                            menu.Selected = true;
+                        }
+                    }
+                }
+            }
         }
         protected List<MenuItem> GetMenuItems()
         {
@@ -136,6 +180,28 @@ namespace Application.Shared
         protected override MessageBar MessageDisplay { get { return MessageBarForm; } }
 
         #region Events
+        /*OnMenuItemDataBound="MenuPrincipal_MenuItemDataBound" OnMenuItemClick="MenuPrincipal_MenuItemClick"
+         * protected void MenuPrincipal_MenuItemDataBound(object sender, MenuEventArgs e)
+        {
+            if (SiteMap.CurrentNode != null)
+            {
+                if (e.Item.Text == SiteMap.CurrentNode.Title)
+                {
+                    e.Item.Selected = true;
+                }
+            }
+        }
+        protected void MenuPrincipal_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            if (SiteMap.CurrentNode != null)
+            {
+                if (e.Item.Text == SiteMap.CurrentNode.Title)
+                {
+                    e.Item.Selected = true;
+                }
+            }
+        }*/
+        
         protected virtual void Password_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/frmChangePassword.aspx",false);

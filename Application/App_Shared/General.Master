@@ -161,7 +161,7 @@ function HayChequeado2(objectName) {
     <div  id="nav"  >
     <asp:Menu ID="MenuPrincipal" runat="server" Orientation="Horizontal" Width="300px"
                 MaximumDynamicDisplayLevels="2" DynamicEnableDefaultPopOutImage="False" StaticEnableDefaultPopOutImage="False"
-                DynamicHorizontalOffset="-10" DynamicVerticalOffset="3" >
+                DynamicHorizontalOffset="-10" DynamicVerticalOffset="3">
                 <StaticSelectedStyle CssClass="menutopover" />
                 <StaticMenuItemStyle CssClass="menutop" />
                 <DynamicMenuStyle CssClass="menuchild" />
