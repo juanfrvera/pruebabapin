@@ -105,7 +105,7 @@ namespace Application.Shared
                     }
                 }
             }
-            if(!isParent) SetParentMenuItemSelected();
+            if(SiteMap.CurrentNode != null && !isParent) SetParentMenuItemSelected();
         }
         private void SetParentMenuItemSelected()
         {

@@ -33,8 +33,26 @@ namespace UI.Web
 
                 UIContext.Current.Login(userName, password);
                 
-                FormsAuthentication.SetAuthCookie(userName, false);
-                Response.Redirect("Default.aspx"); 
+                //FormsAuthentication.SetAuthCookie(userName, false);
+
+                bool isPersistent = false;
+                string userData = "App Specific data for this user";
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                                                        1,
+                                                        userName,
+                                                        DateTime.Now,
+                                                        DateTime.Now.AddMinutes((int)Contract.SolutionContext.Current.ParameterManager.GetNumberValue("USER_SESSION_TIMEOUT")),
+                                                        isPersistent,
+                                                        userData,
+                                                        FormsAuthentication.FormsCookiePath);
+
+                // Encrypt the ticket.
+                string encTicket = FormsAuthentication.Encrypt(ticket);
+
+                // Create the cookie.
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
+               Response.Redirect("Default.aspx"); 
             }            
             catch (Exception exception)
             {
