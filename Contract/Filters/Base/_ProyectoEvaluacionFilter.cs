@@ -10,6 +10,7 @@ namespace Contract.Base
     {   
 		#region Private
 		private string _MarcoLegal;
+        private string _InfoAdicional;
 		 private string _EstudioRealizado;
 		 private string _EstudioaRealizar;
 		 private string _SituacionSinProyecto;
@@ -33,6 +34,17 @@ public int? Id_ProyectoEvaluacion_To{get;set;}
 				}
 		   set{ _MarcoLegal=value;}
 		  }
+
+          [DataMember(Name = "InfoAdicional", IsRequired = false)]
+          public string InfoAdicional
+          {
+              get
+              {
+                  if (_InfoAdicional == null) _InfoAdicional = string.Empty;
+                  return _InfoAdicional;
+              }
+              set { _InfoAdicional = value; }
+          }
 		 
 		  [DataMember(Name = "EstudioRealizado", IsRequired = false)]
 		  public string EstudioRealizado

@@ -13920,6 +13920,8 @@ namespace Contract
         private int _Id_Proyecto;
 
         private string _MarcoLegal;
+		
+		private string _InfoAdicional;
 
         private string _EstudioRealizado;
 
@@ -13951,6 +13953,8 @@ namespace Contract
         partial void OnId_ProyectoChanged();
         partial void OnMarcoLegalChanging(string value);
         partial void OnMarcoLegalChanged();
+		partial void OnInfoAdicionalChanging(string value);
+        partial void OnInfoAdicionalChanged();
         partial void OnEstudioRealizadoChanging(string value);
         partial void OnEstudioRealizadoChanged();
         partial void OnEstudioaRealizarChanging(string value);
@@ -14228,6 +14232,28 @@ namespace Contract
                     this._TasaReferencia = value;
                     this.SendPropertyChanged("TasaReferencia");
                     this.OnTasaReferenciaChanged();
+                }
+            }
+        }
+				
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_InfoAdicional", DbType = "VarChar(MAX)")]
+        [global::System.Runtime.Serialization.DataMemberAttribute(Order = 13)]
+        public string InfoAdicional
+        {
+            get
+            {
+                return this._InfoAdicional;
+            }
+            set
+            {
+                if ((this._InfoAdicional != value))
+                {
+                    this.OnInfoAdicionalChanging(value);
+                    this.SendPropertyChanging();
+                    this._InfoAdicional = value;
+                    this.SendPropertyChanged("InfoAdicional");
+                    this.OnInfoAdicionalChanged();
                 }
             }
         }

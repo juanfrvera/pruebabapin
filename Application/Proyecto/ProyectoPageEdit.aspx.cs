@@ -63,7 +63,7 @@ namespace UI.Web
             if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });
             if (ProyectoCronogramaRead) urls.Add(new PageLinkData() { Text = "Cronograma", Url = "~/Proyecto/ProyectoCronogramaPageEdit.aspx" });
             if (ProyectoEvaluacionRead) urls.Add(new PageLinkData() { Text = "Evaluación", Url = "~/Proyecto/ProyectoEvaluacionPageEdit.aspx" });
-            if (ProyectoFilesRead) urls.Add(new PageLinkData() { Text = "Adjuntar", Url = "~/Proyecto/ProyectoAdjuntarPageList.aspx" });
+            if (ProyectoFilesRead) urls.Add(new PageLinkData() { Text = "Información complementaria", Url = "~/Proyecto/ProyectoAdjuntarPageList.aspx" });
             if (ProyectoCalidadRead) urls.Add(new PageLinkData() { Text = "Calidad", Url = "~/Proyecto/ProyectoCalidadPageEdit.aspx" });
             if (ProyectoIntervencionDNIPComposeRead) urls.Add(new PageLinkData() { Text = "Interv. DNIP", Url = "~/Proyecto/ProyectoDNIPPageEdit.aspx" });
 

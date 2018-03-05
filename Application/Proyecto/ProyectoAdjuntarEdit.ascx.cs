@@ -20,21 +20,38 @@ namespace UI.Web
             diFecha.Width = 80;
             diFecha.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha");
             PopUpProyectoFiles.Attributes.CssStyle.Add("display", "none");
-          
+            revMarcoLegal.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            revInfoAdicional.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            revMarcoLegal.ErrorMessage = TranslateFormat("InvalidField", "Marco Legal");
+            revInfoAdicional.ErrorMessage = TranslateFormat("InvalidField", "Información adicional");
         }
         public override void Clear()
         {
             UIHelper.Clear(tbNombre);
             tbNombre.Focus();
             UIHelper.Clear(diFecha);
+            UIHelper.Clear(txtMarcoLegal);
+            UIHelper.Clear(txtInfoAdicional);
         }
         public override void GetValue()
         {
+            Entity.Evaluacion.MarcoLegal = UIHelper.GetString(txtMarcoLegal);
+            Entity.Evaluacion.InfoAdicional = UIHelper.GetString(txtInfoAdicional);
+            ProyectoEvaluacionService.Current.Save(Entity.Evaluacion.ToEntity(), UIContext.Current.ContextUser);
         }
         public override void SetValue()
         {
             //SetPermissions(); //Matias 20170210 - Ticket #REQ768159 - Creado y comentado por Matias - Rollback de tarea
+            var pes = ProyectoEvaluacionService.Current.GetResult(new nc.ProyectoEvaluacionFilter() { Id_Proyecto = Entity.IdProyecto }).FirstOrDefault();
+            if (pes != null)
+            {
+                Entity.Evaluacion = pes;
+                UIHelper.SetValue(txtMarcoLegal, Entity.Evaluacion.MarcoLegal);
+                UIHelper.SetValue(txtInfoAdicional, Entity.Evaluacion.InfoAdicional);
+            }
             ProyectoFileRefresh();
+            upMarcoLegal.Update();
+            upInfoAdicional.Update();
         }
          
         #endregion Override

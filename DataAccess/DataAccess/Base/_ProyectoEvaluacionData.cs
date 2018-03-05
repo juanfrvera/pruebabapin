@@ -39,6 +39,7 @@ namespace DataAccess.Base
                       where (filter.Id_ProyectoEvaluacion == null || o.Id_ProyectoEvaluacion >=  filter.Id_ProyectoEvaluacion) && (filter.Id_ProyectoEvaluacion_To == null || o.Id_ProyectoEvaluacion <= filter.Id_ProyectoEvaluacion_To)
 					  && (filter.Id_Proyecto == null || filter.Id_Proyecto == 0 || o.Id_Proyecto==filter.Id_Proyecto)
 					  && (filter.MarcoLegal == null || filter.MarcoLegal.Trim() == string.Empty || filter.MarcoLegal.Trim() == "%"  || (filter.MarcoLegal.EndsWith("%") && filter.MarcoLegal.StartsWith("%") && (o.MarcoLegal.Contains(filter.MarcoLegal.Replace("%", "")))) || (filter.MarcoLegal.EndsWith("%") && o.MarcoLegal.StartsWith(filter.MarcoLegal.Replace("%",""))) || (filter.MarcoLegal.StartsWith("%") && o.MarcoLegal.EndsWith(filter.MarcoLegal.Replace("%",""))) || o.MarcoLegal == filter.MarcoLegal )
+                      && (filter.InfoAdicional == null || filter.InfoAdicional.Trim() == string.Empty || filter.InfoAdicional.Trim() == "%" || (filter.InfoAdicional.EndsWith("%") && filter.InfoAdicional.StartsWith("%") && (o.InfoAdicional.Contains(filter.InfoAdicional.Replace("%", "")))) || (filter.InfoAdicional.EndsWith("%") && o.InfoAdicional.StartsWith(filter.InfoAdicional.Replace("%", ""))) || (filter.InfoAdicional.StartsWith("%") && o.InfoAdicional.EndsWith(filter.InfoAdicional.Replace("%", ""))) || o.InfoAdicional == filter.InfoAdicional)
 					  && (filter.EstudioRealizado == null || filter.EstudioRealizado.Trim() == string.Empty || filter.EstudioRealizado.Trim() == "%"  || (filter.EstudioRealizado.EndsWith("%") && filter.EstudioRealizado.StartsWith("%") && (o.EstudioRealizado.Contains(filter.EstudioRealizado.Replace("%", "")))) || (filter.EstudioRealizado.EndsWith("%") && o.EstudioRealizado.StartsWith(filter.EstudioRealizado.Replace("%",""))) || (filter.EstudioRealizado.StartsWith("%") && o.EstudioRealizado.EndsWith(filter.EstudioRealizado.Replace("%",""))) || o.EstudioRealizado == filter.EstudioRealizado )
 					  && (filter.EstudioaRealizar == null || filter.EstudioaRealizar.Trim() == string.Empty || filter.EstudioaRealizar.Trim() == "%"  || (filter.EstudioaRealizar.EndsWith("%") && filter.EstudioaRealizar.StartsWith("%") && (o.EstudioaRealizar.Contains(filter.EstudioaRealizar.Replace("%", "")))) || (filter.EstudioaRealizar.EndsWith("%") && o.EstudioaRealizar.StartsWith(filter.EstudioaRealizar.Replace("%",""))) || (filter.EstudioaRealizar.StartsWith("%") && o.EstudioaRealizar.EndsWith(filter.EstudioaRealizar.Replace("%",""))) || o.EstudioaRealizar == filter.EstudioaRealizar )
 					  && (filter.SituacionSinProyecto == null || filter.SituacionSinProyecto.Trim() == string.Empty || filter.SituacionSinProyecto.Trim() == "%"  || (filter.SituacionSinProyecto.EndsWith("%") && filter.SituacionSinProyecto.StartsWith("%") && (o.SituacionSinProyecto.Contains(filter.SituacionSinProyecto.Replace("%", "")))) || (filter.SituacionSinProyecto.EndsWith("%") && o.SituacionSinProyecto.StartsWith(filter.SituacionSinProyecto.Replace("%",""))) || (filter.SituacionSinProyecto.StartsWith("%") && o.SituacionSinProyecto.EndsWith(filter.SituacionSinProyecto.Replace("%",""))) || o.SituacionSinProyecto == filter.SituacionSinProyecto )
@@ -61,6 +62,7 @@ namespace DataAccess.Base
 					 Id_ProyectoEvaluacion=o.Id_ProyectoEvaluacion
 					 ,Id_Proyecto=o.Id_Proyecto
 					 ,MarcoLegal=o.MarcoLegal
+                     ,InfoAdicional=o.InfoAdicional
 					 ,EstudioRealizado=o.EstudioRealizado
 					 ,EstudioaRealizar=o.EstudioaRealizar
 					 ,SituacionSinProyecto=o.SituacionSinProyecto
@@ -105,6 +107,7 @@ namespace DataAccess.Base
             nc.ProyectoEvaluacion _new = new nc.ProyectoEvaluacion();
 		 _new.Id_Proyecto= entity.Id_Proyecto;
 		 _new.MarcoLegal= entity.MarcoLegal;
+         _new.InfoAdicional = entity.InfoAdicional;
 		 _new.EstudioRealizado= entity.EstudioRealizado;
 		 _new.EstudioaRealizar= entity.EstudioaRealizar;
 		 _new.SituacionSinProyecto= entity.SituacionSinProyecto;
@@ -120,6 +123,7 @@ namespace DataAccess.Base
         {
             ProyectoEvaluacion  newEntity = Copy(entity);
             newEntity.MarcoLegal = string.Format(renameFormat,newEntity.MarcoLegal);
+            newEntity.InfoAdicional = string.Format(renameFormat, newEntity.InfoAdicional);
             Add(newEntity);
 			return GetId(newEntity);
         }
@@ -134,6 +138,7 @@ namespace DataAccess.Base
 		if(hadSetId)target.Id_ProyectoEvaluacion= source.Id_ProyectoEvaluacion ;
 		 target.Id_Proyecto= source.Id_Proyecto ;
 		 target.MarcoLegal= source.MarcoLegal ;
+         target.InfoAdicional = source.InfoAdicional;
 		 target.EstudioRealizado= source.EstudioRealizado ;
 		 target.EstudioaRealizar= source.EstudioaRealizar ;
 		 target.SituacionSinProyecto= source.SituacionSinProyecto ;
@@ -150,6 +155,7 @@ namespace DataAccess.Base
 		if(hadSetId)target.Id_ProyectoEvaluacion= source.Id_ProyectoEvaluacion ;
 		 target.Id_Proyecto= source.Id_Proyecto ;
 		 target.MarcoLegal= source.MarcoLegal ;
+         target.InfoAdicional = source.InfoAdicional;
 		 target.EstudioRealizado= source.EstudioRealizado ;
 		 target.EstudioaRealizar= source.EstudioaRealizar ;
 		 target.SituacionSinProyecto= source.SituacionSinProyecto ;
@@ -166,6 +172,7 @@ namespace DataAccess.Base
 		if(hadSetId)target.Id_ProyectoEvaluacion= source.Id_ProyectoEvaluacion ;
 		 target.Id_Proyecto= source.Id_Proyecto ;
 		 target.MarcoLegal= source.MarcoLegal ;
+         target.InfoAdicional = source.InfoAdicional;
 		 target.EstudioRealizado= source.EstudioRealizado ;
 		 target.EstudioaRealizar= source.EstudioaRealizar ;
 		 target.SituacionSinProyecto= source.SituacionSinProyecto ;
@@ -182,6 +189,7 @@ namespace DataAccess.Base
 		if(hadSetId)target.Id_ProyectoEvaluacion= source.Id_ProyectoEvaluacion ;
 		 target.Id_Proyecto= source.Id_Proyecto ;
 		 target.MarcoLegal= source.MarcoLegal ;
+         target.InfoAdicional = source.InfoAdicional;
 		 target.EstudioRealizado= source.EstudioRealizado ;
 		 target.EstudioaRealizar= source.EstudioaRealizar ;
 		 target.SituacionSinProyecto= source.SituacionSinProyecto ;
@@ -228,6 +236,7 @@ namespace DataAccess.Base
          if(!source.Id_ProyectoEvaluacion.Equals(target.Id_ProyectoEvaluacion))return false;
 		  if(!source.Id_Proyecto.Equals(target.Id_Proyecto))return false;
 		  if((source.MarcoLegal == null)?target.MarcoLegal!=null:  !( (target.MarcoLegal== String.Empty && source.MarcoLegal== null) || (target.MarcoLegal==null && source.MarcoLegal== String.Empty )) &&  !source.MarcoLegal.Trim().Replace ("\r","").Equals(target.MarcoLegal.Trim().Replace ("\r","")))return false;
+          if ((source.InfoAdicional == null) ? target.InfoAdicional != null : !((target.InfoAdicional == String.Empty && source.InfoAdicional == null) || (target.InfoAdicional == null && source.InfoAdicional == String.Empty)) && !source.InfoAdicional.Trim().Replace("\r", "").Equals(target.InfoAdicional.Trim().Replace("\r", ""))) return false;
 			 if((source.EstudioRealizado == null)?target.EstudioRealizado!=null:  !( (target.EstudioRealizado== String.Empty && source.EstudioRealizado== null) || (target.EstudioRealizado==null && source.EstudioRealizado== String.Empty )) &&  !source.EstudioRealizado.Trim().Replace ("\r","").Equals(target.EstudioRealizado.Trim().Replace ("\r","")))return false;
 			 if((source.EstudioaRealizar == null)?target.EstudioaRealizar!=null:  !( (target.EstudioaRealizar== String.Empty && source.EstudioaRealizar== null) || (target.EstudioaRealizar==null && source.EstudioaRealizar== String.Empty )) &&  !source.EstudioaRealizar.Trim().Replace ("\r","").Equals(target.EstudioaRealizar.Trim().Replace ("\r","")))return false;
 			 if((source.SituacionSinProyecto == null)?target.SituacionSinProyecto!=null:  !( (target.SituacionSinProyecto== String.Empty && source.SituacionSinProyecto== null) || (target.SituacionSinProyecto==null && source.SituacionSinProyecto== String.Empty )) &&  !source.SituacionSinProyecto.Trim().Replace ("\r","").Equals(target.SituacionSinProyecto.Trim().Replace ("\r","")))return false;
@@ -251,6 +260,7 @@ namespace DataAccess.Base
                 //if (!source.Id_ProyectoEvaluacion.Equals(target.Id_ProyectoEvaluacion)) return false;
                 //if (!source.Id_Proyecto.Equals(target.Id_Proyecto)) return false;
                 if (source.MarcoLegal != null && source.MarcoLegal != String.Empty) return false;
+                if (source.InfoAdicional != null && source.InfoAdicional != String.Empty) return false;
                 if (source.EstudioRealizado != null && source.EstudioRealizado != String.Empty) return false;
                 if (source.EstudioaRealizar != null && source.EstudioaRealizar != String.Empty) return false;
                 if (source.SituacionSinProyecto != null && source.SituacionSinProyecto != String.Empty) return false;
@@ -266,6 +276,7 @@ namespace DataAccess.Base
             if(!source.Id_ProyectoEvaluacion.Equals(target.Id_ProyectoEvaluacion))return false;
 		    if(!source.Id_Proyecto.Equals(target.Id_Proyecto))return false;
 		    if((source.MarcoLegal == null)?target.MarcoLegal!=null: !( (target.MarcoLegal== String.Empty && source.MarcoLegal== null) || (target.MarcoLegal==null && source.MarcoLegal== String.Empty )) && !source.MarcoLegal.Trim().Replace ("\r","").Equals(target.MarcoLegal.Trim().Replace ("\r","")))return false;
+            if ((source.InfoAdicional == null) ? target.InfoAdicional != null : !((target.InfoAdicional == String.Empty && source.InfoAdicional == null) || (target.InfoAdicional == null && source.InfoAdicional == String.Empty)) && !source.InfoAdicional.Trim().Replace("\r", "").Equals(target.InfoAdicional.Trim().Replace("\r", ""))) return false;
 			if((source.EstudioRealizado == null)?target.EstudioRealizado!=null: !( (target.EstudioRealizado== String.Empty && source.EstudioRealizado== null) || (target.EstudioRealizado==null && source.EstudioRealizado== String.Empty )) && !source.EstudioRealizado.Trim().Replace ("\r","").Equals(target.EstudioRealizado.Trim().Replace ("\r","")))return false;
 			if((source.EstudioaRealizar == null)?target.EstudioaRealizar!=null: !( (target.EstudioaRealizar== String.Empty && source.EstudioaRealizar== null) || (target.EstudioaRealizar==null && source.EstudioaRealizar== String.Empty )) && !source.EstudioaRealizar.Trim().Replace ("\r","").Equals(target.EstudioaRealizar.Trim().Replace ("\r","")))return false;
 			if((source.SituacionSinProyecto == null)?target.SituacionSinProyecto!=null: !( (target.SituacionSinProyecto== String.Empty && source.SituacionSinProyecto== null) || (target.SituacionSinProyecto==null && source.SituacionSinProyecto== String.Empty )) && !source.SituacionSinProyecto.Trim().Replace ("\r","").Equals(target.SituacionSinProyecto.Trim().Replace ("\r","")))return false;

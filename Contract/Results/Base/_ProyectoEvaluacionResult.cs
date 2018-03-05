@@ -11,6 +11,7 @@ namespace Contract.Base
 		 public int Id_ProyectoEvaluacion{get;set;}
 		 public int Id_Proyecto{get;set;}
 		 public string MarcoLegal{get;set;}
+         public string InfoAdicional { get; set; }
 		 public string EstudioRealizado{get;set;}
 		 public string EstudioaRealizar{get;set;}
 		 public string SituacionSinProyecto{get;set;}
@@ -52,6 +53,7 @@ namespace Contract.Base
 		_ProyectoEvaluacion.Id_ProyectoEvaluacion = this.Id_ProyectoEvaluacion;
 		 _ProyectoEvaluacion.Id_Proyecto = this.Id_Proyecto;
 		 _ProyectoEvaluacion.MarcoLegal = this.MarcoLegal;
+         _ProyectoEvaluacion.InfoAdicional = this.InfoAdicional;
 		 _ProyectoEvaluacion.EstudioRealizado = this.EstudioRealizado;
 		 _ProyectoEvaluacion.EstudioaRealizar = this.EstudioaRealizar;
 		 _ProyectoEvaluacion.SituacionSinProyecto = this.SituacionSinProyecto;
@@ -69,6 +71,7 @@ namespace Contract.Base
 		 this.Id_ProyectoEvaluacion= entity.Id_ProyectoEvaluacion ;
 		  this.Id_Proyecto= entity.Id_Proyecto ;
 		  this.MarcoLegal= entity.MarcoLegal ;
+          this.InfoAdicional = entity.InfoAdicional;
 		  this.EstudioRealizado= entity.EstudioRealizado ;
 		  this.EstudioaRealizar= entity.EstudioaRealizar ;
 		  this.SituacionSinProyecto= entity.SituacionSinProyecto ;
@@ -86,6 +89,7 @@ namespace Contract.Base
          if(!entity.Id_ProyectoEvaluacion.Equals(this.Id_ProyectoEvaluacion))return false;
 		  if(!entity.Id_Proyecto.Equals(this.Id_Proyecto))return false;
 		  if((entity.MarcoLegal == null)?this.MarcoLegal!=null:!entity.MarcoLegal.Equals(this.MarcoLegal))return false;
+          if ((entity.InfoAdicional == null) ? this.InfoAdicional != null : !entity.InfoAdicional.Equals(this.InfoAdicional)) return false;
 			 if((entity.EstudioRealizado == null)?this.EstudioRealizado!=null:!entity.EstudioRealizado.Equals(this.EstudioRealizado))return false;
 			 if((entity.EstudioaRealizar == null)?this.EstudioaRealizar!=null:!entity.EstudioaRealizar.Equals(this.EstudioaRealizar))return false;
 			 if((entity.SituacionSinProyecto == null)?this.SituacionSinProyecto!=null:!entity.SituacionSinProyecto.Equals(this.SituacionSinProyecto))return false;
@@ -104,6 +108,7 @@ namespace Contract.Base
 		    return new DataTableMapping("ProyectoEvaluacion", new List<DataColumnMapping>( new DataColumnMapping[]{
 		new DataColumnMapping("_Proyecto","Proyecto_ProyectoDenominacion")
 			,new DataColumnMapping("MarcoLegal","MarcoLegal")
+            ,new DataColumnMapping("InfoAdicional","InfoAdicional")
 			,new DataColumnMapping("EstudioRealizado","EstudioRealizado")
 			,new DataColumnMapping("EstudioaRealizar","EstudioaRealizar")
 			,new DataColumnMapping("SituacionSinProyecto","SituacionSinProyecto")

@@ -517,6 +517,7 @@
       <Column Name="CriterioEvaluacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="HorizonteEvaluacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TasaReferencia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+	  <Column Name="InfoAdicional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Proyecto_ProyectoEvaluacion" Member="Proyecto" ThisKey="Id_Proyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
     </Type>
   </Table>

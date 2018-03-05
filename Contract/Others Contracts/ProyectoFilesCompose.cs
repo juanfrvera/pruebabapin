@@ -16,5 +16,7 @@ namespace Contract
             get { return Proyecto != null ? Proyecto.IdProyecto : 0; }
         }
         public List<ProyectoFileResult> ProyectoFiles = new List<ProyectoFileResult>();
+
+        public ProyectoEvaluacionResult Evaluacion { get; set; }
     }
 }

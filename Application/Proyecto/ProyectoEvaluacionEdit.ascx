@@ -265,7 +265,7 @@
     </table>
 </asp:Panel>
 <%--PANEL MARCOS LEGAL --%>
-<div class="CollapsiblePanelTab">
+<div class="CollapsiblePanelTab" style="display:none">
     <span id="spanMarcoLegal">
         <asp:Label ID="lblMarcoLegal" runat="server" Text="Marco Legal"></asp:Label>
         &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
@@ -274,7 +274,7 @@
         Collapsed="True" ExpandControlID="lblMarcoLegal" CollapseControlID="lblMarcoLegal"
         AutoCollapse="False" AutoExpand="False" ExpandDirection="Vertical" />
 </div>
-<asp:Panel ID="pnlMarcoLegal" runat="server">
+<asp:Panel ID="pnlMarcoLegal" runat="server" Visible="false">
     <asp:UpdatePanel ID="upMarcoLegal" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
