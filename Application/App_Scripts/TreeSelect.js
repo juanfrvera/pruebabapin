@@ -154,7 +154,7 @@ return {
             if (el && el.checked) {
                 currentIconMode = parseInt(el.value);
             } else {
-                currentIconMode = 0;
+                currentIconMode = 1;
             } 
             buildTree();
         } 

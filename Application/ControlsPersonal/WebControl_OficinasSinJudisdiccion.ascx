@@ -1,5 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="WebControl_OficinasSinJudisdiccion.ascx.cs" Inherits="UI.Web.WebControl_OficinasSinJudisdiccion" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="atk" %>
+
+<style type="text/css">
+#<%=ClientID%>_tree .ygtvdepth0 {
+    display:none;
+}
+</style>
+
 <asp:Panel ID="pnControl" runat="server"  >
     <table width="100%">
         <tr valign="top" >

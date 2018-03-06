@@ -1,5 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="WebControl_IndicadorClaseTree.ascx.cs" Inherits="UI.Web.ControlsPersonal.WebControl_IndicadorClaseTree" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="atk" %>
+
+<style type="text/css">
+#<%=ClientID%>_tree .ygtvdepth0 {
+    display:none;
+}
+.treeNodeIconHide{
+    display:none;
+}
+</style>
+
 <%--Matias 20140523 - Tarea 110 - Nuevo Control--%>
 <asp:Panel ID="pnControl" runat="server"  >
     <table width="100%">
