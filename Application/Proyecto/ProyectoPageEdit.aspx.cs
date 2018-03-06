@@ -39,12 +39,14 @@ namespace UI.Web
                 return pageBehaviour;
             }
         }
+
         protected override void _SetParameters()
         {
             PathListPage = "ProyectoPageList.aspx";
             EditFilter = "ProyectoFilter";
             base._SetParameters();
         }
+
         protected override List<PageLinkData> GetTabUrls()
         {
             bool ProyectoCronogramaRead = CanByOffice("ProyectoCronogramaCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
@@ -58,7 +60,7 @@ namespace UI.Web
 
             List<PageLinkData> urls = new List<PageLinkData>();
             urls.Add(new PageLinkData() { Text = "Generales", Url = "~/Proyecto/ProyectoPageEdit.aspx", IsNewVisible = true });
-            if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
+            //if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
             if (ProyectoObjetivosRead) urls.Add(new PageLinkData() { Text = "Objetivos", Url = "~/Proyecto/ProyectoObjetivosPageEdit.aspx" });
             if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });
             if (ProyectoCronogramaRead) urls.Add(new PageLinkData() { Text = "Cronograma", Url = "~/Proyecto/ProyectoCronogramaPageEdit.aspx" });
@@ -69,10 +71,12 @@ namespace UI.Web
 
             return urls;
         }
+
         protected override ProyectoResult GetHeadResult()
         {
             return Proyecto;
         }
+
         protected override int ConvertId(object value)
         {
             return Convert.ToInt32(value.ToString());
