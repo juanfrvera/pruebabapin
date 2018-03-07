@@ -62,11 +62,11 @@ namespace UI.Web
             urls.Add(new PageLinkData() { Text = "Generales", Url = "~/Proyecto/ProyectoPageEdit.aspx", IsNewVisible = true });
             //if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
             if (ProyectoObjetivosRead) urls.Add(new PageLinkData() { Text = "Objetivos", Url = "~/Proyecto/ProyectoObjetivosPageEdit.aspx" });
-            if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });
+            //if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });
             if (ProyectoCronogramaRead) urls.Add(new PageLinkData() { Text = "Cronograma", Url = "~/Proyecto/ProyectoCronogramaPageEdit.aspx" });
             if (ProyectoEvaluacionRead) urls.Add(new PageLinkData() { Text = "Evaluación", Url = "~/Proyecto/ProyectoEvaluacionPageEdit.aspx" });
             if (ProyectoFilesRead) urls.Add(new PageLinkData() { Text = "Información complementaria", Url = "~/Proyecto/ProyectoAdjuntarPageList.aspx" });
-            if (ProyectoCalidadRead) urls.Add(new PageLinkData() { Text = "Calidad", Url = "~/Proyecto/ProyectoCalidadPageEdit.aspx" });
+            //if (ProyectoCalidadRead) urls.Add(new PageLinkData() { Text = "Calidad", Url = "~/Proyecto/ProyectoCalidadPageEdit.aspx" });
             if (ProyectoIntervencionDNIPComposeRead) urls.Add(new PageLinkData() { Text = "Interv. DNIP", Url = "~/Proyecto/ProyectoDNIPPageEdit.aspx" });
 
             return urls;

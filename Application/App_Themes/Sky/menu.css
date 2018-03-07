@@ -33,11 +33,12 @@
 	cursor: pointer;
 	background-color: #336699;
 	padding-bottom:0.15em;
-	padding-top:0.35em;
+	padding-top:0.15em; /*0.35em;*/
 	padding-right:0.75em;
 	padding-left:0.75em;
 	color: #ffffff;
 	text-decoration: none;
+    text-align: center;
 	/*background-image: url(../images/up.jpg);*/
 	background-repeat: repeat-x;
 	font-size:10pt;
@@ -45,7 +46,9 @@
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:10pt;
 }
-
+.dinamicMenuItemTemplate {
+        text-align: center;
+}
 
 .menutopover
 {

@@ -156,6 +156,11 @@ namespace Application.Shared
             }
             return menuItems;
         }
+        protected string GetSuitableClientId(MenuItemTemplateContainer container)
+        {
+            MenuItem item = (MenuItem)container.DataItem;
+            return String.Format("menuItem-{0}-{1}", item.Depth, container.ItemIndex);
+        }
         protected void LoadChilds(MenuItem menu,SiteMapNode node)
         {
             foreach (SiteMapNode childNode in node.ChildNodes)

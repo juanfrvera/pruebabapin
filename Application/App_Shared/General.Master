@@ -170,6 +170,12 @@ function HayChequeado2(objectName) {
                 <DynamicMenuItemStyle CssClass="menuchild" Height="20px" />
                 <DynamicHoverStyle CssClass="menuchildover" />
                 <StaticHoverStyle CssClass="menutopover" />
+           <StaticItemTemplate>
+        <div class="dinamicMenuItemTemplate">
+            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Text") %>' EnableTheming="True"></asp:Label>
+        </div>
+    </StaticItemTemplate>
+
     </asp:Menu>
     </div>
     </div> 
@@ -205,7 +211,17 @@ function HayChequeado2(objectName) {
             Shadowbox.close();
             document.body.style.cursor = oldCursor;
         }catch(e){}
-    } 
+    }
+
+    if ($('ctl00_MenuPrincipal_ctl00_Label2').innerHTML == "Inversión") {
+        var br = document.createElement("br");
+        var node = document.createElement("SPAN");                 // Create a <span> element
+        node.style = "font-size:0.7em";
+        var textnode = document.createTextNode("carga y edición");         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <span>
+        $('ctl00_MenuPrincipal_ctl00_Label2').appendChild(br);
+        $('ctl00_MenuPrincipal_ctl00_Label2').appendChild(node);
+    }
     </script>     
 </form>
 </body>
