@@ -54,7 +54,7 @@
                     </asp:Panel>
                 </td>
             </tr>
-            <tr>
+            <tr style="display:none">
                 <td >
 	                <div class="legend" style ="color:#0099ff;font-weight:bold;height:30px;cursor: hand">
 	                    <asp:Label ID="lblPriorizacion" runat ="server" Text ="Priorización"  ></asp:Label>&nbsp; <asp:Image ID ="Image1" runat="server"  src="../Images/CollapsiblePanelImg.gif" />
