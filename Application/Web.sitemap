@@ -3,7 +3,7 @@
   <siteMapNode roles="*">
     <!--Paginas principales -->
     <siteMapNode url="~/Proyecto/ProyectoPageList.aspx" title="Inversión"  description="Inversion" roles="*"/>
-    <siteMapNode url="~/Prestamo/PrestamoPageList.aspx" title="Préstamo"  description="Prestamo" roles="*" />
+    <siteMapNode url="~/Prestamo/PrestamoPageList.aspx" title="Financiamiento Externo"  description="Prestamo" roles="*" />
     <siteMapNode url="~/Pages/ProgramaPageList.aspx" title="Programa" description="Programa" roles="*"/>      
     <siteMapNode url="~/Reportes/PageReport.aspx" title="Reportes"  description="Reportes" roles="*"  />
      <!--Sección Matching-->

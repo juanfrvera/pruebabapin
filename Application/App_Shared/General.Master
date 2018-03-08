@@ -172,7 +172,7 @@ function HayChequeado2(objectName) {
                 <StaticHoverStyle CssClass="menutopover" />
            <StaticItemTemplate>
         <div class="dinamicMenuItemTemplate">
-            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Text") %>' EnableTheming="True"></asp:Label>
+            <asp:Label ID="LblMenu" runat="server" Text='<%# Eval("Text") %>' EnableTheming="True"></asp:Label>
         </div>
     </StaticItemTemplate>
 
@@ -213,14 +213,23 @@ function HayChequeado2(objectName) {
         }catch(e){}
     }
 
-    if ($('ctl00_MenuPrincipal_ctl00_Label2').innerHTML == "Inversión") {
+    if ($('<%=ClientID%>_MenuPrincipal_ctl00_LblMenu').innerHTML == "Inversión") {
         var br = document.createElement("br");
         var node = document.createElement("SPAN");                 // Create a <span> element
         node.style = "font-size:0.7em";
         var textnode = document.createTextNode("carga y edición");         // Create a text node
         node.appendChild(textnode);                              // Append the text to <span>
-        $('ctl00_MenuPrincipal_ctl00_Label2').appendChild(br);
-        $('ctl00_MenuPrincipal_ctl00_Label2').appendChild(node);
+        $('ctl00_MenuPrincipal_ctl00_LblMenu').appendChild(br);
+        $('ctl00_MenuPrincipal_ctl00_LblMenu').appendChild(node);
+    }
+    if ($('<%=ClientID%>_MenuPrincipal_ctl01_LblMenu').innerHTML == "Financiamiento Externo") {
+        var br = document.createElement("br");
+        var node = document.createElement("SPAN");                 // Create a <span> element
+        node.style = "font-size:0.7em";
+        var textnode = document.createTextNode("carga y edición");         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <span>
+        $('ctl00_MenuPrincipal_ctl01_LblMenu').appendChild(br);
+        $('ctl00_MenuPrincipal_ctl01_LblMenu').appendChild(node);
     }
     </script>     
 </form>
