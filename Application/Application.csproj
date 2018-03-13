@@ -279,6 +279,8 @@
     <Content Include="Pages\ConfigMensajesPageEdit.aspx" />
     <Content Include="Pages\ConfigMensajesPageList.aspx" />
     <Content Include="Pages\ConfigMensajesPageListEdit.aspx" />
+    <Content Include="Proyecto\ProyectoPrincipiosEdit.ascx" />
+    <Content Include="Proyecto\ProyectoPrincipiosPageEdit.aspx" />
     <Content Include="Proyecto\ProyectoAlcanceGeograficoEditWebService.asmx" />
     <Content Include="Proyecto\ProyectoDictamenFileEdit.ascx" />
     <Content Include="Proyecto\ProyectoDictamenFilePageList.aspx" />
@@ -1441,6 +1443,20 @@
     </Compile>
     <Compile Include="Prestamo\PrestamoEditDictamenPageEdit.aspx.designer.cs">
       <DependentUpon>PrestamoEditDictamenPageEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Proyecto\ProyectoPrincipiosEdit.ascx.cs">
+      <DependentUpon>ProyectoPrincipiosEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Proyecto\ProyectoPrincipiosEdit.ascx.designer.cs">
+      <DependentUpon>ProyectoPrincipiosEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Proyecto\ProyectoPrincipiosPageEdit.aspx.cs">
+      <DependentUpon>ProyectoPrincipiosPageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Proyecto\ProyectoPrincipiosPageEdit.aspx.designer.cs">
+      <DependentUpon>ProyectoPrincipiosPageEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Proyecto\ProyectoAlcanceGeograficoEditWebService.asmx.cs">
       <DependentUpon>ProyectoAlcanceGeograficoEditWebService.asmx</DependentUpon>

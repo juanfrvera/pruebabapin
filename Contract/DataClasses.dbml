@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BAPINIII" Class="DataClassesDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=tomasampo\sql2008r2;Initial Catalog=BAPINIII;Persist Security Info=True;User ID=sa" SettingsObjectName="Contract.Properties.Settings" SettingsPropertyName="BAPINIIIConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BAPIN;Persist Security Info=True;User ID=sa" SettingsObjectName="Contract.Properties.Settings" SettingsPropertyName="BAPINIIIConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Actividad" Member="Actividads">
     <Type Name="Actividad">
       <Column Name="IdActividad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -517,8 +517,34 @@
       <Column Name="CriterioEvaluacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="HorizonteEvaluacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TasaReferencia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-	  <Column Name="InfoAdicional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InfoAdicional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Proyecto_ProyectoEvaluacion" Member="Proyecto" ThisKey="Id_Proyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoPrincipiosFormulacion" Member="ProyectoPrincipiosFormulacions">
+    <Type Name="ProyectoPrincipiosFormulacion">
+      <Column Name="IdProyectoPrincipiosFormulacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NecesidadASatisfacer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjetivoDelProyecto" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductoOServicio" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Alternativas" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PorqueAlternativa" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DescripcionTecnica" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VidaUtil" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CoberturaTerritorial" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CoberturaPoblacional" Type="System.String" DbType="Varchar(Max)" CanBeNull="true" />
+      <Column Name="CoberturaBeneficiariosDirectos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CoberturaBeneficiariosIndirectos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DificultadesRiesgos" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DificultadesRiesgosEnumeracion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DimensionesCostosDimensionados" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DimensionesCostosValidados" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DimensionesCostosEnte" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="RequiereIntevencion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequiereIntevencionAutoridad" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="RequiereIntevencionEstado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Proyecto_ProyectoPrincipiosFormulacion" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProyectoFaseProyectoEtapa" Member="ProyectoFaseProyectoEtapas">
@@ -836,6 +862,24 @@
       <Association Name="Estado_SistemaEntidadEstado" Member="Estado" ThisKey="IdEstado" OtherKey="IdEstado" Type="Estado" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MessageConfiguration" Member="MessageConfigurations">
+    <Type Name="MessageConfiguration">
+      <Column Name="IdMessageConfiguration" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdMessage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Page" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="OperationType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Message_MessageConfiguration" Member="Message" ThisKey="IdMessage" OtherKey="IdMessage" Type="Message" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoGeoLocalizacion" Member="ProyectoGeoLocalizacions">
+    <Type Name="ProyectoGeoLocalizacion">
+      <Column Name="IdGeoLocalizacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoLocalizacion" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="InfoLocalizacion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Association Name="Proyecto_ProyectoGeoLocalizacion" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.ProyectoGeoreferenciacion" Member="ProyectoGeoreferenciacions">
     <Type Name="ProyectoGeoreferenciacion">
       <Column Name="IdProyectoGeoreferenciacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -899,6 +943,8 @@
       <Column Name="IdIndicador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="IdMedioVerificacion" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Observacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdIndicadorRubro" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DetalleMedioVerificacion" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Indicador_ProyectoBeneficiarioIndicador" Member="ProyectoBeneficiarioIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoBeneficiarioIndicador" />
       <Association Name="Indicador_ProyectoBeneficioIndicador" Member="ProyectoBeneficioIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoBeneficioIndicador" />
       <Association Name="Indicador_ObjetivoIndicador" Member="ObjetivoIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ObjetivoIndicador" />
@@ -957,10 +1003,10 @@
       <Column Name="Monto" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="Cotizacion" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="MontoCalculado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-	  <Column Name="MontoInicial" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-	  <Column Name="MontoVigente" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-	  <Column Name="MontoDevengado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-	  <Column Name="MontoVigenteEstimativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="MontoInicial" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoVigente" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoDevengado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoVigenteEstimativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="ProyectoEtapaEstimado_ProyectoEtapaEstimadoPeriodo" Member="ProyectoEtapaEstimado" ThisKey="IdProyectoEtapaEstimado" OtherKey="IdProyectoEtapaEstimado" Type="ProyectoEtapaEstimado" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1127,6 +1173,23 @@
       <Column Name="IdProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="FileInfo_ProyectoFile" Member="FileInfo" ThisKey="IdFile" OtherKey="IdFile" Type="FileInfo" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="Proyecto_ProyectoFile" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoDictamenFile" Member="ProyectoDictamenFiles">
+    <Type Name="ProyectoDictamenFile">
+      <Column Name="IdProyectoDictamenFile" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdFile" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="IdProyectoDictamen" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="FileInfo_ProyectoDictamenFile" Member="FileInfo" ThisKey="IdFile" OtherKey="IdFile" Type="FileInfo" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="ProyectoDictamen_ProyectoDictamenFile" Member="ProyectoDictamen" ThisKey="IdProyectoDictamen" OtherKey="IdProyectoDictamen" Type="ProyectoDictamen" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoShapeFile" Member="ProyectoShapeFiles">
+    <Type Name="ProyectoShapeFile">
+      <Column Name="IdProyectoShapeFile" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyecto" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="RutaArchivo" Type="System.String" DbType="VarChar(1000)" CanBeNull="false" />
+      <Association Name="Proyecto_ProyectoShapeFile" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.OficinaSaf" Member="OficinaSafs">
@@ -1334,6 +1397,7 @@
       <Column Name="NegociarAutorizacion" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Ejecucion" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IdProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdProyectoOrigenFinanciamiento" Type="System.Int32" DbType="Int" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="PrestamoComponente_PrestamoProducto" Member="PrestamoComponente" ThisKey="IdPrestamoComponente" OtherKey="IdPrestamoComponente" Type="PrestamoComponente" IsForeignKey="true" />
       <Association Name="PrestamoSubComponente_PrestamoProducto" Member="PrestamoSubComponente" ThisKey="IdPrestamoSubComponente" OtherKey="IdPrestamoSubComponente" Type="PrestamoSubComponente" IsForeignKey="true" />
       <Association Name="Proyecto_PrestamoProducto" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
@@ -1621,6 +1685,7 @@
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Observacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="GeneraComentarioTecnico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="ProyectoSeguimientoEstado_ProyectoSeguimiento" Member="ProyectoSeguimientos" ThisKey="IdProyectoSeguimientoEstado" OtherKey="IdProyectoSeguimientoEstadoUltimo" Type="ProyectoSeguimiento" />
       <Association Name="Estado_ProyectoSeguimientoEstado" Member="Estado" ThisKey="IdEstado" OtherKey="IdEstado" Type="Estado" IsForeignKey="true" />
       <Association Name="Usuario_ProyectoSeguimientoEstado" Member="Usuario" ThisKey="IdUsuario" OtherKey="IdUsuario" Type="Usuario" IsForeignKey="true" />
@@ -2067,6 +2132,7 @@
       <Association Name="Proyecto_ProyectoAlcanceGeografico" Member="ProyectoAlcanceGeograficos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoAlcanceGeografico" />
       <Association Name="Proyecto_ProyectoDemora" Member="ProyectoDemoras" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoDemora" />
       <Association Name="Proyecto_ProyectoEvaluacion" Member="ProyectoEvaluacions" ThisKey="IdProyecto" OtherKey="Id_Proyecto" Type="ProyectoEvaluacion" />
+      <Association Name="Proyecto_ProyectoPrincipiosFormulacion" Member="ProyectoPrincipiosFormulacions" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoPrincipiosFormulacion" />
       <Association Name="Proyecto_ProyectoFin" Member="ProyectoFins" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoFin" />
       <Association Name="Proyecto_ProyectoLocalizacion" Member="ProyectoLocalizacions" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoLocalizacion" />
       <Association Name="Proyecto_ProyectoProducto" Member="ProyectoProductos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoProducto" />
@@ -2078,6 +2144,7 @@
       <Association Name="Proyecto_ProyectoBeneficioIndicador" Member="ProyectoBeneficioIndicadors" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoBeneficioIndicador" />
       <Association Name="Proyecto_ProyectoOficinaPerfil" Member="ProyectoOficinaPerfils" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoOficinaPerfil" />
       <Association Name="Proyecto_ProyectoFile" Member="ProyectoFiles" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoFile" />
+      <Association Name="Proyecto_ProyectoShapeFile" Member="ProyectoShapeFiles" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoShapeFile" />
       <Association Name="Proyecto_ProyectoSeguimientoProyecto" Member="ProyectoSeguimientoProyectos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoSeguimientoProyecto" />
       <Association Name="Proyecto_ProyectoPlan" Member="ProyectoPlans" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoPlan" />
       <Association Name="Proyecto_PrestamoProducto" Member="PrestamoProductos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="PrestamoProducto" />
@@ -2161,6 +2228,7 @@
       <Column Name="Denominacion" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="IdFile" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IdProyectoDictamenEstadoUltimo" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ProyectoDictamen_ProyectoDictamenFile" Member="ProyectoDictamenFiles" ThisKey="IdProyectoDictamen" OtherKey="IdProyectoDictamen" Type="ProyectoDictamenFile" />
       <Association Name="ProyectoDictamen_ProyectoDictamenSeguimiento" Member="ProyectoDictamenSeguimientos" ThisKey="IdProyectoDictamen" OtherKey="IdProyectoDictamen" Type="ProyectoDictamenSeguimiento" />
       <Association Name="ProyectoDictamen_ProyectoDictamenEstado" Member="ProyectoDictamenEstados" ThisKey="IdProyectoDictamen" OtherKey="IdProyectoDictamen" Type="ProyectoDictamenEstado" />
       <Association Name="PlanPeriodo_ProyectoDictamen" Member="PlanPeriodo" ThisKey="IdPlanPeriodo" OtherKey="IdPlanPeriodo" Type="PlanPeriodo" IsForeignKey="true" />
@@ -2334,99 +2402,6 @@
     <ElementType Name="fnGetProyectoDetalladoPorDictamenResult">
       <Column Name="IdProyectoDictamen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Proyecto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_Proyectos_Count" Method="sp_Proyectos_Count">
-    <Parameter Name="CodigoBapin" Parameter="codigoBapin" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdJurisdiccion" Parameter="idJurisdiccion" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdSaf" Parameter="idSaf" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPrograma" Parameter="idPrograma" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdSubprograma" Parameter="idSubprograma" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ProyectoDenominacion" Parameter="proyectoDenominacion" Type="System.String" DbType="VarChar(8000)" />
-    <Parameter Name="EsBorrador" Parameter="esBorrador" Type="System.Int32" DbType="Int" />
-    <Parameter Name="FechaModificacionDesde" Parameter="fechaModificacionDesde" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="FechaModificacionHasta" Parameter="fechaModificacionHasta" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="IdEstados" Parameter="idEstados" Type="System.String" DbType="VarChar(255)" />
-    <Parameter Name="Activo" Parameter="activo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanTipo" Parameter="idPlanTipo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanPeriodo" Parameter="idPlanPeriodo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanVersion" Parameter="idPlanVersion" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdOficina" Parameter="idOficina" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Oficina" Parameter="oficina" Type="System.String" DbType="VarChar(8000)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_Proyectos_List" Method="sp_Proyectos_List">
-    <Parameter Name="CodigoBapin" Parameter="codigoBapin" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdJurisdiccion" Parameter="idJurisdiccion" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdSaf" Parameter="idSaf" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPrograma" Parameter="idPrograma" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdSubprograma" Parameter="idSubprograma" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ProyectoDenominacion" Parameter="proyectoDenominacion" Type="System.String" DbType="VarChar(8000)" />
-    <Parameter Name="EsBorrador" Parameter="esBorrador" Type="System.Int32" DbType="Int" />
-    <Parameter Name="FechaModificacionDesde" Parameter="fechaModificacionDesde" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="FechaModificacionHasta" Parameter="fechaModificacionHasta" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="IdEstados" Parameter="idEstados" Type="System.String" DbType="VarChar(255)" />
-    <Parameter Name="Activo" Parameter="activo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanTipo" Parameter="idPlanTipo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanPeriodo" Parameter="idPlanPeriodo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdPlanVersion" Parameter="idPlanVersion" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IdOficina" Parameter="idOficina" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Oficina" Parameter="oficina" Type="System.String" DbType="VarChar(8000)" />
-    <Parameter Name="Desde" Parameter="desde" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Hasta" Parameter="hasta" Type="System.Int32" DbType="Int" />
-    <ElementType Name="sp_Proyectos_ListResult">
-      <Column Name="IdProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdTipoProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdSubPrograma" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProyectoDenominacion" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="ProyectoSituacionActual" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProyectoDescripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProyectoObservacion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="IdEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdProceso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IdModalidadContratacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IdFinalidadFuncion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IdOrganismoPrioridad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SubPrioridad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EsBorrador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="EsProyecto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NroProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AnioCorriente" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FechaInicioEjecucionCalculada" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="FechaFinEjecucionCalculada" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="FechaAlta" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="FechaModificacion" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="IdUsuarioModificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdProyectoPlan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EvaluarValidaciones" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IdEstadoDeDesicion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Estado_Nombre" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
-      <Column Name="Proceso_Nombre" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TipoProyecto_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="SubPrograma_Codigo" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Column Name="SubPrograma_Nombre" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ModalidadContratacion_Nombre" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FinalidadFuncion_DescripcionInvertida" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FinalidadFuncion_BreadcrumbCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OrganismoPrioridad_Nombre" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="IdSAF" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdPrograma" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RequiereDictamen" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Programa_Nombre" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Programa_Codigo" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Column Name="Saf_Nombre" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Saf_Codigo" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="Jurisdiccion_Nombre" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
-      <Column Name="Jurisdiccion_Codigo" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="Plan_Ultimo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Apertura" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="value9" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CalidadACorregir" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Saf_SectorNombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Saf_AdministracionTipoNombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Saf_EntidadTipoNombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_Proyectos_Get" Method="sp_Proyectos_Get">

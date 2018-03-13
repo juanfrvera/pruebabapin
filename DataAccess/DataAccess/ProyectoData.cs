@@ -384,7 +384,7 @@ namespace DataAccess
         protected const string ID_PROYECTOCALIDAD_ESTADO_PARACONTROLAR = "ID_PROYECTOCALIDAD_ESTADO_PARACONTROLAR";
         #endregion
         #region Query
-
+        /*
         public int QueryCountSP(ProyectoFilter filter)
         {
             int? codigoBapin;
@@ -449,7 +449,7 @@ namespace DataAccess
            
             return result;
         }
-
+        
         public ListPaged<ProyectoResult> QuerySP(ProyectoFilter filter)
         {
             int? codigoBapin;
@@ -593,7 +593,7 @@ namespace DataAccess
             list.TotalRows = totalRows;
             return list;
         }
-
+        */
         protected override IQueryable<Proyecto> Query(ProyectoFilter filter)
         {
             string strIdParent = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : string.Empty;

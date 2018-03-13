@@ -103,7 +103,7 @@ namespace UI.Web
             {
                 Filter.IdsOficinaByUsuario = OficinaService.Current.GetIdsOficinaPorUsuario(UIContext.Current.ContextUser.User.IdUsuario);
                 Filter.IdsOficinaPropiaByUsuario = (from o in UIContext.Current.ContextUser.PerfilesPorOficina select o.IdOficina).ToList();
-                List = ProyectoService.Current.GetResultSP(Filter);
+                //List = ProyectoService.Current.GetResultSP(Filter);
             }
             else 
             if (enableFilterOffice && UIContext.Current.ContextUser.User.AccesoTotal == false)

@@ -152,6 +152,11 @@
     <Compile Include="Aspects\Security\ISessionRepository.cs" />
     <Compile Include="Aspects\Security\CustomPrincipal.cs" />
     <Compile Include="Aspects\Security\SecuriryContainer.cs" />
+    <Compile Include="BAPINDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Base\CacheManagerResult.cs" />
     <Compile Include="Base\Context\Managers\IAuthorizationManager.cs" />
     <Compile Include="Base\Context\Managers\ICacheManager.cs" />
@@ -213,6 +218,7 @@
     <Compile Include="Filters\AuditOperationDetailFilter.cs" />
     <Compile Include="Filters\AuditOperationFilter.cs" />
     <Compile Include="Filters\AuditSessionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoPrincipiosFormulacionFilter.cs" />
     <Compile Include="Filters\Base\_ActividadFilter.cs" />
     <Compile Include="Filters\Base\_ActividadPermisoFilter.cs" />
     <Compile Include="Filters\Base\_AdministracionTipoFilter.cs" />
@@ -405,6 +411,7 @@
     <Compile Include="Filters\ComentarioTecnicoFilter.cs" />
     <Compile Include="Filters\ConfigurationCategoryFilter.cs" />
     <Compile Include="Filters\ConfigurationFilter.cs" />
+    <Compile Include="Filters\ProyectoPrincipiosFormulacionFilter.cs" />
     <Compile Include="Filters\EntidadTipoFilter.cs" />
     <Compile Include="Filters\EstadoDeDesicionFilter.cs" />
     <Compile Include="Filters\EstadoDeDesicionHistoricoFilter.cs" />
@@ -566,6 +573,7 @@
     <Compile Include="Helper\ContractHelper.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="Others Contracts\ActividadCompose.cs" />
+    <Compile Include="Others Contracts\ProyectoPrincipiosFormulacionCompose.cs" />
     <Compile Include="Others Contracts\ProyectoTemplateCompose.cs" />
     <Compile Include="Others Contracts\DetalleCalidadCompose.cs" />
     <Compile Include="Others Contracts\MessageConfigurationCompose.cs" />
@@ -621,6 +629,7 @@
     <Compile Include="Results\AuditOperationDetailResult.cs" />
     <Compile Include="Results\AuditOperationResult.cs" />
     <Compile Include="Results\AuditSessionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoPrincipiosFormulacionResult.cs" />
     <Compile Include="Results\Base\_ActividadPermisoResult.cs" />
     <Compile Include="Results\Base\_ActividadResult.cs" />
     <Compile Include="Results\Base\_AdministracionTipoResult.cs" />
@@ -793,6 +802,7 @@
     <Compile Include="Results\ComentarioTecnicoResult.cs" />
     <Compile Include="Results\ConfigurationCategoryResult.cs" />
     <Compile Include="Results\ConfigurationResult.cs" />
+    <Compile Include="Results\ProyectoPrincipiosFormulacionResult.cs" />
     <Compile Include="Results\EntidadTipoResult.cs" />
     <Compile Include="Results\EstadoDeDesicionHistoricoResult.cs" />
     <Compile Include="Results\EstadoDeDesicionResult.cs" />
@@ -953,6 +963,17 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BAPINDataSet.xsc">
+      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BAPINDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BAPINDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BAPINDataSet.xss">
+      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
+    </None>
     <None Include="DataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <SubType>Designer</SubType>

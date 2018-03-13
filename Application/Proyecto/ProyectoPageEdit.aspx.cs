@@ -57,11 +57,14 @@ namespace UI.Web
             bool ProyectoEvaluacionRead = CanByOffice("ProyectoEvaluacionCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             bool ProyectoProductoIntermedioRead = CanByOffice("ProyectoProductoIntermedioCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             bool ProyectoObjetivosRead = CanByOffice("ProyectoObjetivosCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
+            //TODO: modificar por ProyectoPrincipiosCompose
+            bool ProyectoPrincipiosRead = CanByOffice("ProyectoObjetivosCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
 
             List<PageLinkData> urls = new List<PageLinkData>();
             urls.Add(new PageLinkData() { Text = "Generales", Url = "~/Proyecto/ProyectoPageEdit.aspx", IsNewVisible = true });
             //if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
-            if (ProyectoObjetivosRead) urls.Add(new PageLinkData() { Text = "Objetivos", Url = "~/Proyecto/ProyectoObjetivosPageEdit.aspx" });
+            if (ProyectoPrincipiosRead) urls.Add(new PageLinkData() { Text = "Principios Conceptuales de Formulación", Url = "~/Proyecto/ProyectoPrincipiosPageEdit.aspx" });
+            if (ProyectoObjetivosRead) urls.Add(new PageLinkData() { Text = "Objetivos", Url = "~/Proyecto/ProyectoObjetivosPageEdit.aspx" });            
             //if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });
             if (ProyectoCronogramaRead) urls.Add(new PageLinkData() { Text = "Cronograma", Url = "~/Proyecto/ProyectoCronogramaPageEdit.aspx" });
             if (ProyectoEvaluacionRead) urls.Add(new PageLinkData() { Text = "Evaluación", Url = "~/Proyecto/ProyectoEvaluacionPageEdit.aspx" });

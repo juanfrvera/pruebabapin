@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI.Web {
+namespace UI.Web.Pages {
     
     
-    public partial class ProyectoAdjuntarPageList {
+    public partial class ProyectoPrincipiosPageEdit {
         
         /// <summary>
         /// upHeader control.
@@ -49,49 +49,22 @@ namespace UI.Web {
         protected global::UI.Web.WebControl_ProyectoTabPanel proyectoTabPanel;
         
         /// <summary>
-        /// pnEdicionArchivo control.
+        /// editProyectoPrincipios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnEdicionArchivo;
+        protected global::UI.Web.Pages.ProyectoPrincipiosEdit editProyectoPrincipios;
         
         /// <summary>
-        /// upEditArchivo control.
+        /// vsEditionProyectoPrincipios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upEditArchivo;
-        
-        /// <summary>
-        /// editProyectoAdjuntar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.ProyectoAdjuntarEdit editProyectoAdjuntar;
-        
-        /// <summary>
-        /// vsFilterProyectoAdjuntar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsFilterProyectoAdjuntar;
-        
-        /// <summary>
-        /// vsFilterProyectoAdjuntarPopUp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsFilterProyectoAdjuntarPopUp;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsEditionProyectoPrincipios;
         
         /// <summary>
         /// upEditButtons control.

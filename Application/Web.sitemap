@@ -154,11 +154,12 @@
         <siteMapNode url="~/Proyecto/ProyectoPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoObjetivosPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoPrincipiosPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoCronogramaPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoEvaluacionPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Proyecto/ProyectoDNIPPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
-        <siteMapNode url="~/Proyecto/ProyectoAdjuntarPageList.aspx" title="Inversión"  description="Inversion" roles="*"/>
+        <siteMapNode url="~/Proyecto/ProyectoAdjuntarPageList.aspx" title="Inversión"  description="Inversion" roles="*"/>      
         <siteMapNode url="~/Proyecto/ProyectoCalidadPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
         <siteMapNode url="~/Prestamo/PrestamoPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />
         <siteMapNode url="~/Prestamo/PrestamoAlcanceGeograficoPageEdit.aspx" title="Préstamo"  description="Prestamo" roles="*" />

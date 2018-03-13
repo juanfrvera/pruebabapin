@@ -347,6 +347,7 @@
     <Compile Include="Service\ComentarioTecnicoService.cs" />
     <Compile Include="Service\ConfigurationCategoryService.cs" />
     <Compile Include="Service\ConfigurationService.cs" />
+    <Compile Include="Service\ProyectoPrincipiosFormulacionComposeService.cs" />
     <Compile Include="Service\EntidadTipoService.cs" />
     <Compile Include="Service\EstadoDeDesicionHistoricoService.cs" />
     <Compile Include="Service\EstadoDeDesicionService.cs" />

@@ -118,10 +118,12 @@ namespace Service
        }
        //FinMatias 20141014 - Tarea 158
 
+        /*
        public virtual ListPaged<ProyectoResult> GetResultSP(ProyectoFilter filter)
        {
            return ProyectoBusiness.Current.GetResultSP(filter);
        }
+        */
        
        #endregion
 

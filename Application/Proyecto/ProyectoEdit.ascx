@@ -56,10 +56,10 @@
                                     <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="Requiere Dictamen" TabIndex="4" />
                                 </td>
                                 <td class="filaValidator">&nbsp;
-	                            <%--<asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" InitialValue="0"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>--%>
+	                            <%--<asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" InitialValue="0"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>--%>
                                     <!-- Matias 20141014 - Tarea 157 -->
-                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                                     <!-- FinMatias 20141014 - Tarea 157 -->
                                 </td>
 
@@ -71,11 +71,11 @@
                                     <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
                                     <%--   <uc:Autocomplete runat="server" ID="acSaf" 
                                     WebServiceName="../Services/wsSaf.asmx" MinimumPrefixLength="3" ServiceMethod ="GetSimpleList"  
-                                    ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionProyecto" Width="245">
+                                    ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionProyectoPrincipios" Width="245">
                                     </uc:Autocomplete>  --%>		        
                                 </td>
                                 <td class="filaValidator">&nbsp;
-	                            <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+	                            <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -85,8 +85,8 @@
                                     <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator">&nbsp;
-	                             <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+	                             <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -96,8 +96,8 @@
                                     <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
                                 </td>
                                 <td class="filaValidator">&nbsp;
-	                             <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+	                             <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
 
                                 </td>
                             </tr>
@@ -114,8 +114,8 @@
                         <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
             </table>
@@ -139,7 +139,7 @@
                     <td colspan="2">
                         <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18" Width="200px"></cc:ExtendedDropDownList>
                         <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -149,7 +149,7 @@
                     <td>
                         <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
                     </td>
-                    <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
 
                     <td>
                         <asp:Literal ID="liModalidadContratacion" Text="Modalidad de Contratación" runat="server"></asp:Literal></td>
@@ -192,7 +192,7 @@
                                         <asp:ImageButton ID="imgFuncionario1" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" TabIndex="7" />
                                     </td>
                                     <td class="filaValidator">&nbsp;
-                                    <%--    <asp:RequiredFieldValidator ID="rfvIniciador" runat="server" ControlToValidate="ddlIniciador"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"  InitialValue ="0" ></asp:RequiredFieldValidator>--%>
+                                    <%--    <asp:RequiredFieldValidator ID="rfvIniciador" runat="server" ControlToValidate="ddlIniciador"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"  InitialValue ="0" ></asp:RequiredFieldValidator>--%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -210,7 +210,7 @@
                                         <asp:ImageButton ID="imgFuncionario2" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario2_Click" TabIndex="9" />
                                     </td>
                                     <td class="filaValidator">&nbsp;
-                                       <%--   <asp:RequiredFieldValidator ID="rfvEjecutor" runat="server" ControlToValidate="ddlEjecutor"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px" InitialValue ="0" ></asp:RequiredFieldValidator> --%>
+                                       <%--   <asp:RequiredFieldValidator ID="rfvEjecutor" runat="server" ControlToValidate="ddlEjecutor"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px" InitialValue ="0" ></asp:RequiredFieldValidator> --%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -228,7 +228,7 @@
                                         <asp:ImageButton ID="imgFuncionario3" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario3_Click" TabIndex="11" />
                                     </td>
                                     <td class="filaValidator">&nbsp;
-                                        <%--<asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"   InitialValue ="0" ></asp:RequiredFieldValidator>--%>
+                                        <%--<asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"   InitialValue ="0" ></asp:RequiredFieldValidator>--%>
                                     </td>
                                 </tr>
                                 <tr>

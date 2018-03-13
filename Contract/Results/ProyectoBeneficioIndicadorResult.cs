@@ -12,7 +12,7 @@ namespace Contract
         public string IndicadorClase_Unidad { get; set; }
         //German 20140511 - Tarea 124
         //public int IdIndicadorRubro { get; set; }
-        public int IdIndicadorRubro { get; set; }
+        public int? IdIndicadorRubro { get; set; }
         //German 20140511 - Tarea 124
     }
 }
