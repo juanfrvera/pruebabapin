@@ -378,7 +378,7 @@ namespace UI.Web
             AuditSession audit = AuditSessionService.Current.GetNew();
             audit.UserName = userContext.User.NombreUsuario;
             audit.StartDate = DateTime.Now;
-            if (HttpContext.Current.Session != null)
+            if (HttpContext.Current != null && HttpContext.Current.Session != null)
             {
                 audit.SessionId = HttpContext.Current.Session.SessionID;
             }

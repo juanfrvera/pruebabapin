@@ -29,6 +29,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -153,6 +154,10 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -284,6 +289,7 @@
     <Content Include="Proyecto\ProyectoAlcanceGeograficoEditWebService.asmx" />
     <Content Include="Proyecto\ProyectoDictamenFileEdit.ascx" />
     <Content Include="Proyecto\ProyectoDictamenFilePageList.aspx" />
+    <Content Include="Services\Bapines.svc" />
     <Content Include="Services\wsConsultarBapin.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -5084,6 +5090,14 @@
     <Compile Include="Security\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Services\BapinDataContract.cs" />
+    <Compile Include="Services\Bapines.svc.cs">
+      <DependentUpon>Bapines.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BapinResult.cs" />
+    <Compile Include="Services\EstadoDictamen.cs" />
+    <Compile Include="Services\EstadoPlanEnum.cs" />
+    <Compile Include="Services\IBapin.cs" />
     <Compile Include="Services\wsConsultarBapin.asmx.cs">
       <DependentUpon>wsConsultarBapin.asmx</DependentUpon>
       <SubType>Component</SubType>

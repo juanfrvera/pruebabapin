@@ -39,6 +39,10 @@ namespace Test
             Console.WriteLine(EsidifManager.ChangePassword());
             //TestEsidif.CallChangePasswordService();
 
+            Console.WriteLine("");
+
+            Console.WriteLine("Calling change password ...");
+            Console.WriteLine(EsidifManager.ChangePassword());
             Console.ReadKey();
         }
       

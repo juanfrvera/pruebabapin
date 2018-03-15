@@ -135,20 +135,20 @@ namespace Business.Managers
             XmlDocument soapEnvelopeDocument = new XmlDocument();
             //soapEnvelopeDocument.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""><SOAP-ENV:Body><HelloWorld xmlns=""http://tempuri.org/"" SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/""><int1 xsi:type=""xsd:integer"">12</int1><int2 xsi:type=""xsd:integer"">32</int2></HelloWorld></SOAP-ENV:Body></SOAP-ENV:Envelope>");
             string pingServiceString = String.Format("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:lang=\"http://lang.java\">" +
-        "    <soapenv:Header>" +
-        "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">" +
-        "         <wsse:UsernameToken>" +
-        "            <wsse:Username>[Username]</wsse:Username>" +
-        "            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">[Password]</wsse:Password>" +
-        "         </wsse:UsernameToken>" +
-        "      </wsse:Security>" +
-        "      <wsa:To xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://esidif.mecon.gov.ar/</wsa:To>" +
-        "      <wsa:Action xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">https://ws-si.mecon.gov.ar/ws/seguridad/pingService</wsa:Action>" +
-        "      <wsa:MessageID xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">urn:uuid:0461a658-9ec0-492d-8eed-bdd66938e4e9</wsa:MessageID>" +
-        "   </soapenv:Header>" +
-        "   <soapenv:Body>" +
-        "   </soapenv:Body>" +
-        "</soapenv:Envelope>");
+                                        "    <soapenv:Header>" +
+                                        "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">" +
+                                        "         <wsse:UsernameToken>" +
+                                        "            <wsse:Username>[Username]</wsse:Username>" +
+                                        "            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">[Password]</wsse:Password>" +
+                                        "         </wsse:UsernameToken>" +
+                                        "      </wsse:Security>" +
+                                        "      <wsa:To xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">http://esidif.mecon.gov.ar/</wsa:To>" +
+                                        "      <wsa:Action xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">https://ws-si.mecon.gov.ar/ws/seguridad/pingService</wsa:Action>" +
+                                        "      <wsa:MessageID xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">urn:uuid:0461a658-9ec0-492d-8eed-bdd66938e4e9</wsa:MessageID>" +
+                                        "   </soapenv:Header>" +
+                                        "   <soapenv:Body>" +
+                                        "   </soapenv:Body>" +
+                                        "</soapenv:Envelope>");
             pingServiceString = pingServiceString.Replace("[Username]", "BAPIN");
             pingServiceString = pingServiceString.Replace("[Password]", "SVQN50kM6m");
             soapEnvelopeDocument.LoadXml(pingServiceString);
@@ -160,32 +160,32 @@ namespace Business.Managers
             XmlDocument soapEnvelopeDocument = new XmlDocument();
             //soapEnvelopeDocument.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""><SOAP-ENV:Body><HelloWorld xmlns=""http://tempuri.org/"" SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/""><int1 xsi:type=""xsd:integer"">12</int1><int2 xsi:type=""xsd:integer"">32</int2></HelloWorld></SOAP-ENV:Body></SOAP-ENV:Envelope>");
             string changePasswordServiceString = String.Format(
-"<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
-"	<SOAP-ENV:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">" +
-"		<wsse:Security" +
-"			xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"" +
-"			xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"" +
-"			SOAP-ENV:mustUnderstand=\"1\">" +
-"			<wsse:UsernameToken wsu:Id=\"UsernameToken-5BF196167B4B2DE1EA14569303255361\">" +
-"				<wsse:Username>webservice</wsse:Username>" +
-"				<wsse:Password" +
-"					Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">WebService2011</wsse:Password>" +
-"			</wsse:UsernameToken>" +
-"		</wsse:Security>" +
-"		<wsa:To SOAP-ENV:mustUnderstand=\"1\">http://eSidif.mecon.gov.ar/</wsa:To>" +
-"		<wsa:Action>https://ws-si.mecon.gov.ar/ws/seguridad/changePasswordService</wsa:Action>" +
-"		<wsa:MessageID>urn:uuid:eb56e086-1aad-4f26-85cd-5e517eb4a5aa</wsa:MessageID>" +
-"	</SOAP-ENV:Header>" +
-"	<SOAP-ENV:Body>" +
-"		<ns3:login xmlns:ns3=\"http://service.seguridad.esidif.mecon.gov.ar\">webservice</ns3:login>" +
-"		<ns3:actualPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
-"			<password>WebService2011</password>" +
-"		</ns3:actualPassword>" +
-"		<ns3:nuevaPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
-"			<password>WebService2022</password>" +
-"		</ns3:nuevaPassword>" +
-"	</SOAP-ENV:Body>" +
-"</SOAP-ENV:Envelope>");
+                                "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
+                                "	<SOAP-ENV:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">" +
+                                "		<wsse:Security" +
+                                "			xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"" +
+                                "			xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"" +
+                                "			SOAP-ENV:mustUnderstand=\"1\">" +
+                                "			<wsse:UsernameToken wsu:Id=\"UsernameToken-5BF196167B4B2DE1EA14569303255361\">" +
+                                "				<wsse:Username>webservice</wsse:Username>" +
+                                "				<wsse:Password" +
+                                "					Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">WebService2011</wsse:Password>" +
+                                "			</wsse:UsernameToken>" +
+                                "		</wsse:Security>" +
+                                "		<wsa:To SOAP-ENV:mustUnderstand=\"1\">http://eSidif.mecon.gov.ar/</wsa:To>" +
+                                "		<wsa:Action>https://ws-si.mecon.gov.ar/ws/seguridad/changePasswordService</wsa:Action>" +
+                                "		<wsa:MessageID>urn:uuid:eb56e086-1aad-4f26-85cd-5e517eb4a5aa</wsa:MessageID>" +
+                                "	</SOAP-ENV:Header>" +
+                                "	<SOAP-ENV:Body>" +
+                                "		<ns3:login xmlns:ns3=\"http://service.seguridad.esidif.mecon.gov.ar\">webservice</ns3:login>" +
+                                "		<ns3:actualPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
+                                "			<password>WebService2011</password>" +
+                                "		</ns3:actualPassword>" +
+                                "		<ns3:nuevaPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
+                                "			<password>WebService2022</password>" +
+                                "		</ns3:nuevaPassword>" +
+                                "	</SOAP-ENV:Body>" +
+                                "</SOAP-ENV:Envelope>");
             changePasswordServiceString = changePasswordServiceString.Replace("[Username]", "BAPIN");
             changePasswordServiceString = changePasswordServiceString.Replace("[Password]", "SVQN50kM6m");
             changePasswordServiceString = changePasswordServiceString.Replace("[ActualPassword]", "SVQN50kM6m");

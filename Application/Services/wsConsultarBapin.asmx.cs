@@ -8,9 +8,12 @@ using System.Text;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
+using System.Web.Services.Description;
 using System.Xml;
+using System.Xml.Serialization;
 using System.Xml.Linq;
 using System.Configuration;
+using System.Xml.Schema;
 using Contract;
 using Service;
 using nc = Contract;
@@ -53,7 +56,7 @@ namespace Application.Services
         /// último año plan según ejecución(Long)
         /// </returns>
         [WebMethod]
-        public string GetConsultarBapin()
+        public XmlDocument GetConsultarBapin()
         {
             //string login, string password, long ejercicio, List<string> estados, long jurisdiccion, long bapin, long saf, string programas
 
@@ -216,9 +219,70 @@ namespace Application.Services
             try
             {
                 var estadosList = String.Join("|", estados);
-                var programasList = String.Join("|", programas);
+                //var programasList = String.Join("|", programas);
                 string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-                return DatabaseGeneralManager.ConsultarBapines(strConexion, ejercicio, estadosList, jurisdiccion, bapin, saf, programasList);
+                //var xmlBapines = DatabaseGeneralManager.ConsultarBapines(strConexion, ejercicio, estadosList, jurisdiccion, bapin, saf, programasList);
+                //xmlBapines.Namespace = "http://tempuri.org/";
+                //string xsdDS = xmlBapines.GetXmlSchema();
+
+                System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+
+                /* SOLUTION 1
+                XmlSchema schema;
+                using (StringReader xsdReader = new StringReader(xmlBapines.GetXmlSchema()))
+                {
+                    schema = XmlSchema.Read(xsdReader, null);
+                }
+
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.ValidationType = ValidationType.Schema;
+                settings.Schemas.Add(schema);
+                settings.ValidationEventHandler += (sender, args) =>
+                {
+                    //Console.WriteLine(args.Severity.ToString() + " - " + args.Message);
+                    if (args.Severity == XmlSeverityType.Error)
+                        throw new InvalidOperationException(args.Message);
+                };
+
+                using (StringReader reader = new StringReader(xmlBapines.GetXml()))
+                using (XmlReader xml = XmlReader.Create(reader, settings))
+                {
+                    doc.Load(xml);
+                }
+                return doc;*/
+
+
+                /* SOLUTION 2*/
+                StringWriter writer = new StringWriter();
+                XmlSerializer ser = new XmlSerializer(typeof(DataSet));
+                //ser.Serialize(writer, xmlBapines);
+                writer.Close();
+
+                doc.LoadXml(writer.ToString());
+
+                System.Xml.XmlNode newNode = doc.DocumentElement;
+                return doc;
+
+
+                /* SOLUTION 3 Dataset
+                return xmlBapines;*/
+                 
+
+                /* SOLUTION 4 Simple 
+                doc.LoadXml(xmlBapines.GetXml());
+                doc.DocumentElement.SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+                doc.DocumentElement.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+                //doc.AppendChild(soapEnvelope);
+                XmlElement soapHeader  = doc.CreateElement("soap", "Header", doc.DocumentElement.NamespaceURI);
+                XmlElement soapBody = doc.CreateElement("soap", "Body", doc.DocumentElement.NamespaceURI);               
+                //doc.DocumentElement.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+                //doc.DocumentElement.SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+                XNamespace ns = "http://tempuri.org/";
+                doc.DocumentElement.SetAttribute("xmlns", ns.NamespaceName);
+                
+                System.Xml.XmlNode newNode = doc.DocumentElement;
+                return doc;
+                 * */
             }
             catch (Exception ex)
             {
@@ -229,6 +293,20 @@ namespace Application.Services
                   xmlSoapRequest.ChildNodes[0],
                   ex);
                 throw se;
+            }
+        }
+
+        static void bapinesValidationEventHandler(object sender, ValidationEventArgs e)
+        {
+            if (e.Severity == XmlSeverityType.Warning)
+            {
+                Console.Write("WARNING: ");
+                Console.WriteLine(e.Message);
+            }
+            else if (e.Severity == XmlSeverityType.Error)
+            {
+                Console.Write("ERROR: ");
+                Console.WriteLine(e.Message);
             }
         }
     }

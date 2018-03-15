@@ -37,8 +37,15 @@ namespace Service
         }
         #endregion
 
-        public static string ConsultarBapines(string strConexion, long ejercicio, string estado, long jurisdiccion, long bapin, long saf, string programas)
+        public static DataSet ConsultarBapines(string strConexion, long ejercicio, List<string> estados, long jurisdiccion, long bapin, long saf, List<long> programas)
         {
+            var estadosList = String.Join("|", estados);
+            var programasList = string.Empty;
+            if (programas != null && programas.Count > 0)
+            {
+                programasList = String.Join("|", programas);
+            }
+
             DataSet ds = new DataSet("Bapines");
             DataTable table = new DataTable("Bapin");
 
@@ -52,7 +59,7 @@ namespace Service
             cmd.Parameters.Add(new SqlParameter("@ejercicio", SqlDbType.BigInt));
             cmd.Parameters["@ejercicio"].Value = ejercicio;
             cmd.Parameters.Add(new SqlParameter("@estado", SqlDbType.VarChar));
-            cmd.Parameters["@estado"].Value = estado;
+            cmd.Parameters["@estado"].Value = estadosList;
             cmd.Parameters.Add(new SqlParameter("@jurisdiccion", SqlDbType.BigInt));
             cmd.Parameters["@jurisdiccion"].Value = jurisdiccion;
             cmd.Parameters.Add(new SqlParameter("@bapin", SqlDbType.BigInt));
@@ -71,11 +78,11 @@ namespace Service
             {
                 cmd.Parameters["@saf"].Value = saf;
             }
-            if (programas.Equals(string.Empty))
+            if (programasList.Equals(string.Empty))
                 cmd.Parameters["@programas"].Value = System.DBNull.Value;
             else
             {
-                cmd.Parameters["@programas"].Value = programas;
+                cmd.Parameters["@programas"].Value = programasList;
             }
 
             // Connection open
@@ -87,7 +94,8 @@ namespace Service
 
             con.Close();
 
-            return ds.GetXml();
+            return ds;
+            //return ds.GetXml();
         }
     }
 }
