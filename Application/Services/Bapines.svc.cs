@@ -27,7 +27,7 @@ namespace UI.Web.Services
     [DataContract]
     public class RequestMessage
     {
-        [DataMember(IsRequired = true, Order=1)]
+        [DataMember(IsRequired = true, Order=1)]        
         public long ejercicio { get; set; }
         [DataMember(IsRequired = true, Order = 2)]
         public List<estadoBapinType> estados { get; set; }
@@ -154,8 +154,8 @@ namespace UI.Web.Services
                     saf = row.Field<long>("saf"),
                     programa = row.Field<long>("programa"),
                     subprograma = row.Field<long>("subprograma"),
-                    fecha_inicio = row.Field<DateTime?>("fecha_inicio"),
-                    fecha_fin = row.Field<DateTime?>("fecha_fin"),
+                    fecha_inicio = row.Field<DateTime?>("fecha_inicio").HasValue ? row.Field<DateTime?>("fecha_inicio").Value.Date : row.Field<DateTime?>("fecha_inicio"),
+                    fecha_fin = row.Field<DateTime?>("fecha_fin").HasValue ? row.Field<DateTime?>("fecha_fin").Value.Date : row.Field<DateTime?>("fecha_fin"),
                     costo_total = row.Field<decimal>("costo_total"),
                     estado_dictamen = (EstadoDictamen)Enum.Parse(typeof(EstadoDictamen), row.Field<string>("estado_dictamen")),
                     ultimo_anio_demanda = row.Field<long>("ultimo_anio_demanda"),

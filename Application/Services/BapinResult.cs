@@ -11,31 +11,31 @@ namespace UI.Web.Services
     [DataContract]
     public class BapinResult
     {
-        [DataMember]
+        [DataMember(Order=1)]
         public long bapin { get; set; }
-        [DataMember]
+        [DataMember(Order = 2)]
         public string denominacion { get; set; }
-        [DataMember]
+        [DataMember(Order = 3)]
         public long jurisdiccion { get; set; }
-        [DataMember]
+        [DataMember(Order = 4)]
         public long saf { get; set; }
-        [DataMember]
+        [DataMember(Order = 5)]
         public long programa { get; set; }
-        [DataMember]
+        [DataMember(Order = 6)]
         public long subprograma { get; set; }
-        [DataMember]
+        [DataMember(Order = 7)]
         public DateTime? fecha_inicio { get; set; }
-        [DataMember]
+        [DataMember(Order = 8)]
         public DateTime? fecha_fin { get; set; }
-        [DataMember]
+        [DataMember(Order = 9)]
         public decimal costo_total { get; set; }
-        [DataMember]
+        [DataMember(Order = 10)]
         public EstadoDictamen estado_dictamen { get; set; }
-        [DataMember]
+        [DataMember(Order = 11)]
         public long ultimo_anio_demanda{ get; set; }
-        [DataMember]
+        [DataMember(Order = 12)]
         public long ultimo_anio_plan { get; set; }
-        [DataMember]
+        [DataMember(Order = 13)]
         public long ultimo_anio_plan_segun_ejecucion { get; set; }
 
     }

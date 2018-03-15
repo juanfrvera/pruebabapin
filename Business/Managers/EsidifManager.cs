@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Net;
 using System.IO;
+using Business.ConsultarAPGBapinesServiceReference;
 
 namespace Business.Managers
 {
@@ -129,6 +130,70 @@ namespace Business.Managers
             //XDocument doc = XDocument.Parse(soapResult);
             //return soapResult.ToString();
         }
+
+        public static string ConsultarAPGBapines()
+        {
+            // This is the client proxy
+            consultarAPGBapines proxy = new consultarAPGBapinesClient();
+
+            Business.ConsultarAPGBapinesServiceReference.datosBapinType datosBapin = new datosBapinType()
+            {
+                ejercicio = 2018
+            };
+            // Based on all of the examples I saw, I thought I would be able to 
+            // call the methods directly, such as proxy.getLoginInfo(), 
+            // proxy.LogIn(), etc. But, that is not how it works in this example.
+            // I will need to create the Request and Response Objects
+            // This object will contain the login info: roles, databases, etc.
+//            consultarAPGBapines loginInfo = new consultarAPGBapines(datosBapin);
+            // This request object contains the loginInfo object 
+            consultarAPGBapinesRequest loginRequest = new consultarAPGBapinesRequest(datosBapin);
+            // This response object will contain the loginInfo object populated 
+            // with roles, databases, etc.
+            consultarAPGBapinesResponse loginResponse;
+            // Send the request
+            loginResponse = proxy.consultarAPGBapines(loginRequest);
+            // Get the loginInfo data from the response
+            aperturaBapinType[] response;
+            response = loginResponse.consultarAperturasBapinesResponse;
+
+            return response.FirstOrDefault().codigoBapin.ToString();
+            /*
+            foreach (DatabaseInfo db in response.loginInfo.databases)
+            {
+                Debug.WriteLine("Database: " + db.name);
+            }
+            foreach (string role in response.loginInfo.loginRoles)
+            {
+                Debug.WriteLine("Role: " + role);
+            }
+            */
+
+            // This is the client proxy
+            /*
+            consultarAPGBapinesClient proxy = new consultarAPGBapinesClient();
+
+            Business.ConsultarAPGBapinesServiceReference.datosBapinType datosBapin = new datosBapinType()
+            {
+                ejercicio = 2018
+            };
+
+            consultarAPGBapinesRequest request = new consultarAPGBapinesRequest(datosBapin);
+
+            consultarAPGBapinesResponse consultaResponse;
+            consultaResponse = proxy.consultarAPGBapines(request);
+
+            // Get the loginInfo data from the response
+            aperturaBapinType[] response;
+            response = consultaResponse.consultarAperturasBapinesResponse;
+
+            var a = response.FirstOrDefault();
+            aperturaBapinType[] abt = proxy.consultarAPGBapines(datosBapin);
+            return abt.Select(x => x.codigoBapin.ToString()).FirstOrDefault();*/
+        }
+
+
+
 
         private static XmlDocument CreatePingSoapEnvelope()
         {

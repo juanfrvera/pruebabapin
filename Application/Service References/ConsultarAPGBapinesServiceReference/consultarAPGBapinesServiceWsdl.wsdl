@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:es="https://ws-si.mecon.gov.ar/ws/security/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://services.entidadesBasicas.presupuesto.esidif.mecon.gov.ar" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch1="http://webServices.entidadesBasicas.esidif.mecon.gov.ar" xmlns:sch="http://bapin.jaxb.webServices.entidadesBasicas.esidif.mecon.gov.ar" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" targetNamespace="http://services.entidadesBasicas.presupuesto.esidif.mecon.gov.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <sp:UsernameToken>
+    <wsp:Policy>
+      <sp:WssUsernameToken10 />
+    </wsp:Policy>
+  </sp:UsernameToken>
+  <wsdl:types>
+    <xs:schema xmlns="http://webServices.entidadesBasicas.esidif.mecon.gov.ar" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webServices.entidadesBasicas.esidif.mecon.gov.ar" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="datosBapinType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ejercicio" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="estados" type="sch1:estadosType" />
+          <xs:element minOccurs="0" name="codigoBapin" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="jurisdiccion" type="xs:long" />
+          <xs:element minOccurs="0" name="saf" type="xs:long" />
+          <xs:element minOccurs="0" name="programas" type="sch1:programasType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="estadosType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="estado" nillable="true" type="sch1:estadoBapinType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="programasType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="programa" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="estadoBapinType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="DEMANDA" />
+          <xs:enumeration value="PLAN" />
+          <xs:enumeration value="PLAN_SEGUN_EJECUCION" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="datosBapin" type="sch1:datosBapinType" />
+      <xs:complexType name="datosBapinRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="datosBapin" type="sch1:datosBapinType" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="http://bapin.jaxb.webServices.entidadesBasicas.esidif.mecon.gov.ar" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://bapin.jaxb.webServices.entidadesBasicas.esidif.mecon.gov.ar" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="consultarAperturasBapinesResponse" nillable="true" type="sch:consultarAperturasBapinesResponseType" />
+      <xs:complexType name="consultarAperturasBapinesResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="bapin" nillable="true" type="sch:aperturaBapinType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="aperturaBapinType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="codigoBapin" type="xs:long" />
+          <xs:element minOccurs="0" name="jurisdiccion" type="xs:long" />
+          <xs:element minOccurs="0" name="saf" type="xs:long" />
+          <xs:element minOccurs="0" name="programa" type="xs:long" />
+          <xs:element minOccurs="0" name="subprograma" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="datosEsidif" type="sch:datosEsidifType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="datosEsidifType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="jurisdiccionEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="subjurisdiccionEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="entidadEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="programaEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="subprogramaEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="proyectoEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="actividadEsidif" type="xs:long" />
+          <xs:element minOccurs="1" maxOccurs="1" name="obraEsidif" type="xs:long" />
+          <xs:element minOccurs="0" name="ubicacionGeograficaEsidif" type="xs:long" />
+          <xs:element minOccurs="0" name="ejecucionAcumulada" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="consultarAPGBapinesRequest">
+    <wsdl:part name="datosBapin" element="sch1:datosBapin" />
+  </wsdl:message>
+  <wsdl:message name="consultarAPGBapinesResponse">
+    <wsdl:part name="consultarAperturasBapinesResponse" element="sch:consultarAperturasBapinesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="consultarAPGBapines">
+    <wsdl:operation name="consultarAPGBapines">
+      <wsdl:input name="consultarAPGBapinesRequest" message="tns:consultarAPGBapinesRequest" />
+      <wsdl:output name="consultarAPGBapinesResponse" message="tns:consultarAPGBapinesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="consultarAPGBapinesSoap11" type="tns:consultarAPGBapines">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <wsdl:operation name="consultarAPGBapines">
+      <soap:operation soapAction="https://ws-si.mecon.gov.ar/ws/entidades_basicas/consultarAPGBapinesService" />
+      <wsdl:input name="consultarAPGBapinesRequest">
+        <soap:body use="literal" parts="datosBapin" />
+      </wsdl:input>
+      <wsdl:output name="consultarAPGBapinesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="consultarAPGBapinesService">
+    <wsdl:port name="consultarAPGBapinesSoap11" binding="tns:consultarAPGBapinesSoap11">
+      <soap:address location="https://ws-si.mecon.gov.ar/SD_Core/ws/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

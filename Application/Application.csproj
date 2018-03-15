@@ -289,6 +289,12 @@
     <Content Include="Proyecto\ProyectoAlcanceGeograficoEditWebService.asmx" />
     <Content Include="Proyecto\ProyectoDictamenFileEdit.ascx" />
     <Content Include="Proyecto\ProyectoDictamenFilePageList.aspx" />
+    <Content Include="Service References\ConsultarAPGBapinesServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\ConsultarAPGBapinesServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\ConsultarAPGBapinesServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Services\Bapines.svc" />
     <Content Include="Services\wsConsultarBapin.asmx" />
     <Content Include="Web.config">
@@ -5090,6 +5096,11 @@
     <Compile Include="Security\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ConsultarAPGBapinesServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\BapinDataContract.cs" />
     <Compile Include="Services\Bapines.svc.cs">
       <DependentUpon>Bapines.svc</DependentUpon>
@@ -6704,6 +6715,10 @@
     <Content Include="Matching\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <Content Include="Service References\ConsultarAPGBapinesServiceReference\consultarAPGBapinesServiceWsdl.wsdl" />
+    <Content Include="Service References\ConsultarAPGBapinesServiceReference\UI.Web.ConsultarAPGBapinesServiceReference.aperturaBapinType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="UserControls.cd" />
     <Content Include="Images\imprimir.png" />
     <Content Include="Images\postular.png" />
@@ -6913,6 +6928,12 @@
     <Folder Include="App_Themes\Sky\Images\WebParts\" />
     <Folder Include="Dictamen\" />
     <Folder Include="Images\Navegacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ConsultarAPGBapinesServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

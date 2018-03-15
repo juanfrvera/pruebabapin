@@ -35,14 +35,13 @@ namespace Test
 
             Console.WriteLine("");
 
-            Console.WriteLine("Calling change password ...");
-            Console.WriteLine(EsidifManager.ChangePassword());
-            //TestEsidif.CallChangePasswordService();
+            //Console.WriteLine("Calling change password ...");
+            //Console.WriteLine(EsidifManager.ChangePassword());
 
-            Console.WriteLine("");
+            //Console.WriteLine("");
 
-            Console.WriteLine("Calling change password ...");
-            Console.WriteLine(EsidifManager.ChangePassword());
+            Console.WriteLine("Calling Consultar APG Bapines ...");
+            Console.WriteLine(EsidifManager.ConsultarAPGBapines());
             Console.ReadKey();
         }
       
