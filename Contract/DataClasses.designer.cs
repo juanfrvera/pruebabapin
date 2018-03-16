@@ -561,8 +561,8 @@ namespace Contract
     partial void DeleteOficina(Oficina instance);
     #endregion
 		
-		public DataClassesDataContext() : 
-				base(global::Contract.Properties.Settings.Default.BAPINIIIConnectionString, mappingSource)
+		public DataClassesDataContext() :
+        base(global::Contract.Properties.Settings.Default.BAPIN3ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

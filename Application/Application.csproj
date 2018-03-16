@@ -209,6 +209,10 @@
     <Content Include="App_Scripts\ScriptsGeoLoc\images\marker-icon-2x.png" />
     <Content Include="App_Scripts\ScriptsGeoLoc\images\marker-icon.png" />
     <Content Include="App_Scripts\ScriptsGeoLoc\images\marker-shadow.png" />
+    <Content Include="..\ConnectionStrings.config">
+      <Link>Config\ConnectionStrings.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="App_Scripts\ScriptsGeoLoc\jquery-1.10.2.intellisense.js" />
     <Content Include="App_Scripts\ScriptsGeoLoc\jquery-1.10.2.js" />
     <Content Include="App_Scripts\ScriptsGeoLoc\jquery-1.10.2.min.js" />
@@ -6967,4 +6971,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)Config\ConnectionStrings.config" "$(ProjectDir)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

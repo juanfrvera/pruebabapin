@@ -53,6 +53,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bapin.WindowsService", "Bap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWS", "TestWS\TestWS.csproj", "{DF9A11A8-9A32-4437-9107-BFC099BCCC18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Share", "Share", "{8B58F7AA-4EC0-402B-9FD7-7DB6343B34ED}"
+	ProjectSection(SolutionItems) = preProject
+		ConnectionStrings.config = ConnectionStrings.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

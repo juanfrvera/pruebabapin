@@ -33,16 +33,5 @@ namespace Contract.Properties {
                 return ((string)(this["BAPIN3ConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=BAPIN;Persist Security Info=True;User ID=sa" +
-            ";Password=Bombastic10")]
-        public string BAPINIIIConnectionString {
-            get {
-                return ((string)(this["BAPINIIIConnectionString"]));
-            }
-        }
     }
 }
