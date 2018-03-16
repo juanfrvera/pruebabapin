@@ -171,7 +171,7 @@ function HayChequeado2(objectName) {
                 <DynamicHoverStyle CssClass="menuchildover" />
                 <StaticHoverStyle CssClass="menutopover" />
            <StaticItemTemplate>
-        <div class="dinamicMenuItemTemplate">
+        <div class="dinamicMenuItemTemplate menutop">
             <asp:Label ID="LblMenu" runat="server" Text='<%# Eval("Text") %>' EnableTheming="True"></asp:Label>
         </div>
     </StaticItemTemplate>
