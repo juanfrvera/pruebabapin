@@ -266,7 +266,6 @@ namespace DataAccess.Base
             if ((source.RequiereIntevencion == null) ? (target.RequiereIntevencion.HasValue) : !source.RequiereIntevencion.Equals(target.RequiereIntevencion)) return false;
             if ((source.RequiereIntevencionAutoridad == null) ? target.RequiereIntevencionAutoridad != null : !((target.RequiereIntevencionAutoridad == String.Empty && source.RequiereIntevencionAutoridad == null) || (target.RequiereIntevencionAutoridad == null && source.RequiereIntevencionAutoridad == String.Empty)) && !source.RequiereIntevencionAutoridad.Trim().Replace("\r", "").Equals(target.RequiereIntevencionAutoridad.Trim().Replace("\r", ""))) return false;
             if ((source.RequiereIntevencionEstado == null) ? (target.RequiereIntevencionEstado.HasValue) : !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
-
 		  return true;
         }
 		public override bool Equals(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacionResult target)
@@ -287,14 +286,18 @@ namespace DataAccess.Base
                 if (source.CoberturaPoblacional != null && source.CoberturaPoblacional != String.Empty) return false;
                 if (source.CoberturaBeneficiariosDirectos != null && source.CoberturaBeneficiariosDirectos != String.Empty) return false;
                 if (source.CoberturaBeneficiariosIndirectos != null && source.CoberturaBeneficiariosIndirectos != String.Empty) return false;
-                if (!source.DificultadesRiesgos.Equals(target.DificultadesRiesgos)) return false;
+
+                if (source.DificultadesRiesgos.HasValue && source.DificultadesRiesgos != false) return false;   //false initial value             
                 if (source.DificultadesRiesgosEnumeracion != null && source.DificultadesRiesgosEnumeracion != String.Empty) return false;
-                if (!source.DimensionesCostosDimensionados.Equals(target.DimensionesCostosDimensionados)) return false;
-                if (!source.DimensionesCostosValidados.Equals(target.DimensionesCostosValidados)) return false;
+
+                if (source.DimensionesCostosDimensionados.HasValue && source.DimensionesCostosDimensionados != false) return false;   //false initial value 
+                if (source.DimensionesCostosValidados.HasValue && source.DimensionesCostosValidados != false) return false;   //false initial value 
                 if (source.DimensionesCostosEnte != null && source.DimensionesCostosEnte != String.Empty) return false;
-                if (!source.RequiereIntevencion.Equals(target.RequiereIntevencion)) return false;
+
+                
+                if (source.RequiereIntevencion.HasValue && source.RequiereIntevencion != false) return false;   //false initial value 
                 if (source.RequiereIntevencionAutoridad != null && source.RequiereIntevencionAutoridad != String.Empty) return false;
-                if (!source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
+                if (source.RequiereIntevencionEstado != null && !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
 
                 return true;
             }

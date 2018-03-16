@@ -154,7 +154,7 @@ namespace UI.Web.Pages
                 cbDificultadesRiesgosCheckedChanged();
                 cbDimensionesCostosDimensionadosCheckedChanged();
                 cbDimensionesCostosValidadosCheckedChanged();
-                cbRequiereIntevencion_CheckedChanged();
+                cbRequiereIntevencionCheckedChanged();
                 upNecesidadASatisfacer.Update();
                 upObjetivoDelProyecto.Update();
                 upProductoOServicio.Update();
@@ -218,9 +218,9 @@ namespace UI.Web.Pages
 
         protected void cbRequiereIntevencion_CheckedChanged(object sender, EventArgs e)
         {
-            cbRequiereIntevencion_CheckedChanged();
+            cbRequiereIntevencionCheckedChanged();
         }
-        private void cbRequiereIntevencion_CheckedChanged()
+        private void cbRequiereIntevencionCheckedChanged()
         {
             txtRequiereIntevencionAutoridad.Enabled = cbRequiereIntevencion.Checked;
             if (!cbRequiereIntevencion.Checked)

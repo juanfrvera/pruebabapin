@@ -386,7 +386,7 @@
                     Indique cuál es la autoridad ambiental competente
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr>
