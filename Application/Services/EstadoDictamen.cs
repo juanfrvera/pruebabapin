@@ -10,20 +10,17 @@ namespace UI.Web.Services
     public enum EstadoDictamen
     {
         /*
-            NND	No necesita dictamen
-            SDF	Requiere dictamen
-            AOP	Aprobado con observaciones
-            ADO 	Aprobado definitivo con observaciones
-            ASO	Aprobado sin observaciones
-         */
+        ASO("ASO", "Aprobado sin observaciones"),
+        ACO("ACO", "Aprobado con observaciones"),
+        SDF("SDF", "Sin dictamen firme"),
+        NND("NND", "No necesita dictamen")
+        */
         [EnumMember]
         NND,
         [EnumMember]
         SDF,
         [EnumMember]
-        AOP,
-        [EnumMember]
-        ADO,
+        ACO,
         [EnumMember]
         ASO
     }

@@ -152,11 +152,6 @@
     <Compile Include="Aspects\Security\ISessionRepository.cs" />
     <Compile Include="Aspects\Security\CustomPrincipal.cs" />
     <Compile Include="Aspects\Security\SecuriryContainer.cs" />
-    <Compile Include="BAPINDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Base\CacheManagerResult.cs" />
     <Compile Include="Base\Context\Managers\IAuthorizationManager.cs" />
     <Compile Include="Base\Context\Managers\ICacheManager.cs" />
@@ -963,17 +958,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BAPINDataSet.xsc">
-      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BAPINDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BAPINDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BAPINDataSet.xss">
-      <DependentUpon>BAPINDataSet.xsd</DependentUpon>
-    </None>
     <None Include="DataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <SubType>Designer</SubType>
