@@ -14,12 +14,13 @@ namespace Business.Managers
     public static class  EsidifManager
     {
         //private static string _url = SolutionContext.Current.ParameterManager.GetStringValue("URL_ESIDIF"); // "https://tws8-si.mecon.gov.ar/SD_Core/ws/"
-        private static string _url = "https://tws-si.mecon.gov.ar/SD_Core/ws/";
+        private static string _url { get { return SolutionContext.Current.ParameterManager.GetStringValue("URL_ESIDIF"); } }
+        //private static string _url = "https://tws-si.mecon.gov.ar/SD_Core/ws/";
         //private static string _url = "http://Pipo-PC:8088/mockconsultarAPGBapinesSoap11/";
 
         private static HttpWebRequest CreateWebRequest(string action)
         {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(_url);
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(EsidifManager._url);
             webRequest.Headers.Add("SOAPAction", action);
             webRequest.ContentType = "text/xml;charset=\"utf-8\"";
             webRequest.Accept = "text/xml";
