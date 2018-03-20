@@ -12,6 +12,13 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using Service;
 using Contract;
+using nc = Contract;
+using System.Data.Common;
+using System.Data.Sql;
+using System.Data.SqlTypes;
+using System.Data.SqlClient;
+using Business.Managers;
+using System.Xml;
 
 namespace UI.Web
 {
@@ -132,6 +139,76 @@ namespace UI.Web
         protected void btLBListarProyectos_Click(object sender, EventArgs e) { Response.Redirect(GeneralPath + "CacheManagerPageEdit.aspx", false); }
         protected void btLBSubirTemplate_Click(object sender, EventArgs e) { Response.Redirect(GeneralPath + "AdministracionTemplate.aspx", false); }
 
+        protected void btLinkButtonActualizarAperturaPresupuestaria_Click(object sender, EventArgs e) 
+        {
+            var datosBapinType = new DatosBapinType();
+            //, EstadoBapinType.PLAN_SEGUN_EJECUCION, EstadoBapinType.PLAN
+            //Response.Redirect(GeneralPath + "AdministracionTemplate.aspx", false);
+
+            string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
+            SqlConnection sqlCon = new SqlConnection(strConexion);
+
+            try
+            {
+
+                using (DbCommand command = sqlCon.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "TRUNCATE TABLE [BAPIN].[dbo].[wsONPConsultaAPG]";
+
+                    sqlCon.Open();
+                    command.ExecuteNonQuery();
+                }
+
+                DbTransaction trans = sqlCon.BeginTransaction();
+
+                var juris = JurisdiccionService.Current.GetResultFromList(new nc.JurisdiccionFilter() { Activo = true });
+                var valuesEstados = Enum.GetValues(typeof(EstadoBapinType));
+                foreach (var jurisdiccion in juris)
+                { 
+                    foreach (var estado in valuesEstados)
+                    {
+                        datosBapinType.ejercicio = DateTime.Now.Year + 1;
+                        datosBapinType.jurisdiccion = jurisdiccion.ID;
+                        datosBapinType.estados = new EstadoBapinType?[] { (EstadoBapinType)estado };
+
+
+                        var bapines = EsidifManager.ConsultarAPGBapines(datosBapinType);
+                        XmlDocument xd = new XmlDocument();
+                        xd.LoadXml(bapines);
+
+                        if (xd.ChildNodes[0] != null && xd.ChildNodes[0].ChildNodes[0] != null)
+                        {
+
+                            using (DbCommand commandT = sqlCon.CreateCommand())
+                            {
+                                commandT.CommandType = CommandType.StoredProcedure;
+                                commandT.CommandText = "sp_ONPConsultaAPG";
+                                commandT.Parameters.Add(
+                                  new SqlParameter("@MyXML", SqlDbType.Xml)
+                                  {
+                                      Value = new SqlXml(new XmlTextReader(xd.FirstChild.InnerXml
+                                                 , XmlNodeType.Element, null))
+                                  });
+
+                                commandT.Transaction = trans;
+                                commandT.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                trans.Commit();
+                sqlCon.Close();
+            }
+            catch (Exception)
+            {
+                sqlCon.Close();
+                throw;
+            }
+
+        }
+        
         #endregion Command Events
 
 

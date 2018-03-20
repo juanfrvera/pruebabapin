@@ -23,17 +23,17 @@ namespace Test
             //ListPaged<AuditSession> listpaged = AuditSessionService.Current.GetList(new AuditSessionFilter() { OrderByProperty = "StartDate", OrderByDesc = true, PageSize = 10, PageNumber = 2 });
             //listpaged.ForEach(p => Show(p));
 
-
+            
             //EsidifWSClient.CallWebService();
             //EsidifWSClient ws = new EsidifWSClient();
 
             Console.WriteLine("Testing webservices");
 
+            /*
             Console.WriteLine("Calling ping ...");
             Console.WriteLine(EsidifManager.Ping()); 
-            //TestEsidif.CallPingService();
-
             Console.WriteLine("");
+            */
 
             //Console.WriteLine("Calling change password ...");
             //Console.WriteLine(EsidifManager.ChangePassword());
@@ -41,7 +41,11 @@ namespace Test
             //Console.WriteLine("");
 
             Console.WriteLine("Calling Consultar APG Bapines ...");
-            Console.WriteLine(EsidifManager.ConsultarAPGBapines());
+            Console.WriteLine(EsidifManager.ConsultarAPGBapines(new DatosBapinType(){ 
+                ejercicio = 2019,
+                jurisdiccion = 80,
+                estados = new EstadoBapinType?[] { EstadoBapinType.DEMANDA}
+            }));
             Console.ReadKey();
         }
       

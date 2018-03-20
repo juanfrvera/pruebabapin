@@ -471,6 +471,9 @@
     <Compile Include="Business\UsuarioBusiness.cs" />
     <Compile Include="Business\UsuarioOficinaPerfilBusiness.cs" />
     <Compile Include="Business\UsuarioPerfilBusiness.cs" />
+    <Compile Include="Managers\ConsultarAperturasBapines.cs" />
+    <Compile Include="Managers\APGBapin.cs" />
+    <Compile Include="Managers\DatosBapinType.cs" />
     <Compile Include="Managers\EsidifManager.cs" />
     <Compile Include="Managers\TemplateProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -517,7 +520,6 @@
     <None Include="Service References\ConsultarAPGBapinesServiceReference\Business.ConsultarAPGBapinesServiceReference.aperturaBapinType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ConsultarAPGBapinesServiceReference\consultarAPGBapinesServiceWsdl.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -532,6 +534,7 @@
     <None Include="Service References\ConsultarAPGBapinesServiceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ConsultarAPGBapinesServiceReference\consultarAPGBapinesServiceWsdl1.wsdl" />
     <None Include="Service References\ConsultarAPGBapinesServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

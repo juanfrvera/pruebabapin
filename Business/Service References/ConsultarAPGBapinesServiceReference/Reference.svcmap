@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://tws-si.mecon.gov.ar/SD_Core/ws/entidades_basicas/consultarAPGBapinesServiceWsdl.wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://tws-si.mecon.gov.ar/SD_Core/ws/consultarAPGBapinesServiceWsdl.wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="consultarAPGBapinesServiceWsdl.wsdl" MetadataType="Wsdl" ID="e13a3d8d-705f-4f83-adcf-bcc16d760fe4" SourceId="1" SourceUrl="https://tws-si.mecon.gov.ar/SD_Core/ws/entidades_basicas/consultarAPGBapinesServiceWsdl.wsdl" />
+    <MetadataFile FileName="consultarAPGBapinesServiceWsdl1.wsdl" MetadataType="Wsdl" ID="36434ae6-b629-4789-b27d-1f4807158dd0" SourceId="1" SourceUrl="https://tws-si.mecon.gov.ar/SD_Core/ws/consultarAPGBapinesServiceWsdl.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

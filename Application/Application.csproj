@@ -6972,6 +6972,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y "$(ProjectDir)Config\ConnectionStrings.config" "$(ProjectDir)"</PostBuildEvent>
+    <PostBuildEvent>xcopy /y "$(SolutionDir)ConnectionStrings.config" "$(ProjectDir)Config"</PostBuildEvent>
   </PropertyGroup>
 </Project>

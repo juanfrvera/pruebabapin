@@ -161,6 +161,22 @@
         
     </table>
 
+    <table width="100%">
+        <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal4" Text="Configurar Matching" runat="server" ></asp:Literal></div></td></tr>
+        
+        <tr>
+            <td>
+                <ul>
+                    <li id="li2" runat="server">
+                        <asp:LinkButton ID="lbActualizarAperturaPresupuestaria" runat="server" OnClick="btLinkButtonActualizarAperturaPresupuestaria_Click" OnClientClick="return confirm('Esta seguro que desea actualizar la apertura presupuestaria?');" Text="Actualizar Apertura presupuestaria de los proyectos BAPIN (Consume WS ONP ConsultarAPGBapines)"></asp:LinkButton>
+                    </li>
+                </ul>
+                
+            </td>
+        </tr>       
+        
+    </table>
+
     <div style="display:none">
         <table width="100%">
         <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal3" Text="Importación de proyectos" runat="server" ></asp:Literal></div></td></tr>
