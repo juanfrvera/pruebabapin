@@ -88,6 +88,7 @@ namespace Contract
         public bool EvaluarValidaciones { get; set; }
         public bool Activo { get; set; }
         public int? IdEstadoDeDesicion { get; set; }
+        public bool? EsPPP { get; set; }
 
         public string Estado_Nombre { get; set; }
         //public string Estado_Codigo { get; set; }

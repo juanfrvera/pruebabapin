@@ -6,7 +6,6 @@
 <%@ Register TagPrefix="uc" TagName="TreeSelect" Src="~/Controls/WebControl_TreeSelect.ascx" %>
 <%@ Register TagPrefix="uc" TagName="TreeFinalidadFuncion" Src="~/ControlsPersonal/WebControl_FinalidadFuncion.ascx" %>
 <%@ Register Assembly="Application" Namespace="UI.Web" TagPrefix="cc" %>
-
 <style type="text/css">
     .tdLabelestado {
         width: 140px;
@@ -35,82 +34,81 @@
     .style1 {
         width: 120px;
     }
+    .tdLabel {
+        margin-left: 40px;
+    }
 </style>
+<div style="float:right;position:relative;"><asp:CheckBox ID="chkBorrador" runat="server" Text="Borrador" TabIndex="2"  /> &nbsp;</div>
 <%--Datos Generales--%>
-
 <asp:UpdatePanel ID="upDatosGenerales" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:Panel ID="pnlDatosGenerales" runat="server" GroupingText="Datos Generales">
 
-            <table width="100%" cellpadding="0" cellspacing="2px" border="0">
+            <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
-                    <td>
-                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="height: 100px">
-                            <tr>
-                                <td style="width: 110px">
-                                    <asp:Literal ID="liTipoProyecto" Text="Tipo de Proyecto" runat="server"></asp:Literal></td>
-                                <td>
-                                    <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="200px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
-                                    <asp:CheckBox ID="chkBorrador" runat="server" Text="Borrador" TabIndex="2"  /> &nbsp;
-                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Text="Activo" TabIndex="3" /> &nbsp;
-                                    <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="Requiere Dictamen" TabIndex="4" />
-                                </td>
-                                <td class="filaValidator">&nbsp;
-	                            <%--<asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" InitialValue="0"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>--%>
-                                    <!-- Matias 20141014 - Tarea 157 -->
-                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
-                                    <!-- FinMatias 20141014 - Tarea 157 -->
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="width: 110px">
-                                    <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal></td>
-                                <td>
-                                    <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
-                                    <%--   <uc:Autocomplete runat="server" ID="acSaf" 
-                                    WebServiceName="../Services/wsSaf.asmx" MinimumPrefixLength="3" ServiceMethod ="GetSimpleList"  
-                                    ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionProyectoPrincipios" Width="245">
-                                    </uc:Autocomplete>  --%>		        
-                                </td>
-                                <td class="filaValidator">&nbsp;
-	                            <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 110px">
-                                    <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal></td>
-                                <td>
-                                    <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
-                                </td>
-                                <td class="filaValidator">&nbsp;
-	                             <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 110px">
-                                    <asp:Literal ID="liSubPrograma" Text="Subprograma" runat="server"></asp:Literal></td>
-                                <td>
-                                    <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
-                                </td>
-                                <td class="filaValidator">&nbsp;
-	                             <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-
-                                </td>
-                            </tr>
-                        </table>
-                    </td>                    
+                    <td style="width:205px" >
+                        <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
+                    </td>
+                    <td colspan="6">
+                        <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
+                    </td>
+                    <td class="filaValidator">&nbsp;
+	                    <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
-            </table>            
-            <table width="100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
-                    <td style="width: 110px">
-                        <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal></td>
-
                     <td>
+                        <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal></td>
+                    <td colspan="6">
+                        <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
+                    </td>
+                    <td class="filaValidator">&nbsp;
+	                    <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="liSubPrograma" Text="Subprograma" runat="server"></asp:Literal>
+                    </td>
+                    <td colspan="6">
+                        <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
+                    </td>
+                    <td class="filaValidator">&nbsp;
+	                    <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="Literal1" Text="Cod. Presupuestario" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox1" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>  
+                    <td colspan="2">
+                        <asp:Literal ID="Literal2" Text="Actividad" runat="server"></asp:Literal>
+                        <asp:TextBox ID="TextBox2" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <asp:Literal ID="Literal3" Text="Obra" runat="server"></asp:Literal>
+                        <asp:TextBox ID="TextBox3" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>   
+                    <td>
+                        &nbsp;
+                    </td>             
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal>
+                    </td>
+                    <td colspan="6">
                         <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
                     </td>
                     <td>
@@ -118,61 +116,97 @@
                         <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
-            </table>
-            <table cellpadding="0" cellspacing="2px" border="0">                
                 <tr>
-                    <td>
-                        <asp:Literal ID="liProceso" Text="Proceso" runat="server"></asp:Literal>
+                    <td style="text-wrap:none">
+                        <asp:Literal ID="Literal4" Text="Imputación Presupuestaria" runat="server"></asp:Literal>
+                    </td>
+                    <td colspan="6">
+                        <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="830px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;
+                        <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="Literal5" Text="Monto total" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBoxxxx3" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>
+                    <td>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>
+                        <asp:Literal ID="Literal6" Text="Requiere Dictamen" runat="server"></asp:Literal>
+                    </td>
+                    <td colspan="4">                                    
+                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" />
+                    </td>   
+                </tr>
+                              
+                <tr>
+                    <td>
+                        <asp:Literal ID="liProceso" Text="Contribución" runat="server"></asp:Literal>
                     </td>
                     <td>
                         <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;                
+                        &nbsp;
                     </td>
                     <td>
-                        <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
+                        <asp:Literal ID="liEstado" Text="Etapa" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="2">
-                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18" Width="200px"></cc:ExtendedDropDownList>
-                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
+                    <td>
+                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
+                    </td>
+                    <td colspan="3">
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="liEstado" Text="Estado Financiero" runat="server"></asp:Literal></td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
-                    </td>
-                    <td>&nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
-
-                    <td>
                         <asp:Literal ID="liModalidadContratacion" Text="Modalidad de Contratación" runat="server"></asp:Literal></td>
                     </td>
-                    <td colspan="3">
+                    <td>
                         <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16" Width="200px"> </cc:ExtendedDropDownList>
                     </td>
-
+                    <td>
+                        &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:Literal ID="Literal8" Text="PPP" runat="server"></asp:Literal>
+                    </td>
+                    <td>                                    
+                        <asp:CheckBox ID="cbEsPPP" runat="server" Text="PPP" TabIndex="2"  />
+                    </td>   
+                    <td colspan="3">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
-                    <td>&nbsp;</td>
-                    <td colspan="6">
+                    </td>
+                    <td colspan="7">
                         <uc:TreeFinalidadFuncion runat="server" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
                             ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionFinalidadFuncion"
                             Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>                        
                     </td>
                 </tr>
+                                <tr>
+                    <td>
+                        <asp:Literal ID="Literal9" runat="server" Text="Localización"></asp:Literal>
+                    </td>
+                    <td colspan="7">
+                        <asp:Button ID="Button3" runat="server" Text="Agregar"  />
+                        &nbsp;
+                        <asp:TextBox ID="TextBox4" runat="server" TabIndex="19"></asp:TextBox>        
+                    </td>
+                </tr>
             </table>
+
             <table width="100%" cellpadding="5px" cellspacing="2px" border="0">
                 <tr>
-                    <td style="width: 650px">
+                    <td><!-- style="width: 650px"-->
                         <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="640px">
                             
                             <table cellpadding="0" cellspacing="0" border="0px" style="height: 100px">
@@ -248,104 +282,30 @@
         
         
         </asp:Panel>
-        <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Plan">
+        <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Solicitud de Presupuesto">
             <table width="100%">
                 <tr>
                     <td>
                         <asp:LinkButton ID="lnkPlan" runat="server" Text="Editar Plan" OnClick="btAgregarProyectoPlan_Click" TabIndex="21"></asp:LinkButton>
                     </td>
                     <td>
-                        <b>
-                            <asp:Label ID="lbPlan" runat="server"></asp:Label></b>
+                        <b><asp:Label ID="lbPlan" runat="server"></asp:Label></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
+                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18" Width="200px"></cc:ExtendedDropDownList>
+                        <asp:Literal ID="Literal7" runat="server" Text="Subprioridad"></asp:Literal>
+                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
             </table>
         </asp:Panel>
     </ContentTemplate>
 </asp:UpdatePanel>
-<asp:UpdatePanel ID="upOtrosDatos" runat="server" UpdateMode="Conditional">
-    <ContentTemplate>
-        <asp:Panel ID="Panel3" runat="server">
-            <%--Situacion Actual--%>
 
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td class="legend" style="color: #0099ff; font-weight: bold;">
-                        <%--<asp:LinkButton  ID="liSituacionActual"  runat = "server" Text ="Situacion Actual" ></asp:LinkButton>--%>
-                        <div style="cursor: hand; width: 125px">
-                            <asp:Label ID="lblSituacionActual" runat="server" Text="Situación Actual"></asp:Label>&nbsp;
-                            <asp:Image ID="imgCollapsiblePanel" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
-                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeSituacionActual" runat="Server"
-                            TargetControlID="pnlSituacionActual"
-                            Collapsed="True"
-                            ExpandControlID="lblSituacionActual"
-                            CollapseControlID="lblSituacionActual"
-                            AutoCollapse="False"
-                            AutoExpand="False"
-                            ExpandDirection="Vertical" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Panel ID="pnlSituacionActual" runat="server">
-                            <asp:TextBox ID="txtSituacionActual" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-            <%--Descripcion--%>
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td class="legend" style="color: #0099ff; font-weight: bold;">
-                        <div style="cursor: hand; width: 195px">
-                            <asp:Label ID="lblDescripcion" runat="server" Text="Descripción Técnica"></asp:Label>&nbsp;
-                            <asp:Image ID="Image1" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
-                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeDescripcion" runat="Server"
-                            TargetControlID="pnlDescripcion"
-                            Collapsed="True"
-                            ExpandControlID="lblDescripcion"
-                            CollapseControlID="lblDescripcion"
-                            AutoCollapse="False"
-                            AutoExpand="False"
-                            ExpandDirection="Vertical" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Panel ID="pnlDescripcion" runat="server">
-                            <asp:TextBox ID="txtDescripcion" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-            <%--Observaciones--%>
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td td class="legend" style="color: #0099ff; font-weight: bold;">
-                        <div style="cursor: hand; width: 115px">
-                            <asp:Label ID="lblObservaciones" runat="server" Text="Observaciones"></asp:Label>&nbsp;
-                            <asp:Image ID="Image5" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
-                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeObservaciones" runat="Server"
-                            TargetControlID="pnlObservaciones"
-                            Collapsed="True"
-                            ExpandControlID="lblObservaciones"
-                            CollapseControlID="lblObservaciones"
-                            AutoCollapse="False"
-                            AutoExpand="False"
-                            ExpandDirection="Vertical" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Panel ID="pnlObservaciones" runat="server">
-                            <asp:TextBox ID="txtObservaciones" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-    </ContentTemplate>
-</asp:UpdatePanel>
 <%--Origen del Financiamiento--%>
 <asp:UpdatePanel ID="upOrigenFinanciamiento" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
@@ -354,7 +314,7 @@
                 <tr>
                     <td class="legend" style="color: #0099ff; font-weight: bold;">
                         <div style="cursor: hand; width: 190px">
-                            <asp:Label ID="lblOrigenDelFinanciamiento" runat="server" Text="Origen del Financiamiento"></asp:Label>&nbsp;
+                            <asp:Label ID="lblOrigenDelFinanciamiento" runat="server" Text="Financiamiento Externo"></asp:Label>&nbsp;
                             <asp:Image ID="Image2" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
                         <ajaxToolkit:CollapsiblePanelExtender ID="cpeOrigenDelFinanciamiento" runat="Server"
                             TargetControlID="pnlOrigenDelFinanciamiento"
@@ -373,7 +333,7 @@
                                 <tr>
                                     <td align="right">
                                         <asp:Button ID="btAgregarOrigenFinanciamiento" runat="server" Text="Agregar Prestamo" OnClick="btProyectoOrigenFinanciamienta_Click" />
-                                        <asp:Button ID="btAgregarTransferencia" runat="server" Text="Agregar Transferencia" OnClick="btAgregarTransferencia_Click" />
+                                        <asp:Button ID="btAgregarTransferencia" runat="server" Text="Agregar Transferencia" Visible="False" OnClick="btAgregarTransferencia_Click" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -490,7 +450,7 @@
         </asp:Panel>
     </ContentTemplate>
 </asp:UpdatePanel>
-<%--Demoras--%>
+<%--Demoras
 <asp:UpdatePanel ID="upDemoras" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:Panel ID="pnlDemorasGral" runat="server">
@@ -525,8 +485,8 @@
                                         <asp:UpdatePanel ID="upGridProyectoDemora" runat="server" UpdateMode="Conditional">
                                             <ContentTemplate>
                                                 <div style="overflow: auto; width: 978px; height: 250px">
-                                                    <%-- Matias 201201117 - Tarea 25 --%>
-                                                    <%-- Matias 201201117 - Tarea 25 - asp: AllowPaging="False" y AllowSorting="False"--%>
+                                                    -- Matias 201201117 - Tarea 25 --
+                                                    -- Matias 201201117 - Tarea 25 - asp: AllowPaging="False" y AllowSorting="False"--
                                                     <asp:GridView ID="GridProyectoDemora" runat="server"
                                                         AutoGenerateColumns="False" DataKeyNames="ID"
                                                         AllowPaging="False"
@@ -554,7 +514,7 @@
                                                         </Columns>
                                                     </asp:GridView>
                                                 </div>
-                                                <%-- Matias 20120117 - Tarea 25 --%>
+                                                -- Matias 20120117 - Tarea 25 --
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </td>
@@ -567,8 +527,95 @@
         </asp:Panel>
     </ContentTemplate>
 </asp:UpdatePanel>
-<%--PopUps--%>
+--%>
+<%--Otros Datos--%>
+<asp:UpdatePanel ID="upOtrosDatos" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+        <asp:Panel ID="Panel3" runat="server">
+            <%--Situacion Actual
+            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                <tr>
+                    <td class="legend" style="color: #0099ff; font-weight: bold;">
 
+                        <div style="cursor: hand; width: 125px">
+                            <asp:Label ID="lblSituacionActual" runat="server" Text="Situación Actual"></asp:Label>&nbsp;
+                            <asp:Image ID="imgCollapsiblePanel" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
+                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeSituacionActual" runat="Server"
+                            TargetControlID="pnlSituacionActual"
+                            Collapsed="True"
+                            ExpandControlID="lblSituacionActual"
+                            CollapseControlID="lblSituacionActual"
+                            AutoCollapse="False"
+                            AutoExpand="False"
+                            ExpandDirection="Vertical" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Panel ID="pnlSituacionActual" runat="server">
+                            <asp:TextBox ID="txtSituacionActual" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        </asp:Panel>
+                    </td>
+                </tr>
+            </table>
+            --%>
+
+            <%--Descripcion
+            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                <tr>
+                    <td class="legend" style="color: #0099ff; font-weight: bold;">
+                        <div style="cursor: hand; width: 195px">
+                            <asp:Label ID="lblDescripcion" runat="server" Text="Descripción Técnica"></asp:Label>&nbsp;
+                            <asp:Image ID="Image1" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
+                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeDescripcion" runat="Server"
+                            TargetControlID="pnlDescripcion"
+                            Collapsed="True"
+                            ExpandControlID="lblDescripcion"
+                            CollapseControlID="lblDescripcion"
+                            AutoCollapse="False"
+                            AutoExpand="False"
+                            ExpandDirection="Vertical" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Panel ID="pnlDescripcion" runat="server">
+                            <asp:TextBox ID="txtDescripcion" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        </asp:Panel>
+                    </td>
+                </tr>
+            </table>
+                --%>
+            <%--Observaciones--%>
+            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                <tr>
+                    <td td class="legend" style="color: #0099ff; font-weight: bold;">
+                        <div style="cursor: hand; width: 115px">
+                            <asp:Label ID="lblObservaciones" runat="server" Text="Observaciones"></asp:Label>&nbsp;
+                            <asp:Image ID="Image5" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
+                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeObservaciones" runat="Server"
+                            TargetControlID="pnlObservaciones"
+                            Collapsed="True"
+                            ExpandControlID="lblObservaciones"
+                            CollapseControlID="lblObservaciones"
+                            AutoCollapse="False"
+                            AutoExpand="False"
+                            ExpandDirection="Vertical" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Panel ID="pnlObservaciones" runat="server">
+                            <asp:TextBox ID="txtObservaciones" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        </asp:Panel>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+    </ContentTemplate>
+</asp:UpdatePanel>
+
+<%--PopUps--%>
 <%--PopUp Oficina--%>
 <%--<asp:Panel ID="PopUpOficina" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
@@ -987,6 +1034,7 @@
         PopupDragHandleControlID="PlanPopUpDragHandle" PopupControlID="PopUpPlan"
         OkControlID="Button4" TargetControlID="Button4" BackgroundCssClass="modalBackground" />
 </asp:Panel>
+
 <%--PopUp Origen Financiamiento--%>
 <asp:Panel ID="PopUpOrigenFinanciamiento" runat="server" Width="600px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="OrigenFinanciamientoPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -1044,6 +1092,7 @@
         PopupDragHandleControlID="OrigenFinanciamientoPopUpDragHandle" PopupControlID="PopUpOrigenFinanciamiento"
         OkControlID="Button5" TargetControlID="Button5" BackgroundCssClass="modalBackground" />
 </asp:Panel>
+
 <%--PopUp Proyectos Relacionados--%>
 <asp:Panel ID="PopUpProyectosRelacionados" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="ProyectosRelacionadosPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -1143,7 +1192,8 @@
         PopupDragHandleControlID="ProyectosRelacionadosPopUpDragHandle" PopupControlID="PopUpProyectosRelacionados"
         OkControlID="Button6" TargetControlID="Button6" BackgroundCssClass="modalBackground" />
 </asp:Panel>
-<%--PopUp Demoras--%>
+
+<%--PopUp Demoras
 <asp:Panel ID="PopUpDemoras" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="DemorasPopUpDragHandle" runat="server" Style="cursor: move;">
         <table width="100%" cellpadding="0" cellspacing="5">
@@ -1165,7 +1215,6 @@
                             <asp:Literal ID="liFechaDemora" runat="server" Text="Fecha"></asp:Literal>
                         </td>
                         <td>
-                            <%--<asp:DropDownList ID="ddlFechaDemora" runat = "server" ></asp:DropDownList>--%>
                             <uc:DateInput ID="diFechaDemora" runat="server" ValidationGroup="vgDemora" IsValidEmpty="false" />
                         </td>
 
@@ -1205,6 +1254,8 @@
         PopupDragHandleControlID="DemorasPopUpDragHandle" PopupControlID="PopUpDemoras"
         OkControlID="Button7" TargetControlID="Button7" BackgroundCssClass="modalBackground" />
 </asp:Panel>
+--%>
+
 <%--PopUp Transferencias--%>
 <asp:Panel ID="PopUpTransferencia" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="TransferenciaPopUpDragHandle" runat="server" Style="cursor: move;">

@@ -35,7 +35,8 @@ namespace Contract.Base
 		 public bool EvaluarValidaciones{get;set;}
 		 public bool Activo{get;set;}
 		 public int? IdEstadoDeDesicion{get;set;}
-		 
+         public bool? EsPPP { get; set; }
+
 		 public string Estado_Nombre{get;set;}	
 	public string Estado_Codigo{get;set;}	
 	public int Estado_Orden{get;set;}	
@@ -108,7 +109,8 @@ namespace Contract.Base
 		 _Proyecto.EvaluarValidaciones = this.EvaluarValidaciones;
 		 _Proyecto.Activo = this.Activo;
 		 _Proyecto.IdEstadoDeDesicion = this.IdEstadoDeDesicion;
-		 
+         _Proyecto.EsPPP = this.EsPPP;
+
 		  return _Proyecto;
 		}		
 		public virtual void Set(Proyecto entity)
@@ -140,7 +142,7 @@ namespace Contract.Base
 		  this.EvaluarValidaciones= entity.EvaluarValidaciones ;
 		  this.Activo= entity.Activo ;
 		  this.IdEstadoDeDesicion= entity.IdEstadoDeDesicion ;
-		 		  
+          this.EsPPP = entity.EsPPP;		  
 		}		
 		public virtual bool Equals(Proyecto entity)
         {
@@ -172,7 +174,7 @@ namespace Contract.Base
 			 if(!entity.EvaluarValidaciones.Equals(this.EvaluarValidaciones))return false;
 		  if(!entity.Activo.Equals(this.Activo))return false;
 		  if((entity.IdEstadoDeDesicion == null)?(this.IdEstadoDeDesicion.HasValue && this.IdEstadoDeDesicion.Value > 0):!entity.IdEstadoDeDesicion.Equals(this.IdEstadoDeDesicion))return false;
-						 
+          if ((entity.EsPPP == null) ? this.EsPPP != null : !entity.EsPPP.Equals(this.EsPPP)) return false;
 		  return true;
         }
 		
@@ -205,6 +207,7 @@ namespace Contract.Base
 			,new DataColumnMapping("EvaluarValidaciones","EvaluarValidaciones")
 			,new DataColumnMapping("Activo","Activo")
 			,new DataColumnMapping("EstadoDeDesicion","EstadoDeDesicion_Nombre")
+            ,new DataColumnMapping("EsPPP","EsPPP")
 			}));
 		}
 	}

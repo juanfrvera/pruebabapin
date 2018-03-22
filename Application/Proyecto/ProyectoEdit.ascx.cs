@@ -44,18 +44,30 @@ namespace UI.Web
             this.toFinalidadFuncion.Width = 600;
             base._Load();
         }
+        public void SetSelectedItemByText(DropDownList dd, string text)
+        {
+            dd.SelectedIndex = -1;
+            foreach (ListItem item in dd.Items)
+            {
+                if (item.Text.Equals(text,StringComparison.InvariantCulture))
+                {
+                    item.Selected = true;
+                    break;
+                }
+            }
+        }
         protected override void _Initialize()
         {
             base._Initialize();
             revDenominacion.ValidationExpression = Contract.DataHelper.GetExpRegString(500);
             revBapin.ValidationExpression = Contract.DataHelper.GetExpRegNumberInteger();
-            revJustificacionDemora.ValidationExpression = Contract.DataHelper.GetExpRegString(8000);
+            //20180320 revJustificacionDemora.ValidationExpression = Contract.DataHelper.GetExpRegString(8000);
             revPrioridad.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
             UIHelper.Load<nc.ProyectoTipo>(ddlTipoProyecto, ProyectoTipoService.Current.GetList(new nc.ProyectoTipoFilter() { Activo = true }), "Nombre", "IdProyectoTipo", new ProyectoTipo() { IdProyectoTipo = 0, Nombre = "Seleccione Clasificación" });
             UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new Estado() { IdEstado = 0, Nombre = "Seleccione Estado" }, true, "Orden", typeof(Int32));
             //ddlEstado.ToolTip = Translate("TooltipTipoProyecto");
-            UIHelper.Load<nc.ModalidadContratacion>(ddlModalidadContratacion, ModalidadContratacionService.Current.GetList(new nc.ModalidadContratacionFilter() { Activo = true }), "Nombre", "IdModalidadContratacion", new ModalidadContratacion() { IdModalidadContratacion = 0, Nombre = "Seleccione Modalidad de Contratacion" });
-
+            UIHelper.Load<nc.ModalidadContratacion>(ddlModalidadContratacion, ModalidadContratacionService.Current.GetList(new nc.ModalidadContratacionFilter() { Activo = true }), "Nombre", "IdModalidadContratacion");//, new ModalidadContratacion() { IdModalidadContratacion = 0, Nombre = "No definido aún" }
+            SetSelectedItemByText(ddlModalidadContratacion,"No definido aún");
             UIHelper.Load<nc.OrganismoPrioridad>(ddlPrioridad, OrganismoPrioridadService.Current.GetList(new nc.OrganismoPrioridadFilter() { Activo = true }), "Nombre", "IdOrganismoPrioridad", new nc.OrganismoPrioridad() { IdOrganismoPrioridad = 0, Nombre = "Seleccione Prioridad" });
             UIHelper.Load<nc.ProyectoRelacionTipo>(ddlTipoRelacionProyectoRelacionado, ProyectoRelacionTipoService.Current.GetList(new nc.ProyectoRelacionTipoFilter() { Activo = true }), "Nombre", "IdProyectoRelacionTipo", new nc.ProyectoRelacionTipo() { IdProyectoRelacionTipo = 0, Nombre = "Seleccione tipo de Relacion" });
 
@@ -83,12 +95,12 @@ namespace UI.Web
             rfvBapin.ErrorMessage = TranslateFormat("FieldIsNull", "Nro Bapin");
             revBapin.ErrorMessage = TranslateFormat("InvalidField", "Nro Bapin");
             rfvTipoRelacionProyectoRelacionado.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo de Proyecto Relacionado");
-            rfvJustificacionDemora.ErrorMessage = TranslateFormat("FieldIsNull", "Justificación Demora");
-            revJustificacionDemora.ErrorMessage = TranslateFormat("InvalidField", "Justificación Demora");
+            //20180320 rfvJustificacionDemora.ErrorMessage = TranslateFormat("FieldIsNull", "Justificación Demora");
+            //20180320 revJustificacionDemora.ErrorMessage = TranslateFormat("InvalidField", "Justificación Demora");
 
             //Matias 20131218 - Tarea 103
-            diFechaDemora.RangeErrorMessage = TranslateFormat("InvalidField", "Fecha"); //"Fecha inválida";
-            diFechaDemora.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha"); //"Fecha obligatoria";
+            //diFechaDemora.RangeErrorMessage = TranslateFormat("InvalidField", "Fecha"); //"Fecha inválida";
+            //diFechaDemora.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha"); //"Fecha obligatoria";
             //FinMatias 20131218 - Tarea 103
 
             rfvSAFTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "SAF");
@@ -115,11 +127,11 @@ namespace UI.Web
             UIHelper.Clear(lbSectorialista);
             UIHelper.Clear(ddlPrioridad);
             UIHelper.Clear(txtPrioridad);
-            UIHelper.Clear(txtSituacionActual);
-            UIHelper.Clear(txtDescripcion);
+            //UIHelper.Clear(txtSituacionActual);
+            //UIHelper.Clear(txtDescripcion);
             UIHelper.Clear(txtObservaciones);
             UIHelper.Clear(toFinalidadFuncion);
-
+            UIHelper.Clear(cbEsPPP);
 
             if (CrudAction == CrudActionEnum.Create)
             {
@@ -195,7 +207,7 @@ namespace UI.Web
             //UIHelper.SetValue(acSaf, String.Format("{0}-{1}", Entity.proyecto.Saf_Codigo, Entity.proyecto.Saf_Nombre));
             CargarProgramas();
             UIHelper.SetValue(chkBorrador, Entity.proyecto.EsBorrador);
-            UIHelper.SetValue(chkActivo, Entity.proyecto.Activo);
+            //UIHelper.SetValue(chkActivo, Entity.proyecto.Activo);
             if (Entity.proyecto.IdProyecto > 0)
                 UIHelper.SetValue<ProgramaResult, int>(ddlPrograma, Entity.proyecto.IdPrograma, ProgramaService.Current.GetResultById);
             //Matias 20170127 - Ticket #REQ399293
@@ -220,13 +232,14 @@ namespace UI.Web
             if (Entity.proyecto.IdOrganismoPrioridad.HasValue)
                 UIHelper.SetValue<Prioridad, int>(ddlPrioridad, Entity.proyecto.IdOrganismoPrioridad.Value, PrioridadService.Current.GetById);
             UIHelper.SetValue(txtPrioridad, Entity.proyecto.SubPrioridad);
-            UIHelper.SetValue(txtSituacionActual, Entity.proyecto.ProyectoSituacionActual);
-            UIHelper.SetValue(txtDescripcion, Entity.proyecto.ProyectoDescripcion);
+            //20180320 UIHelper.SetValue(txtSituacionActual, Entity.proyecto.ProyectoSituacionActual);
+            //20180320 UIHelper.SetValue(txtDescripcion, Entity.proyecto.ProyectoDescripcion);
             UIHelper.SetValue(txtObservaciones, Entity.proyecto.ProyectoObservacion);
             UIHelper.SetValue(dlFuncionarioIniciador, Entity.proyectoOficinaPerfilFuncionarioIniciador.OrderBy(i => i.Usuario_ApellidoYNombre));
             UIHelper.SetValue(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor.OrderBy(i => i.Usuario_ApellidoYNombre));
             UIHelper.SetValue(dlFuncionarioResponsable, Entity.proyectoOficinaPerfilFuncionarioResponsable.OrderBy(i => i.Usuario_ApellidoYNombre));
             UIHelper.SetValue(toFinalidadFuncion, Entity.proyecto.IdFinalidadFuncion);
+            UIHelper.SetValue(cbEsPPP, Entity.proyecto.EsPPP);
             ProyectoPlanRefresh();
             ActualizarUltimoPlan();
             upDatosGenerales.Update();
@@ -234,7 +247,7 @@ namespace UI.Web
             ProyectoOficinaPerfilSetValue();
             ProyectoOrigenFinanciamientoRefresh();
             ProyectoRelacionRefresh();
-            ProyectoDemoraRefresh();
+            //20180320 ProyectoDemoraRefresh();
             DeshabilitarEdicionCombos();
             if (this.Entity.proyecto.EsBorrador)
                 this.btAgregarOrigenFinanciamiento.Enabled = false;
@@ -274,8 +287,8 @@ namespace UI.Web
             Entity.proyecto.RequiereDictamen = UIHelper.GetBoolean(chkRequiereDictamen);
             Entity.proyecto.IdOrganismoPrioridad = UIHelper.GetIntNullable(ddlPrioridad);
             Entity.proyecto.SubPrioridad = UIHelper.GetIntNullable(txtPrioridad);
-            Entity.proyecto.ProyectoSituacionActual = UIHelper.GetString(txtSituacionActual);
-            Entity.proyecto.ProyectoDescripcion = UIHelper.GetString(txtDescripcion);
+            //20180320 Entity.proyecto.ProyectoSituacionActual = UIHelper.GetString(txtSituacionActual);
+            //20180320 Entity.proyecto.ProyectoDescripcion = UIHelper.GetString(txtDescripcion);
             Entity.proyecto.ProyectoObservacion = UIHelper.GetString(txtObservaciones);
             if (CrudAction == CrudActionEnum.Create)
             {
@@ -283,6 +296,7 @@ namespace UI.Web
                 Entity.proyecto.FechaModificacion = DateTime.Now;
             }
             Entity.proyecto.IdFinalidadFuncion = UIHelper.GetIntNullable(toFinalidadFuncion);
+            Entity.proyecto.EsPPP = UIHelper.GetBoolean(cbEsPPP);
             ProyectoOficinaPerfilGetValue();
             Update(dlFuncionarioIniciador, Entity.proyectoOficinaPerfilFuncionarioIniciador);
             Update(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor);
@@ -1161,7 +1175,7 @@ namespace UI.Web
         {
             get
             {
-                if (actualProyectoDemora == null)
+                //20180320 if (actualProyectoDemora == null)
                     if (ViewState["listTransferencias"] != null)
                         listTransferencias = ViewState["listTransferencias"] as List<TransferenciaResult>;
                     else
@@ -1615,6 +1629,7 @@ namespace UI.Web
 
         #endregion
 
+        /*20180320 
         #region ProyectoDemora
         private ProyectoDemoraResult actualProyectoDemora;
         protected ProyectoDemoraResult ActualProyectoDemora
@@ -1784,6 +1799,7 @@ namespace UI.Web
         }
         #endregion
         #endregion
+        */
 
         #region Events
 
@@ -1858,13 +1874,13 @@ namespace UI.Web
             this.toFinalidadFuncion.Enabled = EnableDatosGenerales;
             this.toIniciador.Enabled = EnableDatosGenerales;
             this.toResponsable.Enabled = EnableDatosGenerales;
-            this.txtSituacionActual.Enabled = EnableDatosGenerales;
-            this.txtDescripcion.Enabled = EnableDatosGenerales;
+            //20180320 this.txtSituacionActual.Enabled = EnableDatosGenerales;
+            //20180320 this.txtDescripcion.Enabled = EnableDatosGenerales;
             this.txtObservaciones.Enabled = EnableDatosGenerales;
             this.btAgregarOrigenFinanciamiento.Enabled = EnableDatosGenerales;
             this.btAgregarTransferencia.Enabled = EnableDatosGenerales;
             this.btAgregarProyectosRelacionados.Enabled = EnableDatosGenerales;
-            this.btDemoras.Enabled = EnableDatosGenerales;
+            //20180320 this.btDemoras.Enabled = EnableDatosGenerales;
         }
 
 

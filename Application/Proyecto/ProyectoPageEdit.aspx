@@ -23,7 +23,6 @@
  <uc:ProyectoTabPanel ID="proyectoTabPanel" runat="server" />
  <div class="TabbedPanelsContentGroup">
     <table >		 
-		<tr><td>&nbsp;</td></tr>
         <tr>
             <td>
                 <uc:EditProyecto runat="server" ID="editProyecto" ></uc:EditProyecto>

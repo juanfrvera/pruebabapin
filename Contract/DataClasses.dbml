@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BAPINIII" Class="DataClassesDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BAPIN;Persist Security Info=True;User ID=sa" SettingsObjectName="Contract.Properties.Settings" SettingsPropertyName="BAPINIIIConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=FKTECH-RODRIGO\SQLEXPRESS;Initial Catalog=DB_BAPIN_III_12_07_2016;Integrated Security=True" SettingsObjectName="Contract.Properties.Settings" SettingsPropertyName="BAPIN3ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Actividad" Member="Actividads">
     <Type Name="Actividad">
       <Column Name="IdActividad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2128,6 +2128,7 @@
       <Column Name="EvaluarValidaciones" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IdEstadoDeDesicion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EsPPP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Proyecto_Message" Member="Messages" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Message" />
       <Association Name="Proyecto_ProyectoAlcanceGeografico" Member="ProyectoAlcanceGeograficos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoAlcanceGeografico" />
       <Association Name="Proyecto_ProyectoDemora" Member="ProyectoDemoras" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoDemora" />

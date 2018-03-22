@@ -106,8 +106,9 @@ public int? IdProyectoPlan_To{get;set;}
 [DataMember(Name = "EvaluarValidaciones", IsRequired = false)]public bool? EvaluarValidaciones{get;set;}		
 [DataMember(Name = "Activo", IsRequired = false)]public bool? Activo{get;set;}		
 [DataMember(Name = "IdEstadoDeDesicionIsNull", IsRequired = false)]
-			  public bool? IdEstadoDeDesicionIsNull{get;set;}[DataMember(Name = "IdEstadoDeDesicion", IsRequired = false)]public int? IdEstadoDeDesicion{get;set;}		
-
+			  public bool? IdEstadoDeDesicionIsNull{get;set;}[DataMember(Name = "IdEstadoDeDesicion", IsRequired = false)]public int? IdEstadoDeDesicion{get;set;}
+[DataMember(Name = "EsPPP", IsRequired = false)]
+public bool? EsPPP { get; set; }		
 		#endregion
     }
 }

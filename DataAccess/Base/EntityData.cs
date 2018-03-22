@@ -155,11 +155,12 @@ namespace DataAccess
                 int from = filter.PageSize * (filter.PageNumber - 1);
                 if (filter.OrderByProperty != null && filter.OrderByProperty.Trim() != string.Empty)
                 {
-                    //return OrderBy<T>(query, filter.OrderByProperty, filter.OrderByDesc).Skip(from).Take(filter.PageSize).ToArray();
+                    //20180321 esto ya estaba comentado return OrderBy<T>(query, filter.OrderByProperty, filter.OrderByDesc).Skip(from).Take(filter.PageSize).ToArray();
+                    /*20180321 comento esto otro y pruebo con la anterior 
                     q = (from o in OrderBy<T>(query, filter.OrderBys) select o).AsQueryable();
                     q = (from o in q select o).Skip(from).Take(filter.PageSize).AsQueryable();
-                    return q.ToArray();
-
+                    return q.ToArray();*/
+                    return OrderBy<T>(query, filter.OrderByProperty, filter.OrderByDesc).Skip(from).Take(filter.PageSize).ToArray();
                 }
                 q = query.Skip(from).Take(filter.PageSize).AsQueryable();
                 return q.ToArray();
