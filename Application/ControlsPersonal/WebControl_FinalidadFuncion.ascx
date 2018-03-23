@@ -7,8 +7,8 @@
 }
 </style>
 
-<asp:Panel ID="pnControl" runat="server"  >
-    <table width="100%">
+<asp:Panel ID="pnControl" runat="server" width="100%" >
+    <table width="100%" cellpadding="0" cellspacing="0">
         <tr valign="top" >
         <td width="<%= txtSelect.Width %>" >
             <asp:TextBox ID="txtSelect" runat="server"  autocomplete="off" ValidationGroup="" ></asp:TextBox>

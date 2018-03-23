@@ -62,7 +62,9 @@ namespace UI.Web
 
             List<PageLinkData> urls = new List<PageLinkData>();
             urls.Add(new PageLinkData() { Text = "Generales", Url = "~/Proyecto/ProyectoPageEdit.aspx", IsNewVisible = true });
-            //if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
+
+//TODO: volver a ocultar
+if (ProyectoAlcanceGeograficoRead) urls.Add(new PageLinkData() { Text = "Alcance Geográfico", Url = "~/Proyecto/ProyectoAlcanceGeograficoPageEdit.aspx" });
             if (ProyectoPrincipiosRead) urls.Add(new PageLinkData() { Text = "Principios Conceptuales de Formulación", Url = "~/Proyecto/ProyectoPrincipiosPageEdit.aspx" });
             //if (ProyectoObjetivosRead) urls.Add(new PageLinkData() { Text = "Objetivos", Url = "~/Proyecto/ProyectoObjetivosPageEdit.aspx" });            
             //if (ProyectoProductoIntermedioRead) urls.Add(new PageLinkData() { Text = "Producto Intermedio", Url = "~/Proyecto/ProyectoProductoIntermedioPageEdit.aspx" });

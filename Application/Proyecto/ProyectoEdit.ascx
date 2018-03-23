@@ -46,14 +46,14 @@
 
             <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
-                    <td style="width:205px" >
+                    <td style="width:115px" >
                         <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
                     </td>
                     <td colspan="6">
                         <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
                     </td>
                     <td class="filaValidator">&nbsp;
-	                    <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+	                    <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -63,8 +63,8 @@
                         <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
                     </td>
                     <td class="filaValidator">&nbsp;
-	                    <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                        <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+	                    <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -75,8 +75,8 @@
                         <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
                     </td>
                     <td class="filaValidator">&nbsp;
-	                    <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
-                        <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+	                    <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -84,23 +84,28 @@
                         <asp:Literal ID="Literal1" Text="Cod. Presupuestario" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td style="width:60px">
+                                <asp:TextBox ID="TextBox1" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                ProyectoEtapa.NroEtapa ?
+                            </td>
+                            <td style="width:50px">
+                                <asp:Literal ID="Literal2" runat="server" Text="Actividad"></asp:Literal>
+                            </td>
+                            <td style="width:60px">
+                                <asp:TextBox ID="TextBox2" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                            </td>
+                            <td style="width:50px">
+                                <asp:Literal ID="Literal3" runat="server" Text="Obra"></asp:Literal>
+                            </td>
+                            <td style="width:60px">
+                                <asp:TextBox ID="TextBox3" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
                     </td>
-                    <td>
-                        &nbsp;
-                    </td>  
-                    <td colspan="2">
-                        <asp:Literal ID="Literal2" Text="Actividad" runat="server"></asp:Literal>
-                        <asp:TextBox ID="TextBox2" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        <asp:Literal ID="Literal3" Text="Obra" runat="server"></asp:Literal>
-                        <asp:TextBox ID="TextBox3" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
-                    </td>   
-                    <td>
+                    <td colspan="6">
                         &nbsp;
                     </td>             
                 </tr>
@@ -112,8 +117,8 @@
                         <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="rfvDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revDenominacion" runat="server" ControlToValidate="txtDenominacion" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="La Denominación no es válida"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -124,8 +129,8 @@
                         <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="830px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
-                        <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvTipoProyecto" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -135,7 +140,7 @@
                     <td>
                         <asp:TextBox ID="TextBoxxxx3" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
                     </td>
-                    <td>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
                     <td>
                         <asp:Literal ID="Literal6" Text="Requiere Dictamen" runat="server"></asp:Literal>
                     </td>
@@ -161,7 +166,7 @@
                         <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td colspan="3">
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -172,7 +177,7 @@
                         <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16" Width="200px"> </cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyectoPrincipios" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:Literal ID="Literal8" Text="PPP" runat="server"></asp:Literal>
@@ -187,7 +192,7 @@
                         <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
                     </td>
                     <td colspan="7">
-                        <uc:TreeFinalidadFuncion runat="server" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
+                        <uc:TreeFinalidadFuncion runat="server" Width="100%" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
                             ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionFinalidadFuncion"
                             Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>                        
                     </td>
@@ -199,106 +204,117 @@
                     <td colspan="7">
                         <asp:Button ID="Button3" runat="server" Text="Agregar"  />
                         &nbsp;
-                        <asp:TextBox ID="TextBox4" runat="server" TabIndex="19"></asp:TextBox>        
+                        <asp:TextBox ID="TextBox4" runat="server" TabIndex="19" Width="742px"></asp:TextBox>        
                     </td>
                 </tr>
             </table>
-
-            <table width="100%" cellpadding="5px" cellspacing="2px" border="0">
-                <tr>
-                    <td><!-- style="width: 650px"-->
-                        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios" Width="640px">
-                            
-                            <table cellpadding="0" cellspacing="0" border="0px" style="height: 100px">
-                                <tr>
-                                    <td class="tdLabel">
-                                        <asp:Literal ID="liIniciador" Text="Iniciador" runat="server"></asp:Literal></td>
-                                    <td>&nbsp;</td>
-                                    <td class="filaInput">
-                                        <%--<asp:DropDownList ID="ddlIniciador" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
-                                        <%--Matias 20140702 - Tarea 150--%>
-                                        <%--<uc:TreeOficinas runat="server" ID="toIniciador" Width ="250px" TabIndex ="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true"></uc:TreeOficinas>--%>
-                                        <uc:TreeOficinas runat="server" ID="toIniciador" TabIndex="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
-                                        <%--FinMatias 20140702 - Tarea 150--%>
-                                        <%--<asp:ImageButton ID="imgFuncionario1" runat ="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" />--%>
-                                    </td>
-                                    <td class="filaInput">
-                                        <asp:ImageButton ID="imgFuncionario1" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" TabIndex="7" />
-                                    </td>
-                                    <td class="filaValidator">&nbsp;
-                                    <%--    <asp:RequiredFieldValidator ID="rfvIniciador" runat="server" ControlToValidate="ddlIniciador"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"  InitialValue ="0" ></asp:RequiredFieldValidator>--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tdLabel">
-                                        <asp:Literal ID="liEjecutor" Text="Ejecutor" runat="server"></asp:Literal></td>
-                                    <td>&nbsp;</td>
-                                    <td class="filaInput">
-                                        <%--Matias 20140702 - Tarea 150--%>
-                                        <%--<uc:TreeOficinas runat="server" ID="toEjecutor" Width ="250px" TabIndex ="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
-                                        <uc:TreeOficinas runat="server" ID="toEjecutor" Width="250px" TabIndex="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
-                                        <%--FinMatias 20140702 - Tarea 150--%>
-                                        <%--<asp:DropDownList ID="ddlEjecutor" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
-                                    </td>
-                                    <td class="filaInput">
-                                        <asp:ImageButton ID="imgFuncionario2" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario2_Click" TabIndex="9" />
-                                    </td>
-                                    <td class="filaValidator">&nbsp;
-                                       <%--   <asp:RequiredFieldValidator ID="rfvEjecutor" runat="server" ControlToValidate="ddlEjecutor"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px" InitialValue ="0" ></asp:RequiredFieldValidator> --%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tdLabel">
-                                        <asp:Literal ID="liResponsable" Text="Responsable" runat="server"></asp:Literal></td>
-                                    <td>&nbsp;</td>
-                                    <td class="filaInput">
-                                        <%--Matias 20140702 - Tarea 150--%>
-                                        <%--<uc:TreeOficinas runat="server" ID="toResponsable" Width ="250px" TabIndex ="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
-                                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="250px" TabIndex="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
-                                        <%--FinMatias 20140702 - Tarea 150--%>
-                                        <%--<asp:DropDownList ID="ddlResponsable" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
-                                    </td>
-                                    <td class="filaInput">
-                                        <asp:ImageButton ID="imgFuncionario3" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario3_Click" TabIndex="11" />
-                                    </td>
-                                    <td class="filaValidator">&nbsp;
-                                        <%--<asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable"  ValidationGroup="EditionProyectoPrincipios"   Text="*" Width="1px" Height="1px"   InitialValue ="0" ></asp:RequiredFieldValidator>--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tdLabel">
-                                        <asp:Literal ID="liSectorialista" Text="Sectorialista" runat="server"></asp:Literal></td>
-                                    <td>&nbsp;</td>
-                                    <td class="filaInput">
-                                        <asp:Label ID="lbSectorialista" runat="server"></asp:Label>
-                                    </td>
-                                    <td class="filaValidator">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-        
-        
         </asp:Panel>
-        <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Solicitud de Presupuesto">
-            <table width="100%">
+
+        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios">
+                            
+            <table cellpadding="0" cellspacing="0" border="0px" style="height: 100px">
                 <tr>
-                    <td>
-                        <asp:LinkButton ID="lnkPlan" runat="server" Text="Editar Plan" OnClick="btAgregarProyectoPlan_Click" TabIndex="21"></asp:LinkButton>
+                    <td class="tdLabel">
+                        <asp:Literal ID="liIniciador" Text="Iniciador" runat="server"></asp:Literal></td>
+                    <td>&nbsp;</td>
+                    <td class="filaInput">
+                        <%--<asp:DropDownList ID="ddlIniciador" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
+                        <%--Matias 20140702 - Tarea 150--%>
+                        <%--<uc:TreeOficinas runat="server" ID="toIniciador" Width ="250px" TabIndex ="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true"></uc:TreeOficinas>--%>
+                        <uc:TreeOficinas runat="server" ID="toIniciador" TabIndex="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <%--FinMatias 20140702 - Tarea 150--%>
+                        <%--<asp:ImageButton ID="imgFuncionario1" runat ="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" />--%>
                     </td>
-                    <td>
-                        <b><asp:Label ID="lbPlan" runat="server"></asp:Label></b>
+                    <td class="filaInput">
+                        <asp:ImageButton ID="imgFuncionario1" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" TabIndex="7" />
+                    </td>
+                    <td class="filaValidator">&nbsp;
+                    <%--    <asp:RequiredFieldValidator ID="rfvIniciador" runat="server" ControlToValidate="ddlIniciador"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"  InitialValue ="0" ></asp:RequiredFieldValidator>--%>
                     </td>
                 </tr>
                 <tr>
+                    <td class="tdLabel">
+                        <asp:Literal ID="liEjecutor" Text="Ejecutor" runat="server"></asp:Literal></td>
+                    <td>&nbsp;</td>
+                    <td class="filaInput">
+                        <%--Matias 20140702 - Tarea 150--%>
+                        <%--<uc:TreeOficinas runat="server" ID="toEjecutor" Width ="250px" TabIndex ="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
+                        <uc:TreeOficinas runat="server" ID="toEjecutor" Width="250px" TabIndex="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <%--FinMatias 20140702 - Tarea 150--%>
+                        <%--<asp:DropDownList ID="ddlEjecutor" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
+                    </td>
+                    <td class="filaInput">
+                        <asp:ImageButton ID="imgFuncionario2" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario2_Click" TabIndex="9" />
+                    </td>
+                    <td class="filaValidator">&nbsp;
+                        <%--   <asp:RequiredFieldValidator ID="rfvEjecutor" runat="server" ControlToValidate="ddlEjecutor"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px" InitialValue ="0" ></asp:RequiredFieldValidator> --%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">
+                        <asp:Literal ID="liResponsable" Text="Responsable" runat="server"></asp:Literal></td>
+                    <td>&nbsp;</td>
+                    <td class="filaInput">
+                        <%--Matias 20140702 - Tarea 150--%>
+                        <%--<uc:TreeOficinas runat="server" ID="toResponsable" Width ="250px" TabIndex ="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
+                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="250px" TabIndex="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <%--FinMatias 20140702 - Tarea 150--%>
+                        <%--<asp:DropDownList ID="ddlResponsable" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
+                    </td>
+                    <td class="filaInput">
+                        <asp:ImageButton ID="imgFuncionario3" runat="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario3_Click" TabIndex="11" />
+                    </td>
+                    <td class="filaValidator">&nbsp;
+                        <%--<asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable"  ValidationGroup="EditionProyecto"   Text="*" Width="1px" Height="1px"   InitialValue ="0" ></asp:RequiredFieldValidator>--%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">
+                        <asp:Literal ID="liSectorialista" Text="Sectorialista" runat="server"></asp:Literal></td>
+                    <td>&nbsp;</td>
+                    <td class="filaInput">
+                        <asp:Label ID="lbSectorialista" runat="server"></asp:Label>
+                    </td>
+                    <td class="filaValidator">&nbsp;</td>
+                </tr>
+            </table>
+        </asp:Panel>
+       
+        <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Solicitud de Presupuesto">
+            <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
+                <tr>
+                    <td style="width:115px" >
+                        <asp:Button ID="lnkPlan" runat="server" Text="Agregar" OnClick="btAgregarProyectoPlan_Click" TabIndex="20"></asp:Button>
+                    </td>
                     <td>
+                        <asp:Button ID="lnkHistorial" runat="server" Text="Historial" OnClick="btHistorialProyectoPlan_Click" TabIndex="21"></asp:Button>
+                    </td>
+                    <td colspan="6">
+                        <b><%-- <asp:Label ID="lbPlan" runat="server"></asp:Label> --%></b>
+                        <asp:Literal ID="liUltimaSolicitud" runat="server" Text="Ultima Solicitud Registrada:"></asp:Literal>
+                        <asp:TextBox ID="txtUltimaSolicitud" runat="server" Enabled="false" TabIndex="19" Width="435px"></asp:TextBox> 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:115px">
                         <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
-                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="18" Width="200px"></cc:ExtendedDropDownList>
-                        <asp:Literal ID="Literal7" runat="server" Text="Subprioridad"></asp:Literal>
-                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="19"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
+                    </td>
+                    <td>
+                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="22" Width="200px"></cc:ExtendedDropDownList>
+                    </td>
+                    <td colspan="3">
+                        <asp:Literal ID="liSubPrioridad" runat="server" Text="Subprioridad"></asp:Literal>
+                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="23"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
                     </td>
                 </tr>
             </table>
@@ -906,7 +922,8 @@
         PopupDragHandleControlID="FinalidadFuncionPopUpDragHandle" PopupControlID="PopUpFinalidadFuncion"
         OkControlID="Button3" TargetControlID="Button3" BackgroundCssClass="modalBackground" />
 </asp:Panel>--%>
-<%--PopUp Plan--%>
+
+<%--PopUp Plan Agregar--%>
 <asp:Panel ID="PopUpPlan" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="PlanPopUpDragHandle" runat="server" Style="cursor: move;">
         <table width="100%" cellpadding="0" cellspacing="5">
@@ -977,6 +994,41 @@
                         </tr>
                     </table>
                 </asp:Panel>
+                <asp:ValidationSummary ID="vsPlanPopUp" runat="server" DisplayMode="BulletList" ValidationGroup="PlanPopUp" ShowSummary="False" ShowMessageBox="True"></asp:ValidationSummary>
+                <%--<table width="100%">
+                    <tr>
+                        <td align="center">                                
+                            <asp:Button ID="btSavePlan" Text="Aceptar" OnClick="btSavePlan_Click" runat="server" ValidationGroup="vgPlan" />
+                            <asp:Button ID="btNewPlan" Text="Aceptar y Crear Nuevo" OnClick="btNewPlan_Click" runat="server"
+                                ValidationGroup="vgPlan" />
+                            <asp:Button ID="btCancelPlan" Text="Cerrar" OnClick="btCancelPlan_Click"
+                                runat="server" Width="60px" />                                
+                        </td>
+                    </tr>
+                </table>--%>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderPlan" runat="server" CancelControlID="Button4"
+        PopupDragHandleControlID="PlanPopUpDragHandle" PopupControlID="PopUpPlan"
+        OkControlID="Button4" TargetControlID="Button4" BackgroundCssClass="modalBackground" />
+</asp:Panel>
+<%--PopUp Plan Historial--%>
+<asp:Panel ID="PopUpPlanHistorial" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
+    <asp:Panel ID="PlanHistorialPopUpDragHandle" runat="server" Style="cursor: move;">
+        <table width="100%" cellpadding="0" cellspacing="5">
+            <tr class="menutoppopup">
+                <th align="center" height="10">
+                    <asp:Label ID="headerPopUpPlanHistorial" runat="server" Text="Plan" />
+                </th>
+
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnPlanHistorial" runat="server">
+        <asp:UpdatePanel ID="upPlanHistorialPopUp" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
                 <table width="100%">
                     <tr>
                         <td>
@@ -1010,29 +1062,19 @@
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                    </tr>
-                </table>
-                <asp:ValidationSummary ID="vsPlanPopUp" runat="server" DisplayMode="BulletList" ValidationGroup="PlanPopUp" ShowSummary="False" ShowMessageBox="True"></asp:ValidationSummary>
-
-                <%--<table width="100%">
-                    <tr>
-                        <td align="center">                                
-                            <asp:Button ID="btSavePlan" Text="Aceptar" OnClick="btSavePlan_Click" runat="server" ValidationGroup="vgPlan" />
-                            <asp:Button ID="btNewPlan" Text="Aceptar y Crear Nuevo" OnClick="btNewPlan_Click" runat="server"
-                                ValidationGroup="vgPlan" />
-                            <asp:Button ID="btCancelPlan" Text="Cerrar" OnClick="btCancelPlan_Click"
-                                runat="server" Width="60px" />                                
+                        <td align="center">
+                            <asp:Button ID="Button10" runat="server" Text="Cerrar"
+                                OnClick="btCerrarProyectoPlanHistorial_Click" />
                         </td>
                     </tr>
-                </table>--%>
-            </ContentTemplate>
+                </table>
+             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
-    <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
-    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderPlan" runat="server" CancelControlID="Button4"
-        PopupDragHandleControlID="PlanPopUpDragHandle" PopupControlID="PopUpPlan"
-        OkControlID="Button4" TargetControlID="Button4" BackgroundCssClass="modalBackground" />
+    <asp:Button ID="Button11" runat="server" Text="Button" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderPlanHistorial" runat="server" CancelControlID="Button11"
+        PopupDragHandleControlID="PlanHistorialPopUpDragHandle" PopupControlID="PopUpPlanHistorial"
+        OkControlID="Button11" TargetControlID="Button11" BackgroundCssClass="modalBackground" />
 </asp:Panel>
 
 <%--PopUp Origen Financiamiento--%>

@@ -38,10 +38,10 @@ namespace UI.Web
         protected override void _Load()
         {
 
-            this.toEjecutor.Width = 390;
-            this.toIniciador.Width = 390;
-            this.toResponsable.Width = 390;
-            this.toFinalidadFuncion.Width = 600;
+            this.toEjecutor.Width = 832;
+            this.toIniciador.Width = 832;
+            this.toResponsable.Width = 832;
+            this.toFinalidadFuncion.Width = 832;
             base._Load();
         }
         public void SetSelectedItemByText(DropDownList dd, string text)
@@ -64,18 +64,25 @@ namespace UI.Web
             //20180320 revJustificacionDemora.ValidationExpression = Contract.DataHelper.GetExpRegString(8000);
             revPrioridad.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
             UIHelper.Load<nc.ProyectoTipo>(ddlTipoProyecto, ProyectoTipoService.Current.GetList(new nc.ProyectoTipoFilter() { Activo = true }), "Nombre", "IdProyectoTipo", new ProyectoTipo() { IdProyectoTipo = 0, Nombre = "Seleccione Clasificación" });
-            UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new Estado() { IdEstado = 0, Nombre = "Seleccione Estado" }, true, "Orden", typeof(Int32));
+            //UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new Estado() { IdEstado = 0, Nombre = "Seleccione Estado" }, true, "Orden", typeof(Int32));
+            UIHelper.Load<nc.SistemaEntidadEstado>(ddlEstado, SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new SistemaEntidadEstado() { IdEstado = 0, Nombre = "Seleccione Etapa" }, true, "Nombre", typeof(Int32));
+
             //ddlEstado.ToolTip = Translate("TooltipTipoProyecto");
             UIHelper.Load<nc.ModalidadContratacion>(ddlModalidadContratacion, ModalidadContratacionService.Current.GetList(new nc.ModalidadContratacionFilter() { Activo = true }), "Nombre", "IdModalidadContratacion");//, new ModalidadContratacion() { IdModalidadContratacion = 0, Nombre = "No definido aún" }
             SetSelectedItemByText(ddlModalidadContratacion,"No definido aún");
             UIHelper.Load<nc.OrganismoPrioridad>(ddlPrioridad, OrganismoPrioridadService.Current.GetList(new nc.OrganismoPrioridadFilter() { Activo = true }), "Nombre", "IdOrganismoPrioridad", new nc.OrganismoPrioridad() { IdOrganismoPrioridad = 0, Nombre = "Seleccione Prioridad" });
             UIHelper.Load<nc.ProyectoRelacionTipo>(ddlTipoRelacionProyectoRelacionado, ProyectoRelacionTipoService.Current.GetList(new nc.ProyectoRelacionTipoFilter() { Activo = true }), "Nombre", "IdProyectoRelacionTipo", new nc.ProyectoRelacionTipo() { IdProyectoRelacionTipo = 0, Nombre = "Seleccione tipo de Relacion" });
 
+
+            this.toFinalidadFuncion.RequiredValue = true;
+            this.toFinalidadFuncion.RequiredMessage = TranslateFormat("FieldIsNull", "Finalidad Función");
+            this.toFinalidadFuncion.ValidationGroup = "EditionProyecto";
+            rfvTipoProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Imputación presupuestaría");
+            rfvTipoProyecto2.ErrorMessage = TranslateFormat("FieldIsNull", "Imputación presupuestaría");
+            rfvTipoProyecto.ValidationGroup = "EditionProyecto";
+            rfvTipoProyecto2.ValidationGroup = "EditionProyecto";
+
             //rfvTipoProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Clasificación Económica");
-            //Matias 20141014 - Tarea 157
-            rfvTipoProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "TipoProyecto");
-            rfvTipoProyecto2.ErrorMessage = TranslateFormat("FieldIsNull", "TipoProyecto");
-            //FinMatias 20141014 - Tarea 157
             rfvSAF.ErrorMessage = TranslateFormat("FieldIsNull", "Saf");
             rfvPrograma.ErrorMessage = TranslateFormat("FieldIsNull", "Programa");
             rfvPrograma2.ErrorMessage = TranslateFormat("FieldIsNull", "Programa");
@@ -106,7 +113,6 @@ namespace UI.Web
             rfvSAFTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "SAF");
             //rfvJurisdiccionTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "Jurisdición"); //Matias 20140403 - Tarea 122
             //rfvProvinciaTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "Provincia"); //Matias 20140403 - Tarea 122
-
         }
         public override void Clear()
         {
@@ -147,30 +153,6 @@ namespace UI.Web
         }
         public override void SetValue()
         {
-            #region Old
-            //UIHelper.SetValue(ddlTipoProyecto, Entity.IdTipoProyecto);
-            //ddlTipoProyecto.Focus();
-            //    UIHelper.SetValue(ddlSubPrograma, Entity.IdSubPrograma);
-            //UIHelper.SetValue(txtCodigo, Entity.Codigo);
-            //UIHelper.SetValue(txtProyectoDenominacion, Entity.ProyectoDenominacion);
-            //UIHelper.SetValue(txtProyectoSituacionActual, Entity.ProyectoSituacionActual);
-            //UIHelper.SetValue(txtProyectoDescripcion, Entity.ProyectoDescripcion);
-            //UIHelper.SetValue(txtProyectoObservacion, Entity.ProyectoObservacion);
-            //UIHelper.SetValue(ddlEstado, Entity.IdEstado);
-            //UIHelper.SetValue(ddlProceso, Entity.IdProceso);
-            //UIHelper.SetValue(ddlModalidadContratacion, Entity.IdModalidadContratacion);
-            //UIHelper.SetValue(ddlFinalidadFuncion, Entity.IdFinalidadFuncion);
-            //UIHelper.SetValue(ddlOrganismoPrioridad, Entity.IdOrganismoPrioridad);
-            //UIHelper.SetValue(txtSubPrioridad, Entity.SubPrioridad);
-            //UIHelper.SetValue(chkBorrador, Entity.Borrador);
-            //UIHelper.SetValue(txtNroProyecto, Entity.NroProyecto);
-            //UIHelper.SetValue(txtAnioCorriente, Entity.AnioCorriente);
-            //UIHelper.SetValue(diFechaInicio, Entity.FechaInicio);
-            //UIHelper.SetValue(diFechaFin, Entity.FechaFin);
-            //UIHelper.SetValue(diFechaAlta, Entity.FechaAlta);
-            //UIHelper.SetValue(diFechaModificacion, Entity.FechaModificacion);
-            //UIHelper.SetValue(txtIdUsuarioModificacion, Entity.IdUsuarioModificacion);
-            #endregion
             SetPermissions();
             List<SafResult> safs;
             if (UIContext.Current.ContextUser.User.AccesoTotal || CrudAction != CrudActionEnum.Create)
@@ -394,7 +376,11 @@ namespace UI.Web
         }
         private void CargarProcesos()
         {
-            Int32 idTipoProyecto = UIHelper.GetInt(ddlTipoProyecto);
+            //Contribucion --> ya no se vincula con idproyectotipo
+            UIHelper.Load<Proceso>(ddlProceso, ProcesoService.Current.GetList(new nc.ProcesoFilter() { Activo = true }), "Nombre", "IdProceso", new Proceso() { IdProceso = 0, Nombre = "Seleccione Contribución" });
+            ddlProceso.Enabled = true;
+
+            /*Int32 idTipoProyecto = UIHelper.GetInt(ddlTipoProyecto);
             if (idTipoProyecto != 0)
             {
                 UIHelper.Load<Proceso>(ddlProceso, ProcesoService.Current.GetList(new nc.ProcesoFilter() { IdProyectoTipo = idTipoProyecto, Activo = true }), "Nombre", "IdProceso", new Proceso() { IdProceso = 0, Nombre = "Seleccione Proceso" });
@@ -413,7 +399,7 @@ namespace UI.Web
             {
                 UIHelper.ClearItems(ddlProceso);
                 ddlProceso.Enabled = false;
-            }
+            }*/
         }
         private void CargarSectorialista()
         {
@@ -599,6 +585,18 @@ namespace UI.Web
             upPlanPopUp.Update();
             //HabilitarControlesPlan();
         }
+        void HidePopUpProyectoPlanHistorial()
+        {
+            ModalPopupExtenderPlanHistorial.Hide();
+            //upDatosGenerales.Update();
+        }
+        void ShowPopUpProyectoPlanHistorial()
+        {
+            CargarPopUpPlanesHistorial();
+            ModalPopupExtenderPlanHistorial.Show();
+            upPlanHistorialPopUp.Update();
+            //HabilitarControlesPlan();
+        }
 
         #region Carga Dinamica PopUp Planes
         private void CargarPopUpPlanes()
@@ -617,6 +615,10 @@ namespace UI.Web
 
                 PopUpPlanesCargado = true;
             }
+        }
+        private void CargarPopUpPlanesHistorial()
+        {
+            ProyectoPlanRefresh();
         }
         private bool? _PopUpPlanesCargado;
         protected bool PopUpPlanesCargado
@@ -709,7 +711,8 @@ namespace UI.Web
             if (Entity.proyectoPlan.Count == 0)
             {
                 Entity.proyecto.IdProyectoPlan = null;
-                UIHelper.Clear(lbPlan);
+                //UIHelper.Clear(lbPlan);
+                UIHelper.Clear(txtUltimaSolicitud);
                 return;
             }
 
@@ -734,7 +737,8 @@ namespace UI.Web
             }
 
             Entity.proyecto.IdProyectoPlan = ppr.IdProyectoPlan;
-            UIHelper.SetValue(lbPlan, String.Format("{0} {1} {2}", ppr.PlanTipo_Nombre, ppr.PlanPeriodo_Periodo, ppr.PlanVersion_Nombre));
+            //UIHelper.SetValue(lbPlan, String.Format("{0} {1} {2}", ppr.PlanTipo_Nombre, ppr.PlanPeriodo_Periodo, ppr.PlanVersion_Nombre));
+            UIHelper.SetValue(txtUltimaSolicitud, String.Format("{0} {1} {2}", ppr.PlanTipo_Nombre, ppr.PlanPeriodo_Periodo, ppr.PlanVersion_Nombre));            
             upDatosGenerales.Update();
             //Matias 20170131 - Ticket #ER682004
             
@@ -810,9 +814,17 @@ namespace UI.Web
             ProyectoPlanClear();
             HidePopUpProyectoPlan();
         }
+        protected void btCerrarProyectoPlanHistorial_Click(object sender, EventArgs e)
+        {
+            HidePopUpProyectoPlanHistorial();
+        }
         protected void btAgregarProyectoPlan_Click(object sender, EventArgs e)
         {
             UIHelper.CallTryMethod(ShowPopUpProyectoPlan);
+        }
+        protected void btHistorialProyectoPlan_Click(object sender, EventArgs e)
+        {
+            UIHelper.CallTryMethod(ShowPopUpProyectoPlanHistorial);
         }
         protected void ddlTipoPupUp_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -854,7 +866,7 @@ namespace UI.Web
                 Entity.proyectoPlan.Add(ActualProyectoPlan);
             }
             ProyectoPlanClear();
-            ProyectoPlanRefresh();
+            //ProyectoPlanRefresh();
             ActualizarUltimoPlan();
         }
         void CommandProyectoPlanDelete()
@@ -862,7 +874,7 @@ namespace UI.Web
             ProyectoPlanResult result = (from o in Entity.proyectoPlan where o.IdProyectoPlan == ActualProyectoPlan.ID select o).FirstOrDefault();
             Entity.proyectoPlan.Remove(result);
             ProyectoPlanClear();
-            ProyectoPlanRefresh();
+            //ProyectoPlanRefresh();
             ActualizarUltimoPlan();
         }
         #endregion

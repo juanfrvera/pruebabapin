@@ -568,16 +568,34 @@ namespace UI.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPlan;
+        protected global::System.Web.UI.WebControls.Button lnkPlan;
         
         /// <summary>
-        /// lbPlan control.
+        /// lnkHistorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbPlan;
+        protected global::System.Web.UI.WebControls.Button lnkHistorial;
+        
+        /// <summary>
+        /// liUltimaSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal liUltimaSolicitud;
+        
+        /// <summary>
+        /// txtUltimaSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUltimaSolicitud;
         
         /// <summary>
         /// liPrioridad control.
@@ -598,13 +616,13 @@ namespace UI.Web {
         protected global::UI.Web.ExtendedDropDownList ddlPrioridad;
         
         /// <summary>
-        /// Literal7 control.
+        /// liSubPrioridad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal7;
+        protected global::System.Web.UI.WebControls.Literal liSubPrioridad;
         
         /// <summary>
         /// txtPrioridad control.
@@ -1300,24 +1318,6 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Button btCancelarPlan;
         
         /// <summary>
-        /// pnlPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPlan;
-        
-        /// <summary>
-        /// gridPlanPopUp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridPlanPopUp;
-        
-        /// <summary>
         /// vsPlanPopUp control.
         /// </summary>
         /// <remarks>
@@ -1343,6 +1343,96 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtenderPlan;
+        
+        /// <summary>
+        /// PopUpPlanHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PopUpPlanHistorial;
+        
+        /// <summary>
+        /// PlanHistorialPopUpDragHandle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PlanHistorialPopUpDragHandle;
+        
+        /// <summary>
+        /// headerPopUpPlanHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label headerPopUpPlanHistorial;
+        
+        /// <summary>
+        /// pnPlanHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnPlanHistorial;
+        
+        /// <summary>
+        /// upPlanHistorialPopUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upPlanHistorialPopUp;
+        
+        /// <summary>
+        /// pnlPlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPlan;
+        
+        /// <summary>
+        /// gridPlanPopUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridPlanPopUp;
+        
+        /// <summary>
+        /// Button10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button10;
+        
+        /// <summary>
+        /// Button11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button11;
+        
+        /// <summary>
+        /// ModalPopupExtenderPlanHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtenderPlanHistorial;
         
         /// <summary>
         /// PopUpOrigenFinanciamiento control.
