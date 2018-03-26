@@ -2129,6 +2129,11 @@
       <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IdEstadoDeDesicion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="EsPPP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NroActividad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NroObra" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NroProyectoEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NroActividadEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NroObraEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Proyecto_Message" Member="Messages" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Message" />
       <Association Name="Proyecto_ProyectoAlcanceGeografico" Member="ProyectoAlcanceGeograficos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoAlcanceGeografico" />
       <Association Name="Proyecto_ProyectoDemora" Member="ProyectoDemoras" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoDemora" />

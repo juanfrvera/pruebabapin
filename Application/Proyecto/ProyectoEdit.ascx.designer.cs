@@ -139,58 +139,58 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSubPrograma2;
         
         /// <summary>
-        /// Literal1 control.
+        /// litNroProyecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.Literal litNroProyecto;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtNroProyecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtNroProyecto;
         
         /// <summary>
-        /// Literal2 control.
+        /// litActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal2;
+        protected global::System.Web.UI.WebControls.Literal litActividad;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtNroActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtNroActividad;
         
         /// <summary>
-        /// Literal3 control.
+        /// litObra control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal3;
+        protected global::System.Web.UI.WebControls.Literal litObra;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtNroObra control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtNroObra;
         
         /// <summary>
         /// liDenominacion control.

@@ -81,26 +81,25 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="Literal1" Text="Cod. Presupuestario" runat="server"></asp:Literal>
+                        <asp:Literal ID="litNroProyecto" Text="Cod. Presupuestario" runat="server"></asp:Literal>
                     </td>
                     <td>
                     <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td style="width:60px">
-                                <asp:TextBox ID="TextBox1" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
-                                ProyectoEtapa.NroEtapa ?
+                                <asp:TextBox ID="txtNroProyecto" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
                             <td style="width:50px">
-                                <asp:Literal ID="Literal2" runat="server" Text="Actividad"></asp:Literal>
+                                <asp:Literal ID="litActividad" runat="server" Text="Actividad"></asp:Literal>
                             </td>
                             <td style="width:60px">
-                                <asp:TextBox ID="TextBox2" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                <asp:TextBox ID="txtNroActividad" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
                             <td style="width:50px">
-                                <asp:Literal ID="Literal3" runat="server" Text="Obra"></asp:Literal>
+                                <asp:Literal ID="litObra" runat="server" Text="Obra"></asp:Literal>
                             </td>
                             <td style="width:60px">
-                                <asp:TextBox ID="TextBox3" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                <asp:TextBox ID="txtNroObra" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>

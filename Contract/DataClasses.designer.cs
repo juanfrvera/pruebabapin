@@ -53392,6 +53392,16 @@ namespace Contract
 		
 		private System.Nullable<bool> _EsPPP;
 		
+		private System.Nullable<int> _NroActividad;
+		
+		private System.Nullable<int> _NroObra;
+		
+		private System.Nullable<int> _NroProyectoEjecucion;
+		
+		private System.Nullable<int> _NroActividadEjecucion;
+		
+		private System.Nullable<int> _NroObraEjecucion;
+		
 		private EntitySet<Message> _Messages;
 		
 		private EntitySet<ProyectoAlcanceGeografico> _ProyectoAlcanceGeograficos;
@@ -53526,6 +53536,16 @@ namespace Contract
     partial void OnIdEstadoDeDesicionChanged();
     partial void OnEsPPPChanging(System.Nullable<bool> value);
     partial void OnEsPPPChanged();
+    partial void OnNroActividadChanging(System.Nullable<int> value);
+    partial void OnNroActividadChanged();
+    partial void OnNroObraChanging(System.Nullable<int> value);
+    partial void OnNroObraChanged();
+    partial void OnNroProyectoEjecucionChanging(System.Nullable<int> value);
+    partial void OnNroProyectoEjecucionChanged();
+    partial void OnNroActividadEjecucionChanging(System.Nullable<int> value);
+    partial void OnNroActividadEjecucionChanged();
+    partial void OnNroObraEjecucionChanging(System.Nullable<int> value);
+    partial void OnNroObraEjecucionChanged();
     #endregion
 		
 		public Proyecto()
@@ -54153,8 +54173,113 @@ namespace Contract
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NroActividad", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29)]
+		public System.Nullable<int> NroActividad
+		{
+			get
+			{
+				return this._NroActividad;
+			}
+			set
+			{
+				if ((this._NroActividad != value))
+				{
+					this.OnNroActividadChanging(value);
+					this.SendPropertyChanging();
+					this._NroActividad = value;
+					this.SendPropertyChanged("NroActividad");
+					this.OnNroActividadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NroObra", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30)]
+		public System.Nullable<int> NroObra
+		{
+			get
+			{
+				return this._NroObra;
+			}
+			set
+			{
+				if ((this._NroObra != value))
+				{
+					this.OnNroObraChanging(value);
+					this.SendPropertyChanging();
+					this._NroObra = value;
+					this.SendPropertyChanged("NroObra");
+					this.OnNroObraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NroProyectoEjecucion", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31)]
+		public System.Nullable<int> NroProyectoEjecucion
+		{
+			get
+			{
+				return this._NroProyectoEjecucion;
+			}
+			set
+			{
+				if ((this._NroProyectoEjecucion != value))
+				{
+					this.OnNroProyectoEjecucionChanging(value);
+					this.SendPropertyChanging();
+					this._NroProyectoEjecucion = value;
+					this.SendPropertyChanged("NroProyectoEjecucion");
+					this.OnNroProyectoEjecucionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NroActividadEjecucion", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32)]
+		public System.Nullable<int> NroActividadEjecucion
+		{
+			get
+			{
+				return this._NroActividadEjecucion;
+			}
+			set
+			{
+				if ((this._NroActividadEjecucion != value))
+				{
+					this.OnNroActividadEjecucionChanging(value);
+					this.SendPropertyChanging();
+					this._NroActividadEjecucion = value;
+					this.SendPropertyChanged("NroActividadEjecucion");
+					this.OnNroActividadEjecucionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NroObraEjecucion", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33)]
+		public System.Nullable<int> NroObraEjecucion
+		{
+			get
+			{
+				return this._NroObraEjecucion;
+			}
+			set
+			{
+				if ((this._NroObraEjecucion != value))
+				{
+					this.OnNroObraEjecucionChanging(value);
+					this.SendPropertyChanging();
+					this._NroObraEjecucion = value;
+					this.SendPropertyChanged("NroObraEjecucion");
+					this.OnNroObraEjecucionChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_Message", Storage="_Messages", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
 		public EntitySet<Message> Messages
 		{
 			get
@@ -54173,7 +54298,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoAlcanceGeografico", Storage="_ProyectoAlcanceGeograficos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
 		public EntitySet<ProyectoAlcanceGeografico> ProyectoAlcanceGeograficos
 		{
 			get
@@ -54192,7 +54317,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoDemora", Storage="_ProyectoDemoras", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
 		public EntitySet<ProyectoDemora> ProyectoDemoras
 		{
 			get
@@ -54211,7 +54336,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoEvaluacion", Storage="_ProyectoEvaluacions", ThisKey="IdProyecto", OtherKey="Id_Proyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
 		public EntitySet<ProyectoEvaluacion> ProyectoEvaluacions
 		{
 			get
@@ -54230,7 +54355,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoPrincipiosFormulacion", Storage="_ProyectoPrincipiosFormulacions", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=38, EmitDefaultValue=false)]
 		public EntitySet<ProyectoPrincipiosFormulacion> ProyectoPrincipiosFormulacions
 		{
 			get
@@ -54249,7 +54374,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoFin", Storage="_ProyectoFins", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=34, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=39, EmitDefaultValue=false)]
 		public EntitySet<ProyectoFin> ProyectoFins
 		{
 			get
@@ -54268,7 +54393,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoLocalizacion", Storage="_ProyectoLocalizacions", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=35, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=40, EmitDefaultValue=false)]
 		public EntitySet<ProyectoLocalizacion> ProyectoLocalizacions
 		{
 			get
@@ -54287,7 +54412,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoProducto", Storage="_ProyectoProductos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=36, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=41, EmitDefaultValue=false)]
 		public EntitySet<ProyectoProducto> ProyectoProductos
 		{
 			get
@@ -54306,7 +54431,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoProposito", Storage="_ProyectoPropositos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=37, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=42, EmitDefaultValue=false)]
 		public EntitySet<ProyectoProposito> ProyectoPropositos
 		{
 			get
@@ -54325,7 +54450,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoRelacion", Storage="_ProyectoRelacions", ThisKey="IdProyecto", OtherKey="IdProyectoRelacionado")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=38, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=43, EmitDefaultValue=false)]
 		public EntitySet<ProyectoRelacion> ProyectoRelacions
 		{
 			get
@@ -54344,7 +54469,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoRelacion1", Storage="_ProyectoRelacions1", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=39, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=44, EmitDefaultValue=false)]
 		public EntitySet<ProyectoRelacion> ProyectoRelacions1
 		{
 			get
@@ -54363,7 +54488,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoGeoreferenciacion", Storage="_ProyectoGeoreferenciacions", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=40, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=45, EmitDefaultValue=false)]
 		public EntitySet<ProyectoGeoreferenciacion> ProyectoGeoreferenciacions
 		{
 			get
@@ -54382,7 +54507,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoBeneficiarioIndicador", Storage="_ProyectoBeneficiarioIndicadors", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=41, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=46, EmitDefaultValue=false)]
 		public EntitySet<ProyectoBeneficiarioIndicador> ProyectoBeneficiarioIndicadors
 		{
 			get
@@ -54401,7 +54526,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoBeneficioIndicador", Storage="_ProyectoBeneficioIndicadors", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=42, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=47, EmitDefaultValue=false)]
 		public EntitySet<ProyectoBeneficioIndicador> ProyectoBeneficioIndicadors
 		{
 			get
@@ -54420,7 +54545,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoOficinaPerfil", Storage="_ProyectoOficinaPerfils", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=43, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=48, EmitDefaultValue=false)]
 		public EntitySet<ProyectoOficinaPerfil> ProyectoOficinaPerfils
 		{
 			get
@@ -54439,7 +54564,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoFile", Storage="_ProyectoFiles", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=44, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=49, EmitDefaultValue=false)]
 		public EntitySet<ProyectoFile> ProyectoFiles
 		{
 			get
@@ -54458,7 +54583,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoShapeFile", Storage="_ProyectoShapeFiles", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=45, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=50, EmitDefaultValue=false)]
 		public EntitySet<ProyectoShapeFile> ProyectoShapeFiles
 		{
 			get
@@ -54477,7 +54602,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoSeguimientoProyecto", Storage="_ProyectoSeguimientoProyectos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=46, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=51, EmitDefaultValue=false)]
 		public EntitySet<ProyectoSeguimientoProyecto> ProyectoSeguimientoProyectos
 		{
 			get
@@ -54496,7 +54621,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoPlan", Storage="_ProyectoPlans", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=47, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=52, EmitDefaultValue=false)]
 		public EntitySet<ProyectoPlan> ProyectoPlans
 		{
 			get
@@ -54515,7 +54640,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_PrestamoProducto", Storage="_PrestamoProductos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=48, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=53, EmitDefaultValue=false)]
 		public EntitySet<PrestamoProducto> PrestamoProductos
 		{
 			get
@@ -54534,7 +54659,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoPrioridad", Storage="_ProyectoPrioridads", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=49, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=54, EmitDefaultValue=false)]
 		public EntitySet<ProyectoPrioridad> ProyectoPrioridads
 		{
 			get
@@ -54553,7 +54678,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoIndicadorEconomico", Storage="_ProyectoIndicadorEconomicos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=50, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=55, EmitDefaultValue=false)]
 		public EntitySet<ProyectoIndicadorEconomico> ProyectoIndicadorEconomicos
 		{
 			get
@@ -54572,7 +54697,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoIndicadorPriorizacion", Storage="_ProyectoIndicadorPriorizacions", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=51, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=56, EmitDefaultValue=false)]
 		public EntitySet<ProyectoIndicadorPriorizacion> ProyectoIndicadorPriorizacions
 		{
 			get
@@ -54591,7 +54716,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoComentarioTecnico", Storage="_ProyectoComentarioTecnicos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=52, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=57, EmitDefaultValue=false)]
 		public EntitySet<ProyectoComentarioTecnico> ProyectoComentarioTecnicos
 		{
 			get
@@ -54610,7 +54735,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoEtapa", Storage="_ProyectoEtapas", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=53, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=58, EmitDefaultValue=false)]
 		public EntitySet<ProyectoEtapa> ProyectoEtapas
 		{
 			get
@@ -54629,7 +54754,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoCalidad", Storage="_ProyectoCalidads", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=54, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=59, EmitDefaultValue=false)]
 		public EntitySet<ProyectoCalidad> ProyectoCalidads
 		{
 			get
@@ -54648,7 +54773,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoOrigenFinanciamiento", Storage="_ProyectoOrigenFinanciamientos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=55, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=60, EmitDefaultValue=false)]
 		public EntitySet<ProyectoOrigenFinanciamiento> ProyectoOrigenFinanciamientos
 		{
 			get
@@ -54667,7 +54792,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_EstadoDeDesicionHistorico", Storage="_EstadoDeDesicionHistoricos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=56, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=61, EmitDefaultValue=false)]
 		public EntitySet<EstadoDeDesicionHistorico> EstadoDeDesicionHistoricos
 		{
 			get

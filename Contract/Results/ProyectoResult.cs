@@ -89,6 +89,11 @@ namespace Contract
         public bool Activo { get; set; }
         public int? IdEstadoDeDesicion { get; set; }
         public bool? EsPPP { get; set; }
+        public int? NroActividad { get; set; }
+        public int? NroObra { get; set; }
+        public int? NroProyectoEjecucion { get; set; }
+        public int? NroActividadEjecucion { get; set; }
+        public int? NroObraEjecucion { get; set; }
 
         public string Estado_Nombre { get; set; }
         //public string Estado_Codigo { get; set; }
@@ -233,6 +238,12 @@ namespace Contract
             _Proyecto.EvaluarValidaciones = this.EvaluarValidaciones;
             _Proyecto.Activo = this.Activo;
             _Proyecto.IdEstadoDeDesicion = this.IdEstadoDeDesicion;
+            _Proyecto.EsPPP = this.EsPPP;
+            _Proyecto.NroActividad = this.NroActividad;
+            _Proyecto.NroObra = this.NroObra;
+            _Proyecto.NroProyectoEjecucion = this.NroProyectoEjecucion;
+            _Proyecto.NroActividadEjecucion = this.NroActividadEjecucion;
+            _Proyecto.NroObraEjecucion = this.NroObraEjecucion;
 
             return _Proyecto;
         }
@@ -265,6 +276,12 @@ namespace Contract
             this.EvaluarValidaciones = entity.EvaluarValidaciones;
             this.Activo = entity.Activo;
             this.IdEstadoDeDesicion = entity.IdEstadoDeDesicion;
+            this.EsPPP = entity.EsPPP;
+            this.NroActividad = entity.NroActividad;
+            this.NroObra = entity.NroObra;
+            this.NroProyectoEjecucion = entity.NroProyectoEjecucion;
+            this.NroActividadEjecucion = entity.NroActividadEjecucion;
+            this.NroObraEjecucion = entity.NroObraEjecucion;
 
         }
         public virtual bool Equals(Proyecto entity)
@@ -297,13 +314,15 @@ namespace Contract
             if (!entity.EvaluarValidaciones.Equals(this.EvaluarValidaciones)) return false;
             if (!entity.Activo.Equals(this.Activo)) return false;
             if ((entity.IdEstadoDeDesicion == null) ? (this.IdEstadoDeDesicion.HasValue && this.IdEstadoDeDesicion.Value > 0) : !entity.IdEstadoDeDesicion.Equals(this.IdEstadoDeDesicion)) return false;
+            if ((entity.EsPPP == null) ? this.EsPPP != null : !entity.EsPPP.Equals(this.EsPPP)) return false;
+            if ((entity.NroActividad == null) ? this.NroActividad != null : !entity.NroActividad.Equals(this.NroActividad)) return false;
+            if ((entity.NroObra == null) ? this.NroObra != null : !entity.NroObra.Equals(this.NroObra)) return false;
+            if ((entity.NroProyectoEjecucion == null) ? this.NroProyectoEjecucion != null : !entity.NroProyectoEjecucion.Equals(this.NroProyectoEjecucion)) return false;
+            if ((entity.NroActividadEjecucion == null) ? this.NroActividadEjecucion != null : !entity.NroActividadEjecucion.Equals(this.NroActividadEjecucion)) return false;
+            if ((entity.NroObraEjecucion == null) ? this.NroObraEjecucion != null : !entity.NroObraEjecucion.Equals(this.NroObraEjecucion)) return false;
 
             return true;
         }
-
-       
-
-
     }
 
     #region Reports
@@ -324,11 +343,16 @@ namespace Contract
         public DateTime? FechaFinEjecucionCalculada { get; set; }
         public int? IdProyectoPlan { get; set; }
         public int? NroBienUso { get; set; }
-        public int? NroObra { get; set; }
+        //public int? NroObra { get; set; }
         public int? NroProyectoPresupuestario { get; set; }
         public string Estado_Nombre { get; set; }
         public string Plan_Nombre { get; set; }
 
+        public int? NroActividad { get; set; }
+        public int? NroObra { get; set; }
+        public int? NroProyectoEjecucion { get; set; }
+        public int? NroActividadEjecucion { get; set; }
+        public int? NroObraEjecucion { get; set; }
 
         public DataTableMapping ToMapping()
         {

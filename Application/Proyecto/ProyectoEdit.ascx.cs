@@ -138,6 +138,10 @@ namespace UI.Web
             UIHelper.Clear(txtObservaciones);
             UIHelper.Clear(toFinalidadFuncion);
             UIHelper.Clear(cbEsPPP);
+            UIHelper.Clear(txtNroProyecto);
+            UIHelper.Clear(txtNroActividad);
+            UIHelper.Clear(txtNroObra);
+            
 
             if (CrudAction == CrudActionEnum.Create)
             {
@@ -222,6 +226,9 @@ namespace UI.Web
             UIHelper.SetValue(dlFuncionarioResponsable, Entity.proyectoOficinaPerfilFuncionarioResponsable.OrderBy(i => i.Usuario_ApellidoYNombre));
             UIHelper.SetValue(toFinalidadFuncion, Entity.proyecto.IdFinalidadFuncion);
             UIHelper.SetValue(cbEsPPP, Entity.proyecto.EsPPP);
+            UIHelper.SetValue(txtNroProyecto, String.Format("{0:00}", Entity.proyecto.NroProyecto));
+            UIHelper.SetValue(txtNroActividad, String.Format("{0:00}", Entity.proyecto.NroActividad));
+            UIHelper.SetValue(txtNroObra, String.Format("{0:00}", Entity.proyecto.NroObra));
             ProyectoPlanRefresh();
             ActualizarUltimoPlan();
             upDatosGenerales.Update();
@@ -279,6 +286,10 @@ namespace UI.Web
             }
             Entity.proyecto.IdFinalidadFuncion = UIHelper.GetIntNullable(toFinalidadFuncion);
             Entity.proyecto.EsPPP = UIHelper.GetBoolean(cbEsPPP);
+            Entity.proyecto.NroProyecto = UIHelper.GetIntNullable(txtNroProyecto);
+            Entity.proyecto.NroActividad = UIHelper.GetIntNullable(txtNroActividad);
+            Entity.proyecto.NroObra = UIHelper.GetIntNullable(txtNroObra);
+
             ProyectoOficinaPerfilGetValue();
             Update(dlFuncionarioIniciador, Entity.proyectoOficinaPerfilFuncionarioIniciador);
             Update(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor);

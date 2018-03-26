@@ -36,6 +36,11 @@ namespace Contract.Base
 		 public bool Activo{get;set;}
 		 public int? IdEstadoDeDesicion{get;set;}
          public bool? EsPPP { get; set; }
+         public int? NroActividad { get; set; }
+         public int? NroObra { get; set; }
+         public int? NroProyectoEjecucion { get; set; }
+         public int? NroActividadEjecucion { get; set; }
+         public int? NroObraEjecucion { get; set; }
 
 		 public string Estado_Nombre{get;set;}	
 	public string Estado_Codigo{get;set;}	
@@ -110,6 +115,11 @@ namespace Contract.Base
 		 _Proyecto.Activo = this.Activo;
 		 _Proyecto.IdEstadoDeDesicion = this.IdEstadoDeDesicion;
          _Proyecto.EsPPP = this.EsPPP;
+         _Proyecto.NroActividad = this.NroActividad;
+         _Proyecto.NroObra = this.NroObra;
+         _Proyecto.NroProyectoEjecucion = this.NroProyectoEjecucion;
+         _Proyecto.NroActividadEjecucion = this.NroActividadEjecucion;
+         _Proyecto.NroObraEjecucion = this.NroObraEjecucion;
 
 		  return _Proyecto;
 		}		
@@ -142,7 +152,12 @@ namespace Contract.Base
 		  this.EvaluarValidaciones= entity.EvaluarValidaciones ;
 		  this.Activo= entity.Activo ;
 		  this.IdEstadoDeDesicion= entity.IdEstadoDeDesicion ;
-          this.EsPPP = entity.EsPPP;		  
+          this.EsPPP = entity.EsPPP;
+          this.NroActividad = entity.NroActividad;
+          this.NroObra = entity.NroObra;
+          this.NroProyectoEjecucion = entity.NroProyectoEjecucion;
+          this.NroActividadEjecucion = entity.NroActividadEjecucion;
+          this.NroObraEjecucion = entity.NroObraEjecucion;
 		}		
 		public virtual bool Equals(Proyecto entity)
         {
@@ -175,6 +190,11 @@ namespace Contract.Base
 		  if(!entity.Activo.Equals(this.Activo))return false;
 		  if((entity.IdEstadoDeDesicion == null)?(this.IdEstadoDeDesicion.HasValue && this.IdEstadoDeDesicion.Value > 0):!entity.IdEstadoDeDesicion.Equals(this.IdEstadoDeDesicion))return false;
           if ((entity.EsPPP == null) ? this.EsPPP != null : !entity.EsPPP.Equals(this.EsPPP)) return false;
+          if ((entity.NroActividad == null) ? this.NroActividad != null : !entity.NroActividad.Equals(this.NroActividad)) return false;
+          if ((entity.NroObra == null) ? this.NroObra != null : !entity.NroObra.Equals(this.NroObra)) return false;
+          if ((entity.NroProyectoEjecucion == null) ? this.NroProyectoEjecucion != null : !entity.NroProyectoEjecucion.Equals(this.NroProyectoEjecucion)) return false;
+          if ((entity.NroActividadEjecucion == null) ? this.NroActividadEjecucion != null : !entity.NroActividadEjecucion.Equals(this.NroActividadEjecucion)) return false;
+          if ((entity.NroObraEjecucion == null) ? this.NroObraEjecucion != null : !entity.NroObraEjecucion.Equals(this.NroObraEjecucion)) return false;
 		  return true;
         }
 		
@@ -208,6 +228,11 @@ namespace Contract.Base
 			,new DataColumnMapping("Activo","Activo")
 			,new DataColumnMapping("EstadoDeDesicion","EstadoDeDesicion_Nombre")
             ,new DataColumnMapping("EsPPP","EsPPP")
+            ,new DataColumnMapping("NroActividad","NroActividad")
+            ,new DataColumnMapping("NroObra","NroObra")
+            ,new DataColumnMapping("NroProyectoEjecucion","NroProyectoEjecucion")
+            ,new DataColumnMapping("NroActividadEjecucion","NroActividadEjecucion")
+            ,new DataColumnMapping("NroObraEjecucion","NroObraEjecucion")
 			}));
 		}
 	}

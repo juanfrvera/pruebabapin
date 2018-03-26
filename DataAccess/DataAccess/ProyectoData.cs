@@ -84,6 +84,11 @@ namespace DataAccess
             _new.Activo = entity.Activo;
             _new.IdEstadoDeDesicion = entity.IdEstadoDeDesicion;
             _new.EsPPP = entity.EsPPP;
+            _new.NroActividad = entity.NroActividad;
+            _new.NroObra = entity.NroObra;
+            _new.NroProyectoEjecucion = entity.NroProyectoEjecucion;
+            _new.NroActividadEjecucion = entity.NroActividadEjecucion;
+            _new.NroObraEjecucion = entity.NroObraEjecucion;
             return _new;
         }
         public override int CopyAndSave(Proyecto entity, string renameFormat)
@@ -129,6 +134,11 @@ namespace DataAccess
             target.Activo = source.Activo;
             target.IdEstadoDeDesicion = source.IdEstadoDeDesicion;
             target.EsPPP = source.EsPPP;
+            target.NroActividad = source.NroActividad;
+            target.NroObra = source.NroObra;
+            target.NroProyectoEjecucion = source.NroProyectoEjecucion;
+            target.NroActividadEjecucion = source.NroActividadEjecucion;
+            target.NroObraEjecucion = source.NroObraEjecucion;
 
         }
         public override void Set(ProyectoResult source, Proyecto target, bool hadSetId)
@@ -161,6 +171,11 @@ namespace DataAccess
             target.Activo = source.Activo;
             target.IdEstadoDeDesicion = source.IdEstadoDeDesicion;
             target.EsPPP = source.EsPPP;
+            target.NroActividad = source.NroActividad;
+            target.NroObra = source.NroObra;
+            target.NroProyectoEjecucion = source.NroProyectoEjecucion;
+            target.NroActividadEjecucion = source.NroActividadEjecucion;
+            target.NroObraEjecucion = source.NroObraEjecucion;
 
         }
         public override void Set(Proyecto source, ProyectoResult target, bool hadSetId)
@@ -193,6 +208,11 @@ namespace DataAccess
             target.Activo = source.Activo;
             target.IdEstadoDeDesicion = source.IdEstadoDeDesicion;
             target.EsPPP = source.EsPPP;
+            target.NroActividad = source.NroActividad;
+            target.NroObra = source.NroObra;
+            target.NroProyectoEjecucion = source.NroProyectoEjecucion;
+            target.NroActividadEjecucion = source.NroActividadEjecucion;
+            target.NroObraEjecucion = source.NroObraEjecucion;
         }
         public override void Set(ProyectoResult source, ProyectoResult target, bool hadSetId)
         {
@@ -224,6 +244,11 @@ namespace DataAccess
             target.Activo = source.Activo;
             target.IdEstadoDeDesicion = source.IdEstadoDeDesicion;
             target.EsPPP = source.EsPPP;
+            target.NroActividad = source.NroActividad;
+            target.NroObra = source.NroObra;
+            target.NroProyectoEjecucion = source.NroProyectoEjecucion;
+            target.NroActividadEjecucion = source.NroActividadEjecucion;
+            target.NroObraEjecucion = source.NroObraEjecucion;
             target.Estado_Nombre = source.Estado_Nombre;
             //target.Estado_Codigo = source.Estado_Codigo;
             //target.Estado_Orden = source.Estado_Orden;
@@ -302,6 +327,11 @@ namespace DataAccess
             if (!source.Activo.Equals(target.Activo)) return false;
             if ((source.IdEstadoDeDesicion == null) ? (target.IdEstadoDeDesicion.HasValue && target.IdEstadoDeDesicion.Value > 0) : !source.IdEstadoDeDesicion.Equals(target.IdEstadoDeDesicion)) return false;
             if ((source.EsPPP == null) ? (target.EsPPP.HasValue) : !source.EsPPP.Equals(target.EsPPP)) return false;
+            if ((source.NroActividad == null) ? (target.NroActividad.HasValue) : !source.NroActividad.Equals(target.NroActividad)) return false;
+            if ((source.NroObra == null) ? (target.NroObra.HasValue) : !source.NroObra.Equals(target.NroObra)) return false;
+            if ((source.NroProyectoEjecucion == null) ? (target.NroProyectoEjecucion.HasValue) : !source.NroProyectoEjecucion.Equals(target.NroProyectoEjecucion)) return false;
+            if ((source.NroActividadEjecucion == null) ? (target.NroActividadEjecucion.HasValue) : !source.NroActividadEjecucion.Equals(target.NroActividadEjecucion)) return false;
+            if ((source.NroObraEjecucion == null) ? (target.NroObraEjecucion.HasValue) : !source.NroObraEjecucion.Equals(target.NroObraEjecucion)) return false;
             return true;
         }
         public override bool Equals(ProyectoResult source, ProyectoResult target)
@@ -337,6 +367,12 @@ namespace DataAccess
             if (!source.Activo.Equals(target.Activo)) return false;
             if ((source.IdEstadoDeDesicion == null) ? (target.IdEstadoDeDesicion.HasValue && target.IdEstadoDeDesicion.Value > 0) : !source.IdEstadoDeDesicion.Equals(target.IdEstadoDeDesicion)) return false;
             if ((source.EsPPP == null) ? (target.EsPPP.HasValue) : !source.EsPPP.Equals(target.EsPPP)) return false;
+            if ((source.NroActividad == null) ? (target.NroActividad.HasValue) : !source.NroActividad.Equals(target.NroActividad)) return false;
+            if ((source.NroObra == null) ? (target.NroObra.HasValue) : !source.NroObra.Equals(target.NroObra)) return false;
+            if ((source.NroProyectoEjecucion == null) ? (target.NroProyectoEjecucion.HasValue) : !source.NroProyectoEjecucion.Equals(target.NroProyectoEjecucion)) return false;
+            if ((source.NroActividadEjecucion == null) ? (target.NroActividadEjecucion.HasValue) : !source.NroActividadEjecucion.Equals(target.NroActividadEjecucion)) return false;
+            if ((source.NroObraEjecucion == null) ? (target.NroObraEjecucion.HasValue) : !source.NroObraEjecucion.Equals(target.NroObraEjecucion)) return false;
+
             if ((source.Estado_Nombre == null) ? target.Estado_Nombre != null : !((target.Estado_Nombre == String.Empty && source.Estado_Nombre == null) || (target.Estado_Nombre == null && source.Estado_Nombre == String.Empty)) && !source.Estado_Nombre.Trim().Replace("\r", "").Equals(target.Estado_Nombre.Trim().Replace("\r", ""))) return false;
             //if ((source.Estado_Codigo == null) ? target.Estado_Codigo != null : !((target.Estado_Codigo == String.Empty && source.Estado_Codigo == null) || (target.Estado_Codigo == null && source.Estado_Codigo == String.Empty)) && !source.Estado_Codigo.Trim().Replace("\r", "").Equals(target.Estado_Codigo.Trim().Replace("\r", ""))) return false;
             //if (!source.Estado_Orden.Equals(target.Estado_Orden)) return false;
@@ -697,6 +733,11 @@ namespace DataAccess
                                               && (filter.Activo == null || filter.Activo == o.Activo)
                                               && (filter.IdEstadoDeDesicion == null || filter.IdEstadoDeDesicion == 0 || o.IdEstadoDeDesicion == filter.IdEstadoDeDesicion)
                                               && (filter.EsPPP == null || o.EsPPP == filter.EsPPP)
+                                              //&& (filter.NroActividad == null || o.NroActividad >= filter.NroActividad) && (filter.NroActividad_To == null || o.NroActividad <= filter.NroActividad_To)
+                                              //&& (filter.NroObra == null || o.NroObra >= filter.NroObra) && (filter.NroObra_To == null || o.NroObra <= filter.NroObra_To)
+                                              //&& (filter.NroProyectoEjecucion == null || o.NroProyectoEjecucion >= filter.NroProyectoEjecucion) && (filter.NroProyectoEjecucion_To == null || o.NroProyectoEjecucion <= filter.NroProyectoEjecucion_To)
+                                              //&& (filter.NroActividadEjecucion == null || o.NroActividadEjecucion >= filter.NroActividadEjecucion) && (filter.NroActividadEjecucion_To == null || o.NroActividadEjecucion <= filter.NroActividadEjecucion_To)
+                                              //&& (filter.NroObraEjecucion == null || o.NroObraEjecucion >= filter.NroObraEjecucion) && (filter.NroObraEjecucion_To == null || o.NroObraEjecucion <= filter.NroObraEjecucion_To)
                                               && (filter.IdEstadoDeDesicionIsNull == null || filter.IdEstadoDeDesicionIsNull == true || o.IdEstadoDeDesicion != null) && (filter.IdEstadoDeDesicionIsNull == null || filter.IdEstadoDeDesicionIsNull == false || o.IdEstadoDeDesicion == null)
 
                                               && (filter.IdJurisdiccion == null || filter.IdJurisdiccion == 0 || (filter.IdSaf != null && filter.IdSaf != 0) || (from sp in this.Context.SubProgramas where (from p in this.Context.Programas where (from s in this.Context.Safs where s.IdJurisdiccion == filter.IdJurisdiccion select s.IdSaf).Contains(p.IdSAF) select p.IdPrograma).Contains(sp.IdPrograma) select sp.IdSubPrograma).Contains(o.IdSubPrograma))
@@ -1283,6 +1324,16 @@ namespace DataAccess
                              IdEstadoDeDesicion = o.IdEstadoDeDesicion
                              ,
                              EsPPP = o.EsPPP
+                             ,
+                             NroActividad = o.NroActividad
+                             ,
+                             NroObra = o.NroObra
+                             ,
+                             NroProyectoEjecucion = o.NroProyectoEjecucion
+                             ,
+                             NroActividadEjecucion = o.NroActividadEjecucion
+                             ,
+                             NroObraEjecucion = o.NroObraEjecucion
                              ,
                              Estado_Nombre = t1.Nombre
                                  //,FinalidadFuncion_Denominacion = t2 != null ? (string)t2.Denominacion : null
