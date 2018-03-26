@@ -1052,7 +1052,7 @@
                                             </HeaderTemplate>
                                             <ItemTemplate>
                                                 &nbsp;
-                                                <asp:ImageButton ID="imgDelete" runat="server" src="../Images/delete.jpg" ToolTip="Eliminar" CommandName='<%# Command.DELETE %>' OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' Enabled='<%#Eval("Activo") %>' CausesValidation="false" />
+                                                <asp:ImageButton ID="imgDelete" runat="server" src="../Images/delete.jpg" ToolTip="Eliminar" CommandName='<%# Command.DELETE %>' OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' Enabled='<%#Eval("Activo") %>' Visible='<%#Eval("Activo") %>' CausesValidation="false" />
                                             </ItemTemplate>
                                             <ItemStyle Width="50px" HorizontalAlign="Right" />
                                         </asp:TemplateField>
