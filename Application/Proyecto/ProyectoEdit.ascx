@@ -126,7 +126,7 @@
                         <asp:Literal ID="Literal4" Text="Imputación Presupuestaria" runat="server"></asp:Literal>
                     </td>
                     <td colspan="6">
-                        <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="830px" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="830px" Enabled="false" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvTipoProyecto2" runat="server" ControlToValidate="ddlTipoProyecto" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
@@ -135,18 +135,32 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="Literal5" Text="Monto total" runat="server"></asp:Literal>
+                        <asp:Literal ID="Literal5" Text="Costo total" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBoxxxx3" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtCostoTotal" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
                     </td>
-                    <td>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
                     <td>
-                        <asp:Literal ID="Literal6" Text="Requiere Dictamen" runat="server"></asp:Literal>
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvCostoTotal" runat="server" ControlToValidate="txtCostoTotal" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>
+                        <asp:Literal ID="Literal6" Text="Costo Inicial Estimado" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="4">                                    
-                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" />
-                    </td>   
+                    <td>
+                        <asp:TextBox ID="txtCostoInicialEstimado"" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvCostoInicialEstimado" runat="server" ControlToValidate="txtCostoInicialEstimado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>
+
+                    <td>
+                        <asp:Literal ID="Literal1" Text="Ejercicio de estimación" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtEjercicioEstimacion" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvEjercicioEstimacion" runat="server" ControlToValidate="txtEjercicioEstimacion" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                    <td>
                 </tr>
                               
                 <tr>
@@ -165,8 +179,14 @@
                     <td>
                         <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
                     </td>
-                    <td colspan="3">
+                    <td>
                         &nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>                                    
+                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" />
+                    </td>   
+                    <td>
+                        &nbsp;
                     </td>
                 </tr>
                 <tr>

@@ -77,7 +77,6 @@ namespace UI.Web
             UIHelper.Load<nc.OrganismoPrioridad>(ddlPrioridad, OrganismoPrioridadService.Current.GetList(new nc.OrganismoPrioridadFilter() { Activo = true }), "Nombre", "IdOrganismoPrioridad", new nc.OrganismoPrioridad() { IdOrganismoPrioridad = 0, Nombre = "Seleccione Prioridad" });
             UIHelper.Load<nc.ProyectoRelacionTipo>(ddlTipoRelacionProyectoRelacionado, ProyectoRelacionTipoService.Current.GetList(new nc.ProyectoRelacionTipoFilter() { Activo = true }), "Nombre", "IdProyectoRelacionTipo", new nc.ProyectoRelacionTipo() { IdProyectoRelacionTipo = 0, Nombre = "Seleccione tipo de Relacion" });
 
-
             this.toFinalidadFuncion.RequiredValue = true;
             this.toFinalidadFuncion.RequiredMessage = TranslateFormat("FieldIsNull", "Finalidad Función");
             this.toFinalidadFuncion.ValidationGroup = "EditionProyecto";
@@ -178,9 +177,14 @@ namespace UI.Web
                 ddlTipoProyecto.Items.Add(new ListItem() { Value = pt.IdProyectoTipo.ToString(), Text = pt.Nombre.ToString() + " (INACTIVO)" });
             //FinMatias 20170125 - Ticket #ER311422
             
-            UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
+            //UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
             //UIHelper.SetValue(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto);
             CargarProcesos();
+
+           
+            //Establecer TEP
+            CalcularTEP();
+            
 
             //Matias 20131205 - Tarea 91
             if (CrudAction == CrudActionEnum.Create)
@@ -235,6 +239,7 @@ namespace UI.Web
             UIHelper.SetValue(txtNroProyecto, String.Format("{0:00}", Entity.proyecto.NroProyecto));
             UIHelper.SetValue(txtNroActividad, String.Format("{0:00}", Entity.proyecto.NroActividad));
             UIHelper.SetValue(txtNroObra, String.Format("{0:00}", Entity.proyecto.NroObra));
+            CargarProcesos(); //Carga contribucion (ex proceso)
             ProyectoPlanRefresh();
             ActualizarUltimoPlan();
             upDatosGenerales.Update();
@@ -393,6 +398,118 @@ namespace UI.Web
             }
             CargarSectorialista();
         }
+
+
+        private void CalcularTEP()
+        {
+            List<string> incisos = new List<string>();
+            var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.proyecto.IdProyecto });
+            foreach(var proyectoEtapa in proyectoEtapas)
+            {
+                var proyectoEtapaRealizados = ProyectoEtapaRealizadoService.Current.GetResultFromList(new nc.ProyectoEtapaRealizadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                foreach (var proyectoEtapaRealizado in proyectoEtapaRealizados)
+                {
+                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaRealizado.IdClasificacionGasto);
+                    if (! incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                    {
+                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                    }
+                }
+            }
+            //string.Join("|", incisos)
+
+            if (incisos == null || incisos.Count == 0)
+            {
+                SetSelectedItemByText(ddlTipoProyecto, "Sin gastos imputados");
+                return;
+            }
+            else if(
+                (
+                    incisos.Where(x=> x.Equals("04")).Any() &&
+                    !incisos.Where(x=> x.Equals("05")).Any() &&
+                    !incisos.Where(x => x.Equals("06")).Any()
+                )
+                ||
+                (
+                    Entity.proyecto.NroProyecto != null && Entity.proyecto.NroProyecto != 0 && incisos.Where(x => Int32.Parse(x) < 4).Any()
+                )
+                )
+            {
+                //Condición Obligatoria
+                //Inc 4 y no inc. 5 ni inc 6
+                //O (Cód. de Proy <> de vacío ) y (inc 1 y/o 2 y/o  3 -  cualquier combinación de incisos menor a 4)
+                //Otra Condicion Posible
+                //Inc 4 + inc. 1 y/o 2 y/o 3 
+                SetSelectedItemByText(ddlTipoProyecto, "IRD – Inv. Real Directa");
+            }
+            else if (
+                (!incisos.Where(x => x.Equals("04")).Any() &&
+                incisos.Where(x => x.Equals("05")).Any() &&
+                !incisos.Where(x => x.Equals("06")).Any())
+                /* || Por el momento no considerar
+                incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("01")).Any()
+                ||
+                incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("02")).Any()
+                ||
+                incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("03")).Any()*/
+                )
+            {
+                //Condición Obligatoria
+                //Inc 5 y no inc. 4 ni inc 6
+                //Otra Condición Posible
+                //Inc 5 + inc. 1 y/o 2 y/o 3
+                SetSelectedItemByText(ddlTipoProyecto, "Transferencia");
+            }
+            else if (
+               (incisos.Where(x => x.Equals("04")).Any() && (incisos.Where(x => x.Equals("05")).Any() || incisos.Where(x => x.Equals("06")).Any()))
+                ||
+                (incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("06")).Any())
+                ||
+                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+               )
+            {
+                //Condición Obligatoria                             Otra Condición Posible (*1)
+                //Inc 4 y (5 ó 6)                                   inc 4 y (5 ó 6) + inc. 1 y/o 2 y/o 3
+                //O Inc 5 y 6                                       Ó Inc 5 y 6 + inc. 1 y/o 2 y/o 3
+                //O Inc. 6.8.7 y cualquier otro inc. 6              O Inc. 6.8.7 y cualquier otro inc. 6 + inc. 1 y/o 2 y/o 3
+                SetSelectedItemByText(ddlTipoProyecto, "Combinados");
+            }
+            else if (
+                (incisos.Where(x => x.Equals("06")).Any() && (! (incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())))
+                &&
+                ! incisos.Where(x => x.Equals("05")).Any() && 
+                ! incisos.Where(x => x.Equals("04")).Any()
+                )
+            {
+                //Condición Obligatoria
+                //Solo Inc. 6 (con excepción de 6.8.7) y no inc. 4 ni inc 5.
+                SetSelectedItemByText(ddlTipoProyecto, "Inversiones Financieras");
+            }
+            else if (
+                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+                )
+            {
+                //Condición Obligatoria
+                //Únicamente inciso 6.8.7
+                SetSelectedItemByText(ddlTipoProyecto, "Adelanto  a proveedores");
+            }
+            else if (
+                ((Entity.proyecto.NroProyecto == null || Entity.proyecto.NroProyecto == 0) && !incisos.Where(x => Int32.Parse(x) >= 4).Any())
+                )
+            {
+                //Condición Obligatoria
+                //Cód. de Proy= 00 y (inc 1 y/o 2 y/o  3 -cualquier combinación de incisos menor a 4) (*2)
+                //Cualquier combinación de incisos menor a 4: (estos No son proyectos o no tienen cód. presupuestario asignado) 
+                SetSelectedItemByText(ddlTipoProyecto, "Gasto Corriente");
+            }
+            else
+            {
+                UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
+                SetSelectedItemByText(ddlTipoProyecto, "Indefinido");
+                return;
+            }
+        }
+
         private void CargarProcesos()
         {
             //Contribucion --> ya no se vincula con idproyectotipo

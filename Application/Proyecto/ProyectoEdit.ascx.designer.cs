@@ -274,22 +274,22 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Literal Literal5;
         
         /// <summary>
-        /// TextBoxxxx3 control.
+        /// txtCostoTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxxxx3;
+        protected global::System.Web.UI.WebControls.TextBox txtCostoTotal;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// rfvCostoTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCostoTotal;
         
         /// <summary>
         /// Literal6 control.
@@ -301,13 +301,40 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Literal Literal6;
         
         /// <summary>
-        /// chkRequiereDictamen control.
+        /// rfvCostoInicialEstimado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRequiereDictamen;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCostoInicialEstimado;
+        
+        /// <summary>
+        /// Literal1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal1;
+        
+        /// <summary>
+        /// txtEjercicioEstimacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEjercicioEstimacion;
+        
+        /// <summary>
+        /// rfvEjercicioEstimacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEjercicioEstimacion;
         
         /// <summary>
         /// liProceso control.
@@ -362,6 +389,15 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEstado;
+        
+        /// <summary>
+        /// chkRequiereDictamen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRequiereDictamen;
         
         /// <summary>
         /// liModalidadContratacion control.
