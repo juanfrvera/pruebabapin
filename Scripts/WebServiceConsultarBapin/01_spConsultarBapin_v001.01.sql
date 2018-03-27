@@ -9,7 +9,7 @@ IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES
 GO
 
 CREATE PROCEDURE [dbo].[spConsultarBapines]
- @ejercicio int					--AÒo
+ @ejercicio int					--A√±o
 ,@estado VARCHAR(MAX)			--Plan estado (Enumerativo: DEMANDA, PLAN, PLAN_SEGUN_EJECUCION, PLAN_OCT-DIC)
 ,@jurisdiccion int				--Jurisdiccion
 ,@bapin int = null				--Codigo BAPIN
@@ -27,19 +27,30 @@ Cubo.Progr_cod						as programa,
 Cubo.Subprog_cod					as subprograma,
 Cubo.Fecha_Inicio_Estimada			as fecha_inicio,
 Cubo.Fecha_Fin_Estimada				as fecha_fin,
-Cubo.[Costo Total Actual]			as costo_total,	--ï	costo total (Importe) (*)
+Cubo.[Costo Total Actual]			as costo_total,	--‚Ä¢	costo total (Importe) (*)
 /*
 Definicion para el ESTADO DE DICTAMEN
-NND: Es vacÌo el Campo CalificaciÛn Dictamen + Sin Tilde en Requiere Dictamen
-SDF: Es vacÌo el Campo CalificaciÛn Dictamen + Tilde en el Campo Requiere Dictamen
-AOP: Campo CalificaciÛn Dictamen ìAPROBADO CON OBSERVACIONESî + Estado ìOBSERVADOî
-ADO: Campo CalificaciÛn Dictamen ìAPROBADO CON OBSERVACIONESî + Estado ìTERMINADOî
-ASO: Campo CalificaciÛn Dictamen ìAPROBADOî + Estado ìTERMINADOî
+NND: Es vac√≠o el Campo Calificaci√≥n Dictamen + Sin Tilde en Requiere Dictamen
+SDF: Es vac√≠o el Campo Calificaci√≥n Dictamen + Tilde en el Campo Requiere Dictamen
+AOP: Campo Calificaci√≥n Dictamen ‚ÄúAPROBADO CON OBSERVACIONES‚Äù + Estado ‚ÄúOBSERVADO‚Äù
+ADO: Campo Calificaci√≥n Dictamen ‚ÄúAPROBADO CON OBSERVACIONES‚Äù + Estado ‚ÄúTERMINADO‚Äù
+ASO: Campo Calificaci√≥n Dictamen ‚ÄúAPROBADO‚Äù + Estado ‚ÄúTERMINADO‚Äù
 */
-'Hay que programarlo!'				as estado_dictamen,
-UltimaDemanda.AnioInicial			as ˙ltimo_aÒo_demanda,
-UltimoPlan.AnioInicial				as ˙ltimo_aÒo_plan,
-UltimoPlanSegunEjecucion.AnioInicial	as ˙ltimo_aÒo_plan_segun_ejecucion
+estado_dictamen = case 
+when Cubo.Dict_Inversion like '' then 
+	CASE Cubo.Req_Dict 
+		WHEN 'N' THEN 'NND'
+		WHEN 'S' THEN 'SDF'
+		ELSE 'N/D'
+	END
+when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'AOP'
+when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ADO'
+when Cubo.Dict_Inversion like '%APROBADO%' and not Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ASO'
+else 'N/D'
+end,
+UltimaDemanda.AnioInicial			as √∫ltimo_a√±o_demanda,
+UltimoPlan.AnioInicial				as √∫ltimo_a√±o_plan,
+UltimoPlanSegunEjecucion.AnioInicial	as √∫ltimo_a√±o_plan_segun_ejecucion
 
 from Cubo_CxT Cubo
 INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
@@ -62,7 +73,7 @@ INNER JOIN (select * from dbo.fn_Split(@estado,'|')) ES on
 		OR 
 		(ES.Data = 'PLAN' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 2 /*Presupuesto Nacional*/)
 		OR 
-		(REPLACE(ES.Data,' ','_') = 'PLAN_SEGUN_EJECUCION' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 /*Alta durante la ejecuciÛn del Presupuesto*/)
+		(REPLACE(ES.Data,' ','_') = 'PLAN_SEGUN_EJECUCION' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 /*Alta durante la ejecuci√≥n del Presupuesto*/)
 		OR 
 		(REPLACE(ES.Data,' ','_') = 'PLAN_OCT-DIC' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 37 /*Octubre - Diciembre*/) ) --required
 
