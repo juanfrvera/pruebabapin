@@ -5,6 +5,7 @@
 <%@ Register TagPrefix="uc" TagName="TreeOficinas" Src="~/ControlsPersonal/WebControl_Oficinas.ascx" %>
 <%@ Register TagPrefix="uc" TagName="TreeSelect" Src="~/Controls/WebControl_TreeSelect.ascx" %>
 <%@ Register TagPrefix="uc" TagName="TreeFinalidadFuncion" Src="~/ControlsPersonal/WebControl_FinalidadFuncion.ascx" %>
+<%@ Register TagPrefix="uc" TagName="TreeLocalizacion" Src="~/ControlsPersonal/WebControl_LocalizacionGeografica.ascx" %>
 <%@ Register Assembly="Application" Namespace="UI.Web" TagPrefix="cc" %>
 <style type="text/css">
     .tdLabelestado {
@@ -196,14 +197,55 @@
                             Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>                        
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="8">
+      
+                        <asp:Panel ID="pnlLocalizacionGeografica" runat="server" GroupingText="Localización Geográfica">
+                            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                                 <tr>
-                    <td>
-                        <asp:Literal ID="Literal9" runat="server" Text="Localización"></asp:Literal>
-                    </td>
-                    <td colspan="7">
-                        <asp:Button ID="Button3" runat="server" Text="Agregar"  />
-                        &nbsp;
-                        <asp:TextBox ID="TextBox4" runat="server" TabIndex="19" Width="742px"></asp:TextBox>        
+                                    <td>
+                                        <table cellpadding="0" cellspacing="5px" border="0" width="100%">
+                                            <tr>
+                                                <td align="right">
+                                                    <asp:UpdatePanel ID="pnlAgregarLocalizacion" runat="server" UpdateMode="Conditional">
+                                                        <ContentTemplate>
+                                                            <asp:Button ID="btAgregarLocalizacion" runat="server" Text="Agregar" OnClick="btAgregarLocalizacion_Click" TabIndex="1" />
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <asp:UpdatePanel ID="upGridLocalizaciones" runat="server" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <asp:GridView ID="gridLocalizaciones" runat="server"
+                                        AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True"
+                                        OnRowCommand="GridLocalizaciones_RowCommand"
+                                        AllowSorting="True" OnSorting="GridLocalizaciones_Sorting"
+                                        OnPageIndexChanging="GridLocalizaciones_PageIndexChanging"
+                                        EmptyDataText="No hay Localizaciones definidas"
+                                        Width="100%">
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Descripción" DataField="Descripcion" SortExpression="Descripcion" />
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    &nbsp;
+                                                <asp:ImageButton ID="imgEdit" runat="server" src="../Images/edit.png" ToolTip="Editar" CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
+                                                    &nbsp;
+                                                <asp:ImageButton ID="imgDelete" runat="server" src="../Images/delete.jpg" ToolTip="Eliminar" CommandName='<%# Command.DELETE %>' OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
+                                                </ItemTemplate>
+                                                <ItemStyle Width="150px" HorizontalAlign="Right" />
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:Panel>
+
                     </td>
                 </tr>
             </table>
@@ -631,6 +673,59 @@
 </asp:UpdatePanel>
 
 <%--PopUps--%>
+
+<%--PANEL ALTA LOCALIZACIONES --%>
+<asp:Panel ID="PopUpLocalizaciones" runat="server" Width="800px" Style="background-color: #ffffff; border: solid 2px #ffffff; border-color: Gray;">
+    <asp:Panel ID="LocalizacionesPopUpDragHandle" runat="server" Style="cursor: move;">
+        <table width="100%" cellpadding="0" cellspacing="5">
+            <tr class="menutoppopup">
+                <td>
+                    <th align="center" height="10">
+                        <asp:Label ID="headerPopUpLocalizaciones" runat="server" Text="Localización" />
+                    </th>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnLocalizaciones" DefaultButton="btSaveLocalizaciones" Height="100px" runat="server">
+        <asp:UpdatePanel ID="upLocalizacionesPopUp" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="width: 62px"></td>
+                                    <td>
+                                        <asp:Literal ID="ltLocalizacion" Text="Localización:" runat="server"></asp:Literal>
+                                    </td>
+                                    <td>
+                                        <uc:TreeLocalizacion runat="server" ID="tsLocalizacion" SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue"></uc:TreeLocalizacion>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td align="center">
+                            <asp:Button ID="btSaveLocalizaciones" Text="Aceptar" OnClick="btSaveLocalizacion_Click" runat="server" ValidationGroup="vgLocalizaciones" />
+                            <asp:Button ID="btNewLocalizaciones" Text="Aceptar y Agregar Nuevo" OnClick="btNewLocalizacion_Click" runat="server" ValidationGroup="vgLocalizaciones" />
+                            <asp:Button ID="btCancelLocalizaciones" Text="Cerrar" OnClick="btCancelLocalizacion_Click"
+                                runat="server" Width="60px" />
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderLocalizaciones" runat="server" CancelControlID="Button3"
+        PopupDragHandleControlID="LocalizacionesPopUpDragHandle" PopupControlID="PopUpLocalizaciones"
+        OkControlID="Button3" TargetControlID="Button3" BackgroundCssClass="modalBackground" />
+</asp:Panel>
+
 <%--PopUp Oficina--%>
 <%--<asp:Panel ID="PopUpOficina" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
@@ -1447,3 +1542,4 @@
         PopupDragHandleControlID="TransferenciaPopUpDragHandle" PopupControlID="PopUpTransferencia"
         OkControlID="Button9" TargetControlID="Button9" BackgroundCssClass="modalBackground" />
 </asp:Panel>
+

@@ -1395,6 +1395,7 @@ namespace Business
                     reportInfo.DataSources.Add(new ReportInfoDataSource("ProyectoPlan", proyectoGeneralCompose.proyectoPlan));
                     reportInfo.DataSources.Add(new ReportInfoDataSource("ProyectoPrioridad", proyectoGeneralCompose.proyectoPrioridad));
                     reportInfo.DataSources.Add(new ReportInfoDataSource("ProyectoRelacion", proyectoGeneralCompose.proyectoRelacion));
+                    //reportInfo.DataSources.Add(new ReportInfoDataSource("Localizaciones", proyectoGeneralCompose.Localizaciones));
                     break;
             }
             return reportInfo;
@@ -1526,6 +1527,7 @@ namespace Business
             compose.proyectoOrigenFinanciamiento = new List<ProyectoOrigenFinanciamientoResult>();
             compose.proyectoPlan = new List<ProyectoPlanResult>();
             compose.proyectoRelacion = new List<ProyectoRelacionResult>();
+            compose.Localizaciones = new List<ProyectoLocalizacionResult>();
             Perfil perfilIniciador = PerfilBusiness.Current.FirstOrDefault(new PerfilFilter() { Codigo = "INIC" });
             if (perfilIniciador != null)
             {
@@ -1580,7 +1582,7 @@ namespace Business
             //compose.proyectoOrigenFinanciamiento = ProyectoOrigenFinanciamientoBusiness.Current.GetResult(new ProyectoOrigenFinanciamientoFilter() { IdProyecto = id });
             compose.proyectoPlan = ProyectoPlanBusiness.Current.GetResult(new ProyectoPlanFilter() { IdProyecto = id });
             compose.proyectoRelacion = ProyectoRelacionBusiness.Current.GetResult(new ProyectoRelacionFilter() { IdProyecto = id });
-
+            compose.Localizaciones = ProyectoLocalizacionBusiness.Current.GetResult(new ProyectoLocalizacionFilter() { IdProyecto = id });
             //UsuarioResult usuario = UsuarioBusiness.Current.GetResult(new UsuarioFilter() { IdUsuario = compose.proyecto.IdUsuarioModificacion }).SingleOrDefault();
 
             //Trae todos los ProyectoOficinaPerfil para el Proyecto
@@ -1740,6 +1742,16 @@ namespace Business
                     ProyectoRelacionBusiness.Current.Add(pr, contextUser);
                 }
 
+                //Crea las proyecto localizacion
+                foreach (ProyectoLocalizacionResult plr in entity.Localizaciones)
+                {
+                    plr.IdProyecto = entity.proyecto.IdProyecto;
+                    plr.IdProyectoLocalizacion = 0;
+                    ProyectoLocalizacion pl = plr.ToEntity();
+                    ProyectoLocalizacionBusiness.Current.Add(pl, contextUser);
+                    plr.IdProyectoLocalizacion = pl.IdProyectoLocalizacion;
+                }
+
                 entity.proyectoOficinaPerfilIniciador.IdProyecto = proyecto.IdProyecto;
                 ProyectoOficinaPerfil iniciador = entity.proyectoOficinaPerfilIniciador.ToEntity();
                 ProyectoOficinaPerfilBusiness.Current.Add(iniciador, contextUser);
@@ -1790,6 +1802,7 @@ namespace Business
                 entity.proyectoOrigenFinanciamiento.ForEach(i => i.IdProyecto = 0);
                 entity.proyectoPlan.ForEach(i => i.IdProyecto = 0);
                 entity.proyectoRelacion.ForEach(i => i.IdProyecto = 0);
+                entity.Localizaciones.ForEach(i => i.IdProyecto = 0);
 
                 entity.proyectoOficinaPerfilIniciador.IdProyecto = 0;
                 entity.proyectoOficinaPerfilEjecutor.IdProyecto = 0;
@@ -1807,6 +1820,7 @@ namespace Business
             List<ProyectoOrigenFinanciamientoResult> copyOrigenFinanciamiento = ProyectoOrigenFinanciamientoBusiness.Current.CopiesResult(entity.proyectoOrigenFinanciamiento);
             List<ProyectoPlanResult> copyPlan = ProyectoPlanBusiness.Current.CopiesResult(entity.proyectoPlan);
             List<ProyectoRelacionResult> copyRelacion = ProyectoRelacionBusiness.Current.CopiesResult(entity.proyectoRelacion);
+            List<ProyectoLocalizacionResult> copyLocalizacion = ProyectoLocalizacionBusiness.Current.CopiesResult(entity.Localizaciones);
             List<ProyectoOficinaPerfilFuncionarioResult> copyProyectoOficinaPerfilFuncionarioEjecutor = ProyectoOficinaPerfilFuncionarioBusiness.Current.CopiesResult(entity.proyectoOficinaPerfilFuncionarioEjecutor);
             List<ProyectoOficinaPerfilFuncionarioResult> copyProyectoOficinaPerfilFuncionarioFuncionario = ProyectoOficinaPerfilFuncionarioBusiness.Current.CopiesResult(entity.proyectoOficinaPerfilFuncionarioResponsable);
             List<ProyectoOficinaPerfilFuncionarioResult> copyProyectoOficinaPerfilFuncionarioIniciador = ProyectoOficinaPerfilFuncionarioBusiness.Current.CopiesResult(entity.proyectoOficinaPerfilFuncionarioIniciador);
@@ -2042,6 +2056,37 @@ namespace Business
                         }
                     }
                 }
+
+                //actualiza ProyectoLocalizacion
+
+                //Elimino los que ya no forman parte
+                List<int> actualIdsLocalizacion = (from o in entity.Localizaciones where o.IdProyectoLocalizacion > 0 select o.IdProyectoLocalizacion).ToList();
+                List<ProyectoLocalizacion> oldDetailLocalizacion = ProyectoLocalizacionBusiness.Current.GetList(new ProyectoLocalizacionFilter() { IdProyecto = entity.proyecto.IdProyecto });
+                List<ProyectoLocalizacion> deletetsLocalizacion = (from o in oldDetailLocalizacion where !actualIdsLocalizacion.Contains(o.IdProyectoLocalizacion) select o).ToList();
+                ProyectoLocalizacionBusiness.Current.Delete(deletetsLocalizacion, contextUser);
+
+                foreach (ProyectoLocalizacionResult prr in entity.Localizaciones)
+                {
+                    ProyectoLocalizacion pr = prr.ToEntity();
+                    if (prr.IdProyectoLocalizacion < 1)
+                    {
+                        //Agrego los nuevos
+                        pr.IdProyecto = entity.proyecto.IdProyecto;
+                        ProyectoLocalizacionBusiness.Current.Add(pr, contextUser);
+                        prr.IdProyectoLocalizacion = pr.IdProyectoLocalizacion;
+
+                    }
+                    else
+                    {
+                        ProyectoLocalizacion prOld = ProyectoLocalizacionBusiness.Current.GetById(pr.IdProyectoLocalizacion);
+                        if (!ProyectoLocalizacionBusiness.Current.Equals(pr, prOld))
+                        {
+                            prOld.IdProyectoLocalizacion = prr.IdProyectoLocalizacion;
+                            prOld.IdClasificacionGeografica = prr.IdClasificacionGeografica;
+                            ProyectoLocalizacionBusiness.Current.Update(prOld, contextUser);
+                        }
+                    }
+                }
                 #region Iniciador
                 ProyectoOficinaPerfilResult proyectoPerfilIniciadorResult = ProyectoOficinaPerfilBusiness.Current.GetResult(new ProyectoOficinaPerfilFilter() { IdProyecto = proyecto.IdProyecto, CodigoPerfil = "INIC" }).SingleOrDefault();
                 if (entity.proyectoOficinaPerfilIniciador != null && entity.proyectoOficinaPerfilIniciador.IdOficina > 0)
@@ -2274,6 +2319,7 @@ namespace Business
                 entity.proyectoOrigenFinanciamiento = copyOrigenFinanciamiento;
                 entity.proyectoPlan = copyPlan;
                 entity.proyectoRelacion = copyRelacion;
+                entity.Localizaciones = copyLocalizacion;
 
                 entity.proyectoOficinaPerfilFuncionarioEjecutor = copyProyectoOficinaPerfilFuncionarioEjecutor;
                 entity.proyectoOficinaPerfilFuncionarioResponsable = copyProyectoOficinaPerfilFuncionarioFuncionario;
@@ -2923,6 +2969,15 @@ namespace Business
                 }
                 if (!eqProyectoRelacion) return eqProyectoRelacion;
 
+                if (target.Localizaciones.Count() != source.Localizaciones.Count()) return false;
+                bool eqProyectoLocalizacion = true;
+                foreach (ProyectoLocalizacionResult ppr in source.Localizaciones)
+                {
+                    ProyectoLocalizacionResult ppTarget = target.Localizaciones.Where(a => a.IdProyectoLocalizacion == ppr.IdProyectoLocalizacion).SingleOrDefault();
+                    eqProyectoLocalizacion = ProyectoLocalizacionBusiness.Current.Equals(ppr, ppTarget);
+                    if (!eqProyectoLocalizacion) return false;
+                }
+                if (!eqProyectoLocalizacion) return eqProyectoLocalizacion;
             }
             return eq;
         }

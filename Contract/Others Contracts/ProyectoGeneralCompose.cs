@@ -93,5 +93,15 @@ namespace Contract
             set { _proyectoOficinaPerfilFuncionarioResponsable = value; }
         }
 
+        public List<ProyectoLocalizacionResult> _localizaciones = new List<ProyectoLocalizacionResult>();
+        public List<ProyectoLocalizacionResult> Localizaciones
+        {
+            get
+            {
+                if (_localizaciones == null) _localizaciones = new List<ProyectoLocalizacionResult>();
+                return _localizaciones;
+            }
+            set { _localizaciones = value; }
+        }
     }
 }

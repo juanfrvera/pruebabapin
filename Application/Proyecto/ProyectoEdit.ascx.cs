@@ -59,6 +59,10 @@ namespace UI.Web
         protected override void _Initialize()
         {
             base._Initialize();
+
+            this.tsLocalizacion.Width = 700;
+            PopUpLocalizaciones.Attributes.CssStyle.Add("display", "none");
+
             revDenominacion.ValidationExpression = Contract.DataHelper.GetExpRegString(500);
             revBapin.ValidationExpression = Contract.DataHelper.GetExpRegNumberInteger();
             //20180320 revJustificacionDemora.ValidationExpression = Contract.DataHelper.GetExpRegString(8000);
@@ -237,6 +241,7 @@ namespace UI.Web
             ProyectoOrigenFinanciamientoRefresh();
             ProyectoRelacionRefresh();
             //20180320 ProyectoDemoraRefresh();
+            ProyectoLocalizacionRefresh();
             DeshabilitarEdicionCombos();
             if (this.Entity.proyecto.EsBorrador)
                 this.btAgregarOrigenFinanciamiento.Enabled = false;
@@ -295,6 +300,7 @@ namespace UI.Web
             Update(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor);
             Update(dlFuncionarioResponsable, Entity.proyectoOficinaPerfilFuncionarioResponsable);
 
+            ProyectoLocalizacionRefresh();
         }
 
         #region Events
@@ -810,6 +816,246 @@ namespace UI.Web
         #endregion
 
         #region Events
+
+        #region Sobre Localizacion
+        /*
+        private ProyectoAlcanceGeograficoResult actualProyectoAlcance;
+        protected ProyectoAlcanceGeograficoResult ActualProyectoAlcance
+        {
+            get
+            {
+                if (actualProyectoAlcance == null)
+                {
+                    if (ExistsPersist("actualProyectoAlcance"))
+                        actualProyectoAlcance = ((ProyectoAlcanceGeograficoResult)GetPersist("actualProyectoAlcance"));
+                    else
+                    {
+//                        actualProyectoAlcance = GetNewAlcance();
+                        SetPersist("actualProyectoAlcance", actualProyectoAlcance);
+                    }
+                }
+                return actualProyectoAlcance;
+            }
+            set
+            {
+                actualProyectoAlcance = value;
+                SetPersist("actualProyectoAlcance", value);
+            }
+        }
+        */
+        private ProyectoLocalizacionResult actualProyectoLocalizacion;
+        protected ProyectoLocalizacionResult ActualProyectoLocalizacion
+        {
+            get
+            {
+                if (actualProyectoLocalizacion == null)
+                {
+                    if (ExistsPersist("actualProyectoLocalizacion"))
+                        actualProyectoLocalizacion = ((ProyectoLocalizacionResult)GetPersist("actualProyectoLocalizacion"));
+                    else
+                    {
+                        actualProyectoLocalizacion = GetNewLocalizacion();
+                        SetPersist("actualProyectoLocalizacion", actualProyectoLocalizacion);
+                    }
+                }
+                return actualProyectoLocalizacion;
+            }
+            set
+            {
+                actualProyectoLocalizacion = value;
+                SetPersist("actualProyectoLocalizacion", value);
+            }
+        }
+        ProyectoLocalizacionResult GetNewLocalizacion()
+        {
+            int id = 0;
+            if (Entity.Localizaciones.Count > 0) id = Entity.Localizaciones.Min(l => l.IdProyectoLocalizacion);
+            if (id > 0) id = 0;
+            id--;
+            ProyectoLocalizacionResult plResult = new ProyectoLocalizacionResult();
+            plResult.IdProyectoLocalizacion = id;
+            plResult.IdProyecto = Entity.proyecto.IdProyecto;
+            plResult.IdClasificacionGeografica = 0;
+            return plResult;
+        }
+
+        #region Methods
+        void HidePopUpLocalizaciones()
+        {
+            ModalPopupExtenderLocalizaciones.Hide();
+        }
+        void ProyectoLocalizacionClear()
+        {
+            UIHelper.Clear(tsLocalizacion as IWebControlTreeSelect);
+            ActualProyectoLocalizacion = GetNewLocalizacion();
+        }
+        void ProyectoLocalizacionSetValue()
+        {
+            UIHelper.SetValue(tsLocalizacion as IWebControlTreeSelect, ActualProyectoLocalizacion.IdClasificacionGeografica);
+        }
+        void ProyectoLocalizacionGetValue()
+        {
+            ActualProyectoLocalizacion.IdClasificacionGeografica = UIHelper.GetInt(tsLocalizacion as IWebControlTreeSelect);
+            // Busca la clasificacion seleccionada
+            ClasificacionGeografica cg = ClasificacionGeograficaService.Current.GetById(ActualProyectoLocalizacion.IdClasificacionGeografica);
+            ActualProyectoLocalizacion.Tipo = cg.IdClasificacionGeograficaTipo;
+            ActualProyectoLocalizacion.Descripcion = cg.Descripcion;
+        }
+        void ProyectoLocalizacionRefresh()
+        {
+            UIHelper.Load(gridLocalizaciones, Entity.Localizaciones, "Orden");
+            upGridLocalizaciones.Update();
+        }
+
+        protected bool ValidateLocalizacion()
+        {
+            int IdClasificacionGeografica = UIHelper.GetInt(tsLocalizacion as IWebControlTreeSelect);
+            if (IdClasificacionGeografica > 0)
+            {
+                List<ProyectoLocalizacionResult> plr = Entity.Localizaciones.Where(p => p.IdClasificacionGeografica == IdClasificacionGeografica).ToList();
+                if (plr != null && plr.Count == 1)
+                {
+                    UIHelper.ShowAlert("La localicación ya existe en la lista.", upLocalizacionesPopUp);
+                    return false;
+                }
+                /*if (ActualProyectoAlcance.ID < 0)
+                {
+                    if (plr != null && plr.Count == 1)
+                    {
+                        UIHelper.ShowAlert("La localicación ya existe en la lista.", upLocalizacionesPopUp);
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (plr != null && plr.Count == 1 && ActualProyectoAlcance.ID != plr.FirstOrDefault().ID)
+                    {
+                        UIHelper.ShowAlert("La localicación ya existe en la lista.", upLocalizacionesPopUp);
+                        return false;
+                    }
+                }*/
+            }
+            return true;
+        }
+        #endregion Methods
+
+        #region Commands
+        void CommandProyectoLocalizacionEdit()
+        {
+            ProyectoLocalizacionSetValue();
+            ModalPopupExtenderLocalizaciones.Show();
+            upLocalizacionesPopUp.Update();
+        }
+        void CommandProyectoLocalizacionSave()
+        {
+            if (UIHelper.GetInt(tsLocalizacion as IWebControlTreeSelect) > 0)
+            {
+                ProyectoLocalizacionGetValue();
+                ProyectoLocalizacionResult result = (from l in Entity.Localizaciones
+                                                     where l.IdProyectoLocalizacion == ActualProyectoLocalizacion.ID
+                                                     || l.IdClasificacionGeografica == ActualProyectoLocalizacion.IdClasificacionGeografica
+                                                     select l).FirstOrDefault();
+                if (result != null)
+                {
+                    result.IdClasificacionGeografica = ActualProyectoLocalizacion.IdClasificacionGeografica;
+                    result.Tipo = ActualProyectoLocalizacion.Tipo;
+                    result.Descripcion = ActualProyectoLocalizacion.Descripcion;
+                }
+                else
+                {
+                    Entity.Localizaciones.Add(ActualProyectoLocalizacion);
+                }
+                ProyectoLocalizacionClear();
+                ProyectoLocalizacionRefresh();
+            }
+        }
+        void CommandProyectoLocalizacionDelete()
+        {
+            ProyectoLocalizacionResult result = (from l in Entity.Localizaciones where l.IdProyectoLocalizacion == ActualProyectoLocalizacion.ID select l).FirstOrDefault();
+            Entity.Localizaciones.Remove(result);
+            ProyectoLocalizacionClear();
+            ProyectoLocalizacionRefresh();
+        }
+        #endregion
+
+        #region Eventos
+        protected void btSaveLocalizacion_Click(object sender, EventArgs e)
+        {
+
+            if (ValidateLocalizacion())
+            {
+                CallTryMethod(CommandProyectoLocalizacionSave);
+                HidePopUpLocalizaciones();
+            }
+
+
+
+        }
+        protected void btNewLocalizacion_Click(object sender, EventArgs e)
+        {
+            if (ValidateLocalizacion())
+            {
+                CallTryMethod(CommandProyectoLocalizacionSave);
+            }
+        }
+        protected void btCancelLocalizacion_Click(object sender, EventArgs e)
+        {
+            ProyectoLocalizacionClear();
+            HidePopUpLocalizaciones();
+        }
+        protected void btAgregarLocalizacion_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtenderLocalizaciones.Show();
+            tsLocalizacion.Focus();
+        }
+        #endregion
+
+        #region EventosGrillas
+        protected void GridLocalizaciones_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            int id;
+            if (!int.TryParse(e.CommandArgument.ToString(), out id))
+                return;
+
+            ActualProyectoLocalizacion = (from l in Entity.Localizaciones where l.IdProyectoLocalizacion == id select l).FirstOrDefault();
+
+            switch (e.CommandName)
+            {
+                case Command.EDIT:
+                    CommandProyectoLocalizacionEdit();
+                    break;
+                case Command.DELETE:
+                    CommandProyectoLocalizacionDelete();
+                    break;
+            }
+        }
+        protected virtual void GridLocalizaciones_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            try
+            {
+                gridLocalizaciones.PageIndex = 0;
+                RaiseControlCommand(Command.SORT, e);
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+        }
+        protected virtual void GridLocalizaciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                gridLocalizaciones.PageIndex = e.NewPageIndex;
+                base.RaiseControlCommand(Command.REFRESH);
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+        }
+        #endregion
+
+        #endregion Localizacion
 
         protected void btSaveProyectoPlan_Click(object sender, EventArgs e)
         {
