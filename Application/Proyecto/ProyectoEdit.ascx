@@ -157,7 +157,7 @@
                         <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:Literal ID="liEstado" Text="Etapa" runat="server"></asp:Literal>
@@ -177,7 +177,7 @@
                         <cc:ExtendedDropDownList ID="ddlModalidadContratacion" runat="server" TabIndex="16" Width="200px"> </cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;<asp:RequiredFieldValidator ID="rfvModalidadContratacion" runat="server" ControlToValidate="ddlModalidadContratacion" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:Literal ID="Literal8" Text="PPP" runat="server"></asp:Literal>
@@ -206,6 +206,10 @@
                                     <td>
                                         <table cellpadding="0" cellspacing="5px" border="0" width="100%">
                                             <tr>
+                                                <td>
+                                                    <asp:CustomValidator ID="CustomValidator2" runat="server" ValidationGroup="EditionProyecto"  ErrorMessage="Localización geográfica no tiene valor definido"
+                                                        ClientValidationFunction="gvLocalizacionGeograficaValidation">*</asp:CustomValidator>
+                                                </td>
                                                 <td align="right">
                                                     <asp:UpdatePanel ID="pnlAgregarLocalizacion" runat="server" UpdateMode="Conditional">
                                                         <ContentTemplate>
@@ -1543,3 +1547,15 @@
         OkControlID="Button9" TargetControlID="Button9" BackgroundCssClass="modalBackground" />
 </asp:Panel>
 
+<script language="javascript" type ="text/javascript" >
+    function gvLocalizacionGeograficaValidation(source, args) {
+        var Grid = document.getElementById("<%=gridLocalizaciones.ClientID%>");
+        if (Grid == null || Grid.rows.length <= 1) {
+            args.IsValid = false;
+            return;
+         }
+         else {
+             args.IsValid = true;
+         }
+    }
+</script>

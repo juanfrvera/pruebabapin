@@ -328,6 +328,15 @@ namespace UI.Web {
         protected global::UI.Web.ExtendedDropDownList ddlProceso;
         
         /// <summary>
+        /// rfvProceso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
+        
+        /// <summary>
         /// liEstado control.
         /// </summary>
         /// <remarks>
@@ -373,13 +382,13 @@ namespace UI.Web {
         protected global::UI.Web.ExtendedDropDownList ddlModalidadContratacion;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// rfvModalidadContratacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvModalidadContratacion;
         
         /// <summary>
         /// Literal8 control.
@@ -425,6 +434,15 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlLocalizacionGeografica;
+        
+        /// <summary>
+        /// CustomValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
         /// pnlAgregarLocalizacion control.

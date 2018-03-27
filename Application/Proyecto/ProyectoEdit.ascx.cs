@@ -95,6 +95,8 @@ namespace UI.Web
             rfvDenominacion.ErrorMessage = TranslateFormat("FieldIsNull", "Denominacion");
             revDenominacion.ErrorMessage = TranslateFormat("InvalidField", "Denominacion");
             rfvEstado.ErrorMessage = TranslateFormat("FieldIsNull", "Estado");
+            rfvProceso.ErrorMessage = TranslateFormat("FieldIsNull", "Contribución");
+            rfvModalidadContratacion.ErrorMessage = TranslateFormat("FieldIsNull", "Modalidad de Contratación");
             revPrioridad.ErrorMessage = TranslateFormat("InvalidField", "Prioridad");
             rfvTipoPopoUp.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
             rfvPeriodoPopUp.ErrorMessage = TranslateFormat("FieldIsNull", "Periodo");
