@@ -340,7 +340,7 @@ namespace DataAccess
             if (source == null) return false;
             if (target == null) return false;
             if (!source.IdProyecto.Equals(target.IdProyecto)) return false;
-            if (!source.IdTipoProyecto.Equals(target.IdTipoProyecto)) return false;
+            //if (!source.IdTipoProyecto.Equals(target.IdTipoProyecto)) return false;
             if (!source.IdSubPrograma.Equals(target.IdSubPrograma)) return false;
             if (!source.Codigo.Equals(target.Codigo)) return false;
             if ((source.ProyectoDenominacion == null) ? target.ProyectoDenominacion != null : !((target.ProyectoDenominacion == String.Empty && source.ProyectoDenominacion == null) || (target.ProyectoDenominacion == null && source.ProyectoDenominacion == String.Empty)) && !source.ProyectoDenominacion.Trim().Replace("\r", "").Equals(target.ProyectoDenominacion.Trim().Replace("\r", ""))) return false;

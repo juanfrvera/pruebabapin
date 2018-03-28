@@ -50,41 +50,44 @@
                     <td style="width:115px" >
                         <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <cc:ExtendedDropDownList ID="ddlSAF" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlSaf_IndexChanged" AutoPostBack="true" SkinID="AnchoLibre" Width="830px" TabIndex="3"></cc:ExtendedDropDownList>
                     </td>
-                    <td class="filaValidator">&nbsp;
+                    <td class="filaValidator">
 	                    <asp:RequiredFieldValidator ID="rfvSAF" runat="server" ControlToValidate="ddlSAF" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
+                        &nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal></td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <cc:ExtendedDropDownList ID="ddlPrograma" runat="server" CssClass="field_input" OnSelectedIndexChanged="ddlPrograma_IndexChanged" AutoPostBack="true" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="4"></cc:ExtendedDropDownList>
                     </td>
-                    <td class="filaValidator">&nbsp;
+                    <td class="filaValidator">
 	                    <asp:RequiredFieldValidator ID="rfvPrograma2" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
                         <asp:RequiredFieldValidator ID="rfvPrograma" runat="server" ControlToValidate="ddlPrograma" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Literal ID="liSubPrograma" Text="Subprograma" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <cc:ExtendedDropDownList ID="ddlSubPrograma" runat="server" CssClass="field_input" Enabled="false" SkinID="AnchoLibre" Width="830px" TabIndex="5"></cc:ExtendedDropDownList>
                     </td>
-                    <td class="filaValidator">&nbsp;
+                    <td class="filaValidator">
 	                    <asp:RequiredFieldValidator ID="rfvSubPrograma" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue="0"></asp:RequiredFieldValidator>
                         <asp:RequiredFieldValidator ID="rfvSubPrograma2" runat="server" ControlToValidate="ddlSubPrograma" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" InitialValue=""></asp:RequiredFieldValidator>
+                        &nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Literal ID="litNroProyecto" Text="Cod. Presupuestario" runat="server"></asp:Literal>
                     </td>
-                    <td>
+                    <td colspan="3">
                     <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td style="width:60px">
@@ -105,7 +108,7 @@
                         </tr>
                     </table>
                     </td>
-                    <td colspan="6">
+                    <td colspan="5">
                         &nbsp;
                     </td>             
                 </tr>
@@ -113,7 +116,7 @@
                     <td>
                         <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
                     </td>
                     <td>
@@ -125,7 +128,7 @@
                     <td style="text-wrap:none">
                         <asp:Literal ID="Literal4" Text="Imputación Presupuestaria" runat="server"></asp:Literal>
                     </td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <cc:ExtendedDropDownList ID="ddlTipoProyecto" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="830px" Enabled="false" OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged" AutoPostBack="true" TabIndex="1"></cc:ExtendedDropDownList>
                     </td>
                     <td>
@@ -138,29 +141,29 @@
                         <asp:Literal ID="Literal5" Text="Costo total" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtCostoTotal" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtCostoTotal" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvCostoTotal" runat="server" ControlToValidate="txtCostoTotal" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
+                        &nbsp;
+                    </td>
                     <td>
                         <asp:Literal ID="Literal6" Text="Costo Inicial Estimado" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtCostoInicialEstimado"" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtCostoInicialEstimado" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvCostoInicialEstimado" runat="server" ControlToValidate="txtCostoInicialEstimado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
-                    <td>
-
+                        &nbsp;
+                    </td>
                     <td>
                         <asp:Literal ID="Literal1" Text="Ejercicio de estimación" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtEjercicioEstimacion" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtEjercicioEstimacion" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvEjercicioEstimacion" runat="server" ControlToValidate="txtEjercicioEstimacion" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator></td>
-                    <td>
+                        &nbsp;
+                    </td>
                 </tr>
                               
                 <tr>
@@ -171,7 +174,8 @@
                         <cc:ExtendedDropDownList ID="ddlProceso" runat="server" Enable="false" TabIndex="14" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;
                     </td>
                     <td>
                         <asp:Literal ID="liEstado" Text="Etapa" runat="server"></asp:Literal>
@@ -180,11 +184,15 @@
                         <cc:ExtendedDropDownList ID="ddlEstado" runat="server" TabIndex="15" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td>
-                        &nbsp;<asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvEstado" runat="server" ControlToValidate="ddlEstado" ValidationGroup="EditionProyecto" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        &nbsp;
                     </td>
                     <td>                                    
+                       <asp:Literal ID="liRequiereDictamen" Text="Requiere Dictámen" runat="server"></asp:Literal> 
+                    </td>  
+                    <td>
                         <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" />
-                    </td>   
+                    </td> 
                     <td>
                         &nbsp;
                     </td>
@@ -203,42 +211,36 @@
                         <asp:Literal ID="Literal8" Text="PPP" runat="server"></asp:Literal>
                     </td>
                     <td>                                    
-                        <asp:CheckBox ID="cbEsPPP" runat="server" Text="PPP" TabIndex="2"  />
+                        <asp:CheckBox ID="cbEsPPP" runat="server" Text="" TabIndex="2"  />
                     </td>   
-                    <td colspan="3">&nbsp;</td>
+                    <td colspan="4">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
                     </td>
-                    <td colspan="7">
+                    <td colspan="8">
                         <uc:TreeFinalidadFuncion runat="server" Width="100%" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"
                             ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="EditionFinalidadFuncion"
                             Handler="../Handlers/FinalidadFuncionHandler.ashx"></uc:TreeFinalidadFuncion>                        
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="8">
+                    <td colspan="9">
       
                         <asp:Panel ID="pnlLocalizacionGeografica" runat="server" GroupingText="Localización Geográfica">
-                            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                            <table cellpadding="0" cellspacing="5px" border="0" width="100%">
                                 <tr>
                                     <td>
-                                        <table cellpadding="0" cellspacing="5px" border="0" width="100%">
-                                            <tr>
-                                                <td>
-                                                    <asp:CustomValidator ID="CustomValidator2" runat="server" ValidationGroup="EditionProyecto"  ErrorMessage="Localización geográfica no tiene valor definido"
-                                                        ClientValidationFunction="gvLocalizacionGeograficaValidation">*</asp:CustomValidator>
-                                                </td>
-                                                <td align="right">
-                                                    <asp:UpdatePanel ID="pnlAgregarLocalizacion" runat="server" UpdateMode="Conditional">
-                                                        <ContentTemplate>
-                                                            <asp:Button ID="btAgregarLocalizacion" runat="server" Text="Agregar" OnClick="btAgregarLocalizacion_Click" TabIndex="1" />
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <asp:CustomValidator ID="CustomValidator2" runat="server" ValidationGroup="EditionProyecto"  ErrorMessage="Localización geográfica no tiene valor definido"
+                                            ClientValidationFunction="gvLocalizacionGeograficaValidation">*</asp:CustomValidator>
+                                    </td>
+                                    <td align="right">
+                                        <asp:UpdatePanel ID="pnlAgregarLocalizacion" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:Button ID="btAgregarLocalizacion" runat="server" Text="Agregar" OnClick="btAgregarLocalizacion_Click" TabIndex="1" />
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
                                     </td>
                                 </tr>
                             </table>
@@ -354,7 +356,7 @@
                     <td>
                         <asp:Button ID="lnkHistorial" runat="server" Text="Historial" OnClick="btHistorialProyectoPlan_Click" TabIndex="21"></asp:Button>
                     </td>
-                    <td colspan="6">
+                    <td colspan="7">
                         <b><%-- <asp:Label ID="lbPlan" runat="server"></asp:Label> --%></b>
                         <asp:Literal ID="liUltimaSolicitud" runat="server" Text="Ultima Solicitud Registrada:"></asp:Literal>
                         <asp:TextBox ID="txtUltimaSolicitud" runat="server" Enabled="false" TabIndex="19" Width="435px"></asp:TextBox> 

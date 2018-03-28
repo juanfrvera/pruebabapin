@@ -283,15 +283,6 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.TextBox txtCostoTotal;
         
         /// <summary>
-        /// rfvCostoTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCostoTotal;
-        
-        /// <summary>
         /// Literal6 control.
         /// </summary>
         /// <remarks>
@@ -301,13 +292,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Literal Literal6;
         
         /// <summary>
-        /// rfvCostoInicialEstimado control.
+        /// txtCostoInicialEstimado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCostoInicialEstimado;
+        protected global::System.Web.UI.WebControls.TextBox txtCostoInicialEstimado;
         
         /// <summary>
         /// Literal1 control.
@@ -326,15 +317,6 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEjercicioEstimacion;
-        
-        /// <summary>
-        /// rfvEjercicioEstimacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEjercicioEstimacion;
         
         /// <summary>
         /// liProceso control.
@@ -389,6 +371,15 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEstado;
+        
+        /// <summary>
+        /// liRequiereDictamen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal liRequiereDictamen;
         
         /// <summary>
         /// chkRequiereDictamen control.

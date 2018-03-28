@@ -93,7 +93,7 @@ namespace Contract
             set { _proyectoOficinaPerfilFuncionarioResponsable = value; }
         }
 
-        public List<ProyectoLocalizacionResult> _localizaciones = new List<ProyectoLocalizacionResult>();
+        private List<ProyectoLocalizacionResult> _localizaciones = new List<ProyectoLocalizacionResult>();
         public List<ProyectoLocalizacionResult> Localizaciones
         {
             get

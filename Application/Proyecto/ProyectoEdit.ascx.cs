@@ -146,7 +146,9 @@ namespace UI.Web
             UIHelper.Clear(txtNroProyecto);
             UIHelper.Clear(txtNroActividad);
             UIHelper.Clear(txtNroObra);
-            
+            UIHelper.Clear(txtCostoTotal);
+            UIHelper.Clear(txtEjercicioEstimacion);
+            UIHelper.Clear(txtCostoInicialEstimado);
 
             if (CrudAction == CrudActionEnum.Create)
             {
@@ -179,12 +181,43 @@ namespace UI.Web
             
             //UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
             //UIHelper.SetValue(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto);
-            CargarProcesos();
 
-           
             //Establecer TEP
             CalcularTEP();
-            
+
+            if (Entity.proyecto != null && Entity.proyecto.IdProyecto > 0)
+            {
+                //Calcular CostoTotal = Este campo suma Todos los GR del Año-1 + Estimada Año Actual + Estimados Futuros (Año+1 en adelante)
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto });
+                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year - 1).Sum(x => x.Realizado);
+                UIHelper.SetValue(txtCostoTotal, (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
+
+                //Cálculo: estimado (año actual + futuros)  al momento de poner la marca plan por primera vez.  
+                //El campo debe mostrar el valor al momento de poner la última marca plan correspondiente al periodo en el cual se puso por primera vez.
+                UIHelper.SetValue(txtCostoInicialEstimado, 0);
+                UIHelper.SetValue(txtEjercicioEstimacion, "No registrado");
+                if (Entity.proyectoPlan != null && Entity.proyectoPlan.Count > 0)
+                {
+                    UIHelper.SetValue(txtCostoInicialEstimado, (estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
+                    UIHelper.SetValue(txtEjercicioEstimacion, Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial);
+                    if (Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial < 2018 &&
+                        Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioFinal < 2020)
+                    {
+                        UIHelper.SetValue(txtEjercicioEstimacion, "No registrado");
+                    }
+                    /*if (Entity.proyectoPlan.Count == 1)
+                    {
+                        UIHelper.SetValue(txtEjercicioEstimacion, Entity.proyectoPlan.OrderBy(x=>x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial);
+                    }
+                    else
+                    {
+                        var anioPeriodoPrimerPlan = Entity.proyectoPlan.OrderBy(x=>x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial;
+                        Entity.proyectoPlan.Where(x => x.PlanPeriodo_AnioInicial == anioPeriodoPrimerPlan).OrderBy(x => x.IdProyectoPlan).LastOrDefault();
+                    }*/
+                }
+            }
 
             //Matias 20131205 - Tarea 91
             if (CrudAction == CrudActionEnum.Create)
@@ -213,6 +246,8 @@ namespace UI.Web
             //FinMatias 20170127 - Ticket #REQ399293
 
             UIHelper.SetValue(txtDenominacion, Entity.proyecto.ProyectoDenominacion);
+
+            CargarProcesos(); //Carga contribucion (ex proceso)
             if (Entity.proyecto.IdProceso.HasValue)
                 UIHelper.SetValue<Proceso, int>(ddlProceso, Entity.proyecto.IdProceso.Value, ProcesoService.Current.GetById);
             if (Entity.proyecto.IdEstado == 0)
@@ -239,7 +274,7 @@ namespace UI.Web
             UIHelper.SetValue(txtNroProyecto, String.Format("{0:00}", Entity.proyecto.NroProyecto));
             UIHelper.SetValue(txtNroActividad, String.Format("{0:00}", Entity.proyecto.NroActividad));
             UIHelper.SetValue(txtNroObra, String.Format("{0:00}", Entity.proyecto.NroObra));
-            CargarProcesos(); //Carga contribucion (ex proceso)
+            
             ProyectoPlanRefresh();
             ActualizarUltimoPlan();
             upDatosGenerales.Update();
@@ -402,6 +437,12 @@ namespace UI.Web
 
         private void CalcularTEP()
         {
+            if(Entity.proyecto == null || Entity.proyecto.IdProyecto == 0)
+            {
+                SetSelectedItemByText(ddlTipoProyecto, "Sin gastos imputados");
+                return;
+            }
+
             List<string> incisos = new List<string>();
             var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.proyecto.IdProyecto });
             foreach(var proyectoEtapa in proyectoEtapas)
