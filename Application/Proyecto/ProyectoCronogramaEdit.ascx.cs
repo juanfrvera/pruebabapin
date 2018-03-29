@@ -1092,25 +1092,28 @@ namespace UI.Web
                         {
                             textWC.Focus();
 
-                            switch (textWC.ID)
+                            if (textWC.ID != "txtMontoDevengado")
                             {
-                                case "txtMonedaEstimado":
-                                    {
-                                        UIHelper.ShowAlert(UIHelper.Translate("Los campos de Moneda Externa contienen datos inválidos."), upEtapasEstimadasPopUp);
-                                        break;
-                                    }
-                                case "txtTipoCambioEstimado":
-                                    {
-                                        UIHelper.ShowAlert(UIHelper.Translate("Los campos de Tipo de Cambio contienen datos inválidos."), upEtapasEstimadasPopUp);
-                                        break;
-                                    }
-                                case "txtMontoEstimado":
-                                    {
-                                        UIHelper.ShowAlert(UIHelper.Translate("Los campos de Montos contienen datos inválidos."), upEtapasEstimadasPopUp);
-                                        break;
-                                    }
+                                switch (textWC.ID)
+                                {
+                                    case "txtMonedaEstimado":
+                                        {
+                                            UIHelper.ShowAlert(UIHelper.Translate("Los campos de Moneda Externa contienen datos inválidos."), upEtapasEstimadasPopUp);
+                                            break;
+                                        }
+                                    case "txtTipoCambioEstimado":
+                                        {
+                                            UIHelper.ShowAlert(UIHelper.Translate("Los campos de Tipo de Cambio contienen datos inválidos."), upEtapasEstimadasPopUp);
+                                            break;
+                                        }
+                                    case "txtMontoEstimado":
+                                        {
+                                            UIHelper.ShowAlert(UIHelper.Translate("Los campos de Montos contienen datos inválidos."), upEtapasEstimadasPopUp);
+                                            break;
+                                        }
+                                }
+                                return false;
                             }
-                            return false;
                         }
 
                     }
