@@ -53,8 +53,17 @@ WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Reposición' A
 									IdProceso!=(SELECT min(IdProceso) from Proceso where nombre = 'Reposición'))
 GO
 
+--Create scalar to get indefinido
+CREATE FUNCTION fn_GetProyectoTipoIndefinido ()
+RETURNS INT
+AS
+BEGIN
+    return (Select idProyectoTipo from ProyectoTipo where nombre='Indefinido')
+END
+GO
+
 --Add default to proceso on proyecto
-ALTER TABLE [dbo].[Proceso] ADD DEFAULT Select idProyectoTipo from ProyectoTipo where nombre='Indefinido' FOR [IdProceso]
+ALTER TABLE [dbo].[Proceso] ADD DEFAULT ([dbo].[fn_GetProyectoTipoIndefinido]()) FOR [IdProyectoTipo]
 GO
 
 --Add comment
