@@ -1147,12 +1147,12 @@ when Cubo.Dict_Inversion like '' then
 	CASE Cubo.Req_Dict 
 		WHEN 'N' THEN 'NND'
 		WHEN 'S' THEN 'SDF'
-		ELSE 'N/D'
+		ELSE 'NND'
 	END
 when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'AOP'
 when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ADO'
 when Cubo.Dict_Inversion like '%APROBADO%' and not Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ASO'
-else 'N/D'
+else 'NND'
 end,
 UltimaDemanda.AnioInicial			as último_año_demanda,
 UltimoPlan.AnioInicial				as último_año_plan,
