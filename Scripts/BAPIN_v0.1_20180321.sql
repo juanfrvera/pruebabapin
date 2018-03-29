@@ -6,7 +6,7 @@ DELETE FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_ESTIMADOS'
 GO
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
-VALUES (N'Bloquear Gastos Estimados', N'BLOQUEAR_GASTOS_ESTIMADOS', N'Bloquear la edici�n de los gastos estimados', N'3', N'N', null, null, N'');
+VALUES (N'Bloquear Gastos Estimados', N'BLOQUEAR_GASTOS_ESTIMADOS', N'Bloquear la edición de los gastos estimados', N'3', N'N', null, null, N'');
 GO
 
 IF  EXISTS (SELECT * FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_ESTIMADOS_PLANES'  )
@@ -14,7 +14,7 @@ DELETE FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_ESTIMADOS_PLANES'
 GO
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
-VALUES (N'Bloquear Gastos Estimados Planes', N'BLOQUEAR_GASTOS_ESTIMADOS_PLANES', N'Bloquear la edici�n de los gastos estimados para un conjunto de planes [Nombre planes separados por coma]', N'3', N'', null, null, N'');
+VALUES (N'Bloquear Gastos Estimados Planes', N'BLOQUEAR_GASTOS_ESTIMADOS_PLANES', N'Bloquear la edición de los gastos estimados para un conjunto de planes [Nombre planes separados por coma]', N'3', N'', null, null, N'');
 GO
 
 IF  EXISTS (SELECT * FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS'  )
@@ -22,7 +22,7 @@ DELETE FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANIS
 GO
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
-VALUES (N'Bloquear Gastos Estimados Tipo Organismos', N'BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS', N'bloquear la edici�n de los gastos estimados para los organismos presupuestarios definidos [Ids separados por coma]', N'3', N'', null, null, N'');
+VALUES (N'Bloquear Gastos Estimados Tipo Organismos', N'BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS', N'bloquear la edición de los gastos estimados para los organismos presupuestarios definidos [Ids separados por coma]', N'3', N'', null, null, N'');
 
 GO
 
@@ -47,7 +47,7 @@ GO
 
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
-VALUES (N'T�tulo Informaci�n presupuestaria cronograma', N'INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO', N'', N'3', N'', null, null, N'')
+VALUES (N'Título Información presupuestaria cronograma', N'INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO', N'', N'3', N'', null, null, N'')
 GO
 
 
@@ -57,7 +57,7 @@ GO
 
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
-VALUES (N'Informaci�n Presupuestaria A�o Visible', N'INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE', N'', N'3', N'', null, null, N'')
+VALUES (N'Información Presupuestaria Año Visible', N'INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE', N'', N'3', N'', null, null, N'')
 
 GO
  
@@ -143,9 +143,9 @@ Perfil
 8 Usuario BAPIN
 
 Actividades
-45	Opciones B�sicas Generales
-46	Administraci�n B�sica Inversi�n
-56	Administraci�n Total Inversi�n
+45	Opciones Básicas Generales
+46	Administración Básica Inversión
+56	Administración Total Inversión
 */
 
 /*
@@ -1102,6 +1102,126 @@ GO
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
 VALUES (N'User session timeout', N'USER_SESSION_TIMEOUT', N'En minutos', N'3', N'', 30, null, N'')
+
+GO
+
+USE [BD_BAPIN]
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES 
+           WHERE ROUTINE_NAME = 'spConsultarBapines' 
+             AND ROUTINE_SCHEMA = 'dbo' 
+             AND ROUTINE_TYPE = 'PROCEDURE')
+ EXEC ('DROP PROCEDURE dbo.spConsultarBapines')
+GO
+
+CREATE PROCEDURE [dbo].[spConsultarBapines]
+ @ejercicio int					--Año
+,@estado VARCHAR(MAX)			--Plan estado (Enumerativo: DEMANDA, PLAN, PLAN_SEGUN_EJECUCION, PLAN_OCT-DIC)
+,@jurisdiccion int				--Jurisdiccion
+,@bapin int = null				--Codigo BAPIN
+,@saf int = null				--SAF
+,@programas VARCHAR(MAX) = null --Programa
+AS
+
+BEGIN
+
+select DISTINCT Cubo.Nro_Bapin		as bapin,
+Cubo.Denominacion					as denominacion,
+Cubo.Jur_cod						as juridiccion,
+Cubo.SAF_cod						as saf,
+Cubo.Progr_cod						as programa,
+Cubo.Subprog_cod					as subprograma,
+Cubo.Fecha_Inicio_Estimada			as fecha_inicio,
+Cubo.Fecha_Fin_Estimada				as fecha_fin,
+Cubo.[Costo Total Actual]			as costo_total,	--•	costo total (Importe) (*)
+/*
+Definicion para el ESTADO DE DICTAMEN
+NND: Es vacío el Campo Calificación Dictamen + Sin Tilde en Requiere Dictamen
+SDF: Es vacío el Campo Calificación Dictamen + Tilde en el Campo Requiere Dictamen
+AOP: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “OBSERVADO”
+ADO: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “TERMINADO”
+ASO: Campo Calificación Dictamen “APROBADO” + Estado “TERMINADO”
+*/
+estado_dictamen = case 
+when Cubo.Dict_Inversion like '' then 
+	CASE Cubo.Req_Dict 
+		WHEN 'N' THEN 'NND'
+		WHEN 'S' THEN 'SDF'
+		ELSE 'N/D'
+	END
+when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'AOP'
+when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ADO'
+when Cubo.Dict_Inversion like '%APROBADO%' and not Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ASO'
+else 'N/D'
+end,
+UltimaDemanda.AnioInicial			as último_año_demanda,
+UltimoPlan.AnioInicial				as último_año_plan,
+UltimoPlanSegunEjecucion.AnioInicial	as último_año_plan_segun_ejecucion
+
+from Cubo_CxT Cubo
+INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
+
+/*
+LEFT JOIN ProyectoSeguimientoProyecto PSP on PSP.IdProyecto = Y.IdProyecto
+LEFT JOIN ProyectoSeguimiento PS on PS.IdProyectoSeguimiento  = PSP.IdProyectoSeguimiento
+LEFT JOIN ProyectoDictamenSeguimiento PDS on PDS.IdProyectoSeguimiento = PS.IdProyectoSeguimiento
+LEFT JOIN ProyectoDictamen PD on PD.IdProyectoDictamen = PDS.IdProyectoDictamen
+*/
+
+LEFT JOIN (select * from dbo.fn_Split(@programas,'|')) FP on Cubo.Progr_cod = FP.Data
+
+-- Cruzo con los planes.
+LEFT JOIN ProyectoPlan PP on PP.IdProyecto = P.IdProyecto
+INNER JOIN PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
+INNER JOIN PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
+INNER JOIN (select * from dbo.fn_Split(@estado,'|')) ES on 
+	(	(ES.Data = 'DEMANDA' and PPE.IdPlanTipo = 5) --Incluye toda la DEMANDA indepte de la version.
+		OR 
+		(ES.Data = 'PLAN' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 2 /*Presupuesto Nacional*/)
+		OR 
+		(REPLACE(ES.Data,' ','_') = 'PLAN_SEGUN_EJECUCION' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 /*Alta durante la ejecución del Presupuesto*/)
+		OR 
+		(REPLACE(ES.Data,' ','_') = 'PLAN_OCT-DIC' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 37 /*Octubre - Diciembre*/) ) --required
+
+LEFT JOIN	(
+			select		Pint.IdProyecto, max(ppe.AnioInicial) as AnioInicial
+			from		Proyecto Pint
+			INNER JOIN	ProyectoPlan PP on PP.IdProyecto = Pint.IdProyecto
+			INNER JOIN	PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
+			INNER JOIN	PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
+			where		PPE.IdPlanTipo = 5 --Demanda
+			group by	Pint.IdProyecto
+			) as UltimaDemanda on UltimaDemanda.IdProyecto = P.IdProyecto
+
+LEFT JOIN	(
+			select		Pint.IdProyecto, max(ppe.AnioInicial) as AnioInicial
+			from		Proyecto Pint
+			INNER JOIN	ProyectoPlan PP on PP.IdProyecto = Pint.IdProyecto
+			INNER JOIN	PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
+			INNER JOIN	PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
+			where		PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 2 --Plan Nacional Presupuestario
+			group by	Pint.IdProyecto
+			) as UltimoPlan on UltimoPlan.IdProyecto = P.IdProyecto
+
+LEFT JOIN	(
+			select		Pint.IdProyecto, max(ppe.AnioInicial) as AnioInicial
+			from		Proyecto Pint
+			INNER JOIN	ProyectoPlan PP on PP.IdProyecto = Pint.IdProyecto
+			INNER JOIN	PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
+			INNER JOIN	PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
+			where		PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 --Plan Nacional Presupuestario
+			group by	Pint.IdProyecto
+			) as UltimoPlanSegunEjecucion on UltimoPlanSegunEjecucion.IdProyecto = P.IdProyecto
+
+where 
+PPE.AnioInicial		= @ejercicio	--required
+AND Cubo.Jur_cod	= @jurisdiccion --required
+AND Cubo.Nro_Bapin	= ISNULL(@bapin, Cubo.Nro_Bapin)
+AND Cubo.SAF_cod	= ISNULL(@saf, Cubo.SAF_cod)
+
+
+END
+
 
 GO
 
