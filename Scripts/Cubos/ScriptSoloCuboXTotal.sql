@@ -8,6 +8,11 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_Cu
 DROP PROCEDURE [dbo].[sp_Cubo_Genera_CxT]
 GO
 
+/****** Object:  StoredProcedure [dbo].[sp_Cubo_Filtra_CxT]    Script Date: 11/28/2016 20:46:14 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_Cubo_Filtra_CxT]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_Cubo_Filtra_CxT]
+GO
+
 /****** Object:  StoredProcedure [dbo].[sp_Cubo_Inicia_CxT]    Script Date: 11/28/2016 20:46:14 ******/
 SET ANSI_NULLS ON
 GO
@@ -817,3 +822,213 @@ where p.Activo = 1 /*Solo Proyectos activos*/
 END
 
 GO
+
+CREATE PROCEDURE [dbo].[sp_Cubo_Filtra_CxT] (@IdUsusarioLogeado int)
+
+AS
+
+DECLARE
+
+@UsuarioEsDeOficinaDNIP varchar (2) = 'No'
+,@UsuarioTienePerfilOficina varchar (2) = 'Si'
+--@EsUsuarioAdmin varchar (2)= 'No',
+--,@EsPerfilAdminInversion varchar (2) = 'No'
+
+BEGIN
+
+--SET @EsUsuarioAdmin =   
+--        CASE  
+--			-- Valida si el usuario es 'admin' 
+--            WHEN EXISTS(SELECT * FROM Usuario AS u
+--						WHERE u.IdUsuario = @IdUsusarioLogeado
+--								and u.IdUsuario = 2711)   
+--                THEN 'Si'
+--END;
+                
+SET @UsuarioEsDeOficinaDNIP =   
+        CASE                     
+     		--Valida si el usuario pertenece a la 'DNIP'. IDOficina = 62
+            WHEN EXISTS(SELECT ofi.IdOficina from Persona pers
+						left join Oficina ofi on ofi.IdOficina = pers.IdOficina
+						where pers.IdPersona = @IdUsusarioLogeado
+						and ofi.IdOficina = 62)   
+                THEN 'Si'
+                ELSE 'No' 
+END;
+
+SET @UsuarioTienePerfilOficina =   
+        CASE                     
+     		--Valida si el usuario tiene un perfil de oficina asignado
+            WHEN EXISTS(SELECT IdOficina FROM UsuarioOficinaPerfil
+						left join perfil on perfil.IdPerfil = UsuarioOficinaPerfil.IdPerfil
+						where IdUsuario = @IdUsusarioLogeado /*and IdPerfilTipo = 2*/) 						  
+                THEN 'Si'
+                ELSE 'No'  
+END;
+
+-- Si el Usuario pertenece a la oficina DNIP o no tiene perfil de oficina asignado
+-- el procedimiento devuelve todos los proyectos,
+-- y ademas incorpora la infomacion de ONP
+
+--IF @EsUsuarioAdmin = 'Si' or @UsuarioEsDeOficinaDNIP = 'Si'
+IF @UsuarioEsDeOficinaDNIP = 'Si' or @UsuarioTienePerfilOficina = 'No'
+BEGIN
+
+  SELECT distinct
+  CxT.*  
+  FROM Cubo_CxT CxT
+  where CxT.EsBorrador = 'N' -- solo recupera los proyectos que no estan marcados como borrador
+  
+/*
+  SELECT distinct
+  CxT.*  
+  FROM proyecto p
+  inner join Cubo_CxT CxT on CxT.Nro_Bapin = p.Codigo
+  where p.EsBorrador = 0 -- solo recupera los proyectos que no estan marcados como borrador
+*/
+END
+ELSE
+
+-- Si el Usuario no pertenece a la oficina DNIP
+-- Entonces el procedimiento deviuelve solo los proyectos que corresponden al usuario
+-- de acuerdo al perfil de oficina (iniciador, ejecutor, responsable) del proyecto
+-- y las oficinas vinculadas al usuario en su perfil de usuario
+
+BEGIN
+	select distinct
+	
+[CxT].[Nro_Bapin]
+,[CxT].[Denominacion]
+,[CxT].[EsBorrador]
+,[CxT].[Tipo]
+,[CxT].[Incisos]
+,[CxT].[Clasif_Instit]
+,[CxT].[Jur_cod]
+,[CxT].[Jurisdicción]
+,[CxT].[Ape_Prog]
+,[CxT].[SAF_cod]
+,[CxT].[SAF]
+,[CxT].[Progr_cod]
+,[CxT].[Programa]
+,[CxT].[Subprog_cod]
+,[CxT].[Subprograma]
+,[CxT].[Ape_Presup]
+,[CxT].[NroProyecto]
+,[CxT].[NroActividad]
+,[CxT].[NroObra]
+,[CxT].[Tipo_Presup]
+,[CxT].[Ape_PresupActEsp]
+,[CxT].[Es_Presup]
+,[CxT].[Estado_Financiero]
+,[CxT].[Estado_Fisico]
+,[CxT].[Est_Decision]
+,[CxT].[PrioridadDNIP]
+,[CxT].[Art_15]
+,[CxT].[Req_Dict]
+,[CxT].[Estado_calidad]
+,[CxT].[Fecha_Estado_Calidad]
+,[CxT].[Eval_Factibilidad]
+,[CxT].[Dict_Inversion]
+,[CxT].[PrioridadOrganismo]
+,[CxT].[Subprioridad]
+,[CxT].[Prov_Cantidad]
+,[CxT].[Localizacion_Provincia]
+,[CxT].[Fecha_Alta]
+,[CxT].[Fecha_UltModificacion]
+,[CxT].[Usuario_UltModificación]
+,[CxT].[Fecha_Inicio_Estimada]
+,[CxT].[Fecha_Fin_Estimada]
+,[CxT].[Planes]
+,[CxT].[Ult_Plan]
+,[CxT].[Ult_Demanda]
+,[CxT].[Finalidad_Función]
+,[CxT].[Finalidad_Funcion_Cod]
+,[CxT].[Finalidad_Función_Desc]
+,[CxT].[Fuente_Finaciamiento_Cod]
+,[CxT].[Fuente_Financiamiento_Desc]
+,[CxT].[Proceso]
+,[CxT].[Sectorialista]
+,[CxT].[Com_Tecnico_ECTO]
+,[CxT].[Estimados Anteriores]
+,[CxT].[Estimado 2012]
+,[CxT].[Estimado 2013]
+,[CxT].[Estimado 2014]
+,[CxT].[Estimado 2015]
+,[CxT].[Estimado 2016]
+,[CxT].[Estimado 2017]
+,[CxT].[Estimado 2018]
+,[CxT].[Estimado 2019]
+,[CxT].[Estimado 2020]
+,[CxT].[Estimado Posteriores]
+,[CxT].[Estimado Total]
+,[CxT].[Realizados Anteriores]
+,[CxT].[Realizado 2012]
+,[CxT].[Realizado 2013]
+,[CxT].[Realizado 2014]
+,[CxT].[Realizado 2015]
+,[CxT].[Realizado 2016]
+,[CxT].[Realizado 2017]
+,[CxT].[Realizado 2018]
+,[CxT].[Realizado 2019]
+,[CxT].[Realizado 2020]
+,[CxT].[Realizado Posteriores]
+,[CxT].[Realizado Total]
+,[CxT].[Costo Total Actual]
+,[CxT].[Generado]
+,
+[CxT].[MontoInicial Anteriores],
+[CxT].[MontoInicial 2012],
+[CxT].[MontoInicial 2013],
+[CxT].[MontoInicial 2014],
+[CxT].[MontoInicial 2015],
+[CxT].[MontoInicial 2016],
+[CxT].[MontoInicial 2017],
+[CxT].[MontoInicial 2018],
+[CxT].[MontoInicial 2019],
+[CxT].[MontoInicial 2020],
+[CxT].[MontoInicial Posteriores],
+[CxT].[MontoInicial Total],
+[CxT].[MontoVigente Anteriores],
+[CxT].[MontoVigente 2012],
+[CxT].[MontoVigente 2013],
+[CxT].[MontoVigente 2014],
+[CxT].[MontoVigente 2015],
+[CxT].[MontoVigente 2016],
+[CxT].[MontoVigente 2017],
+[CxT].[MontoVigente 2018],
+[CxT].[MontoVigente 2019],
+[CxT].[MontoVigente 2020],
+[CxT].[MontoVigente Posteriores],
+[CxT].[MontoVigente Total],
+[CxT].[MontoVigenteEstimativo 2012],
+[CxT].[MontoVigenteEstimativo 2013],
+[CxT].[MontoVigenteEstimativo 2014],
+[CxT].[MontoVigenteEstimativo 2015],
+[CxT].[MontoVigenteEstimativo 2016],
+[CxT].[MontoVigenteEstimativo 2017],
+[CxT].[MontoVigenteEstimativo 2018],
+[CxT].[MontoVigenteEstimativo 2019],
+[CxT].[MontoVigenteEstimativo 2020],
+[CxT].[MontoDevengado Anteriores],
+[CxT].[MontoDevengado 2012],
+[CxT].[MontoDevengado 2013],
+[CxT].[MontoDevengado 2014],
+[CxT].[MontoDevengado 2015],
+[CxT].[MontoDevengado 2016],
+[CxT].[MontoDevengado 2017],
+[CxT].[MontoDevengado 2018],
+[CxT].[MontoDevengado 2019],
+[CxT].[MontoDevengado 2020],
+[CxT].[MontoDevengado Posteriores],
+[CxT].[MontoDevengado Total]
+
+from proyecto p
+inner join (select distinct pop.IdProyecto from ProyectoOficinaPerfil pop
+inner join fnIdsOficinaPorUsuario (@IdUsusarioLogeado) opu on opu.IdOficina = pop.IdOficina) uop
+	on uop.IdProyecto = p.IdProyecto
+inner join Cubo_CxT CxT on CxT.Nro_Bapin = p.Codigo
+where p.EsBorrador = 0 -- solo recupera los proyectos que no estan marcados como borrador
+
+END
+END
+
