@@ -30,7 +30,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Objetivo del Proyecto --%>
 <div class="CollapsiblePanelTab">
     <span id="span1">
@@ -61,7 +61,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL ProductoOServicio --%>
 <div class="CollapsiblePanelTab">
     <span id="span2">
@@ -92,7 +92,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Alternativas --%>
 <div class="CollapsiblePanelTab">
     <span id="span3">
@@ -123,7 +123,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Porque alternativa--%>
 <div class="CollapsiblePanelTab">
     <span id="span4">
@@ -154,7 +154,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Descripcion Tecnica --%>
 <div class="CollapsiblePanelTab">
     <span id="span5">
@@ -185,7 +185,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Vida util --%>
 <div class="CollapsiblePanelTab">
     <span id="span6">
@@ -216,7 +216,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Cobertura--%>
 <div class="CollapsiblePanelTab">
     <span id="span7">
@@ -287,7 +287,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Dificultades Riesgos --%>
 <div class="CollapsiblePanelTab">
     <span id="span8">
@@ -321,7 +321,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Dimensiones Costos --%>
 <div class="CollapsiblePanelTab">
     <span id="span9">
@@ -363,7 +363,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-
+<br/>
 <%--PANEL Requiere Intevencion --%>
 <div class="CollapsiblePanelTab">
     <span id="span10">
@@ -410,5 +410,5 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Panel>
-				
+<br/>				
 							

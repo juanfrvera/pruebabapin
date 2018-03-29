@@ -69,7 +69,7 @@ namespace UI.Web
             revPrioridad.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
             UIHelper.Load<nc.ProyectoTipo>(ddlTipoProyecto, ProyectoTipoService.Current.GetList(new nc.ProyectoTipoFilter() { Activo = true }), "Nombre", "IdProyectoTipo", new ProyectoTipo() { IdProyectoTipo = 0, Nombre = "Seleccione Clasificación" });
             //UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new Estado() { IdEstado = 0, Nombre = "Seleccione Estado" }, true, "Orden", typeof(Int32));
-            UIHelper.Load<nc.SistemaEntidadEstado>(ddlEstado, SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new SistemaEntidadEstado() { IdEstado = 0, Nombre = "Seleccione Etapa" }, true, "Nombre", typeof(Int32));
+            UIHelper.Load<nc.SistemaEntidadEstado>(ddlEstado, SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new SistemaEntidadEstado() { IdEstado = 0, Nombre = "Seleccione Etapa" }, true, "Nombre");
 
             //ddlEstado.ToolTip = Translate("TooltipTipoProyecto");
             UIHelper.Load<nc.ModalidadContratacion>(ddlModalidadContratacion, ModalidadContratacionService.Current.GetList(new nc.ModalidadContratacionFilter() { Activo = true }), "Nombre", "IdModalidadContratacion");//, new ModalidadContratacion() { IdModalidadContratacion = 0, Nombre = "No definido aún" }
@@ -1264,6 +1264,14 @@ namespace UI.Web
         }
         void CommandProyectoPlanSave()
         {
+            //validar que el proyecto plan no exista
+            if (Entity.proyectoPlan.Where(x => x.IdPlanTipo == UIHelper.GetInt(ddlTipoPopUp)
+                && x.IdPlanVersion == UIHelper.GetInt(ddlVersionPopUp)
+                && x.IdPlanPeriodo == UIHelper.GetInt(ddlPeriodoPopUp)).Any())
+            {
+                UIHelper.ShowAlert(Translate("- Plan ya Asociado"), upPlanHistorialPopUp);
+                return;
+            }
             ProyectoPlanGetValue();
             ProyectoPlanResult result = (from o in Entity.proyectoPlan where o.IdProyectoPlan == ActualProyectoPlan.ID select o).FirstOrDefault();
 
@@ -1285,6 +1293,7 @@ namespace UI.Web
             ProyectoPlanClear();
             //ProyectoPlanRefresh();
             ActualizarUltimoPlan();
+            upPlanHistorialPopUp.Update();
         }
         void CommandProyectoPlanDelete()
         {
@@ -1293,6 +1302,8 @@ namespace UI.Web
             ProyectoPlanClear();
             //ProyectoPlanRefresh();
             ActualizarUltimoPlan();
+            CargarPopUpPlanesHistorial();
+            upPlanHistorialPopUp.Update();
         }
         #endregion
 

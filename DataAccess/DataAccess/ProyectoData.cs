@@ -366,7 +366,7 @@ namespace DataAccess
             if (!source.EvaluarValidaciones.Equals(target.EvaluarValidaciones)) return false;
             if (!source.Activo.Equals(target.Activo)) return false;
             if ((source.IdEstadoDeDesicion == null) ? (target.IdEstadoDeDesicion.HasValue && target.IdEstadoDeDesicion.Value > 0) : !source.IdEstadoDeDesicion.Equals(target.IdEstadoDeDesicion)) return false;
-            if ((source.EsPPP == null) ? (target.EsPPP.HasValue) : !source.EsPPP.Equals(target.EsPPP)) return false;
+            if ((source.EsPPP == null) ? (target.EsPPP.HasValue) : !(source.EsPPP.Equals(target.EsPPP))) return false;
             if ((source.NroActividad == null) ? (target.NroActividad.HasValue) : !source.NroActividad.Equals(target.NroActividad)) return false;
             if ((source.NroObra == null) ? (target.NroObra.HasValue) : !source.NroObra.Equals(target.NroObra)) return false;
             if ((source.NroProyectoEjecucion == null) ? (target.NroProyectoEjecucion.HasValue) : !source.NroProyectoEjecucion.Equals(target.NroProyectoEjecucion)) return false;

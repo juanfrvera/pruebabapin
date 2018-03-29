@@ -362,6 +362,10 @@
                         <asp:TextBox ID="txtUltimaSolicitud" runat="server" Enabled="false" TabIndex="19" Width="435px"></asp:TextBox> 
                     </td>
                 </tr>
+                                
+                <tr>
+                    <td colspan="8">&nbsp;</td>
+                </tr>
                 <tr>
                     <td style="width:115px">
                         <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>

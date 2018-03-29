@@ -8,4 +8,10 @@ ALTER TABLE [dbo].[Proyecto]
 ADD [EsPPP] bit NULL 
 GO
 
+--Add default to EsPPP on proyecto
+ALTER TABLE [dbo].[Proyecto] ADD DEFAULT 0 FOR [EsPPP]
+GO
+
+UPDATE [dbo].[Proyecto]  SET [EsPPP] = 0 where EsPPP is null
+GO
 
