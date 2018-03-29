@@ -182,6 +182,8 @@ and idpermiso in (5298,5525,5860,5278,5545,5322,5499,5306,5517,5303,5520)
 
 GO
 
+DELETE from PerfilActividad where idactividad = 40 and idperfil = 8 
+GO
 
 USE [BD_BAPIN]
 GO
