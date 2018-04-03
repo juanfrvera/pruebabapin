@@ -30,22 +30,20 @@ Cubo.Fecha_Fin_Estimada				as fecha_fin,
 Cubo.[Costo Total Actual]			as costo_total,	--•	costo total (Importe) (*)
 /*
 Definicion para el ESTADO DE DICTAMEN
-NND: Es vacío el Campo Calificación Dictamen + Sin Tilde en Requiere Dictamen
-SDF: Es vacío el Campo Calificación Dictamen + Tilde en el Campo Requiere Dictamen
-AOP: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “OBSERVADO”
-ADO: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “TERMINADO”
-ASO: Campo Calificación Dictamen “APROBADO” + Estado “TERMINADO”
+ASO: ("ASO", "Aprobado sin observaciones"),
+ACO: ("ACO", "Aprobado con observaciones"),
+SDF: ("SDF", "Sin dictamen firme"),
+NND: ("NND", "No necesita dictamen")
 */
 estado_dictamen = case 
-when Cubo.Dict_Inversion like '' then 
-	CASE Cubo.Req_Dict 
-		WHEN 'N' THEN 'NND'
-		WHEN 'S' THEN 'SDF'
-		ELSE 'NND'
+when Cubo.Req_Dict like 'N' then 'NND'
+when Cubo.Req_Dict like 'S' then
+	CASE 
+		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' then 'ACO'
+		when Cubo.Dict_Inversion like '%APROBADO%' and Cubo.Dict_Inversion not like '%APROBADO CON OBSERVACIONES%' then 'ASO'
+		when Cubo.Dict_Inversion like '%SIN DICTAMEN FIRME%' then 'SDF'
+		else 'NND'
 	END
-when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'AOP'
-when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ADO'
-when Cubo.Dict_Inversion like '%APROBADO%' and not Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ASO'
 else 'NND'
 end,
 UltimaDemanda.AnioInicial			as último_año_demanda,
