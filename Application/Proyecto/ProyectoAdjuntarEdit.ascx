@@ -59,37 +59,6 @@
 
 <br/>
 
-    <%--PANEL INFO ADICIONAL --%>
-    <div class="CollapsiblePanelTab">
-        <span id="spanInfoAdicional">
-            <asp:Label ID="lblInfoAdicional" runat="server" Text="Información Adicional"></asp:Label>
-            &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
-        </span>
-        <ajaxToolkit:CollapsiblePanelExtender ID="cpeInfoAdicional" runat="Server" TargetControlID="pnlInfoAdicional"
-            Collapsed="True" ExpandControlID="lblInfoAdicional" CollapseControlID="lblInfoAdicional"
-            AutoCollapse="False" AutoExpand="False" ExpandDirection="Vertical" />
-    </div>
-    <asp:Panel ID="pnlInfoAdicional" runat="server">
-    <asp:UpdatePanel ID="upInfoAdicional" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                <tr>
-                    <td>
-                        <asp:TextBox runat="server" ID="txtInfoAdicional" Rows="6" TextMode="MultiLine"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:RegularExpressionValidator ID="revInfoAdicional" runat="server" ControlToValidate="txtInfoAdicional"
-                            ValidationGroup="EditionProyectoEvaluacion" Text="*" Width="1px" Height="1px">
-                        </asp:RegularExpressionValidator>
-                    </td>
-                </tr>
-            </table>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    </asp:Panel>
-
     <%--PANEL MARCO LEGAL --%>
     <div class="CollapsiblePanelTab">
         <span id="spanMarcoLegal">
@@ -120,6 +89,37 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
+
+    <%--PANEL INFO ADICIONAL --%>
+    <div class="CollapsiblePanelTab">
+        <span id="spanInfoAdicional">
+            <asp:Label ID="lblInfoAdicional" runat="server" Text="Información Adicional"></asp:Label>
+            &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+        </span>
+        <ajaxToolkit:CollapsiblePanelExtender ID="cpeInfoAdicional" runat="Server" TargetControlID="pnlInfoAdicional"
+            Collapsed="True" ExpandControlID="lblInfoAdicional" CollapseControlID="lblInfoAdicional"
+            AutoCollapse="False" AutoExpand="False" ExpandDirection="Vertical" />
+    </div>
+    <asp:Panel ID="pnlInfoAdicional" runat="server">
+    <asp:UpdatePanel ID="upInfoAdicional" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                <tr>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtInfoAdicional" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RegularExpressionValidator ID="revInfoAdicional" runat="server" ControlToValidate="txtInfoAdicional"
+                            ValidationGroup="EditionProyectoEvaluacion" Text="*" Width="1px" Height="1px">
+                        </asp:RegularExpressionValidator>
+                    </td>
+                </tr>
+            </table>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    </asp:Panel>
 </div>
 
 <%--PANEL ALTA ARCHIVOS --%>
