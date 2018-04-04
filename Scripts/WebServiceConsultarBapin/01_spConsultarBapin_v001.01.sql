@@ -48,22 +48,13 @@ when Cubo.Req_Dict like 'S' then
 	END
 else 'NND'
 end,
-UltimaDemanda.AnioInicial			as último_año_demanda,
-UltimoPlan.AnioInicial				as último_año_plan,
-UltimoPlanSegunEjecucion.AnioInicial	as último_año_plan_segun_ejecucion
+UltimaDemanda.AnioInicial				as ultimo_anio_demanda,
+UltimoPlan.AnioInicial					as ultimo_anio_plan,
+UltimoPlanSegunEjecucion.AnioInicial	as ultimo_anio_plan_segun_ejecucion
 
 from Cubo_CxT Cubo
 INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
-
-/*
-LEFT JOIN ProyectoSeguimientoProyecto PSP on PSP.IdProyecto = Y.IdProyecto
-LEFT JOIN ProyectoSeguimiento PS on PS.IdProyectoSeguimiento  = PSP.IdProyectoSeguimiento
-LEFT JOIN ProyectoDictamenSeguimiento PDS on PDS.IdProyectoSeguimiento = PS.IdProyectoSeguimiento
-LEFT JOIN ProyectoDictamen PD on PD.IdProyectoDictamen = PDS.IdProyectoDictamen
-*/
-
 LEFT JOIN (select * from dbo.fn_Split(@programas,'|')) FP on Cubo.Progr_cod = FP.Data
-
 -- Cruzo con los planes.
 LEFT JOIN ProyectoPlan PP on PP.IdProyecto = P.IdProyecto
 INNER JOIN PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
@@ -115,6 +106,7 @@ AND Cubo.SAF_cod	= ISNULL(@saf, Cubo.SAF_cod)
 
 
 END
+
 
 
 GO
