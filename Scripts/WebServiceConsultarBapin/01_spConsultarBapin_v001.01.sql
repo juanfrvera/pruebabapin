@@ -31,17 +31,19 @@ Cubo.[Costo Total Actual]			as costo_total,	--•	costo total (Importe) (*)
 /*
 Definicion para el ESTADO DE DICTAMEN
 ASO: ("ASO", "Aprobado sin observaciones"),
-ACO: ("ACO", "Aprobado con observaciones"),
-SDF: ("SDF", "Sin dictamen firme"),
+ACO: ("ACO", "Aprobado con observaciones"), donde ACO = "calificacion de dictamen"= "Aprobado c/ observaciones" y "estado de dictamen" = TERMINADO
+SDF: ("SDF", "Sin dictamen firme"), donde SDF = requiere dictamen y "calificacion de dictamen"= "vacio" o requiere dictamen y "estado de dictamen" = OBSERVADO
+SDF: ("SDF", "Sin dictamen firme"), donde SDF = "Aprobado c/ observaciones" y "estado de dictamen" = OBSERVADO
 NND: ("NND", "No necesita dictamen")
 */
 estado_dictamen = case 
 when Cubo.Req_Dict like 'N' then 'NND'
 when Cubo.Req_Dict like 'S' then
 	CASE 
-		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' then 'ACO'
+		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ACO'
 		when Cubo.Dict_Inversion like '%APROBADO%' and Cubo.Dict_Inversion not like '%APROBADO CON OBSERVACIONES%' then 'ASO'
-		when Cubo.Dict_Inversion like '%SIN DICTAMEN FIRME%' then 'SDF'
+		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'ACO'
+		when Cubo.Dict_Inversion = '' or Cubo.Dict_Inversion like '%OBSERVADO%' then 'SDF'
 		else 'NND'
 	END
 else 'NND'
