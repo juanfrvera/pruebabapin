@@ -19,14 +19,17 @@ AS
 
 BEGIN
 
-select DISTINCT Cubo.Nro_Bapin		as bapin,
+select DISTINCT 
+CAST(Cubo.Nro_Bapin AS bigint) 		as bapin,
 Cubo.Denominacion					as denominacion,
-Cubo.Jur_cod						as jurisdiccion,
-Cubo.SAF_cod						as saf,
-Cubo.Progr_cod						as programa,
-Cubo.Subprog_cod					as subprograma,
-Cubo.Fecha_Inicio_Estimada			as fecha_inicio,
-Cubo.Fecha_Fin_Estimada				as fecha_fin,
+CAST(Cubo.Jur_cod AS bigint) as jurisdiccion,
+CAST(Cubo.SAF_cod AS bigint) 						as saf,
+CAST(Cubo.Progr_cod AS bigint) 						as programa,
+CAST(Cubo.Subprog_cod AS bigint) 					as subprograma,
+Cubo.Fecha_Inicio_Estimada,
+Cubo.Fecha_Fin_Estimada,
+CONVERT(datetime, Cubo.Fecha_Inicio_Estimada, 103)			as fecha_inicio,
+CONVERT(datetime, Cubo.Fecha_Fin_Estimada, 103)				as fecha_fin,
 Cubo.[Costo Total Actual]			as costo_total,	--•	costo total (Importe) (*)
 /*
 Definicion para el ESTADO DE DICTAMEN
@@ -48,9 +51,9 @@ when Cubo.Req_Dict like 'S' then
 	END
 else 'NND'
 end,
-UltimaDemanda.AnioInicial				as ultimo_anio_demanda,
-UltimoPlan.AnioInicial					as ultimo_anio_plan,
-UltimoPlanSegunEjecucion.AnioInicial	as ultimo_anio_plan_segun_ejecucion
+CAST(ISNULL(UltimaDemanda.AnioInicial,0) AS bigint)				as ultimo_anio_demanda,
+CAST(ISNULL(UltimoPlan.AnioInicial,0) AS bigint)					as ultimo_anio_plan,
+CAST(ISNULL(UltimoPlanSegunEjecucion.AnioInicial,0) AS bigint)	as ultimo_anio_plan_segun_ejecucion
 
 from Cubo_CxT Cubo
 INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
@@ -106,8 +109,6 @@ AND Cubo.SAF_cod	= ISNULL(@saf, Cubo.SAF_cod)
 
 
 END
-
-
 
 GO
 
