@@ -21,7 +21,7 @@ BEGIN
 
 select DISTINCT Cubo.Nro_Bapin		as bapin,
 Cubo.Denominacion					as denominacion,
-Cubo.Jur_cod						as juridiccion,
+Cubo.Jur_cod						as jurisdiccion,
 Cubo.SAF_cod						as saf,
 Cubo.Progr_cod						as programa,
 Cubo.Subprog_cod					as subprograma,
