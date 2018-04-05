@@ -21,7 +21,7 @@ BEGIN
 
 select DISTINCT Cubo.Nro_Bapin		as bapin,
 Cubo.Denominacion					as denominacion,
-Cubo.Jur_cod						as juridiccion,
+Cubo.Jur_cod						as jurisdiccion,
 Cubo.SAF_cod						as saf,
 Cubo.Progr_cod						as programa,
 Cubo.Subprog_cod					as subprograma,
@@ -30,40 +30,31 @@ Cubo.Fecha_Fin_Estimada				as fecha_fin,
 Cubo.[Costo Total Actual]			as costo_total,	--•	costo total (Importe) (*)
 /*
 Definicion para el ESTADO DE DICTAMEN
-NND: Es vacío el Campo Calificación Dictamen + Sin Tilde en Requiere Dictamen
-SDF: Es vacío el Campo Calificación Dictamen + Tilde en el Campo Requiere Dictamen
-AOP: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “OBSERVADO”
-ADO: Campo Calificación Dictamen “APROBADO CON OBSERVACIONES” + Estado “TERMINADO”
-ASO: Campo Calificación Dictamen “APROBADO” + Estado “TERMINADO”
+ASO: ("ASO", "Aprobado sin observaciones"),
+ACO: ("ACO", "Aprobado con observaciones"), donde ACO = "calificacion de dictamen"= "Aprobado c/ observaciones" y "estado de dictamen" = TERMINADO
+SDF: ("SDF", "Sin dictamen firme"), donde SDF = requiere dictamen y "calificacion de dictamen"= "vacio" o requiere dictamen y "estado de dictamen" = OBSERVADO
+SDF: ("SDF", "Sin dictamen firme"), donde SDF = "Aprobado c/ observaciones" y "estado de dictamen" = OBSERVADO
+NND: ("NND", "No necesita dictamen")
 */
 estado_dictamen = case 
-when Cubo.Dict_Inversion like '' then 
-	CASE Cubo.Req_Dict 
-		WHEN 'N' THEN 'NND'
-		WHEN 'S' THEN 'SDF'
-		ELSE 'NND'
+when Cubo.Req_Dict like 'N' then 'NND'
+when Cubo.Req_Dict like 'S' then
+	CASE 
+		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ACO'
+		when Cubo.Dict_Inversion like '%APROBADO%' and Cubo.Dict_Inversion not like '%APROBADO CON OBSERVACIONES%' then 'ASO'
+		when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'ACO'
+		when Cubo.Dict_Inversion = '' or Cubo.Dict_Inversion like '%OBSERVADO%' then 'SDF'
+		else 'NND'
 	END
-when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Observado' then 'AOP'
-when Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ADO'
-when Cubo.Dict_Inversion like '%APROBADO%' and not Cubo.Dict_Inversion like '%APROBADO CON OBSERVACIONES%' and Cubo.Dict_Inversion like '%Terminado' then 'ASO'
 else 'NND'
 end,
-UltimaDemanda.AnioInicial			as último_año_demanda,
-UltimoPlan.AnioInicial				as último_año_plan,
-UltimoPlanSegunEjecucion.AnioInicial	as último_año_plan_segun_ejecucion
+UltimaDemanda.AnioInicial				as ultimo_anio_demanda,
+UltimoPlan.AnioInicial					as ultimo_anio_plan,
+UltimoPlanSegunEjecucion.AnioInicial	as ultimo_anio_plan_segun_ejecucion
 
 from Cubo_CxT Cubo
 INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
-
-/*
-LEFT JOIN ProyectoSeguimientoProyecto PSP on PSP.IdProyecto = Y.IdProyecto
-LEFT JOIN ProyectoSeguimiento PS on PS.IdProyectoSeguimiento  = PSP.IdProyectoSeguimiento
-LEFT JOIN ProyectoDictamenSeguimiento PDS on PDS.IdProyectoSeguimiento = PS.IdProyectoSeguimiento
-LEFT JOIN ProyectoDictamen PD on PD.IdProyectoDictamen = PDS.IdProyectoDictamen
-*/
-
 LEFT JOIN (select * from dbo.fn_Split(@programas,'|')) FP on Cubo.Progr_cod = FP.Data
-
 -- Cruzo con los planes.
 LEFT JOIN ProyectoPlan PP on PP.IdProyecto = P.IdProyecto
 INNER JOIN PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
@@ -115,6 +106,7 @@ AND Cubo.SAF_cod	= ISNULL(@saf, Cubo.SAF_cod)
 
 
 END
+
 
 
 GO
