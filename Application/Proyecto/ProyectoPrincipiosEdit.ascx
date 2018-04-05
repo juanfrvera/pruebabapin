@@ -304,17 +304,20 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td style="width:101px;">
-                    <asp:CheckBox ID="cbDificultadesRiesgos" Text="Si" AutoPostBack="true" Checked='<%# Bind("DificultadesRiesgos") %>' runat="server" Enabled="true" OnCheckedChanged="cbDificultadesRiesgos_CheckedChanged" />
+                    <asp:RadioButton ID="cbDificultadesRiesgos" GroupName="DificultadesRiesgos" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DificultadesRiesgos") %>' Enabled="true" Text="Si" CssClass="" ValidationGroup="" OnCheckedChanged="cbDificultadesRiesgos_CheckedChanged"/>
+                    <asp:RadioButton ID="cbDificultadesRiesgosNo" GroupName="DificultadesRiesgos" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DificultadesRiesgos") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDificultadesRiesgos_CheckedChanged"/>
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtDificultadesRiesgosEnumeracion" placeholder="Enumérelos" Rows="6" TextMode="MultiLine" Enabled="false"></asp:TextBox>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:RegularExpressionValidator ID="revDificultadesRiesgosEnumeracion" runat="server" ControlToValidate="txtDificultadesRiesgosEnumeracion"
+                <td Width="1px">
+                    <asp:RegularExpressionValidator Enabled="false" Display = "Dynamic" ControlToValidate = "txtDificultadesRiesgosEnumeracion" ID="revDificultadesRiesgosEnumeracionMinLength" ValidationExpression = "^[\s\S]{8,}$" runat="server" Text="*" ValidationGroup="EditionProyectoPrincipios"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator Enabled="false" ID="revDificultadesRiesgosEnumeracion" runat="server" ControlToValidate="txtDificultadesRiesgosEnumeracion"
                         ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px">
                     </asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="rfvDificultadesRiesgosEnumeracion" Enabled="false" runat="server"
+                        ControlToValidate="txtDificultadesRiesgosEnumeracion" Text="*" ValidationGroup="EditionProyectoPrincipios">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -338,10 +341,21 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:CheckBox ID="cbDimensionesCostosDimensionados" Text="Si" AutoPostBack="true" Checked='<%# Bind("DimensionesCostosDimensionados") %>' runat="server" Enabled="true" OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged" />
+                    <asp:RadioButton ID="cbDimensionesCostosDimensionados" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="Si" CssClass="" ValidationGroup="" OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
+                    <asp:RadioButton ID="cbDimensionesCostosDimensionadosNo" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
                 </td>
                 <td>
-                    <asp:CheckBox ID="cbDimensionesCostosValidados" Text="¿Los costos fueron validados con la institución, autoridad o nivel de gobierno (nacional, provincial, municipal) que deberá afrontarlos?" AutoPostBack="true" Checked='<%# Bind("DimensionesCostosValidados") %>' runat="server" Enabled="false" OnCheckedChanged="cbDimensionesCostosValidados_CheckedChanged" />
+                    <asp:Literal ID="lblDimensionesCostosValidados" Text="¿Los costos fueron validados con la institución, autoridad o nivel de gobierno (nacional, provincial, municipal) que deberá afrontarlos?" runat="server"></asp:Literal>
+
+                    <asp:RadioButtonList ID="rblDimensionesCostosValidados" RepeatDirection="Horizontal" RepeatLayout="Flow" runat="server" ValidationGroup="EditionProyectoPrincipios" AutoPostBack="true" OnTextChanged="cbDimensionesCostosValidados_CheckedChanged" >
+                        <asp:ListItem>Si</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvDimensionesCostosValidados" Enabled="false" runat="server" Text="*"
+                        ControlToValidate="rblDimensionesCostosValidados" ValidationGroup="EditionProyectoPrincipios">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -351,12 +365,14 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
                 </td>
-            </tr>
-            <tr>
-                <td>
+                <td Width="1px">
                     <asp:RegularExpressionValidator ID="revDimensionesCostosEnte" runat="server" ControlToValidate="txtDimensionesCostosEnte"
                         ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px">
                     </asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="revDimensionesCostosEnteMinLength" Enabled="false" Display = "Dynamic" ControlToValidate = "txtDimensionesCostosEnte" ValidationExpression = "^[\s\S]{8,}$" runat="server" Text="*" ValidationGroup="EditionProyectoPrincipios"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="rfvDimensionesCostosEnte" Enabled="false" runat="server"
+                        ControlToValidate="txtDimensionesCostosEnte" Text="*" ValidationGroup="EditionProyectoPrincipios">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -380,7 +396,8 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:CheckBox ID="cbRequiereIntevencion" Text="Si" AutoPostBack="true" Checked='<%# Bind("RequiereIntevencion") %>' runat="server" Enabled="true" OnCheckedChanged="cbRequiereIntevencion_CheckedChanged" />
+                    <asp:RadioButton ID="cbRequiereIntevencion" GroupName="RequiereIntevencion" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("RequiereIntevencion") %>' Enabled="true" Text="Si" CssClass="" ValidationGroup="" OnCheckedChanged="cbRequiereIntevencion_CheckedChanged"/>
+                    <asp:RadioButton ID="cbRequiereIntevencionNo" GroupName="RequiereIntevencion" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("RequiereIntevencion") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbRequiereIntevencionNo_CheckedChanged"/>
                 </td>
                 <td style="width:101px;">
                     Indique cuál es la autoridad ambiental competente
@@ -388,22 +405,34 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
-            </tr>
-            <tr>
-                <td style="width:101px;">
-                    Estado del trámite
-                </td>
-                <td colspan="2">
-                    <asp:RadioButton ID="cbRequiereIntevencionEstadoAIniciar" GroupName="RequiereIntevencionEstado" runat="server" TextAlign="Left"  Text="A Iniciar" CssClass="" ValidationGroup="" />
-                    <asp:RadioButton ID="cbRequiereIntevencionEstadoEnCurso" GroupName="RequiereIntevencionEstado" runat="server" TextAlign="Left"  Text="En Curso" CssClass="" ValidationGroup="" />
-                    <asp:RadioButton ID="cbRequiereIntevencionEstadoTerminado" GroupName="RequiereIntevencionEstado" runat="server" TextAlign="Left" Text="Terminado" CssClass="" ValidationGroup="" />
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <asp:RegularExpressionValidator ID="revRequiereIntevencionAutoridad" runat="server" ControlToValidate="txtRequiereIntevencionAutoridad"
                         ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px">
                     </asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="rfvRequiereIntevencionAutoridad" runat="server"
+                        ControlToValidate="txtRequiereIntevencionAutoridad" Text="*" ValidationGroup="EditionProyectoPrincipios">
+                    </asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:101px;">
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    Estado del trámite &nbsp;
+                    <asp:RadioButtonList ID="rblRequiereIntevencionEstado" Enabled="false" RepeatDirection="Horizontal" RepeatLayout="Flow" runat="server" ValidationGroup="EditionProyectoPrincipios" >
+                        <asp:ListItem>A Iniciar</asp:ListItem>
+                        <asp:ListItem>En Curso</asp:ListItem>
+                        <asp:ListItem>Terminado</asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvRequiereIntevencionEstado" runat="server" Text="*"
+                        ControlToValidate="rblRequiereIntevencionEstado" ValidationGroup="EditionProyectoPrincipios">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>

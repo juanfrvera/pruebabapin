@@ -541,7 +541,16 @@ namespace UI.Web.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbDificultadesRiesgos;
+        protected global::System.Web.UI.WebControls.RadioButton cbDificultadesRiesgos;
+        
+        /// <summary>
+        /// cbDificultadesRiesgosNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton cbDificultadesRiesgosNo;
         
         /// <summary>
         /// txtDificultadesRiesgosEnumeracion control.
@@ -553,6 +562,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtDificultadesRiesgosEnumeracion;
         
         /// <summary>
+        /// revDificultadesRiesgosEnumeracionMinLength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revDificultadesRiesgosEnumeracionMinLength;
+        
+        /// <summary>
         /// revDificultadesRiesgosEnumeracion control.
         /// </summary>
         /// <remarks>
@@ -560,6 +578,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revDificultadesRiesgosEnumeracion;
+        
+        /// <summary>
+        /// rfvDificultadesRiesgosEnumeracion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDificultadesRiesgosEnumeracion;
         
         /// <summary>
         /// lblDimensionesCostos control.
@@ -604,16 +631,43 @@ namespace UI.Web.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbDimensionesCostosDimensionados;
+        protected global::System.Web.UI.WebControls.RadioButton cbDimensionesCostosDimensionados;
         
         /// <summary>
-        /// cbDimensionesCostosValidados control.
+        /// cbDimensionesCostosDimensionadosNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbDimensionesCostosValidados;
+        protected global::System.Web.UI.WebControls.RadioButton cbDimensionesCostosDimensionadosNo;
+        
+        /// <summary>
+        /// lblDimensionesCostosValidados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblDimensionesCostosValidados;
+        
+        /// <summary>
+        /// rblDimensionesCostosValidados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblDimensionesCostosValidados;
+        
+        /// <summary>
+        /// rfvDimensionesCostosValidados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDimensionesCostosValidados;
         
         /// <summary>
         /// ltDimensionesCostosEnte control.
@@ -641,6 +695,24 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revDimensionesCostosEnte;
+        
+        /// <summary>
+        /// revDimensionesCostosEnteMinLength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revDimensionesCostosEnteMinLength;
+        
+        /// <summary>
+        /// rfvDimensionesCostosEnte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDimensionesCostosEnte;
         
         /// <summary>
         /// lblRequiereIntevencion control.
@@ -685,7 +757,16 @@ namespace UI.Web.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbRequiereIntevencion;
+        protected global::System.Web.UI.WebControls.RadioButton cbRequiereIntevencion;
+        
+        /// <summary>
+        /// cbRequiereIntevencionNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton cbRequiereIntevencionNo;
         
         /// <summary>
         /// txtRequiereIntevencionAutoridad control.
@@ -697,33 +778,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtRequiereIntevencionAutoridad;
         
         /// <summary>
-        /// cbRequiereIntevencionEstadoAIniciar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton cbRequiereIntevencionEstadoAIniciar;
-        
-        /// <summary>
-        /// cbRequiereIntevencionEstadoEnCurso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton cbRequiereIntevencionEstadoEnCurso;
-        
-        /// <summary>
-        /// cbRequiereIntevencionEstadoTerminado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton cbRequiereIntevencionEstadoTerminado;
-        
-        /// <summary>
         /// revRequiereIntevencionAutoridad control.
         /// </summary>
         /// <remarks>
@@ -731,5 +785,32 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revRequiereIntevencionAutoridad;
+        
+        /// <summary>
+        /// rfvRequiereIntevencionAutoridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRequiereIntevencionAutoridad;
+        
+        /// <summary>
+        /// rblRequiereIntevencionEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblRequiereIntevencionEstado;
+        
+        /// <summary>
+        /// rfvRequiereIntevencionEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRequiereIntevencionEstado;
     }
 }
