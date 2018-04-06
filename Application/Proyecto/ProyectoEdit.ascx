@@ -85,7 +85,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="litNroProyecto" Text="Cod. Presupuestario" runat="server"></asp:Literal>
+                        <asp:Literal ID="litNroProyecto" Text="Proyecto" runat="server"></asp:Literal>
                     </td>
                     <td colspan="3">
                     <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
