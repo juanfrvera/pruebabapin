@@ -45,7 +45,7 @@
     <ContentTemplate>
         <asp:Panel ID="pnlDatosGenerales" runat="server" GroupingText="Datos Generales">
 
-            <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
+            <table style="width:100%" class="formulario" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
                     <td style="width:115px" >
                         <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
@@ -141,7 +141,7 @@
                         <asp:Literal ID="Literal5" Text="Costo total" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtCostoTotal" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtCostoTotal" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="196px"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -150,7 +150,7 @@
                         <asp:Literal ID="Literal6" Text="Costo Inicial Estimado" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtCostoInicialEstimado" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtCostoInicialEstimado" style="text-align:right;" Enabled="false" runat="server" TabIndex="19" Width="196px"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -159,7 +159,7 @@
                         <asp:Literal ID="Literal1" Text="Ejercicio de estimación" runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtEjercicioEstimacion" Enabled="false" runat="server" TabIndex="19" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="txtEjercicioEstimacion" Enabled="false" runat="server" TabIndex="19" Width="130px"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -191,7 +191,7 @@
                        <asp:Literal ID="liRequiereDictamen" Text="Requiere Dictámen" runat="server"></asp:Literal> 
                     </td>  
                     <td>
-                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" />
+                        <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" style="margin-left: -4px"/>
                     </td> 
                     <td>
                         &nbsp;
@@ -211,7 +211,7 @@
                         <asp:Literal ID="Literal8" Text="PPP" runat="server"></asp:Literal>
                     </td>
                     <td>                                    
-                        <asp:CheckBox ID="cbEsPPP" runat="server" Text="" TabIndex="2"  />
+                        <asp:CheckBox ID="cbEsPPP" runat="server" Text="" TabIndex="2" style="margin-left: -4px" />
                     </td>   
                     <td colspan="4">&nbsp;</td>
                 </tr>

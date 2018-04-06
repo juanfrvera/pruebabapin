@@ -312,6 +312,10 @@ color:#6D6D6D;
 font-family:Verdana, Geneva, sans-serif;
 font-size:8.5pt;
  }
+ 
+table.formulario td {
+    height: 26px;
+}
  div {
  font-family:Verdana, Geneva, sans-serif;
 font-size:8.5pt;
