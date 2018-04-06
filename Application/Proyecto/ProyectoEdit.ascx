@@ -434,7 +434,7 @@
                                                     AllowSorting="True"
                                                     OnSorting="GridOrigenFinanciamiento_Sorting"
                                                     OnPageIndexChanging="GridOrigenFinanciamiento_PageIndexChanging"
-                                                    EmptyDataText="No hay Origenes de Financiamiento definidos"
+                                                    EmptyDataText="No hay orígenes de Financiamiento definidos"
                                                     Width="100%">
                                                     <Columns>
                                                         <asp:BoundField HeaderText="Tipo" DataField="ProyectoOrigenFinancianmientoTipo_Nombre" SortExpression="ProyectoOrigenFinancianmientoTipo_Nombre" HeaderStyle-Width="20%" />
@@ -506,7 +506,7 @@
                                                     AllowSorting="True"
                                                     OnSorting="GridProyectosRelacionados_Sorting"
                                                     OnPageIndexChanging="GridProyectosRelacionados_PageIndexChanging"
-                                                    EmptyDataText="No hay Proyectos Relacionados definidas"
+                                                    EmptyDataText="No hay Proyectos Relacionados definidos"
                                                     Width="100%">
                                                     <Columns>
                                                         <asp:BoundField HeaderText="BAPIN" DataField="ProyectoRelacionado_Codigo" SortExpression="ProyectoRelacionado_Codigo" />
@@ -1144,7 +1144,7 @@
         <table width="100%" cellpadding="0" cellspacing="5">
             <tr class="menutoppopup">
                 <th align="center" height="10">
-                    <asp:Label ID="headerPopUpPlanHistorial" runat="server" Text="Plan" />
+                    <asp:Label ID="headerPopUpPlanHistorial" runat="server" Text="Solicitudes" />
                 </th>
 
             </tr>
@@ -1164,7 +1164,7 @@
                                     AllowSorting="True"
                                     OnSorting="gridPlanPopUp_Sorting"
                                     OnPageIndexChanging="gridPlanPopUp_PageIndexChanging"
-                                    EmptyDataText=""
+                                    EmptyDataText="Sin registros"
                                     Width="98%">
                                     <Columns>
                                         <asp:BoundField HeaderText="Tipo" DataField="PlanTipo_Nombre" SortExpression="PlanTipo_Nombre" />

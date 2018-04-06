@@ -190,8 +190,8 @@ namespace UI.Web
                 //Calcular CostoTotal = Este campo suma Todos los GR del Año-1 + Estimada Año Actual + Estimados Futuros (Año+1 en adelante)
                 var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto });
                 var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
-                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year + 1).Sum(x => x.Estimado);
-                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year - 1).Sum(x => x.Realizado);
+                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
                 UIHelper.SetValue(txtCostoTotal, (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
 
                 //Cálculo: estimado (año actual + futuros)  al momento de poner la marca plan por primera vez.  
@@ -1225,6 +1225,7 @@ namespace UI.Web
         protected void btNewProyectoPlan_Click(object sender, EventArgs e)
         {
             UIHelper.CallTryMethod(CommandProyectoPlanSave);
+            HidePopUpProyectoPlan();
         }
         protected void btCancelProyectoPlan_Click(object sender, EventArgs e)
         {
