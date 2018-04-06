@@ -179,11 +179,11 @@ namespace UI.Web
                 ddlTipoProyecto.Items.Add(new ListItem() { Value = pt.IdProyectoTipo.ToString(), Text = pt.Nombre.ToString() + " (INACTIVO)" });
             //FinMatias 20170125 - Ticket #ER311422
             
-            //UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
+            UIHelper.SetValue<ProyectoTipo, int>(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto, ProyectoTipoService.Current.GetById);
             //UIHelper.SetValue(ddlTipoProyecto, Entity.proyecto.IdTipoProyecto);
 
             //Establecer TEP
-            CalcularTEP();
+            //CalcularTEP();
 
             if (Entity.proyecto != null && Entity.proyecto.IdProyecto > 0)
             {
