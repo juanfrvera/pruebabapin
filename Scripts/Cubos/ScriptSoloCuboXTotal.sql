@@ -398,7 +398,7 @@ group by p.idProyecto, p.Codigo
 --------------------------------------------------
 -- Fecha Inicio y Fin Estimada -- reemplaza a fn_Cubo_ONPDevengado()
 --------------------------------------------------
-IF OBJECT_ID('tempdb..#Fechas_Estimadas') IS NOT NULL DROP TABLE #onp_devengado
+IF OBJECT_ID('tempdb..#Fechas_Estimadas') IS NOT NULL DROP TABLE #Fechas_Estimadas
 select 
 p.IdProyecto ,
 							case when pe.FechaInicioEstimada is null then '' else

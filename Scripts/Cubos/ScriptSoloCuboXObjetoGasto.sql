@@ -33,7 +33,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_Cubo_Genera_CxO] (@Year int = 2017)
+CREATE PROCEDURE [dbo].[sp_Cubo_Genera_CxO] (@Year int = null)
 AS
 
 --set @Year = Year(Getdate())
@@ -56,97 +56,31 @@ declare @ttProvincias table (IdProyecto int
 insert into @ttProvincias
 select distinct * from [fn_Cubo_ProyectoLocalidadDetallada]()
 
-/*
--- Obtiene los montos devengados por ejercicio presupuestario ---------------------
-select distinct
-Codigo
---,ONP_m1=sum(case when EjercicioPresupuestario=@Year-1 then Devengado else 0 end)
-,ONP=sum(case when EjercicioPresupuestario=@Year then Devengado else 0 end)
-,ONP_1=sum(case when EjercicioPresupuestario=@Year+1 then Devengado else 0 end)
-,ONP_2=sum(case when EjercicioPresupuestario=@Year+2 then devengado else 0 end)
-,ONP_3=sum(case when EjercicioPresupuestario=@Year+3 then devengado else 0 end)
-,ONP_4=sum(case when EjercicioPresupuestario=@Year+4 then devengado else 0 end)
-,ONP_5=sum(case when EjercicioPresupuestario=@Year+5 then devengado else 0 end)
-,ONP_6=sum(case when EjercicioPresupuestario=@Year+6 then devengado else 0 end)
-,ONP_7=sum(case when EjercicioPresupuestario=@Year+7 then devengado else 0 end)
-,ONP_8=sum(case when EjercicioPresupuestario=@Year+8 then devengado else 0 end)
+--------------------------------------------------
+-- Fecha Inicio y Fin Estimada -- reemplaza a fn_Cubo_ONPDevengado()
+--------------------------------------------------
+IF OBJECT_ID('tempdb..#Fechas_Estimadas_CxO') IS NOT NULL DROP TABLE #Fechas_Estimadas_CxO
+select 
+p.IdProyecto ,
+							case when pe.FechaInicioEstimada is null then '' else
+							convert(varchar(10),pe.FechaInicioEstimada,103) end as FechaInicioEstimada,
+							case when pe.FechaFinEstimada is null then '' else
+							convert(varchar(10),pe.FechaFinEstimada,103) end as FechaFinEstimada
 
-into #onp_devengado
+into #Fechas_Estimadas_CxO
 
-from Proyecto p
-left join Matching_ProyectosVinculados mpv on p.Codigo = mpv.CodigoProyectoBAPIN
-group by p.Codigo
-
--- Obtiene los Montos Estimados por FuenteFinanciamiento, Periodo --
-select distinct
-p.IdProyecto
-,fufi.IdFuenteFinanciamiento
-,cg.IdClasificacionGasto
-,pe.IdEstado
-
-,ME_Acumulado_m5=sum(case when periodo < @Year-5  then montocalculado else 0 end)
-,ME_m5=sum(case when periodo=@Year-5 then montocalculado else 0 end)
-,ME_m4=sum(case when periodo=@Year-4 then montocalculado else 0 end)
-,ME_m3=sum(case when periodo=@Year-3 then montocalculado else 0 end) 
-,ME_m2=sum(case when periodo=@Year-2 then montocalculado else 0 end) 
-,ME_m1=sum(case when periodo=@Year-1 then montocalculado else 0 end) 
-,ME=sum(case when periodo=@Year  then montocalculado else 0 end)
-,ME_1=sum(case when periodo=@Year+1 then montocalculado else 0 end)
-,ME_2=sum(case when periodo=@Year+2  then montocalculado else 0 end)
-,ME_3=sum(case when periodo=@Year+3  then montocalculado else 0 end)
-,ME_Acumulado_3=sum(case when periodo>@Year+3  then montocalculado else 0 end)
-,Total=sum(montocalculado)
-,ME_CostoTotal_Year=sum(case when periodo > @Year-1 then montocalculado else 0 end)
-
-into #MontoEstimado
-
-from Proyecto p
-left join ProyectoEtapa pe on pe.IdProyecto = p.IdProyecto
-left join ProyectoEtapaEstimado pee on pee.IdProyectoEtapa = pe.IdProyectoEtapa
-left join ProyectoEtapaEstimadoPeriodo peep on peep.IdProyectoEtapaEstimado = pee.IdProyectoEtapaEstimado
-left join ClasificacionGasto cg on cg.IdClasificacionGasto = pee.IdClasificacionGasto
-left join FuenteFinanciamiento fufi on fufi.IdFuenteFinanciamiento = pee.IdFuenteFinanciamiento
-
-group by p.IdProyecto, fufi.IdFuenteFinanciamiento, cg.IdClasificacionGasto, pe.IdEstado
-
--- Obtiene los Montos Realizados por peridodo--
-select distinct 
-p.IdProyecto
-,fufi.IdFuenteFinanciamiento
-,cg.IdClasificacionGasto
-,pe.IdEstado
-
-,MR_Acumulado_m5=sum(case when periodo< @Year-5 then montocalculado else 0 end) 
-,MR_m5=sum(case when periodo=@Year-5  then montocalculado else 0 end)
-,MR_m4=sum(case when periodo=@Year-4  then montocalculado else 0 end)
-,MR_m3=sum(case when periodo=@Year-3  then montocalculado else 0 end)
-,MR_m2=sum(case when periodo=@Year-2  then montocalculado else 0 end)
-,MR_m1=sum(case when periodo=@Year-1 then montocalculado else 0 end)
-,MR=sum(case when periodo=@Year  then montocalculado else 0 end)
-,MR_1=sum(case when periodo=@Year+1 then montocalculado else 0 end)
-,MR_2=sum(case when periodo=@Year+2  then montocalculado else 0 end)
-,MR_3=sum(case when periodo=@Year+3  then montocalculado else 0 end)
-,MR_Acumulado_3=sum(case when periodo>@Year+3  then montocalculado else 0 end)
-,Total=sum(montocalculado)
-,MR_CostoTotal_Year=sum(case when periodo < @Year then montocalculado else 0 end)
-
-into #MontoRealizado
-
-from Proyecto p
-left join ProyectoEtapa pe on pe.IdProyecto = p.IdProyecto
-left join ProyectoEtapaRealizado per on per.IdProyectoEtapa = pe.IdProyectoEtapa
-left join ProyectoEtapaRealizadoPeriodo perp on perp.IdProyectoEtapaRealizado = per.IdProyectoEtapaRealizado
-left join ClasificacionGasto cg on cg.IdClasificacionGasto = per.IdClasificacionGasto
-left join FuenteFinanciamiento fufi on fufi.IdFuenteFinanciamiento = per.IdFuenteFinanciamiento
-group by p.IdProyecto, perp.fecha, fufi.IdFuenteFinanciamiento, cg.IdClasificacionGasto, pe.IdEstado
-*/
+					from Proyecto p
+					left join ProyectoEtapa pe		on pe.IdProyecto = p.IdProyecto
+					left join Etapa et				on et.IdEtapa = pe.IdEtapa
+					left join Fase fa				on fa.IdFase = et.IdFase
+					where	fa.IdFase = 2 /* Ejecucion */
 
 --------------------------------------------------
 -- Resultado del Cubo --
 --------------------------------------------------
 
-select 
---distinct
+select --top 10
+distinct
 
 -- Nro de Bapin del proyecto y su Denominacion --
 p.Codigo																	as [Nro_Bapin]
@@ -162,7 +96,7 @@ p.Codigo																	as [Nro_Bapin]
  end																		as [Tipo]
 
 -- Inciso al que pertenece el gasto --
-,isnull(umemr.Inciso,'0')													as [Inciso]
+,isnull(unpre.Inciso,'0')													as [Inciso]
 
 -- Codigo de Clasificacion Institucional (Sector.Tipo de administracion.Tipo de entidad.Jurisdiccion.Subjurisdiccion.000)
 -- Tipo entidad en las tablas contiene el codigo de Sector.TipoAdministracion.TipoEntidad)
@@ -321,11 +255,13 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 -- Fechas de inicio y fin estimada para el proyecto
 /*,case when pe.FechaInicioEstimada is null then '' else
  convert(varchar(10),pe.FechaInicioEstimada,103) end						as [Fecha_Inicio_Estimada]*/
-,isnull(dbo.fn_Cubo_Fecha_Inicio_Estimada(p.IdProyecto), '')				as [Fecha_Inicio_Estimada]
+--,isnull(dbo.fn_Cubo_Fecha_Inicio_Estimada(p.IdProyecto), '')				as [Fecha_Inicio_Estimada]
+,fest.FechaInicioEstimada as [Fecha_Inicio_Estimada]
 
 /*,case when pe.FechaFinEstimada is null then '' else
  convert(varchar(10),pe.FechaFinEstimada,103) end							as [Fecha_Fin_Estimada]*/
-,isnull(dbo.fn_Cubo_Fecha_Fin_Estimada(p.IdProyecto), '')					as [Fecha_Fin_Estimada]
+--,isnull(dbo.fn_Cubo_Fecha_Fin_Estimada(p.IdProyecto), '')					as [Fecha_Fin_Estimada]
+,fest.FechaFinEstimada as [Fecha_Fin_Estimada]
 
 -- Planes cargados en el proyecto --
 ,isnull(case when len(ppd.planes) > 2
@@ -365,12 +301,12 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 
 -- Objeto del Gasto o Clasificacion del Gasto
 -- Inciso/Partida_Principal/Partida_Parcial/Partida SubParcial
-,isnull(umemr.Objeto_Gasto_Cod,'')											as [Objeto_Gasto_Cod]
-,isnull(umemr.Objeto_Gasto_Desc,'')											as [Objeto_Gasto_Desc]
+,isnull(unpre.Objeto_Gasto_Cod,'')											as [Objeto_Gasto_Cod]
+,isnull(unpre.Objeto_Gasto_Desc,'')											as [Objeto_Gasto_Desc]
 
 -- Fuente de Financiamiento --
-,isnull(umemr.Fuente_Financiamiento_Cod,'')									as [Fuente_Financiamiento_Cod]
-,isnull(umemr.Fuente_Financiamiento_Desc,'')								as [Fuente_Financiamiento_Desc]
+,isnull(unpre.Fuente_Financiamiento_Cod,'')									as [Fuente_Financiamiento_Cod]
+,isnull(unpre.Fuente_Financiamiento_Desc,'')								as [Fuente_Financiamiento_Desc]
 
 -- Proceso del Proyecto --
 ,isnull(pr.Nombre,'')														as [Proceso]
@@ -382,37 +318,37 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 ,isnull(ecto.ECTOes,'')														as [Com_Tecnico_ECTO]	
 
 -- Datos de los montos estimados del propyecto, de acuerdo al año ingresado como parametro --
-,isnull(CONVERT(decimal(18,0),umemr.ME_Acumulado_m5),0)						as [Estimados Anteriores]
-,isnull(CONVERT(decimal(18,0),umemr.ME_m5),0)								as [Estimado 2012]
-,isnull(CONVERT(decimal(18,0),umemr.ME_m4),0)								as [Estimado 2013]
-,isnull(CONVERT(decimal(18,0),umemr.ME_m3),0)								as [Estimado 2014]
-,isnull(CONVERT(decimal(18,0),umemr.ME_m2),0)								as [Estimado 2015]
-,isnull(CONVERT(decimal(18,0),umemr.ME_m1),0)								as [Estimado 2016]	
-,isnull(CONVERT(decimal(18,0),umemr.ME),0)									as [Estimado 2017]
-,isnull(CONVERT(decimal(18,0),umemr.ME_1),0)								as [Estimado 2018]
-,isnull(CONVERT(decimal(18,0),umemr.ME_2),0)								as [Estimado 2019]
-,isnull(CONVERT(decimal(18,0),umemr.ME_3),0)								as [Estimado 2020]
-,isnull(CONVERT(decimal(18,0),umemr.ME_Acumulado_3),0)						as [Estimado Posteriores]
-,isnull(CONVERT(decimal(18,0),umemr.ME_Total),0)							as [Estimado Total]						
+,isnull(CONVERT(decimal(18,0),unpre.ME_Acumulado_m5),0)						as [Estimados Anteriores]
+,isnull(CONVERT(decimal(18,0),unpre.ME_m5),0)								as [Estimado 2012]
+,isnull(CONVERT(decimal(18,0),unpre.ME_m4),0)								as [Estimado 2013]
+,isnull(CONVERT(decimal(18,0),unpre.ME_m3),0)								as [Estimado 2014]
+,isnull(CONVERT(decimal(18,0),unpre.ME_m2),0)								as [Estimado 2015]
+,isnull(CONVERT(decimal(18,0),unpre.ME_m1),0)								as [Estimado 2016]	
+,isnull(CONVERT(decimal(18,0),unpre.ME),0)									as [Estimado 2017]
+,isnull(CONVERT(decimal(18,0),unpre.ME_1),0)								as [Estimado 2018]
+,isnull(CONVERT(decimal(18,0),unpre.ME_2),0)								as [Estimado 2019]
+,isnull(CONVERT(decimal(18,0),unpre.ME_3),0)								as [Estimado 2020]
+,isnull(CONVERT(decimal(18,0),unpre.ME_Acumulado_3),0)						as [Estimado Posteriores]
+,isnull(CONVERT(decimal(18,0),unpre.ME_Total),0)							as [Estimado Total]						
 
-,isnull(CONVERT(decimal(18,0),umemr.MR_Acumulado_m5),0)						as [Realizados Anteriores]
-,isnull(CONVERT(decimal(18,0),umemr.MR_m5),0)								as [Realizado 2012]
-,isnull(CONVERT(decimal(18,0),umemr.MR_m4),0)								as [Realizado 2013]
-,isnull(CONVERT(decimal(18,0),umemr.MR_m3),0)								as [Realizado 2014]
-,isnull(CONVERT(decimal(18,0),umemr.MR_m2),0)								as [Realizado 2015]
-,isnull(CONVERT(decimal(18,0),umemr.MR_m1),0)								as [Realizado 2016]
-,isnull(CONVERT(decimal(18,0),umemr.MR),0)				   					as [Realizado 2017]
-,isnull(CONVERT(decimal(18,0),umemr.MR_1),0)								as [Realizado 2018]
-,isnull(CONVERT(decimal(18,0),umemr.MR_2),0)								as [Realizado 2019]
-,isnull(CONVERT(decimal(18,0),umemr.MR_3),0)								as [Realizado 2020]
-,isnull(CONVERT(decimal(18,0),umemr.MR_Acumulado_3),0)						as [Realizado Posteriores]
-,isnull(CONVERT(decimal(18,0),umemr.MR_Total),0)							as [Realizado Total]
+,isnull(CONVERT(decimal(18,0),unpre.MR_Acumulado_m5),0)						as [Realizados Anteriores]
+,isnull(CONVERT(decimal(18,0),unpre.MR_m5),0)								as [Realizado 2012]
+,isnull(CONVERT(decimal(18,0),unpre.MR_m4),0)								as [Realizado 2013]
+,isnull(CONVERT(decimal(18,0),unpre.MR_m3),0)								as [Realizado 2014]
+,isnull(CONVERT(decimal(18,0),unpre.MR_m2),0)								as [Realizado 2015]
+,isnull(CONVERT(decimal(18,0),unpre.MR_m1),0)								as [Realizado 2016]
+,isnull(CONVERT(decimal(18,0),unpre.MR),0)				   					as [Realizado 2017]
+,isnull(CONVERT(decimal(18,0),unpre.MR_1),0)								as [Realizado 2018]
+,isnull(CONVERT(decimal(18,0),unpre.MR_2),0)								as [Realizado 2019]
+,isnull(CONVERT(decimal(18,0),unpre.MR_3),0)								as [Realizado 2020]
+,isnull(CONVERT(decimal(18,0),unpre.MR_Acumulado_3),0)						as [Realizado Posteriores]
+,isnull(CONVERT(decimal(18,0),unpre.MR_Total),0)							as [Realizado Total]
 
 -- Costo total actual =
 -- Montos Realizados Acumulados desde Year-1 hacia atras +
 -- Montos Estimados Acumulados desde Year hacia adelante
-,isnull(CONVERT(decimal(18,0),umemr.MR_CostoTotal_Year),0) +
- isnull(CONVERT(decimal(18,0),umemr.ME_CostoTotal_Year),0)					as [Costo Total Actual]
+,isnull(CONVERT(decimal(18,0),unpre.MR_CostoTotal_Year),0) +
+ isnull(CONVERT(decimal(18,0),unpre.ME_CostoTotal_Year),0)					as [Costo Total Actual]
 
 -- Informacion de ONP
 ,isnull(CONVERT(decimal(18,0),CxT.[ONP-2003]),0)							as [ONP 2003]
@@ -438,10 +374,6 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 ,isnull(CONVERT(decimal(18,0),onpd.[ONP_6]),0)								as [ONP 2023]
 ,isnull(CONVERT(decimal(18,0),onpd.[ONP_7]),0)								as [ONP 2024]
 ,isnull(CONVERT(decimal(18,0),onpd.[ONP_8]),0)								as [ONP 2025]
-
--- Fecha y hora de generacion del cubo --
-,CONVERT(VARCHAR(10), GETDATE(), 103) + ' ' +
- CONVERT(VARCHAR(10), GETDATE(), 108)										as [Generado]
 
 -- Año de referencia de los periodos
 --,@Year																	as [Año_Referencia]
@@ -473,15 +405,15 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 ,isnull(CONVERT(decimal(18,0),unpre.MV_Acumulado_3),0)					as [MontoVigente Posteriores]
 ,isnull(CONVERT(decimal(18,0),unpre.MV_Total),0)						as [MontoVigente Total]	
 -- Datos de los montos vigentes estimativos del proyecto, de acuerdo al año ingresado como parametro --
-,isnull(unpre.MVE_m5,false)							as [MontoVigenteEstimativo 2012]
-,isnull(unpre.MVE_m4,false)							as [MontoVigenteEstimativo 2013]
-,isnull(unpre.MVE_m3,false)							as [MontoVigenteEstimativo 2014]
-,isnull(unpre.MVE_m2,false)							as [MontoVigenteEstimativo 2015]
-,isnull(unpre.MVE_m1,false)							as [MontoVigenteEstimativo 2016]	
-,isnull(unpre.MVE,false)							as [MontoVigenteEstimativo 2017]
-,isnull(unpre.MVE_1,false)							as [MontoVigenteEstimativo 2018]
-,isnull(unpre.MVE_2,false)							as [MontoVigenteEstimativo 2019]
-,isnull(unpre.MVE_3,false)							as [MontoVigenteEstimativo 2020]
+,isnull(unpre.MVE_m5,0)							as [MontoVigenteEstimativo 2012]
+,isnull(unpre.MVE_m4,0)							as [MontoVigenteEstimativo 2013]
+,isnull(unpre.MVE_m3,0)							as [MontoVigenteEstimativo 2014]
+,isnull(unpre.MVE_m2,0)							as [MontoVigenteEstimativo 2015]
+,isnull(unpre.MVE_m1,0)							as [MontoVigenteEstimativo 2016]	
+,isnull(unpre.MVE,0)							as [MontoVigenteEstimativo 2017]
+,isnull(unpre.MVE_1,0)							as [MontoVigenteEstimativo 2018]
+,isnull(unpre.MVE_2,0)							as [MontoVigenteEstimativo 2019]
+,isnull(unpre.MVE_3,0)							as [MontoVigenteEstimativo 2020]
 -- Datos de los montos devengados del proyecto, de acuerdo al año ingresado como parametro --
 ,isnull(CONVERT(decimal(18,0),unpre.MD_Acumulado_m5),0)					as [MontoDevengado Anteriores]
 ,isnull(CONVERT(decimal(18,0),unpre.MD_m5),0)							as [MontoDevengado 2012]
@@ -496,14 +428,18 @@ isnull(case when CHARINDEX('/',NroObraAgrup) > 0
 ,isnull(CONVERT(decimal(18,0),unpre.MD_Acumulado_3),0)					as [MontoDevengado Posteriores]
 ,isnull(CONVERT(decimal(18,0),unpre.MD_Total),0)						as [MontoDevengado Total]	
 
+-- Fecha y hora de generacion del cubo --
+,CONVERT(VARCHAR(10), GETDATE(), 103) + ' ' +
+ CONVERT(VARCHAR(10), GETDATE(), 108)										as [Generado]
+
 from Proyecto p
 
 -- Agrego los valores de los montos estimados y realizados
-left join fn_Cubo_Union_ME_MR (@Year) umemr on p.IdProyecto = umemr.IdProyecto 
+--left join fn_Cubo_Union_ME_MR (@Year) unpre on p.IdProyecto = unpre.IdProyecto 
 --left join #MontoEstimado me on me.IdProyecto = p.IdProyecto
 --left join #MontoRealizado mr on mr.IdProyecto = p.IdProyecto
 --Info presupuestaria xxxx
-left join fn_Cubo_Union_Presupuestaria (@Year) unpre on p.IdProyecto = umemr.IdProyecto 
+left join fn_Cubo_Union_Presupuestaria (@Year) unpre on p.IdProyecto = unpre.IdProyecto 
 
 -- Estado fisico, Estado de Decision y Estado financiero
 left join fn_Cubo_EstadoFinanciero_Group () pefinan on pefinan.IdProyecto = p.IdProyecto
@@ -520,25 +456,25 @@ left join ProyectoEtapa pe on pe.IdProyecto = p.IdProyecto
 left join fn_Cubo_AperturaPresupuestaria_Group () apepres on apepres.IdProyecto = p.IdProyecto
 
 left join Proceso pr on pr.IdProceso = p.IdProceso
-left join ProyectoTipo ptipo on ptipo.IdProyectoTipo = p.IdTipoProyecto
+inner join ProyectoTipo ptipo on ptipo.IdProyectoTipo = p.IdTipoProyecto
 
 --left join dbo.fngetclasificacioninstitucional () clasinst on clasinst.idproyecto = p.IdProyecto
 
 -- Datos para la Clasificacion Institucional
-left join SubPrograma sprog on sprog.IdSubPrograma=p.IdSubPrograma
-left join Programa prog on prog.IdPrograma=sprog.IdPrograma
+inner join SubPrograma sprog on sprog.IdSubPrograma=p.IdSubPrograma
+inner join Programa prog on prog.IdPrograma=sprog.IdPrograma
 left join Saf on Saf.IdSaf=prog.idsaf
 left join EntidadTipo etipo on etipo.IdEntidadTipo=saf.IdEntidadTipo
-left join Jurisdiccion juris on Juris.IdJurisdiccion=Saf.IdJurisdiccion
+inner join Jurisdiccion juris on Juris.IdJurisdiccion=Saf.IdJurisdiccion
 left join SubJurisdiccion sjuris on sjuris.IdSubJuridiccion=saf.IdSubJurisdiccion
 
-left join OrganismoTipo otipo on otipo.IdOrganismoTipo=Saf.IdTipoOrganismo
+inner join OrganismoTipo otipo on otipo.IdOrganismoTipo=Saf.IdTipoOrganismo
 
 -- Sectorialista asignado a un programa
 left join persona sect on sect.Idpersona=prog.IdSectorialista
 
 -- Usuario que modifica el proyecto
-left join persona pers on pers.Idpersona=p.IdUsuarioModificacion
+inner join persona pers on pers.Idpersona=p.IdUsuarioModificacion
 
 left join OrganismoPrioridad op on op.IdOrganismoPrioridad=p.IdOrganismoPrioridad
 
@@ -555,9 +491,9 @@ left join Estado est_calid on est_calid.IdEstado = pcalid.IdEstado
 left join FinalidadFuncion ff on ff.IdFinalidadFuncion=p.IdFinalidadFuncion
 
 left join ProyectoPlan pp on pp.IdProyectoPlan=p.IdProyectoPlan
-left join PlanPeriodo ppt on ppt.IdPlanPeriodo=pp.IdPlanPeriodo
-left join PlanVersion ppv on ppv.IdPlanVersion=pp.IdPlanVersion
-left join PlanTipo pt on pt.IdPlanTipo=ppt.IdPlanTipo
+inner join PlanPeriodo ppt on ppt.IdPlanPeriodo=pp.IdPlanPeriodo
+inner join PlanVersion ppv on ppv.IdPlanVersion=pp.IdPlanVersion
+inner join PlanTipo pt on pt.IdPlanTipo=ppt.IdPlanTipo
 
 --left join fnGetPrioridadProyecto () ppriori on ppriori.idproyecto = p.IdProyecto
 
@@ -576,6 +512,8 @@ left join Cubo_ImportCxTBapin2 CxT on CxT.Nro_Bapin = p.Codigo
 --Incorporo informacion de ONP a partir de los proyectos vinculados por matching (tabla Matching_ProyectosVinculados)
 --left join #onp_devengado onpd on onpd.Codigo = p.codigo
 left join fn_Cubo_ONPDevengado(@Year) onpd on onpd.IdProyecto = p.IdProyecto
+
+left join #Fechas_Estimadas_CxO fest on fest.IdProyecto = p.IdProyecto
 
 where p.Activo = 1 /*Solo Proyectos activos*/
 
@@ -926,7 +864,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION  [dbo].[fn_Cubo_Union_Presupuestaria] (@Year int )  
+CREATE FUNCTION  FUNCTION  [dbo].[fn_Cubo_Union_Presupuestaria] (@Year int )  
 
 RETURNS  TABLE
 AS
@@ -937,13 +875,42 @@ RETURN
 
 select 
 
-isnull(isnull(MI.IdProyecto,MV_idproyecto),MD_idproyecto) as IdProyecto
-,isnull(isnull(MI.codigo, MV_codigo), MD_codigo) as Nro_Bapin
-,isnull(isnull(MI.Fuente_Financiamiento_Cod,MV_Fuente_Financiamiento_Cod),MD_Fuente_Financiamiento_Cod) as [Fuente_Financiamiento_Cod]
-,isnull(isnull(MI.Fuente_Financiamiento_Desc,MV_Fuente_Financiamiento_Desc),MD_Fuente_Financiamiento_Desc) as [Fuente_Financiamiento_Desc]
+isnull(isnull(MI.IdProyecto,MV.idproyecto),MD.idproyecto) as IdProyecto
+,isnull(isnull(MI.codigo, MV.codigo), MD.codigo) as Nro_Bapin
+,isnull(isnull(MI.Fuente_Financiamiento_Cod,MV.Fuente_Financiamiento_Cod),MD.Fuente_Financiamiento_Cod) as [Fuente_Financiamiento_Cod]
+,isnull(isnull(MI.Fuente_Financiamiento_Desc,MV.Fuente_Financiamiento_Desc),MD.Fuente_Financiamiento_Desc) as [Fuente_Financiamiento_Desc]
 ,ISNULL(substring(MI.Objeto_Gasto_Cod,2,2),'00') as [Inciso]
-,isnull(ISNULL(MI.Objeto_Gasto_Cod,MV_Objeto_Gasto_Cod),MD_Objeto_Gasto_Cod) as [Objeto_Gasto_Cod] 
-,isnull(ISNULL(MI.Objeto_Gasto_Desc,MV_Objeto_Gasto_Desc),MD_Objeto_Gasto_Desc) as [Objeto_Gasto_Desc]
+,isnull(ISNULL(MI.Objeto_Gasto_Cod,MV.Objeto_Gasto_Cod),MD.Objeto_Gasto_Cod) as [Objeto_Gasto_Cod] 
+,isnull(ISNULL(MI.Objeto_Gasto_Desc,MV.Objeto_Gasto_Desc),MD.Objeto_Gasto_Desc) as [Objeto_Gasto_Desc]
+
+,isnull(ME_Acumulado_m5,0) as [ME_Acumulado_m5] --as [Estimados Anteriores] 
+,isnull(ME_m5,0) as [ME_m5] --as [Estimado 2012]
+,isnull(ME_m4,0) as [ME_m4] --as [Estimado 2013]
+,isnull(ME_m3,0) as [ME_m3] --as [Estimado 2014]
+,isnull(ME_m2,0) as [ME_m2] --as [Estimado 2015]
+,isnull(ME_m1,0) as [ME_m1] --as [Estimado 2016]
+,isnull(ME,0) as [ME] --as [Estimado 2017]
+,isnull(ME_1,0) as [ME_1] --as [Estimado 2018]
+,isnull(ME_2,0) as [ME_2] --as [Estimado 2019]
+,isnull(ME_3,0) as [ME_3] --as [Estimado 2020]
+,isnull(ME_Acumulado_3,0) as [ME_Acumulado_3] --as [Estimado Posteriores]
+,isnull(ME.ME_Total,0) as [ME_Total] --as [Estimado Total]
+,isnull(ME_CostoTotal_Year,0) as [ME_CostoTotal_Year]
+
+--,isnull(convert(varchar(10),mr.Fecha,103),'') as Fecha_Gasto_Realizado
+,isnull(MR_Acumulado_m5,0) as [MR_Acumulado_m5] --as [Realizados Anteriores]
+,isnull(MR_m5,0) as [MR_m5] --as [Realizado 2012]
+,isnull(MR_m4,0) as [MR_m4] --as [Realizado 2013]
+,isnull(MR_m3,0) as [MR_m3] --as [Realizado 2014]
+,isnull(MR_m2,0) as [MR_m2] --as [Realizado 2015]
+,isnull(MR_m1,0) as [MR_m1] --as [Realizado 2016]
+,isnull(MR,0) as [MR] --as [Realizado 2017]
+,isnull(MR_1,0) as [MR_1] --as [Realizado 2018]
+,isnull(MR_2,0) as [MR_2] --as [Realizado 2019]
+,isnull(MR_3,0) as [MR_3] --as [Realizado 2020]
+,isnull(MR_Acumulado_3,0) as [MR_Acumulado_3] --as [Realizado Posteriores]
+,isnull(MR.MR_Total,0) as [MR_Total] --as [Realizado Total]
+,isnull(MR_CostoTotal_Year,0) as [MR_CostoTotal_Year]
 
 ,isnull(MI_Acumulado_m5,0) as [MI_Acumulado_m5] --as [Inicials Anteriores] 
 ,isnull(MI_m5,0) as [MI_m5] --as [Inicial 2012]
@@ -998,19 +965,31 @@ isnull(isnull(MI.IdProyecto,MV_idproyecto),MD_idproyecto) as IdProyecto
 ,MV.MVE_3
 	
 from 
-	fn_Cubo_MontoInicial (@Year) MI 
+	fn_Cubo_MontoEstimado (@Year) me 
+	full join fn_Cubo_Montorealizado (@Year) mr on 
+		(me.Objeto_Gasto_Cod = mr.Objeto_Gasto_Cod) and
+		(me.Fuente_Financiamiento_Cod = mr.Fuente_Financiamiento_Cod) and
+		(me.IdProyecto = mr.IdProyecto)
+	full join fn_Cubo_MontoInicial (@Year) MI on
+		(me.Objeto_Gasto_Cod = MI.Objeto_Gasto_Cod) and
+		(me.Fuente_Financiamiento_Cod = MI.Fuente_Financiamiento_Cod) and
+		(me.IdProyecto = MI.IdProyecto)
 	full join fn_Cubo_MontoVigente (@Year) MV on 
-		(MI.Objeto_Gasto_Cod = MV_Objeto_Gasto_Cod) and
-		(MI.Fuente_Financiamiento_Cod = MV_Fuente_Financiamiento_Cod) and
-		(MI.IdProyecto = MV_IdProyecto)
+		(me.Objeto_Gasto_Cod = MV.Objeto_Gasto_Cod) and
+		(me.Fuente_Financiamiento_Cod = MV.Fuente_Financiamiento_Cod) and
+		(me.IdProyecto = MV.IdProyecto)
 	full join fn_Cubo_MontoDevengado (@Year) MD on 
-		(MI.Objeto_Gasto_Cod = MD_Objeto_Gasto_Cod) and
-		(MI.Fuente_Financiamiento_Cod = MD_Fuente_Financiamiento_Cod) and
-		(MI.IdProyecto = MD_IdProyecto)
+		(me.Objeto_Gasto_Cod = MD.Objeto_Gasto_Cod) and
+		(me.Fuente_Financiamiento_Cod = MD.Fuente_Financiamiento_Cod) and
+		(me.IdProyecto = MD.IdProyecto)
 where
-MI.Objeto_Gasto_Cod is not null or MV_Objeto_Gasto_Cod is not null or MD_Objeto_Gasto_Cod is not null
+me.Objeto_Gasto_Cod is not null or mr.Objeto_Gasto_Cod is not null or
+MI.Objeto_Gasto_Cod is not null or MV.Objeto_Gasto_Cod is not null or 
+MD.Objeto_Gasto_Cod is not null
 
 )
+
+
 
 GO
 
