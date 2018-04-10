@@ -141,13 +141,16 @@ namespace UI.Web
 
         protected void btLinkButtonActualizarAperturaPresupuestaria_Click(object sender, EventArgs e) 
         {
-            var datosBapinType = new DatosBapinType();
+            
+            //var datosBapinType = new DatosBapinType();
             //, EstadoBapinType.PLAN_SEGUN_EJECUCION, EstadoBapinType.PLAN
             //Response.Redirect(GeneralPath + "AdministracionTemplate.aspx", false);
 
             string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
-            SqlConnection sqlCon = new SqlConnection(strConexion);
+            //SqlConnection sqlCon = new SqlConnection(strConexion);
+            DatabaseGeneralManager.ActualizarBapines(strConexion);
 
+            /*
             try
             {
 
@@ -206,6 +209,7 @@ namespace UI.Web
                 sqlCon.Close();
                 throw;
             }
+            */
 
         }
         

@@ -255,6 +255,7 @@
     <Content Include="App_Themes\leaflet.draw.css" />
     <Content Include="App_Themes\LeafletMaps.css" />
     <Content Include="App_Themes\Site.css" />
+    <Content Include="App_Themes\Sky\close.png" />
     <Content Include="ControlsPersonal\WebControl_IndicadorClaseTree.ascx" />
     <Content Include="ControlsPersonal\WebControl_IndicadorClaseTreeSinSector.ascx" />
     <Content Include="ControlsPersonal\WebControl_ProjectEstadoDesicionHistorico.ascx" />
@@ -267,6 +268,7 @@
     <Content Include="Graficos\ProyectoGraficos.aspx" />
     <Content Include="Graficos\ProyectoGraficosZoom.aspx" />
     <Content Include="Graficos\Temp\temp.htm" />
+    <Content Include="App_Themes\Sky\close2.gif" />
     <Content Include="Matching\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Matching\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Matching\bootstrap\css\bootstrap.css" />

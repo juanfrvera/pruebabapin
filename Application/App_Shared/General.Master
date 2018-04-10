@@ -12,7 +12,7 @@
     vertical-align:bottom;
     padding:0px 0px 0px 0px;
 }
-#sb-nav-close{visibility:hidden;background-image:url(close.png);}
+/*#sb-nav-close{visibility:hidden;background-image:url(close.png);} Hide close on loading*/
 </style>
 <script id="General" type="text/javascript">
 

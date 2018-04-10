@@ -20,6 +20,10 @@ namespace Business.Managers
 
         private static HttpWebRequest CreateWebRequest(string action)
         {
+            if(String.IsNullOrEmpty(EsidifManager._url))
+            {
+                throw new Exception("ParameterManager URL_ESIDIF null or empty");
+            }
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(EsidifManager._url);
             webRequest.Headers.Add("SOAPAction", action);
             webRequest.ContentType = "text/xml;charset=\"utf-8\"";

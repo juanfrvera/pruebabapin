@@ -162,7 +162,7 @@
     </table>
 
     <table width="100%">
-        <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal4" Text="Configurar Matching" runat="server" ></asp:Literal></div></td></tr>
+        <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal4" Text="Configurar Apertura Presupuestaria" runat="server" ></asp:Literal></div></td></tr>
         
         <tr>
             <td>

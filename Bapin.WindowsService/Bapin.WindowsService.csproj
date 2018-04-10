@@ -69,6 +69,7 @@
     <Compile Include="Configuration\HandlerConfigurationElementCollection.cs" />
     <Compile Include="Configuration\HandlerConfigurationSection.cs" />
     <Compile Include="GlobalData.cs" />
+    <Compile Include="Handlers\CodigoPresupuestarioHandler.cs" />
     <Compile Include="Handlers\HandlerBase.cs" />
     <Compile Include="Handlers\TemplateHandler.cs" />
     <Compile Include="Program.cs" />
@@ -110,6 +111,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\ConnectionStrings.config">
+      <Link>ConnectionStrings.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

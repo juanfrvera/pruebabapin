@@ -20,7 +20,7 @@ namespace Bapin.WindowsService
         {
             if (e == null) return;
             Log.Error(e);
-            //CrashReportingWrapper.SendSupportEmail(CrashReportingWrapper.GenerateCrashReportMail(e, "Bapin Win Service"));
+            //TODO: Send error by mail
         }
 
         /// <summary>

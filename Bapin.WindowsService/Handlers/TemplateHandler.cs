@@ -1,5 +1,4 @@
-﻿//using log4net;
-using System;
+﻿using System;
 using System.Threading;
 using System.IO;
 using System.Threading.Tasks;
@@ -39,11 +38,15 @@ namespace Bapin.WindowsService.Handlers
                     //DO THE MAGIC
 
                     //Get Template ID
-                    var idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
-                    Log.Info("idLastTemplateVersion=" + idLastTemplateVersion);
-                    if (idLastTemplateVersion > 0)
+                    var idLastTemplateVersion = (Int32?)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
+                    
+                    if (idLastTemplateVersion.HasValue && idLastTemplateVersion.Value > 0)
                     {
-                        TemplateProjectManager.UpdateTemplateProjects(idLastTemplateVersion);
+                        TemplateProjectManager.UpdateTemplateProjects(idLastTemplateVersion.Value);
+                    }
+                    else
+                    {
+                        Log.Error("ID_TEMPLATE_IMPORTACION is null or empty");
                     }
 
                     //OnStatusUpdated(false, "idLastTemplateVersion. " + idLastTemplateVersion);

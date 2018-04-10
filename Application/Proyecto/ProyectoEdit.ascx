@@ -84,33 +84,36 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <asp:Literal ID="litNroProyecto" Text="Proyecto" runat="server"></asp:Literal>
-                    </td>
-                    <td colspan="3">
+                    <td colspan="9">
+                    <asp:Panel ID="Panel4" runat="server" GroupingText="Código Presupuestario">
+
                     <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
+                            <td style="width:58px">
+                                <asp:Literal ID="litNroProyecto" Text="Proyecto" runat="server"></asp:Literal>
+                            </td>
                             <td style="width:60px">
                                 <asp:TextBox ID="txtNroProyecto" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
-                            <td style="width:50px">
+                            <td style="width:60px">
                                 <asp:Literal ID="litActividad" runat="server" Text="Actividad"></asp:Literal>
                             </td>
                             <td style="width:60px">
                                 <asp:TextBox ID="txtNroActividad" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
-                            <td style="width:50px">
+                            <td style="width:60px">
                                 <asp:Literal ID="litObra" runat="server" Text="Obra"></asp:Literal>
                             </td>
                             <td style="width:60px">
                                 <asp:TextBox ID="txtNroObra" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
                             </td>
+                            <td style="width:160px">
+                                &nbsp;
+                            </td>
                         </tr>
                     </table>
+                    </asp:Panel>
                     </td>
-                    <td colspan="5">
-                        &nbsp;
-                    </td>             
                 </tr>
                 <tr>
                     <td>
@@ -371,11 +374,11 @@
                         <asp:Literal ID="liPrioridad" runat="server" Text="Prioridad"></asp:Literal>
                     </td>
                     <td>
-                        <cc:ExtendedDropDownList ID="ddlPrioridad" runat="server" TabIndex="22" Width="200px"></cc:ExtendedDropDownList>
+                        <cc:ExtendedDropDownList ID="ddlPrioridad" Enabled="false" runat="server" TabIndex="22" Width="200px"></cc:ExtendedDropDownList>
                     </td>
                     <td colspan="3">
                         <asp:Literal ID="liSubPrioridad" runat="server" Text="Subprioridad"></asp:Literal>
-                        <asp:TextBox ID="txtPrioridad" runat="server" TabIndex="23"></asp:TextBox>
+                        <asp:TextBox ID="txtPrioridad" Enabled="false" runat="server" TabIndex="23"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="revPrioridad" runat="server" ControlToValidate="txtPrioridad" ValidationGroup="EditionProyecto" Text="*" Width="1px" Height="1px" ErrorMessage="El valor de Prioridad no es válido"></asp:RegularExpressionValidator>
                     </td>
                     <td>

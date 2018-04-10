@@ -1,3 +1,7 @@
+USE [bapin]
+
+GO
+
 CREATE PROCEDURE [dbo].[sp_ONPConsultaAPG]
 @MyXML xml
 AS
@@ -26,3 +30,5 @@ select Bapin.detail.value('(codigoBapin/text())[1]','varchar(100)') as codigoBap
     from @MyXML.nodes('/bapin') as Bapin(detail)
 
 END
+
+GO

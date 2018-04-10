@@ -184,7 +184,6 @@ namespace UI.Web
 
             //Establecer TEP
             //CalcularTEP();
-
             if (Entity.proyecto != null && Entity.proyecto.IdProyecto > 0)
             {
                 //Calcular CostoTotal = Este campo suma Todos los GR del Año-1 + Estimada Año Actual + Estimados Futuros (Año+1 en adelante)
@@ -222,6 +221,7 @@ namespace UI.Web
             //Matias 20131205 - Tarea 91
             if (CrudAction == CrudActionEnum.Create)
             {
+                SetSelectedItemByText(ddlTipoProyecto, "Sin gastos imputados");
                 Contract.OficinaResult os = OficinaService.Current.GetResult(new nc.OficinaFilter() { IdOficina = UIContext.Current.ContextUser.User.Persona_IdOficina }).SingleOrDefault();
                 int? idOficinaIdSAF = os.IdSaf.Equals(null) ? 0 : os.IdSaf;
                 UIHelper.SetValue(ddlSAF, idOficinaIdSAF);

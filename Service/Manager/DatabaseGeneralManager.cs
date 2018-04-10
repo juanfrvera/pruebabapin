@@ -6,11 +6,17 @@ using System.Text;
 using Contract;
 using nc = Contract;
 using Service;
+using System.Data.Common;
 using System.Data.SqlClient;
 using Business;
+using Business.Managers;
+
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Configuration;
+using System.Xml;
+//using log4net;
 
 namespace Service
 {
@@ -18,6 +24,8 @@ namespace Service
 
     public class DatabaseGeneralManager
     {
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(TemplateHandler));
+
         #region singleton
         private static readonly object padlock = new object();
         private static DatabaseGeneralManager current;
@@ -96,6 +104,90 @@ namespace Service
 
             return ds;
             //return ds.GetXml();
+        }
+
+        public static void ActualizarBapines(string strConexion)
+        {
+            var datosBapinType = new DatosBapinType();
+            //, EstadoBapinType.PLAN_SEGUN_EJECUCION, EstadoBapinType.PLAN
+            //Response.Redirect(GeneralPath + "AdministracionTemplate.aspx", false);
+
+            //string strConexion = ConfigurationManager.ConnectionStrings["Contract.Properties.Settings.BAPIN3ConnectionString"].ConnectionString;
+            //SqlConnection sqlCon = new SqlConnection(strConexion);
+
+            // Connection create
+            SqlConnection sqlCon = new SqlConnection(strConexion);
+
+            try
+            {
+
+                using (DbCommand command = sqlCon.CreateCommand())
+                {
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "TRUNCATE TABLE [BAPIN].[dbo].[wsONPConsultaAPG]";
+
+                    sqlCon.Open();
+                    command.ExecuteNonQuery();
+                }
+
+                DbTransaction trans = sqlCon.BeginTransaction();
+
+                var juris = JurisdiccionService.Current.GetResultFromList(new nc.JurisdiccionFilter() { Activo = true });
+                var valuesEstados = Enum.GetValues(typeof(EstadoBapinType));
+                var hasValues = false;
+                foreach (var jurisdiccion in juris)
+                {
+                    foreach (var estado in valuesEstados)
+                    {
+                        datosBapinType.ejercicio = DateTime.Now.Year + 1;
+                        datosBapinType.jurisdiccion = jurisdiccion.ID;
+                        datosBapinType.estados = new EstadoBapinType?[] { (EstadoBapinType)estado };
+
+
+                        var bapines = EsidifManager.ConsultarAPGBapines(datosBapinType);
+                        XmlDocument xd = new XmlDocument();
+                        xd.LoadXml(bapines);
+
+                        if (xd.ChildNodes[0] != null && xd.ChildNodes[0].ChildNodes[0] != null)
+                        {
+                            using (DbCommand commandT = sqlCon.CreateCommand())
+                            {
+                                commandT.CommandType = CommandType.StoredProcedure;
+                                commandT.CommandText = "sp_ONPConsultaAPG";
+                                commandT.Parameters.Add(
+                                  new SqlParameter("@MyXML", SqlDbType.Xml)
+                                  {
+                                      Value = new SqlXml(new XmlTextReader(xd.FirstChild.InnerXml
+                                                 , XmlNodeType.Element, null))
+                                  });
+
+                                commandT.Transaction = trans;
+                                commandT.ExecuteNonQuery();
+                            }
+                            hasValues = true;
+                        }
+                    }
+                }
+
+                if (hasValues)
+                {
+                    using (DbCommand commandT = sqlCon.CreateCommand())
+                    {
+                        commandT.CommandType = CommandType.StoredProcedure;
+                        commandT.CommandText = "sp_ONPConsultaAPG_UpdateProyectos";
+                        commandT.Transaction = trans;
+                        commandT.ExecuteNonQuery();
+                    }
+                }
+
+                trans.Commit();
+                sqlCon.Close();
+            }
+            catch (Exception)
+            {
+                sqlCon.Close();
+                throw;
+            }
         }
     }
 }
