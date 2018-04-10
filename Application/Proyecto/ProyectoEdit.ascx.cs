@@ -276,7 +276,7 @@ namespace UI.Web
             UIHelper.SetValue(txtNroObra, String.Format("{0:00}", Entity.proyecto.NroObra));
             
             ProyectoPlanRefresh();
-            ActualizarUltimoPlan();
+            //ActualizarUltimoPlan();
             upDatosGenerales.Update();
             upOtrosDatos.Update();
             ProyectoOficinaPerfilSetValue();
