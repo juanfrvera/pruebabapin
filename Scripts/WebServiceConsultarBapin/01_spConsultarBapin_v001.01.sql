@@ -57,7 +57,7 @@ CAST(ISNULL(UltimoPlanSegunEjecucion.AnioInicial,0) AS bigint)	as ultimo_anio_pl
 
 from Cubo_CxT Cubo
 INNER JOIN Proyecto P on Cubo.Nro_Bapin = P.Codigo
-LEFT JOIN (select * from dbo.fn_Split(@programas,'|')) FP on Cubo.Progr_cod = FP.Data
+--LEFT JOIN (select * from dbo.fn_Split(@programas,'|')) FP on Cubo.Progr_cod = FP.Data
 -- Cruzo con los planes.
 LEFT JOIN ProyectoPlan PP on PP.IdProyecto = P.IdProyecto
 INNER JOIN PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
@@ -106,7 +106,7 @@ PPE.AnioInicial		= @ejercicio	--required
 AND Cubo.Jur_cod	= @jurisdiccion --required
 AND Cubo.Nro_Bapin	= ISNULL(@bapin, Cubo.Nro_Bapin)
 AND Cubo.SAF_cod	= ISNULL(@saf, Cubo.SAF_cod)
-
+AND Cubo.Progr_cod in (select Data from dbo.fn_Split(isNull(@programas, Cubo.Progr_cod),'|'))
 
 END
 
