@@ -205,6 +205,36 @@ declare @ttProvincias table
 insert into @ttProvincias
 select distinct * from [fn_Cubo_ProyectoLocalidadDetallada]()
 
+-- Obtiene los Montos Presupuestarios por Periodo Realizado --
+IF OBJECT_ID('tempdb..#MontoPresupuestarioRealizado') IS NOT NULL DROP TABLE #MontoPresupuestarioRealizado
+
+select distinct
+p.IdProyecto
+,MR_Acumulado_m5=sum(case when periodo< @Year-5 then montocalculado else 0 end) 
+,MR_m5=sum(case when periodo=@Year-5  then montocalculado else 0 end)
+,MR_m4=sum(case when periodo=@Year-4  then montocalculado else 0 end)
+,MR_m3=sum(case when periodo=@Year-3  then montocalculado else 0 end)
+,MR_m2=sum(case when periodo=@Year-2  then montocalculado else 0 end)
+,MR_m1=sum(case when periodo=@Year-1 then montocalculado else 0 end)
+,MR=sum(case when periodo=@Year  then montocalculado else 0 end)
+,MR_1=sum(case when periodo=@Year+1 then montocalculado else 0 end)
+,MR_2=sum(case when periodo=@Year+2  then montocalculado else 0 end)
+,MR_3=sum(case when periodo=@Year+3  then montocalculado else 0 end)
+,MR_Acumulado_3=sum(case when periodo>@Year+3  then montocalculado else 0 end)
+,MR_Total=sum(montocalculado)
+,MR_CostoTotal_Year=sum(case when periodo < @Year then montocalculado else 0 end)
+
+into #MontoPresupuestarioRealizado
+
+from Proyecto p 
+left join ProyectoEtapa pe on pe.IdProyecto = p.IdProyecto
+inner join etapa et on et.IdEtapa = pe.IdEtapa
+inner join Fase fa on et.IdFase = fa.IdFase
+left join ProyectoEtapaRealizado per on per.IdProyectoEtapa = pe.IdProyectoEtapa
+left join ProyectoEtapaRealizadoPeriodo perp on perp.IdProyectoEtapaRealizado = per.IdProyectoEtapaRealizado
+where fa.IdFase = 2 -- Fase.Nombre = Ejecución' 
+group by p.IdProyecto
+
 -- Obtiene los Montos Presupuestarios por Periodo --
 IF OBJECT_ID('tempdb..#MontoPresupuestario') IS NOT NULL DROP TABLE #MontoPresupuestario
 
@@ -223,20 +253,6 @@ p.IdProyecto
 ,ME_Acumulado_3=sum(case when periodo>@Year+3  then montocalculado else 0 end)
 ,ME_Total=sum(montocalculado)
 ,ME_CostoTotal_Year=sum(case when periodo > @Year-1 then montocalculado else 0 end)
-
-,MR_Acumulado_m5=sum(case when periodo< @Year-5 then montocalculado else 0 end) 
-,MR_m5=sum(case when periodo=@Year-5  then montocalculado else 0 end)
-,MR_m4=sum(case when periodo=@Year-4  then montocalculado else 0 end)
-,MR_m3=sum(case when periodo=@Year-3  then montocalculado else 0 end)
-,MR_m2=sum(case when periodo=@Year-2  then montocalculado else 0 end)
-,MR_m1=sum(case when periodo=@Year-1 then montocalculado else 0 end)
-,MR=sum(case when periodo=@Year  then montocalculado else 0 end)
-,MR_1=sum(case when periodo=@Year+1 then montocalculado else 0 end)
-,MR_2=sum(case when periodo=@Year+2  then montocalculado else 0 end)
-,MR_3=sum(case when periodo=@Year+3  then montocalculado else 0 end)
-,MR_Acumulado_3=sum(case when periodo>@Year+3  then montocalculado else 0 end)
-,MR_Total=sum(montocalculado)
-,MR_CostoTotal_Year=sum(case when periodo < @Year then montocalculado else 0 end)
 
 ,MI_Acumulado_m5=CONVERT(decimal(18,0),sum(case when periodo < @Year-5  then montoinicial else 0 end))
 ,MI_m5=sum(case when periodo=@Year-5 then CONVERT(decimal(18,0),montoinicial) else 0 end)
@@ -657,24 +673,24 @@ else left(fufi.DescFuenteFinan,LEN(fufi.DescFuenteFinan)-2) end				as [Fuente_Fi
 ,isnull(CONVERT(decimal(18,0),mpre.ME_Acumulado_3),0)							as [Estimado Posteriores]
 ,isnull(CONVERT(decimal(18,0),mpre.ME_Total),0)								as [Estimado Total]						
 
-,isnull(CONVERT(decimal(18,0),mpre.MR_Acumulado_m5),0)						as [Realizados Anteriores]
-,isnull(CONVERT(decimal(18,0),mpre.MR_m5),0)									as [Realizado 2012]
-,isnull(CONVERT(decimal(18,0),mpre.MR_m4),0)									as [Realizado 2013]
-,isnull(CONVERT(decimal(18,0),mpre.MR_m3),0)									as [Realizado 2014]
-,isnull(CONVERT(decimal(18,0),mpre.MR_m2),0)									as [Realizado 2015]
-,isnull(CONVERT(decimal(18,0),mpre.MR_m1),0)									as [Realizado 2016]
-,isnull(CONVERT(decimal(18,0),mpre.MR),0)										as [Realizado 2017]
-,isnull(CONVERT(decimal(18,0),mpre.MR_1),0)									as [Realizado @Year]
-,isnull(CONVERT(decimal(18,0),mpre.MR_2),0)									as [Realizado 2019]
-,isnull(CONVERT(decimal(18,0),mpre.MR_3),0)									as [Realizado 2020]
-,isnull(CONVERT(decimal(18,0),mpre.MR_Acumulado_3),0)							as [Realizado Posteriores]
-,isnull(CONVERT(decimal(18,0),mpre.MR_Total),0)								as [Realizado Total]
+,isnull(CONVERT(decimal(18,0),mprr.MR_Acumulado_m5),0)						as [Realizados Anteriores]
+,isnull(CONVERT(decimal(18,0),mprr.MR_m5),0)									as [Realizado 2012]
+,isnull(CONVERT(decimal(18,0),mprr.MR_m4),0)									as [Realizado 2013]
+,isnull(CONVERT(decimal(18,0),mprr.MR_m3),0)									as [Realizado 2014]
+,isnull(CONVERT(decimal(18,0),mprr.MR_m2),0)									as [Realizado 2015]
+,isnull(CONVERT(decimal(18,0),mprr.MR_m1),0)									as [Realizado 2016]
+,isnull(CONVERT(decimal(18,0),mprr.MR),0)										as [Realizado 2017]
+,isnull(CONVERT(decimal(18,0),mprr.MR_1),0)									as [Realizado @Year]
+,isnull(CONVERT(decimal(18,0),mprr.MR_2),0)									as [Realizado 2019]
+,isnull(CONVERT(decimal(18,0),mprr.MR_3),0)									as [Realizado 2020]
+,isnull(CONVERT(decimal(18,0),mprr.MR_Acumulado_3),0)							as [Realizado Posteriores]
+,isnull(CONVERT(decimal(18,0),mprr.MR_Total),0)								as [Realizado Total]
 
 -- Costo total actual =
 -- Montos Realizados Acumulados desde Year-1 hacia atras +
 -- Montos Estimados Acumulados desde Year hacia adelante
-,isnull(CONVERT(decimal(18,0),mpre.MR_CostoTotal_Year),0) +
- isnull(CONVERT(decimal(18,0),mpre.ME_CostoTotal_Year),0)						as [Costo Total Actual]
+--,isnull(CONVERT(decimal(18,0),mpre.MR_CostoTotal_Year),0) +
+,isnull(CONVERT(decimal(18,0),mprr.MR_CostoTotal_Year),0)						as [Costo Total Actual]
 
 -- Informacion de ONP
 ,isnull(CONVERT(decimal(18,0),CxT.[ONP-2003]),0)							as [ONP 2003]
@@ -795,6 +811,7 @@ inner join PlanTipo pt on pt.IdPlanTipo=ppt.IdPlanTipo
 
 -- Agrego los valores de los montos estimados y realizados
 left join #MontoPresupuestario mpre on mpre.IdProyecto = p.IdProyecto
+left join #MontoPresupuestarioRealizado mprr on mprr.IdProyecto = p.IdProyecto
 
 -- Estado Financiero, Estado Fisico y Estado de Decision
 left join fn_Cubo_EstadoFinanciero_Group () pefinan on pefinan.IdProyecto = p.IdProyecto
