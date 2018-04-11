@@ -160,9 +160,9 @@ namespace UI.Web.Services
                     fecha_fin = row.Field<DateTime?>("fecha_fin").HasValue ? row.Field<DateTime?>("fecha_fin").Value.Date : row.Field<DateTime?>("fecha_fin"),
                     costo_total = row.Field<decimal>("costo_total"),
                     estado_dictamen = (EstadoDictamen)Enum.Parse(typeof(EstadoDictamen), row.Field<string>("estado_dictamen")),
-                    ultimo_anio_demanda = row.Field<long>("ultimo_anio_demanda"),
-                    ultimo_anio_plan = row.Field<long>("ultimo_anio_plan"),
-                    ultimo_anio_plan_segun_ejecucion = row.Field<long>("ultimo_anio_plan_segun_ejecucion")
+                    ultimo_anio_demanda = row.Field<long?>("ultimo_anio_demanda"),
+                    ultimo_anio_plan = row.Field<long?>("ultimo_anio_plan"),
+                    ultimo_anio_plan_segun_ejecucion = row.Field<long?>("ultimo_anio_plan_segun_ejecucion")
                 }).ToList();
 
             return items;

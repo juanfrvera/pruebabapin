@@ -31,12 +31,12 @@ namespace UI.Web.Services
         public decimal costo_total { get; set; }
         [DataMember(Order = 10)]
         public EstadoDictamen estado_dictamen { get; set; }
-        [DataMember(Order = 11)]
-        public long ultimo_anio_demanda{ get; set; }
-        [DataMember(Order = 12)]
-        public long ultimo_anio_plan { get; set; }
-        [DataMember(Order = 13)]
-        public long ultimo_anio_plan_segun_ejecucion { get; set; }
+        [DataMember(Order = 11, EmitDefaultValue = false)]
+        public long? ultimo_anio_demanda{ get; set; }
+        [DataMember(Order = 12, EmitDefaultValue = false)]
+        public long? ultimo_anio_plan { get; set; }
+        [DataMember(Order = 13, EmitDefaultValue = false)]
+        public long? ultimo_anio_plan_segun_ejecucion { get; set; }
 
     }
 }
