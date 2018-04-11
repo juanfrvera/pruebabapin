@@ -347,6 +347,7 @@ namespace Contract
                     }
                 }
 
+                excelSheet.Cells.AutoFitColumns();
                 //package.Save();
                 package.SaveAs(this.Stream);
             }
@@ -442,6 +443,7 @@ namespace Contract
                     }
                 }
 
+                excelSheet.Cells.AutoFitColumns();
                 package.SaveAs(this.Stream);
             }
         }
