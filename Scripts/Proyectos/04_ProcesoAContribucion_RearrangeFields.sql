@@ -1,58 +1,50 @@
 USE [BAPIN]
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[fn_GetProyectoTipoIndefinido]') AND type in (N'FN'))
+BEGIN
+
 --Remove Unique
 ALTER TABLE [dbo].[Proceso] DROP CONSTRAINT [UK_Proceso_Nombre] 
-GO
 
 --Unify idproyectotipo (deprecated)
 Update Proceso set IdProyectoTipo = (Select IdProyectoTipo from ProyectoTipo where nombre = 'Indefinido')
-GO
 
 --Update proceso to new names
 Update Proceso set nombre='Ampliación' where nombre like 'Ampliación%' --23
-GO
 Update Proceso set nombre='Equipamiento básico' where nombre like 'Equipamiento básico%' --5
-GO
 Update Proceso set nombre='Reposición' where nombre like 'Reposición%'
-GO
 
 --Update proyecto to new proceso
 Update Proyecto set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Ampliación')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Ampliación')
-GO
 Update Proyecto set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Equipamiento básico')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Equipamiento básico')
-GO
 Update Proyecto set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Reposición')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Reposición')
-GO
 
 --Update proyectocalidad to new proceso
 Update ProyectoCalidad set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Ampliación')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Ampliación')
-GO
 Update ProyectoCalidad set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Equipamiento básico')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Equipamiento básico')
-GO
 Update ProyectoCalidad set IdProceso = (SELECT min(IdProceso) from Proceso where nombre = 'Reposición')
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Reposición')
-GO
 
 --remove old proceso items
 DELETE FROM Proceso 
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Ampliación' AND
 									IdProceso!=(SELECT min(IdProceso) from Proceso where nombre = 'Ampliación'))
-GO
 DELETE FROM Proceso 
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Equipamiento básico' AND
 									IdProceso!=(SELECT min(IdProceso) from Proceso where nombre = 'Equipamiento básico'))
-GO
 DELETE FROM Proceso 
 WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Reposición' AND
 									IdProceso!=(SELECT min(IdProceso) from Proceso where nombre = 'Reposición'))
-GO
 
+END
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[fn_GetProyectoTipoIndefinido]') AND type in (N'FN'))
 --Create scalar to get indefinido
 CREATE FUNCTION fn_GetProyectoTipoIndefinido ()
 RETURNS INT
@@ -62,6 +54,15 @@ BEGIN
 END
 GO
 
+if not exists (
+    select *
+      from sys.all_columns c
+      join sys.tables t on t.object_id = c.object_id
+      join sys.schemas s on s.schema_id = t.schema_id
+      join sys.default_constraints d on c.default_object_id = d.object_id
+    where t.name = 'Proceso'
+      and c.name = 'IdProyectoTipo'
+      and s.name = 'dbo')
 --Add default to proceso on proyecto
 ALTER TABLE [dbo].[Proceso] ADD DEFAULT ([dbo].[fn_GetProyectoTipoIndefinido]()) FOR [IdProyectoTipo]
 GO
@@ -81,3 +82,5 @@ EXEC sp_addextendedproperty @name = N'MS_Description', @value = N'deprecated'
 , @level1type = 'TABLE', @level1name = N'Proceso'
 , @level2type = 'COLUMN', @level2name = N'IdProceso'
 GO
+
+END

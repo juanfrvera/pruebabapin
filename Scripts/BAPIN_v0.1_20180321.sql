@@ -30,6 +30,9 @@ GO
 USE [BD_BAPIN]
 GO
 
+IF NOT EXISTS(SELECT 1 FROM sys.columns 
+          WHERE Name = N'MontoInicial'
+          AND Object_ID = Object_ID(N'dbo.ProyectoEtapaEstimadoPeriodo'))
 ALTER TABLE [dbo].[ProyectoEtapaEstimadoPeriodo]
 ADD [MontoInicial] money NOT NULL DEFAULT 0 ,
 [MontoVigente] money NOT NULL  DEFAULT 0  ,
