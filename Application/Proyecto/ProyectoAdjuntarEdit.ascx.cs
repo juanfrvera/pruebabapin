@@ -24,6 +24,10 @@ namespace UI.Web
             revInfoAdicional.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             revMarcoLegal.ErrorMessage = TranslateFormat("InvalidField", "Marco Legal");
             revInfoAdicional.ErrorMessage = TranslateFormat("InvalidField", "Información adicional");
+
+            pnProyectoFiles.ToolTip = Translate("TooltipArchivosAdjuntos");
+            pnlMarcoLegal.ToolTip = Translate("TooltipMarcoLegal");
+            pnlInfoAdicional.ToolTip = Translate("TooltipOtraInformacionAdicional");
         }
         public override void Clear()
         {

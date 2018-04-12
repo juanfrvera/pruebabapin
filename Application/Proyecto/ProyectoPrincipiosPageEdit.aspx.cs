@@ -82,6 +82,7 @@ namespace UI.Web.Pages
 
             // busco los datos del usuario logueado
             ContextUser contexto = (ContextUser)Session["contextUser"];
+            if (contexto == null) return false;
             List<UsuarioOficinaPerfilSimpleResult> perfilesOficina = contexto.PerfilesPorOficina.ToList();
 
             // verifico si el usuario logueado es administrador

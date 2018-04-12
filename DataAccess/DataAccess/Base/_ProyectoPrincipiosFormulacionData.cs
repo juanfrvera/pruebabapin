@@ -121,6 +121,7 @@ namespace DataAccess.Base
             _new.RequiereIntevencion = entity.RequiereIntevencion;
             _new.RequiereIntevencionAutoridad = entity.RequiereIntevencionAutoridad;
             _new.RequiereIntevencionEstado = entity.RequiereIntevencionEstado;
+            _new.ObservacionesDNIP = entity.ObservacionesDNIP;
 
             return _new;			
         }
@@ -128,7 +129,25 @@ namespace DataAccess.Base
         {
             ProyectoPrincipiosFormulacion  newEntity = Copy(entity);
             newEntity.NecesidadASatisfacer = string.Format(renameFormat,newEntity.NecesidadASatisfacer);
-            newEntity.ObjetivoDelProyecto = string.Format(renameFormat, newEntity.ObjetivoDelProyecto);
+            newEntity.ObjetivoDelProyecto = string.Format(renameFormat,newEntity.ObjetivoDelProyecto);
+            newEntity.ProductoOServicio = string.Format(renameFormat,newEntity.ProductoOServicio);
+            newEntity.Alternativas = string.Format(renameFormat,newEntity.Alternativas);
+            newEntity.PorqueAlternativa = string.Format(renameFormat,newEntity.PorqueAlternativa);
+            newEntity.DescripcionTecnica = string.Format(renameFormat,newEntity.DescripcionTecnica);
+            newEntity.VidaUtil = string.Format(renameFormat,newEntity.VidaUtil);
+            newEntity.CoberturaTerritorial = string.Format(renameFormat,newEntity.CoberturaTerritorial);
+            newEntity.CoberturaPoblacional = string.Format(renameFormat,newEntity.CoberturaPoblacional);
+            newEntity.CoberturaBeneficiariosDirectos = string.Format(renameFormat,newEntity.CoberturaBeneficiariosDirectos);
+            newEntity.CoberturaBeneficiariosIndirectos = string.Format(renameFormat,newEntity.CoberturaBeneficiariosIndirectos);
+            newEntity.DificultadesRiesgos = newEntity.DificultadesRiesgos;
+            newEntity.DificultadesRiesgosEnumeracion = string.Format(renameFormat,newEntity.DificultadesRiesgosEnumeracion);
+            newEntity.DimensionesCostosDimensionados = newEntity.DimensionesCostosDimensionados;
+            newEntity.DimensionesCostosValidados = newEntity.DimensionesCostosValidados;
+            newEntity.DimensionesCostosEnte = string.Format(renameFormat,newEntity.DimensionesCostosEnte);
+            newEntity.RequiereIntevencion = newEntity.RequiereIntevencion;
+            newEntity.RequiereIntevencionAutoridad = string.Format(renameFormat,newEntity.RequiereIntevencionAutoridad);
+            newEntity.RequiereIntevencionEstado = newEntity.RequiereIntevencionEstado;
+            newEntity.ObservacionesDNIP = string.Format(renameFormat,newEntity.ObservacionesDNIP);
             Add(newEntity);
 			return GetId(newEntity);
         }
@@ -161,7 +180,7 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
-		 		  
+         target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		public override void Set(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacion target,bool hadSetId)
 		{		   
@@ -186,7 +205,7 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
-		 
+         target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		public override void Set(ProyectoPrincipiosFormulacion source,ProyectoPrincipiosFormulacionResult target,bool hadSetId)
 		{		   
@@ -211,7 +230,7 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
-		 	
+         target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}		
 		public override void Set(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacionResult target,bool hadSetId)
 		{		   
@@ -235,7 +254,8 @@ namespace DataAccess.Base
          target.DimensionesCostosEnte = source.DimensionesCostosEnte;
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
-         target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;					
+         target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
+         target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		#endregion			
 		#region Equals
@@ -266,6 +286,7 @@ namespace DataAccess.Base
             if ((source.RequiereIntevencion == null) ? (target.RequiereIntevencion.HasValue) : !source.RequiereIntevencion.Equals(target.RequiereIntevencion)) return false;
             if ((source.RequiereIntevencionAutoridad == null) ? target.RequiereIntevencionAutoridad != null : !((target.RequiereIntevencionAutoridad == String.Empty && source.RequiereIntevencionAutoridad == null) || (target.RequiereIntevencionAutoridad == null && source.RequiereIntevencionAutoridad == String.Empty)) && !source.RequiereIntevencionAutoridad.Trim().Replace("\r", "").Equals(target.RequiereIntevencionAutoridad.Trim().Replace("\r", ""))) return false;
             if ((source.RequiereIntevencionEstado == null) ? (target.RequiereIntevencionEstado.HasValue) : !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
+            if ((source.ObservacionesDNIP == null) ? target.ObservacionesDNIP != null : !((target.ObservacionesDNIP == String.Empty && source.ObservacionesDNIP == null) || (target.ObservacionesDNIP == null && source.ObservacionesDNIP == String.Empty)) && !source.ObservacionesDNIP.Trim().Replace("\r", "").Equals(target.ObservacionesDNIP.Trim().Replace("\r", ""))) return false;
 		  return true;
         }
 		public override bool Equals(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacionResult target)
@@ -298,7 +319,7 @@ namespace DataAccess.Base
                 if (source.RequiereIntevencion.HasValue && source.RequiereIntevencion != false) return false;   //false initial value 
                 if (source.RequiereIntevencionAutoridad != null && source.RequiereIntevencionAutoridad != String.Empty) return false;
                 if (source.RequiereIntevencionEstado != null && !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
-
+                if (source.ObservacionesDNIP != null && source.ObservacionesDNIP != String.Empty) return false;
                 return true;
             }
 
@@ -326,7 +347,8 @@ namespace DataAccess.Base
             if ((source.RequiereIntevencionEstado == null) ? (target.RequiereIntevencionEstado.HasValue) : !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
 
             if(!source._Proyecto_IdTipoProyecto.Equals(target._Proyecto_IdTipoProyecto))return false;
-					 		
+
+            if ((source.ObservacionesDNIP == null) ? target.ObservacionesDNIP != null : !((target.ObservacionesDNIP == String.Empty && source.ObservacionesDNIP == null) || (target.ObservacionesDNIP == null && source.ObservacionesDNIP == String.Empty)) && !source.ObservacionesDNIP.Trim().Replace("\r", "").Equals(target.ObservacionesDNIP.Trim().Replace("\r", ""))) return false;
 		  return true;
         }
 		#endregion

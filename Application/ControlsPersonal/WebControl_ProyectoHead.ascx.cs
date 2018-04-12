@@ -36,6 +36,7 @@ namespace UI.Web
             UIHelper.SetValue(lblFechaIngreso,Result.FechaAlta.ToString("dd/MM/yyyy"));
             UIHelper.SetValue(lblFechaUltimaModificacion, Result.FechaModificacion.ToString("dd/MM/yyyy"));
             UIHelper.SetValue(lblInactive, Result.Activo==false?"INACTIVO":"");
+            lblInactive.ToolTip = Translate("TooltipProyectoEliminado");
             updHeadPanel.Update();
         }
 

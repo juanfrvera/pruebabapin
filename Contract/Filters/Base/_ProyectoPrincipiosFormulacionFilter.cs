@@ -29,6 +29,7 @@ namespace Contract.Base
         private bool? _RequiereIntevencion;
         private string _RequiereIntevencionAutoridad;
         private int? _RequiereIntevencionEstado;
+        private string _ObservacionesDNIP;
 
 		#endregion
 		#region Properties
@@ -191,6 +192,16 @@ namespace Contract.Base
         [DataMember(Name = "RequiereIntevencionEstado", IsRequired = false)]
         public int? RequiereIntevencionEstado { get; set; }
 
+        [DataMember(Name = "ObservacionesDNIP", IsRequired = false)]
+        public string ObservacionesDNIP
+        {
+            get
+            {
+                if (_ObservacionesDNIP == null) _ObservacionesDNIP = string.Empty;
+                return _ObservacionesDNIP;
+            }
+            set { _ObservacionesDNIP = value; }
+        }
 		#endregion
     }
 }

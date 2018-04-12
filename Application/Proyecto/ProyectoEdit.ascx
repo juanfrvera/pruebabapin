@@ -621,7 +621,7 @@
 <%--Otros Datos--%>
 <asp:UpdatePanel ID="upOtrosDatos" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
-        <asp:Panel ID="Panel3" runat="server">
+        <asp:Panel ID="pnlOtrosDatos" runat="server">
             <%--Situacion Actual
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>

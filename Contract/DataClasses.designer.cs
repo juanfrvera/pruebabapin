@@ -14305,6 +14305,8 @@ namespace Contract
 		
 		private System.Nullable<int> _RequiereIntevencionEstado;
 		
+		private string _ObservacionesDNIP;
+		
 		private EntityRef<Proyecto> _Proyecto;
 		
     #region Extensibility Method Definitions
@@ -14353,6 +14355,8 @@ namespace Contract
     partial void OnRequiereIntevencionAutoridadChanged();
     partial void OnRequiereIntevencionEstadoChanging(System.Nullable<int> value);
     partial void OnRequiereIntevencionEstadoChanged();
+    partial void OnObservacionesDNIPChanging(string value);
+    partial void OnObservacionesDNIPChanged();
     #endregion
 		
 		public ProyectoPrincipiosFormulacion()
@@ -14801,6 +14805,27 @@ namespace Contract
 					this._RequiereIntevencionEstado = value;
 					this.SendPropertyChanged("RequiereIntevencionEstado");
 					this.OnRequiereIntevencionEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ObservacionesDNIP", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
+		public string ObservacionesDNIP
+		{
+			get
+			{
+				return this._ObservacionesDNIP;
+			}
+			set
+			{
+				if ((this._ObservacionesDNIP != value))
+				{
+					this.OnObservacionesDNIPChanging(value);
+					this.SendPropertyChanging();
+					this._ObservacionesDNIP = value;
+					this.SendPropertyChanged("ObservacionesDNIP");
+					this.OnObservacionesDNIPChanged();
 				}
 			}
 		}

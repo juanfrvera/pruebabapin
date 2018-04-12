@@ -124,8 +124,17 @@ namespace UI.Web.Pages
             PopUpIndicadoresBeneficiario.Attributes.CssStyle.Add("display", "none");
             PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
             PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
-            
 
+            pnlIndicadoresEvaluacion.ToolTip = Translate("TooltipIndicadoresEvaluacion");
+            txtCriteriosEvaluacion.ToolTip = Translate("TooltipCriteriosEvaluacion");
+            txtHorizonteEvaluacion.ToolTip = Translate("TooltipHorizonteEvaluacion");
+            txtTasaReferencia.ToolTip = Translate("TooltipTasaReferencia");
+            //xxxxxxxx.ToolTip = Translate("TooltipOtrosIndicadores");
+            //xxxxxxxx.ToolTip = Translate("TooltipContribucionObjetivoGobierno");
+            //xxxxxxxx.ToolTip = Translate("TooltipSector");
+            //xxxxxxxx.ToolTip = Translate("TooltipIndicador");
+            //xxxxxxxx.ToolTip = Translate("TooltipMedioVerificacion");
+            //xxxxxxxx.ToolTip = Translate("TooltipObservacionesEvaluacion");
         }
 
         public void RegistrarScriptTotales()

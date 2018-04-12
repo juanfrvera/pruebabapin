@@ -29,7 +29,8 @@ namespace Contract.Base
         public bool? RequiereIntevencion { get; set; }
         public string RequiereIntevencionAutoridad { get; set; }
         public int? RequiereIntevencionEstado { get; set; }
-		 
+        public string ObservacionesDNIP { get; set; }
+
 		public int _Proyecto_IdTipoProyecto{get;set;}	
         public int _Proyecto_IdSubPrograma{get;set;}	
         public int _Proyecto_Codigo{get;set;}	
@@ -79,7 +80,7 @@ namespace Contract.Base
             _ProyectoPrincipiosFormulacion.RequiereIntevencion = this.RequiereIntevencion;
             _ProyectoPrincipiosFormulacion.RequiereIntevencionAutoridad = this.RequiereIntevencionAutoridad;
             _ProyectoPrincipiosFormulacion.RequiereIntevencionEstado = this.RequiereIntevencionEstado;
-		 
+            _ProyectoPrincipiosFormulacion.ObservacionesDNIP = this.ObservacionesDNIP;
 		  return _ProyectoPrincipiosFormulacion;
 		}		
 		public virtual void Set(ProyectoPrincipiosFormulacion entity)
@@ -105,6 +106,7 @@ namespace Contract.Base
           this.RequiereIntevencion = entity.RequiereIntevencion;
           this.RequiereIntevencionAutoridad = entity.RequiereIntevencionAutoridad;
           this.RequiereIntevencionEstado = entity.RequiereIntevencionEstado;
+          this.ObservacionesDNIP = entity.ObservacionesDNIP;
 		 		  
 		}		
 		public virtual bool Equals(ProyectoPrincipiosFormulacion entity)
@@ -131,7 +133,7 @@ namespace Contract.Base
             if ((entity.RequiereIntevencion == null) ? this.RequiereIntevencion != null : !entity.RequiereIntevencion.Equals(this.RequiereIntevencion)) return false;
             if ((entity.RequiereIntevencionAutoridad == null) ? this.RequiereIntevencionAutoridad != null : !entity.RequiereIntevencionAutoridad.Equals(this.RequiereIntevencionAutoridad)) return false;
             if ((entity.RequiereIntevencionEstado == null) ? this.RequiereIntevencionEstado != null : !entity.RequiereIntevencionEstado.Equals(this.RequiereIntevencionEstado)) return false;
-            
+            if ((entity.ObservacionesDNIP == null) ? this.ObservacionesDNIP != null : !entity.ObservacionesDNIP.Equals(this.ObservacionesDNIP)) return false;
             return true;
         }
 		
@@ -158,6 +160,7 @@ namespace Contract.Base
             ,new DataColumnMapping("RequiereIntevencion","RequiereIntevencion")
             ,new DataColumnMapping("RequiereIntevencionAutoridad","RequiereIntevencionAutoridad")
             ,new DataColumnMapping("RequiereIntevencionEstado","RequiereIntevencionEstado")
+            ,new DataColumnMapping("ObservacionesDNIP","ObservacionesDNIP")
 			}));
 		}
 	}

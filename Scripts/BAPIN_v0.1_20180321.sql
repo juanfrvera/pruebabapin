@@ -108,7 +108,9 @@ CREATE TABLE [dbo].[ProyectoPrincipiosFormulacion] (
 
 [RequiereIntevencion] bit NULL  ,
 [RequiereIntevencionAutoridad] varchar(255) NULL ,
-[RequiereIntevencionEstado] int NULL  --0 A Iniciar, 1 En Curso, 2 Terminado
+[RequiereIntevencionEstado] int NULL ,  --0 A Iniciar, 1 En Curso, 2 Terminado
+
+[ObservacionesDNIP] varchar(MAX) NULL
 )
 GO
 

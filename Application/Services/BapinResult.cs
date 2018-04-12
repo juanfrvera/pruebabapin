@@ -23,9 +23,9 @@ namespace UI.Web.Services
         public long programa { get; set; }
         [DataMember(Order = 6)]
         public long subprograma { get; set; }
-        [DataMember(Order = 7)]
+        [DataMember(Order = 7, EmitDefaultValue = false)]
         public DateTime? fecha_inicio { get; set; }
-        [DataMember(Order = 8)]
+        [DataMember(Order = 8, EmitDefaultValue = false)]
         public DateTime? fecha_fin { get; set; }
         [DataMember(Order = 9)]
         public decimal costo_total { get; set; }

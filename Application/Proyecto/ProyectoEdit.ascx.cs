@@ -71,7 +71,6 @@ namespace UI.Web
             //UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new Estado() { IdEstado = 0, Nombre = "Seleccione Estado" }, true, "Orden", typeof(Int32));
             UIHelper.Load<nc.SistemaEntidadEstado>(ddlEstado, SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), "Nombre", "IdEstado", new SistemaEntidadEstado() { IdEstado = 0, Nombre = "Seleccione Etapa" }, true, "Nombre");
 
-            //ddlEstado.ToolTip = Translate("TooltipTipoProyecto");
             UIHelper.Load<nc.ModalidadContratacion>(ddlModalidadContratacion, ModalidadContratacionService.Current.GetList(new nc.ModalidadContratacionFilter() { Activo = true }), "Nombre", "IdModalidadContratacion");//, new ModalidadContratacion() { IdModalidadContratacion = 0, Nombre = "No definido aún" }
             SetSelectedItemByText(ddlModalidadContratacion,"No definido aún");
             UIHelper.Load<nc.OrganismoPrioridad>(ddlPrioridad, OrganismoPrioridadService.Current.GetList(new nc.OrganismoPrioridadFilter() { Activo = true }), "Nombre", "IdOrganismoPrioridad", new nc.OrganismoPrioridad() { IdOrganismoPrioridad = 0, Nombre = "Seleccione Prioridad" });
@@ -118,6 +117,38 @@ namespace UI.Web
             rfvSAFTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "SAF");
             //rfvJurisdiccionTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "Jurisdición"); //Matias 20140403 - Tarea 122
             //rfvProvinciaTransferencia.ErrorMessage = TranslateFormat("FieldIsNull", "Provincia"); //Matias 20140403 - Tarea 122
+
+            
+            chkBorrador.ToolTip = Translate("TooltipProyectoBorrador");
+            pnlDatosGenerales.ToolTip = Translate("TooltipProyectoDatosGenerales");
+
+            txtNroProyecto.ToolTip = Translate("TooltipProyectoPresupuestario");
+            txtNroActividad.ToolTip = Translate("TooltipProyectoActividad");
+            txtNroObra.ToolTip = Translate("TooltipProyectoObra");
+
+            txtDenominacion.ToolTip = Translate("TooltipProyectoDenominacion");
+            ddlTipoProyecto.ToolTip = Translate("TooltipTipoEjecucionPresupuestaria");
+            txtCostoTotal.ToolTip = Translate("TooltipTipoCostototal");
+            txtCostoInicialEstimado.ToolTip = Translate("TooltipTipoMontoTotalEstimadoInicial");
+            chkRequiereDictamen.ToolTip = Translate("TooltipRequiereDictamen");
+            ddlProceso.ToolTip = Translate("TooltipProyectoContribucion");
+            ddlEstado.ToolTip = Translate("TooltipProyectoEtapa");
+            ddlModalidadContratacion.ToolTip = Translate("TooltipModalidaddeContratacion");
+            cbEsPPP.ToolTip = Translate("TooltipPPP");
+            toFinalidadFuncion.PnControl.ToolTip = Translate("TooltipFinalidadFuncion");
+            pnlLocalizacionGeografica.ToolTip = Translate("TooltipLocalizacion");
+            toIniciador.PnControl.ToolTip = Translate("TooltipIniciador");
+            toEjecutor.PnControl.ToolTip = Translate("TooltipEjecutor");
+            toResponsable.PnControl.ToolTip = Translate("TooltipResponsable");
+
+            lnkPlan.ToolTip = Translate("TooltipProyectoAgregar");
+            lnkHistorial.ToolTip = Translate("TooltipProyectoHistorial");
+            txtUltimaSolicitud.ToolTip = Translate("TooltipUltimaSolicitudRegistrada");
+            ddlPrioridad.ToolTip = Translate("TooltipPrioridad");
+            txtPrioridad.ToolTip = Translate("TooltipSubprioridad");
+            pnlOrigenFinanciamientoGral.ToolTip = Translate("TooltipFinanciamientoExterno");
+            pnlProyectosRelacionadosGral.ToolTip = Translate("TooltipProyectosRelacionados");
+            pnlOtrosDatos.ToolTip = Translate("TooltipProyectoObservaciones");
         }
         public override void Clear()
         {
@@ -1335,8 +1366,6 @@ namespace UI.Web
             PlanPeriodo ppr = PlanPeriodoService.Current.GetList(new nc.PlanPeriodoFilter() { IdPlanPeriodo = ActualProyectoPlan.IdPlanPeriodo }).SingleOrDefault();
             ActualProyectoPlan.PlanPeriodo_AnioInicial = ppr.AnioInicial;
             ActualProyectoPlan.PlanPeriodo_AnioFinal = ppr.AnioFinal;
-            if (ActualProyectoPlan.Activo == null)
-                ActualProyectoPlan.Activo = true;
         }
         void ProyectoPlanRefresh()
         {

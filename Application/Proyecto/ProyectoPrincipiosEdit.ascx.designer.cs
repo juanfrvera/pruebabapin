@@ -13,6 +13,15 @@ namespace UI.Web.Pages {
     public partial class ProyectoPrincipiosEdit {
         
         /// <summary>
+        /// upNecesidadASatisfacer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upNecesidadASatisfacer;
+        
+        /// <summary>
         /// lblNecesidadASatisfacer control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlNecesidadASatisfacer;
         
         /// <summary>
-        /// upNecesidadASatisfacer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upNecesidadASatisfacer;
-        
-        /// <summary>
         /// txtNecesidadASatisfacer control.
         /// </summary>
         /// <remarks>
@@ -65,6 +65,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revNecesidadASatisfacer;
+        
+        /// <summary>
+        /// upObjetivoDelProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upObjetivoDelProyecto;
         
         /// <summary>
         /// lblObjetivoDelProyecto control.
@@ -94,15 +103,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlObjetivoDelProyecto;
         
         /// <summary>
-        /// upObjetivoDelProyecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upObjetivoDelProyecto;
-        
-        /// <summary>
         /// txtObjetivoDelProyecto control.
         /// </summary>
         /// <remarks>
@@ -119,6 +119,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revObjetivoDelProyecto;
+        
+        /// <summary>
+        /// upProductoOServicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upProductoOServicio;
         
         /// <summary>
         /// lblProductoOServicio control.
@@ -148,15 +157,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlProductoOServicio;
         
         /// <summary>
-        /// upProductoOServicio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upProductoOServicio;
-        
-        /// <summary>
         /// txtProductoOServicio control.
         /// </summary>
         /// <remarks>
@@ -173,6 +173,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revProductoOServicio;
+        
+        /// <summary>
+        /// upAlternativas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upAlternativas;
         
         /// <summary>
         /// lblAlternativas control.
@@ -202,15 +211,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlAlternativas;
         
         /// <summary>
-        /// upAlternativas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upAlternativas;
-        
-        /// <summary>
         /// txtAlternativas control.
         /// </summary>
         /// <remarks>
@@ -227,6 +227,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revAlternativas;
+        
+        /// <summary>
+        /// upPorqueAlternativa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upPorqueAlternativa;
         
         /// <summary>
         /// lblPorqueAlternativa control.
@@ -256,15 +265,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlPorqueAlternativa;
         
         /// <summary>
-        /// upPorqueAlternativa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upPorqueAlternativa;
-        
-        /// <summary>
         /// txtPorqueAlternativa control.
         /// </summary>
         /// <remarks>
@@ -281,6 +281,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revPorqueAlternativa;
+        
+        /// <summary>
+        /// upDescripcionTecnica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDescripcionTecnica;
         
         /// <summary>
         /// lblDescripcionTecnica control.
@@ -310,15 +319,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlDescripcionTecnica;
         
         /// <summary>
-        /// upDescripcionTecnica control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upDescripcionTecnica;
-        
-        /// <summary>
         /// txtDescripcionTecnica control.
         /// </summary>
         /// <remarks>
@@ -335,6 +335,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revDescripcionTecnica;
+        
+        /// <summary>
+        /// upVidaUtil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upVidaUtil;
         
         /// <summary>
         /// lblVidaUtil control.
@@ -364,15 +373,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlVidaUtil;
         
         /// <summary>
-        /// upVidaUtil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upVidaUtil;
-        
-        /// <summary>
         /// txtVidaUtil control.
         /// </summary>
         /// <remarks>
@@ -389,6 +389,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revVidaUtil;
+        
+        /// <summary>
+        /// upCobertura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upCobertura;
         
         /// <summary>
         /// lblCobertura control.
@@ -416,15 +425,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlCobertura;
-        
-        /// <summary>
-        /// upCobertura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upCobertura;
         
         /// <summary>
         /// txtCoberturaTerritorial control.
@@ -499,6 +499,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revCoberturaBeneficiariosIndirectos;
         
         /// <summary>
+        /// upDificultadesRiesgos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDificultadesRiesgos;
+        
+        /// <summary>
         /// lblDificultadesRiesgos control.
         /// </summary>
         /// <remarks>
@@ -524,15 +533,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDificultadesRiesgos;
-        
-        /// <summary>
-        /// upDificultadesRiesgos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upDificultadesRiesgos;
         
         /// <summary>
         /// cbDificultadesRiesgos control.
@@ -589,6 +589,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDificultadesRiesgosEnumeracion;
         
         /// <summary>
+        /// upDimensionesCostos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDimensionesCostos;
+        
+        /// <summary>
         /// lblDimensionesCostos control.
         /// </summary>
         /// <remarks>
@@ -614,15 +623,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDimensionesCostos;
-        
-        /// <summary>
-        /// upDimensionesCostos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upDimensionesCostos;
         
         /// <summary>
         /// cbDimensionesCostosDimensionados control.
@@ -715,6 +715,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDimensionesCostosEnte;
         
         /// <summary>
+        /// upRequiereIntevencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upRequiereIntevencion;
+        
+        /// <summary>
         /// lblRequiereIntevencion control.
         /// </summary>
         /// <remarks>
@@ -740,15 +749,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlRequiereIntevencion;
-        
-        /// <summary>
-        /// upRequiereIntevencion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upRequiereIntevencion;
         
         /// <summary>
         /// cbRequiereIntevencion control.
@@ -812,5 +812,59 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRequiereIntevencionEstado;
+        
+        /// <summary>
+        /// upObservacionesDNIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upObservacionesDNIP;
+        
+        /// <summary>
+        /// lblObservacionesDNIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblObservacionesDNIP;
+        
+        /// <summary>
+        /// CollapsiblePanelExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
+        
+        /// <summary>
+        /// pnlObservacionesDNIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlObservacionesDNIP;
+        
+        /// <summary>
+        /// txtObservacionesDNIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtObservacionesDNIP;
+        
+        /// <summary>
+        /// revObservacionesDNIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revObservacionesDNIP;
     }
 }

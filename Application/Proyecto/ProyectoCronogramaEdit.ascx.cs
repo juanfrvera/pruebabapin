@@ -183,6 +183,13 @@ namespace UI.Web
             }
             btVerInfoPresupuestaria.Text = "Ver Inicial / Vigente / Devengado " + anioVisible.ToString();
             lblAnioPresupuestario.Text = anioVisible.ToString();
+
+            //xxx.ToolTip = Translate("TooltipCronogramasAgregar");
+            //xxx.ToolTip = Translate("TooltipTotalEstimadoActual");
+            //xxx.ToolTip = Translate("TooltipTotalRealizado");
+            pnlInformacionPresupuestaria.ToolTip = Translate("TooltipEjecucionPresupuestaria");
+            pnlEtapaEstimada.ToolTip = Translate("TooltipGastosEstimados");
+            pnlEtapaRealizada.ToolTip = Translate("TooltipGastosRealizados");
         }
         public override void Clear() { }
         public override void GetValue()

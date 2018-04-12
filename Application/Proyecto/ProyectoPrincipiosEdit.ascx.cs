@@ -70,6 +70,25 @@ namespace UI.Web.Pages
 
             rfvRequiereIntevencionEstado.Enabled = false;
             rfvRequiereIntevencionEstado.ErrorMessage = TranslateFormat("FieldIsNull", "Estado del trámite");
+
+            revObservacionesDNIP.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
+            revObservacionesDNIP.ErrorMessage = TranslateFormat("InvalidFiled", "Necesidad a satisfacer");
+
+            pnlNecesidadASatisfacer.ToolTip = Translate("TooltipPrincipiosConceptualesDeFormulacion");
+            pnlObjetivoDelProyecto.ToolTip = Translate("TooltipObjetivoDelProyecto");
+            pnlProductoOServicio.ToolTip = Translate("TooltipProductoServicioDelProyecto");
+            pnlDescripcionTecnica.ToolTip = Translate("TooltipDescripcionTecnica");
+            pnlVidaUtil.ToolTip = Translate("TooltipVidaUtil");
+            txtCoberturaTerritorial.ToolTip = Translate("TooltipCoberturaTerritorial");
+            txtCoberturaPoblacional.ToolTip = Translate("TooltipCoberturaPoblacional");
+            txtCoberturaBeneficiariosDirectos.ToolTip = Translate("TooltipBeneficiariosDirectos");
+            txtCoberturaBeneficiariosIndirectos.ToolTip = Translate("TooltipBeneficiariosIndirectos");
+            pnlDificultadesRiesgos.ToolTip = Translate("TooltipDificultadesRiesgos");
+            txtObservacionesDNIP.ToolTip = Translate("TooltipObservacionesDNIP");
+            if (UIContext.Current.ContextUser != null && UIContext.Current.ContextUser.PerfilesPorOficina != null)
+            {
+                txtObservacionesDNIP.Enabled = UIContext.Current.ContextUser.PerfilesPorOficina.Where(x => x.Oficina_Nombre == "DNIP").Any();
+            }
         }
         public override void Clear()
         {
@@ -95,7 +114,7 @@ namespace UI.Web.Pages
             UIHelper.Clear(cbRequiereIntevencion);
             UIHelper.Clear(txtRequiereIntevencionAutoridad);
             rblRequiereIntevencionEstado.ClearSelection();
-            UIHelper.Clear(rblRequiereIntevencionEstado);            
+            UIHelper.Clear(txtObservacionesDNIP);
         }
         public override void GetValue()
         {
@@ -110,6 +129,7 @@ namespace UI.Web.Pages
             Entity.PrincipiosFormulacion.CoberturaPoblacional = UIHelper.GetString(txtCoberturaPoblacional);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosDirectos = UIHelper.GetString(txtCoberturaBeneficiariosDirectos);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosIndirectos = UIHelper.GetString(txtCoberturaBeneficiariosIndirectos);
+            Entity.PrincipiosFormulacion.ObservacionesDNIP = UIHelper.GetString(txtObservacionesDNIP);
 
             if (cbDificultadesRiesgos.Checked || cbDificultadesRiesgosNo.Checked)
             {
@@ -154,6 +174,17 @@ namespace UI.Web.Pages
         }
         public override void SetValue()
         {
+            lblNecesidadASatisfacer.Style.Remove("color");
+            lblObjetivoDelProyecto.Style.Remove("color");
+            lblProductoOServicio.Style.Remove("color");
+            lblAlternativas.Style.Remove("color");
+            lblPorqueAlternativa.Style.Remove("color");
+            lblDescripcionTecnica.Style.Remove("color");
+            lblCobertura.Style.Remove("color");
+            lblVidaUtil.Style.Remove("color");
+            lblDificultadesRiesgos.Style.Remove("color");
+            lblDimensionesCostos.Style.Remove("color");
+            lblRequiereIntevencion.Style.Remove("color");
             if (Entity.PrincipiosFormulacion == null)
             {
                 Entity.PrincipiosFormulacion = new ProyectoPrincipiosFormulacionResult();
@@ -258,7 +289,7 @@ namespace UI.Web.Pages
                 {
                     UIHelper.SetValue(cbRequiereIntevencionNo, !Entity.PrincipiosFormulacion.RequiereIntevencion);
                 }
-
+                UIHelper.SetValue(txtObservacionesDNIP, Entity.PrincipiosFormulacion.ObservacionesDNIP);
 
                 cbDificultadesRiesgosCheckedChanged();
                 cbDimensionesCostosDimensionadosCheckedChanged();
@@ -275,6 +306,7 @@ namespace UI.Web.Pages
                 upDificultadesRiesgos.Update();
                 upDimensionesCostos.Update();
                 upRequiereIntevencion.Update();
+                upObservacionesDNIP.Update();
             }
 
         }
@@ -358,7 +390,6 @@ namespace UI.Web.Pages
                 rfvRequiereIntevencionAutoridad.Enabled = false;
                 UIHelper.Clear(txtRequiereIntevencionAutoridad);
                 rblRequiereIntevencionEstado.ClearSelection();
-                UIHelper.Clear(rblRequiereIntevencionEstado);
             }
         }
     }
