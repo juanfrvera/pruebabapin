@@ -62,6 +62,7 @@ namespace DataAccess.Base
                     && (filter.RequiereIntevencionAutoridad == null || filter.RequiereIntevencionAutoridad.Trim() == string.Empty || filter.RequiereIntevencionAutoridad.Trim() == "%" || (filter.RequiereIntevencionAutoridad.EndsWith("%") && filter.RequiereIntevencionAutoridad.StartsWith("%") && (o.RequiereIntevencionAutoridad.Contains(filter.RequiereIntevencionAutoridad.Replace("%", "")))) || (filter.RequiereIntevencionAutoridad.EndsWith("%") && o.RequiereIntevencionAutoridad.StartsWith(filter.RequiereIntevencionAutoridad.Replace("%", ""))) || (filter.RequiereIntevencionAutoridad.StartsWith("%") && o.RequiereIntevencionAutoridad.EndsWith(filter.RequiereIntevencionAutoridad.Replace("%", ""))) || o.RequiereIntevencionAutoridad == filter.RequiereIntevencionAutoridad)
                     && (filter.RequiereIntevencionEstado == null || filter.RequiereIntevencionEstado == 0 || o.RequiereIntevencionEstado == filter.RequiereIntevencionEstado)
 
+                    && (filter.ObservacionesDNIP == null || filter.ObservacionesDNIP.Trim() == string.Empty || filter.ObservacionesDNIP.Trim() == "%" || (filter.ObservacionesDNIP.EndsWith("%") && filter.ObservacionesDNIP.StartsWith("%") && (o.ObservacionesDNIP.Contains(filter.ObservacionesDNIP.Replace("%", "")))) || (filter.ObservacionesDNIP.EndsWith("%") && o.ObservacionesDNIP.StartsWith(filter.ObservacionesDNIP.Replace("%", ""))) || (filter.ObservacionesDNIP.StartsWith("%") && o.ObservacionesDNIP.EndsWith(filter.ObservacionesDNIP.Replace("%", ""))) || o.ObservacionesDNIP == filter.ObservacionesDNIP)
                     select o
                     ).AsQueryable();
             return q;
@@ -92,7 +93,8 @@ namespace DataAccess.Base
                      DimensionesCostosEnte = o.DimensionesCostosEnte,
                      RequiereIntevencion = o.RequiereIntevencion,
                      RequiereIntevencionAutoridad = o.RequiereIntevencionAutoridad,
-                     RequiereIntevencionEstado = o.RequiereIntevencionEstado
+                     RequiereIntevencionEstado = o.RequiereIntevencionEstado,
+                     ObservacionesDNIP = o.ObservacionesDNIP
 						}
                     ).AsQueryable();
         }

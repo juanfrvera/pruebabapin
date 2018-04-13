@@ -271,7 +271,7 @@ namespace UI.Web.Pages
                 UIHelper.SetValue(txtRequiereIntevencionAutoridad, Entity.PrincipiosFormulacion.RequiereIntevencionAutoridad);
                 if (Entity.PrincipiosFormulacion.RequiereIntevencionEstado == 0)
                 {
-                    UIHelper.SetValue(rblRequiereIntevencionEstado, "Al iniciar");
+                    UIHelper.SetValue(rblRequiereIntevencionEstado, "A Iniciar");
                 }
                 else if (Entity.PrincipiosFormulacion.RequiereIntevencionEstado == 1)
                 {
