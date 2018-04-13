@@ -11,20 +11,10 @@ namespace UI.Web.Services
     [ServiceContract]//(SessionMode = SessionMode.Allowed)
     interface IBapin
     {
-        [OperationContract]
+        [OperationContract(Action = "*", ReplyAction = "*")]
         List<BapinResult> GetAllBapines(
             RequestMessage request
             );
     }
-    /*
-     * 
-            long ejercicio, 
-            List<estadoBapinType> estado, 
-            long jurisdiccion, 
-            long bapin, 
-            long saf, 
-            List<long> programa
-      bindingConfiguration="WSHttpBinding_MyService"
-     */
 }
 
