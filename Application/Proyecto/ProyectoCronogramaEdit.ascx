@@ -29,7 +29,7 @@
     	                    <td style="width:20px">&nbsp;</td>
                         </tr>
                         <tr>                      
-	                        <td><asp:Literal ID="ltrFase" runat="server" Text="Fase"></asp:Literal></td>
+	                        <td><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
 	                        <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
 	                        <td></td>
 	                        <td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
