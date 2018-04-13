@@ -105,14 +105,51 @@ WHERE IdProceso in (SELECT IdProceso from Proceso where nombre = 'Reposición' AN
 
 END
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[fn_GetProyectoTipoIndefinido]') AND type in (N'FN'))
+--Debo borrar el constraint y volver a generarlo luego de la funcion
+if exists (
+    select *
+      from sys.all_columns c
+      join sys.tables t on t.object_id = c.object_id
+      join sys.schemas s on s.schema_id = t.schema_id
+      join sys.default_constraints d on c.default_object_id = d.object_id
+    where t.name = 'Proceso'
+      and c.name = 'IdProyectoTipo'
+      and s.name = 'dbo')
+--Si tenemos que borrar la constraint
+DECLARE @table_id AS INT
+DECLARE @name_column_id AS INT
+DECLARE @sql nvarchar(255) 
+
+-- Find table id
+SET @table_id = OBJECT_ID('Proceso')
+
+-- Find name column id
+SELECT @name_column_id = column_id
+FROM sys.columns
+WHERE object_id = @table_id
+AND name = 'IdProyectoTipo'
+
+-- Remove default constraint from name column
+SELECT @sql = 'ALTER TABLE Proceso DROP CONSTRAINT ' + D.name
+FROM sys.default_constraints AS D
+WHERE D.parent_object_id = @table_id
+AND D.parent_column_id = @name_column_id
+EXECUTE sp_executesql @sql
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[fn_GetProyectoTipoIndefinido]') AND type in (N'FN'))
+DROP FUNCTION [dbo].[fn_GetProyectoTipoIndefinido]
+GO
 --Create scalar to get indefinido
 CREATE FUNCTION fn_GetProyectoTipoIndefinido ()
 RETURNS INT
 AS
 BEGIN
-    return (Select idProyectoTipo from ProyectoTipo where nombre='Indefinido')
+		Declare @ret int;
+    SELECT @ret = (Select idProyectoTipo from ProyectoTipo where nombre='Indefinido')
+		return @ret
 END
+
 GO
 
 if not exists (
