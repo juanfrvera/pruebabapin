@@ -82,6 +82,8 @@ namespace Business
             // Informacion para Validaciones
             Proyecto p = ProyectoBusiness.Current.GetById(id);
             compose.ProyectoAnioCorriente = p.AnioCorriente;
+            compose.ProyectoAnioCorrienteEstimado = p.AnioCorrienteEstimado;
+            compose.ProyectoAnioCorrienteRealizado = p.AnioCorrienteRealizado;
             compose.ProyectoAnioReferencia = p.FechaInicioEjecucionCalculada == null ? p.FechaAlta.Year : ((DateTime)p.FechaInicioEjecucionCalculada).Year;
             compose.ProyectoIdProceso = p.IdProceso;
             compose.ProyectoIdTipoPlan = ProyectoPlanBusiness.Current.GetIdTipoPlan(p.IdProyecto);
@@ -155,6 +157,8 @@ namespace Business
                 //Guarda el anio Corriente de Proyecto
                 Proyecto proyecto = ProyectoBusiness.Current.GetById(entity.IdProyecto);
                 proyecto.AnioCorriente = entity.ProyectoAnioCorriente;
+                proyecto.AnioCorrienteEstimado = entity.ProyectoAnioCorrienteEstimado;
+                proyecto.AnioCorrienteRealizado = entity.ProyectoAnioCorrienteRealizado;
                 ProyectoBusiness.Current.Update(proyecto, contextUser);
 
                 // Por interfase no elimina ni agrega, solo actualiza
@@ -400,6 +404,8 @@ namespace Business
         public override void Validate(ProyectoCronogramaCompose entity, string actionName, IContextUser contextUser,Hashtable args)
         {
             DataHelper.Validate(entity.ProyectoAnioCorriente != null, "Debe Seleccionar Año Corriente");
+            DataHelper.Validate(entity.ProyectoAnioCorrienteEstimado != null, "Debe Seleccionar Año Corriente Estimado");
+            DataHelper.Validate(entity.ProyectoAnioCorrienteRealizado != null, "Debe Seleccionar Año Corriente Realizado");
             foreach (ProyectoEtapaResult per in entity.Etapas)
             {
                 ProyectoEtapa pe = per.ToEntity();

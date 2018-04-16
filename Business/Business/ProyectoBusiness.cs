@@ -381,6 +381,8 @@ namespace Business
             target.EsProyecto = false;// source.EsProyecto;
             target.NroProyecto = null;// source.NroProyecto;
             target.AnioCorriente = null;// source.AnioCorriente;
+            target.AnioCorrienteEstimado = null;
+            target.AnioCorrienteRealizado = null;
             if (source.FechaInicioEjecucionCalculada.HasValue)
                 target.FechaInicioEjecucionCalculada = source.FechaInicioEjecucionCalculada.Value.AddYears(proyectoCopy.Offset);
             if (target.FechaFinEjecucionCalculada.HasValue)

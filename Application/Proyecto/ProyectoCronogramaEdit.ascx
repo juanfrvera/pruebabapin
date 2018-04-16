@@ -7,114 +7,116 @@
 
 
 <div class="TabbedPanelsContent">
-    <asp:panel id="pnlEtapas" runat="server" groupingtext="Fecha">
-    <asp:UpdatePanel ID= "upGridEtapas"  runat="server" UpdateMode = "Conditional" >
-    <ContentTemplate>
-            <table width="100%"  cellpadding="0" cellspacing="2px" border="0">	  	
+    <asp:panel id="pnlEtapas" runat="server" groupingtext="Cronograma de gastos">
+        <asp:UpdatePanel ID= "upGridEtapas"  runat="server" UpdateMode = "Conditional" >
+            <ContentTemplate>
+                <table width="100%"  cellpadding="0" cellspacing="2px" border="0">	  	
+                <tr>
+                    <td>
+                        <table cellpadding="0" style="margin-bottom:12px" >	  	
+                            <!--<tr>                      
+                                <td style="width:100px">&nbsp;</td>
+                                <td style="width:100px">&nbsp;</td>
+	                            <td style="width:200px">&nbsp;</td>
+	                            <td style="width:90px;text-align:left"><asp:Literal ID="ltrFIE" runat="server" Text="Fecha Inicio E."></asp:Literal></td>
+	                            <td style="width:90px;text-align:left"><asp:Literal ID="ltrFFE" runat="server" Text="Fecha Fin E."></asp:Literal></td>
+	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrFIR" runat="server" Text="Fecha Inicio R."></asp:Literal></td>
+	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrFFR" runat="server" Text="Fecha Fin R."></asp:Literal></td>
+	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrTE" runat="server" Text="Total E."></asp:Literal></td>
+	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrTR" runat="server" Text="Total R."></asp:Literal></td>
+    	                        <td style="width:20px">&nbsp;</td>
+                            </tr>-->
+                            <tr>                      
+	                            <td><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
+	                            <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
+	                            <td></td>
+	                            <!--<td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
+	                            <td align="center"><asp:Label ID="lblMffe" runat="server" ></asp:Label></td>
+	                            <td align="center"><asp:Label ID="lblMfir" runat="server" ></asp:Label></td>
+	                            <td align="center"><asp:Label ID="lblMffr" runat="server" ></asp:Label></td>
+	                            <td align="right"><asp:Label ID="lblMte" runat="server" ></asp:Label>&nbsp;</td>
+	                            <td align="right"><asp:Label ID="lblMtr" runat="server" ></asp:Label>&nbsp;</td>-->
+	                            <td style="width:20px">&nbsp;</td>
+                            </tr>
+                            <!--<tr>
+                                <td colspan ="10" align ="right" >
+                                    <asp:Button ID ="btVerTotales" runat ="server" Text ="Total por Año" CausesValidation="false" 
+                                        OnClick="btVerTotales_Click" />
+                                </td>
+                            </tr>-->
+                        </table>        
+                    </td>
+                </tr>        
+                </table>  
+                <asp:GridView ID="gridEtapas" runat = "server"
+                    AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" 
+                    OnRowCommand="GridEtapas_RowCommand" OnRowDataBound="GridEtapas_RowDataBound"
+                    AllowSorting="True" OnSorting="GridEtapas_Sorting"
+                    OnPageIndexChanging="GridEtapas_PageIndexChanging" 
+                    EmptyDataText="No hay producto intermedio definido" 
+                    Width ="100%">
+                    <Columns>
+                        <asp:TemplateField   HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
+                            <ItemTemplate>                        
+                                <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField  HeaderText="Cód. presup. y descrip. de la inversión"  SortExpression="DescripcionCorta" ItemStyle-Width="270px" >            
+                            <ItemTemplate>
+                                <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>
+                        <asp:BoundField HeaderText ="Fecha Inicio Estimada" DataField ="FechaInicioEstimada" SortExpression ="FechaInicioEstimada"  DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
+                        <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="85px"/>   
+                        <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
+                        <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="80px"/>
+                        <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/> 
+                        <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/>                
+                        <asp:TemplateField  HeaderStyle-Width ="5px">
+                            <HeaderTemplate>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
+                            </ItemTemplate>            
+                            <ItemStyle Width="50px"  HorizontalAlign ="Right"/>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:panel>
+
+    <asp:panel id="pnlInformacionPresupuestaria" runat="server" groupingtext="Información Presupuestaria">
+        <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
             <tr>
                 <td>
-                    <table cellpadding="0" style="margin-bottom:12px" >	  	
+                    <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
                         <tr>                      
-	                        <td style="width:100px"><asp:Literal ID="ltrAnio" runat="server" Text="Año Corriente"></asp:Literal></td>
-	                        <td style="width:100px">
-	                            <cc:ExtendedDropDownList ID="ddlAnioCorriente" runat="server" OnSelectedIndexChanged="ddlAnioCorriente_IndexChanged" AutoPostBack="true" ></cc:ExtendedDropDownList>
-	                        </td>
-	                        <td style="width:200px"></td>
-	                        <td style="width:90px;text-align:left"><asp:Literal ID="ltrFIE" runat="server" Text="Fecha Inicio E."></asp:Literal></td>
-	                        <td style="width:90px;text-align:left"><asp:Literal ID="ltrFFE" runat="server" Text="Fecha Fin E."></asp:Literal></td>
-	                        <td style="width:100px;text-align:left"><asp:Literal ID="ltrFIR" runat="server" Text="Fecha Inicio R."></asp:Literal></td>
-	                        <td style="width:100px;text-align:left"><asp:Literal ID="ltrFFR" runat="server" Text="Fecha Fin R."></asp:Literal></td>
-	                        <td style="width:100px;text-align:left"><asp:Literal ID="ltrTE" runat="server" Text="Total E."></asp:Literal></td>
-	                        <td style="width:100px;text-align:left"><asp:Literal ID="ltrTR" runat="server" Text="Total R."></asp:Literal></td>
-    	                    <td style="width:20px">&nbsp;</td>
-                        </tr>
-                        <tr>                      
-	                        <td><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
-	                        <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
-	                        <td></td>
-	                        <td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
-	                        <td align="center"><asp:Label ID="lblMffe" runat="server" ></asp:Label></td>
-	                        <td align="center"><asp:Label ID="lblMfir" runat="server" ></asp:Label></td>
-	                        <td align="center"><asp:Label ID="lblMffr" runat="server" ></asp:Label></td>
-	                        <td align="right"><asp:Label ID="lblMte" runat="server" ></asp:Label>&nbsp;</td>
-	                        <td align="right"><asp:Label ID="lblMtr" runat="server" ></asp:Label>&nbsp;</td>
-	                        <td style="width:20px">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan ="10" align ="right" >
-                                <asp:Button ID ="btVerTotales" runat ="server" Text ="Total por Año" CausesValidation="false" 
-                                    OnClick="btVerTotales_Click" />
+                            <td>
+                                <asp:UpdatePanel ID="pnlVerInfoPresupuestaria" runat = "server" UpdateMode ="Conditional" >
+                                <ContentTemplate>
+                                    <asp:Button ID="btVerInfoPresupuestaria" runat ="server" Text="Ver información presupuestaria" OnClick="btVerInfoPresupuestaria_Click" CausesValidation="false" TabIndex ="2"/> 
+                                </ContentTemplate>
+                                </asp:UpdatePanel>	                    
                             </td>
                         </tr>
                     </table>        
                 </td>
             </tr>        
-        </table>  
-        <asp:GridView ID="gridEtapas" runat = "server"
-            AutoGenerateColumns="False" DataKeyNames="ID" AllowPaging="True" 
-            OnRowCommand="GridEtapas_RowCommand" OnRowDataBound="GridEtapas_RowDataBound"
-            AllowSorting="True" OnSorting="GridEtapas_Sorting"
-            OnPageIndexChanging="GridEtapas_PageIndexChanging" 
-            EmptyDataText="No hay producto intermedio definido" 
-            Width ="100%">
-            <Columns>
-                <asp:TemplateField   HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
-                    <ItemTemplate>                        
-                        <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField  HeaderText="Cód. presup. y descrip. de la inversión"  SortExpression="DescripcionCorta" ItemStyle-Width="270px" >            
-                    <ItemTemplate>
-                        <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField HeaderText ="Estado Físico" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>
-                <asp:BoundField HeaderText ="Fecha Inicio Estimada" DataField ="FechaInicioEstimada" SortExpression ="FechaInicioEstimada"  DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
-                <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="85px"/>   
-                <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
-                <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="80px"/>
-                <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/> 
-                <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/>                
-                <asp:TemplateField  HeaderStyle-Width ="5px">
-                    <HeaderTemplate>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
-                    </ItemTemplate>            
-                    <ItemStyle Width="50px"  HorizontalAlign ="Right"/>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-</asp:panel>
-
-<asp:panel id="pnlInformacionPresupuestaria" runat="server" groupingtext="Información Presupuestaria">
-    <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
-        <tr>
-            <td>
-                <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
-                    <tr>                      
-                        <td>
-                            <asp:UpdatePanel ID="pnlVerInfoPresupuestaria" runat = "server" UpdateMode ="Conditional" >
-                            <ContentTemplate>
-                                <asp:Button ID="btVerInfoPresupuestaria" runat ="server" Text="Ver información presupuestaria" OnClick="btVerInfoPresupuestaria_Click" CausesValidation="false" TabIndex ="2"/> 
-                            </ContentTemplate>
-                            </asp:UpdatePanel>	                    
-                        </td>
-                    </tr>
-                </table>        
-            </td>
-        </tr>        
-    </table>
-</asp:panel>
+        </table>
+    </asp:panel>
 
     <asp:panel id="pnlEtapaEstimada" runat="server" groupingtext="Gastos Estimados">
     <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
-                    <tr>                      
+                    <tr>            
+	                    <td style="width:100px"><asp:Literal ID="ltrAnio" runat="server" Text="Año Corriente"></asp:Literal></td>
+	                    <td style="width:100px">
+	                        <cc:ExtendedDropDownList ID="ddlAnioCorrienteEstimado" runat="server" OnSelectedIndexChanged="ddlAnioCorrienteEstimado_IndexChanged" AutoPostBack="true" ></cc:ExtendedDropDownList>
+	                    </td>                                  
                         <td  align ="right" >
                             <asp:UpdatePanel ID="pnlAgregarEtapaEstimada" runat = "server" UpdateMode ="Conditional" >
                             <ContentTemplate>
@@ -152,12 +154,17 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 </asp:panel>
+
     <asp:panel id="pnlEtapaRealizada" runat="server" groupingtext="Gastos Realizados">
-    <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
+        <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
         <tr>
             <td>
                 <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
-                    <tr>                      
+                    <tr>  
+	                    <td style="width:100px"><asp:Literal ID="Literal1" runat="server" Text="Año Corriente"></asp:Literal></td>
+	                    <td style="width:100px">
+	                        <cc:ExtendedDropDownList ID="ddlAnioCorrienteRealizado" runat="server" OnSelectedIndexChanged="ddlAnioCorrienteRealizado_IndexChanged" AutoPostBack="true" ></cc:ExtendedDropDownList>
+	                    </td>                    
                         <td  align ="right" >
                             <asp:UpdatePanel ID="pnlAgregarEtapaRealizada" runat = "server" UpdateMode ="Conditional" >
                             <ContentTemplate>
@@ -197,7 +204,8 @@
             </div>                        
             </ContentTemplate>    
         </asp:UpdatePanel>
-</asp:panel>
+    </asp:panel>
+
 <cc:NumericTextBox id="txtMontoXXX" runat="server" Visible="False"  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
 </div>
 
@@ -301,7 +309,7 @@
                                                 </tr>
                                                 <tr><td colspan="4"><br /></td></tr>
                                                 <tr>
-                                                    <td><asp:Literal ID="litEstado" runat="server" Text="Estado físico de la Obra/Actividad" ></asp:Literal></td>
+                                                    <td><asp:Literal ID="litEstado" runat="server" Text="Estado Financiero" ></asp:Literal></td>
                                                     <td><cc:ExtendedDropDownList ID="ddlEstado" runat="server" Width="150px" TabIndex="2"></cc:ExtendedDropDownList></td>
                                                     <td colspan="2" align="center" style="color:Red;margin:10px"><asp:Label ID="lblErrorEtapa" runat="server" Text=""  Visible="false" ></asp:Label></td>
                                                 </tr>

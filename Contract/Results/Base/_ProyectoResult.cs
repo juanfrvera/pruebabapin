@@ -26,6 +26,8 @@ namespace Contract.Base
 		 public bool? EsProyecto{get;set;}
 		 public int? NroProyecto{get;set;}
 		 public int? AnioCorriente{get;set;}
+         public int? AnioCorrienteEstimado { get; set; }
+         public int? AnioCorrienteRealizado { get; set; }
 		 public DateTime? FechaInicioEjecucionCalculada{get;set;}
 		 public DateTime? FechaFinEjecucionCalculada{get;set;}
 		 public DateTime FechaAlta{get;set;}
@@ -105,6 +107,8 @@ namespace Contract.Base
 		 _Proyecto.EsProyecto = this.EsProyecto;
 		 _Proyecto.NroProyecto = this.NroProyecto;
 		 _Proyecto.AnioCorriente = this.AnioCorriente;
+         _Proyecto.AnioCorrienteEstimado = this.AnioCorrienteEstimado;
+         _Proyecto.AnioCorrienteRealizado = this.AnioCorrienteRealizado;
 		 _Proyecto.FechaInicioEjecucionCalculada = this.FechaInicioEjecucionCalculada;
 		 _Proyecto.FechaFinEjecucionCalculada = this.FechaFinEjecucionCalculada;
 		 _Proyecto.FechaAlta = this.FechaAlta;
@@ -143,6 +147,8 @@ namespace Contract.Base
 		  this.EsProyecto= entity.EsProyecto ;
 		  this.NroProyecto= entity.NroProyecto ;
 		  this.AnioCorriente= entity.AnioCorriente ;
+          this.AnioCorrienteEstimado = entity.AnioCorrienteEstimado;
+          this.AnioCorrienteRealizado = entity.AnioCorrienteRealizado;
 		  this.FechaInicioEjecucionCalculada= entity.FechaInicioEjecucionCalculada ;
 		  this.FechaFinEjecucionCalculada= entity.FechaFinEjecucionCalculada ;
 		  this.FechaAlta= entity.FechaAlta ;
@@ -180,6 +186,8 @@ namespace Contract.Base
 		  if((entity.EsProyecto == null)?this.EsProyecto!=null:!entity.EsProyecto.Equals(this.EsProyecto))return false;
 			 if((entity.NroProyecto == null)?this.NroProyecto!=null:!entity.NroProyecto.Equals(this.NroProyecto))return false;
 			 if((entity.AnioCorriente == null)?this.AnioCorriente!=null:!entity.AnioCorriente.Equals(this.AnioCorriente))return false;
+             if ((entity.AnioCorrienteEstimado == null) ? this.AnioCorrienteEstimado != null : !entity.AnioCorrienteEstimado.Equals(this.AnioCorrienteEstimado)) return false;
+             if ((entity.AnioCorrienteRealizado == null) ? this.AnioCorrienteRealizado != null : !entity.AnioCorrienteRealizado.Equals(this.AnioCorrienteRealizado)) return false;
 			 if((entity.FechaInicioEjecucionCalculada == null)?this.FechaInicioEjecucionCalculada!=null:!entity.FechaInicioEjecucionCalculada.Equals(this.FechaInicioEjecucionCalculada))return false;
 			 if((entity.FechaFinEjecucionCalculada == null)?this.FechaFinEjecucionCalculada!=null:!entity.FechaFinEjecucionCalculada.Equals(this.FechaFinEjecucionCalculada))return false;
 			 if(!entity.FechaAlta.Equals(this.FechaAlta))return false;
@@ -218,6 +226,8 @@ namespace Contract.Base
 			,new DataColumnMapping("EsProyecto","EsProyecto")
 			,new DataColumnMapping("NroProyecto","NroProyecto")
 			,new DataColumnMapping("AnioCorriente","AnioCorriente")
+            ,new DataColumnMapping("AnioCorrienteEstimado","AnioCorrienteEstimado")
+            ,new DataColumnMapping("AnioCorrienteRealizado","AnioCorrienteRealizado")
 			,new DataColumnMapping("FechaInicioEjecucionCalculada","FechaInicioEjecucionCalculada","{0:dd/MM/yyyy}")
 			,new DataColumnMapping("FechaFinEjecucionCalculada","FechaFinEjecucionCalculada","{0:dd/MM/yyyy}")
 			,new DataColumnMapping("FechaAlta","FechaAlta","{0:dd/MM/yyyy}")

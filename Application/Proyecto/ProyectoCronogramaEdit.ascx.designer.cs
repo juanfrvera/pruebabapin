@@ -31,24 +31,6 @@ namespace UI.Web {
         protected global::System.Web.UI.UpdatePanel upGridEtapas;
         
         /// <summary>
-        /// ltrAnio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrAnio;
-        
-        /// <summary>
-        /// ddlAnioCorriente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.ExtendedDropDownList ddlAnioCorriente;
-        
-        /// <summary>
         /// ltrFIE control.
         /// </summary>
         /// <remarks>
@@ -229,6 +211,24 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Panel pnlEtapaEstimada;
         
         /// <summary>
+        /// ltrAnio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrAnio;
+        
+        /// <summary>
+        /// ddlAnioCorrienteEstimado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Web.ExtendedDropDownList ddlAnioCorrienteEstimado;
+        
+        /// <summary>
         /// pnlAgregarEtapaEstimada control.
         /// </summary>
         /// <remarks>
@@ -272,6 +272,24 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlEtapaRealizada;
+        
+        /// <summary>
+        /// Literal1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal1;
+        
+        /// <summary>
+        /// ddlAnioCorrienteRealizado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Web.ExtendedDropDownList ddlAnioCorrienteRealizado;
         
         /// <summary>
         /// pnlAgregarEtapaRealizada control.

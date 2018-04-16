@@ -18,6 +18,8 @@ namespace Contract
         }
         public Int32 IdFase { get; set; }
         public Int32? ProyectoAnioCorriente { get; set; }
+        public Int32? ProyectoAnioCorrienteEstimado { get; set; }
+        public Int32? ProyectoAnioCorrienteRealizado { get; set; }
         public List<ProyectoEtapaResult> Etapas = new List<ProyectoEtapaResult>();
         public List<ProyectoEtapaEstimadoResult> EtapasEstimadas = new List<ProyectoEtapaEstimadoResult>();
         public List<ProyectoEtapaRealizadoResult> EtapasRealizadas = new List<ProyectoEtapaRealizadoResult>();

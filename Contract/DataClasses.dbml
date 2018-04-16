@@ -2135,6 +2135,8 @@
       <Column Name="NroProyectoEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NroActividadEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NroObraEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnioCorrienteEstimado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnioCorrienteRealizado" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Proyecto_Message" Member="Messages" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Message" />
       <Association Name="Proyecto_ProyectoAlcanceGeografico" Member="ProyectoAlcanceGeograficos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoAlcanceGeografico" />
       <Association Name="Proyecto_ProyectoDemora" Member="ProyectoDemoras" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoDemora" />

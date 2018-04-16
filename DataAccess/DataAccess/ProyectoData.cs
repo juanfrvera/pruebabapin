@@ -74,6 +74,8 @@ namespace DataAccess
             _new.EsProyecto = entity.EsProyecto;
             _new.NroProyecto = entity.NroProyecto;
             _new.AnioCorriente = entity.AnioCorriente;
+            _new.AnioCorrienteEstimado = entity.AnioCorrienteEstimado;
+            _new.AnioCorrienteRealizado = entity.AnioCorrienteRealizado;
             _new.FechaInicioEjecucionCalculada = entity.FechaInicioEjecucionCalculada;
             _new.FechaFinEjecucionCalculada = entity.FechaFinEjecucionCalculada;
             _new.FechaAlta = entity.FechaAlta;
@@ -124,6 +126,8 @@ namespace DataAccess
             target.EsProyecto = source.EsProyecto;
             target.NroProyecto = source.NroProyecto;
             target.AnioCorriente = source.AnioCorriente;
+            target.AnioCorrienteEstimado = source.AnioCorrienteEstimado;
+            target.AnioCorrienteRealizado = source.AnioCorrienteRealizado;
             target.FechaInicioEjecucionCalculada = source.FechaInicioEjecucionCalculada;
             target.FechaFinEjecucionCalculada = source.FechaFinEjecucionCalculada;
             target.FechaAlta = source.FechaAlta;
@@ -161,6 +165,8 @@ namespace DataAccess
             target.EsProyecto = source.EsProyecto;
             target.NroProyecto = source.NroProyecto;
             target.AnioCorriente = source.AnioCorriente;
+            target.AnioCorrienteEstimado = source.AnioCorrienteEstimado;
+            target.AnioCorrienteRealizado = source.AnioCorrienteRealizado;
             target.FechaInicioEjecucionCalculada = source.FechaInicioEjecucionCalculada;
             target.FechaFinEjecucionCalculada = source.FechaFinEjecucionCalculada;
             target.FechaAlta = source.FechaAlta;
@@ -198,6 +204,8 @@ namespace DataAccess
             target.EsProyecto = source.EsProyecto;
             target.NroProyecto = source.NroProyecto;
             target.AnioCorriente = source.AnioCorriente;
+            target.AnioCorrienteEstimado = source.AnioCorrienteEstimado;
+            target.AnioCorrienteRealizado = source.AnioCorrienteRealizado;
             target.FechaInicioEjecucionCalculada = source.FechaInicioEjecucionCalculada;
             target.FechaFinEjecucionCalculada = source.FechaFinEjecucionCalculada;
             target.FechaAlta = source.FechaAlta;
@@ -234,6 +242,8 @@ namespace DataAccess
             target.EsProyecto = source.EsProyecto;
             target.NroProyecto = source.NroProyecto;
             target.AnioCorriente = source.AnioCorriente;
+            target.AnioCorrienteEstimado = source.AnioCorrienteEstimado;
+            target.AnioCorrienteRealizado = source.AnioCorrienteRealizado;
             target.FechaInicioEjecucionCalculada = source.FechaInicioEjecucionCalculada;
             target.FechaFinEjecucionCalculada = source.FechaFinEjecucionCalculada;
             target.FechaAlta = source.FechaAlta;
@@ -317,6 +327,8 @@ namespace DataAccess
             if ((source.EsProyecto == null) ? (target.EsProyecto.HasValue) : !source.EsProyecto.Equals(target.EsProyecto)) return false;
             if ((source.NroProyecto == null) ? (target.NroProyecto.HasValue) : !source.NroProyecto.Equals(target.NroProyecto)) return false;
             if ((source.AnioCorriente == null) ? (target.AnioCorriente.HasValue) : !source.AnioCorriente.Equals(target.AnioCorriente)) return false;
+            if ((source.AnioCorrienteEstimado == null) ? (target.AnioCorrienteEstimado.HasValue) : !source.AnioCorrienteEstimado.Equals(target.AnioCorrienteEstimado)) return false;
+            if ((source.AnioCorrienteRealizado == null) ? (target.AnioCorrienteRealizado.HasValue) : !source.AnioCorrienteRealizado.Equals(target.AnioCorrienteRealizado)) return false;
             if ((source.FechaInicioEjecucionCalculada == null) ? (target.FechaInicioEjecucionCalculada.HasValue) : !source.FechaInicioEjecucionCalculada.Equals(target.FechaInicioEjecucionCalculada)) return false;
             if ((source.FechaFinEjecucionCalculada == null) ? (target.FechaFinEjecucionCalculada.HasValue) : !source.FechaFinEjecucionCalculada.Equals(target.FechaFinEjecucionCalculada)) return false;
             if (!source.FechaAlta.Equals(target.FechaAlta)) return false;
@@ -357,6 +369,8 @@ namespace DataAccess
             if ((source.EsProyecto == null) ? (target.EsProyecto.HasValue) : !source.EsProyecto.Equals(target.EsProyecto)) return false;
             if ((source.NroProyecto == null) ? (target.NroProyecto.HasValue) : !source.NroProyecto.Equals(target.NroProyecto)) return false;
             if ((source.AnioCorriente == null) ? (target.AnioCorriente.HasValue) : !source.AnioCorriente.Equals(target.AnioCorriente)) return false;
+            if ((source.AnioCorrienteEstimado == null) ? (target.AnioCorrienteEstimado.HasValue) : !source.AnioCorrienteEstimado.Equals(target.AnioCorrienteEstimado)) return false;
+            if ((source.AnioCorrienteRealizado == null) ? (target.AnioCorrienteRealizado.HasValue) : !source.AnioCorrienteRealizado.Equals(target.AnioCorrienteRealizado)) return false;
             if ((source.FechaInicioEjecucionCalculada == null) ? (target.FechaInicioEjecucionCalculada.HasValue) : !source.FechaInicioEjecucionCalculada.Equals(target.FechaInicioEjecucionCalculada)) return false;
             if ((source.FechaFinEjecucionCalculada == null) ? (target.FechaFinEjecucionCalculada.HasValue) : !source.FechaFinEjecucionCalculada.Equals(target.FechaFinEjecucionCalculada)) return false;
             if (!source.FechaAlta.Equals(target.FechaAlta)) return false;
@@ -699,6 +713,13 @@ namespace DataAccess
                                               && (filter.NroProyectoIsNull == null || filter.NroProyectoIsNull == true || o.NroProyecto != null) && (filter.NroProyectoIsNull == null || filter.NroProyectoIsNull == false || o.NroProyecto == null)
                                               && (filter.AnioCorriente == null || o.AnioCorriente >= filter.AnioCorriente) && (filter.AnioCorriente_To == null || o.AnioCorriente <= filter.AnioCorriente_To)
                                               && (filter.AnioCorrienteIsNull == null || filter.AnioCorrienteIsNull == true || o.AnioCorriente != null) && (filter.AnioCorrienteIsNull == null || filter.AnioCorrienteIsNull == false || o.AnioCorriente == null)
+
+                                              && (filter.AnioCorrienteEstimado == null || o.AnioCorrienteEstimado >= filter.AnioCorrienteEstimado) && (filter.AnioCorrienteEstimado_To == null || o.AnioCorrienteEstimado <= filter.AnioCorrienteEstimado_To)
+                                              && (filter.AnioCorrienteEstimadoIsNull == null || filter.AnioCorrienteEstimadoIsNull == true || o.AnioCorrienteEstimado != null) && (filter.AnioCorrienteEstimadoIsNull == null || filter.AnioCorrienteEstimadoIsNull == false || o.AnioCorrienteEstimado == null)
+
+                                              && (filter.AnioCorrienteRealizado == null || o.AnioCorrienteRealizado >= filter.AnioCorrienteRealizado) && (filter.AnioCorrienteRealizado_To == null || o.AnioCorrienteRealizado <= filter.AnioCorrienteRealizado_To)
+                                              && (filter.AnioCorrienteRealizadoIsNull == null || filter.AnioCorrienteRealizadoIsNull == true || o.AnioCorrienteRealizado != null) && (filter.AnioCorrienteRealizadoIsNull == null || filter.AnioCorrienteRealizadoIsNull == false || o.AnioCorrienteRealizado == null)
+
                                               && (filter.FechaInicioEjecucionCalculada == null || filter.FechaInicioEjecucionCalculada == DateTime.MinValue || o.FechaInicioEjecucionCalculada >= filter.FechaInicioEjecucionCalculada) && (filter.FechaInicioEjecucionCalculada_To == null || filter.FechaInicioEjecucionCalculada_To == DateTime.MinValue || o.FechaInicioEjecucionCalculada <= filter.FechaInicioEjecucionCalculada_To)
                                               && (filter.FechaInicioEjecucionCalculadaIsNull == null || filter.FechaInicioEjecucionCalculadaIsNull == true || o.FechaInicioEjecucionCalculada != null) && (filter.FechaInicioEjecucionCalculadaIsNull == null || filter.FechaInicioEjecucionCalculadaIsNull == false || o.FechaInicioEjecucionCalculada == null)
                                               && (filter.FechaFinEjecucionCalculada == null || filter.FechaFinEjecucionCalculada == DateTime.MinValue || o.FechaFinEjecucionCalculada >= filter.FechaFinEjecucionCalculada) && (filter.FechaFinEjecucionCalculada_To == null || filter.FechaFinEjecucionCalculada_To == DateTime.MinValue || o.FechaFinEjecucionCalculada <= filter.FechaFinEjecucionCalculada_To)
@@ -920,6 +941,10 @@ namespace DataAccess
                              NroProyecto = o.NroProyecto
                              ,
                              AnioCorriente = o.AnioCorriente
+                             ,
+                             AnioCorrienteEstimado = o.AnioCorrienteEstimado
+                             ,
+                             AnioCorrienteRealizado = o.AnioCorrienteRealizado
                              ,
                              FechaInicioEjecucionCalculada = o.FechaInicioEjecucionCalculada
                              ,
@@ -1308,6 +1333,10 @@ namespace DataAccess
                              NroProyecto = o.NroProyecto
                              ,
                              AnioCorriente = o.AnioCorriente
+                             ,
+                             AnioCorrienteEstimado = o.AnioCorrienteEstimado
+                             ,
+                             AnioCorrienteRealizado = o.AnioCorrienteRealizado
                              ,
                              FechaInicioEjecucionCalculada = o.FechaInicioEjecucionCalculada
                              ,
@@ -2473,6 +2502,10 @@ namespace DataAccess
                          Etapa_Orden = et.Orden
                          ,
                          AnioCorriente = o.AnioCorriente
+                             ,
+                         AnioCorrienteEstimado = o.AnioCorrienteEstimado
+                             ,
+                         AnioCorrienteRealizado = o.AnioCorrienteRealizado
                      }
                  ).Union
                  (
@@ -2537,6 +2570,10 @@ namespace DataAccess
                          Etapa_Orden = et.Orden
                          ,
                          AnioCorriente = o.AnioCorriente
+                             ,
+                         AnioCorrienteEstimado = o.AnioCorrienteEstimado
+                             ,
+                         AnioCorrienteRealizado = o.AnioCorrienteRealizado
                      }
                  )
                 group o by new
@@ -2580,6 +2617,10 @@ namespace DataAccess
                     Etapa_Orden = o.Etapa_Orden
                     ,
                     AnioCorriente = o.AnioCorriente
+                             ,
+                    AnioCorrienteEstimado = o.AnioCorrienteEstimado
+                             ,
+                    AnioCorrienteRealizado = o.AnioCorrienteRealizado
                 } into groupQuery
                 orderby groupQuery.Key.Fase_Orden, groupQuery.Key.Periodo, groupQuery.Key.Etapa_Orden, groupQuery.Key.IdProyectoEtapa, groupQuery.Key.ClasificacionGasto_Codigo, groupQuery.Key.FuenteFinanciamiento_Codigo
                 select new ProyectoCronogramaReportResult()
@@ -2623,6 +2664,10 @@ namespace DataAccess
                     Etapa_Orden = groupQuery.Key.Etapa_Orden
                     ,
                     AnioCorriente = groupQuery.Key.AnioCorriente
+                             ,
+                    AnioCorrienteEstimado = groupQuery.Key.AnioCorrienteEstimado
+                             ,
+                    AnioCorrienteRealizado = groupQuery.Key.AnioCorrienteRealizado
                     ,
                     Estimado = groupQuery.Sum(i => i.Estimado)
                     ,

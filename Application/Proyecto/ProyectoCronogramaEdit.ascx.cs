@@ -194,12 +194,17 @@ namespace UI.Web
         public override void Clear() { }
         public override void GetValue()
         {
-            Int32 AnioCorriente;
-            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorriente), out AnioCorriente))
-                Entity.ProyectoAnioCorriente = AnioCorriente;
+            Int32 AnioCorrienteEstimado;
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteEstimado), out AnioCorrienteEstimado))
+                Entity.ProyectoAnioCorrienteEstimado = AnioCorrienteEstimado;
             else
-                Entity.ProyectoAnioCorriente = null;
+                Entity.ProyectoAnioCorrienteEstimado = null;
 
+            Int32 AnioCorrienteRealizado;
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteRealizado), out AnioCorrienteRealizado))
+                Entity.ProyectoAnioCorrienteRealizado = AnioCorrienteRealizado;
+            else
+                Entity.ProyectoAnioCorrienteRealizado = null;
         }
         public override void SetValue()
         {
@@ -255,7 +260,8 @@ namespace UI.Web
             //if(ddlAnioCorriente.Items.Count == 0)
             //    ddlAnioCorriente.Items.Add(new ListItem(DateTime.Now.Year.ToString(), DateTime.Now.Year.ToString()));
             #endregion
-            UIHelper.Load<nc.Anio>((DropDownList)ddlAnioCorriente, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new Anio() { Nombre = "Seleccione Año" }, false);
+            UIHelper.Load<nc.Anio>((DropDownList)ddlAnioCorrienteEstimado, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new Anio() { Nombre = "Seleccione Año" }, false);
+            UIHelper.Load<nc.Anio>((DropDownList)ddlAnioCorrienteRealizado, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new Anio() { Nombre = "Seleccione Año" }, false);
         }
         private void AddGroupToGrid()
         {
@@ -279,11 +285,17 @@ namespace UI.Web
         //Matias 20170215 - Ticket #REQ318684
         public void RefreshEtapas()
         {
-            Int32 AnioCorriente;
-            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorriente), out AnioCorriente))
-                Entity.ProyectoAnioCorriente = AnioCorriente;
+            Int32 AnioCorrienteEstimado;
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteEstimado), out AnioCorrienteEstimado))
+                Entity.ProyectoAnioCorrienteEstimado = AnioCorrienteEstimado;
             else
-                Entity.ProyectoAnioCorriente = DateTime.Now.Year;
+                Entity.ProyectoAnioCorrienteEstimado = DateTime.Now.Year;
+
+            Int32 AnioCorrienteRealizado;
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteRealizado), out AnioCorrienteRealizado))
+                Entity.ProyectoAnioCorrienteRealizado = AnioCorrienteRealizado;
+            else
+                Entity.ProyectoAnioCorrienteRealizado = DateTime.Now.Year;
 
             ProyectoEtapaEstimadaRefresh();
             ProyectoEtapaRealizadaRefresh();
@@ -371,7 +383,7 @@ namespace UI.Web
             #endregion
             //Entity = ProyectoCronogramaComposeService.Current.GetByIdFase(Entity.IdProyecto, UIHelper.GetInt(ddlFase));
             // Actualiza la pantalla
-            ActualizarLabelsEtapas();
+            //ActualizarLabelsEtapas();
             ProyectoEtapaClear();
             ProyectoEtapaEstimadaClear();
             ProyectoEtapaRealizadaClear();
@@ -414,14 +426,14 @@ namespace UI.Web
         void ProyectoEtapaRefresh()
         {
             UIHelper.SetValue<Fase, int>(ddlFase, Entity.IdFase, FaseService.Current.GetById);
-            if (Entity.ProyectoAnioCorriente.HasValue)
+            /*if (Entity.ProyectoAnioCorriente.HasValue)
                 UIHelper.SetValue(ddlAnioCorriente, Entity.ProyectoAnioCorriente.Value);
-            else
-                if (ActualProyectoEtapa == null && Entity.Etapas.Count > 0)
-                    ActualProyectoEtapa = Entity.Etapas[0];
+            else*/
+            if (ActualProyectoEtapa == null && Entity.Etapas.Count > 0)
+                ActualProyectoEtapa = Entity.Etapas[0];
 
             ActualizarTotalesEtapas();
-            ActualizarLabelsEtapas();
+            //ActualizarLabelsEtapas();
             UIHelper.Load(gridEtapas, Entity.Etapas, "Etapa_Orden");
             if (ActualProyectoEtapa != null)
                 MarcarProyectoEtapa(ActualProyectoEtapa.ID);
@@ -468,6 +480,7 @@ namespace UI.Web
                 pe.TotalRealizado = (from ee in Entity.EtapasRealizadas where ee.IdProyectoEtapa == pe.IdProyectoEtapa select ee.TotalRealizado).Sum();
             }
         }
+        /*
         void ActualizarLabelsEtapas()
         {
             if (Entity.Etapas.Count == 0)
@@ -501,7 +514,7 @@ namespace UI.Web
 
             UIHelper.SetValue(lblMte, (from ee in Entity.EtapasEstimadas select ee.TotalEstimado).Sum().ToString("N0"));
             UIHelper.SetValue(lblMtr, (from ee in Entity.EtapasRealizadas select ee.TotalRealizado).Sum().ToString("N0"));
-        }
+        }*/
 
         #endregion Methods
 
@@ -607,7 +620,11 @@ namespace UI.Web
             CallTryMethod(ChangeFase);
         }
 
-        protected void ddlAnioCorriente_IndexChanged(object sender, EventArgs e)
+        protected void ddlAnioCorrienteEstimado_IndexChanged(object sender, EventArgs e)
+        {
+            UIHelper.CallTryMethod(RefreshEtapas);
+        }
+        protected void ddlAnioCorrienteRealizado_IndexChanged(object sender, EventArgs e)
         {
             UIHelper.CallTryMethod(RefreshEtapas);
         }
@@ -817,7 +834,7 @@ namespace UI.Web
             //Matias 20170214 - Ticket #REQ318684
             //DataTable dataTable = Entity.ToDatatableEtapasEstimadas(ActualProyectoEtapa.IdProyectoEtapa);
             Int32 t, filterAnio;
-            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorriente), out t))
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteEstimado), out t))
                 filterAnio = t;
             else
                 filterAnio = DateTime.Now.Year;
@@ -851,7 +868,7 @@ namespace UI.Web
             UIHelper.Load(gridEtapasEstimadas, dataTable);
 
             //debo tener ambos parametros para considerarlos
-            if (TipoOrganismoProyecto != null && PlanPeriodosBloqueados != null && OrganismoTipoBloqueados != null
+            if (TipoOrganismoProyecto > 0 && PlanPeriodosBloqueados != null && OrganismoTipoBloqueados != null
                 && PlanPeriodosBloqueados.Count > 0 && OrganismoTipoBloqueados.Count > 0)
             {
             
@@ -904,6 +921,28 @@ namespace UI.Web
                         }
                     }
                 }
+            }
+
+            if (dataTable.Rows.Count > 1)
+            {
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
+
+                //Nueva fila con los datos del total
+                GridViewRow rowTotal = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+                TableHeaderCell cellTotal = new TableHeaderCell();
+                cellTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");
+                cellTotal.ColumnSpan = dataTable.Columns.Count;
+                cellTotal.Attributes.Add("style", "text-align:right !important;font-weight: bold;");
+                rowTotal.Controls.Add(cellTotal);
+                //cellTotal = new TableHeaderCell();
+                //cellTotal.ColumnSpan = x;
+                //cellTotal.Text = "Total: "; //+ dataTable.AsEnumerable().Sum(x => x.Field<int>("F.Financiamiento")).ToString(); 
+                //cellTotal.Attributes.Add("style", "text-align:right !important;");
+                //rowTotal.Controls.Add(cellTotal);
+                gridEtapasEstimadas.HeaderRow.Parent.Controls.AddAt(0, rowTotal);
             }
 
             upGridEtapasEstimadas.Update();
@@ -1512,7 +1551,7 @@ namespace UI.Web
             //Matias 20170214 - Ticket #REQ318684
             //DataTable dataTable = Entity.ToDatatableEtapasRealizadas(ActualProyectoEtapa.IdProyectoEtapa);
             Int32 t, filterAnio;
-            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorriente), out t))
+            if (Int32.TryParse(UIHelper.GetString(ddlAnioCorrienteRealizado), out t))
                 filterAnio = t;
             else
                 filterAnio = DateTime.Now.Year;
@@ -1553,6 +1592,18 @@ namespace UI.Web
                 ddlPeriodoRealizada.Items.Add(new ListItem() { Value = j.ToString(), Text = j.ToString() });
 
             UIHelper.Load(gridEtapasRealizadas, dataTable);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                //Nueva fila con los datos del total
+                GridViewRow rowTotal = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+                TableHeaderCell cellTotal = new TableHeaderCell();
+                cellTotal.Text = "Total: " + (from ee in Entity.EtapasRealizadas select ee.TotalRealizado).Sum().ToString("N0");
+                cellTotal.ColumnSpan = dataTable.Columns.Count;
+                cellTotal.Attributes.Add("style", "text-align:right !important;font-weight: bold;");
+                rowTotal.Controls.Add(cellTotal);
+                gridEtapasRealizadas.HeaderRow.Parent.Controls.AddAt(0, rowTotal);
+            }
 
             upGridEtapasRealizadas.Update();
         }
