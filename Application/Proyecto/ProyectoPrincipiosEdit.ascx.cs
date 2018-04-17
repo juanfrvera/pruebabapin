@@ -20,39 +20,39 @@ namespace UI.Web.Pages
         protected override void _Initialize()
         {
             base._Initialize();
-            revNecesidadASatisfacer.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revNecesidadASatisfacer.ErrorMessage = TranslateFormat("InvalidFiled", "Necesidad a satisfacer");
+            revNecesidadASatisfacer.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revNecesidadASatisfacer.ErrorMessage = TranslateFormat("FieldInvalidLength", "Necesidad a satisfacer (2000 caractéres máx.)");
 
-            revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revObjetivoDelProyecto.ErrorMessage = TranslateFormat("FieldInvalidLength", "Objetivo Del Proyecto (255 caractéres máx.)");
+            revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1000);
+            revObjetivoDelProyecto.ErrorMessage = TranslateFormat("FieldInvalidLength", "Objetivo Del Proyecto (1000 caractéres máx.)");
             txtObjetivoDelProyecto.ToolTip = "El “objetivo” de un proyecto es la descripción de la solución al problema que se ha diagnosticado (situación que se desea alcanzar). Ejemplo: “si el problema principal en el sector de salud es una alta tasa de mortalidad infantil en la población de menores ingresos, el objetivo sería reducir en un X% la tasa de mortalidad infantil en esa población al cabo de X años”";
 
             revProductoOServicio.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
             revProductoOServicio.ErrorMessage = TranslateFormat("FieldInvalidLength", "Producto o servicio que brindará el proyecto una vez finalizado? (255 caractéres máx.)");
 
-            revAlternativas.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revAlternativas.ErrorMessage = TranslateFormat("InvalidFiled", "Alternativas");
+            revAlternativas.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revAlternativas.ErrorMessage = TranslateFormat("FieldInvalidLength", "Alternativas (2000 caractéres máx.)");
 
-            revPorqueAlternativa.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revPorqueAlternativa.ErrorMessage = TranslateFormat("FieldInvalidLength", "Por que han seleccionado la alternativa elegida (255 caractéres máx.)");
+            revPorqueAlternativa.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revPorqueAlternativa.ErrorMessage = TranslateFormat("FieldInvalidLength", "Por que han seleccionado la alternativa elegida (2000 caractéres máx.)");
 
-            revDescripcionTecnica.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revDescripcionTecnica.ErrorMessage = TranslateFormat("InvalidFiled", "Descripcion Tecnica");
+            revDescripcionTecnica.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revDescripcionTecnica.ErrorMessage = TranslateFormat("FieldInvalidLength", "Descripcion Tecnica (2000 caractéres máx.)");
 
             revVidaUtil.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
             revVidaUtil.ErrorMessage = TranslateFormat("FieldInvalidLength", "Vida útil del principal bien de capital a incorporar en el marco del proyecto (255 caractéres máx.)");
 
-            revCoberturaTerritorial.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revCoberturaTerritorial.ErrorMessage = TranslateFormat("InvalidFiled", "Cobertura Territorial");
-            revCoberturaPoblacional.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revCoberturaPoblacional.ErrorMessage = TranslateFormat("InvalidFiled", "Cobertura Poblacional");
-            revCoberturaBeneficiariosDirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revCoberturaBeneficiariosDirectos.ErrorMessage = TranslateFormat("InvalidFiled", "Cobertura Beneficiarios Directos");
-            revCoberturaBeneficiariosIndirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revCoberturaBeneficiariosIndirectos.ErrorMessage = TranslateFormat("InvalidFiled", "Cobertura Beneficiarios Indirectos");
+            revCoberturaTerritorial.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revCoberturaTerritorial.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Territorial (2000 caractéres máx.)");
+            revCoberturaPoblacional.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
+            revCoberturaPoblacional.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Poblacional (255 caractéres máx.)");
+            revCoberturaBeneficiariosDirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revCoberturaBeneficiariosDirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Directos (2000 caractéres máx.)");
+            revCoberturaBeneficiariosIndirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
+            revCoberturaBeneficiariosIndirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Indirectos (255 caractéres máx.)");
 
-            revDificultadesRiesgosEnumeracion.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            revDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("InvalidFiled", "Dificultades o Riesgos significativos.");
+            revDificultadesRiesgosEnumeracion.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
+            revDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("FieldInvalidLength", "Dificultades o Riesgos significativos. (2000 caractéres máx.)");
             rfvDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("FieldIsNull", "Dificultades o Riesgos significativos.");
             revDificultadesRiesgosEnumeracionMinLength.ErrorMessage = TranslateFormat("{0}", "El campo Dificultades o Riesgos significativos. Requiere como mínimo 8 caractéres.");
 

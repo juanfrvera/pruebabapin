@@ -78,7 +78,7 @@ GO
 -- ----------------------------
 -- Table structure for ProyectoPrincipiosFormulacion
 -- ----------------------------
-USE [BD_BAPIN]
+USE [BAPIN]
 GO
 
 
@@ -89,21 +89,21 @@ GO
 CREATE TABLE [dbo].[ProyectoPrincipiosFormulacion] (
 [IdProyectoPrincipiosFormulacion] int NOT NULL IDENTITY(1,1) ,
 [IdProyecto] int NOT NULL ,
-[NecesidadASatisfacer] varchar(MAX) NULL ,
-[ObjetivoDelProyecto] varchar(255) NULL ,
+[NecesidadASatisfacer] varchar(2000) NULL ,
+[ObjetivoDelProyecto] varchar(1000) NULL ,
 [ProductoOServicio] varchar(255) NULL ,
-[Alternativas] varchar(MAX) NULL ,
-[PorqueAlternativa] varchar(255) NULL ,
-[DescripcionTecnica] varchar(MAX) NULL ,
+[Alternativas] varchar(2000) NULL ,
+[PorqueAlternativa] varchar(2000) NULL ,
+[DescripcionTecnica] varchar(2000) NULL ,
 [VidaUtil] varchar(255) NULL ,
 
-[CoberturaTerritorial] varchar(MAX) NULL ,
-[CoberturaPoblacional] varchar(MAX) NULL ,
-[CoberturaBeneficiariosDirectos] varchar(MAX) NULL ,
-[CoberturaBeneficiariosIndirectos] varchar(MAX) NULL ,
+[CoberturaTerritorial] varchar(2000) NULL ,
+[CoberturaPoblacional] varchar(255) NULL ,
+[CoberturaBeneficiariosDirectos] varchar(2000) NULL ,
+[CoberturaBeneficiariosIndirectos] varchar(255) NULL ,
 
 [DificultadesRiesgos] bit NULL ,
-[DificultadesRiesgosEnumeracion] varchar(MAX) NULL ,
+[DificultadesRiesgosEnumeracion] varchar(2000) NULL ,
 
 [DimensionesCostosDimensionados] bit NULL ,
 [DimensionesCostosValidados] bit NULL ,
@@ -138,6 +138,7 @@ GO
 -- ----------------------------
 ALTER TABLE [dbo].[ProyectoPrincipiosFormulacion] ADD FOREIGN KEY ([IdProyecto]) REFERENCES [dbo].[Proyecto] ([IdProyecto]) ON DELETE NO ACTION ON UPDATE NO ACTION
 GO
+
 
 
 USE [BD_BAPIN]

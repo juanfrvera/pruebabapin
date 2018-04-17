@@ -16,7 +16,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtNecesidadASatisfacer" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtNecesidadASatisfacer" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +47,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtObjetivoDelProyecto" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtObjetivoDelProyecto" MaxLength="1000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -78,7 +78,7 @@
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
                     <td>
-                        <asp:TextBox runat="server" ID="txtProductoOServicio" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtProductoOServicio" MaxLength="255"  Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -109,7 +109,7 @@
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
                     <td>
-                        <asp:TextBox runat="server" ID="txtAlternativas" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtAlternativas" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -141,7 +141,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtPorqueAlternativa" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtPorqueAlternativa" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -172,7 +172,7 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:TextBox runat="server" ID="txtDescripcionTecnica" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtDescripcionTecnica" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -203,7 +203,7 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:TextBox runat="server" placeholder="Indicar el período en años/meses/días/horas" ID="txtVidaUtil" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" placeholder="Indicar el período en años/meses/días/horas" ID="txtVidaUtil" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -237,7 +237,7 @@
                     Cobertura Territorial
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaTerritorial" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaTerritorial" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaTerritorial" runat="server" ControlToValidate="txtCoberturaTerritorial"
@@ -250,7 +250,7 @@
                     Cobertura Poblacional
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaPoblacional" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaPoblacional" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaPoblacional" runat="server" ControlToValidate="txtCoberturaPoblacional"
@@ -263,7 +263,7 @@
                     Cobertura Beneficiarios Directos
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaBeneficiariosDirectos" runat="server" ControlToValidate="txtCoberturaBeneficiariosDirectos"
@@ -276,7 +276,7 @@
                     Cobertura Beneficiarios Indirectos
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaBeneficiariosIndirectos" runat="server" ControlToValidate="txtCoberturaBeneficiariosIndirectos"
@@ -309,7 +309,7 @@
                             <asp:RadioButton ID="cbDificultadesRiesgosNo" GroupName="DificultadesRiesgos" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DificultadesRiesgos") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDificultadesRiesgos_CheckedChanged"/>
                         </td>
                         <td>
-                            <asp:TextBox runat="server" ID="txtDificultadesRiesgosEnumeracion" placeholder="Enumérelos" Rows="6" TextMode="MultiLine" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtDificultadesRiesgosEnumeracion" MaxLength="2000" placeholder="Enumérelos" Rows="6" TextMode="MultiLine" Enabled="false"></asp:TextBox>
                         </td>
                         <td Width="1px">
                             <asp:RegularExpressionValidator Enabled="false" Display = "Dynamic" ControlToValidate = "txtDificultadesRiesgosEnumeracion" ID="revDificultadesRiesgosEnumeracionMinLength" ValidationExpression = "^[\s\S]{8,}$" runat="server" Text="*" ValidationGroup="EditionProyectoPrincipios"></asp:RegularExpressionValidator>
@@ -364,7 +364,7 @@
                         <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización." runat="server"></asp:Literal>
                     </td>
                     <td>
-                        <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" MaxLength="255" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
                     </td>
                     <td Width="1px">
                         <asp:RegularExpressionValidator ID="revDimensionesCostosEnte" runat="server" ControlToValidate="txtDimensionesCostosEnte"
@@ -404,7 +404,7 @@
                     Indique cuál es la autoridad ambiental competente
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" MaxLength="255" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revRequiereIntevencionAutoridad" runat="server" ControlToValidate="txtRequiereIntevencionAutoridad"
