@@ -61,9 +61,9 @@
                                 <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  HeaderText="Cód. presup. y descrip. de la inversión"  SortExpression="DescripcionCorta" ItemStyle-Width="270px" >            
+                        <asp:TemplateField  HeaderText="Cód. presup."  SortExpression="DescripcionCorta" ItemStyle-Width="90px" >            
                             <ItemTemplate>
-                                <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
+                                <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("CodigoPresupuestario") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>

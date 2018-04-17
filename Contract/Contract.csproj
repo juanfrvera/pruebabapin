@@ -172,6 +172,7 @@
     <Compile Include="Base\ReportInfo.cs" />
     <Compile Include="Config\CargoConfig.cs" />
     <Compile Include="Config\ClasificacionGeograficaTipoConfig.cs" />
+    <Compile Include="Config\EtapaEnum.cs" />
     <Compile Include="Config\ProyectoDictamenEstadoConfig.cs" />
     <Compile Include="Config\EstadoDeDesicionConfig.cs" />
     <Compile Include="Config\EstadoEnum.cs" />

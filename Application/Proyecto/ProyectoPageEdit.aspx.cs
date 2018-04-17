@@ -55,7 +55,7 @@ namespace UI.Web
             bool ProyectoFilesRead = CanByOffice("ProyectoFilesCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             bool ProyectoIntervencionDNIPComposeRead = CanByOffice("ProyectoIntervencionDNIPCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             bool ProyectoEvaluacionRead = CanByOffice("ProyectoEvaluacionCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
-            bool ProyectoProductoIntermedioRead = CanByOffice("ProyectoProductoIntermedioCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
+            //bool ProyectoProductoIntermedioRead = CanByOffice("ProyectoProductoIntermedioCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             bool ProyectoObjetivosRead = CanByOffice("ProyectoObjetivosCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);
             //TODO: modificar por ProyectoPrincipiosCompose
             bool ProyectoPrincipiosRead = CanByOffice("ProyectoObjetivosCompose", Proyecto.PerfilOficinas, ActionConfig.READ, Proyecto.IdEstado);

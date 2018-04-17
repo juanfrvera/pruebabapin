@@ -126,6 +126,14 @@ namespace Business
             //}
             entity.Codigo = nroNotification;
             entity.IdUsuarioModificacion = contextUser.User.IdUsuario;
+
+            //Etapa default
+            ProyectoEtapa pe = new ProyectoEtapa()
+            {
+                Nombre = "",
+                IdEtapa = (int)EtapaEnum.Actividad
+            };
+            entity.ProyectoEtapas.Add(pe);
             base.Add(entity, contextUser);
         }
         //Matias 20131106 - Tarea 80

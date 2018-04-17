@@ -106,7 +106,7 @@ namespace Contract
         {
             get
             {
-                string descripcion = Apertura + " " + Nombre;
+                string descripcion = CodigoPresupuestario + " " + Nombre;
 
                 if (descripcion.Length > 50)
                     descripcion = descripcion.Substring(0, 47) + "...";
@@ -148,6 +148,9 @@ namespace Contract
         }
 
         public string NroProyecto { set; get; }
+        public string NroActividad { set; get; }
+        public string NroObra { set; get; }
+
         public bool EsObra
         {
             get { return this.IdEtapa == (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_ETAPA_OBRA"); }
@@ -172,6 +175,30 @@ namespace Contract
                 if (this.EsObra)
                     return proy + ".00." + etap;
                 return proy + "." + etap + ".00";
+            }
+        }
+        public string CodigoPresupuestario
+        {
+            get
+            {
+                //Matias 20170203 - Ticket #REQ792885
+                //string proy = NroProyecto != "" & NroProyecto != 0.ToString() ? NroProyecto : "00";
+                //string etap = NroEtapa.ToString() == "" ? "00" : NroEtapa.ToString();
+                string proyecto = (NroProyecto == null || NroProyecto == "" || NroProyecto == 0.ToString()) ? "00" : NroProyecto;
+                string actividad = (NroActividad == null || NroActividad == "" || NroActividad == 0.ToString()) ? "00" : NroActividad;
+                string obra = (NroObra == null || NroObra == "" || NroObra == 0.ToString()) ? "00" : NroObra;
+                //Matias 20170203 - Ticket #REQ792885
+
+                if (proyecto.Length == 1)
+                    proyecto = "0" + proyecto;
+
+                if (actividad.Length == 1)
+                    actividad = "0" + actividad;
+
+                if (obra.Length == 1)
+                    obra = "0" + obra;
+
+                return proyecto + "." + actividad + "." + obra;
             }
         }
 

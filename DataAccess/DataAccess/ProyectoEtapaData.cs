@@ -48,7 +48,11 @@ namespace DataAccess
                i.Etapa_IdFase = et.IdFase;
                i.Etapa_Nombre = et.Nombre;
                i.Fase_Nombre = FaseConfig.GetConst(((FaseEnum)et.IdFase));
-               i.NroProyecto = (from p in Context.Proyectos where p.IdProyecto == i.IdProyecto select p.NroProyecto).SingleOrDefault().ToString();
+               var proyecto = (from p in Context.Proyectos where p.IdProyecto == i.IdProyecto select p);
+               //i.NroProyecto = (from p in Context.Proyectos where p.IdProyecto == i.IdProyecto select p.NroProyecto).SingleOrDefault().ToString();
+               i.NroProyecto = proyecto.Select(x=>x.NroProyecto).SingleOrDefault().ToString();
+               i.NroActividad = proyecto.Select(x=>x.NroActividad).SingleOrDefault().ToString();
+               i.NroObra = proyecto.Select(x=>x.NroObra).SingleOrDefault().ToString();
 
                i.TotalEstimado = (from e in this.Context.ProyectoEtapaEstimados
                                   join p in this.Context.ProyectoEtapaEstimadoPeriodos
