@@ -185,8 +185,8 @@ namespace UI.Web
             lblAnioPresupuestario.Text = anioVisible.ToString();
 
             //xxx.ToolTip = Translate("TooltipCronogramasAgregar");
-            //xxx.ToolTip = Translate("TooltipTotalEstimadoActual");
-            //xxx.ToolTip = Translate("TooltipTotalRealizado");
+            //gridEtapas.HeaderRow.Cells[7].ToolTip = Translate("TooltipTotalEstimadoActual");
+            //gridEtapas.HeaderRow.Cells[8].ToolTip = Translate("TooltipTotalRealizado");
             pnlInformacionPresupuestaria.ToolTip = Translate("TooltipEjecucionPresupuestaria");
             pnlEtapaEstimada.ToolTip = Translate("TooltipGastosEstimados");
             pnlEtapaRealizada.ToolTip = Translate("TooltipGastosRealizados");
@@ -595,6 +595,12 @@ namespace UI.Web
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex == 0)
                 ((RadioButton)e.Row.Cells[0].FindControl("rbEtapa")).Checked = true;
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[7].ToolTip = Translate("TooltipTotalEstimadoActual");
+                e.Row.Cells[8].ToolTip = Translate("TooltipTotalRealizado");
+            }
         }
 
         protected void GridPeriodoEstimado_OnDataBound(object sender, EventArgs e)
