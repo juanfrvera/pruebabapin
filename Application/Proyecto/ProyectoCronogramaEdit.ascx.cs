@@ -209,6 +209,35 @@ namespace UI.Web
         public override void SetValue()
         {
             //btVerTotales.Enabled = CrudAction != CrudActionEnum.Create; //Matias 20170126 - #REQ575961
+
+            //get saf ejecucion sino saf actual
+            var saf = string.Empty;
+            var programa = string.Empty;
+            var subPrograma = string.Empty;
+            if (Entity.Proyecto.IdSubProgramaEjecucion.HasValue && Entity.Proyecto.IdSubProgramaEjecucion.Value > 0)
+            {
+                SubPrograma subProgramaResult = SubProgramaService.Current.GetById(Entity.Proyecto.IdSubProgramaEjecucion.Value);
+                subPrograma = subProgramaResult.Nombre;
+                programa = subProgramaResult.Programa.Nombre;
+                saf = subProgramaResult.Programa.Saf.Denominacion;
+            }
+            else if (Entity.Proyecto.IdSubPrograma > 0)
+            {
+                //Entity.Proyecto.IdSubPrograma
+                SubPrograma subProgramaResult = SubProgramaService.Current.GetById(Entity.Proyecto.IdSubPrograma);
+                subPrograma = subProgramaResult.Nombre;
+                programa = subProgramaResult.Programa.Nombre;
+                saf = subProgramaResult.Programa.Saf.Denominacion;
+            }
+
+
+            UIHelper.SetValue(txtSAF, saf);
+            UIHelper.SetValue(txtPrograma, programa);
+            UIHelper.SetValue(txtSubPrograma, subPrograma);
+            UIHelper.SetValue(txtNroProyecto, String.Format("{0:00}", Entity.Proyecto.NroProyectoEjecucion));
+            UIHelper.SetValue(txtNroActividad, String.Format("{0:00}", Entity.Proyecto.NroActividadEjecucion));
+            UIHelper.SetValue(txtNroObra, String.Format("{0:00}", Entity.Proyecto.NroObraEjecucion));
+
             SetPermissions();
             CargarComboAnio();
             ActualProyectoEtapa = null;

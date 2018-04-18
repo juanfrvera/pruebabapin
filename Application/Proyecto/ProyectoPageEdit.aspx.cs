@@ -215,14 +215,16 @@ namespace UI.Web
 
             // busco los datos del usuario logueado
             ContextUser contexto = (ContextUser)Session["contextUser"];
-            List<UsuarioOficinaPerfilSimpleResult> perfilesOficina = contexto.PerfilesPorOficina.ToList();
 
             // verifico si el usuario logueado es administrador
-
+            if (contexto.Perfiles == null) return false;
             bool esAdministrador = (contexto.Perfiles.Where(perf => perf.Codigo == "ADMIN").FirstOrDefault() != null) ? true : false;
 
             if (esAdministrador)
                 return retorno = true;
+
+            if (contexto.PerfilesPorOficina == null) return false;
+            List<UsuarioOficinaPerfilSimpleResult> perfilesOficina = contexto.PerfilesPorOficina.ToList();
 
             //Matias 20170126 - Ticket #ER645535
             if (perfilesOficina.Count == 0)

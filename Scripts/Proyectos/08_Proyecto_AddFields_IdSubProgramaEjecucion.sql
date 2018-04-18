@@ -1,19 +1,3 @@
-USE [BAPIN]
-GO
-
-IF NOT EXISTS(SELECT 1 FROM sys.columns 
-          WHERE Name = N'AnioCorrienteEstimado'
-          AND Object_ID = Object_ID(N'dbo.Proyecto'))
-ALTER TABLE [dbo].[Proyecto]
-ADD [AnioCorrienteEstimado] int NULL 
-GO
-
-IF NOT EXISTS(SELECT 1 FROM sys.columns 
-          WHERE Name = N'AnioCorrienteRealizado'
-          AND Object_ID = Object_ID(N'dbo.Proyecto'))
-ALTER TABLE [dbo].[Proyecto]
-ADD [AnioCorrienteRealizado] int NULL 
-GO
 
 USE [BAPIN]
 GO
@@ -35,5 +19,3 @@ WHERE type_desc LIKE '%CONSTRAINT' and OBJECT_NAME(OBJECT_ID) = 'FK_Proyecto_Sub
 
 ALTER TABLE [dbo].[Proyecto] ADD CONSTRAINT [FK_Proyecto_SubProgramaEjecucion] FOREIGN KEY ([IdSubPrograma]) REFERENCES [dbo].[SubPrograma] ([IdSubPrograma]) ON DELETE NO ACTION ON UPDATE NO ACTION
 GO
-
-

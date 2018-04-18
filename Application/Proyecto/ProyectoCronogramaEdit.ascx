@@ -56,23 +56,23 @@
                     EmptyDataText="No hay producto intermedio definido" 
                     Width ="100%">
                     <Columns>
-                        <asp:TemplateField   HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
+                        <asp:TemplateField Visible="false" HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
                             <ItemTemplate>                        
                                 <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  HeaderText="Cód. presup."  SortExpression="DescripcionCorta" ItemStyle-Width="90px" >            
+                        <asp:TemplateField Visible="false" HeaderText="Cód. presup."  SortExpression="DescripcionCorta" ItemStyle-Width="90px" >            
                             <ItemTemplate>
                                 <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("CodigoPresupuestario") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>
-                        <asp:BoundField HeaderText ="Fecha Inicio Estimada" DataField ="FechaInicioEstimada" SortExpression ="FechaInicioEstimada"  DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
-                        <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="85px"/>   
-                        <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="90px"/>
-                        <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="80px"/>
-                        <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/> 
-                        <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="85px"/>                
+                        <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="110px"/>
+                        <asp:BoundField HeaderText ="Fecha Inicio Estimada" DataField ="FechaInicioEstimada" SortExpression ="FechaInicioEstimada"  DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="110px"/>
+                        <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="110px"/>   
+                        <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="110px"/>
+                        <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="110px"/>
+                        <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="110px"/> 
+                        <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="110px"/>                
                         <asp:TemplateField  HeaderStyle-Width ="5px">
                             <HeaderTemplate>
                             </HeaderTemplate>
@@ -91,14 +91,80 @@
         <table width="100%"  cellpadding="0" cellspacing="5px" border="0">	  	
             <tr>
                 <td>
-                    <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
-                        <tr>                      
+                    <table cellpadding="0" cellspacing="5px" border="0"   width="100%">
+                        
+                        <tr>
+                            <td style="width:100px" >
+                                <asp:Literal ID="liSAF" Text="SAF" runat="server"></asp:Literal>
+                            </td>
+                            <td colspan="2">
+                                <asp:TextBox ID="txtSAF" runat="server" Enabled="false"  Width="830px" TabIndex="13"></asp:TextBox>
+                            </td>
+                            <td  style="width:1px" class="filaValidator">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
+                                <asp:Literal ID="liPrograma" Text="Programa" runat="server"></asp:Literal></td>
+                            <td colspan="2">
+                                <asp:TextBox ID="txtPrograma" runat="server" Enabled="false"  Width="830px" TabIndex="13"></asp:TextBox>
+                            </td>
+                            <td class="filaValidator">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Literal ID="liSubPrograma" Text="Subprograma" runat="server"></asp:Literal>
+                            </td>
+                            <td colspan="2">
+                                <asp:TextBox ID="txtSubPrograma" runat="server" Enabled="false"  Width="830px" TabIndex="13"></asp:TextBox>
+                            </td>
+                            <td class="filaValidator">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        	  	
+                        <tr>   
+                            <td colspan="2">
+                                <asp:Panel ID="Panel4" runat="server" GroupingText="Código Presupuestario de Ejecución">
+                                    <table style="width:630px" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td style="width:58px">
+                                                <asp:Literal ID="litNroProyecto" Text="Proyecto" runat="server"></asp:Literal>
+                                            </td>
+                                            <td style="width:60px">
+                                                <asp:TextBox ID="txtNroProyecto" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                            </td>
+                                            <td style="width:60px">
+                                                <asp:Literal ID="litActividad" runat="server" Text="Actividad"></asp:Literal>
+                                            </td>
+                                            <td style="width:60px">
+                                                <asp:TextBox ID="txtNroActividad" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                            </td>
+                                            <td style="width:60px">
+                                                <asp:Literal ID="litObra" runat="server" Text="Obra"></asp:Literal>
+                                            </td>
+                                            <td style="width:60px">
+                                                <asp:TextBox ID="txtNroObra" Enabled="false" runat="server" TabIndex="19" Width="50px"></asp:TextBox>
+                                            </td>
+                                            <td style="width:160px">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
+                            </td>                   
+                            <td style="width:100px">
                                 <asp:UpdatePanel ID="pnlVerInfoPresupuestaria" runat = "server" UpdateMode ="Conditional" >
                                 <ContentTemplate>
                                     <asp:Button ID="btVerInfoPresupuestaria" runat ="server" Text="Ver información presupuestaria" OnClick="btVerInfoPresupuestaria_Click" CausesValidation="false" TabIndex ="2"/> 
                                 </ContentTemplate>
                                 </asp:UpdatePanel>	                    
+                            </td>
+                            <td class="filaValidator">
+                                &nbsp;
                             </td>
                         </tr>
                     </table>        
