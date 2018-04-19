@@ -10,6 +10,7 @@ using Service;
 using System.Data;
 using System.Collections;
 using System.Drawing;
+using Core.Utils;
 
 namespace UI.Web
 {
@@ -205,6 +206,8 @@ namespace UI.Web
                 Entity.ProyectoAnioCorrienteRealizado = AnioCorrienteRealizado;
             else
                 Entity.ProyectoAnioCorrienteRealizado = null;
+
+            CalcularTEP();
         }
         public override void SetValue()
         {
@@ -267,6 +270,127 @@ namespace UI.Web
         #endregion Override
 
         #region Otros Metodos
+
+        private void CalcularTEP()
+        {
+            var listProyectoTipo = ProyectoTipoService.Current.GetList();
+            Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.SinGastosImputados)).FirstOrDefault().IdProyectoTipo;
+
+            List<string> incisos = new List<string>();
+
+            var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.Proyecto.IdProyecto });
+            foreach (var proyectoEtapa in proyectoEtapas)
+            {
+                var proyectoEtapaEstimados = ProyectoEtapaEstimadoService.Current.GetResultFromList(new nc.ProyectoEtapaEstimadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                foreach (var proyectoEtapaEstimado in proyectoEtapaEstimados)
+                {
+                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaEstimado.IdClasificacionGasto);
+                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                    {
+                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                    }
+                }
+                var proyectoEtapaRealizados = ProyectoEtapaRealizadoService.Current.GetResultFromList(new nc.ProyectoEtapaRealizadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                foreach (var proyectoEtapaRealizado in proyectoEtapaRealizados)
+                {
+                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaRealizado.IdClasificacionGasto);
+                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                    {
+                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                    }
+                }
+            }
+            //string.Join("|", incisos)
+
+            if (incisos == null || incisos.Count == 0)
+            {
+                return;
+            }
+            else if (
+                (
+                    incisos.Where(x => x.Equals("04")).Any() &&
+                    !incisos.Where(x => x.Equals("05")).Any() &&
+                    !incisos.Where(x => x.Equals("06")).Any()
+                )
+                ||
+                (
+                    Entity.Proyecto.NroProyecto != null && Entity.Proyecto.NroProyecto != 0 && incisos.Where(x => Int32.Parse(x) < 4).Any()
+                )
+                )
+            {
+                //Condición Obligatoria
+                //Inc 4 y no inc. 5 ni inc 6
+                //O (Cód. de Proy <> de vacío ) y (inc 1 y/o 2 y/o  3 -  cualquier combinación de incisos menor a 4)
+                //Otra Condicion Posible
+                //Inc 4 + inc. 1 y/o 2 y/o 3 
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.IRDInvRealDirecta)).FirstOrDefault().IdProyectoTipo;
+            }
+            else if (
+                (!incisos.Where(x => x.Equals("04")).Any() &&
+                incisos.Where(x => x.Equals("05")).Any() &&
+                !incisos.Where(x => x.Equals("06")).Any())
+                // || Por el momento no considerar
+                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("01")).Any()
+                //||
+                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("02")).Any()
+                //||
+                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("03")).Any()
+                )
+            {
+                //Condición Obligatoria
+                //Inc 5 y no inc. 4 ni inc 6
+                //Otra Condición Posible
+                //Inc 5 + inc. 1 y/o 2 y/o 3
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Transferencia)).FirstOrDefault().IdProyectoTipo;
+            }
+            else if (
+               (incisos.Where(x => x.Equals("04")).Any() && (incisos.Where(x => x.Equals("05")).Any() || incisos.Where(x => x.Equals("06")).Any()))
+                ||
+                (incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("06")).Any())
+                ||
+                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+               )
+            {
+                //Condición Obligatoria                             Otra Condición Posible (*1)
+                //Inc 4 y (5 ó 6)                                   inc 4 y (5 ó 6) + inc. 1 y/o 2 y/o 3
+                //O Inc 5 y 6                                       Ó Inc 5 y 6 + inc. 1 y/o 2 y/o 3
+                //O Inc. 6.8.7 y cualquier otro inc. 6              O Inc. 6.8.7 y cualquier otro inc. 6 + inc. 1 y/o 2 y/o 3
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Combinados)).FirstOrDefault().IdProyectoTipo;
+            }
+            else if (
+                (incisos.Where(x => x.Equals("06")).Any() && (!(incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())))
+                &&
+                !incisos.Where(x => x.Equals("05")).Any() &&
+                !incisos.Where(x => x.Equals("04")).Any()
+                )
+            {
+                //Condición Obligatoria
+                //Solo Inc. 6 (con excepción de 6.8.7) y no inc. 4 ni inc 5.
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.InversionesFinancieras)).FirstOrDefault().IdProyectoTipo;
+            }
+            else if (
+                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+                )
+            {
+                //Condición Obligatoria
+                //Únicamente inciso 6.8.7
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.AdelantoProveedores)).FirstOrDefault().IdProyectoTipo;
+            }
+            else if (
+                ((Entity.Proyecto.NroProyecto == null || Entity.Proyecto.NroProyecto == 0) && !incisos.Where(x => Int32.Parse(x) >= 4).Any())
+                )
+            {
+                //Condición Obligatoria
+                //Cód. de Proy= 00 y (inc 1 y/o 2 y/o  3 -cualquier combinación de incisos menor a 4) (*2)
+                //Cualquier combinación de incisos menor a 4: (estos No son proyectos o no tienen cód. presupuestario asignado) 
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.GastoCorriente)).FirstOrDefault().IdProyectoTipo;
+            }
+            else
+            {
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Indefinido)).FirstOrDefault().IdProyectoTipo;
+            }
+
+        }
         private Int32 GetParameterIDFFTesoroNacional()
         {
             return (Int32)SolutionContext.Current.ParameterManager.GetNumberValue(ID_FUENTE_F_TESORO_NACIONAL);
@@ -291,6 +415,8 @@ namespace UI.Web
             #endregion
             UIHelper.Load<nc.Anio>((DropDownList)ddlAnioCorrienteEstimado, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new Anio() { Nombre = "Seleccione Año" }, false);
             UIHelper.Load<nc.Anio>((DropDownList)ddlAnioCorrienteRealizado, AnioService.Current.GetList(new nc.AnioFilter() { Activo = true }).OrderByDescending(i => i.Nombre).ToList(), "Nombre", "Nombre", new Anio() { Nombre = "Seleccione Año" }, false);
+            UIHelper.SetValue(ddlAnioCorrienteEstimado, DateTime.Now.Year);
+            UIHelper.SetValue(ddlAnioCorrienteRealizado, DateTime.Now.Year);
         }
         private void AddGroupToGrid()
         {
@@ -634,7 +760,7 @@ namespace UI.Web
 
         protected void GridPeriodoEstimado_OnDataBound(object sender, EventArgs e)
         {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
+            /*GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
             TableHeaderCell cell = new TableHeaderCell();
             cell.Text = "";
             cell.ColumnSpan = 4;
@@ -646,9 +772,8 @@ namespace UI.Web
             cell.Attributes.Add("style", "text-align:center !important;");
             row.Controls.Add(cell);
 
-            GridPeriodoEstimado.HeaderRow.Parent.Controls.AddAt(0, row);
+            GridPeriodoEstimado.HeaderRow.Parent.Controls.AddAt(0, row);*/
         }
-        
 
         public void ddlFase_OnSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -773,10 +898,10 @@ namespace UI.Web
                     } 
 
                     //Condicion de bloqueo adicional
-                    if (proyectoEtapaEstimadaValue.MontoInicial > 0 || proyectoEtapaEstimadaValue.MontoVigente > 0 || proyectoEtapaEstimadaValue.MontoDevengado > 0)
+                    /*if (proyectoEtapaEstimadaValue.MontoInicial > 0 || proyectoEtapaEstimadaValue.MontoVigente > 0 || proyectoEtapaEstimadaValue.MontoDevengado > 0)
                     {
                         tieneBloqueo = true;
-                    }
+                    }*/
 
                 }
                 if (tieneBloqueo && action == ActionEnum.Update)
@@ -866,6 +991,9 @@ namespace UI.Web
                 return;
             }
 
+            if (Entity.ProyectoAnioCorrienteEstimado.HasValue)
+                UIHelper.SetValue(ddlAnioCorrienteEstimado, Entity.ProyectoAnioCorrienteEstimado.Value);
+
             //Matias 20170214 - Ticket #REQ318684
             //DataTable dataTable = Entity.ToDatatableEtapasEstimadas(ActualProyectoEtapa.IdProyectoEtapa);
             Int32 t, filterAnio;
@@ -900,7 +1028,20 @@ namespace UI.Web
             }
             //FinMatias - #REQ318684
 
+
             UIHelper.Load(gridEtapasEstimadas, dataTable);
+
+            litEtapasEstimadasTotal.Visible = false;
+            if (dataTable.Rows.Count > 0)
+            {
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
+
+                litEtapasEstimadasTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");
+                litEtapasEstimadasTotal.Visible = true;
+            }
 
             //debo tener ambos parametros para considerarlos
             if (TipoOrganismoProyecto > 0 && PlanPeriodosBloqueados != null && OrganismoTipoBloqueados != null
@@ -940,12 +1081,12 @@ namespace UI.Web
                 }
             }
 
-            foreach (GridViewRow row in gridEtapasEstimadas.Rows)
+            /*foreach (GridViewRow row in gridEtapasEstimadas.Rows)
             {
                 int rowID = Int32.Parse(gridEtapasEstimadas.DataKeys[row.RowIndex][0].ToString());
                 
                 //Condicion de bloqueo adicional
-                if (Entity.EtapasEstimadas.Where(e => e.ID == rowID).FirstOrDefault().Periodos.Where(x => x.MontoInicial > 0 || x.MontoVigente > 0 || x.MontoDevengado > 0).Any())
+                if (Entity.EtapasInformacionPresupuestarias.Where(e => e.ID == rowID).FirstOrDefault().Periodos.Where(x => x.MontoInicial > 0 || x.MontoVigente > 0 || x.MontoDevengado > 0).Any())
                 {
                     foreach (Control control in row.Cells[row.Cells.Count - 1].Controls)
                     {
@@ -956,29 +1097,7 @@ namespace UI.Web
                         }
                     }
                 }
-            }
-
-            if (dataTable.Rows.Count > 1)
-            {
-                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
-                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
-                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
-                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
-
-                //Nueva fila con los datos del total
-                GridViewRow rowTotal = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-                TableHeaderCell cellTotal = new TableHeaderCell();
-                cellTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");
-                cellTotal.ColumnSpan = dataTable.Columns.Count;
-                cellTotal.Attributes.Add("style", "text-align:right !important;font-weight: bold;");
-                rowTotal.Controls.Add(cellTotal);
-                //cellTotal = new TableHeaderCell();
-                //cellTotal.ColumnSpan = x;
-                //cellTotal.Text = "Total: "; //+ dataTable.AsEnumerable().Sum(x => x.Field<int>("F.Financiamiento")).ToString(); 
-                //cellTotal.Attributes.Add("style", "text-align:right !important;");
-                //rowTotal.Controls.Add(cellTotal);
-                gridEtapasEstimadas.HeaderRow.Parent.Controls.AddAt(0, rowTotal);
-            }
+            }*/
 
             upGridEtapasEstimadas.Update();
         }
@@ -1294,7 +1413,7 @@ namespace UI.Web
         protected void btVerInfoPresupuestaria_Click(object sender, EventArgs e)
         {
             //gvInfoPresupuestaria
-            UIHelper.Load(gvInfoPresupuestaria, Entity.ToDatatableEtapasEstimadasPeriodos(ActualProyectoEtapa.IdProyectoEtapa));
+            UIHelper.Load(gvInfoPresupuestaria, Entity.ToDatatableEtapasInformacionPresupuestariasPeriodos(ActualProyectoEtapa.IdProyectoEtapa));
             ModalPopupExtenderInfoPresupuestaria.Show();
             upInfoPresupuestariaPopUp.Update();
         }
@@ -1583,6 +1702,9 @@ namespace UI.Web
                 return;
             }
 
+            if (Entity.ProyectoAnioCorrienteRealizado.HasValue)
+                UIHelper.SetValue(ddlAnioCorrienteRealizado, Entity.ProyectoAnioCorrienteRealizado.Value);
+
             //Matias 20170214 - Ticket #REQ318684
             //DataTable dataTable = Entity.ToDatatableEtapasRealizadas(ActualProyectoEtapa.IdProyectoEtapa);
             Int32 t, filterAnio;
@@ -1628,7 +1750,15 @@ namespace UI.Web
 
             UIHelper.Load(gridEtapasRealizadas, dataTable);
 
+            litEtapasRealizadasTotal.Visible = false;
             if (dataTable.Rows.Count > 0)
+            {
+                litEtapasRealizadasTotal.Text = "Total: " + (from ee in Entity.EtapasRealizadas select ee.TotalRealizado).Sum().ToString("N0");
+                litEtapasRealizadasTotal.Visible = true;
+            }
+
+
+            /*if (dataTable.Rows.Count > 0)
             {
                 //Nueva fila con los datos del total
                 GridViewRow rowTotal = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
@@ -1638,7 +1768,7 @@ namespace UI.Web
                 cellTotal.Attributes.Add("style", "text-align:right !important;font-weight: bold;");
                 rowTotal.Controls.Add(cellTotal);
                 gridEtapasRealizadas.HeaderRow.Parent.Controls.AddAt(0, rowTotal);
-            }
+            }*/
 
             upGridEtapasRealizadas.Update();
         }

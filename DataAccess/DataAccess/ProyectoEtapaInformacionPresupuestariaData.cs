@@ -9,14 +9,14 @@ using nd = DataAccess;
 
 namespace DataAccess
 {
-    public class ProyectoEtapaEstimadoData : EntityData<ProyectoEtapaEstimado, ProyectoEtapaEstimadoFilter, ProyectoEtapaEstimadoResult, int>
+    public class ProyectoEtapaInformacionPresupuestariaData : EntityData<ProyectoEtapaInformacionPresupuestaria, ProyectoEtapaInformacionPresupuestariaFilter, ProyectoEtapaInformacionPresupuestariaResult, int>
     {
         #region Singleton
-        private static volatile ProyectoEtapaEstimadoData current;
+        private static volatile ProyectoEtapaInformacionPresupuestariaData current;
         private static object syncRoot = new Object();
 
-        //private ProyectoEtapaEstimadoData() {}
-        public static ProyectoEtapaEstimadoData Current
+        //private ProyectoEtapaInformacionPresupuestariaData() {}
+        public static ProyectoEtapaInformacionPresupuestariaData Current
         {
             get
             {
@@ -25,18 +25,18 @@ namespace DataAccess
                     lock (syncRoot)
                     {
                         if (current == null)
-                            current = new ProyectoEtapaEstimadoData();
+                            current = new ProyectoEtapaInformacionPresupuestariaData();
                     }
                 }
                 return current;
             }
         }
         #endregion
-        public override string IdFieldName { get { return "IdProyectoEtapaEstimado"; } }
+        public override string IdFieldName { get { return "IdProyectoEtapaInformacionPresupuestaria"; } }
 
-        public List<ProyectoEtapaEstimadoResult> GetEtapasEstimadas(ProyectoEtapaFilter filter)
+        public List<ProyectoEtapaInformacionPresupuestariaResult> GetEtapasInformacionPresupuestarias(ProyectoEtapaFilter filter)
         {
-            List<ProyectoEtapaEstimadoResult> retval = new List<ProyectoEtapaEstimadoResult>();
+            List<ProyectoEtapaInformacionPresupuestariaResult> retval = new List<ProyectoEtapaInformacionPresupuestariaResult>();
             if (filter.IdProyecto > 0)
             {
                 #region Busca los datos
@@ -45,15 +45,15 @@ namespace DataAccess
                             join et in this.Context.Etapas on e.IdEtapa equals et.IdEtapa
                             where e.IdProyecto == filter.IdProyecto && et.IdFase == filter.IdFase
                             select pee);
-                var peeps = (from pp in this.Context.ProyectoEtapaEstimadoPeriodos
-                             join pee in pees on pp.IdProyectoEtapaEstimado equals pee.IdProyectoEtapaEstimado
+                var peeps = (from pp in this.Context.ProyectoEtapaInformacionPresupuestariaPeriodos
+                             join pee in pees on pp.IdProyectoEtapaInformacionPresupuestaria equals pee.IdProyectoEtapaInformacionPresupuestaria
                              select pp);
-                List<ClasificacionGasto> gastos = (from pp in this.Context.ProyectoEtapaEstimadoPeriodos
-                                                   join pee in pees on pp.IdProyectoEtapaEstimado equals pee.IdProyectoEtapaEstimado
+                List<ClasificacionGasto> gastos = (from pp in this.Context.ProyectoEtapaInformacionPresupuestariaPeriodos
+                                                   join pee in pees on pp.IdProyectoEtapaInformacionPresupuestaria equals pee.IdProyectoEtapaInformacionPresupuestaria
                                                    join g in this.Context.ClasificacionGastos on pee.IdClasificacionGasto equals g.IdClasificacionGasto
                                                    select g).Distinct().ToList();
-                //List<ProyectoOrigenFinanciamientoResult> of = (from pp in this.Context.ProyectoEtapaEstimadoPeriodos
-                //                                               join pee in pees on pp.IdProyectoEtapaEstimado equals pee.IdProyectoEtapaEstimado
+                //List<ProyectoOrigenFinanciamientoResult> of = (from pp in this.Context.ProyectoEtapaInformacionPresupuestariaPeriodos
+                //                                               join pee in pees on pp.IdProyectoEtapaInformacionPresupuestaria equals pee.IdProyectoEtapaInformacionPresupuestaria
                 //                                               join o in this.Context.ProyectoOrigenFinanciamientos on pee.IdProyectoOrigenFinanciamiento equals o.IdProyectoOrigenFinanciamiento
                 //                                               join p in this.Context.Prestamos on o.IdPrestamo equals p.IdPrestamo
                 //                                               select new ProyectoOrigenFinanciamientoResult()
@@ -62,18 +62,18 @@ namespace DataAccess
                 //                                                   Prestamo_Numero = p.Numero,
                 //                                                   Prestamo_Denominacion = p.Denominacion
                 //                                               }).Distinct().ToList();
-                List<FuenteFinanciamiento> ff = (from pp in this.Context.ProyectoEtapaEstimadoPeriodos
-                                                 join pee in pees on pp.IdProyectoEtapaEstimado equals pee.IdProyectoEtapaEstimado
+                List<FuenteFinanciamiento> ff = (from pp in this.Context.ProyectoEtapaInformacionPresupuestariaPeriodos
+                                                 join pee in pees on pp.IdProyectoEtapaInformacionPresupuestaria equals pee.IdProyectoEtapaInformacionPresupuestaria
                                                  join f in this.Context.FuenteFinanciamientos on pee.IdFuenteFinanciamiento equals f.IdFuenteFinanciamiento
                                                  select f).Distinct().ToList();
                 #endregion
 
                 #region Carga el resultado
-                foreach (ProyectoEtapaEstimado pee in pees.ToList())
+                foreach (ProyectoEtapaInformacionPresupuestaria pee in pees.ToList())
                 {
-                    ProyectoEtapaEstimadoResult peer = new ProyectoEtapaEstimadoResult();
+                    ProyectoEtapaInformacionPresupuestariaResult peer = new ProyectoEtapaInformacionPresupuestariaResult();
                     peer.IdProyectoEtapa = pee.IdProyectoEtapa;
-                    peer.IdProyectoEtapaEstimado = pee.IdProyectoEtapaEstimado;
+                    peer.IdProyectoEtapaInformacionPresupuestaria = pee.IdProyectoEtapaInformacionPresupuestaria;
                     peer.IdClasificacionGasto = pee.IdClasificacionGasto;
                     peer.IdFuenteFinanciamiento = pee.IdFuenteFinanciamiento;
                     //peer.IdProyectoOrigenFinanciamiento = pee.IdProyectoOrigenFinanciamiento;
@@ -95,15 +95,16 @@ namespace DataAccess
                         FuenteFinanciamiento fu = ff.Where(f => f.IdFuenteFinanciamiento == peer.IdFuenteFinanciamiento).Single();
                         peer.FuenteFinanciamiento_Nombre = fu.BreadcrumbCode + " - " + fu.Nombre;
                     }
-                    foreach (ProyectoEtapaEstimadoPeriodo peep in peeps.Where(t => t.IdProyectoEtapaEstimado == pee.IdProyectoEtapaEstimado).ToList())
+                    foreach (ProyectoEtapaInformacionPresupuestariaPeriodo peep in peeps.Where(t => t.IdProyectoEtapaInformacionPresupuestaria == pee.IdProyectoEtapaInformacionPresupuestaria).ToList())
                     {
-                        ProyectoEtapaEstimadoPeriodoResult peepr = new ProyectoEtapaEstimadoPeriodoResult();
-                        peepr.IdProyectoEtapaEstimado = peep.IdProyectoEtapaEstimado;
-                        peepr.IdProyectoEtapaEstimadoPeriodo = peep.IdProyectoEtapaEstimadoPeriodo;
+                        ProyectoEtapaInformacionPresupuestariaPeriodoResult peepr = new ProyectoEtapaInformacionPresupuestariaPeriodoResult();
+                        peepr.IdProyectoEtapaInformacionPresupuestaria = peep.IdProyectoEtapaInformacionPresupuestaria;
+                        peepr.IdProyectoEtapaInformacionPresupuestariaPeriodo = peep.IdProyectoEtapaInformacionPresupuestariaPeriodo;
                         peepr.Periodo = peep.Periodo;
-                        peepr.Monto = peep.Monto;
-                        peepr.Cotizacion = peep.Cotizacion;
-                        peepr.MontoCalculado = peep.MontoCalculado;
+                        peepr.MontoInicial = peep.MontoInicial;
+                        peepr.MontoVigente = peep.MontoVigente;
+                        peepr.MontoDevengado = peep.MontoDevengado;
+                        peepr.MontoVigenteEstimativo = peep.MontoVigenteEstimativo;
                         peer.Periodos.Add(peepr);
                     }
 
@@ -115,7 +116,7 @@ namespace DataAccess
             return retval;
         }
 
-        protected override IQueryable<ProyectoEtapaEstimadoResult> QueryResult(ProyectoEtapaEstimadoFilter filter)
+        protected override IQueryable<ProyectoEtapaInformacionPresupuestariaResult> QueryResult(ProyectoEtapaInformacionPresupuestariaFilter filter)
         {
 		  return (from o in Query(filter)					
 					 join t1  in this.Context.ClasificacionGastos on o.IdClasificacionGasto equals t1.IdClasificacionGasto   
@@ -124,8 +125,8 @@ namespace DataAccess
 				    join t4  in this.Context.ProyectoEtapas on o.IdProyectoEtapa equals t4.IdProyectoEtapa   
 				   //join _t5  in this.Context.ProyectoOrigenFinanciamientos on o.IdProyectoOrigenFinanciamiento equals _t5.IdProyectoOrigenFinanciamiento into tt5 from t5 in tt5.DefaultIfEmpty()
 				  where ( filter.IdProyecto == null || filter.IdProyecto == 0 || t4.IdProyecto == filter.IdProyecto  )
-                  select new ProyectoEtapaEstimadoResult(){
-					 IdProyectoEtapaEstimado=o.IdProyectoEtapaEstimado
+                  select new ProyectoEtapaInformacionPresupuestariaResult(){
+					 IdProyectoEtapaInformacionPresupuestaria=o.IdProyectoEtapaInformacionPresupuestaria
 					 ,IdProyectoEtapa=o.IdProyectoEtapa
 					 ,IdClasificacionGasto=o.IdClasificacionGasto
 					 ,IdFuenteFinanciamiento=o.IdFuenteFinanciamiento
@@ -169,8 +170,8 @@ namespace DataAccess
                         //,ProyectoEtapa_Nombre= t4.Nombre	
                         //,ProyectoEtapa_CodigoVinculacion= t4.CodigoVinculacion	
                         //,ProyectoEtapa_IdEstado= t4.IdEstado	
-                        //,ProyectoEtapa_FechaInicioEstimada= t4.FechaInicioEstimada	
-                        //,ProyectoEtapa_FechaFinEstimada= t4.FechaFinEstimada	
+                        //,ProyectoEtapa_FechaInicioInformacionPresupuestaria= t4.FechaInicioInformacionPresupuestaria	
+                        //,ProyectoEtapa_FechaFinInformacionPresupuestaria= t4.FechaFinInformacionPresupuestaria	
                         //,ProyectoEtapa_FechaInicioRealizada= t4.FechaInicioRealizada	
                         //,ProyectoEtapa_FechaFinRealizada= t4.FechaFinRealizada	
                         //,ProyectoEtapa_IdEtapa= t4.IdEtapa	
@@ -190,24 +191,24 @@ namespace DataAccess
         }
         #endregion		
 		#region Get
-		public override int GetId(nc.ProyectoEtapaEstimado entity)
+		public override int GetId(nc.ProyectoEtapaInformacionPresupuestaria entity)
 		{			
-			return entity.IdProyectoEtapaEstimado;
+			return entity.IdProyectoEtapaInformacionPresupuestaria;
 		}		
-		public override ProyectoEtapaEstimado GetByEntity(ProyectoEtapaEstimado entity)
+		public override ProyectoEtapaInformacionPresupuestaria GetByEntity(ProyectoEtapaInformacionPresupuestaria entity)
         {
-            return this.GetById(entity.IdProyectoEtapaEstimado);
+            return this.GetById(entity.IdProyectoEtapaInformacionPresupuestaria);
         }
-        public override ProyectoEtapaEstimado GetById(int id)
+        public override ProyectoEtapaInformacionPresupuestaria GetById(int id)
         {
-            return (from o in this.Table where o.IdProyectoEtapaEstimado == id select o).FirstOrDefault();
+            return (from o in this.Table where o.IdProyectoEtapaInformacionPresupuestaria == id select o).FirstOrDefault();
         }
 		#endregion
 		#region Query
-		protected override IQueryable<ProyectoEtapaEstimado> Query(ProyectoEtapaEstimadoFilter filter)
+		protected override IQueryable<ProyectoEtapaInformacionPresupuestaria> Query(ProyectoEtapaInformacionPresupuestariaFilter filter)
         {
 			return (from o in this.Table
-                      where (filter.IdProyectoEtapaEstimado == null || filter.IdProyectoEtapaEstimado == 0 || o.IdProyectoEtapaEstimado==filter.IdProyectoEtapaEstimado)
+                      where (filter.IdProyectoEtapaInformacionPresupuestaria == null || filter.IdProyectoEtapaInformacionPresupuestaria == 0 || o.IdProyectoEtapaInformacionPresupuestaria==filter.IdProyectoEtapaInformacionPresupuestaria)
 					  && (filter.IdProyectoEtapa == null || filter.IdProyectoEtapa == 0 || o.IdProyectoEtapa==filter.IdProyectoEtapa)
 					  && (filter.IdClasificacionGasto == null || filter.IdClasificacionGasto == 0 || o.IdClasificacionGasto==filter.IdClasificacionGasto)
 					  && (filter.IdFuenteFinanciamiento == null || filter.IdFuenteFinanciamiento == 0 || o.IdFuenteFinanciamiento==filter.IdFuenteFinanciamiento)
@@ -215,15 +216,15 @@ namespace DataAccess
 					  select o
                     ).AsQueryable();
         }	
-        //protected override IQueryable<ProyectoEtapaEstimadoResult> QueryResult(ProyectoEtapaEstimadoFilter filter)
+        //protected override IQueryable<ProyectoEtapaInformacionPresupuestariaResult> QueryResult(ProyectoEtapaInformacionPresupuestariaFilter filter)
         //{
         //  return (from o in Query(filter)					
         //             join t1  in this.Context.ClasificacionGastos on o.IdClasificacionGasto equals t1.IdClasificacionGasto   
         //            join t2  in this.Context.FuenteFinanciamientos on o.IdFuenteFinanciamiento equals t2.IdFuenteFinanciamiento   
         //            join t3  in this.Context.Monedas on o.IdMoneda equals t3.IdMoneda   
         //            join t4  in this.Context.ProyectoEtapas on o.IdProyectoEtapa equals t4.IdProyectoEtapa   
-        //           select new ProyectoEtapaEstimadoResult(){
-        //             IdProyectoEtapaEstimado=o.IdProyectoEtapaEstimado
+        //           select new ProyectoEtapaInformacionPresupuestariaResult(){
+        //             IdProyectoEtapaInformacionPresupuestaria=o.IdProyectoEtapaInformacionPresupuestaria
         //             ,IdProyectoEtapa=o.IdProyectoEtapa
         //             ,IdClasificacionGasto=o.IdClasificacionGasto
         //             ,IdFuenteFinanciamiento=o.IdFuenteFinanciamiento
@@ -265,8 +266,8 @@ namespace DataAccess
         //                //,ProyectoEtapa_Nombre= t4.Nombre	
         //                //,ProyectoEtapa_CodigoVinculacion= t4.CodigoVinculacion	
         //                //,ProyectoEtapa_IdEstado= t4.IdEstado	
-        //                //,ProyectoEtapa_FechaInicioEstimada= t4.FechaInicioEstimada	
-        //                //,ProyectoEtapa_FechaFinEstimada= t4.FechaFinEstimada	
+        //                //,ProyectoEtapa_FechaInicioInformacionPresupuestaria= t4.FechaInicioInformacionPresupuestaria	
+        //                //,ProyectoEtapa_FechaFinInformacionPresupuestaria= t4.FechaFinInformacionPresupuestaria	
         //                //,ProyectoEtapa_FechaInicioRealizada= t4.FechaInicioRealizada	
         //                //,ProyectoEtapa_FechaFinRealizada= t4.FechaFinRealizada	
         //                //,ProyectoEtapa_IdEtapa= t4.IdEtapa	
@@ -277,57 +278,57 @@ namespace DataAccess
         //}
 		#endregion
 		#region Copy
-		public override nc.ProyectoEtapaEstimado Copy(nc.ProyectoEtapaEstimado entity)
+		public override nc.ProyectoEtapaInformacionPresupuestaria Copy(nc.ProyectoEtapaInformacionPresupuestaria entity)
         {           
-            nc.ProyectoEtapaEstimado _new = new nc.ProyectoEtapaEstimado();
+            nc.ProyectoEtapaInformacionPresupuestaria _new = new nc.ProyectoEtapaInformacionPresupuestaria();
 		 _new.IdProyectoEtapa= entity.IdProyectoEtapa;
 		 _new.IdClasificacionGasto= entity.IdClasificacionGasto;
 		 _new.IdFuenteFinanciamiento= entity.IdFuenteFinanciamiento;
 		 _new.IdMoneda= entity.IdMoneda;
 		return _new;			
         }
-		public override int CopyAndSave(ProyectoEtapaEstimado entity,string renameFormat)
+		public override int CopyAndSave(ProyectoEtapaInformacionPresupuestaria entity,string renameFormat)
         {
-            ProyectoEtapaEstimado  newEntity = Copy(entity);
+            ProyectoEtapaInformacionPresupuestaria  newEntity = Copy(entity);
             Add(newEntity);
 			return GetId(newEntity);
         }
 		#endregion
 		#region Set
-		public override void SetId(ProyectoEtapaEstimado entity, int id)
+		public override void SetId(ProyectoEtapaInformacionPresupuestaria entity, int id)
         {            
-            entity.IdProyectoEtapaEstimado = id;            
+            entity.IdProyectoEtapaInformacionPresupuestaria = id;            
         }
-		public override void Set(ProyectoEtapaEstimado source,ProyectoEtapaEstimado target,bool hadSetId)
+		public override void Set(ProyectoEtapaInformacionPresupuestaria source,ProyectoEtapaInformacionPresupuestaria target,bool hadSetId)
 		{		   
-		if(hadSetId)target.IdProyectoEtapaEstimado= source.IdProyectoEtapaEstimado ;
+		if(hadSetId)target.IdProyectoEtapaInformacionPresupuestaria= source.IdProyectoEtapaInformacionPresupuestaria ;
 		 target.IdProyectoEtapa= source.IdProyectoEtapa ;
 		 target.IdClasificacionGasto= source.IdClasificacionGasto ;
 		 target.IdFuenteFinanciamiento= source.IdFuenteFinanciamiento ;
 		 target.IdMoneda= source.IdMoneda ;
 		 		  
 		}
-		public override void Set(ProyectoEtapaEstimadoResult source,ProyectoEtapaEstimado target,bool hadSetId)
+		public override void Set(ProyectoEtapaInformacionPresupuestariaResult source,ProyectoEtapaInformacionPresupuestaria target,bool hadSetId)
 		{		   
-		if(hadSetId)target.IdProyectoEtapaEstimado= source.IdProyectoEtapaEstimado ;
+		if(hadSetId)target.IdProyectoEtapaInformacionPresupuestaria= source.IdProyectoEtapaInformacionPresupuestaria ;
 		 target.IdProyectoEtapa= source.IdProyectoEtapa ;
 		 target.IdClasificacionGasto= source.IdClasificacionGasto ;
 		 target.IdFuenteFinanciamiento= source.IdFuenteFinanciamiento ;
 		 target.IdMoneda= source.IdMoneda ;
 		 
 		}
-		public override void Set(ProyectoEtapaEstimado source,ProyectoEtapaEstimadoResult target,bool hadSetId)
+		public override void Set(ProyectoEtapaInformacionPresupuestaria source,ProyectoEtapaInformacionPresupuestariaResult target,bool hadSetId)
 		{		   
-		if(hadSetId)target.IdProyectoEtapaEstimado= source.IdProyectoEtapaEstimado ;
+		if(hadSetId)target.IdProyectoEtapaInformacionPresupuestaria= source.IdProyectoEtapaInformacionPresupuestaria ;
 		 target.IdProyectoEtapa= source.IdProyectoEtapa ;
 		 target.IdClasificacionGasto= source.IdClasificacionGasto ;
 		 target.IdFuenteFinanciamiento= source.IdFuenteFinanciamiento ;
 		 target.IdMoneda= source.IdMoneda ;
 		 	
 		}		
-		public override void Set(ProyectoEtapaEstimadoResult source,ProyectoEtapaEstimadoResult target,bool hadSetId)
+		public override void Set(ProyectoEtapaInformacionPresupuestariaResult source,ProyectoEtapaInformacionPresupuestariaResult target,bool hadSetId)
 		{		   
-		if(hadSetId)target.IdProyectoEtapaEstimado= source.IdProyectoEtapaEstimado ;
+		if(hadSetId)target.IdProyectoEtapaInformacionPresupuestaria= source.IdProyectoEtapaInformacionPresupuestaria ;
 		 target.IdProyectoEtapa= source.IdProyectoEtapa ;
 		 target.IdClasificacionGasto= source.IdClasificacionGasto ;
 		 target.IdFuenteFinanciamiento= source.IdFuenteFinanciamiento ;
@@ -370,8 +371,8 @@ namespace DataAccess
             //target.ProyectoEtapa_Nombre= source.ProyectoEtapa_Nombre;	
             //target.ProyectoEtapa_CodigoVinculacion= source.ProyectoEtapa_CodigoVinculacion;	
             //target.ProyectoEtapa_IdEstado= source.ProyectoEtapa_IdEstado;	
-            //target.ProyectoEtapa_FechaInicioEstimada= source.ProyectoEtapa_FechaInicioEstimada;	
-            //target.ProyectoEtapa_FechaFinEstimada= source.ProyectoEtapa_FechaFinEstimada;	
+            //target.ProyectoEtapa_FechaInicioInformacionPresupuestaria= source.ProyectoEtapa_FechaInicioInformacionPresupuestaria;	
+            //target.ProyectoEtapa_FechaFinInformacionPresupuestaria= source.ProyectoEtapa_FechaFinInformacionPresupuestaria;	
             //target.ProyectoEtapa_FechaInicioRealizada= source.ProyectoEtapa_FechaInicioRealizada;	
             //target.ProyectoEtapa_FechaFinRealizada= source.ProyectoEtapa_FechaFinRealizada;	
             //target.ProyectoEtapa_IdEtapa= source.ProyectoEtapa_IdEtapa;	
@@ -381,12 +382,12 @@ namespace DataAccess
 		}
 		#endregion			
 		#region Equals
-		public override bool Equals(ProyectoEtapaEstimado source,ProyectoEtapaEstimado target)
+		public override bool Equals(ProyectoEtapaInformacionPresupuestaria source,ProyectoEtapaInformacionPresupuestaria target)
         {
 		   if(source == null && target == null)return true;
 		   if(source == null )return false;
 		   if(target == null)return false;
-         if(!source.IdProyectoEtapaEstimado.Equals(target.IdProyectoEtapaEstimado))return false;
+         if(!source.IdProyectoEtapaInformacionPresupuestaria.Equals(target.IdProyectoEtapaInformacionPresupuestaria))return false;
 		  if(!source.IdProyectoEtapa.Equals(target.IdProyectoEtapa))return false;
 		  if(!source.IdClasificacionGasto.Equals(target.IdClasificacionGasto))return false;
 		  if(!source.IdFuenteFinanciamiento.Equals(target.IdFuenteFinanciamiento))return false;
@@ -394,12 +395,12 @@ namespace DataAccess
 		 
 		  return true;
         }
-		public override bool Equals(ProyectoEtapaEstimadoResult source,ProyectoEtapaEstimadoResult target)
+		public override bool Equals(ProyectoEtapaInformacionPresupuestariaResult source,ProyectoEtapaInformacionPresupuestariaResult target)
         {
 		   if(source == null && target == null)return true;
 		   if(source == null )return false;
 		   if(target == null)return false;
-         if(!source.IdProyectoEtapaEstimado.Equals(target.IdProyectoEtapaEstimado))return false;
+         if(!source.IdProyectoEtapaInformacionPresupuestaria.Equals(target.IdProyectoEtapaInformacionPresupuestaria))return false;
 		  if(!source.IdProyectoEtapa.Equals(target.IdProyectoEtapa))return false;
 		  if(!source.IdClasificacionGasto.Equals(target.IdClasificacionGasto))return false;
 		  if(!source.IdFuenteFinanciamiento.Equals(target.IdFuenteFinanciamiento))return false;
@@ -442,8 +443,8 @@ namespace DataAccess
                       //if((source.ProyectoEtapa_Nombre == null)?target.ProyectoEtapa_Nombre!=null:!source.ProyectoEtapa_Nombre.Equals(target.ProyectoEtapa_Nombre))return false;
                       //   if((source.ProyectoEtapa_CodigoVinculacion == null)?target.ProyectoEtapa_CodigoVinculacion!=null:!source.ProyectoEtapa_CodigoVinculacion.Equals(target.ProyectoEtapa_CodigoVinculacion))return false;
                       //   if((source.ProyectoEtapa_IdEstado == null)?(target.ProyectoEtapa_IdEstado.HasValue && target.ProyectoEtapa_IdEstado.Value > 0):!source.ProyectoEtapa_IdEstado.Equals(target.ProyectoEtapa_IdEstado))return false;
-                      //                if((source.ProyectoEtapa_FechaInicioEstimada == null)?(target.ProyectoEtapa_FechaInicioEstimada.HasValue ):!source.ProyectoEtapa_FechaInicioEstimada.Equals(target.ProyectoEtapa_FechaInicioEstimada))return false;
-                      //   if((source.ProyectoEtapa_FechaFinEstimada == null)?(target.ProyectoEtapa_FechaFinEstimada.HasValue ):!source.ProyectoEtapa_FechaFinEstimada.Equals(target.ProyectoEtapa_FechaFinEstimada))return false;
+                      //                if((source.ProyectoEtapa_FechaInicioInformacionPresupuestaria == null)?(target.ProyectoEtapa_FechaInicioInformacionPresupuestaria.HasValue ):!source.ProyectoEtapa_FechaInicioInformacionPresupuestaria.Equals(target.ProyectoEtapa_FechaInicioInformacionPresupuestaria))return false;
+                      //   if((source.ProyectoEtapa_FechaFinInformacionPresupuestaria == null)?(target.ProyectoEtapa_FechaFinInformacionPresupuestaria.HasValue ):!source.ProyectoEtapa_FechaFinInformacionPresupuestaria.Equals(target.ProyectoEtapa_FechaFinInformacionPresupuestaria))return false;
                       //   if((source.ProyectoEtapa_FechaInicioRealizada == null)?(target.ProyectoEtapa_FechaInicioRealizada.HasValue ):!source.ProyectoEtapa_FechaInicioRealizada.Equals(target.ProyectoEtapa_FechaInicioRealizada))return false;
                       //   if((source.ProyectoEtapa_FechaFinRealizada == null)?(target.ProyectoEtapa_FechaFinRealizada.HasValue ):!source.ProyectoEtapa_FechaFinRealizada.Equals(target.ProyectoEtapa_FechaFinRealizada))return false;
                       //   if(!source.ProyectoEtapa_IdEtapa.Equals(target.ProyectoEtapa_IdEtapa))return false;

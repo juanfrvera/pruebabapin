@@ -1004,10 +1004,6 @@
       <Column Name="Monto" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="Cotizacion" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="MontoCalculado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="MontoInicial" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="MontoVigente" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="MontoDevengado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="MontoVigenteEstimativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="ProyectoEtapaEstimado_ProyectoEtapaEstimadoPeriodo" Member="ProyectoEtapaEstimado" ThisKey="IdProyectoEtapaEstimado" OtherKey="IdProyectoEtapaEstimado" Type="ProyectoEtapaEstimado" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1021,6 +1017,18 @@
       <Column Name="Cotizacion" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="MontoCalculado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Association Name="ProyectoEtapaRealizado_ProyectoEtapaRealizadoPeriodo" Member="ProyectoEtapaRealizado" ThisKey="IdProyectoEtapaRealizado" OtherKey="IdProyectoEtapaRealizado" Type="ProyectoEtapaRealizado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoEtapaInformacionPresupuestariaPeriodo" Member="ProyectoEtapaInformacionPresupuestariaPeriodos">
+    <Type Name="ProyectoEtapaInformacionPresupuestariaPeriodo">
+      <Column Name="IdProyectoEtapaInformacionPresupuestariaPeriodo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyectoEtapaInformacionPresupuestaria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Periodo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MontoInicial" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoVigente" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoDevengado" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MontoVigenteEstimativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="ProyectoEtapaInformacionPresupuestaria_ProyectoEtapaInformacionPresupuestariaPeriodo" Member="ProyectoEtapaInformacionPresupuestaria" ThisKey="IdProyectoEtapaInformacionPresupuestaria" OtherKey="IdProyectoEtapaInformacionPresupuestaria" Type="ProyectoEtapaInformacionPresupuestaria" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Saf" Member="Safs">
@@ -1676,6 +1684,20 @@
       <Association Name="Moneda_ProyectoEtapaEstimado" Member="Moneda" ThisKey="IdMoneda" OtherKey="IdMoneda" Type="Moneda" IsForeignKey="true" />
       <Association Name="ProyectoEtapa_ProyectoEtapaEstimado" Member="ProyectoEtapa" ThisKey="IdProyectoEtapa" OtherKey="IdProyectoEtapa" Type="ProyectoEtapa" IsForeignKey="true" />
       <Association Name="ClasificacionGasto_ProyectoEtapaEstimado" Member="ClasificacionGasto" ThisKey="IdClasificacionGasto" OtherKey="IdClasificacionGasto" Type="ClasificacionGasto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoEtapaInformacionPresupuestaria" Member="ProyectoEtapaInformacionPresupuestarias">
+    <Type Name="ProyectoEtapaInformacionPresupuestaria">
+      <Column Name="IdProyectoEtapaInformacionPresupuestaria" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyectoEtapa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdClasificacionGasto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdFuenteFinanciamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdMoneda" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ProyectoEtapaInformacionPresupuestaria_ProyectoEtapaInformacionPresupuestariaPeriodo" Member="ProyectoEtapaInformacionPresupuestariaPeriodos" ThisKey="IdProyectoEtapaInformacionPresupuestaria" OtherKey="IdProyectoEtapaInformacionPresupuestaria" Type="ProyectoEtapaInformacionPresupuestariaPeriodo" />
+      <Association Name="FuenteFinanciamiento_ProyectoEtapaInformacionPresupuestaria" Member="FuenteFinanciamiento" ThisKey="IdFuenteFinanciamiento" OtherKey="IdFuenteFinanciamiento" Type="FuenteFinanciamiento" IsForeignKey="true" />
+      <Association Name="Moneda_ProyectoEtapaInformacionPresupuestaria" Member="Moneda" ThisKey="IdMoneda" OtherKey="IdMoneda" Type="Moneda" IsForeignKey="true" />
+      <Association Name="ProyectoEtapa_ProyectoEtapaInformacionPresupuestaria" Member="ProyectoEtapa" ThisKey="IdProyectoEtapa" OtherKey="IdProyectoEtapa" Type="ProyectoEtapa" IsForeignKey="true" />
+      <Association Name="ClasificacionGasto_ProyectoEtapaInformacionPresupuestaria" Member="ClasificacionGasto" ThisKey="IdClasificacionGasto" OtherKey="IdClasificacionGasto" Type="ClasificacionGasto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProyectoSeguimientoEstado" Member="ProyectoSeguimientoEstados">

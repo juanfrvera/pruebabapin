@@ -116,8 +116,12 @@
     <Compile Include="Business\AuditOperationBusiness.cs" />
     <Compile Include="Business\AuditOperationDetailBusiness.cs" />
     <Compile Include="Business\AuditSessionBusiness.cs" />
+    <Compile Include="Business\Base\_ProyectoEtapaInformacionPresupuestariaBusiness.cs" />
+    <Compile Include="Business\Base\_ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.cs" />
     <Compile Include="Business\Base\_ProyectoPrincipiosFormulacionBusiness.cs" />
     <Compile Include="Business\Base\_MessageConfigurationBusiness.cs" />
+    <Compile Include="Business\ProyectoEtapaInformacionPresupuestariaBusiness.cs" />
+    <Compile Include="Business\ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.cs" />
     <Compile Include="Business\ProyectoPrincipiosFormulacionBusiness.cs" />
     <Compile Include="Business\ProyectoPrincipiosFormulacionComposeBusiness.cs" />
     <Compile Include="Business\MessageConfigurationBusiness.cs" />

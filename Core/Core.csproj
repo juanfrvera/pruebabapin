@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\EnumUtilities.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="DataHelper.cs" />
     <Compile Include="EnumerableExtension.cs" />

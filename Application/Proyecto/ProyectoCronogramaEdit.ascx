@@ -197,26 +197,35 @@
     </table>
     <asp:UpdatePanel ID= "upGridEtapasEstimadas"  runat="server" UpdateMode = "Conditional" >
         <ContentTemplate>
-        
-      <div class="<%= scrollDivEstimadas %>">
-      <asp:GridView ID="gridEtapasEstimadas" runat = "server"
-                AutoGenerateColumns="True" DataKeyNames="ID"   
-                OnRowCommand="GridEtapasEstimadas_RowCommand"
-                EmptyDataText="Para cargar los Gastos Estimados, las Fechas Estimadas del Cronograma deben estar definidas." >
-                <Columns>                   
-                   <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
-                   <asp:TemplateField Visible="false" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px" >
-                        <ItemTemplate>
-                            <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate %>'   CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
-                            &nbsp;
-                            <asp:ImageButton ID ='imgDelete' runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate%>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
-                        </ItemTemplate> 
-                    </asp:TemplateField>
+              <div class="<%= scrollDivEstimadas %>">
+                  <table cellpadding="0" cellspacing="0px" border="0"   width="100%">
+                      <tr>
+                        <td style="text-align:right">
+                            <strong><asp:Literal ID="litEtapasEstimadasTotal" runat="server" Visible="False" Text=""></asp:Literal></strong>
+                        </td>
+                      </tr>	
+                      <tr>
+                          <td>
+                            <asp:GridView ID="gridEtapasEstimadas" runat = "server"
+                            AutoGenerateColumns="True" DataKeyNames="ID"   
+                            OnRowCommand="GridEtapasEstimadas_RowCommand"
+                            EmptyDataText="Para cargar los Gastos Estimados, las Fechas Estimadas del Cronograma deben estar definidas." >
+                                <Columns>                   
+                                    <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
+                                    <asp:TemplateField Visible="false" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px" >
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate %>'   CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
+                                            &nbsp;
+                                            <asp:ImageButton ID ='imgDelete' runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaEstimadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaEstimadaUpdate%>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
+                                        </ItemTemplate> 
+                                    </asp:TemplateField>
                     
-                </Columns>
-            </asp:GridView>
-       </div>
-                
+                                </Columns>
+                            </asp:GridView>
+                          </td>
+                      </tr>	 
+                   </table> 
+               </div>
             </ContentTemplate>
         </asp:UpdatePanel>
 </asp:panel>
@@ -246,27 +255,36 @@
     
         <asp:UpdatePanel ID= "upGridEtapasRealizadas"  runat="server" UpdateMode = "Conditional" >
         <ContentTemplate>
-        
             <div class="<%= scrollDivRealizadas %>">        
-            
-            <asp:GridView ID="gridEtapasRealizadas" runat = "server"
-                AutoGenerateColumns="True" DataKeyNames="ID" AllowPaging="False"  
-                OnRowCommand="GridEtapasRealizadas_RowCommand" 
-                AllowSorting="false"
-                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el estado fianciero del proyecto debe ser 'En Ejecución' (solapa 'General')">
-                <Columns> 
-                    <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
-                    <asp:TemplateField Visible="false"  ItemStyle-HorizontalAlign="Center" >
-                        <ItemTemplate>
-                            &nbsp;
-                            <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CssClass='<%# EnableEtapaRealizadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaRealizadaUpdate %>'    CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
-                            &nbsp;
-                            <asp:ImageButton ID ="imgDelete" runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaRealizadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaRealizadaUpdate %>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
-                        </ItemTemplate>            
-                        <ItemStyle Width="50px"  HorizontalAlign ="Right"/>
-                    </asp:TemplateField>
-                </Columns>
-                </asp:GridView>
+                <table cellpadding="0" cellspacing="0px" border="0"   width="100%">
+                      <tr>
+                        <td style="text-align:right">
+                            <strong><asp:Literal ID="litEtapasRealizadasTotal" runat="server" Visible="False" Text=""></asp:Literal></strong>
+                        </td>
+                      </tr>	
+                      <tr>
+                          <td>
+                            <asp:GridView ID="gridEtapasRealizadas" runat = "server"
+                                AutoGenerateColumns="True" DataKeyNames="ID" AllowPaging="False"  
+                                OnRowCommand="GridEtapasRealizadas_RowCommand" 
+                                AllowSorting="false"
+                                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el estado fianciero del proyecto debe ser 'En Ejecución' (solapa 'General')">
+                                <Columns> 
+                                    <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
+                                    <asp:TemplateField Visible="false"  ItemStyle-HorizontalAlign="Center" >
+                                        <ItemTemplate>
+                                            &nbsp;
+                                            <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CssClass='<%# EnableEtapaRealizadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaRealizadaUpdate %>'    CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
+                                            &nbsp;
+                                            <asp:ImageButton ID ="imgDelete" runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' CssClass='<%# EnableEtapaRealizadaUpdate==true?"":"ibDisable"  %>' Enabled='<%# EnableEtapaRealizadaUpdate %>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
+                                        </ItemTemplate>            
+                                        <ItemStyle Width="50px"  HorizontalAlign ="Right"/>
+                                    </asp:TemplateField>
+                                </Columns>
+                                </asp:GridView>
+                          </td>
+                      </tr>
+                    </table>	
             </div>                        
             </ContentTemplate>    
         </asp:UpdatePanel>
@@ -415,6 +433,7 @@
         PopupDragHandleControlID="EtapasPopUpDragHandle" PopupControlID="PopUpEtapas"
         OkControlID="Button2" TargetControlID="Button2" BackgroundCssClass="modalBackground" />
 </asp:panel>
+
 <%--PANEL ALTA ESTIMADOS --%>
 <asp:panel id="PopUpEtapasEstimadas" runat="server" width="900px" style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
@@ -503,35 +522,10 @@
                                                     <ItemTemplate>                        
                                                         <cc:NumericTextBox id="txtMontoEstimado" runat="server" ValidationGroup="vgEtapasEstimadas" Width="120px" DataFormatString="{0:N0}" Text='<%#string.Format("{0:N0}",Eval("MontoCalculadoPeriodo")) %>'  Enabled='<%#!(bool)Eval("Bloqueado") && (bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
                                                     </ItemTemplate>
-                                                </asp:TemplateField>	
-                                                <asp:TemplateField   HeaderText="Monto Inicial"  HeaderStyle-Width ="17%" >            
-                                                    <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtc" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoInicial")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField   HeaderText="Monto Vigente"  HeaderStyle-Width ="17%" >            
-                                                    <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtMontoVigente" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoVigente")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>	
-                                                <asp:TemplateField   HeaderText="MVE (*)"  HeaderStyle-Width ="9%" >            
-                                                    <ItemTemplate>                        
-                                                        <asp:CheckBox id="cbMontoVigenteEstimativo" runat="server" Enabled='false' Checked='<%# Convert.ToBoolean(Eval("MontoVigente")) %>'></asp:CheckBox>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField   HeaderText="Monto Devengado"  HeaderStyle-Width ="1%" Visible="false" >            
-                                                    <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtMontoDevengado" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoDevengado")) %>' Enabled='false' Visible='false' UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
-                                                    </ItemTemplate>
                                                 </asp:TemplateField>		                                   
                                             </Columns>
                                         </asp:GridView> 
                                 </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" style="text-align:right">
-                                                                            (*) MVE: Monto Vigente Estimativo.
-                                    </td>
                                 </tr>
                             </table>
                         </td>                        

@@ -161,6 +161,8 @@
     <Compile Include="Service\AuditOperationDetailService.cs" />
     <Compile Include="Service\AuditOperationService.cs" />
     <Compile Include="Service\AuditSessionService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaInformacionPresupuestariaPeriodoService.cs" />
+    <Compile Include="Service\Base\_ProyectoEtapaInformacionPresupuestariaService.cs" />
     <Compile Include="Service\Base\_ActividadPermisoService.cs" />
     <Compile Include="Service\Base\_ActividadService.cs" />
     <Compile Include="Service\Base\_AdministracionTipoService.cs" />
@@ -347,6 +349,8 @@
     <Compile Include="Service\ComentarioTecnicoService.cs" />
     <Compile Include="Service\ConfigurationCategoryService.cs" />
     <Compile Include="Service\ConfigurationService.cs" />
+    <Compile Include="Service\ProyectoEtapaInformacionPresupuestariaPeriodoService.cs" />
+    <Compile Include="Service\ProyectoEtapaInformacionPresupuestariaService.cs" />
     <Compile Include="Service\ProyectoPrincipiosFormulacionComposeService.cs" />
     <Compile Include="Service\EntidadTipoService.cs" />
     <Compile Include="Service\EstadoDeDesicionHistoricoService.cs" />

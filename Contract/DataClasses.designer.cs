@@ -319,6 +319,9 @@ namespace Contract
     partial void InsertProyectoEtapaRealizadoPeriodo(ProyectoEtapaRealizadoPeriodo instance);
     partial void UpdateProyectoEtapaRealizadoPeriodo(ProyectoEtapaRealizadoPeriodo instance);
     partial void DeleteProyectoEtapaRealizadoPeriodo(ProyectoEtapaRealizadoPeriodo instance);
+    partial void InsertProyectoEtapaInformacionPresupuestariaPeriodo(ProyectoEtapaInformacionPresupuestariaPeriodo instance);
+    partial void UpdateProyectoEtapaInformacionPresupuestariaPeriodo(ProyectoEtapaInformacionPresupuestariaPeriodo instance);
+    partial void DeleteProyectoEtapaInformacionPresupuestariaPeriodo(ProyectoEtapaInformacionPresupuestariaPeriodo instance);
     partial void InsertSaf(Saf instance);
     partial void UpdateSaf(Saf instance);
     partial void DeleteSaf(Saf instance);
@@ -454,6 +457,9 @@ namespace Contract
     partial void InsertProyectoEtapaEstimado(ProyectoEtapaEstimado instance);
     partial void UpdateProyectoEtapaEstimado(ProyectoEtapaEstimado instance);
     partial void DeleteProyectoEtapaEstimado(ProyectoEtapaEstimado instance);
+    partial void InsertProyectoEtapaInformacionPresupuestaria(ProyectoEtapaInformacionPresupuestaria instance);
+    partial void UpdateProyectoEtapaInformacionPresupuestaria(ProyectoEtapaInformacionPresupuestaria instance);
+    partial void DeleteProyectoEtapaInformacionPresupuestaria(ProyectoEtapaInformacionPresupuestaria instance);
     partial void InsertProyectoSeguimientoEstado(ProyectoSeguimientoEstado instance);
     partial void UpdateProyectoSeguimientoEstado(ProyectoSeguimientoEstado instance);
     partial void DeleteProyectoSeguimientoEstado(ProyectoSeguimientoEstado instance);
@@ -1367,6 +1373,14 @@ namespace Contract
 			}
 		}
 		
+		public System.Data.Linq.Table<ProyectoEtapaInformacionPresupuestariaPeriodo> ProyectoEtapaInformacionPresupuestariaPeriodos
+		{
+			get
+			{
+				return this.GetTable<ProyectoEtapaInformacionPresupuestariaPeriodo>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Saf> Safs
 		{
 			get
@@ -1724,6 +1738,14 @@ namespace Contract
 			get
 			{
 				return this.GetTable<ProyectoEtapaEstimado>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ProyectoEtapaInformacionPresupuestaria> ProyectoEtapaInformacionPresupuestarias
+		{
+			get
+			{
+				return this.GetTable<ProyectoEtapaInformacionPresupuestaria>();
 			}
 		}
 		
@@ -25514,14 +25536,6 @@ namespace Contract
 		
 		private decimal _MontoCalculado;
 		
-		private decimal _MontoInicial;
-		
-		private decimal _MontoVigente;
-		
-		private decimal _MontoDevengado;
-		
-		private bool _MontoVigenteEstimativo;
-		
 		private EntityRef<ProyectoEtapaEstimado> _ProyectoEtapaEstimado;
 		
     #region Extensibility Method Definitions
@@ -25540,14 +25554,6 @@ namespace Contract
     partial void OnCotizacionChanged();
     partial void OnMontoCalculadoChanging(decimal value);
     partial void OnMontoCalculadoChanged();
-    partial void OnMontoInicialChanging(decimal value);
-    partial void OnMontoInicialChanged();
-    partial void OnMontoVigenteChanging(decimal value);
-    partial void OnMontoVigenteChanged();
-    partial void OnMontoDevengadoChanging(decimal value);
-    partial void OnMontoDevengadoChanged();
-    partial void OnMontoVigenteEstimativoChanging(bool value);
-    partial void OnMontoVigenteEstimativoChanged();
     #endregion
 		
 		public ProyectoEtapaEstimadoPeriodo()
@@ -25681,90 +25687,6 @@ namespace Contract
 					this._MontoCalculado = value;
 					this.SendPropertyChanged("MontoCalculado");
 					this.OnMontoCalculadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoInicial", DbType="Money NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-		public decimal MontoInicial
-		{
-			get
-			{
-				return this._MontoInicial;
-			}
-			set
-			{
-				if ((this._MontoInicial != value))
-				{
-					this.OnMontoInicialChanging(value);
-					this.SendPropertyChanging();
-					this._MontoInicial = value;
-					this.SendPropertyChanged("MontoInicial");
-					this.OnMontoInicialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoVigente", DbType="Money NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-		public decimal MontoVigente
-		{
-			get
-			{
-				return this._MontoVigente;
-			}
-			set
-			{
-				if ((this._MontoVigente != value))
-				{
-					this.OnMontoVigenteChanging(value);
-					this.SendPropertyChanging();
-					this._MontoVigente = value;
-					this.SendPropertyChanged("MontoVigente");
-					this.OnMontoVigenteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoDevengado", DbType="Money NOT NULL")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-		public decimal MontoDevengado
-		{
-			get
-			{
-				return this._MontoDevengado;
-			}
-			set
-			{
-				if ((this._MontoDevengado != value))
-				{
-					this.OnMontoDevengadoChanging(value);
-					this.SendPropertyChanging();
-					this._MontoDevengado = value;
-					this.SendPropertyChanged("MontoDevengado");
-					this.OnMontoDevengadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoVigenteEstimativo", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
-		public bool MontoVigenteEstimativo
-		{
-			get
-			{
-				return this._MontoVigenteEstimativo;
-			}
-			set
-			{
-				if ((this._MontoVigenteEstimativo != value))
-				{
-					this.OnMontoVigenteEstimativoChanging(value);
-					this.SendPropertyChanging();
-					this._MontoVigenteEstimativo = value;
-					this.SendPropertyChanged("MontoVigenteEstimativo");
-					this.OnMontoVigenteEstimativoChanged();
 				}
 			}
 		}
@@ -26093,6 +26015,274 @@ namespace Contract
 		private void Initialize()
 		{
 			this._ProyectoEtapaRealizado = default(EntityRef<ProyectoEtapaRealizado>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProyectoEtapaInformacionPresupuestariaPeriodo")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class ProyectoEtapaInformacionPresupuestariaPeriodo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdProyectoEtapaInformacionPresupuestariaPeriodo;
+		
+		private int _IdProyectoEtapaInformacionPresupuestaria;
+		
+		private int _Periodo;
+		
+		private decimal _MontoInicial;
+		
+		private decimal _MontoVigente;
+		
+		private decimal _MontoDevengado;
+		
+		private bool _MontoVigenteEstimativo;
+		
+		private EntityRef<ProyectoEtapaInformacionPresupuestaria> _ProyectoEtapaInformacionPresupuestaria;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdProyectoEtapaInformacionPresupuestariaPeriodoChanging(int value);
+    partial void OnIdProyectoEtapaInformacionPresupuestariaPeriodoChanged();
+    partial void OnIdProyectoEtapaInformacionPresupuestariaChanging(int value);
+    partial void OnIdProyectoEtapaInformacionPresupuestariaChanged();
+    partial void OnPeriodoChanging(int value);
+    partial void OnPeriodoChanged();
+    partial void OnMontoInicialChanging(decimal value);
+    partial void OnMontoInicialChanged();
+    partial void OnMontoVigenteChanging(decimal value);
+    partial void OnMontoVigenteChanged();
+    partial void OnMontoDevengadoChanging(decimal value);
+    partial void OnMontoDevengadoChanged();
+    partial void OnMontoVigenteEstimativoChanging(bool value);
+    partial void OnMontoVigenteEstimativoChanged();
+    #endregion
+		
+		public ProyectoEtapaInformacionPresupuestariaPeriodo()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyectoEtapaInformacionPresupuestariaPeriodo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int IdProyectoEtapaInformacionPresupuestariaPeriodo
+		{
+			get
+			{
+				return this._IdProyectoEtapaInformacionPresupuestariaPeriodo;
+			}
+			set
+			{
+				if ((this._IdProyectoEtapaInformacionPresupuestariaPeriodo != value))
+				{
+					this.OnIdProyectoEtapaInformacionPresupuestariaPeriodoChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyectoEtapaInformacionPresupuestariaPeriodo = value;
+					this.SendPropertyChanged("IdProyectoEtapaInformacionPresupuestariaPeriodo");
+					this.OnIdProyectoEtapaInformacionPresupuestariaPeriodoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyectoEtapaInformacionPresupuestaria", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public int IdProyectoEtapaInformacionPresupuestaria
+		{
+			get
+			{
+				return this._IdProyectoEtapaInformacionPresupuestaria;
+			}
+			set
+			{
+				if ((this._IdProyectoEtapaInformacionPresupuestaria != value))
+				{
+					if (this._ProyectoEtapaInformacionPresupuestaria.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProyectoEtapaInformacionPresupuestariaChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyectoEtapaInformacionPresupuestaria = value;
+					this.SendPropertyChanged("IdProyectoEtapaInformacionPresupuestaria");
+					this.OnIdProyectoEtapaInformacionPresupuestariaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Periodo", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int Periodo
+		{
+			get
+			{
+				return this._Periodo;
+			}
+			set
+			{
+				if ((this._Periodo != value))
+				{
+					this.OnPeriodoChanging(value);
+					this.SendPropertyChanging();
+					this._Periodo = value;
+					this.SendPropertyChanged("Periodo");
+					this.OnPeriodoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoInicial", DbType="Money NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public decimal MontoInicial
+		{
+			get
+			{
+				return this._MontoInicial;
+			}
+			set
+			{
+				if ((this._MontoInicial != value))
+				{
+					this.OnMontoInicialChanging(value);
+					this.SendPropertyChanging();
+					this._MontoInicial = value;
+					this.SendPropertyChanged("MontoInicial");
+					this.OnMontoInicialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoVigente", DbType="Money NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public decimal MontoVigente
+		{
+			get
+			{
+				return this._MontoVigente;
+			}
+			set
+			{
+				if ((this._MontoVigente != value))
+				{
+					this.OnMontoVigenteChanging(value);
+					this.SendPropertyChanging();
+					this._MontoVigente = value;
+					this.SendPropertyChanged("MontoVigente");
+					this.OnMontoVigenteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoDevengado", DbType="Money NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public decimal MontoDevengado
+		{
+			get
+			{
+				return this._MontoDevengado;
+			}
+			set
+			{
+				if ((this._MontoDevengado != value))
+				{
+					this.OnMontoDevengadoChanging(value);
+					this.SendPropertyChanging();
+					this._MontoDevengado = value;
+					this.SendPropertyChanged("MontoDevengado");
+					this.OnMontoDevengadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoVigenteEstimativo", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public bool MontoVigenteEstimativo
+		{
+			get
+			{
+				return this._MontoVigenteEstimativo;
+			}
+			set
+			{
+				if ((this._MontoVigenteEstimativo != value))
+				{
+					this.OnMontoVigenteEstimativoChanging(value);
+					this.SendPropertyChanging();
+					this._MontoVigenteEstimativo = value;
+					this.SendPropertyChanged("MontoVigenteEstimativo");
+					this.OnMontoVigenteEstimativoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProyectoEtapaInformacionPresupuestaria_ProyectoEtapaInformacionPresupuestariaPeri" +
+			"odo", Storage="_ProyectoEtapaInformacionPresupuestaria", ThisKey="IdProyectoEtapaInformacionPresupuestaria", OtherKey="IdProyectoEtapaInformacionPresupuestaria", IsForeignKey=true)]
+		public ProyectoEtapaInformacionPresupuestaria ProyectoEtapaInformacionPresupuestaria
+		{
+			get
+			{
+				return this._ProyectoEtapaInformacionPresupuestaria.Entity;
+			}
+			set
+			{
+				ProyectoEtapaInformacionPresupuestaria previousValue = this._ProyectoEtapaInformacionPresupuestaria.Entity;
+				if (((previousValue != value) 
+							|| (this._ProyectoEtapaInformacionPresupuestaria.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ProyectoEtapaInformacionPresupuestaria.Entity = null;
+						previousValue.ProyectoEtapaInformacionPresupuestariaPeriodos.Remove(this);
+					}
+					this._ProyectoEtapaInformacionPresupuestaria.Entity = value;
+					if ((value != null))
+					{
+						value.ProyectoEtapaInformacionPresupuestariaPeriodos.Add(this);
+						this._IdProyectoEtapaInformacionPresupuestaria = value.IdProyectoEtapaInformacionPresupuestaria;
+					}
+					else
+					{
+						this._IdProyectoEtapaInformacionPresupuestaria = default(int);
+					}
+					this.SendPropertyChanged("ProyectoEtapaInformacionPresupuestaria");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._ProyectoEtapaInformacionPresupuestaria = default(EntityRef<ProyectoEtapaInformacionPresupuestaria>);
 			OnCreated();
 		}
 		
@@ -42717,6 +42907,357 @@ namespace Contract
 		private void Initialize()
 		{
 			this._ProyectoEtapaEstimadoPeriodos = new EntitySet<ProyectoEtapaEstimadoPeriodo>(new Action<ProyectoEtapaEstimadoPeriodo>(this.attach_ProyectoEtapaEstimadoPeriodos), new Action<ProyectoEtapaEstimadoPeriodo>(this.detach_ProyectoEtapaEstimadoPeriodos));
+			this._FuenteFinanciamiento = default(EntityRef<FuenteFinanciamiento>);
+			this._Moneda = default(EntityRef<Moneda>);
+			this._ProyectoEtapa = default(EntityRef<ProyectoEtapa>);
+			this._ClasificacionGasto = default(EntityRef<ClasificacionGasto>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProyectoEtapaInformacionPresupuestaria")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class ProyectoEtapaInformacionPresupuestaria : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdProyectoEtapaInformacionPresupuestaria;
+		
+		private int _IdProyectoEtapa;
+		
+		private int _IdClasificacionGasto;
+		
+		private int _IdFuenteFinanciamiento;
+		
+		private int _IdMoneda;
+		
+		private EntitySet<ProyectoEtapaInformacionPresupuestariaPeriodo> _ProyectoEtapaInformacionPresupuestariaPeriodos;
+		
+		private EntityRef<FuenteFinanciamiento> _FuenteFinanciamiento;
+		
+		private EntityRef<Moneda> _Moneda;
+		
+		private EntityRef<ProyectoEtapa> _ProyectoEtapa;
+		
+		private EntityRef<ClasificacionGasto> _ClasificacionGasto;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdProyectoEtapaInformacionPresupuestariaChanging(int value);
+    partial void OnIdProyectoEtapaInformacionPresupuestariaChanged();
+    partial void OnIdProyectoEtapaChanging(int value);
+    partial void OnIdProyectoEtapaChanged();
+    partial void OnIdClasificacionGastoChanging(int value);
+    partial void OnIdClasificacionGastoChanged();
+    partial void OnIdFuenteFinanciamientoChanging(int value);
+    partial void OnIdFuenteFinanciamientoChanged();
+    partial void OnIdMonedaChanging(int value);
+    partial void OnIdMonedaChanged();
+    #endregion
+		
+		public ProyectoEtapaInformacionPresupuestaria()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyectoEtapaInformacionPresupuestaria", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int IdProyectoEtapaInformacionPresupuestaria
+		{
+			get
+			{
+				return this._IdProyectoEtapaInformacionPresupuestaria;
+			}
+			set
+			{
+				if ((this._IdProyectoEtapaInformacionPresupuestaria != value))
+				{
+					this.OnIdProyectoEtapaInformacionPresupuestariaChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyectoEtapaInformacionPresupuestaria = value;
+					this.SendPropertyChanged("IdProyectoEtapaInformacionPresupuestaria");
+					this.OnIdProyectoEtapaInformacionPresupuestariaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyectoEtapa", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public int IdProyectoEtapa
+		{
+			get
+			{
+				return this._IdProyectoEtapa;
+			}
+			set
+			{
+				if ((this._IdProyectoEtapa != value))
+				{
+					if (this._ProyectoEtapa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProyectoEtapaChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyectoEtapa = value;
+					this.SendPropertyChanged("IdProyectoEtapa");
+					this.OnIdProyectoEtapaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdClasificacionGasto", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int IdClasificacionGasto
+		{
+			get
+			{
+				return this._IdClasificacionGasto;
+			}
+			set
+			{
+				if ((this._IdClasificacionGasto != value))
+				{
+					if (this._ClasificacionGasto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdClasificacionGastoChanging(value);
+					this.SendPropertyChanging();
+					this._IdClasificacionGasto = value;
+					this.SendPropertyChanged("IdClasificacionGasto");
+					this.OnIdClasificacionGastoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdFuenteFinanciamiento", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public int IdFuenteFinanciamiento
+		{
+			get
+			{
+				return this._IdFuenteFinanciamiento;
+			}
+			set
+			{
+				if ((this._IdFuenteFinanciamiento != value))
+				{
+					if (this._FuenteFinanciamiento.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdFuenteFinanciamientoChanging(value);
+					this.SendPropertyChanging();
+					this._IdFuenteFinanciamiento = value;
+					this.SendPropertyChanged("IdFuenteFinanciamiento");
+					this.OnIdFuenteFinanciamientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMoneda", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public int IdMoneda
+		{
+			get
+			{
+				return this._IdMoneda;
+			}
+			set
+			{
+				if ((this._IdMoneda != value))
+				{
+					if (this._Moneda.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdMonedaChanging(value);
+					this.SendPropertyChanging();
+					this._IdMoneda = value;
+					this.SendPropertyChanged("IdMoneda");
+					this.OnIdMonedaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProyectoEtapaInformacionPresupuestaria_ProyectoEtapaInformacionPresupuestariaPeri" +
+			"odo", Storage="_ProyectoEtapaInformacionPresupuestariaPeriodos", ThisKey="IdProyectoEtapaInformacionPresupuestaria", OtherKey="IdProyectoEtapaInformacionPresupuestaria")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
+		public EntitySet<ProyectoEtapaInformacionPresupuestariaPeriodo> ProyectoEtapaInformacionPresupuestariaPeriodos
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._ProyectoEtapaInformacionPresupuestariaPeriodos.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._ProyectoEtapaInformacionPresupuestariaPeriodos;
+			}
+			set
+			{
+				this._ProyectoEtapaInformacionPresupuestariaPeriodos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FuenteFinanciamiento_ProyectoEtapaInformacionPresupuestaria", Storage="_FuenteFinanciamiento", ThisKey="IdFuenteFinanciamiento", OtherKey="IdFuenteFinanciamiento", IsForeignKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
+		public FuenteFinanciamiento FuenteFinanciamiento
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._FuenteFinanciamiento.HasLoadedOrAssignedValue == false)))
+				{
+					return null;
+				}
+				return this._FuenteFinanciamiento.Entity;
+			}
+			set
+			{
+				if ((this._FuenteFinanciamiento.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._FuenteFinanciamiento.Entity = value;
+					this.SendPropertyChanged("FuenteFinanciamiento");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Moneda_ProyectoEtapaInformacionPresupuestaria", Storage="_Moneda", ThisKey="IdMoneda", OtherKey="IdMoneda", IsForeignKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8, EmitDefaultValue=false)]
+		public Moneda Moneda
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._Moneda.HasLoadedOrAssignedValue == false)))
+				{
+					return null;
+				}
+				return this._Moneda.Entity;
+			}
+			set
+			{
+				if ((this._Moneda.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._Moneda.Entity = value;
+					this.SendPropertyChanged("Moneda");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProyectoEtapa_ProyectoEtapaInformacionPresupuestaria", Storage="_ProyectoEtapa", ThisKey="IdProyectoEtapa", OtherKey="IdProyectoEtapa", IsForeignKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9, EmitDefaultValue=false)]
+		public ProyectoEtapa ProyectoEtapa
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._ProyectoEtapa.HasLoadedOrAssignedValue == false)))
+				{
+					return null;
+				}
+				return this._ProyectoEtapa.Entity;
+			}
+			set
+			{
+				if ((this._ProyectoEtapa.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._ProyectoEtapa.Entity = value;
+					this.SendPropertyChanged("ProyectoEtapa");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ClasificacionGasto_ProyectoEtapaInformacionPresupuestaria", Storage="_ClasificacionGasto", ThisKey="IdClasificacionGasto", OtherKey="IdClasificacionGasto", IsForeignKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10, EmitDefaultValue=false)]
+		public ClasificacionGasto ClasificacionGasto
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._ClasificacionGasto.HasLoadedOrAssignedValue == false)))
+				{
+					return null;
+				}
+				return this._ClasificacionGasto.Entity;
+			}
+			set
+			{
+				if ((this._ClasificacionGasto.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._ClasificacionGasto.Entity = value;
+					this.SendPropertyChanged("ClasificacionGasto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProyectoEtapaInformacionPresupuestariaPeriodos(ProyectoEtapaInformacionPresupuestariaPeriodo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProyectoEtapaInformacionPresupuestaria = this;
+		}
+		
+		private void detach_ProyectoEtapaInformacionPresupuestariaPeriodos(ProyectoEtapaInformacionPresupuestariaPeriodo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProyectoEtapaInformacionPresupuestaria = null;
+		}
+		
+		private void Initialize()
+		{
+			this._ProyectoEtapaInformacionPresupuestariaPeriodos = new EntitySet<ProyectoEtapaInformacionPresupuestariaPeriodo>(new Action<ProyectoEtapaInformacionPresupuestariaPeriodo>(this.attach_ProyectoEtapaInformacionPresupuestariaPeriodos), new Action<ProyectoEtapaInformacionPresupuestariaPeriodo>(this.detach_ProyectoEtapaInformacionPresupuestariaPeriodos));
 			this._FuenteFinanciamiento = default(EntityRef<FuenteFinanciamiento>);
 			this._Moneda = default(EntityRef<Moneda>);
 			this._ProyectoEtapa = default(EntityRef<ProyectoEtapa>);

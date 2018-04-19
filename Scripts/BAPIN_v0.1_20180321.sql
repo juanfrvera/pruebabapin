@@ -30,14 +30,61 @@ GO
 USE [BD_BAPIN]
 GO
 
-IF NOT EXISTS(SELECT 1 FROM sys.columns 
+IF EXISTS(SELECT 1 FROM sys.columns 
           WHERE Name = N'MontoInicial'
           AND Object_ID = Object_ID(N'dbo.ProyectoEtapaEstimadoPeriodo'))
+WHILE EXISTS( 
+    SELECT * FROM  sys.all_columns 
+    INNER JOIN sys.tables ST  ON all_columns.object_id = ST.object_id
+    INNER JOIN sys.schemas ON ST.schema_id = schemas.schema_id
+    INNER JOIN sys.default_constraints ON all_columns.default_object_id = default_constraints.object_id
+    WHERE 
+    schemas.name = 'dbo'
+    AND ST.name = 'ProyectoEtapaEstimadoPeriodo'
+		AND all_columns.name in ('MontoInicial','MontoVigente','MontoDevengado','MontoVigenteEstimativo')
+)
+BEGIN 
+DECLARE @SQL NVARCHAR(MAX) = N'';
+
+SET @SQL = (  SELECT TOP 1
+     'ALTER TABLE ['+  schemas.name + '].[' + ST.name + '] DROP CONSTRAINT ' + default_constraints.name + ';'
+   FROM 
+      sys.all_columns
+
+         INNER JOIN
+      sys.tables ST
+         ON all_columns.object_id = ST.object_id
+
+         INNER JOIN 
+      sys.schemas
+         ON ST.schema_id = schemas.schema_id
+
+         INNER JOIN
+      sys.default_constraints
+         ON all_columns.default_object_id = default_constraints.object_id
+
+   WHERE 
+         schemas.name = 'dbo'
+      AND ST.name = 'ProyectoEtapaEstimadoPeriodo'
+			AND all_columns.name in ('MontoInicial','MontoVigente','MontoDevengado','MontoVigenteEstimativo')
+      )
+   PRINT @SQL
+   EXECUTE sp_executesql @SQL 
+
+   --End if Error 
+   IF @@ERROR <> 0 
+   BREAK
+END 
+GO
+
+ALTER TABLE [dbo].[ProyectoEtapaEstimadoPeriodo]
+DROP COLUMN [MontoInicial],[MontoVigente],[MontoDevengado],[MontoVigenteEstimativo]
+/*
 ALTER TABLE [dbo].[ProyectoEtapaEstimadoPeriodo]
 ADD [MontoInicial] money NOT NULL DEFAULT 0 ,
 [MontoVigente] money NOT NULL  DEFAULT 0  ,
 [MontoDevengado] money NOT NULL  DEFAULT 0   ,
-[MontoVigenteEstimativo] bit NOT NULL  DEFAULT 0 
+[MontoVigenteEstimativo] bit NOT NULL  DEFAULT 0 */
 
 GO
 
@@ -78,7 +125,7 @@ GO
 -- ----------------------------
 -- Table structure for ProyectoPrincipiosFormulacion
 -- ----------------------------
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 

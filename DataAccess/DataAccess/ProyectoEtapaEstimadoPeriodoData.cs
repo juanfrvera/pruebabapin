@@ -36,10 +36,6 @@ namespace DataAccess
 					 ,Monto=o.Monto
 					 ,Cotizacion=o.Cotizacion
 					 ,MontoCalculado=o.MontoCalculado
-                     ,MontoInicial = o.MontoInicial
-                     ,MontoVigente = o.MontoVigente
-                     ,MontoDevengado = o.MontoDevengado
-                     ,MontoVigenteEstimativo = o.MontoVigenteEstimativo
 					,ProyectoEtapaEstimado_IdProyectoEtapa= t1.IdProyectoEtapa	
 						,ProyectoEtapaEstimado_IdClasificacionGasto= t1.IdClasificacionGasto	
 						,ProyectoEtapaEstimado_IdFuenteFinanciamiento= t1.IdFuenteFinanciamiento	

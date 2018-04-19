@@ -184,7 +184,8 @@ namespace Contract
 , Certificado = 619
 , Proyecto_Cronograma_Compose = 620
 //, Proyecto_Etapa_Realizado_Periodo = 621
-
+, Proyecto_Etapa_Informacion_Presupuestaria = 622
+, Proyecto_Etapa_Informacion_Presupuestaria_Periodo = 623
  }
  public class SistemaEntidadConfig
  {
@@ -363,6 +364,8 @@ public const string USUARIO_PERFIL = "UsuarioPerfil";
 public const string CERTIFICADO = "Certificado";
 public const string PROYECTO_CRONOGRAMA_COMPOSE = "ProyectoCronogramaCompose";
 //public const string PROYECTO_ETAPA_REALIZADO_PERIODO = "ProyectoEtapaRealizadoPeriodo";
+public const string PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA = "ProyectoEtapaInformacionPresupuestaria";
+public const string PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO = "ProyectoEtapaInformacionPresupuestariaPeriodo";
 
  public static string GetConst(SistemaEntidadEnum key)
         {
@@ -543,7 +546,8 @@ case SistemaEntidadEnum.Usuario_Perfil: return USUARIO_PERFIL;
 case SistemaEntidadEnum.Certificado: return CERTIFICADO;
 case SistemaEntidadEnum.Proyecto_Cronograma_Compose: return PROYECTO_CRONOGRAMA_COMPOSE;
 //case SistemaEntidadEnum.Proyecto_Etapa_Realizado_Periodo: return PROYECTO_ETAPA_REALIZADO_PERIODO;
-
+case SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria: return PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA;
+case SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria_Periodo: return PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO;
 
 }
             return "";
@@ -727,6 +731,8 @@ case USUARIO_PERFIL: return SistemaEntidadEnum.Usuario_Perfil;
 case CERTIFICADO: return SistemaEntidadEnum.Certificado;
 case PROYECTO_CRONOGRAMA_COMPOSE: return SistemaEntidadEnum.Proyecto_Cronograma_Compose;
 //case PROYECTO_ETAPA_REALIZADO_PERIODO: return SistemaEntidadEnum.Proyecto_Etapa_Realizado_Periodo;
+case PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA: return SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria;
+case PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO: return SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria_Periodo;
 
  }
             return SistemaEntidadEnum.Undefined;

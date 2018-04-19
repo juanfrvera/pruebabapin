@@ -81,6 +81,14 @@ namespace Business
                 }
                 ProyectoEtapaEstimadoBusiness.Current.Delete(deletes, contextUser);
 
+                List<ProyectoEtapaInformacionPresupuestaria> deleteInfos = ProyectoEtapaInformacionPresupuestariaBusiness.Current.GetList(new ProyectoEtapaInformacionPresupuestariaFilter() { IdProyectoEtapa = entity.IdProyectoEtapa });
+                foreach (ProyectoEtapaInformacionPresupuestaria e in deleteInfos)
+                {
+                    List<ProyectoEtapaInformacionPresupuestariaPeriodo> delpInfos = ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.GetList(new ProyectoEtapaInformacionPresupuestariaPeriodoFilter() { IdProyectoEtapaInformacionPresupuestaria = e.IdProyectoEtapaInformacionPresupuestaria });
+                    ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Delete(delpInfos, contextUser);
+                }
+                ProyectoEtapaInformacionPresupuestariaBusiness.Current.Delete(deleteInfos, contextUser);
+
                 this.Delete(entity, contextUser);
             }
         }

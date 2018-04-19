@@ -23,6 +23,7 @@ namespace Contract
         public List<ProyectoEtapaResult> Etapas = new List<ProyectoEtapaResult>();
         public List<ProyectoEtapaEstimadoResult> EtapasEstimadas = new List<ProyectoEtapaEstimadoResult>();
         public List<ProyectoEtapaRealizadoResult> EtapasRealizadas = new List<ProyectoEtapaRealizadoResult>();
+        public List<ProyectoEtapaInformacionPresupuestariaResult> EtapasInformacionPresupuestarias = new List<ProyectoEtapaInformacionPresupuestariaResult>();
 
         // Informacion Adicional
         public Int32 ProyectoAnioReferencia { get; set; }
@@ -98,6 +99,36 @@ namespace Contract
             table.Columns.Add(new DataColumn("ObjDelGasto", typeof(string)));
             table.Columns.Add(new DataColumn("FFinanciamiento", typeof(string)));
 
+            /*if (list.Count > 0)
+            {
+                foreach (ProyectoEtapaEstimadoResult item in list)
+                {
+                    foreach (ProyectoEtapaEstimadoPeriodoResult periodo in item.Periodos)
+                    {
+                        if (periodo.Monto > 0)
+                        {
+                            DataRow row = table.NewRow();
+                            row[0] = item.ID;
+                            row[1] = item.ObjetoGasto;
+                            row[2] = item.FuenteFinanciemiento;
+                            row[3] = periodo.Monto;
+                            table.Rows.Add(row);
+                        }
+                    }
+                }
+            }*/
+            return table;
+        }
+
+        public DataTable ToDatatableEtapasInformacionPresupuestariasPeriodos(int idProyectoEtapa)
+        {                                                                      
+            List<ProyectoEtapaInformacionPresupuestariaResult> list = EtapasInformacionPresupuestarias.Where(i => i.IdProyectoEtapa == idProyectoEtapa).ToList();
+
+            DataTable table = new DataTable("EtapasInformacionPresupuestariasPeriodoso");
+            table.Columns.Add(new DataColumn("ID", typeof(int)));
+            table.Columns.Add(new DataColumn("ObjDelGasto", typeof(string)));
+            table.Columns.Add(new DataColumn("FFinanciamiento", typeof(string)));
+
             table.Columns.Add(new DataColumn("MontoInicial", typeof(string)));
             table.Columns.Add(new DataColumn("MontoVigente", typeof(string)));
             table.Columns.Add(new DataColumn("MontoDevengado", typeof(string)));
@@ -105,9 +136,9 @@ namespace Contract
 
             if (list.Count > 0)
             {
-                foreach (ProyectoEtapaEstimadoResult item in list)
+                foreach (ProyectoEtapaInformacionPresupuestariaResult item in list)
                 {
-                    foreach (ProyectoEtapaEstimadoPeriodoResult periodo in item.Periodos)
+                    foreach (ProyectoEtapaInformacionPresupuestariaPeriodoResult periodo in item.Periodos)
                     {
                         if (periodo.MontoInicial > 0 || periodo.MontoVigente > 0 || periodo.MontoDevengado > 0)
                         {
@@ -126,7 +157,6 @@ namespace Contract
             }
             return table;
         }
-
         
         //Matias 20170214 - Ticket #REQ318684
         public DataTable ToDatatableEtapasEstimadasDinamico(int idProyectoEtapa, int filterAnio)

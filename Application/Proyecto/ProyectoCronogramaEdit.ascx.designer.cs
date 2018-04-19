@@ -373,6 +373,15 @@ namespace UI.Web {
         protected global::System.Web.UI.UpdatePanel upGridEtapasEstimadas;
         
         /// <summary>
+        /// litEtapasEstimadasTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litEtapasEstimadasTotal;
+        
+        /// <summary>
         /// gridEtapasEstimadas control.
         /// </summary>
         /// <remarks>
@@ -434,6 +443,15 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upGridEtapasRealizadas;
+        
+        /// <summary>
+        /// litEtapasRealizadasTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litEtapasRealizadasTotal;
         
         /// <summary>
         /// gridEtapasRealizadas control.

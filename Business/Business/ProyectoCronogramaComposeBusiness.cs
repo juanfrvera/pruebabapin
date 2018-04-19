@@ -50,6 +50,7 @@ namespace Business
             compose.Etapas = new List<ProyectoEtapaResult>();
             compose.EtapasEstimadas = new List<ProyectoEtapaEstimadoResult>();
             compose.EtapasRealizadas = new List<ProyectoEtapaRealizadoResult>();
+            compose.EtapasInformacionPresupuestarias = new List<ProyectoEtapaInformacionPresupuestariaResult>();
             return compose;
         }
         public override ProyectoCronogramaCompose GetNew()
@@ -59,6 +60,7 @@ namespace Business
             compose.Etapas = new List<ProyectoEtapaResult>();
             compose.EtapasEstimadas = new List<ProyectoEtapaEstimadoResult>();
             compose.EtapasRealizadas = new List<ProyectoEtapaRealizadoResult>();
+            compose.EtapasInformacionPresupuestarias = new List<ProyectoEtapaInformacionPresupuestariaResult>();
             return compose;
         }
         public override int GetId(ProyectoCronogramaCompose entity)
@@ -78,6 +80,7 @@ namespace Business
             compose.Etapas = ProyectoEtapaBusiness.Current.GetEtapas(new ProyectoEtapaFilter() { IdProyecto = id, IdFase = idFase });
             compose.EtapasEstimadas = ProyectoEtapaEstimadoBusiness.Current.GetEtapasEstimadas(new ProyectoEtapaFilter() { IdProyecto = id, IdFase = idFase });
             compose.EtapasRealizadas = ProyectoEtapaRealizadoBusiness.Current.GetEtapasRealizadas(new ProyectoEtapaFilter() { IdProyecto = id, IdFase = idFase });
+            compose.EtapasInformacionPresupuestarias = ProyectoEtapaInformacionPresupuestariaBusiness.Current.GetEtapasInformacionPresupuestarias(new ProyectoEtapaFilter() { IdProyecto = id, IdFase = idFase });
 
             // Informacion para Validaciones
             Proyecto p = ProyectoBusiness.Current.GetById(id);
@@ -276,6 +279,65 @@ namespace Business
                             else
                                 ProyectoEtapaRealizadoPeriodoBusiness.Current.Update(p, contextUser);
                             pr.IdProyectoEtapaRealizadoPeriodo = p.IdProyectoEtapaRealizadoPeriodo;
+                        }
+                    }
+                }
+                #endregion
+
+                #region InformacionPresupuestaria
+                // Elimina los que ya no estan
+                List<int> actualIdsInfo = (from o in entity.EtapasInformacionPresupuestarias where o.IdProyectoEtapaInformacionPresupuestaria > 0 && o.IdProyectoEtapa == etapa.IdProyectoEtapa select o.IdProyectoEtapaInformacionPresupuestaria).ToList();
+                List<ProyectoEtapaInformacionPresupuestaria> oldDetailInfo= ProyectoEtapaInformacionPresupuestariaBusiness.Current.GetList(new ProyectoEtapaInformacionPresupuestariaFilter() { IdProyectoEtapa = etapa.IdProyectoEtapa });
+                List<ProyectoEtapaInformacionPresupuestaria> deletesInfo= (from o in oldDetailInfo where !actualIdsInfo.Contains(o.IdProyectoEtapaInformacionPresupuestaria) select o).ToList();
+                foreach (ProyectoEtapaInformacionPresupuestaria delPer in deletesInfo)
+                    ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Delete(new ProyectoEtapaInformacionPresupuestariaPeriodoFilter() { IdProyectoEtapaInformacionPresupuestaria = delPer.IdProyectoEtapaInformacionPresupuestaria }, contextUser);
+                ProyectoEtapaInformacionPresupuestariaBusiness.Current.Delete(deletesInfo, contextUser);
+
+                foreach (ProyectoEtapaInformacionPresupuestariaResult err in entity.EtapasInformacionPresupuestarias.Where(ee => ee.IdProyectoEtapa == etapa.IdProyectoEtapa))
+                {
+                    DataHelper.Validate(err.Periodos.Count > 0, "PeriodoRequerido", "FechaRealizada");
+
+
+
+                    err.Periodos = err.Periodos.Where(p => (p.MontoInicial > 0 || p.MontoDevengado > 0 || p.MontoVigente > 0 )).ToList();
+
+
+
+                    ProyectoEtapaInformacionPresupuestaria er = err.ToEntity();
+                    er.IdProyectoEtapa = etapa.IdProyectoEtapa;
+                    if (er.IdProyectoEtapaInformacionPresupuestaria <= 0)
+                    {
+                        er.IdProyectoEtapaInformacionPresupuestaria = 0;
+                        ProyectoEtapaInformacionPresupuestariaBusiness.Current.Add(er, contextUser);
+
+                        foreach (ProyectoEtapaInformacionPresupuestariaPeriodoResult pr in err.Periodos)
+                        {
+                            ProyectoEtapaInformacionPresupuestariaPeriodo p = pr.ToEntity();
+                            p.IdProyectoEtapaInformacionPresupuestariaPeriodo = 0;
+                            p.IdProyectoEtapaInformacionPresupuestaria = er.IdProyectoEtapaInformacionPresupuestaria;
+                            ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Add(p, contextUser);
+                            pr.IdProyectoEtapaInformacionPresupuestariaPeriodo = p.IdProyectoEtapaInformacionPresupuestariaPeriodo;
+                        }
+                    }
+                    else
+                    {
+                        ProyectoEtapaInformacionPresupuestariaBusiness.Current.Update(er, contextUser);
+
+                        // Elimina los que ya no estan
+                        List<int> actualIdsPer = (from o in err.Periodos where o.IdProyectoEtapaInformacionPresupuestariaPeriodo > 0 select o.IdProyectoEtapaInformacionPresupuestariaPeriodo).ToList();
+                        List<ProyectoEtapaInformacionPresupuestariaPeriodo> oldDetailPer = ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.GetList(new ProyectoEtapaInformacionPresupuestariaPeriodoFilter() { IdProyectoEtapaInformacionPresupuestaria = err.IdProyectoEtapaInformacionPresupuestaria });
+                        List<ProyectoEtapaInformacionPresupuestariaPeriodo> deletesPer = (from o in oldDetailPer where !actualIdsPer.Contains(o.IdProyectoEtapaInformacionPresupuestariaPeriodo) select o).ToList();
+                        ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Delete(deletesPer, contextUser);
+
+                        foreach (ProyectoEtapaInformacionPresupuestariaPeriodoResult pr in err.Periodos)
+                        {
+                            ProyectoEtapaInformacionPresupuestariaPeriodo p = pr.ToEntity();
+                            p.IdProyectoEtapaInformacionPresupuestaria = err.IdProyectoEtapaInformacionPresupuestaria;
+                            if (pr.IdProyectoEtapaInformacionPresupuestariaPeriodo <= 0)
+                                ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Add(p, contextUser);
+                            else
+                                ProyectoEtapaInformacionPresupuestariaPeriodoBusiness.Current.Update(p, contextUser);
+                            pr.IdProyectoEtapaInformacionPresupuestariaPeriodo = p.IdProyectoEtapaInformacionPresupuestariaPeriodo;
                         }
                     }
                 }
