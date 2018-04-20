@@ -25,22 +25,22 @@ namespace UI.Web.Pages
             tsEvolucionBeneficiario.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
             tsEvolucionBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
             revCriteriosEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revMarcoLegal.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revEstudiosRealizados.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revEstudiosARealizar.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revSituacionSinProyecto.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revOpcionA.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revOpcionB.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
-            revJustificacionOpcion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revMarcoLegal.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revEstudiosRealizados.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revEstudiosARealizar.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revSituacionSinProyecto.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revOpcionA.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revOpcionB.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //revJustificacionOpcion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
 
             revCriteriosEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Criterio de Evaluación");
-            revMarcoLegal.ErrorMessage = TranslateFormat("InvalidField", "Marco Legal");
-            revEstudiosRealizados.ErrorMessage = TranslateFormat("InvalidField", "Estudios Realizados");
-            revEstudiosARealizar.ErrorMessage = TranslateFormat("InvalidField", "Estudios a Realizar");
-            revSituacionSinProyecto.ErrorMessage = TranslateFormat("InvalidField", "Situación sin Proyecto");
-            revOpcionA.ErrorMessage = TranslateFormat("InvalidField", "Opción A");
-            revOpcionB.ErrorMessage = TranslateFormat("InvalidField", "Opción B");
-            revJustificacionOpcion.ErrorMessage = TranslateFormat("InvalidField", "Justificacion de Opción");
+            //revMarcoLegal.ErrorMessage = TranslateFormat("InvalidField", "Marco Legal");
+            //revEstudiosRealizados.ErrorMessage = TranslateFormat("InvalidField", "Estudios Realizados");
+            //revEstudiosARealizar.ErrorMessage = TranslateFormat("InvalidField", "Estudios a Realizar");
+            //revSituacionSinProyecto.ErrorMessage = TranslateFormat("InvalidField", "Situación sin Proyecto");
+            //revOpcionA.ErrorMessage = TranslateFormat("InvalidField", "Opción A");
+            //revOpcionB.ErrorMessage = TranslateFormat("InvalidField", "Opción B");
+            //revJustificacionOpcion.ErrorMessage = TranslateFormat("InvalidField", "Justificacion de Opción");
 
             autoCmpIndicadorClaseIndicadoresProyecto.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //German 01032014 - tarea 110
@@ -187,14 +187,14 @@ namespace UI.Web.Pages
         public override void Clear()
         {
             UIHelper.Clear(gridIndicadoresBeneficio);
-            UIHelper.Clear(gridIndicadoresBeneficiario);
-            UIHelper.Clear(txtMarcoLegal);
-            UIHelper.Clear(txtEstudiosRealizados);
-            UIHelper.Clear(txtEstudiosARealizar);
-            UIHelper.Clear(txtSituacionSinProyecto);
-            UIHelper.Clear(txtOpcionA);
-            UIHelper.Clear(txtOpcionB);
-            UIHelper.Clear(txtJustificacionOpcion);
+            //UIHelper.Clear(gridIndicadoresBeneficiario);
+            //UIHelper.Clear(txtMarcoLegal);
+            //UIHelper.Clear(txtEstudiosRealizados);
+            //UIHelper.Clear(txtEstudiosARealizar);
+            //UIHelper.Clear(txtSituacionSinProyecto);
+            //UIHelper.Clear(txtOpcionA);
+            //UIHelper.Clear(txtOpcionB);
+            //UIHelper.Clear(txtJustificacionOpcion);
             UIHelper.Clear(gridIndicadoresPriorizacion);
             UIHelper.Clear(txtCriteriosEvaluacion);
             UIHelper.Clear(txtHorizonteEvaluacion);
@@ -206,13 +206,13 @@ namespace UI.Web.Pages
             Entity.Evaluacion.CriterioEvaluacion = UIHelper.GetString(txtCriteriosEvaluacion);
             Entity.Evaluacion.HorizonteEvaluacion = UIHelper.GetIntNullable(txtHorizonteEvaluacion);
             Entity.Evaluacion.TasaReferencia = UIHelper.GetDecimalNullable(txtTasaReferencia);
-            Entity.Evaluacion.MarcoLegal = UIHelper.GetString(txtMarcoLegal);
-            Entity.Evaluacion.EstudioRealizado = UIHelper.GetString(txtEstudiosRealizados);
-            Entity.Evaluacion.EstudioaRealizar = UIHelper.GetString(txtEstudiosARealizar);
-            Entity.Evaluacion.SituacionSinProyecto = UIHelper.GetString(txtSituacionSinProyecto);
-            Entity.Evaluacion.OpcionA = UIHelper.GetString(txtOpcionA);
-            Entity.Evaluacion.OpcionB = UIHelper.GetString(txtOpcionB);
-            Entity.Evaluacion.OpcionJustificacion = UIHelper.GetString(txtJustificacionOpcion);
+            //Entity.Evaluacion.MarcoLegal = UIHelper.GetString(txtMarcoLegal);
+            //Entity.Evaluacion.EstudioRealizado = UIHelper.GetString(txtEstudiosRealizados);
+            //Entity.Evaluacion.EstudioaRealizar = UIHelper.GetString(txtEstudiosARealizar);
+            //Entity.Evaluacion.SituacionSinProyecto = UIHelper.GetString(txtSituacionSinProyecto);
+            //Entity.Evaluacion.OpcionA = UIHelper.GetString(txtOpcionA);
+            //Entity.Evaluacion.OpcionB = UIHelper.GetString(txtOpcionB);
+            //Entity.Evaluacion.OpcionJustificacion = UIHelper.GetString(txtJustificacionOpcion);
         }
         public override void SetValue()
         {
@@ -228,18 +228,18 @@ namespace UI.Web.Pages
                 UIHelper.SetValue(txtCriteriosEvaluacion, Entity.Evaluacion.CriterioEvaluacion);
                 UIHelper.SetValue(txtHorizonteEvaluacion, Entity.Evaluacion.HorizonteEvaluacion);
                 UIHelper.SetValue(txtTasaReferencia, Entity.Evaluacion.TasaReferencia);
-                UIHelper.SetValue(txtMarcoLegal, Entity.Evaluacion.MarcoLegal);
-                UIHelper.SetValue(txtEstudiosRealizados, Entity.Evaluacion.EstudioRealizado);
-                UIHelper.SetValue(txtEstudiosARealizar, Entity.Evaluacion.EstudioaRealizar);
-                UIHelper.SetValue(txtSituacionSinProyecto, Entity.Evaluacion.SituacionSinProyecto);
-                UIHelper.SetValue(txtOpcionA, Entity.Evaluacion.OpcionA);
-                UIHelper.SetValue(txtOpcionB, Entity.Evaluacion.OpcionB);
-                UIHelper.SetValue(txtJustificacionOpcion, Entity.Evaluacion.OpcionJustificacion);
+                //UIHelper.SetValue(txtMarcoLegal, Entity.Evaluacion.MarcoLegal);
+                //UIHelper.SetValue(txtEstudiosRealizados, Entity.Evaluacion.EstudioRealizado);
+                //UIHelper.SetValue(txtEstudiosARealizar, Entity.Evaluacion.EstudioaRealizar);
+                //UIHelper.SetValue(txtSituacionSinProyecto, Entity.Evaluacion.SituacionSinProyecto);
+                //UIHelper.SetValue(txtOpcionA, Entity.Evaluacion.OpcionA);
+                //UIHelper.SetValue(txtOpcionB, Entity.Evaluacion.OpcionB);
+                //UIHelper.SetValue(txtJustificacionOpcion, Entity.Evaluacion.OpcionJustificacion);
             }
-            upSituacionSinProyecto.Update();
-            upOpciones.Update();
-            upEstudios.Update();
-            upMarcoLegal.Update();
+            //upSituacionSinProyecto.Update();
+            //upOpciones.Update();
+            //upEstudios.Update();
+            //upMarcoLegal.Update();
             IndicadoresEconomicoRefresh();
             IndicadoresPriorizacionRefresh();
             IndicadoresBeneficiarioRefresh();
@@ -775,8 +775,8 @@ namespace UI.Web.Pages
         {
             List<ProyectoBeneficiarioIndicadorResult> indicadores = new List<ProyectoBeneficiarioIndicadorResult>();
             Entity.IndicadoresBeneficiario.ForEach(i => indicadores.Add(i.Indicador));
-            UIHelper.Load(gridIndicadoresBeneficiario, indicadores, "Beneficiario");
-            upGridIndicadoresBeneficiario.Update();
+            //UIHelper.Load(gridIndicadoresBeneficiario, indicadores, "Beneficiario");
+            //upGridIndicadoresBeneficiario.Update();
         }
         #endregion Methods
 
@@ -835,7 +835,7 @@ namespace UI.Web.Pages
 
             try
             {
-                gridIndicadoresBeneficiario.PageIndex = 0;
+                //gridIndicadoresBeneficiario.PageIndex = 0;
                 RaiseControlCommand(Command.SORT, e);
             }
             catch (Exception exception)
@@ -849,7 +849,7 @@ namespace UI.Web.Pages
 
             try
             {
-                gridIndicadoresBeneficiario.PageIndex = e.NewPageIndex;
+                //gridIndicadoresBeneficiario.PageIndex = e.NewPageIndex;
                 base.RaiseControlCommand(Command.REFRESH);
             }
             catch (Exception exception)

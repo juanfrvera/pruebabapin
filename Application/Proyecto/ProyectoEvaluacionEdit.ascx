@@ -204,7 +204,7 @@
         </tr>
     </table>
 </asp:Panel>
-<%--PANEL BENEFICIARIOS --%>
+<%--PANEL BENEFICIARIOS 
 <div class="CollapsiblePanelTab">
     <span id="spanBeneficiarios">
         <asp:Label ID="lblBeneficiarios" runat="server" Text="Beneficiarios"></asp:Label>
@@ -264,7 +264,10 @@
         </tr>
     </table>
 </asp:Panel>
-<%--PANEL MARCOS LEGAL --%>
+--%>
+
+<%--PANEL MARCOS LEGAL
+
 <div class="CollapsiblePanelTab" style="display:none">
     <span id="spanMarcoLegal">
         <asp:Label ID="lblMarcoLegal" runat="server" Text="Marco Legal"></asp:Label>
@@ -294,7 +297,9 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
-<%--PANEL ESTUDIOS --%>
+ --%>
+
+<%--PANEL ESTUDIOS
 <div class="CollapsiblePanelTab">
     <span id="spanEstudios">
         <asp:Label ID="lblEstudios" runat="server" Text="Estudios"></asp:Label>
@@ -346,7 +351,9 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
-<%--PANEL SITUACION SIN PROYECTO --%>
+ --%>
+
+<%--PANEL SITUACION SIN PROYECTO
 <div class="CollapsiblePanelTab">
     <span id="spanSituacionSinProyecto">
         <asp:Label ID="lblSituacionSinProyecto" runat="server" Text="Situación sin Proyecto"></asp:Label>
@@ -377,7 +384,9 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
-<%--PANEL OPCIONES --%>
+ --%>
+
+<%--PANEL OPCIONES
 <div class="CollapsiblePanelTab">
     <span id="spanOpciones">
         <asp:Label ID="lblOpciones" runat="server" Text="Opciones"></asp:Label>
@@ -446,6 +455,8 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
+ --%>
+
 <%--PANEL INDICADORES PRIORIZACIONES --%>
 <div class="CollapsiblePanelTab">
     <span id="spanIndicadoresPriorizacion">
