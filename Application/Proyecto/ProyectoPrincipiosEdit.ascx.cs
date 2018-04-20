@@ -22,6 +22,24 @@ namespace UI.Web.Pages
             base._Initialize();
             revNecesidadASatisfacer.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
             revNecesidadASatisfacer.ErrorMessage = TranslateFormat("FieldInvalidLength", "Necesidad a satisfacer (2000 caractéres máx.)");
+            if (!IsPostBack)
+            {
+                txtNecesidadASatisfacer.Attributes.Add("maxlength", txtNecesidadASatisfacer.MaxLength.ToString());
+                txtObjetivoDelProyecto.Attributes.Add("maxlength", txtObjetivoDelProyecto.MaxLength.ToString());
+                txtProductoOServicio.Attributes.Add("maxlength", txtProductoOServicio.MaxLength.ToString());
+                txtAlternativas.Attributes.Add("maxlength", txtAlternativas.MaxLength.ToString());
+                txtPorqueAlternativa.Attributes.Add("maxlength", txtPorqueAlternativa.MaxLength.ToString());
+                txtDescripcionTecnica.Attributes.Add("maxlength", txtDescripcionTecnica.MaxLength.ToString());
+                txtVidaUtil.Attributes.Add("maxlength", txtVidaUtil.MaxLength.ToString());
+                txtCoberturaTerritorial.Attributes.Add("maxlength", txtCoberturaTerritorial.MaxLength.ToString());
+                txtCoberturaPoblacional.Attributes.Add("maxlength", txtCoberturaPoblacional.MaxLength.ToString());
+                txtCoberturaBeneficiariosDirectos.Attributes.Add("maxlength", txtCoberturaBeneficiariosDirectos.MaxLength.ToString());
+                txtCoberturaBeneficiariosIndirectos.Attributes.Add("maxlength", txtCoberturaBeneficiariosIndirectos.MaxLength.ToString());
+                txtDimensionesCostosEnte.Attributes.Add("maxlength", txtDimensionesCostosEnte.MaxLength.ToString());
+                txtDificultadesRiesgosEnumeracion.Attributes.Add("maxlength", txtDificultadesRiesgosEnumeracion.MaxLength.ToString());
+                txtRequiereIntevencionAutoridad.Attributes.Add("maxlength", txtRequiereIntevencionAutoridad.MaxLength.ToString());
+                txtObservacionesDNIP.Attributes.Add("maxlength", txtObservacionesDNIP.MaxLength.ToString());
+            }
 
             revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1000);
             revObjetivoDelProyecto.ErrorMessage = TranslateFormat("FieldInvalidLength", "Objetivo Del Proyecto (1000 caractéres máx.)");
