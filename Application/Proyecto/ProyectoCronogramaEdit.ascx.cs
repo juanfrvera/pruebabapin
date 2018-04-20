@@ -281,6 +281,15 @@ namespace UI.Web
             var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.Proyecto.IdProyecto });
             foreach (var proyectoEtapa in proyectoEtapas)
             {
+                var proyectoEtapaInformacionPresupuestarias = ProyectoEtapaInformacionPresupuestariaService.Current.GetResultFromList(new nc.ProyectoEtapaInformacionPresupuestariaFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                foreach (var proyectoEtapaInformacionPresupuestaria in proyectoEtapaInformacionPresupuestarias)
+                {
+                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaInformacionPresupuestaria.IdClasificacionGasto);
+                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                    {
+                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                    }
+                }
                 var proyectoEtapaEstimados = ProyectoEtapaEstimadoService.Current.GetResultFromList(new nc.ProyectoEtapaEstimadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
                 foreach (var proyectoEtapaEstimado in proyectoEtapaEstimados)
                 {
@@ -312,10 +321,10 @@ namespace UI.Web
                     !incisos.Where(x => x.Equals("05")).Any() &&
                     !incisos.Where(x => x.Equals("06")).Any()
                 )
-                ||
+                /*||
                 (
                     Entity.Proyecto.NroProyecto != null && Entity.Proyecto.NroProyecto != 0 && incisos.Where(x => Int32.Parse(x) < 4).Any()
-                )
+                )*/
                 )
             {
                 //Condición Obligatoria
