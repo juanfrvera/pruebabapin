@@ -40,6 +40,18 @@ namespace Contract
             set { indicadoresPriorizacion = value; }
         }
 
+        private List<ProyectoIndicadorObjetivosGobiernoResult> indicadoresObjetivosGobierno;
+        public List<ProyectoIndicadorObjetivosGobiernoResult> IndicadoresObjetivosGobierno
+        {
+            get
+            {
+                if (indicadoresObjetivosGobierno == null)
+                    indicadoresObjetivosGobierno = new List<ProyectoIndicadorObjetivosGobiernoResult>();
+                return indicadoresObjetivosGobierno;
+            }
+            set { indicadoresObjetivosGobierno = value; }
+        }
+
         private List<ProyectoBeneficioIndicadorCompose> indicadoresBeneficio;
         public List<ProyectoBeneficioIndicadorCompose> IndicadoresBeneficio
         {

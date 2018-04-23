@@ -7,14 +7,14 @@ using DataAccess.Base;
 
 namespace DataAccess
 {
-    public class ProyectoBeneficiarioIndicadorData : _ProyectoBeneficiarioIndicadorData 
-    {
+    public class ProyectoIndicadorObjetivosGobiernoData : _ProyectoIndicadorObjetivosGobiernoData 
+    { 
 	   #region Singleton
-	   private static volatile ProyectoBeneficiarioIndicadorData current;
+	   private static volatile ProyectoIndicadorObjetivosGobiernoData current;
 	   private static object syncRoot = new Object();
 
-	   //private ProyectoBeneficiarioIndicadorData() {}
-	   public static ProyectoBeneficiarioIndicadorData Current
+	   //private ProyectoIndicadorObjetivosGobiernoData() {}
+	   public static ProyectoIndicadorObjetivosGobiernoData Current
 	   {
 		  get 
 		  {
@@ -23,37 +23,48 @@ namespace DataAccess
 				lock (syncRoot) 
 				{
 				   if (current == null) 
-					   current = new ProyectoBeneficiarioIndicadorData();
+					   current = new ProyectoIndicadorObjetivosGobiernoData();
 				}
 			 }
 			 return current;
 		  }
 	   }
        #endregion
-       public override string IdFieldName { get { return "IdProyectoBeneficiarioIndicador"; } }
+       public override string IdFieldName { get { return "IdProyectoIndicadorObjetivosGobierno"; } }
 
-       protected override IQueryable<ProyectoBeneficiarioIndicadorResult> QueryResult(ProyectoBeneficiarioIndicadorFilter filter)
+       protected override IQueryable<ProyectoIndicadorObjetivosGobiernoResult> QueryResult(ProyectoIndicadorObjetivosGobiernoFilter filter)
        {
-           var bad = (from o in Query(filter)
-                   join t1 in this.Context.Indicadors on o.IdIndicador equals t1.IdIndicador
+           return (from o in Query(filter)
+                   join t1 in this.Context.IndicadorClases on o.IdIndicadorClase equals t1.IdIndicadorClase
                    join t2 in this.Context.Proyectos on o.IdProyecto equals t2.IdProyecto
-                   join _t3 in this.Context.MedioVerificacions on t1.IdMedioVerificacion equals _t3.IdMedioVerificacion into tt3
-                   from t3 in tt3.DefaultIfEmpty()
-                   select new ProyectoBeneficiarioIndicadorResult()
+                   join t3 in this.Context.UnidadMedidas on t1.IdUnidad equals t3.IdUnidadMedida
+                   select new ProyectoIndicadorObjetivosGobiernoResult()
                    {
-                       IdProyectoBeneficiarioIndicador = o.IdProyectoBeneficiarioIndicador
+                       IdProyectoIndicadorObjetivosGobierno = o.IdProyectoIndicadorObjetivosGobierno
                        ,
                        IdProyecto = o.IdProyecto
                        ,
-                       Beneficiario = o.Beneficiario
+                       IdIndicadorClase = o.IdIndicadorClase
                        ,
-                       Indirecto = o.Indirecto
+                       Valor = o.Valor
                        ,
-                       IdIndicador = o.IdIndicador
+                       Anio = o.Anio
                        ,
-                       Indicador_IdMedioVerificacion = t1.IdMedioVerificacion
+                       Observacion = o.Observacion
                        ,
-                       Indicador_Observacion = t1.Observacion
+                       IndicadorClase_IdIndicadorTipo = t1.IdIndicadorTipo
+                       ,
+                       IndicadorClase_Sigla = t1.Sigla
+                       ,
+                       IndicadorClase_Nombre = t1.Nombre
+                       ,
+                       IndicadorClase_IdUnidad = t1.IdUnidad
+                       ,
+                       IndicadorClase_RangoInicial = t1.RangoInicial
+                       ,
+                       IndicadorClase_RangoFinal = t1.RangoFinal
+                       ,
+                       IndicadorClase_Activo = t1.Activo
                        ,
                        Proyecto_IdTipoProyecto = t2.IdTipoProyecto
                        ,
@@ -101,11 +112,9 @@ namespace DataAccess
                        ,
                        Proyecto_IdProyectoPlan = t2.IdProyectoPlan
                        ,
-                       Indicador_MedioVerificacion = t3.Nombre
+                       IndicadorClase_Unidad = t3.Nombre
                    }
                      ).AsQueryable();
-           return bad;
        }
-
     }
 }

@@ -1558,6 +1558,7 @@
       <Association Name="IndicadorClase_ObjetivoIndicador" Member="ObjetivoIndicadors" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ObjetivoIndicador" />
       <Association Name="IndicadorClase_ProyectoIndicadorEconomico" Member="ProyectoIndicadorEconomicos" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoIndicadorEconomico" />
       <Association Name="IndicadorClase_ProyectoIndicadorPriorizacion" Member="ProyectoIndicadorPriorizacions" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoIndicadorPriorizacion" />
+      <Association Name="IndicadorClase_ProyectoIndicadorObjetivosGobierno" Member="ProyectoIndicadorObjetivosGobiernos" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoIndicadorObjetivosGobierno" />
       <Association Name="UnidadMedida_IndicadorClase" Member="UnidadMedida" ThisKey="IdUnidad" OtherKey="IdUnidadMedida" Type="UnidadMedida" IsForeignKey="true" />
       <Association Name="IndicadorTipo_IndicadorClase" Member="IndicadorTipo" ThisKey="IdIndicadorTipo" OtherKey="IdIndicadorTipo" Type="IndicadorTipo" IsForeignKey="true" />
     </Type>
@@ -1584,6 +1585,18 @@
       <Column Name="Observacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Association Name="IndicadorClase_ProyectoIndicadorPriorizacion" Member="IndicadorClase" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="IndicadorClase" IsForeignKey="true" />
       <Association Name="Proyecto_ProyectoIndicadorPriorizacion" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProyectoIndicadorObjetivosGobierno" Member="ProyectoIndicadorObjetivosGobiernos">
+    <Type Name="ProyectoIndicadorObjetivosGobierno">
+      <Column Name="IdProyectoIndicadorObjetivosGobierno" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdIndicadorClase" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Observacion" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="IndicadorClase_ProyectoIndicadorObjetivosGobierno" Member="IndicadorClase" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="IndicadorClase" IsForeignKey="true" />
+      <Association Name="Proyecto_ProyectoIndicadorObjetivosGobierno" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuarios">
@@ -2184,6 +2197,7 @@
       <Association Name="Proyecto_ProyectoPrioridad" Member="ProyectoPrioridads" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoPrioridad" />
       <Association Name="Proyecto_ProyectoIndicadorEconomico" Member="ProyectoIndicadorEconomicos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoIndicadorEconomico" />
       <Association Name="Proyecto_ProyectoIndicadorPriorizacion" Member="ProyectoIndicadorPriorizacions" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoIndicadorPriorizacion" />
+      <Association Name="Proyecto_ProyectoIndicadorObjetivosGobierno" Member="ProyectoIndicadorObjetivosGobiernos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoIndicadorObjetivosGobierno" />
       <Association Name="Proyecto_ProyectoComentarioTecnico" Member="ProyectoComentarioTecnicos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoComentarioTecnico" />
       <Association Name="Proyecto_ProyectoEtapa" Member="ProyectoEtapas" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoEtapa" />
       <Association Name="Proyecto_ProyectoCalidad" Member="ProyectoCalidads" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoCalidad" />

@@ -175,67 +175,67 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.GridView gridIndicadoresBeneficio;
         
         /// <summary>
-        /// lblIndicadoresPriorizacion control.
+        /// lblIndicadoresObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIndicadoresPriorizacion;
+        protected global::System.Web.UI.WebControls.Label lblIndicadoresObjetivosGobierno;
         
         /// <summary>
-        /// cpeIndicadoresPriorizacion control.
+        /// cpeIndicadoresObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeIndicadoresPriorizacion;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeIndicadoresObjetivosGobierno;
         
         /// <summary>
-        /// pnlIndicadoresPriorizacion control.
+        /// pnlIndicadoresObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlIndicadoresPriorizacion;
+        protected global::System.Web.UI.WebControls.Panel pnlIndicadoresObjetivosGobierno;
         
         /// <summary>
-        /// upAgregarIndicadorPriorizacion control.
+        /// upAgregarIndicadorObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upAgregarIndicadorPriorizacion;
+        protected global::System.Web.UI.UpdatePanel upAgregarIndicadorObjetivosGobierno;
         
         /// <summary>
-        /// btAgregarIndicadorPriorizacion control.
+        /// btAgregarIndicadorObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAgregarIndicadorPriorizacion;
+        protected global::System.Web.UI.WebControls.Button btAgregarIndicadorObjetivosGobierno;
         
         /// <summary>
-        /// upGridIndicadoresPriorizacion control.
+        /// upGridIndicadoresObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upGridIndicadoresPriorizacion;
+        protected global::System.Web.UI.UpdatePanel upGridIndicadoresObjetivosGobierno;
         
         /// <summary>
-        /// gridIndicadoresPriorizacion control.
+        /// gridIndicadoresObjetivosGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridIndicadoresPriorizacion;
+        protected global::System.Web.UI.WebControls.GridView gridIndicadoresObjetivosGobierno;
         
         /// <summary>
         /// PopUpIndicadoresProyecto control.
@@ -310,6 +310,15 @@ namespace UI.Web.Pages {
         protected global::UI.Web.ControlsPersonal.WebControl_IndicadorClaseTreeSinSector toIndicadoClaseSinSector;
         
         /// <summary>
+        /// trValorIndicadoresProyectoLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trValorIndicadoresProyectoLiteral;
+        
+        /// <summary>
         /// ltValorIndicadoresProyecto control.
         /// </summary>
         /// <remarks>
@@ -317,6 +326,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltValorIndicadoresProyecto;
+        
+        /// <summary>
+        /// trValorIndicadoresProyectoTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trValorIndicadoresProyectoTextBox;
         
         /// <summary>
         /// txtValorIndicadoresProyecto control.

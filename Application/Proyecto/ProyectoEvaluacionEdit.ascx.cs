@@ -131,7 +131,7 @@ namespace UI.Web.Pages
             //[CriterioEvaluacion]txtHorizonteEvaluacion.ToolTip = Translate("TooltipHorizonteEvaluacion");
             //[CriterioEvaluacion]txtTasaReferencia.ToolTip = Translate("TooltipTasaReferencia");
             pnlBeneficios.ToolTip = Translate("TooltipOtrosIndicadores");
-            pnlIndicadoresPriorizacion.ToolTip = Translate("TooltipContribucionObjetivoGobierno");
+            pnlIndicadoresObjetivosGobierno.ToolTip = Translate("TooltipContribucionObjetivoGobierno");
             ((DropDownList)toIndicadoClase.PnControl.FindControl("ddlSectorInd")).ToolTip = Translate("TooltipSector");
             ((TextBox)toIndicadoClase.PnControl.FindControl("txtSelect")).ToolTip = Translate("TooltipIndicador");
             ddlMedioVerificacionBeneficio.ToolTip = Translate("TooltipMedioVerificacion");
@@ -197,7 +197,7 @@ namespace UI.Web.Pages
             //UIHelper.Clear(txtOpcionA);
             //UIHelper.Clear(txtOpcionB);
             //UIHelper.Clear(txtJustificacionOpcion);
-            UIHelper.Clear(gridIndicadoresPriorizacion);
+            UIHelper.Clear(gridIndicadoresObjetivosGobierno);
             //[CriterioEvaluacion]UIHelper.Clear(txtCriteriosEvaluacion);
             //[CriterioEvaluacion]UIHelper.Clear(txtHorizonteEvaluacion);
             //[CriterioEvaluacion]UIHelper.Clear(txtTasaReferencia);
@@ -245,7 +245,7 @@ namespace UI.Web.Pages
             //upMarcoLegal.Update();
             IndicadoresEconomicoRefresh();
 //*****************************************************************            IndicadoresSectorialRefresh();
-            IndicadoresPriorizacionRefresh();
+            IndicadoresObjetivosGobiernoRefresh();
             //[Evolucion]IndicadoresBeneficiarioRefresh();
             IndicadoresBeneficioRefresh();
 
@@ -300,7 +300,7 @@ namespace UI.Web.Pages
         //        this.pnlMarcoLegal.Enabled = false;
         //        this.pnlSituacionSinProyecto.Enabled = false;
         //        this.pnlOpciones.Enabled = false;
-        //        this.pnlIndicadoresPriorizacion.Enabled = false;
+        //        this.pnlIndicadoresObjetivosGobierno.Enabled = false;
         //    }
         //    else
         //    {
@@ -1021,6 +1021,7 @@ namespace UI.Web.Pages
         }
         void IndicadoresEconomicoGetValue()
         {
+            VisibleValorIndicadoresProyecto(true); //No visibles para Contribución al Objetivo de Gobierno
 
             ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
@@ -1047,6 +1048,7 @@ namespace UI.Web.Pages
         #region Eventos
         protected void btAgregarIndicadorEconomico_Click(object sender, EventArgs e)
         {
+            VisibleValorIndicadoresProyecto(true);
             ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Economico;
             IndicadoresProyectoClear();
             ModalPopupExtenderIndicadoresProyecto.Show();
@@ -1310,166 +1312,178 @@ namespace UI.Web.Pages
 
         #endregion
 
-        #region Indicadores Priorizacion
+        #region Contribución al Objetivo de Gobierno (ex Indicadores ObjetivosGobierno)
 
-        private ProyectoIndicadorPriorizacionResult actualProyectoIndicadorPriorizacion;
-        protected ProyectoIndicadorPriorizacionResult ActualProyectoIndicadorPriorizacion
+        private ProyectoIndicadorObjetivosGobiernoResult actualProyectoIndicadorObjetivosGobierno;
+        protected ProyectoIndicadorObjetivosGobiernoResult ActualProyectoIndicadorObjetivosGobierno
         {
             get
             {
-                if (actualProyectoIndicadorPriorizacion == null)
-                    if (ViewState["actualProyectoIndicadorPriorizacion"] != null)
-                        actualProyectoIndicadorPriorizacion = ViewState["actualProyectoIndicadorPriorizacion"] as ProyectoIndicadorPriorizacionResult;
+                if (actualProyectoIndicadorObjetivosGobierno == null)
+                    if (ViewState["actualProyectoIndicadorObjetivosGobierno"] != null)
+                        actualProyectoIndicadorObjetivosGobierno = ViewState["actualProyectoIndicadorObjetivosGobierno"] as ProyectoIndicadorObjetivosGobiernoResult;
                     else
                     {
-                        actualProyectoIndicadorPriorizacion = GetNewProyectoIndicadorPriorizacion();
-                        ViewState["actualProyectoIndicadorPriorizacion"] = actualProyectoIndicadorPriorizacion;
+                        actualProyectoIndicadorObjetivosGobierno = GetNewProyectoIndicadorObjetivosGobierno();
+                        ViewState["actualProyectoIndicadorObjetivosGobierno"] = actualProyectoIndicadorObjetivosGobierno;
                     }
-                return actualProyectoIndicadorPriorizacion;
+                return actualProyectoIndicadorObjetivosGobierno;
             }
             set
             {
-                actualProyectoIndicadorPriorizacion = value;
-                ViewState["actualProyectoIndicadorPriorizacion"] = value;
+                actualProyectoIndicadorObjetivosGobierno = value;
+                ViewState["actualProyectoIndicadorObjetivosGobierno"] = value;
             }
         }
-        ProyectoIndicadorPriorizacionResult GetNewProyectoIndicadorPriorizacion()
+        ProyectoIndicadorObjetivosGobiernoResult GetNewProyectoIndicadorObjetivosGobierno()
         {
 
             int id = 0;
-            if (Entity.IndicadoresPriorizacion.Count > 0) id = Entity.IndicadoresPriorizacion.Min(l => l.IdProyectoIndicadorPriorizacion);
+            if (Entity.IndicadoresObjetivosGobierno.Count > 0) id = Entity.IndicadoresObjetivosGobierno.Min(l => l.IdProyectoIndicadorObjetivosGobierno);
             if (id > 0) id = 0;
             id--;
-            ProyectoIndicadorPriorizacionResult proyectoIndicadorPriorizacionResult;
-            proyectoIndicadorPriorizacionResult = new ProyectoIndicadorPriorizacionResult();
-            proyectoIndicadorPriorizacionResult.IdProyectoIndicadorPriorizacion = id;
+            ProyectoIndicadorObjetivosGobiernoResult proyectoIndicadorObjetivosGobiernoResult;
+            proyectoIndicadorObjetivosGobiernoResult = new ProyectoIndicadorObjetivosGobiernoResult();
+            proyectoIndicadorObjetivosGobiernoResult.IdProyectoIndicadorObjetivosGobierno = id;
 
-            return proyectoIndicadorPriorizacionResult;
+            return proyectoIndicadorObjetivosGobiernoResult;
         }
 
         #region Commands
-        void CommandIndicadoresPriorizacionEdit()
+        void CommandIndicadoresObjetivosGobiernoEdit()
         {
-            IndicadoresPriorizacionSetValue();
+            IndicadoresObjetivosGobiernoSetValue();
         }
-        void CommandIndicadoresPriorizacionSave()
+        void CommandIndicadoresObjetivosGobiernoSave()
         {
 
-            ProyectoIndicadorPriorizacionResult piep = (from l in Entity.IndicadoresPriorizacion
-                                                        where l.IdProyectoIndicadorPriorizacion == ActualProyectoIndicadorPriorizacion.ID
+            ProyectoIndicadorObjetivosGobiernoResult piep = (from l in Entity.IndicadoresObjetivosGobierno
+                                                        where l.IdProyectoIndicadorObjetivosGobierno == ActualProyectoIndicadorObjetivosGobierno.ID
                                                         select l).FirstOrDefault();
 
             if (piep != null)
             {
 
-                piep.Valor = ActualProyectoIndicadorPriorizacion.Valor;
-                piep.Anio = ActualProyectoIndicadorPriorizacion.Anio;
-                piep.Observacion = ActualProyectoIndicadorPriorizacion.Observacion;
-                piep.IdIndicadorClase = ActualProyectoIndicadorPriorizacion.IdIndicadorClase;
-                piep.IndicadorClase_Nombre = ActualProyectoIndicadorPriorizacion.IndicadorClase_Nombre;
-                piep.IndicadorClase_Sigla = ActualProyectoIndicadorPriorizacion.IndicadorClase_Sigla;
-                piep.IndicadorClase_Unidad = ActualProyectoIndicadorPriorizacion.IndicadorClase_Unidad;
-                piep.IndicadorClase_IdIndicadorTipo = ActualProyectoIndicadorPriorizacion.IndicadorClase_IdIndicadorTipo;
+                piep.Valor = ActualProyectoIndicadorObjetivosGobierno.Valor;
+                piep.Anio = ActualProyectoIndicadorObjetivosGobierno.Anio;
+                piep.Observacion = ActualProyectoIndicadorObjetivosGobierno.Observacion;
+                piep.IdIndicadorClase = ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase;
+                piep.IndicadorClase_Nombre = ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Nombre;
+                piep.IndicadorClase_Sigla = ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Sigla;
+                piep.IndicadorClase_Unidad = ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Unidad;
+                piep.IndicadorClase_IdIndicadorTipo = ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_IdIndicadorTipo;
 
             }
             else
             {
 
-                Entity.IndicadoresPriorizacion.Add(ActualProyectoIndicadorPriorizacion);                
+                Entity.IndicadoresObjetivosGobierno.Add(ActualProyectoIndicadorObjetivosGobierno);                
             }
 
         }
-        void CommandIndicadoresPriorizacionDelete()
+        void CommandIndicadoresObjetivosGobiernoDelete()
         {
 
-            ProyectoIndicadorPriorizacionResult piep = (from l in Entity.IndicadoresPriorizacion
-                                                     where l.IdProyectoIndicadorPriorizacion == ActualProyectoIndicadorPriorizacion.ID
+            ProyectoIndicadorObjetivosGobiernoResult piep = (from l in Entity.IndicadoresObjetivosGobierno
+                                                     where l.IdProyectoIndicadorObjetivosGobierno == ActualProyectoIndicadorObjetivosGobierno.ID
                                                      select l).FirstOrDefault();
 
-            Entity.IndicadoresPriorizacion.Remove(piep);
+            Entity.IndicadoresObjetivosGobierno.Remove(piep);
 
         }
         #endregion
 
         #region Methods
-        void IndicadoresPriorizacionClear()
+        void IndicadoresObjetivosGobiernoClear()
         {
-            ActualProyectoIndicadorPriorizacion = GetNewProyectoIndicadorPriorizacion();
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Priorizacion, Activo = true };
+            ActualProyectoIndicadorObjetivosGobierno = GetNewProyectoIndicadorObjetivosGobierno();
+            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Priorizacion, Activo = true };
+            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //solo por ahora - Ver pq no funciona
             //toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
         }
-        void IndicadoresPriorizacionSetValue()
+        void VisibleValorIndicadoresProyecto(bool valorVisible)
         {
+            txtValorIndicadoresProyecto.Visible = valorVisible;
+            ltValorIndicadoresProyecto.Visible = valorVisible;
+            trValorIndicadoresProyectoLiteral.Visible = valorVisible;
+            trValorIndicadoresProyectoTextBox.Visible = valorVisible;
+        }
 
-            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.IdIndicadorClase);
+        void IndicadoresObjetivosGobiernoSetValue()
+        {
+            VisibleValorIndicadoresProyecto(false); //No visibles para Contribución al Objetivo de Gobierno
+
+            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //German 01032014 - tarea 110
-            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorPriorizacion.IdIndicadorClase);
+            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
-            UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Valor);
-            if(ActualProyectoIndicadorPriorizacion.Anio != null)
+            UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.Valor);
+
+
+            if(ActualProyectoIndicadorObjetivosGobierno.Anio != null)
             {
-                ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorPriorizacion.Anio.ToString()).Value;
+                ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorObjetivosGobierno.Anio.ToString()).Value;
             }
-            //UIHelper.SetValue(ddlAnoIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Anio);
-            UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Observacion);
+            //UIHelper.SetValue(ddlAnoIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.Anio);
+            UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.Observacion);
 
         }
-        void IndicadoresPriorizacionGetValue()
+        void IndicadoresObjetivosGobiernoGetValue()
         {
-            ActualProyectoIndicadorPriorizacion.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
+            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
-            ActualProyectoIndicadorPriorizacion.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
+            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
             //Fin German 01032014 - tarea 110
             
-            IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorPriorizacion.IdIndicadorClase }).FirstOrDefault();
+            IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase }).FirstOrDefault();
 
 
-            ActualProyectoIndicadorPriorizacion.IndicadorClase_Sigla = result.Sigla;
-            ActualProyectoIndicadorPriorizacion.IndicadorClase_Nombre = result.Nombre;
-            ActualProyectoIndicadorPriorizacion.IndicadorClase_Unidad = result.Unidad_Nombre;
+            ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Sigla = result.Sigla;
+            ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Nombre = result.Nombre;
+            ActualProyectoIndicadorObjetivosGobierno.IndicadorClase_Unidad = result.Unidad_Nombre;
             
-            ActualProyectoIndicadorPriorizacion.Valor = UIHelper.GetInt(txtValorIndicadoresProyecto);
-            ActualProyectoIndicadorPriorizacion.Anio = null;
+            ActualProyectoIndicadorObjetivosGobierno.Valor = UIHelper.GetInt(txtValorIndicadoresProyecto);
+            ActualProyectoIndicadorObjetivosGobierno.Anio = null;
             if (ddlAnoIndicadoresProyecto.SelectedIndex > 0)
             {
-                ActualProyectoIndicadorPriorizacion.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
+                ActualProyectoIndicadorObjetivosGobierno.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
             }
-            ActualProyectoIndicadorPriorizacion.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
+            ActualProyectoIndicadorObjetivosGobierno.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
                         
         }
-        void IndicadoresPriorizacionRefresh()
+        void IndicadoresObjetivosGobiernoRefresh()
         {
-            UIHelper.Load(gridIndicadoresPriorizacion, Entity.IndicadoresPriorizacion, "IndicadorClase_Nombre");
-            upGridIndicadoresPriorizacion.Update();
+            UIHelper.Load(gridIndicadoresObjetivosGobierno, Entity.IndicadoresObjetivosGobierno, "IndicadorClase_Nombre");
+            upGridIndicadoresObjetivosGobierno.Update();
         }
         #endregion Methods
 
         #region Eventos
-        protected void btAgregarIndicadorPriorizacion_Click(object sender, EventArgs e)
+        protected void btAgregarIndicadorObjetivosGobierno_Click(object sender, EventArgs e)
         {
-            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Priorizacion;
+            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.ObjetivosGobierno;
+            VisibleValorIndicadoresProyecto(false); //No visibles para Contribución al Objetivo de Gobierno
             IndicadoresProyectoClear();
             ModalPopupExtenderIndicadoresProyecto.Show();
         }
         #endregion
 
         #region EventosGrillas
-        protected void GridIndicadoresPriorizacion_RowCommand(Object sender, GridViewCommandEventArgs e)
+        protected void GridIndicadoresObjetivosGobierno_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
 
             int id;
             if (!int.TryParse(e.CommandArgument.ToString(), out id))
                 return;
 
-            ActualProyectoIndicadorPriorizacion = (from l in Entity.IndicadoresPriorizacion
-                                                    where l.IdProyectoIndicadorPriorizacion == id
+            ActualProyectoIndicadorObjetivosGobierno = (from l in Entity.IndicadoresObjetivosGobierno
+                                                    where l.IdProyectoIndicadorObjetivosGobierno == id
                                                     select l).FirstOrDefault();
 
-            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Priorizacion;
+            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.ObjetivosGobierno;
 
             switch (e.CommandName)
             {
@@ -1482,12 +1496,12 @@ namespace UI.Web.Pages
             }
 
         }
-        protected virtual void GridIndicadoresPriorizacion_Sorting(object sender, GridViewSortEventArgs e)
+        protected virtual void GridIndicadoresObjetivosGobierno_Sorting(object sender, GridViewSortEventArgs e)
         {
 
             try
             {
-                gridIndicadoresPriorizacion.PageIndex = 0;
+                gridIndicadoresObjetivosGobierno.PageIndex = 0;
                 RaiseControlCommand(Command.SORT, e);
             }
             catch (Exception exception)
@@ -1496,12 +1510,12 @@ namespace UI.Web.Pages
             }
 
         }
-        protected virtual void GridIndicadoresPriorizacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected virtual void GridIndicadoresObjetivosGobierno_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
             try
             {
-                gridIndicadoresPriorizacion.PageIndex = e.NewPageIndex;
+                gridIndicadoresObjetivosGobierno.PageIndex = e.NewPageIndex;
                 base.RaiseControlCommand(Command.REFRESH);
             }
             catch (Exception exception)
@@ -1514,9 +1528,9 @@ namespace UI.Web.Pages
         
         #endregion
 
-        #region Indicadores Economicos / Priorizacion - COMUN
+        #region Indicadores Economicos / ObjetivosGobierno - COMUN
 
-        private enum ModifyProyectoIndicadores { Economico, Priorizacion }
+        private enum ModifyProyectoIndicadores { Economico, ObjetivosGobierno }
         private ModifyProyectoIndicadores ModificandoProyectoIndicadores
         {
             get { return (ModifyProyectoIndicadores)ViewState["ModifyProyectoIndicadores"]; }
@@ -1533,8 +1547,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     CommandIndicadoresEconomicoEdit();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    CommandIndicadoresPriorizacionEdit();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    CommandIndicadoresObjetivosGobiernoEdit();
                     break;
                 default:
                     break;
@@ -1554,8 +1568,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     CommandIndicadoresEconomicoSave();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    CommandIndicadoresPriorizacionSave();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    CommandIndicadoresObjetivosGobiernoSave();
                     break;
                 default:
                     break;
@@ -1573,8 +1587,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     CommandIndicadoresEconomicoDelete();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    CommandIndicadoresPriorizacionDelete();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    CommandIndicadoresObjetivosGobiernoDelete();
                     break;
                 default:
                     break;
@@ -1645,8 +1659,8 @@ namespace UI.Web.Pages
                     
                     
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    IndicadoresPriorizacionClear();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    IndicadoresObjetivosGobiernoClear();
                     
                     break;
                 default:
@@ -1671,8 +1685,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     IndicadoresEconomicoSetValue();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    IndicadoresPriorizacionSetValue();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    IndicadoresObjetivosGobiernoSetValue();
                     break;
                 default:
                     break;
@@ -1687,8 +1701,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     IndicadoresEconomicoGetValue();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    IndicadoresPriorizacionGetValue();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    IndicadoresObjetivosGobiernoGetValue();
                     break;
                 default:
                     break;
@@ -1703,8 +1717,8 @@ namespace UI.Web.Pages
                 case ModifyProyectoIndicadores.Economico:
                     IndicadoresEconomicoRefresh();
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    IndicadoresPriorizacionRefresh();
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    IndicadoresObjetivosGobiernoRefresh();
                     break;
                 default:
                     break;
@@ -1760,16 +1774,16 @@ namespace UI.Web.Pages
                         }
                     }
                     break;
-                case ModifyProyectoIndicadores.Priorizacion:
-                    idIndicador = ActualProyectoIndicadorPriorizacion.IdProyectoIndicadorPriorizacion;
-                    if (Entity.IndicadoresPriorizacion.Where(p => (p.IdProyectoIndicadorPriorizacion != idIndicador) && (p.IdIndicadorClase == id)).Count() > 0)            
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    idIndicador = ActualProyectoIndicadorObjetivosGobierno.IdProyectoIndicadorObjetivosGobierno;
+                    if (Entity.IndicadoresObjetivosGobierno.Where(p => (p.IdProyectoIndicadorObjetivosGobierno != idIndicador) && (p.IdIndicadorClase == id)).Count() > 0)            
                     {
                         msgError = Translate("- No puede haber mas de un indicador de la misma clase.");
                         return false;
                     }
                     if ((rangoInicial > 0 && rangoFinal > 0) && (rangoInicial <= rangoFinal))
                     {
-                        if (ActualProyectoIndicadorPriorizacion.Valor < rangoInicial || ActualProyectoIndicadorPriorizacion.Valor > rangoFinal)
+                        if (ActualProyectoIndicadorObjetivosGobierno.Valor < rangoInicial || ActualProyectoIndicadorObjetivosGobierno.Valor > rangoFinal)
                         {
                             msgError = Translate(string.Format("- El valor del indicador esta fuera del rango permitido. Mínimo: {0} Máximo: {1}", rangoInicial, rangoFinal));
                             return false;

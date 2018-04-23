@@ -50,15 +50,23 @@ namespace Business
 
             proyectoEvaluacionCompose.IndicadoresEconomico = ProyectoIndicadorEconomicoBusiness.Current.GetResult(new ProyectoIndicadorEconomicoFilter() { IdProyecto = id }).ToList();
             proyectoEvaluacionCompose.IndicadoresPriorizacion = ProyectoIndicadorPriorizacionBusiness.Current.GetResult(new ProyectoIndicadorPriorizacionFilter() { IdProyecto = id }).ToList();
+            proyectoEvaluacionCompose.IndicadoresObjetivosGobierno = ProyectoIndicadorObjetivosGobiernoBusiness.Current.GetResult(new ProyectoIndicadorObjetivosGobiernoFilter() { IdProyecto = id }).ToList();
 
 
             // ProyectoBeneficiarioIndicador
-
             List<ProyectoBeneficiarioIndicadorResult> pbi = 
                 ProyectoBeneficiarioIndicadorBusiness.Current.GetResult(new ProyectoBeneficiarioIndicadorFilter() { IdProyecto = id }).ToList();
 
-            pbi.ForEach( p => proyectoEvaluacionCompose.IndicadoresBeneficiario.Add(
-                ProyectoBeneficiarioIndicadorComposeBusiness.Current.GetById(p.IdProyectoBeneficiarioIndicador)));
+            /*pbi.ForEach( p => proyectoEvaluacionCompose.IndicadoresBeneficiario.Add(
+                ProyectoBeneficiarioIndicadorComposeBusiness.Current.GetById(p.IdProyectoBeneficiarioIndicador)));*/
+            foreach (ProyectoBeneficiarioIndicadorResult pbiItem in pbi)
+            {
+                ProyectoBeneficiarioIndicadorCompose pbic = ProyectoBeneficiarioIndicadorComposeBusiness.Current.GetById(pbiItem.IdProyectoBeneficiarioIndicador);
+                pbic.Indicador = pbiItem;
+                //pbic.Indicador.IdProyecto = pbiItem.IdProyecto;
+                //pbic.Indicador.IdProyectoBeneficiarioIndicador = pbiItem.IdProyectoBeneficiarioIndicador;
+                proyectoEvaluacionCompose.IndicadoresBeneficiario.Add(pbic);
+            }
 
             // ProyectoBeneficioIndicador
 
@@ -90,6 +98,10 @@ namespace Business
             proyectoEvaluacionCompose.IndicadoresPriorizacion = ProyectoIndicadorPriorizacionBusiness.Current.GetResult(new ProyectoIndicadorPriorizacionFilter() { IdProyecto = id }).ToList();
 
             proyectoEvaluacionCompose.IndicadoresPriorizacion.ForEach(p => p.IdProyecto = newId);
+
+            proyectoEvaluacionCompose.IndicadoresObjetivosGobierno = ProyectoIndicadorObjetivosGobiernoBusiness.Current.GetResult(new ProyectoIndicadorObjetivosGobiernoFilter() { IdProyecto = id }).ToList();
+
+            proyectoEvaluacionCompose.IndicadoresObjetivosGobierno.ForEach(p => p.IdProyecto = newId);
 
             // ProyectoBeneficiarioIndicador
 
@@ -139,6 +151,14 @@ namespace Business
             {
                 pipr.IdProyecto = entity.IdProyecto;
                 ProyectoIndicadorPriorizacionBusiness.Current.Add(pipr.ToEntity(), contextUser);
+            }
+
+            // Indicador ObjetivosGobierno
+
+            foreach (ProyectoIndicadorObjetivosGobiernoResult pipr in entity.IndicadoresObjetivosGobierno)
+            {
+                pipr.IdProyecto = entity.IdProyecto;
+                ProyectoIndicadorObjetivosGobiernoBusiness.Current.Add(pipr.ToEntity(), contextUser);
             }
 
             // Indicador Beneficio
@@ -225,6 +245,28 @@ namespace Business
                     else
                     {
                         ProyectoIndicadorPriorizacionBusiness.Current.Update(ivr.ToEntity(), contextUser);
+                    }
+                }
+
+                // ProyectoIndicadorObjetivosGobierno
+
+                List<int> actualProyectoIndicadorObjetivosGobiernoIds = (from o in entity.IndicadoresObjetivosGobierno where o.IdProyectoIndicadorObjetivosGobierno > 0 select o.IdProyectoIndicadorObjetivosGobierno).ToList();
+                List<ProyectoIndicadorObjetivosGobierno> oldProyectoIndicadorObjetivosGobiernoDetail = ProyectoIndicadorObjetivosGobiernoBusiness.Current.GetList(new ProyectoIndicadorObjetivosGobiernoFilter() { IdProyecto = entity.IdProyecto });
+                List<int> deleteProyectoIndicadorObjetivosGobiernoIds = (from o in oldProyectoIndicadorObjetivosGobiernoDetail where !actualProyectoIndicadorObjetivosGobiernoIds.Contains(o.IdProyectoIndicadorObjetivosGobierno) select o.IdProyectoIndicadorObjetivosGobierno).ToList();
+                ProyectoIndicadorObjetivosGobiernoBusiness.Current.Delete(deleteProyectoIndicadorObjetivosGobiernoIds.ToArray(), contextUser);
+
+
+                foreach (ProyectoIndicadorObjetivosGobiernoResult ivr in entity.IndicadoresObjetivosGobierno)
+                {
+
+                    if (ivr.IdProyectoIndicadorObjetivosGobierno < 1)
+                    {
+                        ivr.IdProyecto = entity.IdProyecto;
+                        ProyectoIndicadorObjetivosGobiernoBusiness.Current.Add(ivr.ToEntity(), contextUser);
+                    }
+                    else
+                    {
+                        ProyectoIndicadorObjetivosGobiernoBusiness.Current.Update(ivr.ToEntity(), contextUser);
                     }
                 }
 
@@ -368,6 +410,18 @@ namespace Business
                 if (piprTarget == null) return false;
 
                 if (!ProyectoIndicadorPriorizacionBusiness.Current.Equals(pipr, piprTarget)) return false;
+            }
+
+            if (source.IndicadoresObjetivosGobierno.Count() != target.IndicadoresObjetivosGobierno.Count()) return false;
+
+
+            foreach (ProyectoIndicadorObjetivosGobiernoResult pipr in source.IndicadoresObjetivosGobierno)
+            {
+                ProyectoIndicadorObjetivosGobiernoResult piprTarget = target.IndicadoresObjetivosGobierno.Where(p => p.IdProyectoIndicadorObjetivosGobierno
+                    == pipr.IdProyectoIndicadorObjetivosGobierno).SingleOrDefault();
+                if (piprTarget == null) return false;
+
+                if (!ProyectoIndicadorObjetivosGobiernoBusiness.Current.Equals(pipr, piprTarget)) return false;
             }
 
             if (!ProyectoEvaluacionBusiness.Current.Equals(source.Evaluacion, target.Evaluacion)) return false;

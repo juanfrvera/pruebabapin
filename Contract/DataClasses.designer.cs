@@ -439,6 +439,9 @@ namespace Contract
     partial void InsertProyectoIndicadorPriorizacion(ProyectoIndicadorPriorizacion instance);
     partial void UpdateProyectoIndicadorPriorizacion(ProyectoIndicadorPriorizacion instance);
     partial void DeleteProyectoIndicadorPriorizacion(ProyectoIndicadorPriorizacion instance);
+    partial void InsertProyectoIndicadorObjetivosGobierno(ProyectoIndicadorObjetivosGobierno instance);
+    partial void UpdateProyectoIndicadorObjetivosGobierno(ProyectoIndicadorObjetivosGobierno instance);
+    partial void DeleteProyectoIndicadorObjetivosGobierno(ProyectoIndicadorObjetivosGobierno instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
@@ -1690,6 +1693,14 @@ namespace Contract
 			get
 			{
 				return this.GetTable<ProyectoIndicadorPriorizacion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ProyectoIndicadorObjetivosGobierno> ProyectoIndicadorObjetivosGobiernos
+		{
+			get
+			{
+				return this.GetTable<ProyectoIndicadorObjetivosGobierno>();
 			}
 		}
 		
@@ -39180,6 +39191,8 @@ namespace Contract
 		
 		private EntitySet<ProyectoIndicadorPriorizacion> _ProyectoIndicadorPriorizacions;
 		
+		private EntitySet<ProyectoIndicadorObjetivosGobierno> _ProyectoIndicadorObjetivosGobiernos;
+		
 		private EntityRef<UnidadMedida> _UnidadMedida;
 		
 		private EntityRef<IndicadorTipo> _IndicadorTipo;
@@ -39503,6 +39516,25 @@ namespace Contract
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IndicadorClase_ProyectoIndicadorObjetivosGobierno", Storage="_ProyectoIndicadorObjetivosGobiernos", ThisKey="IdIndicadorClase", OtherKey="IdIndicadorClase")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15, EmitDefaultValue=false)]
+		public EntitySet<ProyectoIndicadorObjetivosGobierno> ProyectoIndicadorObjetivosGobiernos
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._ProyectoIndicadorObjetivosGobiernos.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._ProyectoIndicadorObjetivosGobiernos;
+			}
+			set
+			{
+				this._ProyectoIndicadorObjetivosGobiernos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UnidadMedida_IndicadorClase", Storage="_UnidadMedida", ThisKey="IdUnidad", OtherKey="IdUnidadMedida", IsForeignKey=true)]
 		public UnidadMedida UnidadMedida
 		{
@@ -39663,6 +39695,18 @@ namespace Contract
 			entity.IndicadorClase = null;
 		}
 		
+		private void attach_ProyectoIndicadorObjetivosGobiernos(ProyectoIndicadorObjetivosGobierno entity)
+		{
+			this.SendPropertyChanging();
+			entity.IndicadorClase = this;
+		}
+		
+		private void detach_ProyectoIndicadorObjetivosGobiernos(ProyectoIndicadorObjetivosGobierno entity)
+		{
+			this.SendPropertyChanging();
+			entity.IndicadorClase = null;
+		}
+		
 		private void Initialize()
 		{
 			this._IndicadorMedioVerificacions = new EntitySet<IndicadorMedioVerificacion>(new Action<IndicadorMedioVerificacion>(this.attach_IndicadorMedioVerificacions), new Action<IndicadorMedioVerificacion>(this.detach_IndicadorMedioVerificacions));
@@ -39671,6 +39715,7 @@ namespace Contract
 			this._ObjetivoIndicadors = new EntitySet<ObjetivoIndicador>(new Action<ObjetivoIndicador>(this.attach_ObjetivoIndicadors), new Action<ObjetivoIndicador>(this.detach_ObjetivoIndicadors));
 			this._ProyectoIndicadorEconomicos = new EntitySet<ProyectoIndicadorEconomico>(new Action<ProyectoIndicadorEconomico>(this.attach_ProyectoIndicadorEconomicos), new Action<ProyectoIndicadorEconomico>(this.detach_ProyectoIndicadorEconomicos));
 			this._ProyectoIndicadorPriorizacions = new EntitySet<ProyectoIndicadorPriorizacion>(new Action<ProyectoIndicadorPriorizacion>(this.attach_ProyectoIndicadorPriorizacions), new Action<ProyectoIndicadorPriorizacion>(this.detach_ProyectoIndicadorPriorizacions));
+			this._ProyectoIndicadorObjetivosGobiernos = new EntitySet<ProyectoIndicadorObjetivosGobierno>(new Action<ProyectoIndicadorObjetivosGobierno>(this.attach_ProyectoIndicadorObjetivosGobiernos), new Action<ProyectoIndicadorObjetivosGobierno>(this.detach_ProyectoIndicadorObjetivosGobiernos));
 			this._UnidadMedida = default(EntityRef<UnidadMedida>);
 			this._IndicadorTipo = default(EntityRef<IndicadorTipo>);
 			OnCreated();
@@ -40218,6 +40263,289 @@ namespace Contract
 					if ((value != null))
 					{
 						value.ProyectoIndicadorPriorizacions.Add(this);
+						this._IdProyecto = value.IdProyecto;
+					}
+					else
+					{
+						this._IdProyecto = default(int);
+					}
+					this.SendPropertyChanged("Proyecto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._IndicadorClase = default(EntityRef<IndicadorClase>);
+			this._Proyecto = default(EntityRef<Proyecto>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProyectoIndicadorObjetivosGobierno")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class ProyectoIndicadorObjetivosGobierno : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdProyectoIndicadorObjetivosGobierno;
+		
+		private int _IdProyecto;
+		
+		private int _IdIndicadorClase;
+		
+		private System.Nullable<decimal> _Valor;
+		
+		private System.Nullable<int> _Anio;
+		
+		private string _Observacion;
+		
+		private EntityRef<IndicadorClase> _IndicadorClase;
+		
+		private EntityRef<Proyecto> _Proyecto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdProyectoIndicadorObjetivosGobiernoChanging(int value);
+    partial void OnIdProyectoIndicadorObjetivosGobiernoChanged();
+    partial void OnIdProyectoChanging(int value);
+    partial void OnIdProyectoChanged();
+    partial void OnIdIndicadorClaseChanging(int value);
+    partial void OnIdIndicadorClaseChanged();
+    partial void OnValorChanging(System.Nullable<decimal> value);
+    partial void OnValorChanged();
+    partial void OnAnioChanging(System.Nullable<int> value);
+    partial void OnAnioChanged();
+    partial void OnObservacionChanging(string value);
+    partial void OnObservacionChanged();
+    #endregion
+		
+		public ProyectoIndicadorObjetivosGobierno()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyectoIndicadorObjetivosGobierno", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int IdProyectoIndicadorObjetivosGobierno
+		{
+			get
+			{
+				return this._IdProyectoIndicadorObjetivosGobierno;
+			}
+			set
+			{
+				if ((this._IdProyectoIndicadorObjetivosGobierno != value))
+				{
+					this.OnIdProyectoIndicadorObjetivosGobiernoChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyectoIndicadorObjetivosGobierno = value;
+					this.SendPropertyChanged("IdProyectoIndicadorObjetivosGobierno");
+					this.OnIdProyectoIndicadorObjetivosGobiernoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProyecto", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public int IdProyecto
+		{
+			get
+			{
+				return this._IdProyecto;
+			}
+			set
+			{
+				if ((this._IdProyecto != value))
+				{
+					if (this._Proyecto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProyectoChanging(value);
+					this.SendPropertyChanging();
+					this._IdProyecto = value;
+					this.SendPropertyChanged("IdProyecto");
+					this.OnIdProyectoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdIndicadorClase", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int IdIndicadorClase
+		{
+			get
+			{
+				return this._IdIndicadorClase;
+			}
+			set
+			{
+				if ((this._IdIndicadorClase != value))
+				{
+					if (this._IndicadorClase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdIndicadorClaseChanging(value);
+					this.SendPropertyChanging();
+					this._IdIndicadorClase = value;
+					this.SendPropertyChanged("IdIndicadorClase");
+					this.OnIdIndicadorClaseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Money")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<decimal> Valor
+		{
+			get
+			{
+				return this._Valor;
+			}
+			set
+			{
+				if ((this._Valor != value))
+				{
+					this.OnValorChanging(value);
+					this.SendPropertyChanging();
+					this._Valor = value;
+					this.SendPropertyChanged("Valor");
+					this.OnValorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anio", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<int> Anio
+		{
+			get
+			{
+				return this._Anio;
+			}
+			set
+			{
+				if ((this._Anio != value))
+				{
+					this.OnAnioChanging(value);
+					this.SendPropertyChanging();
+					this._Anio = value;
+					this.SendPropertyChanged("Anio");
+					this.OnAnioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Observacion", DbType="VarChar(500)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public string Observacion
+		{
+			get
+			{
+				return this._Observacion;
+			}
+			set
+			{
+				if ((this._Observacion != value))
+				{
+					this.OnObservacionChanging(value);
+					this.SendPropertyChanging();
+					this._Observacion = value;
+					this.SendPropertyChanged("Observacion");
+					this.OnObservacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IndicadorClase_ProyectoIndicadorObjetivosGobierno", Storage="_IndicadorClase", ThisKey="IdIndicadorClase", OtherKey="IdIndicadorClase", IsForeignKey=true)]
+		public IndicadorClase IndicadorClase
+		{
+			get
+			{
+				return this._IndicadorClase.Entity;
+			}
+			set
+			{
+				IndicadorClase previousValue = this._IndicadorClase.Entity;
+				if (((previousValue != value) 
+							|| (this._IndicadorClase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._IndicadorClase.Entity = null;
+						previousValue.ProyectoIndicadorObjetivosGobiernos.Remove(this);
+					}
+					this._IndicadorClase.Entity = value;
+					if ((value != null))
+					{
+						value.ProyectoIndicadorObjetivosGobiernos.Add(this);
+						this._IdIndicadorClase = value.IdIndicadorClase;
+					}
+					else
+					{
+						this._IdIndicadorClase = default(int);
+					}
+					this.SendPropertyChanged("IndicadorClase");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoIndicadorObjetivosGobierno", Storage="_Proyecto", ThisKey="IdProyecto", OtherKey="IdProyecto", IsForeignKey=true)]
+		public Proyecto Proyecto
+		{
+			get
+			{
+				return this._Proyecto.Entity;
+			}
+			set
+			{
+				Proyecto previousValue = this._Proyecto.Entity;
+				if (((previousValue != value) 
+							|| (this._Proyecto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Proyecto.Entity = null;
+						previousValue.ProyectoIndicadorObjetivosGobiernos.Remove(this);
+					}
+					this._Proyecto.Entity = value;
+					if ((value != null))
+					{
+						value.ProyectoIndicadorObjetivosGobiernos.Add(this);
 						this._IdProyecto = value.IdProyecto;
 					}
 					else
@@ -54045,6 +54373,8 @@ namespace Contract
 		
 		private EntitySet<ProyectoIndicadorPriorizacion> _ProyectoIndicadorPriorizacions;
 		
+		private EntitySet<ProyectoIndicadorObjetivosGobierno> _ProyectoIndicadorObjetivosGobiernos;
+		
 		private EntitySet<ProyectoComentarioTecnico> _ProyectoComentarioTecnicos;
 		
 		private EntitySet<ProyectoEtapa> _ProyectoEtapas;
@@ -55381,8 +55711,27 @@ namespace Contract
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoComentarioTecnico", Storage="_ProyectoComentarioTecnicos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoIndicadorObjetivosGobierno", Storage="_ProyectoIndicadorObjetivosGobiernos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=60, EmitDefaultValue=false)]
+		public EntitySet<ProyectoIndicadorObjetivosGobierno> ProyectoIndicadorObjetivosGobiernos
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._ProyectoIndicadorObjetivosGobiernos.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._ProyectoIndicadorObjetivosGobiernos;
+			}
+			set
+			{
+				this._ProyectoIndicadorObjetivosGobiernos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoComentarioTecnico", Storage="_ProyectoComentarioTecnicos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=61, EmitDefaultValue=false)]
 		public EntitySet<ProyectoComentarioTecnico> ProyectoComentarioTecnicos
 		{
 			get
@@ -55401,7 +55750,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoEtapa", Storage="_ProyectoEtapas", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=61, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=62, EmitDefaultValue=false)]
 		public EntitySet<ProyectoEtapa> ProyectoEtapas
 		{
 			get
@@ -55420,7 +55769,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoCalidad", Storage="_ProyectoCalidads", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=62, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=63, EmitDefaultValue=false)]
 		public EntitySet<ProyectoCalidad> ProyectoCalidads
 		{
 			get
@@ -55439,7 +55788,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_ProyectoOrigenFinanciamiento", Storage="_ProyectoOrigenFinanciamientos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=63, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=64, EmitDefaultValue=false)]
 		public EntitySet<ProyectoOrigenFinanciamiento> ProyectoOrigenFinanciamientos
 		{
 			get
@@ -55458,7 +55807,7 @@ namespace Contract
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Proyecto_EstadoDeDesicionHistorico", Storage="_EstadoDeDesicionHistoricos", ThisKey="IdProyecto", OtherKey="IdProyecto")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=64, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=65, EmitDefaultValue=false)]
 		public EntitySet<EstadoDeDesicionHistorico> EstadoDeDesicionHistoricos
 		{
 			get
@@ -56044,6 +56393,18 @@ namespace Contract
 			entity.Proyecto = null;
 		}
 		
+		private void attach_ProyectoIndicadorObjetivosGobiernos(ProyectoIndicadorObjetivosGobierno entity)
+		{
+			this.SendPropertyChanging();
+			entity.Proyecto = this;
+		}
+		
+		private void detach_ProyectoIndicadorObjetivosGobiernos(ProyectoIndicadorObjetivosGobierno entity)
+		{
+			this.SendPropertyChanging();
+			entity.Proyecto = null;
+		}
+		
 		private void attach_ProyectoComentarioTecnicos(ProyectoComentarioTecnico entity)
 		{
 			this.SendPropertyChanging();
@@ -56129,6 +56490,7 @@ namespace Contract
 			this._ProyectoPrioridads = new EntitySet<ProyectoPrioridad>(new Action<ProyectoPrioridad>(this.attach_ProyectoPrioridads), new Action<ProyectoPrioridad>(this.detach_ProyectoPrioridads));
 			this._ProyectoIndicadorEconomicos = new EntitySet<ProyectoIndicadorEconomico>(new Action<ProyectoIndicadorEconomico>(this.attach_ProyectoIndicadorEconomicos), new Action<ProyectoIndicadorEconomico>(this.detach_ProyectoIndicadorEconomicos));
 			this._ProyectoIndicadorPriorizacions = new EntitySet<ProyectoIndicadorPriorizacion>(new Action<ProyectoIndicadorPriorizacion>(this.attach_ProyectoIndicadorPriorizacions), new Action<ProyectoIndicadorPriorizacion>(this.detach_ProyectoIndicadorPriorizacions));
+			this._ProyectoIndicadorObjetivosGobiernos = new EntitySet<ProyectoIndicadorObjetivosGobierno>(new Action<ProyectoIndicadorObjetivosGobierno>(this.attach_ProyectoIndicadorObjetivosGobiernos), new Action<ProyectoIndicadorObjetivosGobierno>(this.detach_ProyectoIndicadorObjetivosGobiernos));
 			this._ProyectoComentarioTecnicos = new EntitySet<ProyectoComentarioTecnico>(new Action<ProyectoComentarioTecnico>(this.attach_ProyectoComentarioTecnicos), new Action<ProyectoComentarioTecnico>(this.detach_ProyectoComentarioTecnicos));
 			this._ProyectoEtapas = new EntitySet<ProyectoEtapa>(new Action<ProyectoEtapa>(this.attach_ProyectoEtapas), new Action<ProyectoEtapa>(this.detach_ProyectoEtapas));
 			this._ProyectoCalidads = new EntitySet<ProyectoCalidad>(new Action<ProyectoCalidad>(this.attach_ProyectoCalidads), new Action<ProyectoCalidad>(this.detach_ProyectoCalidads));

@@ -184,8 +184,10 @@ namespace Contract
 , Certificado = 619
 , Proyecto_Cronograma_Compose = 620
 //, Proyecto_Etapa_Realizado_Periodo = 621
-, Proyecto_Etapa_Informacion_Presupuestaria = 622
-, Proyecto_Etapa_Informacion_Presupuestaria_Periodo = 623
+, Proyecto_Etapa_Informacion_Presupuestaria = 640
+, Proyecto_Etapa_Informacion_Presupuestaria_Periodo = 641
+, Indicador_ObjetivosGobierno = 642
+, Proyecto_Indicador_ObjetivosGobierno = 643
  }
  public class SistemaEntidadConfig
  {
@@ -366,6 +368,8 @@ public const string PROYECTO_CRONOGRAMA_COMPOSE = "ProyectoCronogramaCompose";
 //public const string PROYECTO_ETAPA_REALIZADO_PERIODO = "ProyectoEtapaRealizadoPeriodo";
 public const string PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA = "ProyectoEtapaInformacionPresupuestaria";
 public const string PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO = "ProyectoEtapaInformacionPresupuestariaPeriodo";
+public const string INDICADOR_OBJETIVOSGOBIERNO = "IndicadorObjetivosGobierno";
+public const string PROYECTO_INDICADOR_OBJETIVOSGOBIERNO = "Proyecto_Indicador_ObjetivosGobierno";
 
  public static string GetConst(SistemaEntidadEnum key)
         {
@@ -548,7 +552,8 @@ case SistemaEntidadEnum.Proyecto_Cronograma_Compose: return PROYECTO_CRONOGRAMA_
 //case SistemaEntidadEnum.Proyecto_Etapa_Realizado_Periodo: return PROYECTO_ETAPA_REALIZADO_PERIODO;
 case SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria: return PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA;
 case SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria_Periodo: return PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO;
-
+case SistemaEntidadEnum.Indicador_ObjetivosGobierno: return INDICADOR_OBJETIVOSGOBIERNO;
+case SistemaEntidadEnum.Proyecto_Indicador_ObjetivosGobierno: return PROYECTO_INDICADOR_OBJETIVOSGOBIERNO;
 }
             return "";
         }
@@ -733,7 +738,8 @@ case PROYECTO_CRONOGRAMA_COMPOSE: return SistemaEntidadEnum.Proyecto_Cronograma_
 //case PROYECTO_ETAPA_REALIZADO_PERIODO: return SistemaEntidadEnum.Proyecto_Etapa_Realizado_Periodo;
 case PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA: return SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria;
 case PROYECTO_ETAPA_INFORMACION_PRESUPUESTARIA_PERIODO: return SistemaEntidadEnum.Proyecto_Etapa_Informacion_Presupuestaria_Periodo;
-
+case INDICADOR_OBJETIVOSGOBIERNO : return SistemaEntidadEnum.Indicador_ObjetivosGobierno;
+case PROYECTO_INDICADOR_OBJETIVOSGOBIERNO : return SistemaEntidadEnum.Proyecto_Indicador_ObjetivosGobierno;
  }
             return SistemaEntidadEnum.Undefined;
         }

@@ -215,6 +215,7 @@
     <Compile Include="Filters\AuditOperationDetailFilter.cs" />
     <Compile Include="Filters\AuditOperationFilter.cs" />
     <Compile Include="Filters\AuditSessionFilter.cs" />
+    <Compile Include="Filters\Base\_ProyectoIndicadorObjetivosGobiernoFilter.cs" />
     <Compile Include="Filters\Base\_ProyectoEtapaInformacionPresupuestariaFilter.cs" />
     <Compile Include="Filters\Base\_ProyectoEtapaInformacionPresupuestariaPeriodoFilter.cs" />
     <Compile Include="Filters\Base\_ProyectoPrincipiosFormulacionFilter.cs" />
@@ -410,6 +411,7 @@
     <Compile Include="Filters\ComentarioTecnicoFilter.cs" />
     <Compile Include="Filters\ConfigurationCategoryFilter.cs" />
     <Compile Include="Filters\ConfigurationFilter.cs" />
+    <Compile Include="Filters\ProyectoIndicadorObjetivosGobiernoFilter.cs" />
     <Compile Include="Filters\ProyectoEtapaInformacionPresupuestariaFilter.cs" />
     <Compile Include="Filters\ProyectoEtapaInformacionPresupuestariaPeriodoFilter.cs" />
     <Compile Include="Filters\ProyectoPrincipiosFormulacionFilter.cs" />
@@ -630,6 +632,7 @@
     <Compile Include="Results\AuditOperationDetailResult.cs" />
     <Compile Include="Results\AuditOperationResult.cs" />
     <Compile Include="Results\AuditSessionResult.cs" />
+    <Compile Include="Results\Base\_ProyectoIndicadorObjetivosGobiernoResult.cs" />
     <Compile Include="Results\Base\_ProyectoEtapaInformacionPresupuestariaPeriodoResult.cs" />
     <Compile Include="Results\Base\_ProyectoPrincipiosFormulacionResult.cs" />
     <Compile Include="Results\Base\_ActividadPermisoResult.cs" />
@@ -804,6 +807,7 @@
     <Compile Include="Results\ComentarioTecnicoResult.cs" />
     <Compile Include="Results\ConfigurationCategoryResult.cs" />
     <Compile Include="Results\ConfigurationResult.cs" />
+    <Compile Include="Results\ProyectoIndicadorObjetivosGobiernoResult.cs" />
     <Compile Include="Results\ProyectoEtapaInformacionPresupuestariaPeriodoResult.cs" />
     <Compile Include="Results\ProyectoEtapaInformacionPresupuestariaResult.cs" />
     <Compile Include="Results\ProyectoPrincipiosFormulacionResult.cs" />

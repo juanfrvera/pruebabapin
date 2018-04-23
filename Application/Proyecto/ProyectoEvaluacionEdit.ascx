@@ -266,35 +266,35 @@
     </table>
 </asp:Panel>
 
-<%--PANEL INDICADORES PRIORIZACIONES --%>
+<%--PANEL INDICADORES OBJETIVOS GOBIERNO --%>
 <div class="CollapsiblePanelTab">
-    <span id="spanIndicadoresPriorizacion">
-        <asp:Label ID="lblIndicadoresPriorizacion" runat="server" Text="Contribución al Objetivo de Gobierno"></asp:Label>
+    <span id="spanIndicadoresObjetivosGobierno">
+        <asp:Label ID="lblIndicadoresObjetivosGobierno" runat="server" Text="Contribución al Objetivo de Gobierno"></asp:Label>
         &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
     </span>
-    <ajaxToolkit:CollapsiblePanelExtender ID="cpeIndicadoresPriorizacion" runat="Server"
-        TargetControlID="pnlIndicadoresPriorizacion" Collapsed="True" ExpandControlID="lblIndicadoresPriorizacion"
-        CollapseControlID="lblIndicadoresPriorizacion" AutoCollapse="False" AutoExpand="False"
+    <ajaxToolkit:CollapsiblePanelExtender ID="cpeIndicadoresObjetivosGobierno" runat="Server"
+        TargetControlID="pnlIndicadoresObjetivosGobierno" Collapsed="True" ExpandControlID="lblIndicadoresObjetivosGobierno"
+        CollapseControlID="lblIndicadoresObjetivosGobierno" AutoCollapse="False" AutoExpand="False"
         ExpandDirection="Vertical" />
 </div>
-<asp:Panel ID="pnlIndicadoresPriorizacion" runat="server">
+<asp:Panel ID="pnlIndicadoresObjetivosGobierno" runat="server">
     <table width="100%" cellpadding="0" cellspacing="5px" border="0">
         <tr>
             <td align="right">
-                <asp:UpdatePanel ID="upAgregarIndicadorPriorizacion" runat="server" UpdateMode="Conditional">
+                <asp:UpdatePanel ID="upAgregarIndicadorObjetivosGobierno" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <asp:Button ID="btAgregarIndicadorPriorizacion" runat="server" Text="Agregar" OnClick="btAgregarIndicadorPriorizacion_Click" />
+                        <asp:Button ID="btAgregarIndicadorObjetivosGobierno" runat="server" Text="Agregar" OnClick="btAgregarIndicadorObjetivosGobierno_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:UpdatePanel ID="upGridIndicadoresPriorizacion" runat="server" UpdateMode="Conditional">
+                <asp:UpdatePanel ID="upGridIndicadoresObjetivosGobierno" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <asp:GridView ID="gridIndicadoresPriorizacion" runat="server" AutoGenerateColumns="False"
-                            DataKeyNames="ID" AllowPaging="False" OnRowCommand="GridIndicadoresPriorizacion_RowCommand"
-                            AllowSorting="False" OnSorting="GridIndicadoresPriorizacion_Sorting" OnPageIndexChanging="GridIndicadoresPriorizacion_PageIndexChanging"
+                        <asp:GridView ID="gridIndicadoresObjetivosGobierno" runat="server" AutoGenerateColumns="False"
+                            DataKeyNames="ID" AllowPaging="False" OnRowCommand="GridIndicadoresObjetivosGobierno_RowCommand"
+                            AllowSorting="False" OnSorting="GridIndicadoresObjetivosGobierno_Sorting" OnPageIndexChanging="GridIndicadoresObjetivosGobierno_PageIndexChanging"
                             EmptyDataText="No hay indicadores definidos" Width="100%">
                             <Columns>
                                 <asp:BoundField HeaderText="Sigla" DataField="IndicadorClase_Sigla" SortExpression="IndicadorClase_Sigla" />
@@ -329,7 +329,7 @@
 
 <%------ *************  POPUPS ************* ------%>
 
-<%--PANEL ALTA INDICADORES PROYECTO utilizado tanto para "Indicadores de evaluación" como para "Contribución al Objetivo de Gobierno" --%>
+<%--PANEL ALTA INDICADORES PROYECTO OBJETIVOS GOBIERNO" --%>
 <asp:Panel ID="PopUpIndicadoresProyecto" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="IndicadoresProyectoPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -376,12 +376,12 @@
                                     </td>
                                 </tr>
                                 <%--German 01032014 - tarea 110--%>
-                                <tr>
+                                <tr runat="server" id="trValorIndicadoresProyectoLiteral">
                                     <td>
                                         <asp:Literal ID="ltValorIndicadoresProyecto" Text="Valor" runat="server"></asp:Literal>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr runat="server" id="trValorIndicadoresProyectoTextBox">
                                     <td>
                                         <cc:NumericTextBox runat="server" ID="txtValorIndicadoresProyecto" InputType="PositiveFractional"></cc:NumericTextBox>
                                         <%--<asp:RequiredFieldValidator ID="rfvValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
