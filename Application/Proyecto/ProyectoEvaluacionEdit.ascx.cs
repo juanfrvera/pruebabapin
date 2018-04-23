@@ -25,7 +25,7 @@ namespace UI.Web.Pages
             tsEvolucionBeneficiario.Width = 470;
             tsEvolucionBeneficiario.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
             tsEvolucionBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
-            revCriteriosEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //[CriterioEvaluacion]revCriteriosEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revMarcoLegal.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revEstudiosRealizados.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revEstudiosARealizar.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
@@ -34,7 +34,7 @@ namespace UI.Web.Pages
             //revOpcionB.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revJustificacionOpcion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
 
-            revCriteriosEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Criterio de Evaluación");
+            //[CriterioEvaluacion]revCriteriosEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Criterio de Evaluación");
             //revMarcoLegal.ErrorMessage = TranslateFormat("InvalidField", "Marco Legal");
             //revEstudiosRealizados.ErrorMessage = TranslateFormat("InvalidField", "Estudios Realizados");
             //revEstudiosARealizar.ErrorMessage = TranslateFormat("InvalidField", "Estudios a Realizar");
@@ -99,11 +99,11 @@ namespace UI.Web.Pages
             revCantidadEstimadaEvolucionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
             revCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Estimada");
 
-            revHorizonteEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
-            revHorizonteEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Horizonte de Evaluación");
+            //[CriterioEvaluacion]revHorizonteEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
+            //[CriterioEvaluacion]revHorizonteEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Horizonte de Evaluación");
 
-            revTasaReferencia.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revTasaReferencia.ErrorMessage = TranslateFormat("InvalidField", "Tasa de Referencia");
+            //[CriterioEvaluacion]revTasaReferencia.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[CriterioEvaluacion]revTasaReferencia.ErrorMessage = TranslateFormat("InvalidField", "Tasa de Referencia");
 
             //Matias 20170209 - Ticket #REQ819714
             rfvMedioVerificacion.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
@@ -127,15 +127,15 @@ namespace UI.Web.Pages
             PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
 
             pnlIndicadoresEvaluacion.ToolTip = Translate("TooltipIndicadoresEvaluacion");
-            txtCriteriosEvaluacion.ToolTip = Translate("TooltipCriteriosEvaluacion");
-            txtHorizonteEvaluacion.ToolTip = Translate("TooltipHorizonteEvaluacion");
-            txtTasaReferencia.ToolTip = Translate("TooltipTasaReferencia");
-            //xxxxxxxx.ToolTip = Translate("TooltipOtrosIndicadores");
-            //xxxxxxxx.ToolTip = Translate("TooltipContribucionObjetivoGobierno");
-            //xxxxxxxx.ToolTip = Translate("TooltipSector");
-            //xxxxxxxx.ToolTip = Translate("TooltipIndicador");
-            //xxxxxxxx.ToolTip = Translate("TooltipMedioVerificacion");
-            //xxxxxxxx.ToolTip = Translate("TooltipObservacionesEvaluacion");
+            //[CriterioEvaluacion]txtCriteriosEvaluacion.ToolTip = Translate("TooltipCriteriosEvaluacion");
+            //[CriterioEvaluacion]txtHorizonteEvaluacion.ToolTip = Translate("TooltipHorizonteEvaluacion");
+            //[CriterioEvaluacion]txtTasaReferencia.ToolTip = Translate("TooltipTasaReferencia");
+            pnlBeneficios.ToolTip = Translate("TooltipOtrosIndicadores");
+            pnlIndicadoresPriorizacion.ToolTip = Translate("TooltipContribucionObjetivoGobierno");
+            ((DropDownList)toIndicadoClase.PnControl.FindControl("ddlSectorInd")).ToolTip = Translate("TooltipSector");
+            ((TextBox)toIndicadoClase.PnControl.FindControl("txtSelect")).ToolTip = Translate("TooltipIndicador");
+            ddlMedioVerificacionBeneficio.ToolTip = Translate("TooltipMedioVerificacion");
+            txtObservacionesIndicadoresBeneficio.ToolTip = Translate("TooltipObservacionesEvaluacion");
         }
 
         public void RegistrarScriptTotales()
@@ -197,16 +197,17 @@ namespace UI.Web.Pages
             //UIHelper.Clear(txtOpcionB);
             //UIHelper.Clear(txtJustificacionOpcion);
             UIHelper.Clear(gridIndicadoresPriorizacion);
-            UIHelper.Clear(txtCriteriosEvaluacion);
-            UIHelper.Clear(txtHorizonteEvaluacion);
-            UIHelper.Clear(txtTasaReferencia);
-            upIndicadoresEconomicos.Update();
+            //[CriterioEvaluacion]UIHelper.Clear(txtCriteriosEvaluacion);
+            //[CriterioEvaluacion]UIHelper.Clear(txtHorizonteEvaluacion);
+            //[CriterioEvaluacion]UIHelper.Clear(txtTasaReferencia);
+            upGridIndicadoresEconomicos.Update();
+            upGridIndicadoresSectorial.Update();
         }
         public override void GetValue()
         {
-            Entity.Evaluacion.CriterioEvaluacion = UIHelper.GetString(txtCriteriosEvaluacion);
-            Entity.Evaluacion.HorizonteEvaluacion = UIHelper.GetIntNullable(txtHorizonteEvaluacion);
-            Entity.Evaluacion.TasaReferencia = UIHelper.GetDecimalNullable(txtTasaReferencia);
+            //[CriterioEvaluacion]Entity.Evaluacion.CriterioEvaluacion = UIHelper.GetString(txtCriteriosEvaluacion);
+            //[CriterioEvaluacion]Entity.Evaluacion.HorizonteEvaluacion = UIHelper.GetIntNullable(txtHorizonteEvaluacion);
+            //[CriterioEvaluacion]Entity.Evaluacion.TasaReferencia = UIHelper.GetDecimalNullable(txtTasaReferencia);
             //Entity.Evaluacion.MarcoLegal = UIHelper.GetString(txtMarcoLegal);
             //Entity.Evaluacion.EstudioRealizado = UIHelper.GetString(txtEstudiosRealizados);
             //Entity.Evaluacion.EstudioaRealizar = UIHelper.GetString(txtEstudiosARealizar);
@@ -226,9 +227,9 @@ namespace UI.Web.Pages
             }
             else
             {
-                UIHelper.SetValue(txtCriteriosEvaluacion, Entity.Evaluacion.CriterioEvaluacion);
-                UIHelper.SetValue(txtHorizonteEvaluacion, Entity.Evaluacion.HorizonteEvaluacion);
-                UIHelper.SetValue(txtTasaReferencia, Entity.Evaluacion.TasaReferencia);
+                //UIHelper.SetValue(txtCriteriosEvaluacion, Entity.Evaluacion.CriterioEvaluacion);
+                //UIHelper.SetValue(txtHorizonteEvaluacion, Entity.Evaluacion.HorizonteEvaluacion);
+                //UIHelper.SetValue(txtTasaReferencia, Entity.Evaluacion.TasaReferencia);
                 //UIHelper.SetValue(txtMarcoLegal, Entity.Evaluacion.MarcoLegal);
                 //UIHelper.SetValue(txtEstudiosRealizados, Entity.Evaluacion.EstudioRealizado);
                 //UIHelper.SetValue(txtEstudiosARealizar, Entity.Evaluacion.EstudioaRealizar);
@@ -242,6 +243,7 @@ namespace UI.Web.Pages
             //upEstudios.Update();
             //upMarcoLegal.Update();
             IndicadoresEconomicoRefresh();
+//*****************************************************************            IndicadoresSectorialRefresh();
             IndicadoresPriorizacionRefresh();
             IndicadoresBeneficiarioRefresh();
             IndicadoresBeneficioRefresh();
@@ -1105,6 +1107,205 @@ namespace UI.Web.Pages
         }
         #endregion
         
+        #endregion
+
+        #region Indicadores Sectorial
+/*
+        private ProyectoIndicadorSectorialResult actualProyectoIndicadorSectorial;
+        protected ProyectoIndicadorSectorialResult ActualProyectoIndicadorSectorial
+        {
+            get
+            {
+                if (actualProyectoIndicadorSectorial == null)
+                    if (ViewState["actualProyectoIndicadorSectorial"] != null)
+                        actualProyectoIndicadorSectorial = ViewState["actualProyectoIndicadorSectorial"] as ProyectoIndicadorSectorialResult;
+                    else
+                    {
+                        actualProyectoIndicadorSectorial = GetNewProyectoIndicadorSectorial();
+                        ViewState["actualProyectoIndicadorSectorial"] = actualProyectoIndicadorSectorial;
+                    }
+                return actualProyectoIndicadorSectorial;
+            }
+            set
+            {
+                actualProyectoIndicadorSectorial = value;
+                ViewState["actualProyectoIndicadorSectorial"] = value;
+            }
+        }
+        ProyectoIndicadorSectorialResult GetNewProyectoIndicadorSectorial()
+        {
+
+            int id = 0;
+            if (Entity.IndicadoresSectorial.Count > 0) id = Entity.IndicadoresSectorial.Min(l => l.IdProyectoIndicadorSectorial);
+            if (id > 0) id = 0;
+            id--;
+            ProyectoIndicadorSectorialResult proyectoIndicadorSectorialResult;
+            proyectoIndicadorSectorialResult = new ProyectoIndicadorSectorialResult();
+            proyectoIndicadorSectorialResult.IdProyectoIndicadorSectorial = id;
+
+            return proyectoIndicadorSectorialResult;
+        }
+
+        #region Commands
+        void CommandIndicadoresSectorialEdit()
+        {
+            IndicadoresSectorialSetValue();
+        }
+        void CommandIndicadoresSectorialSave()
+        {
+            ProyectoIndicadorSectorialResult piep = (from l in Entity.IndicadoresSectorial
+                                                     where l.IdProyectoIndicadorSectorial == ActualProyectoIndicadorSectorial.ID
+                                                     select l).FirstOrDefault();
+
+            if (piep != null)
+            {
+
+                piep.Valor = ActualProyectoIndicadorSectorial.Valor;
+                piep.Anio = ActualProyectoIndicadorSectorial.Anio;
+                piep.Observacion = ActualProyectoIndicadorSectorial.Observacion;
+                piep.IdIndicadorClase = ActualProyectoIndicadorSectorial.IdIndicadorClase;
+                piep.IndicadorClase_Nombre = ActualProyectoIndicadorSectorial.IndicadorClase_Nombre;
+                piep.IndicadorClase_Sigla = ActualProyectoIndicadorSectorial.IndicadorClase_Sigla;
+                piep.IndicadorClase_Unidad = ActualProyectoIndicadorSectorial.IndicadorClase_Unidad;
+                piep.IndicadorClase_IdIndicadorTipo = ActualProyectoIndicadorSectorial.IndicadorClase_IdIndicadorTipo;
+
+            }
+            else
+            {
+
+                Entity.IndicadoresSectorial.Add(ActualProyectoIndicadorSectorial);
+            }
+        }
+        void CommandIndicadoresSectorialDelete()
+        {
+
+            ProyectoIndicadorSectorialResult pier = (from l in Entity.IndicadoresSectorial
+                                                     where l.IdProyectoIndicadorSectorial == ActualProyectoIndicadorSectorial.ID
+                                                     select l).FirstOrDefault();
+
+            Entity.IndicadoresSectorial.Remove(pier);
+
+        }
+        #endregion
+
+        #region Methods
+        void IndicadoresSectorialClear()
+        {
+            ActualProyectoIndicadorSectorial = GetNewProyectoIndicadorSectorial();
+            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Sectorial, Activo = true };
+            //German 01032014 - tarea 110
+            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Sectorial, Activo = true };
+            //solo por ahora - Ver pq no funciona
+            //toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
+            //Fin German 01032014 - tarea 110
+        }
+        void IndicadoresSectorialSetValue()
+        {
+
+            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorSectorial.IdIndicadorClase);
+            //German 01032014 - tarea 110
+            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorSectorial.IdIndicadorClase);
+            //Fin German 01032014 - tarea 110
+            UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorSectorial.Valor);
+
+            if (ActualProyectoIndicadorSectorial.Anio.HasValue)
+                ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorSectorial.Anio.ToString()).Value;
+            else
+                UIHelper.Clear(ddlAnoIndicadoresProyecto);
+            //UIHelper.SetValue(ddlAnoIndicadoresProyecto, ActualProyectoIndicadorSectorial.Anio);
+            UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorSectorial.Observacion);
+
+        }
+        void IndicadoresSectorialGetValue()
+        {
+
+            ActualProyectoIndicadorSectorial.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
+            //German 01032014 - tarea 110
+            ActualProyectoIndicadorSectorial.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
+            //Fin German 01032014 - tarea 110
+            IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorSectorial.IdIndicadorClase }).FirstOrDefault();
+            ActualProyectoIndicadorSectorial.IndicadorClase_Sigla = result.Sigla;
+            ActualProyectoIndicadorSectorial.IndicadorClase_Nombre = result.Nombre;
+            ActualProyectoIndicadorSectorial.IndicadorClase_Unidad = result.Unidad_Nombre;
+
+            ActualProyectoIndicadorSectorial.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
+            ActualProyectoIndicadorSectorial.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
+            ActualProyectoIndicadorSectorial.Valor = UIHelper.GetDecimal(txtValorIndicadoresProyecto);
+
+        }
+        void IndicadoresSectorialRefresh()
+        {
+            UIHelper.Load(gridIndicadoresSectorial, Entity.IndicadoresSectorial, "IndicadorClase_Nombre");
+            upGridIndicadoresSectorial.Update();
+
+        }
+        #endregion Methods
+*/
+        #region Eventos
+        protected void btAgregarIndicadorSectorial_Click(object sender, EventArgs e)
+        {
+ //************************************************           ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Sectorial;
+            IndicadoresProyectoClear();
+            ModalPopupExtenderIndicadoresProyecto.Show();
+        }
+        #endregion
+
+        #region EventosGrillas
+        protected void GridIndicadoresSectorial_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+/*
+            int id;
+            if (!int.TryParse(e.CommandArgument.ToString(), out id))
+                return;
+
+            ActualProyectoIndicadorSectorial = (from l in Entity.IndicadoresSectorial
+                                                where l.IdProyectoIndicadorSectorial == id
+                                                select l).FirstOrDefault();
+
+            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Sectorial;
+
+            switch (e.CommandName)
+            {
+                case Command.EDIT:
+                    CommandIndicadoresProyectoEdit();
+                    break;
+                case Command.DELETE:
+                    CommandIndicadoresProyectoDelete();
+                    break;
+            }
+            */
+
+        }
+        protected virtual void GridIndicadoresSectorial_Sorting(object sender, GridViewSortEventArgs e)
+        {
+
+            try
+            {
+                gridIndicadoresSectorial.PageIndex = 0;
+                RaiseControlCommand(Command.SORT, e);
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+
+        }
+        protected virtual void GridIndicadoresSectorial_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+            try
+            {
+                gridIndicadoresSectorial.PageIndex = e.NewPageIndex;
+                base.RaiseControlCommand(Command.REFRESH);
+            }
+            catch (Exception exception)
+            {
+                AddException(exception);
+            }
+
+        }
+        #endregion
+
         #endregion
 
         #region Indicadores Priorizacion

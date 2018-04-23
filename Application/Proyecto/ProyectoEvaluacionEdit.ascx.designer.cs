@@ -22,6 +22,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel pnlIndicadoresEvaluacion;
         
         /// <summary>
+        /// Literal3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal3;
+        
+        /// <summary>
         /// upAgregarIndicadorEconomico control.
         /// </summary>
         /// <remarks>
@@ -58,94 +67,49 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.GridView gridIndicadoresEconomicos;
         
         /// <summary>
-        /// upIndicadoresEconomicos control.
+        /// Literal6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upIndicadoresEconomicos;
+        protected global::System.Web.UI.WebControls.Literal Literal6;
         
         /// <summary>
-        /// ltCriteriosEvaluacion control.
+        /// upAgregarIndicadorSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltCriteriosEvaluacion;
+        protected global::System.Web.UI.UpdatePanel upAgregarIndicadorSectorial;
         
         /// <summary>
-        /// txtCriteriosEvaluacion control.
+        /// btAgregarIndicadorSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCriteriosEvaluacion;
+        protected global::System.Web.UI.WebControls.Button btAgregarIndicadorSectorial;
         
         /// <summary>
-        /// revCriteriosEvaluacion control.
+        /// upGridIndicadoresSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCriteriosEvaluacion;
+        protected global::System.Web.UI.UpdatePanel upGridIndicadoresSectorial;
         
         /// <summary>
-        /// ltHorizonteEvaluacion control.
+        /// gridIndicadoresSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltHorizonteEvaluacion;
-        
-        /// <summary>
-        /// txtHorizonteEvaluacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.NumericTextBox txtHorizonteEvaluacion;
-        
-        /// <summary>
-        /// revHorizonteEvaluacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revHorizonteEvaluacion;
-        
-        /// <summary>
-        /// ltTasaReferencia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltTasaReferencia;
-        
-        /// <summary>
-        /// txtTasaReferencia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.NumericTextBox txtTasaReferencia;
-        
-        /// <summary>
-        /// revTasaReferencia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTasaReferencia;
+        protected global::System.Web.UI.WebControls.GridView gridIndicadoresSectorial;
         
         /// <summary>
         /// lblBeneficios control.

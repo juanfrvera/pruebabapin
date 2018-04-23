@@ -37,8 +37,13 @@
     }
 </style>
 <%--PANEL INDICADORES EVALUACION --%>
-<asp:Panel ID="pnlIndicadoresEvaluacion" runat="server" GroupingText="Indicadores Económicos">
+<asp:Panel ID="pnlIndicadoresEvaluacion" runat="server" GroupingText="Indicadores de Evaluación">
     <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+        <tr>
+            <td>
+                <asp:Literal ID="Literal3" Text="Indicador de Evaluación Económica" runat="server"></asp:Literal>
+            </td>
+        </tr>
         <tr>
             <td align="right">
                 <asp:UpdatePanel ID="upAgregarIndicadorEconomico" runat="server" UpdateMode="Conditional">
@@ -84,6 +89,60 @@
             </td>
         </tr>
     </table>
+
+    <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+        <tr>
+            <td>
+                <asp:Literal ID="Literal6" Text="Indicador de Evaluación Sectorial" runat="server"></asp:Literal>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:UpdatePanel ID="upAgregarIndicadorSectorial" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <asp:Button ID="btAgregarIndicadorSectorial" runat="server" Text="Agregar" OnClick="btAgregarIndicadorSectorial_Click" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="upGridIndicadoresSectorial" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <asp:GridView ID="gridIndicadoresSectorial" runat="server" AutoGenerateColumns="False"
+                            DataKeyNames="ID" AllowPaging="false" OnRowCommand="GridIndicadoresSectorial_RowCommand"
+                            AllowSorting="False" OnSorting="GridIndicadoresSectorial_Sorting" OnPageIndexChanging="GridIndicadoresSectorial_PageIndexChanging"
+                            EmptyDataText="No hay indicadores definidos" Width="100%">
+                            <Columns>
+                                <asp:BoundField HeaderText="Sigla" DataField="IndicadorClase_Sigla" SortExpression="IndicadorClase_Sigla" />
+                                <asp:BoundField HeaderText="Descripción" DataField="IndicadorClase_Nombre" SortExpression="IndicadorClase_Nombre" />
+                                <asp:BoundField HeaderText="Unidad" DataField="IndicadorClase_Unidad" SortExpression="IndicadorClase_Unidad" />
+                                <asp:BoundField HeaderText="Valor" DataField="Valor" SortExpression="Valor" ItemStyle-HorizontalAlign="Right"
+                                    DataFormatString="{0:#,0.00}"/>
+                                <asp:BoundField HeaderText="Año" DataField="Anio" SortExpression="Anio" />
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        &nbsp;
+                                        <asp:ImageButton ID="imgEdit" runat="server" src="../Images/edit.png" ToolTip="Editar"
+                                            CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
+                                        &nbsp;
+                                        <asp:ImageButton ID="imgDelete" runat="server" src="../Images/delete.jpg" ToolTip="Eliminar"
+                                            CommandName='<%# Command.DELETE %>' OnClientClick="return confirm('Está seguro de eliminar?');"
+                                            CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
+                                    </ItemTemplate>
+                                    <ItemStyle Width="60px" HorizontalAlign="Right" />
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+
+    <%--
     <asp:UpdatePanel ID="upIndicadoresEconomicos" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
@@ -141,6 +200,7 @@
             </table>
         </ContentTemplate>
     </asp:UpdatePanel>
+    --%>
 </asp:Panel>
 
 <%--PANEL BENEFICIOS --%>
