@@ -186,8 +186,6 @@ namespace UI.Web
             lblAnioPresupuestario.Text = anioVisible.ToString();
 
             //xxx.ToolTip = Translate("TooltipCronogramasAgregar");
-            //gridEtapas.HeaderRow.Cells[7].ToolTip = Translate("TooltipTotalEstimadoActual");
-            //gridEtapas.HeaderRow.Cells[8].ToolTip = Translate("TooltipTotalRealizado");
             pnlInformacionPresupuestaria.ToolTip = Translate("TooltipEjecucionPresupuestaria");
             pnlEtapaEstimada.ToolTip = Translate("TooltipGastosEstimados");
             pnlEtapaRealizada.ToolTip = Translate("TooltipGastosRealizados");
@@ -1043,12 +1041,13 @@ namespace UI.Web
             litEtapasEstimadasTotal.Visible = false;
             if (dataTable.Rows.Count > 0)
             {
-                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                /*var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
                 var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
                 var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
                 var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
 
-                litEtapasEstimadasTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");
+                litEtapasEstimadasTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");*/
+                litEtapasEstimadasTotal.Text = "Total: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimado).Sum().ToString("N0");
                 litEtapasEstimadasTotal.Visible = true;
             }
 
@@ -1765,7 +1764,6 @@ namespace UI.Web
                 litEtapasRealizadasTotal.Text = "Total: " + (from ee in Entity.EtapasRealizadas select ee.TotalRealizado).Sum().ToString("N0");
                 litEtapasRealizadasTotal.Visible = true;
             }
-
 
             /*if (dataTable.Rows.Count > 0)
             {
