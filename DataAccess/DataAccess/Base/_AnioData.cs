@@ -37,7 +37,10 @@ namespace DataAccess.Base
         {
 			return (from o in this.Table
                       where (filter.IdAnio == null || o.IdAnio >=  filter.IdAnio) && (filter.IdAnio_To == null || o.IdAnio <= filter.IdAnio_To)
-					  && (filter.Nombre == null || filter.Nombre.Trim() == string.Empty || filter.Nombre.Trim() == "%"  || (filter.Nombre.EndsWith("%") && filter.Nombre.StartsWith("%") && (o.Nombre.Contains(filter.Nombre.Replace("%", "")))) || (filter.Nombre.EndsWith("%") && o.Nombre.StartsWith(filter.Nombre.Replace("%",""))) || (filter.Nombre.StartsWith("%") && o.Nombre.EndsWith(filter.Nombre.Replace("%",""))) || o.Nombre == filter.Nombre )
+                      //&& (filter.Anio_From == null || filter.Anio_From == DateTime.MinValue.Year || o.IdAnio >= filter.Anio_From) && (filter.Anio_From == null || filter.Anio_From == DateTime.MinValue.Year || o.IdAnio >= filter.Anio_From)
+                      //&& (filter.Anio_To == null || filter.Anio_To == DateTime.MaxValue.Year || o.IdAnio <= filter.Anio_To) && (filter.Anio_To == null || filter.Anio_To == DateTime.MaxValue.Year || o.IdAnio >= filter.Anio_To) 
+                      && (filter.Anio_From == null || filter.Anio_From == DateTime.MinValue.Year || o.IdAnio >= filter.Anio_From) && (filter.Anio_To == null || filter.Anio_To == DateTime.MinValue.Year || o.IdAnio <= filter.Anio_To)
+                      && (filter.Nombre == null || filter.Nombre.Trim() == string.Empty || filter.Nombre.Trim() == "%" || (filter.Nombre.EndsWith("%") && filter.Nombre.StartsWith("%") && (o.Nombre.Contains(filter.Nombre.Replace("%", "")))) || (filter.Nombre.EndsWith("%") && o.Nombre.StartsWith(filter.Nombre.Replace("%", ""))) || (filter.Nombre.StartsWith("%") && o.Nombre.EndsWith(filter.Nombre.Replace("%", ""))) || o.Nombre == filter.Nombre)
 					  && (filter.Activo == null || o.Activo==filter.Activo)
 					  select o
                     ).AsQueryable();

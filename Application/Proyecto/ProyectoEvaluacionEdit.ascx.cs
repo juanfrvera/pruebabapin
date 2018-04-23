@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Contract;
 using nc = Contract;
 using Service;
+using Business;
 
 namespace UI.Web.Pages
 {
@@ -47,7 +48,7 @@ namespace UI.Web.Pages
             autoCmpIndicadorClaseIndicadoresProyecto.Visible = false;
             toIndicadoClaseSinSector.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //Fin German 01032014 - tarea 110
-            rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
+            //rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
             rfvCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
             rfvCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
 
@@ -59,7 +60,7 @@ namespace UI.Web.Pages
             //Fin German 01032014 - tarea 110
             rfvTipoEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
             rfvTipoEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
-            rfvValorIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Valor");
+            //rfvValorIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Valor");
 
             //Matias 20141125 - Tarea 183
             revValorIndicadoresProyecto.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);            
@@ -258,8 +259,9 @@ namespace UI.Web.Pages
             nc.AnioFilter anioFilter = new nc.AnioFilter();
             anioFilter.OrderBys.Add(new FilterOrderBy("Nombre", true));
             anioFilter.Activo = true;
+            anioFilter.Anio_To = DateTime.Now.Year;
 
-            UIHelper.Load<Anio>(ddlAnoIndicadoresProyecto, AnioService.Current.GetList(anioFilter),
+            UIHelper.Load<Anio>(ddlAnoIndicadoresProyecto, AnioBusiness.Current.GetList(anioFilter),
               "Nombre", "IdAnio", new Anio() { IdAnio = 0, Nombre = "Selecione Año" }, false);
         }
         #endregion Override
@@ -452,6 +454,7 @@ namespace UI.Web.Pages
             //Fin German 01032014 - tarea 110
             UIHelper.Clear(chkIndirectoBeneficio);
             UIHelper.Clear(ddlMedioVerificacionBeneficio);
+            UIHelper.Clear(txtMontoBeneficio);
             autoCmpIndicadorClaseBeneficio.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Beneficio, Activo = true };
             //German 01032014 - tarea 110
             toIndicadoClase.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Beneficio, Activo = true };
@@ -472,7 +475,7 @@ namespace UI.Web.Pages
             UIHelper.SetValue(toIndicadoClase.Sectores, ActualProyectoBeneficioIndicadorCompose.Indicador.IdIndicadorRubro);
             //FinGerman 20140511 - Tarea 124            
             UIHelper.SetValue(chkIndirectoBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indirecto);
-            UIHelper.SetValue(txtMonto, ActualProyectoBeneficioIndicadorCompose.Indicador.Valor);
+            UIHelper.SetValue(txtMontoBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Valor);
             UIHelper.SetValue(ddlMedioVerificacionBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_IdMedioVerificacion);
             UIHelper.SetValue(txtObservacionesIndicadoresBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_Observacion);
         }
@@ -482,7 +485,7 @@ namespace UI.Web.Pages
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_Observacion = UIHelper.GetString(txtObservacionesIndicadoresBeneficio);
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_IdMedioVerificacion = UIHelper.GetIntNullable(ddlMedioVerificacionBeneficio);
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indirecto = UIHelper.GetBoolean(chkIndirectoBeneficio);
-            ActualProyectoBeneficioIndicadorCompose.Indicador.Valor = UIHelper.GetInt(txtMonto);
+            ActualProyectoBeneficioIndicadorCompose.Indicador.Valor = UIHelper.GetInt(txtMontoBeneficio);
 
             ActualProyectoBeneficioIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseBeneficio);
             //German 01032014 - tarea 110
@@ -1204,7 +1207,10 @@ namespace UI.Web.Pages
             UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorPriorizacion.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
             UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Valor);
-            ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorPriorizacion.Anio.ToString()).Value;
+            if(ActualProyectoIndicadorPriorizacion.Anio != null)
+            {
+                ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorPriorizacion.Anio.ToString()).Value;
+            }
             //UIHelper.SetValue(ddlAnoIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Anio);
             UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorPriorizacion.Observacion);
 
@@ -1224,7 +1230,11 @@ namespace UI.Web.Pages
             ActualProyectoIndicadorPriorizacion.IndicadorClase_Unidad = result.Unidad_Nombre;
             
             ActualProyectoIndicadorPriorizacion.Valor = UIHelper.GetInt(txtValorIndicadoresProyecto);
-            ActualProyectoIndicadorPriorizacion.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
+            ActualProyectoIndicadorPriorizacion.Anio = null;
+            if (ddlAnoIndicadoresProyecto.SelectedIndex > 0)
+            {
+                ActualProyectoIndicadorPriorizacion.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
+            }
             ActualProyectoIndicadorPriorizacion.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
                         
         }

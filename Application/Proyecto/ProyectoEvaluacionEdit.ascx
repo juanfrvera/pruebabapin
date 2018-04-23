@@ -209,7 +209,7 @@
 <%--PANEL INDICADORES PRIORIZACIONES --%>
 <div class="CollapsiblePanelTab">
     <span id="spanIndicadoresPriorizacion">
-        <asp:Label ID="lblIndicadoresPriorizacion" runat="server" Text="Indicadores de Priorización"></asp:Label>
+        <asp:Label ID="lblIndicadoresPriorizacion" runat="server" Text="Contribución al Objetivo de Gobierno"></asp:Label>
         &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeIndicadoresPriorizacion" runat="Server"
@@ -267,8 +267,9 @@
 </asp:Panel>
 
 
-<%------  POPUPS ------%>
-<%--PANEL ALTA INDICADORES PROYECTO --%>
+<%------ *************  POPUPS ************* ------%>
+
+<%--PANEL ALTA INDICADORES PROYECTO utilizado tanto para "Indicadores de evaluación" como para "Contribución al Objetivo de Gobierno" --%>
 <asp:Panel ID="PopUpIndicadoresProyecto" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="IndicadoresProyectoPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -276,7 +277,7 @@
             <tr class="menutoppopup">
                 <td>
                     <th align="center" height="10">
-                        <asp:Label ID="headerPopUpIndicadoresProyecto" runat="server" Text="Indicadores" />
+                        <asp:Label ID="headerPopUpIndicadoresProyecto" runat="server" Text="Indicadores." />
                     </th>
                 </td>
             </tr>
@@ -323,8 +324,8 @@
                                 <tr>
                                     <td>
                                         <cc:NumericTextBox runat="server" ID="txtValorIndicadoresProyecto" InputType="PositiveFractional"></cc:NumericTextBox>
-                                        <asp:RequiredFieldValidator ID="rfvValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
-                                            ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                                        <%--<asp:RequiredFieldValidator ID="rfvValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
+                                            ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>--%>
                                         <!--Matias 20141126 - Tarea 183-->
                                         <asp:RegularExpressionValidator ID="revValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
                                             ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RegularExpressionValidator>
@@ -340,8 +341,8 @@
                                     <td>
                                         <cc:ExtendedDropDownList ID="ddlAnoIndicadoresProyecto" runat="server">
                                         </cc:ExtendedDropDownList>
-                                        <asp:RequiredFieldValidator ID="rfvAnoIndicadoresProyecto" runat="server" ControlToValidate="ddlAnoIndicadoresProyecto"
-                                            InitialValue="0" ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                                        <%--<asp:RequiredFieldValidator ID="rfvAnoIndicadoresProyecto" runat="server" ControlToValidate="ddlAnoIndicadoresProyecto"
+                                            InitialValue="0" ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>--%>
                                     </td>
                                 </tr>
                             </table>
@@ -455,10 +456,10 @@
                             <!-- FinMatias 20170209 - Ticket #REQ819714 -->
                         </td>
                         <td style="vertical-align:middle">
-                            <asp:TextBox runat="server" ID="txtMonto"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtMontoBeneficio"></asp:TextBox>
                             <asp:Literal ID="litMontoRango" Text="" Visible="false" runat="server"></asp:Literal>
                             <asp:RangeValidator
-                                    ControlToValidate="txtMonto"
+                                    ControlToValidate="txtMontoBeneficio"
                                     Enabled="False"
                                     ErrorMessage="El monto no se encuentra dentro del rango permitido."
                                     ID="ravMonto"

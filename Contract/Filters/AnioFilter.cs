@@ -7,9 +7,9 @@ namespace Contract
 {
     [Serializable]
     public class AnioFilter : _AnioFilter
-    {	
-	 public String Anio_From {get;set;}
-     public String Anio_To { get; set; }
+    {
+        public int? Anio_From { get; set; }
+        public int? Anio_To { get; set; }
     }
 
 }

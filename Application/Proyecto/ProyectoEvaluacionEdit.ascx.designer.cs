@@ -364,15 +364,6 @@ namespace UI.Web.Pages {
         protected global::UI.Web.NumericTextBox txtValorIndicadoresProyecto;
         
         /// <summary>
-        /// rfvValorIndicadoresProyecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvValorIndicadoresProyecto;
-        
-        /// <summary>
         /// revValorIndicadoresProyecto control.
         /// </summary>
         /// <remarks>
@@ -398,15 +389,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Web.ExtendedDropDownList ddlAnoIndicadoresProyecto;
-        
-        /// <summary>
-        /// rfvAnoIndicadoresProyecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAnoIndicadoresProyecto;
         
         /// <summary>
         /// ltObservacionesIndicadoresProyecto control.
@@ -634,13 +616,13 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedioVerificacion;
         
         /// <summary>
-        /// txtMonto control.
+        /// txtMontoBeneficio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMonto;
+        protected global::System.Web.UI.WebControls.TextBox txtMontoBeneficio;
         
         /// <summary>
         /// litMontoRango control.
