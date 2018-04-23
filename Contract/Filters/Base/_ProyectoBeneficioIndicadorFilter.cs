@@ -17,7 +17,9 @@ namespace Contract.Base
 public int? IdProyectoBeneficioIndicador_To{get;set;}		
 [DataMember(Name = "IdProyecto", IsRequired = false)]public int? IdProyecto{get;set;}		
 [DataMember(Name = "IdIndicadorClase", IsRequired = false)]public int? IdIndicadorClase{get;set;}		
-[DataMember(Name = "Indirecto", IsRequired = false)]public bool? Indirecto{get;set;}		
+[DataMember(Name = "Indirecto", IsRequired = false)]public bool? Indirecto{get;set;}
+[DataMember(Name = "Valor", IsRequired = false)]
+public decimal? Valor { get; set; }	
 [DataMember(Name = "IdIndicador", IsRequired = false)]public int? IdIndicador{get;set;}		
 
 		#endregion

@@ -12,6 +12,7 @@ namespace Contract.Base
 		 public int IdProyecto{get;set;}
 		 public int IdIndicadorClase{get;set;}
 		 public bool Indirecto{get;set;}
+         public decimal? Valor { get; set; }
 		 public int IdIndicador{get;set;}
 		 
 		 public int? Indicador_IdMedioVerificacion{get;set;}	
@@ -55,6 +56,7 @@ namespace Contract.Base
 		 _ProyectoBeneficioIndicador.IdProyecto = this.IdProyecto;
 		 _ProyectoBeneficioIndicador.IdIndicadorClase = this.IdIndicadorClase;
 		 _ProyectoBeneficioIndicador.Indirecto = this.Indirecto;
+         _ProyectoBeneficioIndicador.Valor = this.Valor;
 		 _ProyectoBeneficioIndicador.IdIndicador = this.IdIndicador;
 		 
 		  return _ProyectoBeneficioIndicador;
@@ -65,6 +67,7 @@ namespace Contract.Base
 		  this.IdProyecto= entity.IdProyecto ;
 		  this.IdIndicadorClase= entity.IdIndicadorClase ;
 		  this.Indirecto= entity.Indirecto ;
+          this.Valor = entity.Valor;
 		  this.IdIndicador= entity.IdIndicador ;
 		 		  
 		}		
@@ -75,6 +78,7 @@ namespace Contract.Base
 		  if(!entity.IdProyecto.Equals(this.IdProyecto))return false;
 		  if(!entity.IdIndicadorClase.Equals(this.IdIndicadorClase))return false;
 		  if(!entity.Indirecto.Equals(this.Indirecto))return false;
+          if (!entity.Valor.Equals(this.Valor)) return false;
 		  if(!entity.IdIndicador.Equals(this.IdIndicador))return false;
 		 
 		  return true;
@@ -87,6 +91,7 @@ namespace Contract.Base
 			,new DataColumnMapping("IndicadorClase","IndicadorClase_Nombre")
 			,new DataColumnMapping("Indirecto","Indirecto")
 			,new DataColumnMapping("Indicador","Indicador_Observacion")
+            ,new DataColumnMapping("Valor","Valor")
 			}));
 		}
 	}

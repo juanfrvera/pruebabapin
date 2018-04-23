@@ -934,6 +934,7 @@
       <Column Name="IdIndicadorClase" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Indirecto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="IdIndicador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="Indicador_ProyectoBeneficioIndicador" Member="Indicador" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="Indicador" IsForeignKey="true" />
       <Association Name="IndicadorClase_ProyectoBeneficioIndicador" Member="IndicadorClase" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="IndicadorClase" IsForeignKey="true" />
       <Association Name="Proyecto_ProyectoBeneficioIndicador" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />

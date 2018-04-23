@@ -346,6 +346,33 @@ namespace UI.Web.Pages
             return proyectoBeneficioIndicadorCompose;
         }
 
+        public void toIndicadorClase_OnValueChanged(object sender, EventArgs e)
+        {
+            litMontoRango.Visible = false;
+            ravMonto.Enabled = false;
+            if (toIndicadoClase.ValueId.HasValue)
+            {
+                IndicadorClase indicadorClase = IndicadorClaseService.Current.GetById(toIndicadoClase.ValueId.Value);
+            
+                int rangoInicial = 0;
+                int rangoFinal = 0;
+            
+                if(indicadorClase.RangoInicial != null) 
+                    rangoInicial = (int)indicadorClase.RangoInicial;
+
+                if (indicadorClase.RangoFinal != null)
+                    rangoFinal = (int)indicadorClase.RangoFinal;
+
+                if (rangoInicial > 0 || rangoFinal > 0)
+                {
+                    litMontoRango.Text = string.Format("Rango monto entre ({0} y {1})", rangoInicial, rangoFinal);
+                    litMontoRango.Visible = true;
+                    ravMonto.Enabled = true;
+                    ravMonto.MinimumValue = rangoInicial.ToString();
+                    ravMonto.MaximumValue = rangoFinal.ToString();
+                }
+            }
+        }
 
         #region Commands
         void CommandIndicadoresBeneficioEdit()
@@ -369,6 +396,7 @@ namespace UI.Web.Pages
                 pbic.Indicador.Indicador_Observacion = ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_Observacion;
                 pbic.Indicador.IdIndicadorClase = ActualProyectoBeneficioIndicadorCompose.Indicador.IdIndicadorClase;
                 pbic.Indicador.Indirecto = ActualProyectoBeneficioIndicadorCompose.Indicador.Indirecto;
+                pbic.Indicador.Valor = ActualProyectoBeneficioIndicadorCompose.Indicador.Valor;
                 pbic.Indicador.Indicador_IdMedioVerificacion = ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_IdMedioVerificacion;
                 pbic.Indicador.IndicadorClase_Nombre = ActualProyectoBeneficioIndicadorCompose.Indicador.IndicadorClase_Nombre;
                 pbic.Indicador.IndicadorClase_Sigla = ActualProyectoBeneficioIndicadorCompose.Indicador.IndicadorClase_Sigla;
@@ -444,6 +472,7 @@ namespace UI.Web.Pages
             UIHelper.SetValue(toIndicadoClase.Sectores, ActualProyectoBeneficioIndicadorCompose.Indicador.IdIndicadorRubro);
             //FinGerman 20140511 - Tarea 124            
             UIHelper.SetValue(chkIndirectoBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indirecto);
+            UIHelper.SetValue(txtMonto, ActualProyectoBeneficioIndicadorCompose.Indicador.Valor);
             UIHelper.SetValue(ddlMedioVerificacionBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_IdMedioVerificacion);
             UIHelper.SetValue(txtObservacionesIndicadoresBeneficio, ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_Observacion);
         }
@@ -453,6 +482,7 @@ namespace UI.Web.Pages
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_Observacion = UIHelper.GetString(txtObservacionesIndicadoresBeneficio);
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indicador_IdMedioVerificacion = UIHelper.GetIntNullable(ddlMedioVerificacionBeneficio);
             ActualProyectoBeneficioIndicadorCompose.Indicador.Indirecto = UIHelper.GetBoolean(chkIndirectoBeneficio);
+            ActualProyectoBeneficioIndicadorCompose.Indicador.Valor = UIHelper.GetInt(txtMonto);
 
             ActualProyectoBeneficioIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseBeneficio);
             //German 01032014 - tarea 110

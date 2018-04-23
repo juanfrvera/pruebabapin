@@ -52,6 +52,8 @@ namespace DataAccess
                        ,
                        Indirecto = o.Indirecto
                        ,
+                       Valor = o.Valor
+                       ,
                        IdIndicador = o.IdIndicador
                        ,
                        Indicador_IdMedioVerificacion = t1.IdMedioVerificacion

@@ -553,13 +553,22 @@ namespace UI.Web.Pages {
         protected global::UI.Web.WebControl_IndicadorClaseAutocomplete autoCmpIndicadorClaseBeneficio;
         
         /// <summary>
-        /// Literal3 control.
+        /// Literal4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal3;
+        protected global::System.Web.UI.WebControls.Literal Literal4;
+        
+        /// <summary>
+        /// Literal5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal5;
         
         /// <summary>
         /// toIndicadoClase control.
@@ -589,6 +598,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Literal ltMedioVerificacionBeneficio;
         
         /// <summary>
+        /// ltMonto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltMonto;
+        
+        /// <summary>
         /// ddlMedioVerificacionBeneficio control.
         /// </summary>
         /// <remarks>
@@ -614,6 +632,33 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedioVerificacion;
+        
+        /// <summary>
+        /// txtMonto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMonto;
+        
+        /// <summary>
+        /// litMontoRango control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litMontoRango;
+        
+        /// <summary>
+        /// ravMonto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator ravMonto;
         
         /// <summary>
         /// ltObservacionesIndicadoresBeneficio control.

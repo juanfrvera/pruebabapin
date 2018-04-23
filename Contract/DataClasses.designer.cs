@@ -23816,6 +23816,8 @@ namespace Contract
 		
 		private int _IdIndicador;
 		
+		private System.Nullable<decimal> _Valor;
+		
 		private EntityRef<Indicador> _Indicador;
 		
 		private EntityRef<IndicadorClase> _IndicadorClase;
@@ -23836,6 +23838,8 @@ namespace Contract
     partial void OnIndirectoChanged();
     partial void OnIdIndicadorChanging(int value);
     partial void OnIdIndicadorChanged();
+    partial void OnValorChanging(System.Nullable<decimal> value);
+    partial void OnValorChanged();
     #endregion
 		
 		public ProyectoBeneficioIndicador()
@@ -23956,6 +23960,27 @@ namespace Contract
 					this._IdIndicador = value;
 					this.SendPropertyChanged("IdIndicador");
 					this.OnIdIndicadorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Money")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.Nullable<decimal> Valor
+		{
+			get
+			{
+				return this._Valor;
+			}
+			set
+			{
+				if ((this._Valor != value))
+				{
+					this.OnValorChanging(value);
+					this.SendPropertyChanging();
+					this._Valor = value;
+					this.SendPropertyChanged("Valor");
+					this.OnValorChanged();
 				}
 			}
 		}

@@ -40,6 +40,7 @@ namespace DataAccess.Base
 					  && (filter.IdProyecto == null || filter.IdProyecto == 0 || o.IdProyecto==filter.IdProyecto)
 					  && (filter.IdIndicadorClase == null || filter.IdIndicadorClase == 0 || o.IdIndicadorClase==filter.IdIndicadorClase)
 					  && (filter.Indirecto == null || o.Indirecto==filter.Indirecto)
+                      && (filter.Valor == null || o.Valor == filter.Valor)
 					  && (filter.IdIndicador == null || filter.IdIndicador == 0 || o.IdIndicador==filter.IdIndicador)
 					  select o
                     ).AsQueryable();
@@ -55,6 +56,8 @@ namespace DataAccess.Base
 					 ,IdProyecto=o.IdProyecto
 					 ,IdIndicadorClase=o.IdIndicadorClase
 					 ,Indirecto=o.Indirecto
+                     ,
+                     Valor = o.Valor
 					 ,IdIndicador=o.IdIndicador
 					,Indicador_IdMedioVerificacion= t1.IdMedioVerificacion	
 						,Indicador_Observacion= t1.Observacion	
@@ -101,6 +104,7 @@ namespace DataAccess.Base
 		 _new.IdProyecto= entity.IdProyecto;
 		 _new.IdIndicadorClase= entity.IdIndicadorClase;
 		 _new.Indirecto= entity.Indirecto;
+         _new.Valor = entity.Valor;
 		 _new.IdIndicador= entity.IdIndicador;
 		return _new;			
         }
@@ -122,6 +126,7 @@ namespace DataAccess.Base
 		 target.IdProyecto= source.IdProyecto ;
 		 target.IdIndicadorClase= source.IdIndicadorClase ;
 		 target.Indirecto= source.Indirecto ;
+         target.Valor = source.Valor;
 		 target.IdIndicador= source.IdIndicador ;
 		 		  
 		}
@@ -131,6 +136,7 @@ namespace DataAccess.Base
 		 target.IdProyecto= source.IdProyecto ;
 		 target.IdIndicadorClase= source.IdIndicadorClase ;
 		 target.Indirecto= source.Indirecto ;
+         target.Valor = source.Valor;
 		 target.IdIndicador= source.IdIndicador ;
 		 
 		}
@@ -140,6 +146,7 @@ namespace DataAccess.Base
 		 target.IdProyecto= source.IdProyecto ;
 		 target.IdIndicadorClase= source.IdIndicadorClase ;
 		 target.Indirecto= source.Indirecto ;
+         target.Valor = source.Valor;
 		 target.IdIndicador= source.IdIndicador ;
 		 	
 		}		
@@ -149,6 +156,7 @@ namespace DataAccess.Base
 		 target.IdProyecto= source.IdProyecto ;
 		 target.IdIndicadorClase= source.IdIndicadorClase ;
 		 target.Indirecto= source.Indirecto ;
+         target.Valor = source.Valor;
 		 target.IdIndicador= source.IdIndicador ;
 		 target.Indicador_IdMedioVerificacion= source.Indicador_IdMedioVerificacion;	
 			target.Indicador_Observacion= source.Indicador_Observacion;	
@@ -197,6 +205,7 @@ namespace DataAccess.Base
 		  if(!source.IdProyecto.Equals(target.IdProyecto))return false;
 		  if(!source.IdIndicadorClase.Equals(target.IdIndicadorClase))return false;
 		  if(!source.Indirecto.Equals(target.Indirecto))return false;
+          if (!source.Valor.Equals(target.Valor)) return false;
 		  if(!source.IdIndicador.Equals(target.IdIndicador))return false;
 		 
 		  return true;
@@ -210,6 +219,7 @@ namespace DataAccess.Base
 		  if(!source.IdProyecto.Equals(target.IdProyecto))return false;
 		  if(!source.IdIndicadorClase.Equals(target.IdIndicadorClase))return false;
 		  if(!source.Indirecto.Equals(target.Indirecto))return false;
+          if (!source.Valor.Equals(target.Valor)) return false;
 		  if(!source.IdIndicador.Equals(target.IdIndicador))return false;
 		  if((source.Indicador_IdMedioVerificacion == null)?(target.Indicador_IdMedioVerificacion.HasValue && target.Indicador_IdMedioVerificacion.Value > 0):!source.Indicador_IdMedioVerificacion.Equals(target.Indicador_IdMedioVerificacion))return false;
 									  if((source.Indicador_Observacion == null)?target.Indicador_Observacion!=null: !( (target.Indicador_Observacion== String.Empty && source.Indicador_Observacion== null) || (target.Indicador_Observacion==null && source.Indicador_Observacion== String.Empty )) &&   !source.Indicador_Observacion.Trim().Replace ("\r","").Equals(target.Indicador_Observacion.Trim().Replace ("\r","")))return false;
