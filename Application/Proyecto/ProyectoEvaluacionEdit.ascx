@@ -243,10 +243,10 @@
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        &nbsp;
+                                        <!--&nbsp;
                                         <asp:ImageButton ID="imgEvoloucion" runat="server" src="../Images/evolution.png"
                                             ToolTip="Evolución" CommandName='<%# Command.SHOW_DETAILS %>' CommandArgument='<%#Eval("ID")%>'
-                                            CausesValidation="false" />
+                                            CausesValidation="false" />-->
                                         &nbsp;
                                         <asp:ImageButton ID="imgEdit" runat="server" src="../Images/edit.png" ToolTip="Editar"
                                             CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
@@ -573,7 +573,7 @@
         BackgroundCssClass="modalBackground" />
 </asp:Panel>
 
-<%--PANEL ALTA INDICADORES BENEFICIARIO --%>
+<%--PANEL ALTA INDICADORES BENEFICIARIO
 <asp:Panel ID="PopUpIndicadoresBeneficiario" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="IndicadoresBeneficiarioPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -674,8 +674,9 @@
         PopupControlID="PopUpIndicadoresBeneficiario" OkControlID="Button2" TargetControlID="Button3"
         BackgroundCssClass="modalBackground" />
 </asp:Panel>
+ --%>
 
-<%--PANEL ALTA EVOLUCIONES BENFICIARIOS --%>
+<%--PANEL ALTA EVOLUCIONES BENFICIARIOS
 <asp:Panel ID="PopUpEvolucionesBeneficiario" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="EvolucionesBeneficiarioPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -826,8 +827,9 @@
         PopupControlID="PopUpEvolucionesBeneficiario" OkControlID="Button4" TargetControlID="Button4"
         BackgroundCssClass="modalBackground" />
 </asp:Panel>
+ --%>
 
-<%--PANEL ALTA EVOLUCIONES BENFICIO --%>
+<%--PANEL ALTA EVOLUCIONES BENFICIO
 <asp:Panel ID="PopUpEvolucionesBeneficio" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="EvolucionesBeneficioPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -1022,7 +1024,7 @@
         PopupControlID="PopUpEvolucionesBeneficio" OkControlID="Button5" TargetControlID="Button5"
         BackgroundCssClass="modalBackground" />
 </asp:Panel>
-
+ --%>
 
 <%--PANEL BENEFICIARIOS 
 <div class="CollapsiblePanelTab">

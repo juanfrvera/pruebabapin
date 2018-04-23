@@ -21,10 +21,10 @@ namespace UI.Web.Pages
         protected override void _Initialize()
         {
             base._Initialize();
-            tsEvolucionBeneficio.Width = 460;
-            tsEvolucionBeneficiario.Width = 470;
-            tsEvolucionBeneficiario.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
-            tsEvolucionBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
+            //[Evolucion]tsEvolucionBeneficio.Width = 460;
+            //[Evolucion]tsEvolucionBeneficiario.Width = 470;
+            //[Evolucion]tsEvolucionBeneficiario.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
+            //[Evolucion]tsEvolucionBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Localización");
             //[CriterioEvaluacion]revCriteriosEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revMarcoLegal.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             //revEstudiosRealizados.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
@@ -49,8 +49,8 @@ namespace UI.Web.Pages
             toIndicadoClaseSinSector.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //Fin German 01032014 - tarea 110
             //rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
-            rfvCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
-            rfvCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
+            //[Evolucion]rfvCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
+            //[Evolucion]rfvCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
 
 
             autoCmpIndicadorClaseBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
@@ -58,8 +58,8 @@ namespace UI.Web.Pages
             autoCmpIndicadorClaseBeneficio.Visible = false;
             toIndicadoClase.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
             //Fin German 01032014 - tarea 110
-            rfvTipoEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
-            rfvTipoEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
+            //[Evolucion]rfvTipoEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
+            //[Evolucion]rfvTipoEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Tipo");
             //rfvValorIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Valor");
 
             //Matias 20141125 - Tarea 183
@@ -67,37 +67,37 @@ namespace UI.Web.Pages
             revValorIndicadoresProyecto.ErrorMessage = TranslateFormat("InvalidField", "Valor");
             //FinMatias 20141125 - Tarea 183
 
-            revObservacionesIndicadoresBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
+            //[Evolucion]revObservacionesIndicadoresBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
             revObservacionesIndicadoresBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
             revObservacionesIndicadoresProyecto.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
-            revObservacionesIndicadoresBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //[Evolucion]revObservacionesIndicadoresBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             revObservacionesIndicadoresBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
             revObservacionesIndicadoresProyecto.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
 
-            diFechaEstimadaEvolucionBeneficiario.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha Estimada");
-            diFechaEstimadaEvolucionBeneficio.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha Estimada");
+            //[Evolucion]diFechaEstimadaEvolucionBeneficiario.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha Estimada");
+            //[Evolucion]diFechaEstimadaEvolucionBeneficio.RequiredErrorMessage = TranslateFormat("FieldIsNull", "Fecha Estimada");
 
-            revDescripcionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Descripción");
-            rfvDescripcionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Descripción");
-            revDescripcionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            //[Evolucion]revDescripcionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Descripción");
+            //[Evolucion]rfvDescripcionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Descripción");
+            //[Evolucion]revDescripcionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
 
-            revCantidadRealizadaEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revCantidadRealizadaEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Realizada");
+            //[Evolucion]revCantidadRealizadaEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revCantidadRealizadaEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Realizada");
 
-            revCantidadEstimadaEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Estimada");
+            //[Evolucion]revCantidadEstimadaEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Estimada");
 
-            revPrecioUnitarioEstimadoEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revPrecioUnitarioEstimadoEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Precio Unitario Estimado");
+            //[Evolucion]revPrecioUnitarioEstimadoEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revPrecioUnitarioEstimadoEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Precio Unitario Estimado");
 
-            revPrecioUnitarioRealizadoEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revPrecioUnitarioRealizadoEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Precio Unitario Realizado");
+            //[Evolucion]revPrecioUnitarioRealizadoEvolucionBeneficio.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revPrecioUnitarioRealizadoEvolucionBeneficio.ErrorMessage = TranslateFormat("InvalidField", "Precio Unitario Realizado");
 
-            revCantidadRealizadaEvolucionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revCantidadRealizadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Realizada");
+            //[Evolucion]revCantidadRealizadaEvolucionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revCantidadRealizadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Realizada");
 
-            revCantidadEstimadaEvolucionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
-            revCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Estimada");
+            //[Evolucion]revCantidadEstimadaEvolucionBeneficiario.ValidationExpression = Contract.DataHelper.GetExpRegDecimalNullable(2);
+            //[Evolucion]revCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("InvalidField", "Cantidad Estimada");
 
             //[CriterioEvaluacion]revHorizonteEvaluacion.ValidationExpression = Contract.DataHelper.GetExpRegNumberIntegerNullable();
             //[CriterioEvaluacion]revHorizonteEvaluacion.ErrorMessage = TranslateFormat("InvalidField", "Horizonte de Evaluación");
@@ -108,23 +108,23 @@ namespace UI.Web.Pages
             //Matias 20170209 - Ticket #REQ819714
             rfvMedioVerificacion.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             rfvMedioVerificacion2.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
-            rfvMedioVerificacion3.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
-            rfvMedioVerificacion4.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
+            //[Evolucion]rfvMedioVerificacion3.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
+            //[Evolucion]rfvMedioVerificacion4.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             //FinMatias 20170209 - Ticket #REQ819714
 
             //se pueden unir los 2 para que haga una sola llamada a la BD
             CargarMediosVerificacionBeneficio();
-            CargarMediosVerificacionBeneficiario();
-            CargarIndicadorEvolucionBeneficiarioInstancia();
-            CargarIndicadorEvolucionBeneficioInstancia();
+            //[Evolucion]CargarMediosVerificacionBeneficiario();
+            //[Evolucion]CargarIndicadorEvolucionBeneficiarioInstancia();
+            //[Evolucion]CargarIndicadorEvolucionBeneficioInstancia();
             CargarAnios();
-            RegistrarScriptTotales();
+            //[Evolucion]RegistrarScriptTotales();
 
             PopUpIndicadoresProyecto.Attributes.CssStyle.Add("display", "none");
             PopUpIndicadoresBeneficio.Attributes.CssStyle.Add("display", "none");
-            PopUpIndicadoresBeneficiario.Attributes.CssStyle.Add("display", "none");
-            PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
-            PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpIndicadoresBeneficiario.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
 
             pnlIndicadoresEvaluacion.ToolTip = Translate("TooltipIndicadoresEvaluacion");
             //[CriterioEvaluacion]txtCriteriosEvaluacion.ToolTip = Translate("TooltipCriteriosEvaluacion");
@@ -138,6 +138,7 @@ namespace UI.Web.Pages
             txtObservacionesIndicadoresBeneficio.ToolTip = Translate("TooltipObservacionesEvaluacion");
         }
 
+        /*[Evolucion]
         public void RegistrarScriptTotales()
         {
             string totalesScript = "function CalcularTotales()\n" +
@@ -172,15 +173,15 @@ namespace UI.Web.Pages
             txtCantidadRealizadaEvolucionBeneficio.Attributes["onChange"] = "CalcularTotales();";
             txtPrecioUnitarioRealizadoEvolucionBeneficio.Attributes["onChange"] = "CalcularTotales();";
                     
-        }
+        }*/
 
         protected override void _Load()
         {
             PopUpIndicadoresProyecto.Attributes.CssStyle.Add("display", "none");
-            PopUpIndicadoresBeneficiario.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpIndicadoresBeneficiario.Attributes.CssStyle.Add("display", "none");
             PopUpIndicadoresBeneficio.Attributes.CssStyle.Add("display", "none");
-            PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
-            PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
+            //[Evolucion]PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
             
         }
         
@@ -245,7 +246,7 @@ namespace UI.Web.Pages
             IndicadoresEconomicoRefresh();
 //*****************************************************************            IndicadoresSectorialRefresh();
             IndicadoresPriorizacionRefresh();
-            IndicadoresBeneficiarioRefresh();
+            //[Evolucion]IndicadoresBeneficiarioRefresh();
             IndicadoresBeneficioRefresh();
 
             IndicadoresBeneficioClear();
@@ -588,7 +589,7 @@ namespace UI.Web.Pages
                     CommandIndicadoresBeneficioDelete();
                     break;
                 case Command.SHOW_DETAILS:
-                    ShowPopUpEvolucionesBeneficio();
+                    //[Evolucion]ShowPopUpEvolucionesBeneficio();
                     break;
 
             }
@@ -671,7 +672,7 @@ namespace UI.Web.Pages
 
 
         #endregion
-
+        /*[Evolucion]
         #region Indicadores Beneficiario
 
 
@@ -909,6 +910,7 @@ namespace UI.Web.Pages
 
         
         #endregion
+        */
 
         #region Indicadores Economicos
 
@@ -1785,6 +1787,7 @@ namespace UI.Web.Pages
 
         #endregion
 
+        /*
         #region Evoluciones Beneficiarios
         private enum PopPupState { Adding, Modifying }
         private PopPupState EvolucionesPopPupState
@@ -2396,7 +2399,7 @@ namespace UI.Web.Pages
         }
 
         #endregion Evoluciones Beneficios
-
+        */
 
     }
 }
