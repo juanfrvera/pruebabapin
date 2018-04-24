@@ -33,7 +33,7 @@
 
                 <asp:ImageButton ID="btDelete" runat="server" src="../Images/delete.jpg" ToolTip='<%# Translate("Eliminar") %>' CssClass='<%# CanDelete(Eval("ID")) & HabilitarOpciones(Eval("ID")) & HabilitarEdicion(Eval("ID"))?"":"ibDisable" %>' Enabled='<%# CanDelete(Eval("ID")) & HabilitarOpciones(Eval("ID")) & HabilitarEdicion(Eval("ID"))%>' CommandName='<%# Command.DELETE %>' OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
 
-                <asp:ImageButton ID="btPrint" runat="server" src="../Images/imprimir.png" ToolTip='<%# Translate("Imprimir") %>' CssClass='<%# CanRead(Eval("ID")) ?"":"ibDisable"  %>' Enabled='<%# CanRead(Eval("ID")) %>' CommandName='<%# Command.SHOW_POPUP_PRINT %>' CommandArgument='<%# Eval("ID")%>' CausesValidation="false" />
+                <!--<asp:ImageButton ID="btPrint" runat="server" src="../Images/imprimir.png" ToolTip='<%# Translate("Imprimir") %>' CssClass='<%# CanRead(Eval("ID")) ?"":"ibDisable"  %>' Enabled='<%# CanRead(Eval("ID")) %>' CommandName='<%# Command.SHOW_POPUP_PRINT %>' CommandArgument='<%# Eval("ID")%>' CausesValidation="false" />-->
 
                 <asp:ImageButton ID="btHistoryPrint" runat="server" src="../Images/HistoryPrint.gif" ToolTip='<%# Translate("Históricos") %>' CssClass='<%# CanRead(Eval("ID"))?"":"ibDisable"  %>' Enabled='<%# CanRead(Eval("ID"))%>' CommandName='<%# Command.SHOW_POPUP_HISTORY_PRINT %>' CommandArgument='<%# Eval("ID")%>' CausesValidation="false" />
 

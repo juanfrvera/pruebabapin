@@ -46,8 +46,12 @@
                                     <!-- German 20130425 - Graficos -->
                                     <asp:Button ID="btVisualizarGraficos" runat="server" Text="Graficos" OnClick="btVisualizarGraficos_OnClick" OnClientClick="this.form.target ='_blank';" />&nbsp;&nbsp;
                                  <!-- Fin German 20130425 - Graficos -->
+
+                                    <!-- Reportes
                                     <asp:DropDownList ID="ddlReport" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="150px"></asp:DropDownList>
                                     <asp:Button ID="btOpenReport" runat="server" Text="Ver" OnClick="btOpenReport_OnClick" />&nbsp;&nbsp;
+                                    -->
+
 								 <asp:DropDownList ID="ddlStoreReport" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="150px"></asp:DropDownList>
                                     <asp:Button ID="btStoreReport" runat="server" Text="Ver" OnClick="btStoreReport_OnClick" />
                                 </td>
