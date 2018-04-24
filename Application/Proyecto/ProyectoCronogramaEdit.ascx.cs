@@ -1070,14 +1070,30 @@ namespace UI.Web
             litEtapasEstimadasTotal.Visible = false;
             if (dataTable.Rows.Count > 0)
             {
-                /*var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
-                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                /*var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
                 var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
                 var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
 
                 litEtapasEstimadasTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");*/
                 litEtapasEstimadasTotal.Text = "Total: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimado).Sum().ToString("N0");
                 litEtapasEstimadasTotal.Visible = true;
+
+                if (dataTable.Columns.Count > 4)
+                {
+                    gridEtapasEstimadas.FooterRow.Cells[0].Text = "";
+                    gridEtapasEstimadas.FooterRow.Cells[1].Text = "";
+                    gridEtapasEstimadas.FooterRow.Cells[2].Text = "";
+                    gridEtapasEstimadas.FooterRow.Cells[3].Text = "Totales por año";
+                    gridEtapasEstimadas.FooterRow.Cells[3].HorizontalAlign = HorizontalAlign.Right;
+                    gridEtapasEstimadas.FooterRow.Visible = true;
+                    for (var i = 4; i < dataTable.Columns.Count; i++)
+                    {
+                        var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName) ).Sum(x => x.Estimado);
+                        gridEtapasEstimadas.FooterRow.Cells[i].Text = total.ToString("N2");
+                        gridEtapasEstimadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
+                    }
+                }
             }
 
             //debo tener ambos parametros para considerarlos
@@ -1794,17 +1810,26 @@ namespace UI.Web
                 litEtapasRealizadasTotal.Visible = true;
             }
 
-            /*if (dataTable.Rows.Count > 0)
+            if (dataTable.Rows.Count > 0)
             {
-                //Nueva fila con los datos del total
-                GridViewRow rowTotal = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-                TableHeaderCell cellTotal = new TableHeaderCell();
-                cellTotal.Text = "Total: " + (from ee in Entity.EtapasRealizadas select ee.TotalRealizado).Sum().ToString("N0");
-                cellTotal.ColumnSpan = dataTable.Columns.Count;
-                cellTotal.Attributes.Add("style", "text-align:right !important;font-weight: bold;");
-                rowTotal.Controls.Add(cellTotal);
-                gridEtapasRealizadas.HeaderRow.Parent.Controls.AddAt(0, rowTotal);
-            }*/
+                if (dataTable.Columns.Count > 5)
+                {
+                    var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                    gridEtapasRealizadas.FooterRow.Cells[0].Text = "";
+                    gridEtapasRealizadas.FooterRow.Cells[1].Text = "";
+                    gridEtapasRealizadas.FooterRow.Cells[2].Text = "";
+                    gridEtapasRealizadas.FooterRow.Cells[3].Text = "";
+                    gridEtapasRealizadas.FooterRow.Cells[4].Text = "Totales por año";
+                    gridEtapasRealizadas.FooterRow.Cells[4].HorizontalAlign = HorizontalAlign.Right;
+                    gridEtapasRealizadas.FooterRow.Visible = true;
+                    for (var i = 5; i < dataTable.Columns.Count; i++)
+                    {
+                        var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName)).Sum(x => x.Realizado);
+                        gridEtapasRealizadas.FooterRow.Cells[i].Text = total.ToString("N2");
+                        gridEtapasRealizadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
+                    }
+                }
+            }
 
             upGridEtapasRealizadas.Update();
         }

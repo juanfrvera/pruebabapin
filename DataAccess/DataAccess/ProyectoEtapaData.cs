@@ -52,7 +52,8 @@ namespace DataAccess
                //i.NroProyecto = (from p in Context.Proyectos where p.IdProyecto == i.IdProyecto select p.NroProyecto).SingleOrDefault().ToString();
                i.NroProyecto = proyecto.Select(x=>x.NroProyecto).SingleOrDefault().ToString();
                i.NroActividad = proyecto.Select(x=>x.NroActividad).SingleOrDefault().ToString();
-               i.NroObra = proyecto.Select(x=>x.NroObra).SingleOrDefault().ToString();
+               i.NroObra = proyecto.Select(x => x.NroObra).SingleOrDefault().ToString();
+               i.ProyectoDenominacion = proyecto.Select(x => x.ProyectoDenominacion).SingleOrDefault().ToString();
 
                i.TotalEstimado = (from e in this.Context.ProyectoEtapaEstimados
                                   join p in this.Context.ProyectoEtapaEstimadoPeriodos

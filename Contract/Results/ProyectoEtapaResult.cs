@@ -106,10 +106,10 @@ namespace Contract
         {
             get
             {
-                string descripcion = CodigoPresupuestario + " " + Nombre;
+                string descripcion = ProyectoDenominacion;
 
-                if (descripcion.Length > 50)
-                    descripcion = descripcion.Substring(0, 47) + "...";
+                if (descripcion.Length > 60)
+                    descripcion = descripcion.Substring(0, 57) + "...";
 
                 return descripcion;
             }
@@ -147,6 +147,7 @@ namespace Contract
             }
         }
 
+        public string ProyectoDenominacion { set; get; }
         public string NroProyecto { set; get; }
         public string NroActividad { set; get; }
         public string NroObra { set; get; }
