@@ -11,7 +11,7 @@
             <td>
                 <asp:UpdatePanel ID="upSearch" runat="server">
                     <ContentTemplate>
-					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlFilter" >
+					    <asp:Panel runat="server" GroupingText="Filtro de Búsqueda"  ID="pnlFilter" >
                             <div  >
                                <uc:FilterPrestamoDictamen runat="server" ID="ftPrestamoDictamen" ></uc:FilterPrestamoDictamen>
 						    </div>

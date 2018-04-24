@@ -1439,7 +1439,7 @@
         </table>
     </asp:Panel>
     <asp:Panel ID="pnTransferencia" runat="server" Style="padding: 10px">
-        <asp:Panel ID="pnTransferenciaFiltro" DefaultButton="btAceptarTransferencia" runat="server" GroupingText="Filtro">
+        <asp:Panel ID="pnTransferenciaFiltro" DefaultButton="btAceptarTransferencia" runat="server" GroupingText="Filtro de Búsqueda">
             <asp:UpdatePanel ID="upTransferenciaPopUp" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <table width="100% ">

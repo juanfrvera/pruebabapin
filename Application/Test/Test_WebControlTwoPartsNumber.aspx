@@ -6,7 +6,7 @@
             <td>
                 <asp:UpdatePanel ID="upSearch" runat="server">
                     <ContentTemplate>
-					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlWCDR" >
+					    <asp:Panel runat="server" GroupingText="Filtro de Búsqueda"  ID="pnlWCDR" >
                             <div style="width:100%;" >                                                       
                                 <uc:TwoPartsNumber runat="server"  ID="wcTwoPartsNumber" ></uc:TwoPartsNumber>
                                 <br/>

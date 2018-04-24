@@ -6,7 +6,7 @@
             <td>
                 <asp:UpdatePanel ID="upSearch" runat="server">
                     <ContentTemplate>
-					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlWCDR" >
+					    <asp:Panel runat="server" GroupingText="Filtro de Búsqueda"  ID="pnlWCDR" >
                             <div style="width:100%;" >                                                       
                                 <uc:DateRangeInput runat="server" ID="wcDateRangeInput" ></uc:DateRangeInput>
                                 <asp:Button ID="Button2" runat="server" Text="Enviar" />

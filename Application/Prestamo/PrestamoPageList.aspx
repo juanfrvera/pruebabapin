@@ -12,7 +12,7 @@
             <td>
                 <asp:UpdatePanel ID="upSearch" runat="server">
                     <ContentTemplate>
-					    <asp:Panel runat="server" GroupingText="Filtro"  ID="pnlFilter" >
+					    <asp:Panel runat="server" GroupingText="Filtro de Búsqueda"  ID="pnlFilter" >
                             <div  >
                                <uc:FilterPrestamo runat="server" ID="ftPrestamo" ></uc:FilterPrestamo>
 						    </div>
