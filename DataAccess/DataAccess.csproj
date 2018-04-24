@@ -87,6 +87,7 @@
     <Compile Include="DataAccess\AuditOperationData.cs" />
     <Compile Include="DataAccess\AuditOperationDetailData.cs" />
     <Compile Include="DataAccess\AuditSessionData.cs" />
+    <Compile Include="DataAccess\Base\_ProyectoEvaluacionSectorialIndicadorData.cs" />
     <Compile Include="DataAccess\Base\_ProyectoIndicadorObjetivosGobiernoData.cs" />
     <Compile Include="DataAccess\Base\_ProyectoEtapaInformacionPresupuestariaPeriodoData.cs" />
     <Compile Include="DataAccess\Base\_ProyectoPrincipiosFormulacionData.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="DataAccess\ComentarioTecnicoData.cs" />
     <Compile Include="DataAccess\ConfigurationCategoryData.cs" />
     <Compile Include="DataAccess\ConfigurationData.cs" />
+    <Compile Include="DataAccess\ProyectoEvaluacionSectorialIndicadorData.cs" />
     <Compile Include="DataAccess\ProyectoIndicadorObjetivosGobiernoData.cs" />
     <Compile Include="DataAccess\ProyectoEtapaInformacionPresupuestariaData.cs" />
     <Compile Include="DataAccess\ProyectoEtapaInformacionPresupuestariaPeriodoData.cs" />

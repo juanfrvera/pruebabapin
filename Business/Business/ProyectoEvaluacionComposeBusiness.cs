@@ -74,7 +74,15 @@ namespace Business
                 ProyectoBeneficioIndicadorBusiness.Current.GetResult(new ProyectoBeneficioIndicadorFilter() { IdProyecto = id }).ToList();
 
             pbo.ForEach(p => proyectoEvaluacionCompose.IndicadoresBeneficio.Add(
-                ProyectoBeneficioIndicadorComposeBusiness.Current.GetById(p.IdProyectoBeneficioIndicador)));           
+                ProyectoBeneficioIndicadorComposeBusiness.Current.GetById(p.IdProyectoBeneficioIndicador)));
+
+            // ProyectoEvaluacionSectorialIndicador
+
+            List<ProyectoEvaluacionSectorialIndicadorResult> pbs =
+                ProyectoEvaluacionSectorialIndicadorBusiness.Current.GetResult(new ProyectoEvaluacionSectorialIndicadorFilter() { IdProyecto = id }).ToList();
+
+            pbs.ForEach(p => proyectoEvaluacionCompose.IndicadoresEvaluacionSectorial.Add(
+                ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.GetById(p.IdProyectoEvaluacionSectorialIndicador)));  
 
             return proyectoEvaluacionCompose;
 
@@ -327,6 +335,36 @@ namespace Business
                         ProyectoBeneficioIndicadorComposeBusiness.Current.Update(pbic, contextUser);
                     }
                 }
+
+                // ProyectoEvaluacionSectorialIndicadorCompose
+
+                List<int> actualProyectoEvaluacionSectorialIndicadorIds = (from o in entity.IndicadoresEvaluacionSectorial
+                                                                 where o.Indicador.IdProyectoEvaluacionSectorialIndicador > 0
+                                                                 select o.Indicador.IdProyectoEvaluacionSectorialIndicador).ToList();
+
+                List<ProyectoEvaluacionSectorialIndicador> oldProyectoEvaluacionSectorialIndicadorDetail =
+                    ProyectoEvaluacionSectorialIndicadorBusiness.Current.GetList(new ProyectoEvaluacionSectorialIndicadorFilter() { IdProyecto = entity.IdProyecto });
+
+                List<int> deleteProyectoEvaluacionSectorialIndicadorIds = (from o in oldProyectoEvaluacionSectorialIndicadorDetail
+                                                                 where !actualProyectoEvaluacionSectorialIndicadorIds.Contains(o.IdProyectoEvaluacionSectorialIndicador)
+                                                                 select o.IdProyectoEvaluacionSectorialIndicador).ToList();
+
+                ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.Delete(deleteProyectoEvaluacionSectorialIndicadorIds.ToArray(), contextUser);
+
+                foreach (ProyectoEvaluacionSectorialIndicadorCompose pbic in entity.IndicadoresEvaluacionSectorial)
+                {
+                    if (pbic.Indicador.IdProyectoEvaluacionSectorialIndicador < 1)
+                    {
+                        pbic.Indicador.IdProyecto = entity.IdProyecto;
+                        ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.Add(pbic, contextUser);
+                    }
+                    else
+                    {
+                        ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.Update(pbic, contextUser);
+                    }
+                }
+
+
                 //Matias 20131106 - Tarea 80
                 ProyectoBusiness.Current.updateFechaUltimaModificacion(entity.IdProyecto, contextUser);
                 //FinMatias 20131106 - Tarea 80

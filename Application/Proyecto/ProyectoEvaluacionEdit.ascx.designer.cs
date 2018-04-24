@@ -94,22 +94,22 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Button btAgregarIndicadorSectorial;
         
         /// <summary>
-        /// upGridIndicadoresSectorial control.
+        /// upGridIndicadoresEvaluacionSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upGridIndicadoresSectorial;
+        protected global::System.Web.UI.UpdatePanel upGridIndicadoresEvaluacionSectorial;
         
         /// <summary>
-        /// gridIndicadoresSectorial control.
+        /// gridIndicadoresEvaluacionSectorial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridIndicadoresSectorial;
+        protected global::System.Web.UI.WebControls.GridView gridIndicadoresEvaluacionSectorial;
         
         /// <summary>
         /// lblBeneficios control.
@@ -238,6 +238,267 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.GridView gridIndicadoresObjetivosGobierno;
         
         /// <summary>
+        /// PopUpIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PopUpIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// IndicadoresEvaluacionSectorialPopUpDragHandle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel IndicadoresEvaluacionSectorialPopUpDragHandle;
+        
+        /// <summary>
+        /// headerPopUpIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label headerPopUpIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// pnIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// upIndicadoresEvaluacionSectorialPopUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upIndicadoresEvaluacionSectorialPopUp;
+        
+        /// <summary>
+        /// lblTituloIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTituloIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// autoCmpIndicadorClaseEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Web.WebControl_IndicadorClaseAutocomplete autoCmpIndicadorClaseEvaluacionSectorial;
+        
+        /// <summary>
+        /// Literal1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal1;
+        
+        /// <summary>
+        /// Literal7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal7;
+        
+        /// <summary>
+        /// toIndicadorClaseEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Web.ControlsPersonal.WebControl_IndicadorClaseTree toIndicadorClaseEvaluacionSectorial;
+        
+        /// <summary>
+        /// chkIndirectoEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkIndirectoEvaluacionSectorial;
+        
+        /// <summary>
+        /// ltMedioVerificacionEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltMedioVerificacionEvaluacionSectorial;
+        
+        /// <summary>
+        /// ltMontoEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltMontoEvaluacionSectorial;
+        
+        /// <summary>
+        /// ddlMedioVerificacionEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedioVerificacionEvaluacionSectorial;
+        
+        /// <summary>
+        /// rfvMedioVerificacionEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedioVerificacionEvaluacionSectorial;
+        
+        /// <summary>
+        /// rfvMedioVerificacionEvaluacionSectorial2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedioVerificacionEvaluacionSectorial2;
+        
+        /// <summary>
+        /// txtMontoEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMontoEvaluacionSectorial;
+        
+        /// <summary>
+        /// Literal9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal9;
+        
+        /// <summary>
+        /// RangeValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        
+        /// <summary>
+        /// rfvMontoEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMontoEvaluacionSectorial;
+        
+        /// <summary>
+        /// ltObservacionesIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltObservacionesIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// txtObservacionesIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtObservacionesIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// revObservacionesIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revObservacionesIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// btSaveIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSaveIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// btNewIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btNewIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// btCancelIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btCancelIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
+        /// vsIndicadorEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsIndicadorEvaluacionSectorial;
+        
+        /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// ModalPopupExtenderIndicadoresEvaluacionSectorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtenderIndicadoresEvaluacionSectorial;
+        
+        /// <summary>
         /// PopUpIndicadoresProyecto control.
         /// </summary>
         /// <remarks>
@@ -301,13 +562,13 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Literal Literal2;
         
         /// <summary>
-        /// toIndicadoClaseSinSector control.
+        /// toIndicadoClaseEconomicoObjetivoGobierno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UI.Web.ControlsPersonal.WebControl_IndicadorClaseTreeSinSector toIndicadoClaseSinSector;
+        protected global::UI.Web.ControlsPersonal.WebControl_IndicadorClaseTree toIndicadoClaseEconomicoObjetivoGobierno;
         
         /// <summary>
         /// trValorIndicadoresProyectoLiteral control.
@@ -355,6 +616,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revValorIndicadoresProyecto;
         
         /// <summary>
+        /// rfvValorIndicadoresProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvValorIndicadoresProyecto;
+        
+        /// <summary>
         /// ltAnoIndicadoresProyecto control.
         /// </summary>
         /// <remarks>
@@ -371,6 +641,15 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Web.ExtendedDropDownList ddlAnoIndicadoresProyecto;
+        
+        /// <summary>
+        /// rfvAnoIndicadoresProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAnoIndicadoresProyecto;
         
         /// <summary>
         /// ltObservacionesIndicadoresProyecto control.

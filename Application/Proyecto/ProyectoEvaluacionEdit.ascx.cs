@@ -46,12 +46,13 @@ namespace UI.Web.Pages
             autoCmpIndicadorClaseIndicadoresProyecto.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //German 01032014 - tarea 110
             autoCmpIndicadorClaseIndicadoresProyecto.Visible = false;
-            toIndicadoClaseSinSector.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
+            toIndicadoClaseEconomicoObjetivoGobierno.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //Fin German 01032014 - tarea 110
-            //rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
+            rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
+            rfvValorIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Valor");
+            rfvMontoEvaluacionSectorial.ErrorMessage = TranslateFormat("FieldIsNull", "Monto");
             //[Evolucion]rfvCantidadEstimadaEvolucionBeneficiario.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
             //[Evolucion]rfvCantidadEstimadaEvolucionBeneficio.ErrorMessage = TranslateFormat("FieldIsNull", "Cantidad Estimada");
-
 
             autoCmpIndicadorClaseBeneficio.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
             //German 01032014 - tarea 110
@@ -108,6 +109,8 @@ namespace UI.Web.Pages
             //Matias 20170209 - Ticket #REQ819714
             rfvMedioVerificacion.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             rfvMedioVerificacion2.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
+            rfvMedioVerificacionEvaluacionSectorial.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
+            rfvMedioVerificacionEvaluacionSectorial2.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             //[Evolucion]rfvMedioVerificacion3.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             //[Evolucion]rfvMedioVerificacion4.ErrorMessage = TranslateFormat("FieldIsNull", "Medio de Verificación");
             //FinMatias 20170209 - Ticket #REQ819714
@@ -136,6 +139,15 @@ namespace UI.Web.Pages
             ((TextBox)toIndicadoClase.PnControl.FindControl("txtSelect")).ToolTip = Translate("TooltipIndicador");
             ddlMedioVerificacionBeneficio.ToolTip = Translate("TooltipMedioVerificacion");
             txtObservacionesIndicadoresBeneficio.ToolTip = Translate("TooltipObservacionesEvaluacion");
+
+            //Evaluacion Sectorial
+            autoCmpIndicadorClaseEvaluacionSectorial.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
+            autoCmpIndicadorClaseEvaluacionSectorial.Visible = false;
+            toIndicadorClaseEvaluacionSectorial.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
+            revObservacionesIndicadoresEvaluacionSectorial.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
+            revObservacionesIndicadoresEvaluacionSectorial.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
+            CargarMediosVerificacionEvaluacionSectorial();
+            PopUpIndicadoresEvaluacionSectorial.Attributes.CssStyle.Add("display", "none");
         }
 
         /*[Evolucion]
@@ -182,13 +194,14 @@ namespace UI.Web.Pages
             PopUpIndicadoresBeneficio.Attributes.CssStyle.Add("display", "none");
             //[Evolucion]PopUpEvolucionesBeneficiario.Attributes.CssStyle.Add("display", "none");
             //[Evolucion]PopUpEvolucionesBeneficio.Attributes.CssStyle.Add("display", "none");
-            
+            PopUpIndicadoresEvaluacionSectorial.Attributes.CssStyle.Add("display", "none");
         }
         
         
         public override void Clear()
         {
             UIHelper.Clear(gridIndicadoresBeneficio);
+            UIHelper.Clear(gridIndicadoresEvaluacionSectorial);
             //UIHelper.Clear(gridIndicadoresBeneficiario);
             //UIHelper.Clear(txtMarcoLegal);
             //UIHelper.Clear(txtEstudiosRealizados);
@@ -202,7 +215,7 @@ namespace UI.Web.Pages
             //[CriterioEvaluacion]UIHelper.Clear(txtHorizonteEvaluacion);
             //[CriterioEvaluacion]UIHelper.Clear(txtTasaReferencia);
             upGridIndicadoresEconomicos.Update();
-            upGridIndicadoresSectorial.Update();
+            upGridIndicadoresEvaluacionSectorial.Update();
         }
         public override void GetValue()
         {
@@ -247,14 +260,14 @@ namespace UI.Web.Pages
 //*****************************************************************            IndicadoresSectorialRefresh();
             IndicadoresObjetivosGobiernoRefresh();
             //[Evolucion]IndicadoresBeneficiarioRefresh();
+            
             IndicadoresBeneficioRefresh();
-
             IndicadoresBeneficioClear();
 
+            IndicadoresEvaluacionSectorialRefresh();
+            IndicadoresEvaluacionSectorialClear();
 
             //CargarIndicadorProyectoClases((int)IndicadorTipoEnum.Objetivo);
-            
-
         }
 
         void CargarAnios()
@@ -672,6 +685,7 @@ namespace UI.Web.Pages
 
 
         #endregion
+
         /*[Evolucion]
         #region Indicadores Beneficiario
 
@@ -997,9 +1011,9 @@ namespace UI.Web.Pages
             ActualProyectoIndicadorEconomico = GetNewProyectoIndicadorEconomico();
             autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
+            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
             //solo por ahora - Ver pq no funciona
-            //toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
+            //toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
         }
         void IndicadoresEconomicoSetValue()
@@ -1007,7 +1021,7 @@ namespace UI.Web.Pages
             
             UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorEconomico.IdIndicadorClase);
             //German 01032014 - tarea 110
-            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorEconomico.IdIndicadorClase);
+            UIHelper.SetValue(toIndicadoClaseEconomicoObjetivoGobierno, ActualProyectoIndicadorEconomico.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
             UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorEconomico.Valor);
 
@@ -1022,10 +1036,11 @@ namespace UI.Web.Pages
         void IndicadoresEconomicoGetValue()
         {
             VisibleValorIndicadoresProyecto(true); //No visibles para Contribución al Objetivo de Gobierno
+            RequiredIndicadoresProyecto(true); //Requeridos anio y valor en economicos
 
             ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
-            ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
+            ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
             IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorEconomico.IdIndicadorClase }).FirstOrDefault();
             ActualProyectoIndicadorEconomico.IndicadorClase_Sigla = result.Sigla;
@@ -1049,6 +1064,7 @@ namespace UI.Web.Pages
         protected void btAgregarIndicadorEconomico_Click(object sender, EventArgs e)
         {
             VisibleValorIndicadoresProyecto(true);
+            RequiredIndicadoresProyecto(true); //Requeridos anio y valor en economicos
             ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Economico;
             IndicadoresProyectoClear();
             ModalPopupExtenderIndicadoresProyecto.Show();
@@ -1058,7 +1074,8 @@ namespace UI.Web.Pages
         #region EventosGrillas
         protected void GridIndicadoresEconomicos_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-
+            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Economico;
+            IndicadoresProyectoClear();
             int id;
             if (!int.TryParse(e.CommandArgument.ToString(), out id))
                 return;
@@ -1114,178 +1131,294 @@ namespace UI.Web.Pages
         #endregion
 
         #region Indicadores Sectorial
-/*
-        private ProyectoIndicadorSectorialResult actualProyectoIndicadorSectorial;
-        protected ProyectoIndicadorSectorialResult ActualProyectoIndicadorSectorial
+
+        private ProyectoEvaluacionSectorialIndicadorCompose actualProyectoEvaluacionSectorialIndicadorCompose;
+        protected ProyectoEvaluacionSectorialIndicadorCompose ActualProyectoEvaluacionSectorialIndicadorCompose
         {
             get
             {
-                if (actualProyectoIndicadorSectorial == null)
-                    if (ViewState["actualProyectoIndicadorSectorial"] != null)
-                        actualProyectoIndicadorSectorial = ViewState["actualProyectoIndicadorSectorial"] as ProyectoIndicadorSectorialResult;
+                if (actualProyectoEvaluacionSectorialIndicadorCompose == null)
+                    if (ViewState["actualProyectoEvaluacionSectorialIndicadorCompose"] != null)
+                        actualProyectoEvaluacionSectorialIndicadorCompose = ViewState["actualProyectoEvaluacionSectorialIndicadorCompose"] as ProyectoEvaluacionSectorialIndicadorCompose;
                     else
                     {
-                        actualProyectoIndicadorSectorial = GetNewProyectoIndicadorSectorial();
-                        ViewState["actualProyectoIndicadorSectorial"] = actualProyectoIndicadorSectorial;
+                        actualProyectoEvaluacionSectorialIndicadorCompose = GetNewProyectoEvaluacionSectorialIndicadorCompose();
+                        ViewState["actualProyectoEvaluacionSectorialIndicadorCompose"] = actualProyectoEvaluacionSectorialIndicadorCompose;
                     }
-                return actualProyectoIndicadorSectorial;
+                return actualProyectoEvaluacionSectorialIndicadorCompose;
             }
             set
             {
-                actualProyectoIndicadorSectorial = value;
-                ViewState["actualProyectoIndicadorSectorial"] = value;
+                actualProyectoEvaluacionSectorialIndicadorCompose = value;
+                ViewState["actualProyectoEvaluacionSectorialIndicadorCompose"] = value;
             }
         }
-        ProyectoIndicadorSectorialResult GetNewProyectoIndicadorSectorial()
+        ProyectoEvaluacionSectorialIndicadorCompose GetNewProyectoEvaluacionSectorialIndicadorCompose()
         {
 
             int id = 0;
-            if (Entity.IndicadoresSectorial.Count > 0) id = Entity.IndicadoresSectorial.Min(l => l.IdProyectoIndicadorSectorial);
+            if (Entity.IndicadoresEvaluacionSectorial.Count > 0) id = Entity.IndicadoresEvaluacionSectorial.Min(l => l.Indicador.IdProyectoEvaluacionSectorialIndicador);
             if (id > 0) id = 0;
             id--;
-            ProyectoIndicadorSectorialResult proyectoIndicadorSectorialResult;
-            proyectoIndicadorSectorialResult = new ProyectoIndicadorSectorialResult();
-            proyectoIndicadorSectorialResult.IdProyectoIndicadorSectorial = id;
+            ProyectoEvaluacionSectorialIndicadorCompose proyectoEvaluacionSectorialIndicadorCompose;
+            proyectoEvaluacionSectorialIndicadorCompose = new ProyectoEvaluacionSectorialIndicadorCompose();
+            proyectoEvaluacionSectorialIndicadorCompose.Indicador = new ProyectoEvaluacionSectorialIndicadorResult();
+            proyectoEvaluacionSectorialIndicadorCompose.Indicador.IdProyectoEvaluacionSectorialIndicador = id;
 
-            return proyectoIndicadorSectorialResult;
+            return proyectoEvaluacionSectorialIndicadorCompose;
+        }
+
+        public void toIndicadorClaseEvaluacionSectorial_OnValueChanged(object sender, EventArgs e)
+        {
+            litMontoRango.Visible = false;
+            ravMonto.Enabled = false;
+            if (toIndicadorClaseEvaluacionSectorial.ValueId.HasValue)
+            {
+                IndicadorClase indicadorClase = IndicadorClaseService.Current.GetById(toIndicadorClaseEvaluacionSectorial.ValueId.Value);
+
+                int rangoInicial = 0;
+                int rangoFinal = 0;
+
+                if (indicadorClase.RangoInicial != null)
+                    rangoInicial = (int)indicadorClase.RangoInicial;
+
+                if (indicadorClase.RangoFinal != null)
+                    rangoFinal = (int)indicadorClase.RangoFinal;
+
+                if (rangoInicial > 0 || rangoFinal > 0)
+                {
+                    litMontoRango.Text = string.Format("Rango monto entre ({0} y {1})", rangoInicial, rangoFinal);
+                    litMontoRango.Visible = true;
+                    ravMonto.Enabled = true;
+                    ravMonto.MinimumValue = rangoInicial.ToString();
+                    ravMonto.MaximumValue = rangoFinal.ToString();
+                }
+            }
         }
 
         #region Commands
-        void CommandIndicadoresSectorialEdit()
+        void CommandIndicadoresEvaluacionSectorialEdit()
         {
-            IndicadoresSectorialSetValue();
-        }
-        void CommandIndicadoresSectorialSave()
-        {
-            ProyectoIndicadorSectorialResult piep = (from l in Entity.IndicadoresSectorial
-                                                     where l.IdProyectoIndicadorSectorial == ActualProyectoIndicadorSectorial.ID
-                                                     select l).FirstOrDefault();
+            IndicadoresEvaluacionSectorialSetValue();
+            ModalPopupExtenderIndicadoresEvaluacionSectorial.Show();
+            upIndicadoresEvaluacionSectorialPopUp.Update();
 
-            if (piep != null)
+        }
+        void CommandIndicadoresEvaluacionSectorialSave()
+        {
+            IndicadoresEvaluacionSectorialGetValue();
+
+            ProyectoEvaluacionSectorialIndicadorCompose pbic = (from l in Entity.IndicadoresEvaluacionSectorial
+                                                      where l.Indicador.IdProyectoEvaluacionSectorialIndicador == ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.ID
+                                                      select l).FirstOrDefault();
+
+            if (pbic != null)
             {
 
-                piep.Valor = ActualProyectoIndicadorSectorial.Valor;
-                piep.Anio = ActualProyectoIndicadorSectorial.Anio;
-                piep.Observacion = ActualProyectoIndicadorSectorial.Observacion;
-                piep.IdIndicadorClase = ActualProyectoIndicadorSectorial.IdIndicadorClase;
-                piep.IndicadorClase_Nombre = ActualProyectoIndicadorSectorial.IndicadorClase_Nombre;
-                piep.IndicadorClase_Sigla = ActualProyectoIndicadorSectorial.IndicadorClase_Sigla;
-                piep.IndicadorClase_Unidad = ActualProyectoIndicadorSectorial.IndicadorClase_Unidad;
-                piep.IndicadorClase_IdIndicadorTipo = ActualProyectoIndicadorSectorial.IndicadorClase_IdIndicadorTipo;
+                pbic.Indicador.Indicador_Observacion = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_Observacion;
+                pbic.Indicador.IdIndicadorClase = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase;
+                pbic.Indicador.Indirecto = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indirecto;
+                pbic.Indicador.Valor = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Valor;
+                pbic.Indicador.Indicador_IdMedioVerificacion = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_IdMedioVerificacion;
+                pbic.Indicador.IndicadorClase_Nombre = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Nombre;
+                pbic.Indicador.IndicadorClase_Sigla = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Sigla;
+                pbic.Indicador.IndicadorClase_Unidad = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Unidad;
+                pbic.Indicador.Indicador_MedioVerificacion = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_MedioVerificacion;
+                //German 20140511 - Tarea 124
+                //pbic.Indicador.IdIndicadorRubro = pbic.Indicador.IdIndicadorRubro;
+                pbic.Indicador.IdIndicadorRubro = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorRubro;
+                //FinGerman 20140511 - Tarea 124
 
             }
             else
             {
 
-                Entity.IndicadoresSectorial.Add(ActualProyectoIndicadorSectorial);
+                Entity.IndicadoresEvaluacionSectorial.Add(ActualProyectoEvaluacionSectorialIndicadorCompose);
             }
+
+            IndicadoresEvaluacionSectorialRefresh();
+            IndicadoresEvaluacionSectorialClear();
+
+
         }
-        void CommandIndicadoresSectorialDelete()
+        void CommandIndicadoresEvaluacionSectorialDelete()
         {
 
-            ProyectoIndicadorSectorialResult pier = (from l in Entity.IndicadoresSectorial
-                                                     where l.IdProyectoIndicadorSectorial == ActualProyectoIndicadorSectorial.ID
-                                                     select l).FirstOrDefault();
+            ProyectoEvaluacionSectorialIndicadorCompose pbic = (from l in Entity.IndicadoresEvaluacionSectorial
+                                                      where l.Indicador.IdProyectoEvaluacionSectorialIndicador == ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.ID
+                                                      select l).FirstOrDefault();
 
-            Entity.IndicadoresSectorial.Remove(pier);
+            Entity.IndicadoresEvaluacionSectorial.Remove(pbic);
+
+            IndicadoresEvaluacionSectorialClear();
+            IndicadoresEvaluacionSectorialRefresh();
 
         }
         #endregion
 
         #region Methods
-        void IndicadoresSectorialClear()
+
+        void HidePopUpIndicadoresEvaluacionSectorial()
         {
-            ActualProyectoIndicadorSectorial = GetNewProyectoIndicadorSectorial();
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Sectorial, Activo = true };
+            ModalPopupExtenderIndicadoresEvaluacionSectorial.Hide();
+        }
+        void IndicadoresEvaluacionSectorialClear()
+        {
+            ActualProyectoEvaluacionSectorialIndicadorCompose = GetNewProyectoEvaluacionSectorialIndicadorCompose();
+
+
+            UIHelper.Clear(txtObservacionesIndicadoresEvaluacionSectorial);
+            UIHelper.Clear(autoCmpIndicadorClaseEvaluacionSectorial);
             //German 01032014 - tarea 110
-            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Sectorial, Activo = true };
+            UIHelper.Clear(toIndicadorClaseEvaluacionSectorial);
+            //Fin German 01032014 - tarea 110
+            UIHelper.Clear(chkIndirectoEvaluacionSectorial);
+            UIHelper.Clear(ddlMedioVerificacionEvaluacionSectorial);
+            UIHelper.Clear(txtMontoEvaluacionSectorial);
+            autoCmpIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
+            //German 01032014 - tarea 110
+            toIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
             //solo por ahora - Ver pq no funciona
-            //toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
+            //toIndicadoClase.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
+            upIndicadoresEvaluacionSectorialPopUp.Update();
+
+
         }
-        void IndicadoresSectorialSetValue()
+        void IndicadoresEvaluacionSectorialSetValue()
+        {
+            UIHelper.SetValue(autoCmpIndicadorClaseEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase);
+            //German 01032014 - tarea 110
+            UIHelper.SetValue(toIndicadorClaseEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase);
+            //FinGerman 01032014 - tarea 110
+            //German 20140511 - Tarea 124
+            UIHelper.SetValue(toIndicadorClaseEvaluacionSectorial.Sectores, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorRubro);
+            //FinGerman 20140511 - Tarea 124            
+            UIHelper.SetValue(chkIndirectoEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indirecto);
+            UIHelper.SetValue(txtMontoEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Valor);
+            UIHelper.SetValue(ddlMedioVerificacionEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_IdMedioVerificacion);
+            UIHelper.SetValue(txtObservacionesIndicadoresEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_Observacion);
+        }
+        void IndicadoresEvaluacionSectorialGetValue()
         {
 
-            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorSectorial.IdIndicadorClase);
-            //German 01032014 - tarea 110
-            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorSectorial.IdIndicadorClase);
-            //Fin German 01032014 - tarea 110
-            UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorSectorial.Valor);
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_Observacion = UIHelper.GetString(txtObservacionesIndicadoresEvaluacionSectorial);
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_IdMedioVerificacion = UIHelper.GetIntNullable(ddlMedioVerificacionEvaluacionSectorial);
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indirecto = UIHelper.GetBoolean(chkIndirectoEvaluacionSectorial);
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Valor = UIHelper.GetInt(txtMontoEvaluacionSectorial);
 
-            if (ActualProyectoIndicadorSectorial.Anio.HasValue)
-                ddlAnoIndicadoresProyecto.SelectedValue = ddlAnoIndicadoresProyecto.Items.FindByText(ActualProyectoIndicadorSectorial.Anio.ToString()).Value;
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
+            //German 01032014 - tarea 110
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(toIndicadorClaseEvaluacionSectorial);
+            //FinGerman 01032014 - tarea 110
+            //German 20140511 - Tarea 124
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorRubro = (UIHelper.GetIntNullable(toIndicadorClaseEvaluacionSectorial.Sectores) == null) ? 0 : UIHelper.GetIntNullable(toIndicadorClaseEvaluacionSectorial.Sectores).Value;
+            //FinGerman 20140511 - Tarea 124
+
+            IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase }).FirstOrDefault();
+
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Sigla = result.Sigla;
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Nombre = result.Nombre;
+            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IndicadorClase_Unidad = result.Unidad_Nombre;
+
+            if (ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_IdMedioVerificacion != null)
+            {
+                ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_MedioVerificacion = UIHelper.GetString(ddlMedioVerificacionEvaluacionSectorial);
+            }
             else
-                UIHelper.Clear(ddlAnoIndicadoresProyecto);
-            //UIHelper.SetValue(ddlAnoIndicadoresProyecto, ActualProyectoIndicadorSectorial.Anio);
-            UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorSectorial.Observacion);
+            {
+                ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indicador_MedioVerificacion = string.Empty;
+            }
+
 
         }
-        void IndicadoresSectorialGetValue()
+        void IndicadoresEvaluacionSectorialRefresh()
         {
-
-            ActualProyectoIndicadorSectorial.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
-            //German 01032014 - tarea 110
-            ActualProyectoIndicadorSectorial.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
-            //Fin German 01032014 - tarea 110
-            IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorSectorial.IdIndicadorClase }).FirstOrDefault();
-            ActualProyectoIndicadorSectorial.IndicadorClase_Sigla = result.Sigla;
-            ActualProyectoIndicadorSectorial.IndicadorClase_Nombre = result.Nombre;
-            ActualProyectoIndicadorSectorial.IndicadorClase_Unidad = result.Unidad_Nombre;
-
-            ActualProyectoIndicadorSectorial.Anio = Convert.ToInt32(UIHelper.GetString(ddlAnoIndicadoresProyecto));
-            ActualProyectoIndicadorSectorial.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
-            ActualProyectoIndicadorSectorial.Valor = UIHelper.GetDecimal(txtValorIndicadoresProyecto);
-
-        }
-        void IndicadoresSectorialRefresh()
-        {
-            UIHelper.Load(gridIndicadoresSectorial, Entity.IndicadoresSectorial, "IndicadorClase_Nombre");
-            upGridIndicadoresSectorial.Update();
+            List<ProyectoEvaluacionSectorialIndicadorResult> indicadores = new List<ProyectoEvaluacionSectorialIndicadorResult>();
+            Entity.IndicadoresEvaluacionSectorial.ForEach(i => indicadores.Add(i.Indicador));
+            UIHelper.Load(gridIndicadoresEvaluacionSectorial, indicadores, "IndicadorClase_Nombre");
+            upGridIndicadoresEvaluacionSectorial.Update();
 
         }
         #endregion Methods
-*/
+
         #region Eventos
-        protected void btAgregarIndicadorSectorial_Click(object sender, EventArgs e)
+        protected void btSaveIndicadorEvaluacionSectorial_Click(object sender, EventArgs e)
         {
- //************************************************           ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Sectorial;
-            IndicadoresProyectoClear();
-            ModalPopupExtenderIndicadoresProyecto.Show();
+
+            string msgError;
+            if (ValidateIndicadoresEvaluacionSectorial(out  msgError))
+            {
+
+                CallTryMethod(CommandIndicadoresEvaluacionSectorialSave);
+                HidePopUpIndicadoresEvaluacionSectorial();
+            }
+            else
+            {
+                UIHelper.ShowAlert(msgError, upIndicadoresEvaluacionSectorialPopUp);
+            }
+
+        }
+        protected void btNewIndicadorEvaluacionSectorial_Click(object sender, EventArgs e)
+        {
+            string msgError;
+            if (ValidateIndicadoresEvaluacionSectorial(out  msgError))
+            {
+                CallTryMethod(CommandIndicadoresEvaluacionSectorialSave);
+            }
+            else
+            {
+                UIHelper.ShowAlert(msgError, upIndicadoresEvaluacionSectorialPopUp);
+            }
+        }
+        protected void btCancelIndicadorEvaluacionSectorial_Click(object sender, EventArgs e)
+        {
+            IndicadoresEvaluacionSectorialClear();
+            HidePopUpIndicadoresEvaluacionSectorial();
+        }
+        protected void btAgregarIndicadorEvaluacionSectorial_Click(object sender, EventArgs e)
+        {
+            IndicadoresEvaluacionSectorialClear();
+            ModalPopupExtenderIndicadoresEvaluacionSectorial.Show();
         }
         #endregion
 
         #region EventosGrillas
-        protected void GridIndicadoresSectorial_RowCommand(Object sender, GridViewCommandEventArgs e)
+        protected void GridIndicadoresEvaluacionSectorial_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-/*
+
+
             int id;
             if (!int.TryParse(e.CommandArgument.ToString(), out id))
                 return;
 
-            ActualProyectoIndicadorSectorial = (from l in Entity.IndicadoresSectorial
-                                                where l.IdProyectoIndicadorSectorial == id
-                                                select l).FirstOrDefault();
+            ActualProyectoEvaluacionSectorialIndicadorCompose = (from l in Entity.IndicadoresEvaluacionSectorial
+                                                       where l.Indicador.IdProyectoEvaluacionSectorialIndicador == id
+                                                       select l).FirstOrDefault();
 
-            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.Sectorial;
 
             switch (e.CommandName)
             {
                 case Command.EDIT:
-                    CommandIndicadoresProyectoEdit();
+                    CommandIndicadoresEvaluacionSectorialEdit();
                     break;
                 case Command.DELETE:
-                    CommandIndicadoresProyectoDelete();
+                    CommandIndicadoresEvaluacionSectorialDelete();
                     break;
+                case Command.SHOW_DETAILS:
+                    //[Evolucion]ShowPopUpEvolucionesEvaluacionSectorial();
+                    break;
+
             }
-            */
+
 
         }
-        protected virtual void GridIndicadoresSectorial_Sorting(object sender, GridViewSortEventArgs e)
+        protected virtual void GridIndicadoresEvaluacionSectorial_Sorting(object sender, GridViewSortEventArgs e)
         {
 
             try
             {
-                gridIndicadoresSectorial.PageIndex = 0;
+                gridIndicadoresEvaluacionSectorial.PageIndex = 0;
                 RaiseControlCommand(Command.SORT, e);
             }
             catch (Exception exception)
@@ -1294,12 +1427,12 @@ namespace UI.Web.Pages
             }
 
         }
-        protected virtual void GridIndicadoresSectorial_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected virtual void GridIndicadoresEvaluacionSectorial_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
             try
             {
-                gridIndicadoresSectorial.PageIndex = e.NewPageIndex;
+                gridIndicadoresEvaluacionSectorial.PageIndex = e.NewPageIndex;
                 base.RaiseControlCommand(Command.REFRESH);
             }
             catch (Exception exception)
@@ -1309,6 +1442,51 @@ namespace UI.Web.Pages
 
         }
         #endregion
+
+        void CargarMediosVerificacionEvaluacionSectorial()
+        {
+            UIHelper.Load<MedioVerificacion>(ddlMedioVerificacionEvaluacionSectorial, MedioVerificacionService.Current.GetList(),
+                "Nombre", "IdMedioVerificacion", new MedioVerificacion() { IdMedioVerificacion = 0, Nombre = "Selecione Medio" });
+        }
+
+
+        protected void ddlMedioVerificacionEvaluacionSectorial_IndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void IndicadoresEvaluacionSectorial_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+
+        }
+
+        private bool ValidateIndicadoresEvaluacionSectorial(out string msgError)
+        {
+            msgError = string.Empty;
+            int id = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
+
+            //German 01032014 - tarea 110
+            if (autoCmpIndicadorClaseEvaluacionSectorial.Visible == false)
+                id = UIHelper.GetInt(toIndicadorClaseEvaluacionSectorial);
+            //Fin German 01032014 - tarea 110 
+
+            //Matias 20140521 - Tarea 124
+            if (id == 0)
+            {
+                msgError = TranslateFormat("FieldIsNull", "Indicador");
+                return false;
+            }
+            //FinMatias 20140521 - Tarea 124
+
+            int idIndicador = ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdProyectoEvaluacionSectorialIndicador;
+
+            if (Entity.IndicadoresEvaluacionSectorial.Where(p => (p.Indicador.IdProyectoEvaluacionSectorialIndicador != idIndicador) && (p.Indicador.IdIndicadorClase == id)).Count() > 0)
+            {
+                msgError = Translate("* No puede haber mas de un indicador de la misma clase.");
+                return false;
+            }
+            return true;
+        }
+
 
         #endregion
 
@@ -1399,26 +1577,20 @@ namespace UI.Web.Pages
             ActualProyectoIndicadorObjetivosGobierno = GetNewProyectoIndicadorObjetivosGobierno();
             autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
+            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //solo por ahora - Ver pq no funciona
-            //toIndicadoClaseSinSector.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
+            //toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
-        }
-        void VisibleValorIndicadoresProyecto(bool valorVisible)
-        {
-            txtValorIndicadoresProyecto.Visible = valorVisible;
-            ltValorIndicadoresProyecto.Visible = valorVisible;
-            trValorIndicadoresProyectoLiteral.Visible = valorVisible;
-            trValorIndicadoresProyectoTextBox.Visible = valorVisible;
         }
 
         void IndicadoresObjetivosGobiernoSetValue()
         {
             VisibleValorIndicadoresProyecto(false); //No visibles para Contribución al Objetivo de Gobierno
+            RequiredIndicadoresProyecto(false); //No Requeridos para Contribución al Objetivo de Gobierno
 
             UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //German 01032014 - tarea 110
-            UIHelper.SetValue(toIndicadoClaseSinSector, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
+            UIHelper.SetValue(toIndicadoClaseEconomicoObjetivoGobierno, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
             UIHelper.SetValue(txtValorIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.Valor);
 
@@ -1431,11 +1603,12 @@ namespace UI.Web.Pages
             UIHelper.SetValue(txtObservacionesIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.Observacion);
 
         }
+        
         void IndicadoresObjetivosGobiernoGetValue()
         {
             ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
-            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseSinSector);
+            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
             
             IndicadorClaseResult result = IndicadorClaseService.Current.GetResult(new Contract.IndicadorClaseFilter() { IdIndicadorClase = ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase }).FirstOrDefault();
@@ -1454,6 +1627,7 @@ namespace UI.Web.Pages
             ActualProyectoIndicadorObjetivosGobierno.Observacion = UIHelper.GetString(txtObservacionesIndicadoresProyecto);
                         
         }
+        
         void IndicadoresObjetivosGobiernoRefresh()
         {
             UIHelper.Load(gridIndicadoresObjetivosGobierno, Entity.IndicadoresObjetivosGobierno, "IndicadorClase_Nombre");
@@ -1466,6 +1640,7 @@ namespace UI.Web.Pages
         {
             ModificandoProyectoIndicadores = ModifyProyectoIndicadores.ObjetivosGobierno;
             VisibleValorIndicadoresProyecto(false); //No visibles para Contribución al Objetivo de Gobierno
+            RequiredIndicadoresProyecto(false); //No Requeridos para Contribución al Objetivo de Gobierno
             IndicadoresProyectoClear();
             ModalPopupExtenderIndicadoresProyecto.Show();
         }
@@ -1474,7 +1649,8 @@ namespace UI.Web.Pages
         #region EventosGrillas
         protected void GridIndicadoresObjetivosGobierno_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-
+            ModificandoProyectoIndicadores = ModifyProyectoIndicadores.ObjetivosGobierno;
+            IndicadoresProyectoClear();
             int id;
             if (!int.TryParse(e.CommandArgument.ToString(), out id))
                 return;
@@ -1645,6 +1821,18 @@ namespace UI.Web.Pages
         #endregion
 
         #region Methods
+        void RequiredIndicadoresProyecto(bool isRequired)
+        {
+            rfvValorIndicadoresProyecto.Enabled = isRequired;
+            rfvAnoIndicadoresProyecto.Enabled = isRequired;
+        }
+        void VisibleValorIndicadoresProyecto(bool valorVisible)
+        {
+            txtValorIndicadoresProyecto.Visible = valorVisible;
+            ltValorIndicadoresProyecto.Visible = valorVisible;
+            trValorIndicadoresProyectoLiteral.Visible = valorVisible;
+            trValorIndicadoresProyectoTextBox.Visible = valorVisible;
+        }
         void HidePopUpIndicadoresProyecto()
         {
             ModalPopupExtenderIndicadoresProyecto.Hide();
@@ -1656,12 +1844,11 @@ namespace UI.Web.Pages
             {
                 case ModifyProyectoIndicadores.Economico:
                     IndicadoresEconomicoClear();
-                    
-                    
+                    ltObservacionesIndicadoresProyecto.Text = "Criterios de Evaluación";
                     break;
                 case ModifyProyectoIndicadores.ObjetivosGobierno:
                     IndicadoresObjetivosGobiernoClear();
-                    
+                    ltObservacionesIndicadoresProyecto.Text = "Observaciones";
                     break;
                 default:
                     break;
@@ -1672,7 +1859,7 @@ namespace UI.Web.Pages
             UIHelper.Clear(txtValorIndicadoresProyecto);
             UIHelper.Clear(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
-            UIHelper.Clear(toIndicadoClaseSinSector);
+            UIHelper.Clear(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
             upIndicadoresProyectoPopUp.Update();
 
@@ -1734,7 +1921,7 @@ namespace UI.Web.Pages
             int id = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
             if (autoCmpIndicadorClaseIndicadoresProyecto.Visible == false)
-                id = UIHelper.GetInt(toIndicadoClaseSinSector);
+                id = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
             if (id == 0)
             {

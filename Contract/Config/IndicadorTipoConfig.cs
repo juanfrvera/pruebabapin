@@ -20,6 +20,8 @@ namespace Contract
         Priorizacion = 4
             ,
         ObjetivosGobierno = 5
+            ,
+        EvaluacionSectorial = 6        
     }
 
     public class IndicadorTipoConfig
@@ -29,7 +31,7 @@ namespace Contract
         public const string ECONOMICO = "Económico";
         public const string PRIORIZACION = "Priorización";
         public const string OBJETIVOSGOBIERNO = "ObjetivosGobierno";
-
+        public const string EVALUACIONSECTORIAL = "EvaluacionSectorial";
 
         public static string GetConst(IndicadorTipoEnum tipo)
         {
@@ -40,6 +42,7 @@ namespace Contract
                 case IndicadorTipoEnum.Economico: return ECONOMICO;
                 case IndicadorTipoEnum.Priorizacion: return PRIORIZACION;
                 case IndicadorTipoEnum.ObjetivosGobierno: return OBJETIVOSGOBIERNO;
+                case IndicadorTipoEnum.EvaluacionSectorial: return EVALUACIONSECTORIAL;
             }
             return "";
         }
@@ -52,6 +55,7 @@ namespace Contract
                 case ECONOMICO: return IndicadorTipoEnum.Economico;
                 case PRIORIZACION: return IndicadorTipoEnum.Priorizacion;
                 case OBJETIVOSGOBIERNO: return IndicadorTipoEnum.ObjetivosGobierno;
+                case EVALUACIONSECTORIAL: return IndicadorTipoEnum.EvaluacionSectorial;
             }
             return IndicadorTipoEnum.Undefined;
         }

@@ -36,4 +36,10 @@ namespace Contract
         public ProyectoBeneficioIndicadorResult Indicador { get; set; }
     }
 
+    [Serializable]
+    public class ProyectoEvaluacionSectorialIndicadorCompose : IndicadoresEvolucionCompose
+    {
+        public ProyectoEvaluacionSectorialIndicadorResult Indicador { get; set; }
+    }
+
 }

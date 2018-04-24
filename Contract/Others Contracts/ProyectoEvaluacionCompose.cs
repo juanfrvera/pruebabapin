@@ -64,6 +64,18 @@ namespace Contract
             set { indicadoresBeneficio = value; }
         }
 
+        private List<ProyectoEvaluacionSectorialIndicadorCompose> indicadoresEvaluacionSectorial;
+        public List<ProyectoEvaluacionSectorialIndicadorCompose> IndicadoresEvaluacionSectorial
+        {
+            get
+            {
+                if (indicadoresEvaluacionSectorial == null)
+                    indicadoresEvaluacionSectorial = new List<ProyectoEvaluacionSectorialIndicadorCompose>();
+                return indicadoresEvaluacionSectorial;
+            }
+            set { indicadoresEvaluacionSectorial = value; }
+        }
+
         private List<ProyectoBeneficiarioIndicadorCompose> indicadoresBeneficiario;
         public List<ProyectoBeneficiarioIndicadorCompose> IndicadoresBeneficiario
 

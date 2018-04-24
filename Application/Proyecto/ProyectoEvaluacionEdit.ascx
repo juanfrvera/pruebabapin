@@ -100,30 +100,34 @@
             <td align="right">
                 <asp:UpdatePanel ID="upAgregarIndicadorSectorial" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <asp:Button ID="btAgregarIndicadorSectorial" runat="server" Text="Agregar" OnClick="btAgregarIndicadorSectorial_Click" />
+                        <asp:Button ID="btAgregarIndicadorSectorial" runat="server" Text="Agregar" OnClick="btAgregarIndicadorEvaluacionSectorial_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:UpdatePanel ID="upGridIndicadoresSectorial" runat="server" UpdateMode="Conditional">
+                <asp:UpdatePanel ID="upGridIndicadoresEvaluacionSectorial" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <asp:GridView ID="gridIndicadoresSectorial" runat="server" AutoGenerateColumns="False"
-                            DataKeyNames="ID" AllowPaging="false" OnRowCommand="GridIndicadoresSectorial_RowCommand"
-                            AllowSorting="False" OnSorting="GridIndicadoresSectorial_Sorting" OnPageIndexChanging="GridIndicadoresSectorial_PageIndexChanging"
+                        <asp:GridView ID="gridIndicadoresEvaluacionSectorial" runat="server" AutoGenerateColumns="False"
+                            DataKeyNames="ID" AllowPaging="False" OnRowCommand="GridIndicadoresEvaluacionSectorial_RowCommand"
+                            AllowSorting="False" OnSorting="GridIndicadoresEvaluacionSectorial_Sorting" OnPageIndexChanging="GridIndicadoresEvaluacionSectorial_PageIndexChanging"
                             EmptyDataText="No hay indicadores definidos" Width="100%">
                             <Columns>
                                 <asp:BoundField HeaderText="Sigla" DataField="IndicadorClase_Sigla" SortExpression="IndicadorClase_Sigla" />
                                 <asp:BoundField HeaderText="Descripción" DataField="IndicadorClase_Nombre" SortExpression="IndicadorClase_Nombre" />
                                 <asp:BoundField HeaderText="Unidad" DataField="IndicadorClase_Unidad" SortExpression="IndicadorClase_Unidad" />
-                                <asp:BoundField HeaderText="Valor" DataField="Valor" SortExpression="Valor" ItemStyle-HorizontalAlign="Right"
-                                    DataFormatString="{0:#,0.00}"/>
-                                <asp:BoundField HeaderText="Año" DataField="Anio" SortExpression="Anio" />
+                                <asp:CheckBoxField HeaderText="Indirecto" DataField="Indirecto" SortExpression="Indirecto" />
+                                <asp:BoundField HeaderText="Medio de Verificación" DataField="Indicador_MedioVerificacion"
+                                    SortExpression="Indicador_MedioVerificacion" />
                                 <asp:TemplateField>
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
+                                        <!--&nbsp;
+                                        <asp:ImageButton ID="imgEvoloucion" runat="server" src="../Images/evolution.png"
+                                            ToolTip="Evolución" CommandName='<%# Command.SHOW_DETAILS %>' CommandArgument='<%#Eval("ID")%>'
+                                            CausesValidation="false" />-->
                                         &nbsp;
                                         <asp:ImageButton ID="imgEdit" runat="server" src="../Images/edit.png" ToolTip="Editar"
                                             CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
@@ -132,7 +136,7 @@
                                             CommandName='<%# Command.DELETE %>' OnClientClick="return confirm('Está seguro de eliminar?');"
                                             CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />
                                     </ItemTemplate>
-                                    <ItemStyle Width="60px" HorizontalAlign="Right" />
+                                    <ItemStyle Width="150px" HorizontalAlign="Right" />
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
@@ -329,7 +333,135 @@
 
 <%------ *************  POPUPS ************* ------%>
 
-<%--PANEL ALTA INDICADORES PROYECTO OBJETIVOS GOBIERNO" --%>
+<%--PANEL ALTA INDICADORES Evaluacion Sectorial --%>
+<asp:Panel ID="PopUpIndicadoresEvaluacionSectorial" runat="server" Width="800px" Style="background-color: #ffffff;
+    border: solid 2px #ffffff; border-color: Gray;">
+    <asp:Panel ID="IndicadoresEvaluacionSectorialPopUpDragHandle" runat="server" Style="cursor: move;">
+        <table width="100%" cellpadding="0" cellspacing="5">
+            <tr class="menutoppopup">
+                <td>
+                    <th align="center" height="10">
+                        <asp:Label ID="headerPopUpIndicadoresEvaluacionSectorial" runat="server" Text="Evaluacion Sectorial" />
+                    </th>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnIndicadoresEvaluacionSectorial" DefaultButton="btSaveIndicadoresEvaluacionSectorial" runat="server" Width="800px">
+        <asp:UpdatePanel ID="upIndicadoresEvaluacionSectorialPopUp" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:Label ID="lblTituloIndicadoresEvaluacionSectorial" runat="server" Text=""></asp:Label>
+                <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                    <tr>
+                        <td colspan="2">
+                            <uc:AutocompleteIndicadorClase runat="server" ID="autoCmpIndicadorClaseEvaluacionSectorial"
+                                Width="300px" AutocompleteHandler="../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx"
+                                RequiredValue="true" ShowOption="ActivesAndActualValue" ValidationGroup="vgIndicadorEvaluacionSectorial">
+                            </uc:AutocompleteIndicadorClase>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="220px">
+                            <asp:Literal ID="Literal1" Text="Sector" runat="server"></asp:Literal>
+                        </td>
+                        <td>
+                            <asp:Literal ID="Literal7" Text="Indicador" runat="server"></asp:Literal>
+                        </td>
+                    </tr>
+                    <%--German 01032014 - tarea 110 style="padding-top:0px" width="600px" --%>
+                    <tr>
+                        <td colspan="2">
+                            <uc:TreeIndicadorClase runat="server" ID="toIndicadorClaseEvaluacionSectorial" Handler="../Handlers/IndicadorClaseHandler.ashx" 
+                            SelectOption="Any" ShowOption="All" RequiredValue="true" ValidationGroup="vgIndicadorEvaluacionSectorial" Width="600px"
+                                AutoPostBack="true"
+                                OnValueChanged="toIndicadorClaseEvaluacionSectorial_OnValueChanged"> </uc:TreeIndicadorClase>
+                        </td>
+                    </tr>
+
+                       <%--German 01032014 - tarea 110--%>
+                    <tr>
+                        <td colspan="2">
+                            <asp:CheckBox ID="chkIndirectoEvaluacionSectorial" Text="Indirecto" runat="server"></asp:CheckBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Literal ID="ltMedioVerificacionEvaluacionSectorial" Text="Medio de Verificación" runat="server"></asp:Literal>
+                        </td>
+                        <td>
+                            <asp:Literal ID="ltMontoEvaluacionSectorial" Text="Monto" runat="server"></asp:Literal>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle">
+                            <asp:DropDownList ID="ddlMedioVerificacionEvaluacionSectorial" runat="server" OnSelectedIndexChanged="ddlMedioVerificacionEvaluacionSectorial_IndexChanged">
+                            </asp:DropDownList>
+                            <!-- Matias 20170209 - Ticket #REQ819714 -->
+                            <asp:RequiredFieldValidator ID="rfvMedioVerificacionEvaluacionSectorial" runat="server" ControlToValidate="ddlMedioVerificacionEvaluacionSectorial" ValidationGroup="vgIndicadorEvaluacionSectorial" InitialValue="" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvMedioVerificacionEvaluacionSectorial2" runat="server" ControlToValidate="ddlMedioVerificacionEvaluacionSectorial" ValidationGroup="vgIndicadorEvaluacionSectorial" InitialValue="0" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                            <!-- FinMatias 20170209 - Ticket #REQ819714 -->
+                        </td>
+                        <td style="vertical-align:middle">
+                            <asp:TextBox runat="server" ID="txtMontoEvaluacionSectorial"></asp:TextBox>
+                            <asp:Literal ID="Literal9" Text="" Visible="false" runat="server"></asp:Literal>
+                            <asp:RangeValidator
+                                    ControlToValidate="txtMontoEvaluacionSectorial"
+                                    Enabled="False"
+                                    ErrorMessage="El monto no se encuentra dentro del rango permitido."
+                                    ID="RangeValidator1"
+                                    runat="server"
+                                    MaximumValue="0"
+                                    MinimumValue="0"
+                                    Text="*"
+                                    Type="Integer"
+                                    ValidationGroup="vgIndicadorEvaluacionSectorial"
+                                    Width="1px"
+                                    Height="1px"
+                                />
+                            <asp:RequiredFieldValidator ID="rfvMontoEvaluacionSectorial" runat="server" ControlToValidate="txtMontoEvaluacionSectorial"
+                                            ValidationGroup="vgIndicadorEvaluacionSectorial" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Literal ID="ltObservacionesIndicadoresEvaluacionSectorial" Text="Observaciones" runat="server"></asp:Literal>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:TextBox runat="server" ID="txtObservacionesIndicadoresEvaluacionSectorial" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revObservacionesIndicadoresEvaluacionSectorial" runat="server"
+                                ControlToValidate="txtObservacionesIndicadoresEvaluacionSectorial" ValidationGroup="vgIndicadorEvaluacionSectorial"
+                                Text="*" Width="1px" Height="1px"></asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                    <tr>
+                        <td align="center">
+                            <asp:Button ID="btSaveIndicadoresEvaluacionSectorial" Text="Aceptar" OnClick="btSaveIndicadorEvaluacionSectorial_Click"
+                                runat="server" ValidationGroup="vgIndicadorEvaluacionSectorial" />
+                            <asp:Button ID="btNewIndicadoresEvaluacionSectorial" Text="Aceptar y Agregar Nuevo" OnClick="btNewIndicadorEvaluacionSectorial_Click"
+                                runat="server" ValidationGroup="vgIndicadorEvaluacionSectorial" />
+                            <asp:Button ID="btCancelIndicadoresEvaluacionSectorial" Text="Cerrar" OnClick="btCancelIndicadorEvaluacionSectorial_Click"
+                                runat="server" Width="60px" />
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <asp:ValidationSummary ID="vsIndicadorEvaluacionSectorial" runat="server" DisplayMode="BulletList"
+        ValidationGroup="vgIndicadorEvaluacionSectorial" ShowSummary="False" ShowMessageBox="True">
+    </asp:ValidationSummary>
+    <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderIndicadoresEvaluacionSectorial" runat="server"
+        CancelControlID="Button3" PopupDragHandleControlID="IndicadoresEvaluacionSectorialPopUpDragHandle"
+        PopupControlID="PopUpIndicadoresEvaluacionSectorial" OkControlID="Button3" TargetControlID="Button3"
+        BackgroundCssClass="modalBackground" />
+</asp:Panel>
+
+<%--PANEL ALTA INDICADORES PROYECTO ECONOMICO y OBJETIVOS GOBIERNO" --%>
 <asp:Panel ID="PopUpIndicadoresProyecto" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="IndicadoresProyectoPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -337,7 +469,7 @@
             <tr class="menutoppopup">
                 <td>
                     <th align="center" height="10">
-                        <asp:Label ID="headerPopUpIndicadoresProyecto" runat="server" Text="Indicadores." />
+                        <asp:Label ID="headerPopUpIndicadoresProyecto" runat="server" Text="Indicadores" />
                     </th>
                 </td>
             </tr>
@@ -371,8 +503,14 @@
                                         <%--German 20140511 - Tarea 124 - Original: Text="Sectores e Indicadores"--%>
                                         <asp:Literal ID="Literal2" Text="Indicador" runat="server" ></asp:Literal>
                                         <%--Fin German 20140511 - Tarea 124--%>
-                                        <uc:TreeIndicadorClaseSinSector runat="server" ID="toIndicadoClaseSinSector" Handler="../Handlers/IndicadorClaseSinSectorHandler.ashx" 
-                                        SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="vgIndicador" Width="400px"> </uc:TreeIndicadorClaseSinSector>
+                                        <uc:TreeIndicadorClase runat="server" ID="toIndicadoClaseEconomicoObjetivoGobierno" Handler="../Handlers/IndicadorClaseHandler.ashx" 
+                                        SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="vgIndicador" Width="600px"> </uc:TreeIndicadorClase>
+
+                                                                    <%--<uc:TreeIndicadorClase runat="server" ID="TreeIndicadorClase1" Handler="../Handlers/IndicadorClaseHandler.ashx" 
+                            SelectOption="Any" ShowOption="All" RequiredValue="true" ValidationGroup="vgIndicadorBeneficio" Width="600px"
+                                AutoPostBack="true"
+                                OnValueChanged="toIndicadorClase_OnValueChanged"> </uc:TreeIndicadorClase>--%>
+
                                     </td>
                                 </tr>
                                 <%--German 01032014 - tarea 110--%>
@@ -390,6 +528,8 @@
                                         <asp:RegularExpressionValidator ID="revValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
                                             ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RegularExpressionValidator>
                                         <!--FinMatias 20141126 - Tarea 183-->
+                                        <asp:RequiredFieldValidator ID="rfvValorIndicadoresProyecto" runat="server" ControlToValidate="txtValorIndicadoresProyecto"
+                                            ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -401,8 +541,8 @@
                                     <td>
                                         <cc:ExtendedDropDownList ID="ddlAnoIndicadoresProyecto" runat="server">
                                         </cc:ExtendedDropDownList>
-                                        <%--<asp:RequiredFieldValidator ID="rfvAnoIndicadoresProyecto" runat="server" ControlToValidate="ddlAnoIndicadoresProyecto"
-                                            InitialValue="0" ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>--%>
+                                        <asp:RequiredFieldValidator ID="rfvAnoIndicadoresProyecto" runat="server" ControlToValidate="ddlAnoIndicadoresProyecto"
+                                            InitialValue="0" ValidationGroup="vgIndicadorProyecto" Text="*" Width="1px" Height="1px"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                             </table>

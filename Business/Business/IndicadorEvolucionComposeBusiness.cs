@@ -457,7 +457,146 @@ namespace Business
         }
     }
 
+    public class ProyectoEvaluacionSectorialIndicadorComposeBusiness : IndicadoresEvolucionComposeBusiness<ProyectoEvaluacionSectorialIndicadorCompose, Indicador, IndicadorFilter, IndicadorResult, int>
+    {
+        #region Singleton
+        private static volatile ProyectoEvaluacionSectorialIndicadorComposeBusiness current;
+        private static object syncRoot = new Object();
+        public static ProyectoEvaluacionSectorialIndicadorComposeBusiness Current
+        {
+            get
+            {
+                if (current == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (current == null)
+                            current = new ProyectoEvaluacionSectorialIndicadorComposeBusiness();
+                    }
+                }
+                return current;
+            }
+        }
+        #endregion
+
+        protected override EntityBusiness<Indicador, IndicadorFilter, IndicadorResult, int> EntityBusinessBase
+        {
+            get { return IndicadorBusiness.Current; }
+        }
+
+
+        public override ProyectoEvaluacionSectorialIndicadorCompose GetById(int id)
+        {
+
+            ProyectoEvaluacionSectorialIndicadorCompose proyectoEvaluacionSectorialIndicadorCompose = new ProyectoEvaluacionSectorialIndicadorCompose();
+
+            proyectoEvaluacionSectorialIndicadorCompose.Indicador = ProyectoEvaluacionSectorialIndicadorBusiness.Current.GetResult(
+                new ProyectoEvaluacionSectorialIndicadorFilter() { IdProyectoEvaluacionSectorialIndicador = id }).FirstOrDefault();
+
+            proyectoEvaluacionSectorialIndicadorCompose.Evoluciones =
+                ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.GetIndicadoresEvolucionByIdIndicador(proyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicador);
+
+            foreach (IndicadorEvolucionResult ier in proyectoEvaluacionSectorialIndicadorCompose.Evoluciones)
+            {
+                if ((ier.CantidadEstimada != null) && (ier.CantidadEstimada > 0) &&
+                    (ier.PrecioUnitarioEstimado != null) && (ier.PrecioUnitarioEstimado > 0))
+                {
+                    ier.MontoEstimadoCalc = ier.CantidadEstimada * ier.PrecioUnitarioEstimado;
+                }
+
+                if ((ier.CantidadReal != null) && (ier.CantidadReal > 0) &&
+                    (ier.PrecioUnitarioReal != null) && (ier.PrecioUnitarioReal > 0))
+                {
+                    ier.MontoRealizadoCalc = ier.CantidadReal * ier.PrecioUnitarioReal;
+                }
+            }
 
 
 
+
+            return proyectoEvaluacionSectorialIndicadorCompose;
+
+        }
+
+        public ProyectoEvaluacionSectorialIndicadorCompose GetByIdForCopy(int id)
+        {
+            ProyectoEvaluacionSectorialIndicadorCompose proyectoEvaluacionSectorialIndicadorCompose = new ProyectoEvaluacionSectorialIndicadorCompose();
+
+            proyectoEvaluacionSectorialIndicadorCompose.Indicador = ProyectoEvaluacionSectorialIndicadorBusiness.Current.GetResult(
+                new ProyectoEvaluacionSectorialIndicadorFilter() { IdProyectoEvaluacionSectorialIndicador = id }).FirstOrDefault();
+
+            proyectoEvaluacionSectorialIndicadorCompose.Evoluciones =
+                ProyectoEvaluacionSectorialIndicadorComposeBusiness.Current.GetIndicadoresEvolucionByIdIndicador(proyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicador);
+
+            return proyectoEvaluacionSectorialIndicadorCompose;
+
+        }
+
+
+        #region Actions
+        public override void Add(ProyectoEvaluacionSectorialIndicadorCompose entity, IContextUser contextUser)
+        {
+
+            Indicador indicador = IndicadorBusiness.Current.GetNew();
+            indicador.Observacion = entity.Indicador.Indicador_Observacion;
+            //German 20140511 - Tarea 124
+            indicador.IdIndicadorRubro = entity.Indicador.IdIndicadorRubro;
+            //German 20140511 - Tarea 124
+            indicador.IdMedioVerificacion = entity.Indicador.Indicador_IdMedioVerificacion;
+            IndicadorBusiness.Current.Add(indicador, contextUser);
+
+            entity.Indicador.IdIndicador = indicador.IdIndicador;
+            ProyectoEvaluacionSectorialIndicadorBusiness.Current.Add(entity.Indicador.ToEntity(), contextUser);
+            Add(entity.Evoluciones, indicador.IdIndicador, contextUser);
+
+
+        }
+        public override void Update(ProyectoEvaluacionSectorialIndicadorCompose entity, IContextUser contextUser)
+        {
+
+            ProyectoEvaluacionSectorialIndicador proyectoEvaluacionSectorialIndicador =
+            ProyectoEvaluacionSectorialIndicadorBusiness.Current.GetById(entity.Indicador.IdProyectoEvaluacionSectorialIndicador);
+            ProyectoEvaluacionSectorialIndicadorBusiness.Current.Set(entity.Indicador.ToEntity(), proyectoEvaluacionSectorialIndicador);
+            ProyectoEvaluacionSectorialIndicadorBusiness.Current.Update(proyectoEvaluacionSectorialIndicador, contextUser);
+
+            Indicador indicador = IndicadorBusiness.Current.GetById(proyectoEvaluacionSectorialIndicador.IdIndicador);
+            indicador.Observacion = entity.Indicador.Indicador_Observacion;
+            indicador.IdMedioVerificacion = entity.Indicador.Indicador_IdMedioVerificacion;
+            //German 20140511 - Tarea 124
+            indicador.IdIndicadorRubro = entity.Indicador.IdIndicadorRubro;
+            //German 20140511 - Tarea 124
+
+            IndicadorBusiness.Current.Update(indicador, contextUser);
+
+            Update(entity.Evoluciones, indicador.IdIndicador, contextUser);
+
+        }
+        public override void Delete(ProyectoEvaluacionSectorialIndicadorCompose entity, IContextUser contextUser)
+        {
+
+            Delete(entity.Evoluciones, contextUser);
+            ProyectoEvaluacionSectorialIndicadorBusiness.Current.Delete(entity.Indicador.IdProyectoEvaluacionSectorialIndicador, contextUser);
+            IndicadorBusiness.Current.Delete(entity.Indicador.IdIndicador, contextUser);
+
+        }
+
+        #endregion
+
+        public override bool Equals(ProyectoEvaluacionSectorialIndicadorCompose source, ProyectoEvaluacionSectorialIndicadorCompose target)
+        {
+
+            if (!ProyectoEvaluacionSectorialIndicadorBusiness.Current.Equals(source.Indicador, target.Indicador)) return false;
+
+            if (source.Evoluciones.Count() != target.Evoluciones.Count()) return false;
+
+            foreach (IndicadorEvolucionResult ier in source.Evoluciones)
+            {
+                IndicadorEvolucionResult ierTarget = source.Evoluciones.Where(p => p.IdIndicadorEvolucion == ier.IdIndicadorEvolucion).SingleOrDefault();
+                if (ierTarget == null) return false;
+                if (!ier.Equals(ierTarget.ToEntity())) return false;
+            }
+
+            return true;
+        }
+    }
 }

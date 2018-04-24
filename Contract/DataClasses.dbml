@@ -940,6 +940,19 @@
       <Association Name="Proyecto_ProyectoBeneficioIndicador" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ProyectoEvaluacionSectorialIndicador" Member="ProyectoEvaluacionSectorialIndicadors">
+    <Type Name="ProyectoEvaluacionSectorialIndicador">
+      <Column Name="IdProyectoEvaluacionSectorialIndicador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdIndicadorClase" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Indirecto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdIndicador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Indicador_ProyectoEvaluacionSectorialIndicador" Member="Indicador" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="Indicador" IsForeignKey="true" />
+      <Association Name="IndicadorClase_ProyectoEvaluacionSectorialIndicador" Member="IndicadorClase" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="IndicadorClase" IsForeignKey="true" />
+      <Association Name="Proyecto_ProyectoEvaluacionSectorialIndicador" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Indicador" Member="Indicadors">
     <Type Name="Indicador">
       <Column Name="IdIndicador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
@@ -949,6 +962,7 @@
       <Column Name="DetalleMedioVerificacion" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Indicador_ProyectoBeneficiarioIndicador" Member="ProyectoBeneficiarioIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoBeneficiarioIndicador" />
       <Association Name="Indicador_ProyectoBeneficioIndicador" Member="ProyectoBeneficioIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoBeneficioIndicador" />
+      <Association Name="Indicador_ProyectoEvaluacionSectorialIndicador" Member="ProyectoEvaluacionSectorialIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoEvaluacionSectorialIndicador" />
       <Association Name="Indicador_ObjetivoIndicador" Member="ObjetivoIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ObjetivoIndicador" />
       <Association Name="Indicador_IndicadorEvolucion" Member="IndicadorEvolucions" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="IndicadorEvolucion" />
       <Association Name="Indicador_ProyectoEtapaIndicador" Member="ProyectoEtapaIndicadors" ThisKey="IdIndicador" OtherKey="IdIndicador" Type="ProyectoEtapaIndicador" />
@@ -1554,6 +1568,7 @@
       <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="IndicadorClase_IndicadorMedioVerificacion" Member="IndicadorMedioVerificacions" ThisKey="IdIndicadorClase" OtherKey="IdIndicador" Type="IndicadorMedioVerificacion" />
       <Association Name="IndicadorClase_ProyectoBeneficioIndicador" Member="ProyectoBeneficioIndicadors" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoBeneficioIndicador" />
+      <Association Name="IndicadorClase_ProyectoEvaluacionSectorialIndicador" Member="ProyectoEvaluacionSectorialIndicadors" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoEvaluacionSectorialIndicador" />
       <Association Name="IndicadorClase_IndicadorRelacionRubro" Member="IndicadorRelacionRubros" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="IndicadorRelacionRubro" />
       <Association Name="IndicadorClase_ObjetivoIndicador" Member="ObjetivoIndicadors" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ObjetivoIndicador" />
       <Association Name="IndicadorClase_ProyectoIndicadorEconomico" Member="ProyectoIndicadorEconomicos" ThisKey="IdIndicadorClase" OtherKey="IdIndicadorClase" Type="ProyectoIndicadorEconomico" />
@@ -2188,6 +2203,7 @@
       <Association Name="Proyecto_ProyectoGeoreferenciacion" Member="ProyectoGeoreferenciacions" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoGeoreferenciacion" />
       <Association Name="Proyecto_ProyectoBeneficiarioIndicador" Member="ProyectoBeneficiarioIndicadors" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoBeneficiarioIndicador" />
       <Association Name="Proyecto_ProyectoBeneficioIndicador" Member="ProyectoBeneficioIndicadors" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoBeneficioIndicador" />
+      <Association Name="Proyecto_ProyectoEvaluacionSectorialIndicador" Member="ProyectoEvaluacionSectorialIndicadors" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoEvaluacionSectorialIndicador" />
       <Association Name="Proyecto_ProyectoOficinaPerfil" Member="ProyectoOficinaPerfils" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoOficinaPerfil" />
       <Association Name="Proyecto_ProyectoFile" Member="ProyectoFiles" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoFile" />
       <Association Name="Proyecto_ProyectoShapeFile" Member="ProyectoShapeFiles" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoShapeFile" />
