@@ -597,9 +597,36 @@ namespace UI.Web
             ActualizarTotalesEtapas();
             //ActualizarLabelsEtapas();
             UIHelper.Load(gridEtapas, Entity.Etapas, "Etapa_Orden");
+
+            InicioDeCarga();
+
             if (ActualProyectoEtapa != null)
                 MarcarProyectoEtapa(ActualProyectoEtapa.ID);
             upGridEtapas.Update();
+        }
+
+        private void InicioDeCarga()
+        {
+            if (Entity.Etapas.Count == 1 &&
+                Entity.Etapas[0].FechaInicioEstimada == null &&
+                Entity.Etapas[0].FechaFinEstimada == null &&
+                Entity.Etapas[0].FechaInicioRealizada == null &&
+                Entity.Etapas[0].FechaFinRealizada == null)
+            {
+                var btnEdit = gridEtapas.Rows[0].Cells[gridEtapas.Columns.Count - 1].FindControl("imgEdit") as ImageButton;
+                btnEdit.Visible = false;
+                btInicioDeCarga.Visible = true;
+            }
+            else
+            {
+                btInicioDeCarga.Visible = false;
+            }
+        }
+
+        protected void btInicioDeCarga_Click(object sender, EventArgs e)
+        {
+            var btnEdit = gridEtapas.Rows[0].Cells[gridEtapas.Columns.Count - 1].FindControl("imgEdit") as ImageButton;
+            CommandProyectoEtapaEdit();
         }
 
         void MarcarProyectoEtapa(Int32 idProyectoEtapa)
@@ -726,6 +753,7 @@ namespace UI.Web
                 UIHelper.ShowAlert(error, upEtapasPopUp);
                 upEtapasPopUp.Update();
             }
+            InicioDeCarga();
         }
         void CommandProyectoEtapaDelete()
         {
@@ -737,6 +765,7 @@ namespace UI.Web
         #endregion
 
         #region Eventos
+
         protected void btSaveEtapa_Click(object sender, EventArgs e)
         {
             UIHelper.CallTryMethod(CommandProyectoEtapaSave);

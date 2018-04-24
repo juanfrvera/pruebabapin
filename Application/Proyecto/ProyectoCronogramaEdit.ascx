@@ -13,7 +13,7 @@
                 <table width="100%"  cellpadding="0" cellspacing="2px" border="0">	  	
                 <tr>
                     <td>
-                        <table cellpadding="0" style="margin-bottom:12px" >	  	
+                        <table width="100%" cellpadding="0" style="margin-bottom:12px" >	  	
                             <!--<tr>                      
                                 <td style="width:100px">&nbsp;</td>
                                 <td style="width:100px">&nbsp;</td>
@@ -27,7 +27,7 @@
     	                        <td style="width:20px">&nbsp;</td>
                             </tr>-->
                             <tr>                      
-	                            <td><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
+	                            <td width="70px"><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
 	                            <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
 	                            <td></td>
 	                            <!--<td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
@@ -36,14 +36,18 @@
 	                            <td align="center"><asp:Label ID="lblMffr" runat="server" ></asp:Label></td>
 	                            <td align="right"><asp:Label ID="lblMte" runat="server" ></asp:Label>&nbsp;</td>
 	                            <td align="right"><asp:Label ID="lblMtr" runat="server" ></asp:Label>&nbsp;</td>-->
-	                            <td style="width:20px">&nbsp;</td>
-                            </tr>
+
                             <!--<tr>
                                 <td colspan ="10" align ="right" >
                                     <asp:Button ID ="btVerTotales" runat ="server" Text ="Total por Año" CausesValidation="false" 
                                         OnClick="btVerTotales_Click" />
                                 </td>
                             </tr>-->
+                                <td align="right">
+                                    <asp:Button ID ="btInicioDeCarga" Visible="false" runat ="server" Text ="Inicio de Carga" CausesValidation="false" 
+                                        OnClick="btInicioDeCarga_Click" />
+                                </td>
+                            </tr>
                         </table>        
                     </td>
                 </tr>        
@@ -268,7 +272,7 @@
                                 AutoGenerateColumns="True" DataKeyNames="ID" AllowPaging="False"  
                                 OnRowCommand="GridEtapasRealizadas_RowCommand" 
                                 AllowSorting="false"
-                                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el estado fianciero del proyecto debe ser 'En Ejecución' (solapa 'General')">
+                                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el estado financiero del proyecto debe ser 'En Ejecución'">
                                 <Columns> 
                                     <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
                                     <asp:TemplateField Visible="false"  ItemStyle-HorizontalAlign="Center" >

@@ -465,7 +465,7 @@ namespace Business
 
         public override void Validate(ProyectoCronogramaCompose entity, string actionName, IContextUser contextUser,Hashtable args)
         {
-            DataHelper.Validate(entity.ProyectoAnioCorriente != null, "Debe Seleccionar Año Corriente");
+            //DataHelper.Validate(entity.ProyectoAnioCorriente != null, "Debe Seleccionar Año Corriente");
             DataHelper.Validate(entity.ProyectoAnioCorrienteEstimado != null, "Debe Seleccionar Año Corriente Estimado");
             DataHelper.Validate(entity.ProyectoAnioCorrienteRealizado != null, "Debe Seleccionar Año Corriente Realizado");
             foreach (ProyectoEtapaResult per in entity.Etapas)
