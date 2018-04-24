@@ -36,7 +36,7 @@
 </tr>
 <tr>
 <td class="tdFilter" >
-	    <div ><asp:Literal ID="liProyectoDenominacion" Text="Denominación" runat="server" ></asp:Literal>&nbsp;<asp:RegularExpressionValidator ID="revProyectoDenominacion" runat="server"  ControlToValidate="txtProyectoDenominacion" ValidationGroup="FilterProyecto" Text="*" Width="1px" Height="1px"  ErrorMessage="El ProyectoDenominacion no es valido"></asp:RegularExpressionValidator></div>
+	    <div ><asp:Literal ID="liProyectoDenominacion" Text="Denominación BAPIN" runat="server" ></asp:Literal>&nbsp;<asp:RegularExpressionValidator ID="revProyectoDenominacion" runat="server"  ControlToValidate="txtProyectoDenominacion" ValidationGroup="FilterProyecto" Text="*" Width="1px" Height="1px"  ErrorMessage="El ProyectoDenominacion no es valido"></asp:RegularExpressionValidator></div>
 		    <div><asp:TextBox ID="txtProyectoDenominacion" runat="server" CssClass="field_input" Width="225px"  ></asp:TextBox></div>
 	    </td>  	    
 	   <td>
@@ -47,14 +47,14 @@
             </div>
        </td>
 	   <td>
-              <div><asp:Literal ID="liActivo" Text="Activo" runat="server" ></asp:Literal>
+              <div><asp:Literal ID="liActivo" Text="Registro de Proyectos" runat="server" ></asp:Literal>
             </div>  
             <div>
                 <uc:ThreeState ID="chkActivo" runat="server" CssClass="field_input" ></uc:ThreeState>
             </div>
 	    </td>
 	    <td class="tdFilter" style=" width:230px" rowspan ="2">
-	       <div ><asp:Literal ID="liEstado" Text="Estado" runat="server" ></asp:Literal>&nbsp;</div>
+	       <div ><asp:Literal ID="liEstado" Text="Etapa" runat="server" ></asp:Literal>&nbsp;</div>
 		    <div><asp:ListBox ID="lbxEstado" runat="server" CssClass="field_input" SelectionMode="Multiple" Rows="4"  Height="70px" Width="230px" ></asp:ListBox></div>
 	    </td>
 	    
@@ -82,7 +82,7 @@
 </tr>   
 <tr> 
 	    <td class="tdFilter" colspan="3"  > 
-	        <asp:Panel runat="server" GroupingText="Plan"  ID="pnlFilter" Width="715px"  >
+	        <asp:Panel runat="server" GroupingText="Marca"  ID="pnlFilter" Width="715px"  >
 	            <table width="100%"  cellpadding="0" cellspacing="0" border="0" style="  margin-bottom:0px; ">
 	                <tr>
 	                    <td >
@@ -175,13 +175,13 @@
 	                        <asp:Panel runat="server" GroupingText="Procesos"  ID="PnlProcesos" width="300px"     >
 	                            <table  cellpadding="0" cellspacing="0" border="0" style="margin-left:33px" height="76px"  >
 	                                <tr>
-		                                <td  valign="top"  ><div ><asp:Literal ID="liTipoProyecto" Text="Tipo de Proyecto"  runat="server" ></asp:Literal>&nbsp;</div>
+		                                <td  valign="top"  ><div ><asp:Literal ID="liTipoProyecto" Text="Imputación Presupuestaria"  runat="server" ></asp:Literal>&nbsp;</div>
 		                                    <asp:DropDownList ID="ddlTipoProyecto" AutoPostBack="true" runat="server" 
                                                 OnSelectedIndexChanged="ddlTipoProyecto_IndexChanged"  ></asp:DropDownList>
 		                                </td>
 		                            </tr>
 	                                <tr>
-	                                    <td  valign="top" ><div ><asp:Literal ID="liProceso" Text="Proceso"  runat="server" ></asp:Literal>&nbsp;</div>
+	                                    <td  valign="top" ><div ><asp:Literal ID="liProceso" Text="Contribución"  runat="server" ></asp:Literal>&nbsp;</div>
 		                                <asp:DropDownList ID="ddlProceso" runat="server" Enabled ="false"  ></asp:DropDownList>
 		                                </td>
 		                            </tr>
@@ -193,12 +193,12 @@
 		                <td rowspan="5" class="tdFilter" >
 	                        <asp:Panel runat="server" GroupingText="Intervención DNIP"  ID="Panel4" width="240px"  >
 	                            <table width="100%"  cellpadding="0" cellspacing="0" border="0"  >
-	                                <tr>
+	                                <!--<tr>
 	                                    <td class="tdFilter" >
 	                                    <div><asp:Literal ID="liPriorización" Text="Priorización" runat="server" ></asp:Literal></div>
 		                                <div><asp:DropDownList ID="ddlPriorizacion" runat="server" ></asp:DropDownList></div>
 		                                </td>
-		                            </tr>
+		                            </tr>-->
 		                            <%--<tr>
 	                                    <td class="tdFilter" ><asp:Literal ID="liCalificacionDictamen" Text="Calific. Dictamen" runat="server" ></asp:Literal>&nbsp;<asp:RequiredFieldValidator ID="rfvCalifcDictamen" runat="server" ControlToValidate="ddlCalificDictamen"  ValidationGroup="FilterProyecto" Text="*" Width="1px" Height="1px"  ></asp:RequiredFieldValidator>
 		                                <asp:DropDownList ID="ddlCalificDictamen" runat="server"   ></asp:DropDownList>
@@ -289,7 +289,7 @@
 	            </tr>
 	            <tr>
                     <td class="tdFilter" colspan="3">
-                        <asp:Panel runat="server" GroupingText="Finalidad - Función"  ID="Panel2" width="715px"  >
+                        <asp:Panel runat="server" GroupingText="Finalidad - Función - SubFunción"  ID="Panel2" width="715px"  >
                             <table width="100%"  cellpadding="0" cellspacing="0" border="0" >
                                 <tr>
                                    <td class="tdFilter" > <div><uc:TreeFinalidadFuncion runat="server" ID="toFinalidadFuncion" SelectOption="Any" ShowOption="All" ></uc:TreeFinalidadFuncion> </div>
@@ -305,7 +305,7 @@
 	            </tr>
 	            <tr>
                     <td colspan="3" class="tdFilter" style="margin-top:0px" >
-                        <asp:Panel runat="server" GroupingText="Descripción del Proyecto"  ID="PnlDescripcionProyecto" Width="715px"  >
+                        <asp:Panel runat="server" GroupingText="Descripción del Proyecto" Visible="false" ID="PnlDescripcionProyecto" Width="715px"  >
                                 <table width="100%"  cellpadding="0" cellspacing="0" border="0"  style="margin-bottom:0px"  >
                                     <tr>
                                         <td class="tdFilter"  >

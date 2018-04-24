@@ -43,6 +43,8 @@ namespace UI.Web
             this.toFinalidadFuncion.Width = 500;
             this.toLocalizacionGeografica.Width = 500;
             chkActivo.CheckedValue = true;
+            chkActivo.TagCheckedTrue = "Activo";
+            chkActivo.TagCheckedFalse = "No Activo";
 
             rdFechaInicio.ErrorMessageValidator = TranslateFormat("InvalidField", "Rango de Fechas de Inicio");
             rdFechaInicio.RangeErrorMessageFrom = TranslateFormat("InvalidField", "Fecha de Inicio de");
