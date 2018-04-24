@@ -21,9 +21,17 @@
         </tr>
         <tr>
             <td>
-                 <!-- Reportes
-                    <asp:DropDownList ID="ddlReport" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="150px"></asp:DropDownList>
-                    <asp:Button ID="btOpenReport" runat="server" Text="Ver" OnClick="btOpenReport_OnClick" />&nbsp;&nbsp;
+                <!-- Reportes
+                <table  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="right">
+                            <asp:DropDownList ID="ddlReport" runat="server" style="margin:0;padding:0;" CssClass="field_input" SkinID="AnchoLibre" Width="150px"></asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:Button ID="btOpenReport" runat="server" style="height:20px;" Text="Ver" OnClick="btOpenReport_OnClick" />
+                        </td>
+                    </tr>
+                </table>
                  -->
             </td>
         </tr>
@@ -51,24 +59,31 @@
             <td>
                 <asp:UpdatePanel ID="upListButtons" runat="server">
                     <ContentTemplate>
-                        <table>
+                        <table border="0">
                             <tr>
-                                <td align="left" style="width: 658px">
-
-                                    <asp:Button ID="btExportExcel" runat="server" Text="Excel" OnClick="btExportExcel_OnClick" />
+                                <td align="left" style="width: 200px; vertical-align:middle;">
+                                    <asp:Button ID="btExportExcel" runat="server" Text="Exportar" OnClick="btExportExcel_OnClick" />
                                     <!-- German 20130425 - Graficos -->
-                                    <asp:Button ID="btVisualizarGraficos" runat="server" Text="Graficos" OnClick="btVisualizarGraficos_OnClick" OnClientClick="this.form.target ='_blank';" />&nbsp;&nbsp;
-                                 <!-- Fin German 20130425 - Graficos -->
-
-								 <asp:DropDownList ID="ddlStoreReport" runat="server" CssClass="field_input" SkinID="AnchoLibre" Width="150px"></asp:DropDownList>
-                                    <asp:Button ID="btStoreReport" runat="server" Text="Ver" OnClick="btStoreReport_OnClick" />
+                                    <asp:Button ID="btVisualizarGraficos" runat="server" Text="Gráficos" OnClick="btVisualizarGraficos_OnClick" OnClientClick="this.form.target ='_blank';" />&nbsp;&nbsp;
+                                    <!-- Fin German 20130425 - Graficos -->
                                 </td>
-                                <td align="right" style="width: 350px">
+                                <td style="width: 500px" >
+                                    <table  border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="right"><asp:DropDownList ID="ddlStoreReport" style="margin:0;padding:0;" runat="server" CssClass="field_input" SkinID="AnchoLibre"></asp:DropDownList>
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btStoreReport" style="height:20px;" runat="server" Text="Ver" OnClick="btStoreReport_OnClick" />
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td align="right" style="width: 500px">
                                     <uc:PaggingButtons runat="server" ID="pgButtons" SearchVisible="true" ValidationGroup="FilterProyecto"></uc:PaggingButtons>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left" style="width: 658px">
+                                <td align="left" colspan="3">
                                     <asp:Button ID="bExportTemplate" runat="server" Text="Exportar Proyectos (template)" Visible="false" OnClick="bExportTemplate_OnClick" />
                                     <asp:Button ID="bImportTemplate" runat="server" Text="Importar Proyectos (desde template)" Visible="false" OnClick="bImportTemplate_OnClick" />
                                 </td>
