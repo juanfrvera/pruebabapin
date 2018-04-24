@@ -1,4 +1,4 @@
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS(SELECT 1 FROM sys.columns 
@@ -24,7 +24,7 @@ GO
 UPDATE [dbo].[Proyecto]  SET [EsPPP] = 0 where EsPPP is null
 GO
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS(SELECT 1 FROM [dbo].[ModalidadContratacion] 
@@ -39,7 +39,7 @@ Update Proyecto set IdModalidadContratacion =
 Where IdModalidadContratacion is null
 GO
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS (SELECT * FROM [dbo].[ProyectoTipo] WHERE Nombre='Indefinido'  )
@@ -59,7 +59,7 @@ END;
 
 GO
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[fn_GetProyectoTipoIndefinido]') AND type in (N'FN'))
@@ -182,7 +182,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description', @value = N'deprecated'
 GO
 
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 --Idea/Perfil
@@ -257,7 +257,7 @@ INSERT INTO [dbo].[SistemaEntidadEstado]
 VALUES ('437', '16', 'Iniciado');
 GO
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS(SELECT 1 FROM sys.columns 
@@ -295,7 +295,7 @@ ALTER TABLE [dbo].[Proyecto]
 ADD [NroObraEjecucion] int NULL 
 GO
 
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF NOT EXISTS(SELECT 1 FROM [dbo].[Text] 

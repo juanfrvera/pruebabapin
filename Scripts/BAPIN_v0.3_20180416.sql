@@ -39,6 +39,18 @@ GO
 USE [BD_BAPIN]
 GO
 
+IF EXISTS
+(SELECT OBJECT_NAME(OBJECT_ID) AS NameofConstraint,
+SCHEMA_NAME(schema_id) AS SchemaName,
+OBJECT_NAME(parent_object_id) AS TableName,
+type_desc AS ConstraintType
+FROM sys.objects
+WHERE type_desc LIKE '%CONSTRAINT' 
+and OBJECT_NAME(OBJECT_ID) = 'FK_ProyectoEtapaInformacionPresupuestaria_Periodo')
+ALTER TABLE [dbo].[ProyectoEtapaInformacionPresupuestariaPeriodo] 
+DROP CONSTRAINT [FK_ProyectoEtapaInformacionPresupuestaria_Periodo]
+GO
+
 -- ----------------------------
 -- Table structure for ProyectoEtapaInformacionPresupuestaria
 -- ----------------------------
@@ -113,6 +125,10 @@ GO
 -- ----------------------------
 -- Foreign Key structure for table [dbo].[ProyectoEtapaInformacionPresupuestariaPeriodo]
 -- ----------------------------
-ALTER TABLE [dbo].[ProyectoEtapaInformacionPresupuestariaPeriodo] ADD FOREIGN KEY ([IdProyectoEtapaInformacionPresupuestaria]) REFERENCES [dbo].[ProyectoEtapaInformacionPresupuestaria] ([IdProyectoEtapaInformacionPresupuestaria]) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE [dbo].[ProyectoEtapaInformacionPresupuestariaPeriodo] 
+ADD CONSTRAINT [FK_ProyectoEtapaInformacionPresupuestaria_Periodo] 
+FOREIGN KEY ([IdProyectoEtapaInformacionPresupuestaria]) 
+REFERENCES [dbo].[ProyectoEtapaInformacionPresupuestaria] ([IdProyectoEtapaInformacionPresupuestaria])
 GO
+
 
