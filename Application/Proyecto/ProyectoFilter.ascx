@@ -104,9 +104,10 @@
 		                         <asp:RequiredFieldValidator ID="rfvPlanVersion" runat ="server" Text="*" ValidationGroup ="vgHistoricoPlan" ControlToValidate ="ddlPlanVersion" InitialValue ="0"></asp:RequiredFieldValidator>
 		                    
 	                    </td>  
+                        <!--
 	                    <td align="right" valign="bottom"  >
 	                        <asp:Button  ID ="btHistoricoPorPlan"  runat = "server" Text="Hist. Plan" OnClick ="btHistoricoPorPlan_Click" CausesValidation="true" ValidationGroup ="vgHistoricoPlan"  />
-	                    </td>
+	                    </td>-->
 	                </tr> 
 	            </table>
 	        </asp:Panel>
