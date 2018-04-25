@@ -67,7 +67,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Denominación de la Obra"  SortExpression="DescripcionCorta" ItemStyle-Width="250px" >            
                             <ItemTemplate>
-                                <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>' ToolTip='<%# Eval("Descripcion") %>'  ></asp:Label>
+                                <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>'  ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>
