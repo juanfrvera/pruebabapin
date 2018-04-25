@@ -162,6 +162,7 @@ namespace Business
                 proyecto.AnioCorriente = entity.ProyectoAnioCorriente;
                 proyecto.AnioCorrienteEstimado = entity.ProyectoAnioCorrienteEstimado;
                 proyecto.AnioCorrienteRealizado = entity.ProyectoAnioCorrienteRealizado;
+                proyecto.IdTipoProyecto = entity.Proyecto.IdTipoProyecto;
                 ProyectoBusiness.Current.Update(proyecto, contextUser);
 
                 // Por interfase no elimina ni agrega, solo actualiza
