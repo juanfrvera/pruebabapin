@@ -34,7 +34,7 @@ namespace UI.Web.Security
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (!this.IsPostBack && UIContext.Current.ContextUser != null)
             {
                 redirectPageInitial = "../General/MessageSendPageList.aspx";
                 var result = MessageSendService.Current.GetResult(new nc.MessageSendFilter() { IsRead = false, IdUserTo = UIContext.Current.ContextUser.User.ID }).ToList();

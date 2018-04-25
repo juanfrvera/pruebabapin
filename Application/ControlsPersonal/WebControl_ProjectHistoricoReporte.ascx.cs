@@ -97,7 +97,8 @@ namespace UI.Web
                     UIHelper.SetValue(lblProyectoDenominacion, Result.ProyectoDenominacion);
                     List<SistemaReporteHistoricoResult> reporteshistoricos = SistemaReporteHistoricoService.Current.GetResult(new Contract.SistemaReporteHistoricoFilter() { IdSistemaReporte = sistemaReporte.IdSistemaReporte, EntityId = Result.IdProyecto.ToString(), });
                     UIHelper.Load(GridReports, reporteshistoricos);
-
+                    liVisualizarHistoricos.Visible = false;
+                    if (reporteshistoricos.Count>0) liVisualizarHistoricos.Visible = true;
                     List<EstadoDeDesicionHistoricoResult> result = EstadoDeDesicionHistoricoService.Current.GetResult(new Contract.EstadoDeDesicionHistoricoFilter() { IdProyecto = Result.ID });
                     UIHelper.Load(GridEstadoDesicionHistorico, result);
   

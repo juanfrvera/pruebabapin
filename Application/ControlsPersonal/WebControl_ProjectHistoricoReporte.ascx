@@ -61,6 +61,7 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <asp:Literal ID="liVisualizarHistoricos" runat="server" Text="Visualizar Históricos:"></asp:Literal>
                                             <asp:GridView ID="GridReports" runat="server" Width="100%" AutoGenerateColumns="False" DataKeyNames="ID" OnRowCommand="Grid_RowCommand">
                                                 <Columns>
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy hh:mm}" HeaderStyle-Width="20%" />
