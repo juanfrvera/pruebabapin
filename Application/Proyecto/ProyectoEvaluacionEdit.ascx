@@ -7,7 +7,7 @@
 <%@ Register TagPrefix="uc" TagName="AutocompleteIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseAutocompleteSinSector.ascx" %>
 <%--German 01032014 - tarea 110--%>
 <%@ Register TagPrefix="uc" TagName="TreeIndicadorClase" Src="~/ControlsPersonal/WebControl_IndicadorClaseTree.ascx" %>
-<%@ Register TagPrefix="uc" TagName="TreeIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseTreeSinSector.ascx" %>
+<%-- Register TagPrefix="uc" TagName="TreeIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseTreeSinSector.ascx" --%>
 <%--German 01032014 - tarea 110--%>
 
 <style type="text/css">
@@ -341,7 +341,7 @@
             <tr class="menutoppopup">
                 <td>
                     <th align="center" height="10">
-                        <asp:Label ID="headerPopUpIndicadoresEvaluacionSectorial" runat="server" Text="Evaluacion Sectorial" />
+                        <asp:Label ID="headerPopUpIndicadoresEvaluacionSectorial" runat="server" Text="Indicador de Evaluación Sectorial" />
                     </th>
                 </td>
             </tr>
@@ -379,11 +379,11 @@
                     </tr>
 
                        <%--German 01032014 - tarea 110--%>
-                    <tr>
+                    <!--<tr>
                         <td colspan="2">
                             <asp:CheckBox ID="chkIndirectoEvaluacionSectorial" Text="Indirecto" runat="server"></asp:CheckBox>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td>
                             <asp:Literal ID="ltMedioVerificacionEvaluacionSectorial" Text="Medio de Verificación" runat="server"></asp:Literal>
@@ -464,6 +464,8 @@
 <%--PANEL ALTA INDICADORES PROYECTO ECONOMICO y OBJETIVOS GOBIERNO" --%>
 <asp:Panel ID="PopUpIndicadoresProyecto" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
+    <asp:UpdatePanel ID="upIndicadoresProyectoPopUp" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
     <asp:Panel ID="IndicadoresProyectoPopUpDragHandle" runat="server" Style="cursor: move;">
         <table width="100%" cellpadding="0" cellspacing="5">
             <tr class="menutoppopup">
@@ -476,8 +478,7 @@
         </table>
     </asp:Panel>
     <asp:Panel ID="pnIndicadoresProyecto"  DefaultButton="btSaveIndicadoresProyecto" runat="server" Width="800px">
-        <asp:UpdatePanel ID="upIndicadoresProyectoPopUp" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
+
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
@@ -574,9 +575,9 @@
                         </td>
                     </tr>
                 </table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
     </asp:Panel>
+                            </ContentTemplate>
+        </asp:UpdatePanel>
     <asp:ValidationSummary ID="vsIndicadorProyecto" runat="server" DisplayMode="BulletList"
         ValidationGroup="vgIndicadorProyecto" ShowSummary="False" ShowMessageBox="True">
     </asp:ValidationSummary>
@@ -587,7 +588,7 @@
         BackgroundCssClass="modalBackground" />
 </asp:Panel>
 
-<%--PANEL ALTA INDICADORES BENEFICIO --%>
+<%--PANEL ALTA INDICADORES Otros Indicadores (ex BENEFICIO) --%>
 <asp:Panel ID="PopUpIndicadoresBeneficio" runat="server" Width="800px" Style="background-color: #ffffff;
     border: solid 2px #ffffff; border-color: Gray;">
     <asp:Panel ID="IndicadoresBeneficioPopUpDragHandle" runat="server" Style="cursor: move;">
@@ -595,7 +596,7 @@
             <tr class="menutoppopup">
                 <td>
                     <th align="center" height="10">
-                        <asp:Label ID="headerPopUpIndicadoresBeneficio" runat="server" Text="Beneficios" />
+                        <asp:Label ID="headerPopUpIndicadoresBeneficio" runat="server" Text="Otros Indicadores" />
                     </th>
                 </td>
             </tr>
@@ -633,11 +634,11 @@
                     </tr>
 
                        <%--German 01032014 - tarea 110--%>
-                    <tr>
+                    <!--<tr>
                         <td colspan="2">
                             <asp:CheckBox ID="chkIndirectoBeneficio" Text="Indirecto" runat="server"></asp:CheckBox>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td>
                             <asp:Literal ID="ltMedioVerificacionBeneficio" Text="Medio de Verificación" runat="server"></asp:Literal>

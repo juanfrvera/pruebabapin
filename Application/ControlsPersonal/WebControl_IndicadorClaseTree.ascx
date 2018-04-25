@@ -67,6 +67,7 @@ function <%=ClientID%>Select(){<%=ClientID%>SetTreeData();TreeData.Select();}
 function <%=ClientID%>Close(){<%=ClientID%>SetTreeData();TreeData.Close();} 
 function <%=ClientID%>ChangeValue(){if(<%=Autopostback.ToString().ToLower()%>){__doPostBack('<%=hdSelect.ClientID%>','');}} 
 var <%=ClientID%>Autocomplete =null;
+
 function <%=ClientID%>SetAutocomplete()
 {
         debugger;
@@ -74,7 +75,7 @@ function <%=ClientID%>SetAutocomplete()
     <%=ClientID%>Autocomplete.oAC.minQueryLength = 1;
 }
 
-function SelectSector()
+function <%=ClientID%>SelectSector()
 {
     debugger ;
 

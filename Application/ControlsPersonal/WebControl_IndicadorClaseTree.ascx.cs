@@ -57,7 +57,7 @@ namespace UI.Web.ControlsPersonal
             TreeHandler = "../Handlers/IndicadorClaseHandler.ashx";
             AutocompleteHandler = "../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx";
             base._SetControls();
-            ddlSectorInd.Attributes["onchange"] = "SelectSector();";
+            ddlSectorInd.Attributes["onchange"] = ClientID + "SelectSector();";
             
         }
         //German 20140511 - Tarea 124
@@ -103,6 +103,15 @@ namespace UI.Web.ControlsPersonal
             UIHelper.Load<IndicadorRubro>(ddlSectorInd, IndicadorRubroService.Current.GetList(new nc.IndicadorRubroFilter { Activo = true }),
                           "Nombre", "IdIndicadorRubro", new IndicadorRubro() { IdIndicadorRubro = -1, Nombre = "Todos lo sectores" });
             */
+/*            UIHelper.Load<IndicadorRubro>(ddlSectorInd, IndicadorRubroService.Current.GetList(new nc.IndicadorRubroFilter { Activo = true }),
+                          "Nombre", "IdIndicadorRubro");*/
+            //Fin German 10140419 - Tarea 124
+        }
+
+        protected override void _Load()
+        {
+            base._Load();
+
             UIHelper.Load<IndicadorRubro>(ddlSectorInd, IndicadorRubroService.Current.GetList(new nc.IndicadorRubroFilter { Activo = true }),
                           "Nombre", "IdIndicadorRubro");
             //Fin German 10140419 - Tarea 124

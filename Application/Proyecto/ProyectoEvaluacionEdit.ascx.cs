@@ -461,7 +461,6 @@ namespace UI.Web.Pages
         void IndicadoresBeneficioClear()
         {
             ActualProyectoBeneficioIndicadorCompose = GetNewProyectoBeneficioIndicadorCompose();
-
             
             UIHelper.Clear(txtObservacionesIndicadoresBeneficio);
             UIHelper.Clear(autoCmpIndicadorClaseBeneficio);
@@ -471,7 +470,12 @@ namespace UI.Web.Pages
             UIHelper.Clear(chkIndirectoBeneficio);
             UIHelper.Clear(ddlMedioVerificacionBeneficio);
             UIHelper.Clear(txtMontoBeneficio);
-            autoCmpIndicadorClaseBeneficio.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Beneficio, Activo = true };
+
+            int? idIndicadorRubro = null;
+            if (toIndicadoClase.Sectores.SelectedIndex >= 0)
+                idIndicadorRubro = Convert.ToInt32(toIndicadoClase.Sectores.SelectedValue);
+
+            autoCmpIndicadorClaseBeneficio.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Beneficio, Activo = true };
             //German 01032014 - tarea 110
             toIndicadoClase.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Beneficio, Activo = true };
             //solo por ahora - Ver pq no funciona
@@ -1009,16 +1013,25 @@ namespace UI.Web.Pages
         void IndicadoresEconomicoClear()
         {
             ActualProyectoIndicadorEconomico = GetNewProyectoIndicadorEconomico();
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
+
+            int? idIndicadorRubro = null;
+            if (toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedIndex >= 0)
+                idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
+
+            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
+            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
+            
             //solo por ahora - Ver pq no funciona
             //toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
         }
         void IndicadoresEconomicoSetValue()
         {
-            
+            int? idIndicadorRubro = null;
+            if (toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedIndex >= 0)
+                idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
+
             UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorEconomico.IdIndicadorClase);
             //German 01032014 - tarea 110
             UIHelper.SetValue(toIndicadoClaseEconomicoObjetivoGobierno, ActualProyectoIndicadorEconomico.IdIndicadorClase);
@@ -1275,9 +1288,13 @@ namespace UI.Web.Pages
             UIHelper.Clear(chkIndirectoEvaluacionSectorial);
             UIHelper.Clear(ddlMedioVerificacionEvaluacionSectorial);
             UIHelper.Clear(txtMontoEvaluacionSectorial);
-            autoCmpIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
+            int? idIndicadorRubro = null;
+            if (toIndicadorClaseEvaluacionSectorial.Sectores.SelectedIndex >= 0)
+                idIndicadorRubro = Convert.ToInt32(toIndicadorClaseEvaluacionSectorial.Sectores.SelectedValue);
+
+            autoCmpIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
+            toIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
             //solo por ahora - Ver pq no funciona
             //toIndicadoClase.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
@@ -1574,10 +1591,14 @@ namespace UI.Web.Pages
         #region Methods
         void IndicadoresObjetivosGobiernoClear()
         {
+            int? idIndicadorRubro = null;
+            if (toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedIndex >= 0)
+                idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
+
             ActualProyectoIndicadorObjetivosGobierno = GetNewProyectoIndicadorObjetivosGobierno();
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
+            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //German 01032014 - tarea 110
-            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
+            toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //solo por ahora - Ver pq no funciona
             //toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorTipo = null, Activo = true };
             //Fin German 01032014 - tarea 110
@@ -1840,20 +1861,6 @@ namespace UI.Web.Pages
         void IndicadoresProyectoClear()
         {
 
-            switch (ModificandoProyectoIndicadores)
-            {
-                case ModifyProyectoIndicadores.Economico:
-                    IndicadoresEconomicoClear();
-                    ltObservacionesIndicadoresProyecto.Text = "Criterios de Evaluación";
-                    break;
-                case ModifyProyectoIndicadores.ObjetivosGobierno:
-                    IndicadoresObjetivosGobiernoClear();
-                    ltObservacionesIndicadoresProyecto.Text = "Observaciones";
-                    break;
-                default:
-                    break;
-            }
-
             UIHelper.Clear(txtObservacionesIndicadoresProyecto);
             UIHelper.Clear(ddlAnoIndicadoresProyecto);
             UIHelper.Clear(txtValorIndicadoresProyecto);
@@ -1861,6 +1868,24 @@ namespace UI.Web.Pages
             //German 01032014 - tarea 110
             UIHelper.Clear(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
+
+            //*** ATENCION esto debe ser despues que los otros clear ya que setea el tipo de indicador**//
+            switch (ModificandoProyectoIndicadores)
+            {
+                case ModifyProyectoIndicadores.Economico:
+                    IndicadoresEconomicoClear();
+                    ltObservacionesIndicadoresProyecto.Text = "Criterios de Evaluación";
+                    headerPopUpIndicadoresProyecto.Text = "Indicador de Evaluación Económica";
+                    break;
+                case ModifyProyectoIndicadores.ObjetivosGobierno:
+                    IndicadoresObjetivosGobiernoClear();
+                    ltObservacionesIndicadoresProyecto.Text = "Observaciones";
+                    headerPopUpIndicadoresProyecto.Text = "Contribución al Objetivo de Gobierno";
+                    break;
+                default:
+                    break;
+            }
+
             upIndicadoresProyectoPopUp.Update();
 
         }

@@ -508,6 +508,15 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Panel PopUpIndicadoresProyecto;
         
         /// <summary>
+        /// upIndicadoresProyectoPopUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upIndicadoresProyectoPopUp;
+        
+        /// <summary>
         /// IndicadoresProyectoPopUpDragHandle control.
         /// </summary>
         /// <remarks>
@@ -533,15 +542,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnIndicadoresProyecto;
-        
-        /// <summary>
-        /// upIndicadoresProyectoPopUp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upIndicadoresProyectoPopUp;
         
         /// <summary>
         /// autoCmpIndicadorClaseIndicadoresProyecto control.
