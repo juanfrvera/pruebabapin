@@ -13,6 +13,33 @@ namespace UI.Web {
     public partial class ProyectoPageList {
         
         /// <summary>
+        /// btNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btNew;
+        
+        /// <summary>
+        /// ddlReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlReport;
+        
+        /// <summary>
+        /// btOpenReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btOpenReport;
+        
+        /// <summary>
         /// upSearch control.
         /// </summary>
         /// <remarks>
@@ -58,15 +85,6 @@ namespace UI.Web {
         protected global::System.Web.UI.UpdatePanel upListButtons;
         
         /// <summary>
-        /// btNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btNew;
-        
-        /// <summary>
         /// btExportExcel control.
         /// </summary>
         /// <remarks>
@@ -83,24 +101,6 @@ namespace UI.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btVisualizarGraficos;
-        
-        /// <summary>
-        /// ddlReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlReport;
-        
-        /// <summary>
-        /// btOpenReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btOpenReport;
         
         /// <summary>
         /// ddlStoreReport control.

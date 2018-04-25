@@ -445,7 +445,7 @@ namespace DataAccess
         protected const string ID_PROYECTOCALIDAD_ESTADO_PARACONTROLAR = "ID_PROYECTOCALIDAD_ESTADO_PARACONTROLAR";
         #endregion
         #region Query
-        /*
+
         public int QueryCountSP(ProyectoFilter filter)
         {
             int? codigoBapin;
@@ -485,7 +485,10 @@ namespace DataAccess
             idOficina = filter.IdOficina == 0 ? null : filter.IdOficina;
             oficina = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : null;
 
-
+            int? esBorradorInt = null;
+            if (esBorrador.HasValue) esBorradorInt = Convert.ToInt32(esBorrador.Value);
+            int? activoInt = null;
+            if (activo.HasValue) activoInt = Convert.ToInt32(activo.Value);
 
             int result = this.Context.sp_Proyectos_Count(
                     codigoBapin,
@@ -494,11 +497,11 @@ namespace DataAccess
                     idPrograma,
                     idSubprograma,
                     proyectoDenominacion,
-                    esBorrador,
+                    esBorradorInt,
                     fechaModificacionDesde,
                     fechaModificacionHasta,
                     idEstados,
-                    activo,
+                    activoInt,
                     idPlanTipo,
                     idPlanPeriodo,
                     idPlanVersion,
@@ -565,6 +568,10 @@ namespace DataAccess
             idOficina = filter.IdOficina == 0 ? null : filter.IdOficina;
             oficina = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : null;
 
+            int? esBorradorInt = null;
+            if (esBorrador.HasValue) esBorradorInt = Convert.ToInt32(esBorrador.Value);
+            int? activoInt = null;
+            if (activo.HasValue) activoInt = Convert.ToInt32(activo.Value);
 
             List<sp_Proyectos_ListResult> result = this.Context.sp_Proyectos_List(
                     codigoBapin,
@@ -573,11 +580,11 @@ namespace DataAccess
                     idPrograma,
                     idSubprograma,
                     proyectoDenominacion,
-                    esBorrador,
+                    esBorradorInt,
                     fechaModificacionDesde,
                     fechaModificacionHasta,
                     idEstados,
-                    activo,
+                    activoInt,
                     idPlanTipo,
                     idPlanPeriodo,
                     idPlanVersion,
@@ -654,7 +661,7 @@ namespace DataAccess
             list.TotalRows = totalRows;
             return list;
         }
-        */
+
         protected override IQueryable<Proyecto> Query(ProyectoFilter filter)
         {
             string strIdParent = filter.IdOficina.HasValue ? "." + filter.IdOficina.Value.ToString() + "." : string.Empty;

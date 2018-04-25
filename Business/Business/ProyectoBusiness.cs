@@ -101,14 +101,14 @@ namespace Business
             return result;
         }
         //FinMatias 20141014 - Tarea 158
-        /*
+
         public virtual ListPaged<ProyectoResult> GetResultSP(ProyectoFilter filter)
         {
             ListPaged<ProyectoResult> result = ProyectoData.Current.QuerySP(filter);
             LoadPerfilOficinas(result);
             return result;
         }
-        */
+
         #endregion
 
         #region Actions
