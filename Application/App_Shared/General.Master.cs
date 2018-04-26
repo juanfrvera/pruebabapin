@@ -98,10 +98,11 @@ namespace Application.Shared
                 MenuPrincipal.Items.Add(menu);
                 if (SiteMap.CurrentNode != null)
                 {
-                    if (menu.Text == SiteMap.CurrentNode.Title)
+                    if (menu.NavigateUrl == SiteMap.CurrentNode.Url && SiteMap.CurrentNode.ParentNode.Title == string.Empty)
                     {
                         menu.Selected = true;
                         isParent = true;
+                        Session["CurrentNodeParent"] = menu.NavigateUrl;
                     }
                 }
             }
@@ -111,38 +112,37 @@ namespace Application.Shared
             }
             if(SiteMap.CurrentNode != null && !isParent) SetParentMenuItemSelected();
         }
+        private SiteMapNode GetTopParentNode(SiteMapNode node)
+        {
+            if (node.ParentNode == SiteMap.RootNode)
+                return node;
+            else
+                return GetTopParentNode(node.ParentNode);
+        }
         private void SetParentMenuItemSelected()
         {
-            var isSon = false;
-            foreach (MenuItem menu in MenuItems)
+            if (SiteMap.CurrentNode.ParentNode.ParentNode != null && SiteMap.CurrentNode.ParentNode.ParentNode.Title != string.Empty) 
             {
-                foreach (MenuItem menuChild in menu.ChildItems)
-                {
-                    if (menuChild.Text == SiteMap.CurrentNode.Title)
-                    {
-                        menu.Selected = true;
-                        isSon = true;
-                    }
-                }
+                var a = MenuItems.Where(x => x.Value == SiteMap.CurrentNode.ParentNode.ParentNode.Title).FirstOrDefault();
+                a.Selected = true;
+                return;
             }
-            if (!isSon) SetGrandParentMenuItemSelected();
-        }
-        private void SetGrandParentMenuItemSelected()
-        {
-            foreach (MenuItem menu in MenuItems)
+            else 
+            if (SiteMap.CurrentNode.ParentNode.Title != string.Empty)
             {
-                foreach (MenuItem menuChild in menu.ChildItems)
-                {
-                    foreach (MenuItem menuGrandChild in menuChild.ChildItems)
-                    {
-                        if (menuGrandChild.Text == SiteMap.CurrentNode.Title)
-                        {
-                            menu.Selected = true;
-                        }
-                    }
-                }
+                var a = MenuItems.Where(x => x.Value == SiteMap.CurrentNode.ParentNode.Title).FirstOrDefault();
+                a.Selected = true;
+                return;
             }
+
+            if (Session["CurrentNodeParent"] != null)
+            {
+                var a = MenuItems.Where(x => x.NavigateUrl == (string)Session["CurrentNodeParent"]).FirstOrDefault();
+                a.Selected = true;
+            }
+            
         }
+
         protected List<MenuItem> GetMenuItems()
         {
             List<MenuItem> menuItems = new List<MenuItem>();

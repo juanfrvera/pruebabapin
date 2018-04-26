@@ -149,6 +149,10 @@
       <siteMapNode url="~/General/PermisoPageEdit.aspx" title="Permiso"  description="Permiso" />-->
     </siteMapNode>
     <siteMapNode url="~/General/Administracion.aspx" title="Admin. Sistema"  description="Admin. Sistema" roles="*"/>
+
+    <siteMapNode url="~/Pages/ProgramaPageEdit.aspx" title="Programa" description="Programa" roles="*">     </siteMapNode>
+
+
     <!--Paginas fuera del Menu -->
     <siteMapNode >
         <siteMapNode url="~/Proyecto/ProyectoPageEdit.aspx" title="Inversión"  description="Inversion" roles="*"/>
@@ -174,8 +178,8 @@
           
           <!--<siteMapNode url="~/Pages/ProgramaPageList.aspx" title="Programa"  description="Programa" />-->
           <!--<siteMapNode url="~/Pages/ProgramaObjetivoPageList.aspx" title="Objetivo de Programas"  description="Objetivo de Programas" roles="*"/>-->
-        </siteMapNode>
-        <siteMapNode url="~/Pages/ProgramaPageEdit.aspx" title="Programa" description="Programa" roles="*">      
+
+  
         <siteMapNode url="General/AuditOperationPageEdit.aspx" title="Auditoría de Operaciones"  description="Auditoría de Operaciones"   />
         <siteMapNode url="General/AuditOperationPageList.aspx" title="Auditoría de Operaciones"  description="Auditoría de Operaciones"   />
         <siteMapNode url="General/AuditSessionPageEdit.aspx" title="Auditoría de Sesión"  description="Auditoría de Sesión"       />
@@ -231,8 +235,8 @@
         <siteMapNode url="~/Pages/ConfigMensajesPageEdit.aspx" title="Configuración de mensajes"  description="Configuración de mensajes" />
         <siteMapNode url="~/Pages/ConfigMensajesPageList.aspx" title="Configuración de mensajes"  description="Configuración de mensajes" />
         <siteMapNode url="General/AdministracionTemplate.aspx" title="Administracion Template"  description="Administracion Template Importación de proyectos"  />
-    
-        
+
     </siteMapNode>
+
   </siteMapNode>
 </siteMap>

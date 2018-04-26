@@ -941,7 +941,7 @@ namespace UI.Web
             }
             else
             {
-                ppr = Entity.proyectoPlan.FirstOrDefault(ProyectoPlan => ProyectoPlan.IdProyectoPlan == IdProyectoPlanMAX);
+                ppr = Entity.proyectoPlan.OrderByDescending(x => x.IdProyectoPlan).FirstOrDefault(ProyectoPlan => ProyectoPlan.IdProyectoPlan == IdProyectoPlanMAX);
             }
 
             Entity.proyecto.IdProyectoPlan = ppr.IdProyectoPlan;

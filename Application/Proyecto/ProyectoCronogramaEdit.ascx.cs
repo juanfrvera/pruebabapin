@@ -1101,7 +1101,7 @@ namespace UI.Web
                         }
 
                         //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName) ).Sum(x => x.Estimado);
-                        gridEtapasEstimadas.FooterRow.Cells[i].Text = totalColumn.ToString();
+                        gridEtapasEstimadas.FooterRow.Cells[i].Text = totalColumn.ToString("N0");
                         gridEtapasEstimadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
                         gridEtapasEstimadas.FooterRow.Cells[i].CssClass = "footer";
                     }
@@ -1866,7 +1866,7 @@ namespace UI.Web
                             totalColumn += Convert.ToInt32(row.Cells[i].Text.Replace(".", string.Empty));
                         }
                         //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName)).Sum(x => x.Realizado);
-                        gridEtapasRealizadas.FooterRow.Cells[i].Text = totalColumn.ToString();
+                        gridEtapasRealizadas.FooterRow.Cells[i].Text = totalColumn.ToString("N0");
                         gridEtapasRealizadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
                         gridEtapasRealizadas.FooterRow.Cells[i].CssClass = "footer";
                     }
