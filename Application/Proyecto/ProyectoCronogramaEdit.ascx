@@ -183,7 +183,7 @@
             <td>
                 <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
                     <tr>            
-	                    <td style="width:100px"><asp:Literal ID="ltrAnio" runat="server" Text="Año Corriente"></asp:Literal></td>
+	                    <td style="width:100px"><asp:Literal ID="ltrAnio" runat="server" Text="Mostrar Desde"></asp:Literal></td>
 	                    <td style="width:100px">
 	                        <cc:ExtendedDropDownList ID="ddlAnioCorrienteEstimado" runat="server" OnSelectedIndexChanged="ddlAnioCorrienteEstimado_IndexChanged" AutoPostBack="true" ></cc:ExtendedDropDownList>
 	                    </td>                                  
@@ -240,7 +240,7 @@
             <td>
                 <table cellpadding="0" cellspacing="5px" border="0"   width="100%">	  	
                     <tr>  
-	                    <td style="width:100px"><asp:Literal ID="Literal1" runat="server" Text="Año Corriente"></asp:Literal></td>
+	                    <td style="width:100px"><asp:Literal ID="Literal1" runat="server" Text="Mostrar Desde"></asp:Literal></td>
 	                    <td style="width:100px">
 	                        <cc:ExtendedDropDownList ID="ddlAnioCorrienteRealizado" runat="server" OnSelectedIndexChanged="ddlAnioCorrienteRealizado_IndexChanged" AutoPostBack="true" ></cc:ExtendedDropDownList>
 	                    </td>                    
