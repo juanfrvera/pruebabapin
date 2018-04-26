@@ -38,7 +38,7 @@ namespace UI.Web.Pages
                 txtDimensionesCostosEnte.Attributes.Add("maxlength", txtDimensionesCostosEnte.MaxLength.ToString());
                 txtDificultadesRiesgosEnumeracion.Attributes.Add("maxlength", txtDificultadesRiesgosEnumeracion.MaxLength.ToString());
                 txtRequiereIntevencionAutoridad.Attributes.Add("maxlength", txtRequiereIntevencionAutoridad.MaxLength.ToString());
-                txtObservacionesDNIP.Attributes.Add("maxlength", txtObservacionesDNIP.MaxLength.ToString());
+                //No tiene maxlength txtObservacionesDNIP.Attributes.Add("maxlength", txtObservacionesDNIP.MaxLength.ToString());
             }
 
             revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1000);

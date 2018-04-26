@@ -5,8 +5,8 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="spanNecesidadASatisfacer">
-                <asp:Label ID="lblNecesidadASatisfacer" runat="server" Text="¿Cuál es la necesidad a satisfacer o la problemática a solucionar con el presente proyecto de inversión?"></asp:Label>
-                &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+                <asp:Label ID="lblNecesidadASatisfacer" runat="server" Text="¿Cuál es la necesidad a satisfacer o la problemática a solucionar con el presente proyecto de inversión? (2000 caracteres)"></asp:Label>
+                &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeNecesidadASatisfacer" runat="Server" TargetControlID="pnlNecesidadASatisfacer"
                 Collapsed="True" ExpandControlID="lblNecesidadASatisfacer" CollapseControlID="lblNecesidadASatisfacer"
@@ -36,8 +36,8 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span1">
-                <asp:Label ID="lblObjetivoDelProyecto" runat="server" Text="¿Cuál es el objetivo del proyecto?"></asp:Label>
-                &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+                <asp:Label ID="lblObjetivoDelProyecto" runat="server" Text="¿Cuál es el objetivo del proyecto? (1000 caracteres)"></asp:Label>
+                &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeObjetivoDelProyecto" runat="Server" TargetControlID="pnlObjetivoDelProyecto"
                 Collapsed="True" ExpandControlID="lblObjetivoDelProyecto" CollapseControlID="lblObjetivoDelProyecto"
@@ -67,8 +67,8 @@
     <ContentTemplate>
     <div class="CollapsiblePanelTab">
         <span id="span2">
-            <asp:Label ID="lblProductoOServicio" runat="server" Text="¿Cuál es el producto o servicio que brindará el proyecto una vez finalizado?"></asp:Label>
-            &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+            <asp:Label ID="lblProductoOServicio" runat="server" Text="¿Cuál es el producto o servicio que brindará el proyecto una vez finalizado? (255 caracteres)"></asp:Label>
+            &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="cpeProductoOServicio" runat="Server" TargetControlID="pnlProductoOServicio"
             Collapsed="True" ExpandControlID="lblProductoOServicio" CollapseControlID="lblProductoOServicio"
@@ -98,8 +98,8 @@
     <ContentTemplate>
     <div class="CollapsiblePanelTab">
         <span id="span3">
-            <asp:Label ID="lblAlternativas" runat="server" Text="¿Qué alternativas han sido consideradas para satisfacer la necesidad o resolver la problemática planteada?"></asp:Label>
-            &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+            <asp:Label ID="lblAlternativas" runat="server" Text="¿Qué alternativas han sido consideradas para satisfacer la necesidad o resolver la problemática planteada? (2000 caracteres)"></asp:Label>
+            &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="cpeAlternativas" runat="Server" TargetControlID="pnlAlternativas"
             Collapsed="True" ExpandControlID="lblAlternativas" CollapseControlID="lblAlternativas"
@@ -129,8 +129,8 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span4">
-                <asp:Label ID="lblPorqueAlternativa" runat="server" Text="¿Por qué han seleccionado la alternativa elegida?"></asp:Label>
-                &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+                <asp:Label ID="lblPorqueAlternativa" runat="server" Text="¿Por qué han seleccionado la alternativa elegida? (2000 caracteres)"></asp:Label>
+                &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpePorqueAlternativa" runat="Server" TargetControlID="pnlPorqueAlternativa"
                 Collapsed="True" ExpandControlID="lblPorqueAlternativa" CollapseControlID="lblPorqueAlternativa"
@@ -161,8 +161,8 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span5">
-        <asp:Label ID="lblDescripcionTecnica" runat="server" Text="Realice una descripción técnica de la alternativa elegida."></asp:Label>
-        &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+        <asp:Label ID="lblDescripcionTecnica" runat="server" Text="Realice una descripción técnica de la alternativa elegida. (2000 caracteres)"></asp:Label>
+        &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeDescripcionTecnica" runat="Server" TargetControlID="pnlDescripcionTecnica"
         Collapsed="True" ExpandControlID="lblDescripcionTecnica" CollapseControlID="lblDescripcionTecnica"
@@ -192,8 +192,8 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span6">
-        <asp:Label ID="lblVidaUtil" runat="server" Text="¿Cuál es la vida útil del principal bien de capital a incorporar en el marco del proyecto?"></asp:Label>
-        &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+        <asp:Label ID="lblVidaUtil" runat="server" Text="¿Cuál es la vida útil del principal bien de capital a incorporar en el marco del proyecto? (255 caracteres)"></asp:Label>
+        &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeVidaUtil" runat="Server" TargetControlID="pnlVidaUtil"
         Collapsed="True" ExpandControlID="lblVidaUtil" CollapseControlID="lblVidaUtil"
@@ -224,7 +224,7 @@
 <div class="CollapsiblePanelTab">
     <span id="span7">
         <asp:Label ID="lblCobertura" runat="server" Text="¿Cuál será la cobertura territorial y poblacional del proyecto? ¿Quiénes y cuántos serán los beneficiarios directos e indirectos del proyecto?"></asp:Label>
-        &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+        &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeCobertura" runat="Server" TargetControlID="pnlCobertura"
         Collapsed="True" ExpandControlID="lblCobertura" CollapseControlID="lblCobertura"
@@ -234,7 +234,7 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td style="width:101px;">
-                    Cobertura Territorial
+                    Cobertura Territorial<br>(2000 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaTerritorial" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
@@ -247,7 +247,7 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Poblacional
+                    Cobertura Poblacional<br>(255 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaPoblacional" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
@@ -260,7 +260,7 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Directos
+                    Cobertura Beneficiarios Directos<br>(2000 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
@@ -273,7 +273,7 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Indirectos
+                    Cobertura Beneficiarios Indirectos<br>(255 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
@@ -294,8 +294,8 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span8">
-                <asp:Label ID="lblDificultadesRiesgos" runat="server" Text="¿El proyecto presenta dificultades o riesgos significativos (sociales, institucionales, legales ambientales, etc.) pasibles de suceder durante su ejecución, puesta en funcionamiento o cierre/desmantelamiento?"></asp:Label>
-                &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+                <asp:Label ID="lblDificultadesRiesgos" runat="server" Text="¿El proyecto presenta dificultades o riesgos significativos (sociales, institucionales, legales ambientales, etc.) pasibles de suceder durante su ejecución, puesta en funcionamiento o cierre/desmantelamiento? (2000 caracteres)"></asp:Label>
+                &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeDificultadesRiesgos" runat="Server" TargetControlID="pnlDificultadesRiesgos"
                 Collapsed="True" ExpandControlID="lblDificultadesRiesgos" CollapseControlID="lblDificultadesRiesgos"
@@ -332,7 +332,7 @@
     <div class="CollapsiblePanelTab">
         <span id="span9">
             <asp:Label ID="lblDimensionesCostos" runat="server" Text="¿Han sido dimensionados los costos de operación y mantenimiento que tendrá el proyecto cuando esté en funcionamiento?"></asp:Label>
-            &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+            &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender9" runat="Server" TargetControlID="pnlDimensionesCostos"
             Collapsed="True" ExpandControlID="lblDimensionesCostos" CollapseControlID="lblDimensionesCostos"
@@ -361,7 +361,7 @@
                 </tr>
                 <tr>
                     <td style="width:101px;">
-                        <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización." runat="server"></asp:Literal>
+                        <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización. (255 caracteres)" runat="server"></asp:Literal>
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" MaxLength="255" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
@@ -387,7 +387,7 @@
 <div class="CollapsiblePanelTab">
     <span id="span10">
         <asp:Label ID="lblRequiereIntevencion" runat="server" Text="¿El proyecto requiere intervención de una autoridad ambiental competente? "></asp:Label>
-        &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
+        &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender10" runat="Server" TargetControlID="pnlRequiereIntevencion"
         Collapsed="True" ExpandControlID="lblRequiereIntevencion" CollapseControlID="lblRequiereIntevencion"
@@ -401,7 +401,7 @@
                     <asp:RadioButton ID="cbRequiereIntevencionNo" GroupName="RequiereIntevencion" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("RequiereIntevencion") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbRequiereIntevencionNo_CheckedChanged"/>
                 </td>
                 <td style="width:101px;">
-                    Indique cuál es la autoridad ambiental competente
+                    Indique cuál es la autoridad ambiental competente<br>(255 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" MaxLength="255" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>

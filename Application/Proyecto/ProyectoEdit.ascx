@@ -191,7 +191,7 @@
                         &nbsp;
                     </td>
                     <td>                                    
-                       <asp:Literal ID="liRequiereDictamen" Text="Requiere Dictámen" runat="server"></asp:Literal> 
+                       <asp:Literal ID="liRequiereDictamen" Text="Requiere Dictamen" runat="server"></asp:Literal> 
                     </td>  
                     <td>
                         <asp:CheckBox ID="chkRequiereDictamen" runat="server" Enabled="false" Text="" TabIndex="4" style="margin-left: -4px"/>
@@ -403,8 +403,8 @@
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
                     <td class="legend" style="color: #0099ff; font-weight: bold;">
-                        <div style="cursor: hand; width: 190px">
-                            <asp:Label ID="lblOrigenDelFinanciamiento" runat="server" Text="Financiamiento Externo"></asp:Label>&nbsp;
+                        <div style="cursor: hand; width: 290px">
+                            <asp:Label ID="lblOrigenDelFinanciamiento" runat="server" Text="Origen del Financiamiento Externo"></asp:Label>&nbsp;
                             <asp:Image ID="Image2" runat="server" src="../Images/CollapsiblePanelImg.gif" /></div>
                         <ajaxToolkit:CollapsiblePanelExtender ID="cpeOrigenDelFinanciamiento" runat="Server"
                             TargetControlID="pnlOrigenDelFinanciamiento"
