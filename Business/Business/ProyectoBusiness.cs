@@ -2286,6 +2286,7 @@ namespace Business
                 //ProyectoBusiness.Current.CopyAndSave(result.IdProject, result, contextUser);
                 //...Fin...
                 #endregion
+                /*SE DEJA DE LLEVAR COPIA HISTORICA
                 if ((entity.proyecto.OldIdEstado != (int)EstadoEnum.En_Ejecucion) && (entity.proyecto.IdEstado == (int)EstadoEnum.En_Ejecucion))
                 {
                     //Primero debería preguntar si quiere generar la COPIA HISTORICA.
@@ -2320,7 +2321,8 @@ namespace Business
                         rhi.Comments = "Por inicio de ejecución se deja constancia de los montos totales estimados del proyecto a la fecha.";
                         ProyectoBusiness.Current.SaveHistoryReport(Report, rhi, pf, contextUser);
                     }
-                }                
+                }  
+                */
                 //FinMatias 20170131 - Ticket #REQ571729
             }
             catch (Exception exception)

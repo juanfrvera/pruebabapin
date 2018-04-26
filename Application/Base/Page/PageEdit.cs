@@ -220,22 +220,23 @@ namespace UI.Web
                         UIHelper.ShowAlert(SolutionContext.Current.TextManager.Translate("MSG_NEWPRESTAMO") + " " + cb, this.Page);
                         //return;
                     }
-                    else
+                /*No se realiza copia histórica del Proyecto
+                else
+                {
+                    //Matias 20170201- Ticket #REQ571729
+                    if ((CrudAction == CrudActionEnum.Update) && (a.Equals(tPro)))
                     {
-                        //Matias 20170201- Ticket #REQ571729
-                        if ((CrudAction == CrudActionEnum.Update) && (a.Equals(tPro)))
+                        //Cambio de estado del Proyecto (Solapa General >> Estado "En Ejecucion"
+                        Object ob = (Object)entity;
+                        ProyectoResult proyecto = ((Contract.ProyectoGeneralCompose)ob).proyecto;
+                        if ((proyecto.OldIdEstado != (int)EstadoEnum.En_Ejecucion) && (proyecto.IdEstado == (int)EstadoEnum.En_Ejecucion))
                         {
-                            //Cambio de estado del Proyecto (Solapa General >> Estado "En Ejecucion"
-                            Object ob = (Object)entity;
-                            ProyectoResult proyecto = ((Contract.ProyectoGeneralCompose)ob).proyecto;
-                            if ((proyecto.OldIdEstado != (int)EstadoEnum.En_Ejecucion) && (proyecto.IdEstado == (int)EstadoEnum.En_Ejecucion))
-                            {
-                                UIHelper.ShowAlert("Se generó una copia histórica del Proyecto debido al nuevo Estado Financiero del mismo ('En Ejecución').", this.Page);
-                                //return;
-                            }
+                            UIHelper.ShowAlert("Se generó una copia histórica del Proyecto debido al nuevo Estado Financiero del mismo ('En Ejecución').", this.Page);
+                            //return;
                         }
-                        //FinMatias 20170201- Ticket #REQ571729
                     }
+                    //FinMatias 20170201- Ticket #REQ571729
+                }*/
 
 
                 ////FinMatias 20140424 - Tarea 137
