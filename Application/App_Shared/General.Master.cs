@@ -105,6 +105,10 @@ namespace Application.Shared
                     }
                 }
             }
+            if(SiteMap.CurrentNode != null && (SiteMap.CurrentNode.Description == "Inversion" || SiteMap.CurrentNode.Description == "Prestamo")) 
+            {
+                SiteMapPath.Visible=false;
+            }
             if(SiteMap.CurrentNode != null && !isParent) SetParentMenuItemSelected();
         }
         private void SetParentMenuItemSelected()

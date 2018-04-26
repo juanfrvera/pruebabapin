@@ -159,7 +159,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Literal ID="Literal1" Text="Ejercicio de estimación" runat="server"></asp:Literal>
+                        <asp:Literal ID="Literal1" Text="Marca de estimación" runat="server"></asp:Literal>
                     </td>
                     <td>
                         <asp:TextBox ID="txtEjercicioEstimacion" Enabled="false" runat="server" TabIndex="19" Width="130px"></asp:TextBox>
@@ -220,7 +220,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad Función"></asp:Literal>
+                        <asp:Literal ID="liFinalidadFuncion" runat="server" Text="Finalidad-Función-SubFunción"></asp:Literal>
                     </td>
                     <td colspan="8">
                         <uc:TreeFinalidadFuncion runat="server" Width="100%" ID="toFinalidadFuncion" TabIndex="20" SelectOption="OnlySelectedDefined"

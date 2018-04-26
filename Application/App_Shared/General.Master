@@ -181,7 +181,7 @@ function HayChequeado2(objectName) {
     </div> 
     <div id="ContenidoPrincipal" style ="width:1000px"  >
             <br/>
-            <asp:SiteMapPath ID="SiteMapPath" Visible="false" ParentLevelsDisplayed="0" runat="server" PathSeparator=""  NodeStyle-CssClass="SitemapNode" ></asp:SiteMapPath>
+            <asp:SiteMapPath ID="SiteMapPath" ParentLevelsDisplayed="0" runat="server" PathSeparator=""  NodeStyle-CssClass="SitemapNode" ></asp:SiteMapPath>
             <asp:ContentPlaceHolder ID="ContenidoPrincipal"  runat="server"  />
             <uc:MessageBar ID="MessageBarForm" runat="server" />
     </div>

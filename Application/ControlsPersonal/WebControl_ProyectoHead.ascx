@@ -15,7 +15,7 @@
             <tr>
                 <td>
                     <b>
-                        <asp:Literal ID="liIngreso" Text="Ingreso" runat="server"></asp:Literal>:</b>
+                        <asp:Literal ID="liIngreso" Text="Creado" runat="server"></asp:Literal>:</b>
                     <asp:Label ID="lblFechaIngreso" runat="server"></asp:Label>&nbsp;-&nbsp; <b>
                         <asp:Literal ID="liUltimaModificacion" Text="Última modificación" runat="server"></asp:Literal>:</b>
                     <asp:Label ID="lblFechaUltimaModificacion" runat="server"></asp:Label>
