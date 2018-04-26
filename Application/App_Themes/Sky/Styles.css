@@ -424,4 +424,20 @@ font-family:Verdana, Geneva, sans-serif;
     text-align:right;
 }
 
+/*-----------------------------*/
 
+
+td .footer
+{
+	font-size:8pt;
+	font-weight:normal;
+	background-color: #d6d6d6;
+	color:#0066cc;
+	border-right:solid 2px #CCCCCC;
+	border-bottom:solid 1px #CCCCCC;
+	border-top:solid 1px #CCCCCC;
+	padding:0px 5px 0px 5px;
+	text-align:right;
+	cursor:pointer;
+	font-family:Verdana, Geneva, sans-serif;
+}

@@ -213,6 +213,7 @@
                             <asp:GridView ID="gridEtapasEstimadas" runat = "server"
                             AutoGenerateColumns="True" DataKeyNames="ID"   
                             OnRowCommand="GridEtapasEstimadas_RowCommand"
+                            RowDataBound="algo"
                             EmptyDataText="Para cargar los Gastos Estimados, las Fechas Estimadas del Cronograma deben estar definidas." >
                                 <Columns>                   
                                     <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>

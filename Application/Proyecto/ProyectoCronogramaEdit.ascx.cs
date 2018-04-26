@@ -1070,7 +1070,7 @@ namespace UI.Web
             litEtapasEstimadasTotal.Visible = false;
             if (dataTable.Rows.Count > 0)
             {
-                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                //var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
                 /*var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
                 var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
                 var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
@@ -1082,17 +1082,31 @@ namespace UI.Web
                 if (dataTable.Columns.Count > 4)
                 {
                     gridEtapasEstimadas.FooterRow.Cells[0].Text = "";
+                    gridEtapasEstimadas.FooterRow.Cells[1].CssClass = "footer";
+                    gridEtapasEstimadas.FooterRow.Cells[2].CssClass = "footer";
+                    gridEtapasEstimadas.FooterRow.Cells[3].CssClass = "footer";
                     gridEtapasEstimadas.FooterRow.Cells[1].Text = "";
                     gridEtapasEstimadas.FooterRow.Cells[2].Text = "";
                     gridEtapasEstimadas.FooterRow.Cells[3].Text = "Totales por año";
                     gridEtapasEstimadas.FooterRow.Cells[3].HorizontalAlign = HorizontalAlign.Right;
                     gridEtapasEstimadas.FooterRow.Visible = true;
-                    for (var i = 4; i < dataTable.Columns.Count; i++)
+                    var i = 0;
+                    for (i = 4; i < dataTable.Columns.Count; i++)
                     {
-                        var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName) ).Sum(x => x.Estimado);
-                        gridEtapasEstimadas.FooterRow.Cells[i].Text = total.ToString("N2");
+                        var totalColumn = 0;
+                        //for (var r = 0; r < dataTable.Rows.Count; r++)
+                        foreach (GridViewRow row in gridEtapasEstimadas.Rows)
+                        {
+                            totalColumn += Convert.ToInt32(row.Cells[i].Text.Replace(".", string.Empty));
+                        }
+
+                        //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName) ).Sum(x => x.Estimado);
+                        gridEtapasEstimadas.FooterRow.Cells[i].Text = totalColumn.ToString();
                         gridEtapasEstimadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
+                        gridEtapasEstimadas.FooterRow.Cells[i].CssClass = "footer";
                     }
+                    gridEtapasEstimadas.FooterRow.Cells[i].CssClass = "footer";
+                    gridEtapasEstimadas.FooterRow.Cells[i].Text = "";
                 }
             }
 
@@ -1450,6 +1464,22 @@ namespace UI.Web
             }
             RefreshNavigatorEstimadas();
         }
+
+        /*
+        protected void GridEtapasEstimadas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                decimal rowTotal = Convert.ToDecimal
+                            (DataBinder.Eval(e.Row.DataItem, "Amount"));
+                grdTotal = grdTotal + rowTotal;
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lbl = (Label)e.Row.FindControl("lblTotal");
+                lbl.Text = grdTotal.ToString("c");
+            }
+        }*/
         #endregion
 
         #region Navigator
@@ -1819,15 +1849,29 @@ namespace UI.Web
                     gridEtapasRealizadas.FooterRow.Cells[1].Text = "";
                     gridEtapasRealizadas.FooterRow.Cells[2].Text = "";
                     gridEtapasRealizadas.FooterRow.Cells[3].Text = "";
+                    gridEtapasRealizadas.FooterRow.Cells[1].CssClass = "footer";
+                    gridEtapasRealizadas.FooterRow.Cells[2].CssClass = "footer";
+                    gridEtapasRealizadas.FooterRow.Cells[3].CssClass = "footer";
+                    gridEtapasRealizadas.FooterRow.Cells[4].CssClass = "footer";
                     gridEtapasRealizadas.FooterRow.Cells[4].Text = "Totales por año";
                     gridEtapasRealizadas.FooterRow.Cells[4].HorizontalAlign = HorizontalAlign.Right;
                     gridEtapasRealizadas.FooterRow.Visible = true;
-                    for (var i = 5; i < dataTable.Columns.Count; i++)
+                    var i = 0;
+                    for (i = 5; i < dataTable.Columns.Count; i++)
                     {
-                        var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName)).Sum(x => x.Realizado);
-                        gridEtapasRealizadas.FooterRow.Cells[i].Text = total.ToString("N2");
+                        var totalColumn = 0;
+                        //for (var r = 0; r < dataTable.Rows.Count; r++)
+                        foreach (GridViewRow row in gridEtapasRealizadas.Rows)
+                        {
+                            totalColumn += Convert.ToInt32(row.Cells[i].Text.Replace(".", string.Empty));
+                        }
+                        //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName)).Sum(x => x.Realizado);
+                        gridEtapasRealizadas.FooterRow.Cells[i].Text = totalColumn.ToString();
                         gridEtapasRealizadas.FooterRow.Cells[i].HorizontalAlign = HorizontalAlign.Right;
+                        gridEtapasRealizadas.FooterRow.Cells[i].CssClass = "footer";
                     }
+                    gridEtapasRealizadas.FooterRow.Cells[i].CssClass = "footer";
+                    gridEtapasRealizadas.FooterRow.Cells[i].Text = "";
                 }
             }
 
@@ -2015,6 +2059,7 @@ namespace UI.Web
                     break;
             }
         }
+
         protected virtual void GridEtapasRealizadas_Sorting(object sender, GridViewSortEventArgs e)
         {
             try
