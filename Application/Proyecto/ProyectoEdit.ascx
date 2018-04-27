@@ -350,6 +350,21 @@
             </table>
         </asp:Panel>
        
+        <%-- Jurisdicción de ejecución --%>
+        <asp:Panel ID="Panel3" runat="server" GroupingText="Jurisdicción de ejecución">
+            <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
+                <tr>
+                    <td style="width:115px">
+                        <asp:Literal ID="Literal3" runat="server" Text="Jurisdicción"></asp:Literal>
+                    </td>
+                    <td>
+<asp:DropDownList ID="ddlJurisdiccion" runat="server" CssClass="field_input" 
+		        AutoPostBack ="true" SkinID="AnchoLibre" ></asp:DropDownList>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+
         <asp:Panel ID="pnlPlanEditar" runat="server" GroupingText="Solicitud de Presupuesto">
             <table style="width:100%" cellpadding="0" cellspacing="2px" border="0">
                 <tr>
@@ -618,6 +633,7 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 --%>
+
 <%--Otros Datos--%>
 <asp:UpdatePanel ID="upOtrosDatos" runat="server" UpdateMode="Conditional">
     <ContentTemplate>

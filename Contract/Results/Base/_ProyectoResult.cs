@@ -44,6 +44,7 @@ namespace Contract.Base
          public int? NroActividadEjecucion { get; set; }
          public int? NroObraEjecucion { get; set; }
          public int? IdSubProgramaEjecucion { get; set; }
+         public int? IdJurisdiccionEnEjecucion { get; set; }        
 
 		 public string Estado_Nombre{get;set;}	
 	public string Estado_Codigo{get;set;}	
@@ -126,7 +127,8 @@ namespace Contract.Base
          _Proyecto.NroActividadEjecucion = this.NroActividadEjecucion;
          _Proyecto.NroObraEjecucion = this.NroObraEjecucion;
          _Proyecto.IdSubProgramaEjecucion = this.IdSubProgramaEjecucion;
-
+         _Proyecto.IdJurisdiccionEnEjecucion = this.IdJurisdiccionEnEjecucion;
+            
 		  return _Proyecto;
 		}		
 		public virtual void Set(Proyecto entity)
@@ -167,6 +169,8 @@ namespace Contract.Base
           this.NroActividadEjecucion = entity.NroActividadEjecucion;
           this.NroObraEjecucion = entity.NroObraEjecucion;
           this.IdSubProgramaEjecucion = entity.IdSubProgramaEjecucion;
+          this.IdJurisdiccionEnEjecucion = entity.IdJurisdiccionEnEjecucion;
+            
 		}		
 		public virtual bool Equals(Proyecto entity)
         {
@@ -207,6 +211,8 @@ namespace Contract.Base
           if ((entity.NroActividadEjecucion == null) ? this.NroActividadEjecucion != null : !entity.NroActividadEjecucion.Equals(this.NroActividadEjecucion)) return false;
           if ((entity.NroObraEjecucion == null) ? this.NroObraEjecucion != null : !entity.NroObraEjecucion.Equals(this.NroObraEjecucion)) return false;
           if ((entity.IdSubProgramaEjecucion == null) ? this.IdSubProgramaEjecucion != null : !entity.IdSubProgramaEjecucion.Equals(this.IdSubProgramaEjecucion)) return false;
+            if ((entity.IdJurisdiccionEnEjecucion == null) ? this.IdJurisdiccionEnEjecucion != null : !entity.IdJurisdiccionEnEjecucion.Equals(this.IdJurisdiccionEnEjecucion)) return false;
+            
 		  return true;
         }
 		
@@ -248,6 +254,7 @@ namespace Contract.Base
             ,new DataColumnMapping("NroActividadEjecucion","NroActividadEjecucion")
             ,new DataColumnMapping("NroObraEjecucion","NroObraEjecucion")
             ,new DataColumnMapping("IdSubProgramaEjecucion","IdSubProgramaEjecucion")
+            ,new DataColumnMapping("IdJurisdiccionEnEjecucion","IdJurisdiccionEnEjecucion")
 			}));
 		}
 	}

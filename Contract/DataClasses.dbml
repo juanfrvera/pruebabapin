@@ -2189,6 +2189,7 @@
       <Column Name="AnioCorrienteEstimado" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AnioCorrienteRealizado" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IdSubProgramaEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdJurisdiccionEnEjecucion" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Proyecto_Message" Member="Messages" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Message" />
       <Association Name="Proyecto_ProyectoAlcanceGeografico" Member="ProyectoAlcanceGeograficos" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoAlcanceGeografico" />
       <Association Name="Proyecto_ProyectoDemora" Member="ProyectoDemoras" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="ProyectoDemora" />
@@ -2223,6 +2224,7 @@
       <Association Name="FinalidadFuncion_Proyecto" Member="FinalidadFuncion" ThisKey="IdFinalidadFuncion" OtherKey="IdFinalidadFuncion" Type="FinalidadFuncion" IsForeignKey="true" />
       <Association Name="ModalidadContratacion_Proyecto" Member="ModalidadContratacion" ThisKey="IdModalidadContratacion" OtherKey="IdModalidadContratacion" Type="ModalidadContratacion" IsForeignKey="true" />
       <Association Name="Proceso_Proyecto" Member="Proceso" ThisKey="IdProceso" OtherKey="IdProceso" Type="Proceso" IsForeignKey="true" />
+      <Association Name="Jurisdiccion_Proyecto" Member="Jurisdiccion" ThisKey="IdJurisdiccionEnEjecucion" OtherKey="IdJurisdiccion" Type="Jurisdiccion" IsForeignKey="true" />
       <Association Name="OrganismoPrioridad_Proyecto" Member="OrganismoPrioridad" ThisKey="IdOrganismoPrioridad" OtherKey="IdOrganismoPrioridad" Type="OrganismoPrioridad" IsForeignKey="true" />
       <Association Name="ProyectoTipo_Proyecto" Member="ProyectoTipo" ThisKey="IdTipoProyecto" OtherKey="IdProyectoTipo" Type="ProyectoTipo" IsForeignKey="true" />
       <Association Name="SubPrograma_Proyecto" Member="SubPrograma" ThisKey="IdSubPrograma" OtherKey="IdSubPrograma" Type="SubPrograma" IsForeignKey="true" />

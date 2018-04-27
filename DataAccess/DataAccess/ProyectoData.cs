@@ -92,6 +92,8 @@ namespace DataAccess
             _new.NroActividadEjecucion = entity.NroActividadEjecucion;
             _new.NroObraEjecucion = entity.NroObraEjecucion;
             _new.IdSubProgramaEjecucion = entity.IdSubProgramaEjecucion;
+            _new.IdJurisdiccionEnEjecucion = entity.IdJurisdiccionEnEjecucion;
+            
             return _new;
         }
         public override int CopyAndSave(Proyecto entity, string renameFormat)
@@ -145,6 +147,8 @@ namespace DataAccess
             target.NroActividadEjecucion = source.NroActividadEjecucion;
             target.NroObraEjecucion = source.NroObraEjecucion;
             target.IdSubProgramaEjecucion = source.IdSubProgramaEjecucion;
+            target.IdJurisdiccionEnEjecucion = source.IdJurisdiccionEnEjecucion;
+            
         }
         public override void Set(ProyectoResult source, Proyecto target, bool hadSetId)
         {
@@ -184,6 +188,7 @@ namespace DataAccess
             target.NroActividadEjecucion = source.NroActividadEjecucion;
             target.NroObraEjecucion = source.NroObraEjecucion;
             target.IdSubProgramaEjecucion = source.IdSubProgramaEjecucion;
+            target.IdJurisdiccionEnEjecucion = source.IdJurisdiccionEnEjecucion;
         }
         public override void Set(Proyecto source, ProyectoResult target, bool hadSetId)
         {
@@ -223,6 +228,7 @@ namespace DataAccess
             target.NroActividadEjecucion = source.NroActividadEjecucion;
             target.NroObraEjecucion = source.NroObraEjecucion;
             target.IdSubProgramaEjecucion = source.IdSubProgramaEjecucion;
+            target.IdJurisdiccionEnEjecucion = source.IdJurisdiccionEnEjecucion;
         }
         public override void Set(ProyectoResult source, ProyectoResult target, bool hadSetId)
         {
@@ -262,6 +268,7 @@ namespace DataAccess
             target.NroActividadEjecucion = source.NroActividadEjecucion;
             target.NroObraEjecucion = source.NroObraEjecucion;
             target.IdSubProgramaEjecucion = source.IdSubProgramaEjecucion;
+            target.IdJurisdiccionEnEjecucion = source.IdJurisdiccionEnEjecucion;
             target.Estado_Nombre = source.Estado_Nombre;
             //target.Estado_Codigo = source.Estado_Codigo;
             //target.Estado_Orden = source.Estado_Orden;
@@ -348,6 +355,8 @@ namespace DataAccess
             if ((source.NroActividadEjecucion == null) ? (target.NroActividadEjecucion.HasValue) : !source.NroActividadEjecucion.Equals(target.NroActividadEjecucion)) return false;
             if ((source.NroObraEjecucion == null) ? (target.NroObraEjecucion.HasValue) : !source.NroObraEjecucion.Equals(target.NroObraEjecucion)) return false;
             if ((source.IdSubProgramaEjecucion == null) ? (target.IdSubProgramaEjecucion.HasValue) : !source.IdSubProgramaEjecucion.Equals(target.IdSubProgramaEjecucion)) return false;
+            if ((source.IdJurisdiccionEnEjecucion == null) ? (target.IdJurisdiccionEnEjecucion.HasValue) : !source.IdJurisdiccionEnEjecucion.Equals(target.IdJurisdiccionEnEjecucion)) return false;
+            
 
             return true;
         }
@@ -392,6 +401,7 @@ namespace DataAccess
             if ((source.NroActividadEjecucion == null) ? (target.NroActividadEjecucion.HasValue) : !source.NroActividadEjecucion.Equals(target.NroActividadEjecucion)) return false;
             if ((source.NroObraEjecucion == null) ? (target.NroObraEjecucion.HasValue) : !source.NroObraEjecucion.Equals(target.NroObraEjecucion)) return false;
             if ((source.IdSubProgramaEjecucion == null) ? (target.IdSubProgramaEjecucion.HasValue) : !source.IdSubProgramaEjecucion.Equals(target.IdSubProgramaEjecucion)) return false;
+            if ((source.IdJurisdiccionEnEjecucion == null) ? (target.IdJurisdiccionEnEjecucion.HasValue) : !source.IdJurisdiccionEnEjecucion.Equals(target.IdJurisdiccionEnEjecucion)) return false;
 
             if ((source.Estado_Nombre == null) ? target.Estado_Nombre != null : !((target.Estado_Nombre == String.Empty && source.Estado_Nombre == null) || (target.Estado_Nombre == null && source.Estado_Nombre == String.Empty)) && !source.Estado_Nombre.Trim().Replace("\r", "").Equals(target.Estado_Nombre.Trim().Replace("\r", ""))) return false;
             //if ((source.Estado_Codigo == null) ? target.Estado_Codigo != null : !((target.Estado_Codigo == String.Empty && source.Estado_Codigo == null) || (target.Estado_Codigo == null && source.Estado_Codigo == String.Empty)) && !source.Estado_Codigo.Trim().Replace("\r", "").Equals(target.Estado_Codigo.Trim().Replace("\r", ""))) return false;
@@ -1379,6 +1389,8 @@ namespace DataAccess
                              NroObraEjecucion = o.NroObraEjecucion
                              ,
                              IdSubProgramaEjecucion = o.IdSubProgramaEjecucion
+                             ,
+                             IdJurisdiccionEnEjecucion = o.IdJurisdiccionEnEjecucion
                              ,
                              Estado_Nombre = t1.Nombre
                                  //,FinalidadFuncion_Denominacion = t2 != null ? (string)t2.Denominacion : null

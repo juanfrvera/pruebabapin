@@ -149,6 +149,8 @@ namespace UI.Web
             pnlOrigenFinanciamientoGral.ToolTip = Translate("TooltipFinanciamientoExterno");
             pnlProyectosRelacionadosGral.ToolTip = Translate("TooltipProyectosRelacionados");
             pnlOtrosDatos.ToolTip = Translate("TooltipProyectoObservaciones");
+
+            ddlJurisdiccion.ToolTip = Translate("TooltipProyectoJurisdiccionEnEjecucion");
         }
         public override void Clear()
         {
@@ -180,7 +182,8 @@ namespace UI.Web
             UIHelper.Clear(txtCostoTotal);
             UIHelper.Clear(txtEjercicioEstimacion);
             UIHelper.Clear(txtCostoInicialEstimado);
-
+            UIHelper.Clear(ddlJurisdiccion);
+            
             if (CrudAction == CrudActionEnum.Create)
             {
                 UIHelper.SetValue(toIniciador, ActualOficina.IdOficina);
@@ -202,6 +205,9 @@ namespace UI.Web
             else
                 safs = SafService.Current.GetResultFromList(new nc.SafFilter() { Activo = true, IdUsusario = UIContext.Current.ContextUser.User.ID });
             UIHelper.Load<SafResult>(ddlSAF, safs, "CodigoDenominacion", "IdSaf", new SafResult() { IdSaf = 0, Codigo = "", Denominacion = "Seleccione Saf" }, true, "CodigoInt", typeof(Int32));
+
+            var jurisdicciones = JurisdiccionService.Current.GetResultFromList(new nc.JurisdiccionFilter() { Activo = true });
+            UIHelper.Load<nc.JurisdiccionResult>(ddlJurisdiccion, jurisdicciones, "CodigoNombre", "IdJurisdiccion", new JurisdiccionResult() { IdJurisdiccion = 0, Codigo = "", Nombre = "Seleccione Jurisdicción" }, true, "CodigoInt", Type.GetType("System.Int32"));
 
             //Matias 20170125 - Ticket #ER311422
             //Inserta, en caso que el TipoProyecto del Proyecto esta INACTIVO, el TipoProyecto en el ddlTipoProyecto
@@ -256,12 +262,18 @@ namespace UI.Web
                 Contract.OficinaResult os = OficinaService.Current.GetResult(new nc.OficinaFilter() { IdOficina = UIContext.Current.ContextUser.User.Persona_IdOficina }).SingleOrDefault();
                 int? idOficinaIdSAF = os.IdSaf.Equals(null) ? 0 : os.IdSaf;
                 UIHelper.SetValue(ddlSAF, idOficinaIdSAF);
+
+                Contract.SafResult safCreate = SafService.Current.GetResult(new nc.SafFilter() { IdSaf = idOficinaIdSAF }).SingleOrDefault();
+                UIHelper.SetValue(ddlJurisdiccion, safCreate.IdJurisdiccion); 
             }
             else
             {
                 UIHelper.SetValue(ddlSAF, Entity.proyecto.IdSAF); /*Sentencia original unica*/
+                UIHelper.SetValue(ddlJurisdiccion, Entity.proyecto.IdJurisdiccionEnEjecucion);
             }
             //FinMatias 20131205 - Tarea 91
+
+            
 
             //UIHelper.SetValue(acSaf , Entity.proyecto.IdSAF);
             //UIHelper.SetValue(acSaf, String.Format("{0}-{1}", Entity.proyecto.Saf_Codigo, Entity.proyecto.Saf_Nombre));
@@ -343,6 +355,7 @@ namespace UI.Web
 
             Entity.proyecto.IdTipoProyecto = UIHelper.GetInt(ddlTipoProyecto);
             Entity.proyecto.IdSAF = UIHelper.GetInt(ddlSAF);
+            Entity.proyecto.IdJurisdiccionEnEjecucion = UIHelper.GetIntNullable(ddlJurisdiccion);
             Entity.proyecto.EsBorrador = esBorrador;
             //Entity.proyecto.Activo  = UIHelper.GetBoolean(chkActivo);
             Entity.proyecto.IdPrograma = UIHelper.GetInt(ddlPrograma);
