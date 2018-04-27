@@ -1093,11 +1093,11 @@ namespace UI.Web
                     var i = 0;
                     for (i = 4; i < dataTable.Columns.Count; i++)
                     {
-                        var totalColumn = 0;
+                        long totalColumn = 0;
                         //for (var r = 0; r < dataTable.Rows.Count; r++)
                         foreach (GridViewRow row in gridEtapasEstimadas.Rows)
                         {
-                            totalColumn += Convert.ToInt32(row.Cells[i].Text.Replace(".", string.Empty));
+                            totalColumn += Convert.ToInt64(row.Cells[i].Text.Replace(".", string.Empty));
                         }
 
                         //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName) ).Sum(x => x.Estimado);
@@ -1859,11 +1859,11 @@ namespace UI.Web
                     var i = 0;
                     for (i = 5; i < dataTable.Columns.Count; i++)
                     {
-                        var totalColumn = 0;
+                        long totalColumn = 0;
                         //for (var r = 0; r < dataTable.Rows.Count; r++)
                         foreach (GridViewRow row in gridEtapasRealizadas.Rows)
                         {
-                            totalColumn += Convert.ToInt32(row.Cells[i].Text.Replace(".", string.Empty));
+                            totalColumn += Convert.ToInt64(row.Cells[i].Text.Replace(".", string.Empty));
                         }
                         //var total = totalesPorAnio.Where(x => x.Anio == Convert.ToInt32(dataTable.Columns[i].ColumnName)).Sum(x => x.Realizado);
                         gridEtapasRealizadas.FooterRow.Cells[i].Text = totalColumn.ToString("N0");

@@ -159,7 +159,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Literal ID="Literal1" Text="Marca de estimación" runat="server"></asp:Literal>
+                        <asp:Literal ID="Literal1" Text="Año de Estimación" runat="server"></asp:Literal>
                     </td>
                     <td>
                         <asp:TextBox ID="txtEjercicioEstimacion" Enabled="false" runat="server" TabIndex="19" Width="130px"></asp:TextBox>
