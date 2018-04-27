@@ -20,8 +20,7 @@ namespace UI.Web.Pages
         protected override void _Initialize()
         {
             base._Initialize();
-            revNecesidadASatisfacer.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revNecesidadASatisfacer.ErrorMessage = TranslateFormat("FieldInvalidLength", "Necesidad a satisfacer (2000 caractéres máx.)");
+
             if (!IsPostBack)
             {
                 txtNecesidadASatisfacer.Attributes.Add("maxlength", txtNecesidadASatisfacer.MaxLength.ToString());
@@ -32,7 +31,7 @@ namespace UI.Web.Pages
                 txtDescripcionTecnica.Attributes.Add("maxlength", txtDescripcionTecnica.MaxLength.ToString());
                 txtVidaUtil.Attributes.Add("maxlength", txtVidaUtil.MaxLength.ToString());
                 txtCoberturaTerritorial.Attributes.Add("maxlength", txtCoberturaTerritorial.MaxLength.ToString());
-                txtCoberturaPoblacional.Attributes.Add("maxlength", txtCoberturaPoblacional.MaxLength.ToString());
+                //txtCoberturaPoblacional.Attributes.Add("maxlength", txtCoberturaPoblacional.MaxLength.ToString());
                 txtCoberturaBeneficiariosDirectos.Attributes.Add("maxlength", txtCoberturaBeneficiariosDirectos.MaxLength.ToString());
                 txtCoberturaBeneficiariosIndirectos.Attributes.Add("maxlength", txtCoberturaBeneficiariosIndirectos.MaxLength.ToString());
                 txtDimensionesCostosEnte.Attributes.Add("maxlength", txtDimensionesCostosEnte.MaxLength.ToString());
@@ -41,48 +40,51 @@ namespace UI.Web.Pages
                 //No tiene maxlength txtObservacionesDNIP.Attributes.Add("maxlength", txtObservacionesDNIP.MaxLength.ToString());
             }
 
-            revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1000);
-            revObjetivoDelProyecto.ErrorMessage = TranslateFormat("FieldInvalidLength", "Objetivo Del Proyecto (1000 caractéres máx.)");
+            revNecesidadASatisfacer.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revNecesidadASatisfacer.ErrorMessage = TranslateFormat("FieldInvalidLength", "Necesidad a satisfacer (3000 caractéres máx.)");
+
+            revObjetivoDelProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revObjetivoDelProyecto.ErrorMessage = TranslateFormat("FieldInvalidLength", "Objetivo Del Proyecto (3000 caractéres máx.)");
             txtObjetivoDelProyecto.ToolTip = "El “objetivo” de un proyecto es la descripción de la solución al problema que se ha diagnosticado (situación que se desea alcanzar). Ejemplo: “si el problema principal en el sector de salud es una alta tasa de mortalidad infantil en la población de menores ingresos, el objetivo sería reducir en un X% la tasa de mortalidad infantil en esa población al cabo de X años”";
 
-            revProductoOServicio.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revProductoOServicio.ErrorMessage = TranslateFormat("FieldInvalidLength", "Producto o servicio que brindará el proyecto una vez finalizado? (255 caractéres máx.)");
+            revProductoOServicio.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1500);
+            revProductoOServicio.ErrorMessage = TranslateFormat("FieldInvalidLength", "Producto o servicio que brindará el proyecto una vez finalizado? (1500 caractéres máx.)");
 
-            revAlternativas.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revAlternativas.ErrorMessage = TranslateFormat("FieldInvalidLength", "Alternativas (2000 caractéres máx.)");
+            revAlternativas.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revAlternativas.ErrorMessage = TranslateFormat("FieldInvalidLength", "Alternativas (3000 caractéres máx.)");
 
-            revPorqueAlternativa.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revPorqueAlternativa.ErrorMessage = TranslateFormat("FieldInvalidLength", "Por que han seleccionado la alternativa elegida (2000 caractéres máx.)");
+            revPorqueAlternativa.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revPorqueAlternativa.ErrorMessage = TranslateFormat("FieldInvalidLength", "Por que han seleccionado la alternativa elegida (3000 caractéres máx.)");
 
-            revDescripcionTecnica.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revDescripcionTecnica.ErrorMessage = TranslateFormat("FieldInvalidLength", "Descripcion Tecnica (2000 caractéres máx.)");
+            revDescripcionTecnica.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revDescripcionTecnica.ErrorMessage = TranslateFormat("FieldInvalidLength", "Descripcion Tecnica (3000 caractéres máx.)");
 
-            revVidaUtil.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revVidaUtil.ErrorMessage = TranslateFormat("FieldInvalidLength", "Vida útil del principal bien de capital a incorporar en el marco del proyecto (255 caractéres máx.)");
+            revVidaUtil.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(500);
+            revVidaUtil.ErrorMessage = TranslateFormat("FieldInvalidLength", "Vida útil del principal bien de capital a incorporar en el marco del proyecto (500 caractéres máx.)");
 
-            revCoberturaTerritorial.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revCoberturaTerritorial.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Territorial (2000 caractéres máx.)");
-            revCoberturaPoblacional.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revCoberturaPoblacional.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Poblacional (255 caractéres máx.)");
-            revCoberturaBeneficiariosDirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revCoberturaBeneficiariosDirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Directos (2000 caractéres máx.)");
-            revCoberturaBeneficiariosIndirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revCoberturaBeneficiariosIndirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Indirectos (255 caractéres máx.)");
+            revCoberturaTerritorial.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1500);
+            revCoberturaTerritorial.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Territorial (1500 caractéres máx.)");
+            //revCoberturaPoblacional.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
+            //revCoberturaPoblacional.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Poblacional (1500 caractéres máx.)");
+            revCoberturaBeneficiariosDirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1500);
+            revCoberturaBeneficiariosDirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Directos (1500 caractéres máx.)");
+            revCoberturaBeneficiariosIndirectos.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1500);
+            revCoberturaBeneficiariosIndirectos.ErrorMessage = TranslateFormat("FieldInvalidLength", "Cobertura Beneficiarios Indirectos (1500 caractéres máx.)");
 
-            revDificultadesRiesgosEnumeracion.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2000);
-            revDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("FieldInvalidLength", "Dificultades o Riesgos significativos. (2000 caractéres máx.)");
+            revDificultadesRiesgosEnumeracion.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(3000);
+            revDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("FieldInvalidLength", "Dificultades o Riesgos significativos. (3000 caractéres máx.)");
             rfvDificultadesRiesgosEnumeracion.ErrorMessage = TranslateFormat("FieldIsNull", "Dificultades o Riesgos significativos.");
             revDificultadesRiesgosEnumeracionMinLength.ErrorMessage = TranslateFormat("{0}", "El campo Dificultades o Riesgos significativos. Requiere como mínimo 8 caractéres.");
 
-            revDimensionesCostosEnte.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(255);
-            revDimensionesCostosEnte.ErrorMessage = TranslateFormat("FieldInvalidLength", "Dimensiones Costos (255 caractéres máx.)");
+            revDimensionesCostosEnte.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(500);
+            revDimensionesCostosEnte.ErrorMessage = TranslateFormat("FieldInvalidLength", "Dimensiones Costos (500 caractéres máx.)");
             rfvDimensionesCostosEnte.ErrorMessage = TranslateFormat("FieldIsNull", "Dimensiones Costos.");
             revDimensionesCostosEnteMinLength.ErrorMessage = TranslateFormat("{0}", "El campo Dimensiones Costos. Requiere como mínimo 8 caractéres.");
             rfvDimensionesCostosValidados.ErrorMessage = TranslateFormat("FieldIsNull", "Dimensiones Costos Validados.");
 
             revRequiereIntevencionAutoridad.Enabled = false;
-            revRequiereIntevencionAutoridad.ValidationExpression = Contract.DataHelper.GetExpRegString(255);
-            revRequiereIntevencionAutoridad.ErrorMessage = TranslateFormat("FieldInvalidLength", "Autoridad ambiental competente (255 caractéres máx.)");
+            revRequiereIntevencionAutoridad.ValidationExpression = Contract.DataHelper.GetExpRegString(500);
+            revRequiereIntevencionAutoridad.ErrorMessage = TranslateFormat("FieldInvalidLength", "Autoridad ambiental competente (500 caractéres máx.)");
             rfvRequiereIntevencionAutoridad.Enabled = false;
             rfvRequiereIntevencionAutoridad.ErrorMessage = TranslateFormat("FieldIsNull", "Autoridad ambiental competente");
 
@@ -98,7 +100,7 @@ namespace UI.Web.Pages
             pnlDescripcionTecnica.ToolTip = Translate("TooltipDescripcionTecnica");
             pnlVidaUtil.ToolTip = Translate("TooltipVidaUtil");
             txtCoberturaTerritorial.ToolTip = Translate("TooltipCoberturaTerritorial");
-            txtCoberturaPoblacional.ToolTip = Translate("TooltipCoberturaPoblacional");
+            //txtCoberturaPoblacional.ToolTip = Translate("TooltipCoberturaPoblacional");
             txtCoberturaBeneficiariosDirectos.ToolTip = Translate("TooltipBeneficiariosDirectos");
             txtCoberturaBeneficiariosIndirectos.ToolTip = Translate("TooltipBeneficiariosIndirectos");
             pnlDificultadesRiesgos.ToolTip = Translate("TooltipDificultadesRiesgos");
@@ -118,7 +120,7 @@ namespace UI.Web.Pages
             UIHelper.Clear(txtDescripcionTecnica);
             UIHelper.Clear(txtVidaUtil);
             UIHelper.Clear(txtCoberturaTerritorial);
-            UIHelper.Clear(txtCoberturaPoblacional);
+            //UIHelper.Clear(txtCoberturaPoblacional);
             UIHelper.Clear(txtCoberturaBeneficiariosDirectos);
             UIHelper.Clear(txtCoberturaBeneficiariosIndirectos);
 
@@ -144,7 +146,7 @@ namespace UI.Web.Pages
             Entity.PrincipiosFormulacion.DescripcionTecnica = UIHelper.GetString(txtDescripcionTecnica);
             Entity.PrincipiosFormulacion.VidaUtil = UIHelper.GetString(txtVidaUtil);
             Entity.PrincipiosFormulacion.CoberturaTerritorial = UIHelper.GetString(txtCoberturaTerritorial);
-            Entity.PrincipiosFormulacion.CoberturaPoblacional = UIHelper.GetString(txtCoberturaPoblacional);
+            //Entity.PrincipiosFormulacion.CoberturaPoblacional = UIHelper.GetString(txtCoberturaPoblacional);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosDirectos = UIHelper.GetString(txtCoberturaBeneficiariosDirectos);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosIndirectos = UIHelper.GetString(txtCoberturaBeneficiariosIndirectos);
             Entity.PrincipiosFormulacion.ObservacionesDNIP = UIHelper.GetString(txtObservacionesDNIP);
@@ -244,11 +246,11 @@ namespace UI.Web.Pages
                 if (String.IsNullOrEmpty(txtVidaUtil.Text)) lblVidaUtil.Style.Add("color", "red");
 
                 UIHelper.SetValue(txtCoberturaTerritorial, Entity.PrincipiosFormulacion.CoberturaTerritorial);
-                UIHelper.SetValue(txtCoberturaPoblacional, Entity.PrincipiosFormulacion.CoberturaPoblacional);
+                //UIHelper.SetValue(txtCoberturaPoblacional, Entity.PrincipiosFormulacion.CoberturaPoblacional);
                 UIHelper.SetValue(txtCoberturaBeneficiariosDirectos, Entity.PrincipiosFormulacion.CoberturaBeneficiariosDirectos);
                 UIHelper.SetValue(txtCoberturaBeneficiariosIndirectos, Entity.PrincipiosFormulacion.CoberturaBeneficiariosIndirectos);
                 if (String.IsNullOrEmpty(txtCoberturaTerritorial.Text)
-                    && String.IsNullOrEmpty(txtCoberturaPoblacional.Text)
+                    //&& String.IsNullOrEmpty(txtCoberturaPoblacional.Text)
                     && String.IsNullOrEmpty(txtCoberturaBeneficiariosDirectos.Text)
                     && String.IsNullOrEmpty(txtCoberturaBeneficiariosIndirectos.Text)) lblCobertura.Style.Add("color", "red");
 

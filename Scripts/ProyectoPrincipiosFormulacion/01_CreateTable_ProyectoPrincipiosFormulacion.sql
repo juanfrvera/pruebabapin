@@ -12,28 +12,28 @@ GO
 CREATE TABLE [dbo].[ProyectoPrincipiosFormulacion] (
 [IdProyectoPrincipiosFormulacion] int NOT NULL IDENTITY(1,1) ,
 [IdProyecto] int NOT NULL ,
-[NecesidadASatisfacer] varchar(2000) NULL ,
-[ObjetivoDelProyecto] varchar(1000) NULL ,
-[ProductoOServicio] varchar(255) NULL ,
-[Alternativas] varchar(2000) NULL ,
-[PorqueAlternativa] varchar(2000) NULL ,
-[DescripcionTecnica] varchar(2000) NULL ,
-[VidaUtil] varchar(255) NULL ,
+[NecesidadASatisfacer] varchar(3000) NULL ,
+[ObjetivoDelProyecto] varchar(1500) NULL ,
+[ProductoOServicio] varchar(1500) NULL ,
+[Alternativas] varchar(3000) NULL ,
+[PorqueAlternativa] varchar(3000) NULL ,
+[DescripcionTecnica] varchar(3000) NULL ,
+[VidaUtil] varchar(500) NULL ,
 
-[CoberturaTerritorial] varchar(2000) NULL ,
-[CoberturaPoblacional] varchar(255) NULL ,
-[CoberturaBeneficiariosDirectos] varchar(2000) NULL ,
-[CoberturaBeneficiariosIndirectos] varchar(255) NULL ,
+[CoberturaTerritorial] varchar(1500) NULL ,
+[CoberturaPoblacional] varchar(1500) NULL ,
+[CoberturaBeneficiariosDirectos] varchar(1500) NULL ,
+[CoberturaBeneficiariosIndirectos] varchar(1500) NULL ,
 
 [DificultadesRiesgos] bit NULL ,
-[DificultadesRiesgosEnumeracion] varchar(2000) NULL ,
+[DificultadesRiesgosEnumeracion] varchar(3000) NULL ,
 
 [DimensionesCostosDimensionados] bit NULL ,
 [DimensionesCostosValidados] bit NULL ,
-[DimensionesCostosEnte] varchar(255) NULL ,
+[DimensionesCostosEnte] varchar(500) NULL ,
 
 [RequiereIntevencion] bit NULL  ,
-[RequiereIntevencionAutoridad] varchar(255) NULL ,
+[RequiereIntevencionAutoridad] varchar(500) NULL ,
 [RequiereIntevencionEstado] int NULL ,  --0 A Iniciar, 1 En Curso, 2 Terminado
 
 [ObservacionesDNIP] varchar(MAX) NULL

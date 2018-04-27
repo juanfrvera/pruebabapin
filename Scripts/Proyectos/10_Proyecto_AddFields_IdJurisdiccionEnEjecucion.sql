@@ -19,3 +19,16 @@ WHERE type_desc LIKE '%CONSTRAINT' and OBJECT_NAME(OBJECT_ID) = 'FK_Proyecto_Jur
 
 ALTER TABLE [dbo].[Proyecto] ADD CONSTRAINT [FK_Proyecto_Jurisdiccion] FOREIGN KEY ([IdJurisdiccionEnEjecucion]) REFERENCES [dbo].[Jurisdiccion] ([IdJurisdiccion]) ON DELETE NO ACTION ON UPDATE NO ACTION
 GO
+
+Update Proyecto 
+set IdJurisdiccionEnEjecucion = (
+	Select IdJurisdiccion from Saf s 
+	inner join Programa p on p.IdSaf= s.IdSaf
+	inner join SubPrograma sp on sp.IdPrograma = p.IdPrograma
+where 
+Proyecto.IdSubPrograma = sp.IdSubPrograma
+and Proyecto.IdJurisdiccionEnEjecucion is null
+)
+
+GO
+

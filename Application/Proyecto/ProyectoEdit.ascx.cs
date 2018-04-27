@@ -207,7 +207,8 @@ namespace UI.Web
             UIHelper.Load<SafResult>(ddlSAF, safs, "CodigoDenominacion", "IdSaf", new SafResult() { IdSaf = 0, Codigo = "", Denominacion = "Seleccione Saf" }, true, "CodigoInt", typeof(Int32));
 
             var jurisdicciones = JurisdiccionService.Current.GetResultFromList(new nc.JurisdiccionFilter() { Activo = true });
-            UIHelper.Load<nc.JurisdiccionResult>(ddlJurisdiccion, jurisdicciones, "CodigoNombre", "IdJurisdiccion", new JurisdiccionResult() { IdJurisdiccion = 0, Codigo = "", Nombre = "Seleccione Jurisdicción" }, true, "CodigoInt", Type.GetType("System.Int32"));
+            UIHelper.Load<nc.JurisdiccionResult>(ddlJurisdiccion, jurisdicciones, "CodigoNombre", "IdJurisdiccion", new List<JurisdiccionResult>(), true, "CodigoInt", Type.GetType("System.Int32"));
+            //new JurisdiccionResult() { IdJurisdiccion = 0, Codigo = "", Nombre = "Seleccione Jurisdicción" }, 
 
             //Matias 20170125 - Ticket #ER311422
             //Inserta, en caso que el TipoProyecto del Proyecto esta INACTIVO, el TipoProyecto en el ddlTipoProyecto

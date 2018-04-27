@@ -945,3 +945,15 @@ Select IdText, (Select [IdLanguage] from [Language] where Name = 'Español'), De
 from [Text]
 where IdText >= (Select IdText from [Text] where Code = 'TooltipProyectoJurisdiccionEnEjecucion')
 GO
+
+Update Proyecto 
+set IdJurisdiccionEnEjecucion = (
+	Select IdJurisdiccion from Saf s 
+	inner join Programa p on p.IdSaf= s.IdSaf
+	inner join SubPrograma sp on sp.IdPrograma = p.IdPrograma
+where 
+Proyecto.IdSubPrograma = sp.IdSubPrograma
+and Proyecto.IdJurisdiccionEnEjecucion is null
+)
+GO
+

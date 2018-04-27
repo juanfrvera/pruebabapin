@@ -5,7 +5,7 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="spanNecesidadASatisfacer">
-                <asp:Label ID="lblNecesidadASatisfacer" runat="server" Text="¿Cuál es la necesidad a satisfacer o la problemática a solucionar con el presente proyecto de inversión? (2000 caracteres)"></asp:Label>
+                <asp:Label ID="lblNecesidadASatisfacer" runat="server" Text="1. ¿Cuál es la necesidad a satisfacer o la problemática a solucionar con el presente proyecto de inversión? (3000 caracteres)"></asp:Label>
                 &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeNecesidadASatisfacer" runat="Server" TargetControlID="pnlNecesidadASatisfacer"
@@ -16,7 +16,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtNecesidadASatisfacer" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtNecesidadASatisfacer" MaxLength="3000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +36,7 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span1">
-                <asp:Label ID="lblObjetivoDelProyecto" runat="server" Text="¿Cuál es el objetivo del proyecto? (1000 caracteres)"></asp:Label>
+                <asp:Label ID="lblObjetivoDelProyecto" runat="server" Text="2. ¿Cuál es el objetivo del proyecto? (1500 caracteres)"></asp:Label>
                 &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeObjetivoDelProyecto" runat="Server" TargetControlID="pnlObjetivoDelProyecto"
@@ -47,7 +47,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtObjetivoDelProyecto" MaxLength="1000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtObjetivoDelProyecto" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -67,7 +67,7 @@
     <ContentTemplate>
     <div class="CollapsiblePanelTab">
         <span id="span2">
-            <asp:Label ID="lblProductoOServicio" runat="server" Text="¿Cuál es el producto o servicio que brindará el proyecto una vez finalizado? (255 caracteres)"></asp:Label>
+            <asp:Label ID="lblProductoOServicio" runat="server" Text="3. ¿Cuál es el producto o servicio que brindará el proyecto una vez finalizado? (1500 caracteres)"></asp:Label>
             &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="cpeProductoOServicio" runat="Server" TargetControlID="pnlProductoOServicio"
@@ -78,7 +78,7 @@
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
                     <td>
-                        <asp:TextBox runat="server" ID="txtProductoOServicio" MaxLength="255"  Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtProductoOServicio" MaxLength="1500"  Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -98,7 +98,7 @@
     <ContentTemplate>
     <div class="CollapsiblePanelTab">
         <span id="span3">
-            <asp:Label ID="lblAlternativas" runat="server" Text="¿Qué alternativas han sido consideradas para satisfacer la necesidad o resolver la problemática planteada? (2000 caracteres)"></asp:Label>
+            <asp:Label ID="lblAlternativas" runat="server" Text="4. ¿Qué alternativas han sido consideradas para satisfacer la necesidad o resolver la problemática planteada? (3000 caracteres)"></asp:Label>
             &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="cpeAlternativas" runat="Server" TargetControlID="pnlAlternativas"
@@ -109,7 +109,7 @@
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
                     <td>
-                        <asp:TextBox runat="server" ID="txtAlternativas" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtAlternativas" MaxLength="3000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -129,7 +129,7 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span4">
-                <asp:Label ID="lblPorqueAlternativa" runat="server" Text="¿Por qué han seleccionado la alternativa elegida? (2000 caracteres)"></asp:Label>
+                <asp:Label ID="lblPorqueAlternativa" runat="server" Text="5. ¿Por qué han seleccionado la alternativa elegida? (3000 caracteres)"></asp:Label>
                 &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpePorqueAlternativa" runat="Server" TargetControlID="pnlPorqueAlternativa"
@@ -141,7 +141,7 @@
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                     <tr>
                         <td>
-                            <asp:TextBox runat="server" ID="txtPorqueAlternativa" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtPorqueAlternativa" MaxLength="3000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -161,7 +161,7 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span5">
-        <asp:Label ID="lblDescripcionTecnica" runat="server" Text="Realice una descripción técnica de la alternativa elegida. (2000 caracteres)"></asp:Label>
+        <asp:Label ID="lblDescripcionTecnica" runat="server" Text="6. Realice una descripción técnica de la alternativa elegida. (3000 caracteres)"></asp:Label>
         &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeDescripcionTecnica" runat="Server" TargetControlID="pnlDescripcionTecnica"
@@ -172,7 +172,7 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:TextBox runat="server" ID="txtDescripcionTecnica" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtDescripcionTecnica" MaxLength="3000" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -192,7 +192,7 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span6">
-        <asp:Label ID="lblVidaUtil" runat="server" Text="¿Cuál es la vida útil del principal bien de capital a incorporar en el marco del proyecto? (255 caracteres)"></asp:Label>
+        <asp:Label ID="lblVidaUtil" runat="server" Text="7. ¿Cuál es la vida útil del principal bien de capital a incorporar en el marco del proyecto? (500 caracteres)"></asp:Label>
         &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeVidaUtil" runat="Server" TargetControlID="pnlVidaUtil"
@@ -203,7 +203,7 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td>
-                    <asp:TextBox runat="server" placeholder="Indicar el período en años/meses/días/horas" ID="txtVidaUtil" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" placeholder="Indicar el período en años/meses/días/horas" ID="txtVidaUtil" MaxLength="500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -223,7 +223,7 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span7">
-        <asp:Label ID="lblCobertura" runat="server" Text="¿Cuál será la cobertura territorial y poblacional del proyecto? ¿Quiénes y cuántos serán los beneficiarios directos e indirectos del proyecto?"></asp:Label>
+        <asp:Label ID="lblCobertura" runat="server" Text="8. ¿Cuál será la cobertura territorial y poblacional del proyecto? ¿Quiénes y cuántos serán los beneficiarios directos e indirectos del proyecto?"></asp:Label>
         &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeCobertura" runat="Server" TargetControlID="pnlCobertura"
@@ -234,10 +234,10 @@
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                 <td style="width:101px;">
-                    Cobertura Territorial<br>(2000 caracteres)
+                    Cobertura Territorial<br>(1500 caracteres)
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaTerritorial" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaTerritorial" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaTerritorial" runat="server" ControlToValidate="txtCoberturaTerritorial"
@@ -245,12 +245,12 @@
                     </asp:RegularExpressionValidator>
                 </td>
             </tr>
-            <tr>
+            <tr runat="server" Visible="false">
                 <td style="width:101px;">
                     Cobertura Poblacional<br>(255 caracteres)
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaPoblacional" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaPoblacional" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaPoblacional" runat="server" ControlToValidate="txtCoberturaPoblacional"
@@ -260,10 +260,10 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Directos<br>(2000 caracteres)
+                    Cobertura Beneficiarios Directos<br>(1500 caracteres)
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" MaxLength="2000" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaBeneficiariosDirectos" runat="server" ControlToValidate="txtCoberturaBeneficiariosDirectos"
@@ -273,10 +273,10 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Indirectos<br>(255 caracteres)
+                    Cobertura Beneficiarios Indirectos<br>(1500 caracteres)
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" MaxLength="255" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revCoberturaBeneficiariosIndirectos" runat="server" ControlToValidate="txtCoberturaBeneficiariosIndirectos"
@@ -294,7 +294,7 @@
     <ContentTemplate>
         <div class="CollapsiblePanelTab">
             <span id="span8">
-                <asp:Label ID="lblDificultadesRiesgos" runat="server" Text="¿El proyecto presenta dificultades o riesgos significativos (sociales, institucionales, legales ambientales, etc.) pasibles de suceder durante su ejecución, puesta en funcionamiento o cierre/desmantelamiento? (2000 caracteres)"></asp:Label>
+                <asp:Label ID="lblDificultadesRiesgos" runat="server" Text="9. ¿El proyecto presenta dificultades o riesgos significativos (sociales, institucionales, legales ambientales, etc.) pasibles de suceder durante su ejecución, puesta en funcionamiento o cierre/desmantelamiento? (3000 caracteres)"></asp:Label>
                 &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
             </span>
             <ajaxToolkit:CollapsiblePanelExtender ID="cpeDificultadesRiesgos" runat="Server" TargetControlID="pnlDificultadesRiesgos"
@@ -309,7 +309,7 @@
                             <asp:RadioButton ID="cbDificultadesRiesgosNo" GroupName="DificultadesRiesgos" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DificultadesRiesgos") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDificultadesRiesgos_CheckedChanged"/>
                         </td>
                         <td>
-                            <asp:TextBox runat="server" ID="txtDificultadesRiesgosEnumeracion" MaxLength="2000" placeholder="Enumérelos" Rows="6" TextMode="MultiLine" Enabled="false"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtDificultadesRiesgosEnumeracion" MaxLength="3000" placeholder="Enumérelos" Rows="6" TextMode="MultiLine" Enabled="false"></asp:TextBox>
                         </td>
                         <td Width="1px">
                             <asp:RegularExpressionValidator Enabled="false" Display = "Dynamic" ControlToValidate = "txtDificultadesRiesgosEnumeracion" ID="revDificultadesRiesgosEnumeracionMinLength" ValidationExpression = "^[\s\S]{8,}$" runat="server" Text="*" ValidationGroup="EditionProyectoPrincipios"></asp:RegularExpressionValidator>
@@ -331,7 +331,7 @@
     <ContentTemplate>
     <div class="CollapsiblePanelTab">
         <span id="span9">
-            <asp:Label ID="lblDimensionesCostos" runat="server" Text="¿Han sido dimensionados los costos de operación y mantenimiento que tendrá el proyecto cuando esté en funcionamiento?"></asp:Label>
+            <asp:Label ID="lblDimensionesCostos" runat="server" Text="10. ¿Han sido dimensionados los costos de operación y mantenimiento que tendrá el proyecto cuando esté en funcionamiento?"></asp:Label>
             &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
         </span>
         <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender9" runat="Server" TargetControlID="pnlDimensionesCostos"
@@ -341,14 +341,19 @@
     <asp:Panel ID="pnlDimensionesCostos" runat="server">
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
-                    <td>
+                    <td colspan="3">
                         <asp:RadioButton ID="cbDimensionesCostosDimensionados" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="Si" CssClass="" ValidationGroup="" OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
                         <asp:RadioButton ID="cbDimensionesCostosDimensionadosNo" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
                     </td>
-                    <td>
+                </tr>
+                <tr>
+                    <td colspan="3">
                         <asp:Literal ID="lblDimensionesCostosValidados" Text="¿Los costos fueron validados con la institución, autoridad o nivel de gobierno (nacional, provincial, municipal) que deberá afrontarlos?" runat="server"></asp:Literal>
-
-                        <asp:RadioButtonList ID="rblDimensionesCostosValidados" RepeatDirection="Horizontal" RepeatLayout="Flow" runat="server" ValidationGroup="EditionProyectoPrincipios" AutoPostBack="true" OnTextChanged="cbDimensionesCostosValidados_CheckedChanged" >
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:RadioButtonList ID="rblDimensionesCostosValidados" RepeatDirection="Horizontal" RepeatLayout="Table" TextAlign="Left"  runat="server" ValidationGroup="EditionProyectoPrincipios" AutoPostBack="true" OnTextChanged="cbDimensionesCostosValidados_CheckedChanged" >
                             <asp:ListItem>Si</asp:ListItem>
                             <asp:ListItem>No</asp:ListItem>
                         </asp:RadioButtonList>
@@ -360,11 +365,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width:101px;">
-                        <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización. (255 caracteres)" runat="server"></asp:Literal>
+                    <td colspan="3">
+                        <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización. (500 caracteres)" runat="server"></asp:Literal>
                     </td>
-                    <td>
-                        <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" MaxLength="255" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" MaxLength="500" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
                     </td>
                     <td Width="1px">
                         <asp:RegularExpressionValidator ID="revDimensionesCostosEnte" runat="server" ControlToValidate="txtDimensionesCostosEnte"
@@ -386,7 +393,7 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span10">
-        <asp:Label ID="lblRequiereIntevencion" runat="server" Text="¿El proyecto requiere intervención de una autoridad ambiental competente? "></asp:Label>
+        <asp:Label ID="lblRequiereIntevencion" runat="server" Text="11. ¿El proyecto requiere intervención de una autoridad ambiental competente? "></asp:Label>
         &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender10" runat="Server" TargetControlID="pnlRequiereIntevencion"
@@ -401,10 +408,10 @@
                     <asp:RadioButton ID="cbRequiereIntevencionNo" GroupName="RequiereIntevencion" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("RequiereIntevencion") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbRequiereIntevencionNo_CheckedChanged"/>
                 </td>
                 <td style="width:101px;">
-                    Indique cuál es la autoridad ambiental competente<br>(255 caracteres)
+                    Indique cuál es la autoridad ambiental competente<br>(500 caracteres)
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" MaxLength="255" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtRequiereIntevencionAutoridad" MaxLength="500" Enabled="false" Rows="6" TextMode="MultiLine"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="revRequiereIntevencionAutoridad" runat="server" ControlToValidate="txtRequiereIntevencionAutoridad"
