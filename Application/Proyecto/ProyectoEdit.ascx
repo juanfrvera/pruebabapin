@@ -117,7 +117,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Literal ID="liDenominacion" Text="Denominación" runat="server"></asp:Literal>
+                        <asp:Literal ID="liDenominacion" Text="Denominación BAPIN" runat="server"></asp:Literal>
                     </td>
                     <td colspan="7">
                         <asp:TextBox ID="txtDenominacion" runat="server" Rows="2" TextMode="MultiLine" Width="826px" TabIndex="13"></asp:TextBox>
