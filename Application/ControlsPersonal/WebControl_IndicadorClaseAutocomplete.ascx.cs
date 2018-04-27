@@ -54,7 +54,7 @@ namespace UI.Web
             this._pnControl = pnControl;
             this._hdFilter = hdFilter;            
             base._SetControls();
-            ddlSectorInd.Attributes["onchange"] = "SelectSector();";
+            ddlSectorInd.Attributes["onchange"] = ClientID + "SelectSector();";
             //_txtSelect.Attributes["onChange"] = "Validate();";
 
         }

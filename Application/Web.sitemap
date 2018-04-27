@@ -136,7 +136,7 @@
       </siteMapNode>
     </siteMapNode>
     <siteMapNode url="~/General/MessageSendPageList.aspx" title="Mensajes"  description="Mensajes" roles="*" />
-    <siteMapNode title="Seguridad"  description="Seguridad" roles="*" >
+    <siteMapNode title="Usuarios"  description="Seguridad" roles="*" >
       <siteMapNode url="~/Pages/OficinaPageList.aspx" title="Oficina"  description="Oficina" />
       <siteMapNode url="~/Pages/OficinaPageEdit.aspx" title="Oficina"  description="Oficina" />
       <siteMapNode url="~/Pages/PersonaPageList.aspx" title="Personas"  description="Personas" />

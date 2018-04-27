@@ -4,7 +4,7 @@
 <%@ Register TagPrefix="uc" TagName="DateInput" Src="~/Controls/WebControl_DateInput.ascx" %>
 <%@ Register Assembly="Application" Namespace="UI.Web" TagPrefix="cc" %>
 <%@ Register TagPrefix="uc" TagName="AutocompleteIndicadorClase" Src="~/ControlsPersonal/WebControl_IndicadorClaseAutocomplete.ascx" %>
-<%@ Register TagPrefix="uc" TagName="AutocompleteIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseAutocompleteSinSector.ascx" %>
+<%-- Register TagPrefix="uc" TagName="AutocompleteIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseAutocompleteSinSector.ascx" --%>
 <%--German 01032014 - tarea 110--%>
 <%@ Register TagPrefix="uc" TagName="TreeIndicadorClase" Src="~/ControlsPersonal/WebControl_IndicadorClaseTree.ascx" %>
 <%-- Register TagPrefix="uc" TagName="TreeIndicadorClaseSinSector" Src="~/ControlsPersonal/WebControl_IndicadorClaseTreeSinSector.ascx" --%>
@@ -492,10 +492,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <uc:AutocompleteIndicadorClaseSinSector runat="server" ID="autoCmpIndicadorClaseIndicadoresProyecto"
+                                        <uc:AutocompleteIndicadorClase runat="server" ID="autoCmpIndicadorClaseIndicadoresProyecto"
                                             Width="300px" AutocompleteHandler="../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx"
                                             RequiredValue="true" ShowOption="ActivesAndActualValue" ValidationGroup="vgIndicadorProyecto">
-                                        </uc:AutocompleteIndicadorClaseSinSector>
+                                        </uc:AutocompleteIndicadorClase>
                                     </td>
                                 </tr>
                                 <%--German 01032014 - tarea 110--%>

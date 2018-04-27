@@ -46,22 +46,25 @@ function <%=ClientID%>Clear()
 var <%=ClientID%>Autocomplete =null;
 function <%=ClientID%>SetAutocomplete()
 {
-    //debugger;
+    debugger;
     <%=ClientID%>Autocomplete =new AutocompleteSimple('<%=AutocompleteHandler%>','<%=hdFilter.Value%>','<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
     <%=ClientID%>Autocomplete.oAC.minQueryLength = 1;
    
     
 }
 
-function SelectSector()
+function <%=ClientID%>SelectSector()
 {
     debugger ;
+    
     var hdFilter = '<%=hdFilter.ClientID%>';
     var strJson = $(hdFilter).value;
-     if(strJson!="")    
+
+    if(strJson!="")    
     {
         var filter = YAHOO.lang.JSON.parse(strJson); 
         filter.IdIndicadorRubro = $("<%=ddlSectorInd.ClientID%>").value;
+
         $(hdFilter).value =YAHOO.lang.JSON.stringify(filter);        
         <%=ClientID%>Autocomplete.oDS.scriptQueryAppend = 'filter='+$(hdFilter).value+'&SelectOption='+<%=(int) this.SelectOption %>+'&ShowOption='+<%=(int) this.ShowOption %>+'&t'+(new Date().getTime());
     }

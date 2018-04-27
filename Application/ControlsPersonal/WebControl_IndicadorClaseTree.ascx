@@ -70,8 +70,27 @@ var <%=ClientID%>Autocomplete =null;
 
 function <%=ClientID%>SetAutocomplete()
 {
-        debugger;
-    <%=ClientID%>Autocomplete =new AutocompleteSimple('<%=AutocompleteHandler%>','<%=hdFilter.Value%>','<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
+    debugger;
+    
+    <%=ClientID%>SetTreeData();
+    var strJson = $(TreeData.hdFilter).value;  
+    if(strJson!="")
+    {
+        var filter = YAHOO.lang.JSON.parse(strJson);
+        filter.IdIndicadorRubro =  $("<%=ddlSectorInd.ClientID%>").value;
+        $(TreeData.hdFilter).value =YAHOO.lang.JSON.stringify(filter);
+    }
+
+    var hdFilter = '<%=hdFilter.ClientID%>';
+    var strJson1 = $(hdFilter).value;
+    if(strJson1!="")    
+    {
+        var filter = YAHOO.lang.JSON.parse(strJson1); 
+        filter.IdIndicadorRubro = $("<%=ddlSectorInd.ClientID%>").value;
+        $(hdFilter).value =YAHOO.lang.JSON.stringify(filter);        
+    }
+
+    <%=ClientID%>Autocomplete =new AutocompleteSimple('<%=AutocompleteHandler%>',$(hdFilter).value,'<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
     <%=ClientID%>Autocomplete.oAC.minQueryLength = 1;
 }
 

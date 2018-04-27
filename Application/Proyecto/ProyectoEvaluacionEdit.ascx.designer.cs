@@ -550,7 +550,7 @@ namespace UI.Web.Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UI.Web.WebControl_IndicadorClaseAutocompleteSinSector autoCmpIndicadorClaseIndicadoresProyecto;
+        protected global::UI.Web.WebControl_IndicadorClaseAutocomplete autoCmpIndicadorClaseIndicadoresProyecto;
         
         /// <summary>
         /// Literal2 control.
