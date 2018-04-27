@@ -22,8 +22,8 @@
         </asp:TemplateField>
         <asp:BoundField DataField="Estado_Nombre" HeaderText="Etapa" SortExpression="Estado_Nombre" HeaderStyle-Width="10%" />
         <asp:BoundField DataField="Plan_Ultimo" HeaderText="Plan" SortExpression="Plan_Ultimo" HeaderStyle-Width="13%" />
-        <asp:BoundField DataField="TipoProyecto_Nombre" HeaderText="Tipo de Proyecto" SortExpression="TipoProyecto_Nombre" HeaderStyle-Width="10%" />
-        <asp:BoundField DataField="Apertura" HeaderText="Apertura Presupuestaria" SortExpression="Apertura" HeaderStyle-Width="7%" />
+        <asp:BoundField DataField="TipoProyecto_Nombre" HeaderText="Imputación Presupuestaria" SortExpression="TipoProyecto_Nombre" HeaderStyle-Width="10%" />
+        <asp:BoundField DataField="Apertura" HeaderText="Código Presupuestario" SortExpression="Apertura" HeaderStyle-Width="7%" />
         <asp:TemplateField ItemStyle-HorizontalAlign="Right" HeaderText="Acciones" HeaderStyle-Width="14%">
             <ItemTemplate>
 
