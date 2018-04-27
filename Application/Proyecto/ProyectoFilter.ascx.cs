@@ -58,7 +58,12 @@ namespace UI.Web
             //UIHelper.Load<nc.ClasificacionGeografica>(localizacion, ClasificacionGeograficaService.Current.GetList(), "Nombre", "IdClasificacionGeografica", new nc.ClasificacionGeografica() { IdClasificacionGeografica = 0, Nombre = "Seleccione Localización" });
             UIHelper.Load<nc.PlanTipo>(ddlPlanTipo, PlanTipoService.Current.GetList(), "Nombre", "IdPlanTipo", new nc.PlanTipo() { IdPlanTipo = 0, Nombre = "Seleccione Tipo" },true, "Orden");
 			revProyectoDescripcion.ValidationExpression=Contract.DataHelper.GetExpRegStringNullable(2147483647);
-            UIHelper.Load<nc.Estado>(lbxEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { EntidadTipo =  SistemaEntidadConfig.PROYECTO }), "Nombre", "IdEstado","Orden",SortDirection.Ascending);
+            //UIHelper.Load<nc.Estado>(lbxEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { EntidadTipo =  SistemaEntidadConfig.PROYECTO }), "Nombre", "IdEstado","Orden",SortDirection.Ascending);
+            UIHelper.Load<nc.SistemaEntidadEstado>(
+                lbxEstado, 
+                SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto }), 
+                "Nombre", "IdEstado", "Nombre", SortDirection.Ascending);
+
 			//UIHelper.Load<nc.Proceso>( ddlProceso, ProcesoService.Current.GetList(),"Nombre","IdProceso",new nc.Proceso(){IdProceso=0, Nombre= "Seleccione Proceso"});
             revNroProyecto.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(10);
             UIHelper.Load<nc.Prioridad>(ddlPriorizacion, PrioridadService.Current.GetList(), "Nombre", "IdPrioridad", new nc.Prioridad() { IdPrioridad = 0, Nombre = "Seleccione Prioridad" });

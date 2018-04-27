@@ -897,7 +897,9 @@ namespace DataAccess
         public IQueryable<ProyectoResult> QueryResultGraficos(ProyectoFilter filter)
         {
             var query = (from o in Query(filter)
-                         join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         //join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                         join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad
                          //join _t2 in this.Context.FinalidadFuncions on o.IdFinalidadFuncion equals _t2.IdFinalidadFuncion into tt2
                          //from t2 in tt2.DefaultIfEmpty()
                          //join _t3  in this.Context.ModalidadContratacions on o.IdModalidadContratacion equals _t3.IdModalidadContratacion into tt3 from t3 in tt3.DefaultIfEmpty()
@@ -927,6 +929,8 @@ namespace DataAccess
                          from t11 in tt11.DefaultIfEmpty()
                          //join _ed in this.Context.EstadoDeDesicions on o.IdEstadoDeDesicion equals _ed.IdEstadoDeDesicion into ted
                          //from ed in ted.DefaultIfEmpty()
+
+                         where tse.Nombre == "Proyecto"
 
                          select new ProyectoResult()
                          {
@@ -1271,7 +1275,10 @@ namespace DataAccess
         protected override IQueryable<ProyectoResult> QueryResult(ProyectoFilter filter)
         {
             var query = (from o in Query(filter)
-                         join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         //join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                         join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad
+//where t1.IdSistemaEntidad = (this.Context. tse where tse.Nombre equals 'Proyecto' select tse.idsistemaentidad)
                          //join _t2 in this.Context.FinalidadFuncions on o.IdFinalidadFuncion equals _t2.IdFinalidadFuncion into tt2
                          //from t2 in tt2.DefaultIfEmpty()
                          //join _t3  in this.Context.ModalidadContratacions on o.IdModalidadContratacion equals _t3.IdModalidadContratacion into tt3 from t3 in tt3.DefaultIfEmpty()
@@ -1310,7 +1317,8 @@ namespace DataAccess
                          from t11 in tt11.DefaultIfEmpty()
                          //join _ed in this.Context.EstadoDeDesicions on o.IdEstadoDeDesicion equals _ed.IdEstadoDeDesicion into ted
                          //from ed in ted.DefaultIfEmpty()
-
+                         
+                         where  tse.Nombre == "Proyecto"
 
                          select new ProyectoResult()
                          {
@@ -1528,7 +1536,9 @@ namespace DataAccess
         private IQueryable<ProyectoReportResult> GetReportBase(ProyectoFilter filter)
         {
             var query = (from o in Query(filter)
-                         join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         //join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                         join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                         join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad
                          //join t6  in this.Context.ProyectoTipos on o.IdTipoProyecto equals t6.IdProyectoTipo   
                          join _t8 in this.Context.ProyectoPlans on o.IdProyectoPlan equals _t8.IdProyectoPlan into tt8
                          from t8 in tt8.DefaultIfEmpty()
@@ -1554,6 +1564,8 @@ namespace DataAccess
                                 }
                              ) on o.IdProyecto equals _pe.IdProyecto into tpe
                          from pe in tpe.DefaultIfEmpty()
+
+                         where tse.Nombre == "Proyecto"
 
                          group pe by new
                          {
@@ -2423,7 +2435,9 @@ namespace DataAccess
         public List<ProyectoReportResult> GetReport(ProyectoFilter filter)
         {
             return (from o in Query(filter)
-                    join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                    //join t1 in this.Context.Estados on o.IdEstado equals t1.IdEstado
+                    join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                    join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad
                     join t6 in this.Context.ProyectoTipos on o.IdTipoProyecto equals t6.IdProyectoTipo
                     join _t8 in this.Context.ProyectoPlans on o.IdProyectoPlan equals _t8.IdProyectoPlan into tt8
                     from t8 in tt8.DefaultIfEmpty()
@@ -2431,6 +2445,9 @@ namespace DataAccess
                     from t9 in tt9.DefaultIfEmpty()
                     join _t10 in this.Context.PlanTipos on t9.IdPlanTipo equals _t10.IdPlanTipo into tt10
                     from t10 in tt10.DefaultIfEmpty()
+
+                    where tse.Nombre == "Proyecto"
+
                     select new ProyectoReportResult()
                     {
                         IdProyecto = o.IdProyecto
@@ -2479,10 +2496,15 @@ namespace DataAccess
                      from cg in tcg.DefaultIfEmpty()
                      join _ffe in this.Context.FuenteFinanciamientos on pee.IdFuenteFinanciamiento equals _ffe.IdFuenteFinanciamiento into tffe
                      from ffe in tffe.DefaultIfEmpty()
-                     join _e in this.Context.Estados on pe.IdEstado equals _e.IdEstado into te
+                     //join _e in this.Context.Estados on pe.IdEstado equals _e.IdEstado into te
+                     join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                     join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad into te
                      from e in te.DefaultIfEmpty()
                      where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto)
                      && (peep == null || (peep != null && peep.Periodo != null))
+
+                     where e.Nombre == "Proyecto"
+
                      select new ProyectoCronogramaReportResult()
                      {
                          IdProyectoEtapa = pe.IdProyectoEtapa
@@ -2547,7 +2569,9 @@ namespace DataAccess
                      from cg in tcg.DefaultIfEmpty()
                      join _ffe in this.Context.FuenteFinanciamientos on per.IdFuenteFinanciamiento equals _ffe.IdFuenteFinanciamiento into tffe
                      from ffe in tffe.DefaultIfEmpty()
-                     join _e in this.Context.Estados on pe.IdEstado equals _e.IdEstado into te
+                     //join _e in this.Context.Estados on pe.IdEstado equals _e.IdEstado into te
+                     join t1 in this.Context.SistemaEntidadEstados on o.IdEstado equals t1.IdEstado
+                     join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad into te
                      from e in te.DefaultIfEmpty()
                      where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto)
                      && (perp == null || (perp != null && perp.Periodo != null))
@@ -3072,13 +3096,18 @@ namespace DataAccess
                  from cg in tcg.DefaultIfEmpty()
                  join _iei in this.Context.IndicadorEvolucionInstancias on ie.IdIndicadorEvolucionInstancia equals _iei.IdIndicadorEvolucionInstancia into tiei
                  from iei in tiei.DefaultIfEmpty()
-                 join _es in this.Context.Estados on ie.IdCertificadoEstado equals _es.IdEstado into tes
+                 //join _es in this.Context.Estados on ie.IdCertificadoEstado equals _es.IdEstado into tes
+                 join t1 in this.Context.SistemaEntidadEstados on p.IdEstado equals t1.IdEstado
+                 join tse in this.Context.SistemaEntidads on t1.IdSistemaEntidad equals tse.IdSistemaEntidad into tes
                  from es in tes.DefaultIfEmpty()
                  join _u in this.Context.UnidadMedidas on pei.IdUnidadMedia equals _u.IdUnidadMedida into tu
                  from u in tu.DefaultIfEmpty()
                  where filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == p.IdProyecto && (e.IdFase == (Int32)FaseEnum.Ejecucion)
                  //--&& (e.Codigo == "AC" || e.Codigo == "OB"))
                  orderby e.Orden, pe.IdProyectoEtapa, i.IdIndicador, cg.IdClasificacionGeografica, ie.FechaEstimada, ie.CertificadoNumero
+
+                 where es.Nombre == "Proyecto"
+
                  select new ProyectoEtapaReportResult()
                  {
                      //Datos de Proyecto Etapa

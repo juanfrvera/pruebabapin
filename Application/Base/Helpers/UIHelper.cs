@@ -586,6 +586,11 @@ namespace UI.Web
             var SortedDataSource = Util.Ordenar<T>(dataSource.AsQueryable(), OrderField, sortDirection);
             Load(control, (SortedDataSource as object), dataTextField, dataValueField);
         }
+        /*public static void Load<T>(ListBox control, List<T> dataSource, string dataTextField, string dataValueField, string OrderField, SortDirection sortDirection) where T : class, new()
+        {
+            var SortedDataSource = Util.Ordenar<T>(dataSource.AsQueryable(), OrderField, sortDirection);
+            Load(control, (SortedDataSource as object), dataTextField, dataValueField);
+        }*/
         public static void Load(ListBox control, object dataSource, string dataTextField, string dataValueField)
         {
             control.DataTextField = dataTextField;

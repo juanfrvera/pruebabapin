@@ -175,7 +175,9 @@ SELECT [t0].[IdProyecto], [t0].[IdTipoProyecto], [t0].[IdSubPrograma], [t0].[Cod
         ELSE CONVERT(NVarChar(50),@p21)
      END) AS [Saf_EntidadTipoNombre]
 FROM [dbo].[Proyecto] AS [t0]
-INNER JOIN [dbo].[Estado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+--INNER JOIN [dbo].[Estado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+INNER JOIN [dbo].[SistemaEntidadEstado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+					AND [t1].idsistemaentidad = (Select idsistemaentidad from SistemaEntidad where nombre = 'Proyecto')
 LEFT OUTER JOIN (
     SELECT 1 AS [test], [t2].[IdOrganismoPrioridad], [t2].[Nombre]
     FROM [dbo].[OrganismoPrioridad] AS [t2]

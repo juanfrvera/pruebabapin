@@ -376,7 +376,7 @@
                     </td>
                     <td colspan="7">
                         <b><%-- <asp:Label ID="lbPlan" runat="server"></asp:Label> --%></b>
-                        <asp:Literal ID="liUltimaSolicitud" runat="server" Text="Ultima Solicitud Registrada:"></asp:Literal>
+                        <asp:Literal ID="liUltimaSolicitud" runat="server" Text="Última Solicitud Registrada:"></asp:Literal>
                         <asp:TextBox ID="txtUltimaSolicitud" runat="server" Enabled="false" TabIndex="19" Width="435px"></asp:TextBox> 
                     </td>
                 </tr>

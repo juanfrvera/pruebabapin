@@ -107,7 +107,9 @@ declare @ret int
 set @Ret = (SELECT COUNT(1) AS [value]
 
 FROM [dbo].[Proyecto] AS [t0]
-INNER JOIN [dbo].[Estado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+--INNER JOIN [dbo].[Estado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+INNER JOIN [dbo].[SistemaEntidadEstado] AS [t1] ON [t0].[IdEstado] = [t1].[IdEstado]
+					AND [t1].idsistemaentidad = (Select idsistemaentidad from SistemaEntidad where nombre = 'Proyecto')
 LEFT OUTER JOIN [dbo].[OrganismoPrioridad] AS [t2] ON [t0].[IdOrganismoPrioridad] = ([t2].[IdOrganismoPrioridad])
 LEFT OUTER JOIN [dbo].[Proceso] AS [t3] ON [t0].[IdProceso] = ([t3].[IdProceso])
 LEFT OUTER JOIN [dbo].[ProyectoCalidad] AS [t4] ON [t0].[IdProyecto] = [t4].[IdProyecto]
