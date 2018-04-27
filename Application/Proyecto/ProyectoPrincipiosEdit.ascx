@@ -1,5 +1,21 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProyectoPrincipiosEdit.ascx.cs" Inherits="UI.Web.Pages.ProyectoPrincipiosEdit" %>
 
+<asp:Panel ID="Panel1" runat="server">
+        <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+            <tr>
+                    <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="(No deben completar el formulario los proyectos en ejecución y el equipamiento básico de oficina)"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                    <td>&nbsp;</td>
+            </tr>
+        </table>
+</asp:Panel>
+
 <%--PANEL Necesidad a satisfacer --%>
 <asp:UpdatePanel ID="upNecesidadASatisfacer" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
