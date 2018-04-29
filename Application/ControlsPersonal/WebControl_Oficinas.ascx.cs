@@ -66,7 +66,7 @@ namespace UI.Web
             TreeTitle = "Oficinas";
             TreeHandler = "../Handlers/OficinaHandler.ashx";
             AutocompleteHandler = "../Handlers/OficinaAutocompleteHandler.ashx";
-            ddlJurisdiccion.Attributes["onchange"] = "SelectJurisdiccion(this.value);";
+            ddlJurisdiccion.Attributes["onchange"] = ClientID + "SelectJurisdiccion(this.value);";
             //Si usa el arbolde jurisdiccion solo debe mostrar los visible
             Filter.Visible = true;
             base._SetControls();
