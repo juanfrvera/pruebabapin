@@ -53,14 +53,30 @@ namespace Business
             // Valida Repetido
             if (retval)
             {
-                foreach (ProyectoEtapaEstimadoResult x in Entity.EtapasEstimadas.Where(ee => ee.IdProyectoEtapa == ActualProyectoEtapaEstimada.IdProyectoEtapa))
+                try
                 {
-                    bool repetido = (idResult == 0 || x.IdProyectoEtapaEstimado != idResult)
-                                    && ActualProyectoEtapaEstimada.IdClasificacionGasto == x.IdClasificacionGasto
-                                    && ActualProyectoEtapaEstimada.IdFuenteFinanciamiento == x.IdFuenteFinanciamiento;
-                                    //&& ActualProyectoEtapaEstimada.IdProyectoOrigenFinanciamiento == x.IdProyectoOrigenFinanciamiento;
-                    retval = !repetido;
-                    if (!retval) break;
+                    /*var esRepetido == Entity.EtapasEstimadas.Where(ee => ee.IdProyectoEtapa == ActualProyectoEtapaEstimada.IdProyectoEtapa
+                        
+                        );*/
+
+                    var etapasEstimadasDeLaEtapaActual = Entity.EtapasEstimadas.Where(ee => ee.IdProyectoEtapa == ActualProyectoEtapaEstimada.IdProyectoEtapa).ToList();
+
+                    foreach (ProyectoEtapaEstimadoResult x in etapasEstimadasDeLaEtapaActual)
+                    {
+                        bool repetido = (idResult == 0 || x.IdProyectoEtapaEstimado != idResult)
+                                        && ActualProyectoEtapaEstimada.IdClasificacionGasto == x.IdClasificacionGasto
+                                        && ActualProyectoEtapaEstimada.IdFuenteFinanciamiento == x.IdFuenteFinanciamiento;
+                        //&& ActualProyectoEtapaEstimada.IdProyectoOrigenFinanciamiento == x.IdProyectoOrigenFinanciamiento;
+                        retval = !repetido;
+                        if (!retval) 
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    var a = e;
                 }
             }
 

@@ -60,7 +60,7 @@
                     EmptyDataText="No hay producto intermedio definido" 
                     Width ="100%">
                     <Columns>
-                        <asp:TemplateField Visible="false" HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
+                        <asp:TemplateField HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
                             <ItemTemplate>                        
                                 <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
                             </ItemTemplate>
@@ -273,7 +273,8 @@
                                 AutoGenerateColumns="True" DataKeyNames="ID" AllowPaging="False"  
                                 OnRowCommand="GridEtapasRealizadas_RowCommand" 
                                 AllowSorting="false"
-                                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el estado financiero del proyecto debe ser 'En Ejecución'">
+                                EmptyDataText="Para cargar los Gastos Realizados, la Fecha de Inicio Realizada del Cronograma debe estar definida y el Estado Financiero del proyecto debe ser 'En Ejecución'">
+
                                 <Columns> 
                                     <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
                                     <asp:TemplateField Visible="false"  ItemStyle-HorizontalAlign="Center" >

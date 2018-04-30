@@ -67,7 +67,7 @@ function <%=ClientID%>SetAutocomplete()
 {
     <%=ClientID%>Autocomplete =new AutocompleteSelect('<%=AutocompleteHandler%>','<%=hdFilter.Value%>','<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
 } 
-function SelectJurisdiccion(value)
+function <%=ClientID%>SelectJurisdiccion(value)
 {
     var strJson = $(TreeData.hdFilter).value;
     if(strJson!="")

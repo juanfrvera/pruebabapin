@@ -651,7 +651,9 @@ namespace UI.Web
             {
                 //Matias 20170131 - Ticket #REQ571729
                 //btAgregarEtapaRealizada.Enabled = ActualProyectoEtapa.FechaInicioRealizada != null;
-                btAgregarEtapaRealizada.Enabled = (ActualProyectoEtapa.FechaInicioRealizada != null) && ( (Entity.Proyecto.IdEstado == (int)EstadoEnum.En_Ejecucion) || (Entity.Proyecto.IdEstado == (int)EstadoEnum.En_EjecOper));
+                btAgregarEtapaRealizada.Enabled = (ActualProyectoEtapa.FechaInicioRealizada != null)
+                    && ((ActualProyectoEtapa.IdEstado == (int)EstadoEnum.En_Ejecucion)) ;
+                    //&& ( (Entity.Proyecto.IdEstado == (int)EstadoEnum.En_Ejecucion) || (Entity.Proyecto.IdEstado == (int)EstadoEnum.En_EjecOper));
                 //FinMatias 20170131 - Ticket #REQ571729
                 pnlAgregarEtapaRealizada.Update();
             }
@@ -1265,6 +1267,10 @@ namespace UI.Web
                 result.ClasificacionGasto_Nombre = ActualProyectoEtapaEstimada.ClasificacionGasto_Nombre;
                 result.FuenteFinanciamiento_Nombre = ActualProyectoEtapaEstimada.FuenteFinanciamiento_Nombre;
                 result.OrigenFinanciemiento = ActualProyectoEtapaEstimada.OrigenFinanciemiento;
+
+                result.CodigoCompletoGasto = ActualProyectoEtapaEstimada.CodigoCompletoGasto;
+                result.ObjetoGasto = ActualProyectoEtapaEstimada.ObjetoGasto;
+                result.FuenteFinanciemiento = ActualProyectoEtapaEstimada.FuenteFinanciemiento;
             }
             else
             {
@@ -1925,6 +1931,10 @@ namespace UI.Web
                     result.ClasificacionGasto_Nombre = ActualProyectoEtapaRealizada.ClasificacionGasto_Nombre;
                     result.FuenteFinanciamiento_Nombre = ActualProyectoEtapaRealizada.FuenteFinanciamiento_Nombre;
                     result.OrigenFinanciemiento = ActualProyectoEtapaRealizada.OrigenFinanciemiento;
+
+                    result.CodigoCompletoGasto = ActualProyectoEtapaRealizada.CodigoCompletoGasto;
+                    result.ObjetoGasto = ActualProyectoEtapaRealizada.ObjetoGasto;
+                    result.FuenteFinanciemiento = ActualProyectoEtapaRealizada.FuenteFinanciemiento;
                 }
                 else
                 {
