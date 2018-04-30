@@ -43,9 +43,9 @@ namespace UI.Web.Pages
             //revOpcionB.ErrorMessage = TranslateFormat("InvalidField", "Opción B");
             //revJustificacionOpcion.ErrorMessage = TranslateFormat("InvalidField", "Justificacion de Opción");
 
-            autoCmpIndicadorClaseIndicadoresProyecto.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
+//[AUTOINDICADOR]            autoCmpIndicadorClaseIndicadoresProyecto.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //German 01032014 - tarea 110
-            autoCmpIndicadorClaseIndicadoresProyecto.Visible = false;
+            //[AUTOINDICADOR]            autoCmpIndicadorClaseIndicadoresProyecto.Visible = false;
             toIndicadoClaseEconomicoObjetivoGobierno.RequiredMessage = TranslateFormat("FieldIsNull", "Indicador");
             //Fin German 01032014 - tarea 110
             rfvAnoIndicadoresProyecto.ErrorMessage = TranslateFormat("FieldIsNull", "Año");
@@ -141,8 +141,8 @@ namespace UI.Web.Pages
             txtObservacionesIndicadoresBeneficio.ToolTip = Translate("TooltipObservacionesEvaluacion");
 
             //Evaluacion Sectorial
-            autoCmpIndicadorClaseEvaluacionSectorial.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
-            autoCmpIndicadorClaseEvaluacionSectorial.Visible = false;
+            //[AUTOINDICADOR]autoCmpIndicadorClaseEvaluacionSectorial.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
+            //[AUTOINDICADOR]autoCmpIndicadorClaseEvaluacionSectorial.Visible = false;
             toIndicadorClaseEvaluacionSectorial.RequiredMessage = TranslateFormat("FieldIsNull", "Tipo de Indicador");
             revObservacionesIndicadoresEvaluacionSectorial.ErrorMessage = TranslateFormat("InvalidField", "Obervaciones");
             revObservacionesIndicadoresEvaluacionSectorial.ValidationExpression = Contract.DataHelper.GetExpRegString(4000);
@@ -1018,7 +1018,7 @@ namespace UI.Web.Pages
             if (toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedIndex >= 0)
                 idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
 
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
+            //[AUTOINDICADOR]           autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
             //German 01032014 - tarea 110
             toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.Economico, Activo = true };
             
@@ -1032,7 +1032,7 @@ namespace UI.Web.Pages
             if (toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedIndex >= 0)
                 idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
 
-            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorEconomico.IdIndicadorClase);
+            //[AUTOINDICADOR]            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorEconomico.IdIndicadorClase);
             //German 01032014 - tarea 110
             UIHelper.SetValue(toIndicadoClaseEconomicoObjetivoGobierno, ActualProyectoIndicadorEconomico.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
@@ -1051,7 +1051,7 @@ namespace UI.Web.Pages
             VisibleValorIndicadoresProyecto(true); //No visibles para Contribución al Objetivo de Gobierno
             RequiredIndicadoresProyecto(true); //Requeridos anio y valor en economicos
 
-            ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
+            //[AUTOINDICADOR]           ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
             ActualProyectoIndicadorEconomico.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
@@ -1281,7 +1281,7 @@ namespace UI.Web.Pages
 
 
             UIHelper.Clear(txtObservacionesIndicadoresEvaluacionSectorial);
-            UIHelper.Clear(autoCmpIndicadorClaseEvaluacionSectorial);
+            //[AUTOINDICADOR]UIHelper.Clear(autoCmpIndicadorClaseEvaluacionSectorial);
             //German 01032014 - tarea 110
             UIHelper.Clear(toIndicadorClaseEvaluacionSectorial);
             //Fin German 01032014 - tarea 110
@@ -1292,7 +1292,7 @@ namespace UI.Web.Pages
             if (toIndicadorClaseEvaluacionSectorial.Sectores.SelectedIndex >= 0)
                 idIndicadorRubro = Convert.ToInt32(toIndicadorClaseEvaluacionSectorial.Sectores.SelectedValue);
 
-            autoCmpIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
+            //[AUTOINDICADOR]autoCmpIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
             //German 01032014 - tarea 110
             toIndicadorClaseEvaluacionSectorial.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.EvaluacionSectorial, Activo = true };
             //solo por ahora - Ver pq no funciona
@@ -1304,7 +1304,7 @@ namespace UI.Web.Pages
         }
         void IndicadoresEvaluacionSectorialSetValue()
         {
-            UIHelper.SetValue(autoCmpIndicadorClaseEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase);
+            //[AUTOINDICADOR]UIHelper.SetValue(autoCmpIndicadorClaseEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase);
             //German 01032014 - tarea 110
             UIHelper.SetValue(toIndicadorClaseEvaluacionSectorial, ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase);
             //FinGerman 01032014 - tarea 110
@@ -1324,7 +1324,7 @@ namespace UI.Web.Pages
             ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Indirecto = UIHelper.GetBoolean(chkIndirectoEvaluacionSectorial);
             ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.Valor = UIHelper.GetInt(txtMontoEvaluacionSectorial);
 
-            ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
+            //[AUTOINDICADOR]ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
             //German 01032014 - tarea 110
             ActualProyectoEvaluacionSectorialIndicadorCompose.Indicador.IdIndicadorClase = UIHelper.GetInt(toIndicadorClaseEvaluacionSectorial);
             //FinGerman 01032014 - tarea 110
@@ -1479,11 +1479,11 @@ namespace UI.Web.Pages
         private bool ValidateIndicadoresEvaluacionSectorial(out string msgError)
         {
             msgError = string.Empty;
-            int id = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
+            //[AUTOINDICADOR]int id = UIHelper.GetInt(autoCmpIndicadorClaseEvaluacionSectorial);
 
             //German 01032014 - tarea 110
-            if (autoCmpIndicadorClaseEvaluacionSectorial.Visible == false)
-                id = UIHelper.GetInt(toIndicadorClaseEvaluacionSectorial);
+            //[AUTOINDICADOR]if (autoCmpIndicadorClaseEvaluacionSectorial.Visible == false)
+            int id = UIHelper.GetInt(toIndicadorClaseEvaluacionSectorial);
             //Fin German 01032014 - tarea 110 
 
             //Matias 20140521 - Tarea 124
@@ -1596,7 +1596,7 @@ namespace UI.Web.Pages
                 idIndicadorRubro = Convert.ToInt32(toIndicadoClaseEconomicoObjetivoGobierno.Sectores.SelectedValue);
 
             ActualProyectoIndicadorObjetivosGobierno = GetNewProyectoIndicadorObjetivosGobierno();
-            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
+            //[AUTOINDICADOR]            autoCmpIndicadorClaseIndicadoresProyecto.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //German 01032014 - tarea 110
             toIndicadoClaseEconomicoObjetivoGobierno.Filter = new nc.IndicadorClaseFilter { IdIndicadorRubro = idIndicadorRubro, IdIndicadorTipo = (int)IndicadorTipoEnum.ObjetivosGobierno, Activo = true };
             //solo por ahora - Ver pq no funciona
@@ -1609,7 +1609,7 @@ namespace UI.Web.Pages
             VisibleValorIndicadoresProyecto(false); //No visibles para Contribución al Objetivo de Gobierno
             RequiredIndicadoresProyecto(false); //No Requeridos para Contribución al Objetivo de Gobierno
 
-            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
+            //[AUTOINDICADOR]            UIHelper.SetValue(autoCmpIndicadorClaseIndicadoresProyecto, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //German 01032014 - tarea 110
             UIHelper.SetValue(toIndicadoClaseEconomicoObjetivoGobierno, ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase);
             //Fin German 01032014 - tarea 110
@@ -1627,7 +1627,7 @@ namespace UI.Web.Pages
         
         void IndicadoresObjetivosGobiernoGetValue()
         {
-            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
+            //[AUTOINDICADOR]            ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
             ActualProyectoIndicadorObjetivosGobierno.IdIndicadorClase = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
@@ -1864,7 +1864,7 @@ namespace UI.Web.Pages
             UIHelper.Clear(txtObservacionesIndicadoresProyecto);
             UIHelper.Clear(ddlAnoIndicadoresProyecto);
             UIHelper.Clear(txtValorIndicadoresProyecto);
-            UIHelper.Clear(autoCmpIndicadorClaseIndicadoresProyecto);
+            //[AUTOINDICADOR]           UIHelper.Clear(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
             UIHelper.Clear(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
@@ -1943,10 +1943,10 @@ namespace UI.Web.Pages
         {
             msgError = string.Empty;
 
-            int id = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
+            //[AUTOINDICADOR]           int id = UIHelper.GetInt(autoCmpIndicadorClaseIndicadoresProyecto);
             //German 01032014 - tarea 110
-            if (autoCmpIndicadorClaseIndicadoresProyecto.Visible == false)
-                id = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
+            //[AUTOINDICADOR]        if (autoCmpIndicadorClaseIndicadoresProyecto.Visible == false)
+            int id = UIHelper.GetInt(toIndicadoClaseEconomicoObjetivoGobierno);
             //Fin German 01032014 - tarea 110
             if (id == 0)
             {

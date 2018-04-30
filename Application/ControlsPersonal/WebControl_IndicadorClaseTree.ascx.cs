@@ -55,7 +55,7 @@ namespace UI.Web.ControlsPersonal
             RootText = "Root";
             TreeTitle = "Indicador";
             TreeHandler = "../Handlers/IndicadorClaseHandler.ashx";
-            AutocompleteHandler = "../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx";
+            AutocompleteHandler = "../Handlers/IndicadorClaseAutocompleteHandler.ashx";
             base._SetControls();
             ddlSectorInd.Attributes["onchange"] = ClientID + "SelectSector();";
             

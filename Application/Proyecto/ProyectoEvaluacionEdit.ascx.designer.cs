@@ -292,15 +292,6 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.Label lblTituloIndicadoresEvaluacionSectorial;
         
         /// <summary>
-        /// autoCmpIndicadorClaseEvaluacionSectorial control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.WebControl_IndicadorClaseAutocomplete autoCmpIndicadorClaseEvaluacionSectorial;
-        
-        /// <summary>
         /// Literal1 control.
         /// </summary>
         /// <remarks>
@@ -542,15 +533,6 @@ namespace UI.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnIndicadoresProyecto;
-        
-        /// <summary>
-        /// autoCmpIndicadorClaseIndicadoresProyecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Web.WebControl_IndicadorClaseAutocomplete autoCmpIndicadorClaseIndicadoresProyecto;
         
         /// <summary>
         /// Literal2 control.

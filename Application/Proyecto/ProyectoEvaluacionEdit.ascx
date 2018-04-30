@@ -352,14 +352,14 @@
             <ContentTemplate>
                 <asp:Label ID="lblTituloIndicadoresEvaluacionSectorial" runat="server" Text=""></asp:Label>
                 <table width="100%" cellpadding="0" cellspacing="5px" border="0">
-                    <tr>
+                    <%--<tr>
                         <td colspan="2">
                             <uc:AutocompleteIndicadorClase runat="server" ID="autoCmpIndicadorClaseEvaluacionSectorial"
                                 Width="300px" AutocompleteHandler="../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx"
                                 RequiredValue="true" ShowOption="ActivesAndActualValue" ValidationGroup="vgIndicadorEvaluacionSectorial">
                             </uc:AutocompleteIndicadorClase>
                         </td>
-                    </tr>
+                    </tr>--%>
                     <tr>
                         <td width="220px">
                             <asp:Literal ID="Literal1" Text="Sector" runat="server"></asp:Literal>
@@ -373,7 +373,7 @@
                         <td colspan="2">
                             <uc:TreeIndicadorClase runat="server" ID="toIndicadorClaseEvaluacionSectorial" Handler="../Handlers/IndicadorClaseHandler.ashx" 
                             SelectOption="Any" ShowOption="All" RequiredValue="true" ValidationGroup="vgIndicadorEvaluacionSectorial" Width="600px"
-                                AutoPostBack="true"
+                                Autopostback="true"
                                 OnValueChanged="toIndicadorClaseEvaluacionSectorial_OnValueChanged"> </uc:TreeIndicadorClase>
                         </td>
                     </tr>
@@ -490,14 +490,14 @@
                                         German 01032014 - Tarea 124--%>
                                     </td>
                                 </tr>
-                                <tr>
+                                <%--<tr>
                                     <td>
                                         <uc:AutocompleteIndicadorClase runat="server" ID="autoCmpIndicadorClaseIndicadoresProyecto"
                                             Width="300px" AutocompleteHandler="../Handlers/IndicadorClaseAutocompleteSimpleHandler.ashx"
                                             RequiredValue="true" ShowOption="ActivesAndActualValue" ValidationGroup="vgIndicadorProyecto">
                                         </uc:AutocompleteIndicadorClase>
                                     </td>
-                                </tr>
+                                </tr>--%>
                                 <%--German 01032014 - tarea 110--%>
                                 <tr>
                                     <td style="padding-top:0px" width="600px" >
@@ -505,7 +505,7 @@
                                         <asp:Literal ID="Literal2" Text="Indicador" runat="server" ></asp:Literal>
                                         <%--Fin German 20140511 - Tarea 124--%>
                                         <uc:TreeIndicadorClase runat="server" ID="toIndicadoClaseEconomicoObjetivoGobierno" Handler="../Handlers/IndicadorClaseHandler.ashx" 
-                                        SelectOption="OnlySelectedDefined" ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="vgIndicador" Width="600px"> </uc:TreeIndicadorClase>
+                                        SelectOption="Any" ShowOption="ActivesAndActualValue" RequiredValue="true" ValidationGroup="vgIndicador" Width="600px"> </uc:TreeIndicadorClase>
 
                                                                     <%--<uc:TreeIndicadorClase runat="server" ID="TreeIndicadorClase1" Handler="../Handlers/IndicadorClaseHandler.ashx" 
                             SelectOption="Any" ShowOption="All" RequiredValue="true" ValidationGroup="vgIndicadorBeneficio" Width="600px"
@@ -628,7 +628,7 @@
                         <td colspan="2">
                             <uc:TreeIndicadorClase runat="server" ID="toIndicadoClase" Handler="../Handlers/IndicadorClaseHandler.ashx" 
                             SelectOption="Any" ShowOption="All" RequiredValue="true" ValidationGroup="vgIndicadorBeneficio" Width="600px"
-                                AutoPostBack="true"
+                                Autopostback="true"
                                 OnValueChanged="toIndicadorClase_OnValueChanged"> </uc:TreeIndicadorClase>
                         </td>
                     </tr>

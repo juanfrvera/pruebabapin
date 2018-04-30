@@ -47,6 +47,7 @@
    </div>
    </asp:Panel>
 <script type="text/javascript">
+var <%=ClientID%>IsSelectSectorAction =false;
 function <%=ClientID%>SetTreeData(){
 debugger ;
 TreeData.Handler        = "<%=TreeHandler%>";
@@ -61,17 +62,28 @@ TreeData.SelectOption   = <%=(int) this.SelectOption %>;
 TreeData.ShowOption     = <%=(int) this.ShowOption %>;
 TreeData.ChangeValueHandler  = <%=ClientID%>ChangeValue;
 } 
-function <%=ClientID%>Open(){<%=ClientID%>SetTreeData();TreeData.Open();}
+function <%=ClientID%>Open(){
+    <%=ClientID%>SetTreeData();
+    debugger;
+    //alert($(TreeData.hdSelect).value);
+    //alert(<%=ClientID%>Autocomplete);
+    TreeData.Open();
+}
 function <%=ClientID%>Clear(){<%=ClientID%>SetTreeData();TreeData.Clear();} 
 function <%=ClientID%>Select(){<%=ClientID%>SetTreeData();TreeData.Select();}
 function <%=ClientID%>Close(){<%=ClientID%>SetTreeData();TreeData.Close();} 
-function <%=ClientID%>ChangeValue(){if(<%=Autopostback.ToString().ToLower()%>){__doPostBack('<%=hdSelect.ClientID%>','');}} 
+    function <%=ClientID%>ChangeValue(){
+        if(<%=Autopostback.ToString().ToLower()%> && ! <%=ClientID%>IsSelectSectorAction)
+        {
+            //alert('__doPostBack:'+<%=hdSelect.ClientID%>);
+            __doPostBack('<%=hdSelect.ClientID%>','');
+        }
+        <%=ClientID%>IsSelectSectorAction =false;
+    } 
 var <%=ClientID%>Autocomplete =null;
 
 function <%=ClientID%>SetAutocomplete()
-{
-    debugger;
-    
+{   
     <%=ClientID%>SetTreeData();
     var strJson = $(TreeData.hdFilter).value;  
     if(strJson!="")
@@ -90,14 +102,17 @@ function <%=ClientID%>SetAutocomplete()
         $(hdFilter).value =YAHOO.lang.JSON.stringify(filter);        
     }
 
-    <%=ClientID%>Autocomplete =new AutocompleteSimple('<%=AutocompleteHandler%>',$(hdFilter).value,'<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
+    <%=ClientID%>Autocomplete =new AutocompleteSelect('<%=AutocompleteHandler%>',$(hdFilter).value,'<%=txtSelect.ClientID%>','<%=hdSelect.ClientID%>','<%=ClientID%>AutoCompleteContainer',<%=ClientID%>ChangeValue,<%=(int) this.SelectOption %>,<%=(int) this.ShowOption %>);  
     <%=ClientID%>Autocomplete.oAC.minQueryLength = 1;
 }
 
 function <%=ClientID%>SelectSector()
 {
+    <%=ClientID%>IsSelectSectorAction = true;
+    //alert('SelectSector');
     debugger ;
-
+    $(TreeData.hdSelect).value = "";
+    <%=ClientID%>Clear();
     $("<%=txtSelect.ClientID%>").value =""; /*German 20140602 - Tarea 124*/
 
     var strJson = $(TreeData.hdFilter).value;
@@ -110,6 +125,7 @@ function <%=ClientID%>SelectSector()
     }
     
     TreeData.BuildTree();
+    
     var hdFilter = '<%=hdFilter.ClientID%>';
     var strJson1 = $(hdFilter).value;
 
@@ -120,7 +136,5 @@ function <%=ClientID%>SelectSector()
         $(hdFilter).value =YAHOO.lang.JSON.stringify(filter);        
         <%=ClientID%>Autocomplete.oDS.scriptQueryAppend = 'filter='+$(hdFilter).value+'&SelectOption='+<%=(int) this.SelectOption %>+'&ShowOption='+<%=(int) this.ShowOption %>+'&t'+(new Date().getTime());
     }
-
-
 } 
 </script>

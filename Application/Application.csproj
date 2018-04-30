@@ -1234,6 +1234,9 @@
     <Compile Include="Handlers\CaracterEconomicoHandler.ashx.cs">
       <DependentUpon>CaracterEconomicoHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\IndicadorClaseAutocompleteHandler.ashx.cs">
+      <DependentUpon>IndicadorClaseAutocompleteHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\DestinatarioAutocompleteSimpleHandler.ashx.cs">
       <DependentUpon>DestinatarioAutocompleteSimpleHandler.ashx</DependentUpon>
     </Compile>
@@ -6343,6 +6346,7 @@
     <None Include="Base\Page\DiagramPages.cd" />
     <Content Include="Handlers\IndicadorClaseHandler.ashx" />
     <Content Include="Handlers\IndicadorClaseSinSectorHandler.ashx" />
+    <Content Include="Handlers\IndicadorClaseAutocompleteHandler.ashx" />
     <None Include="Images\HistoryPrint.GIF.OLD" />
     <Content Include="App_Scripts\addprintlink.js" />
     <Content Include="App_Scripts\TabPanelScript.js" />

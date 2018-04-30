@@ -39,7 +39,8 @@ TreeData=
                     }catch(e){alert(e.message);} 
                 } 
 ,SelectedNode   : function(node){
-                    try{          
+    try {
+        debugger;
                         if( node.Seleccionable == true || TreeData.SelectOption == 1 ){
                             TreeData.NodeSelected = node;
                             $(TreeData.lblPath).innerHTML =  '['+TreeData.NodeSelected.BreadcrumbCodigo+'] '+TreeData.NodeSelected.DescripcionInvertida;  
@@ -51,7 +52,8 @@ TreeData=
                     }catch(e){alert(e.message);}   
                 }
 ,Open           : function (){
-                    try{
+    try {
+                TreeData.NodeSelected = null;
                         var strJson = $(TreeData.hdSelect).value;
                         if (strJson != "") {
                             var node = YAHOO.lang.JSON.parse(strJson); 
@@ -61,7 +63,8 @@ TreeData=
                     }catch(e){alert(e.message);} 
                 }
 ,Select         : function Select(){
-                     try{  
+    try {
+        debugger;
                           if(TreeData.NodeSelected != null && TreeData.NodeSelected != undefined)
                           {
                               if(TreeData.NodeSelected.Seleccionable == true || TreeData.SelectOption == 1 ){ 
@@ -74,7 +77,7 @@ TreeData=
                          }   
                          else
                          {
-                            alert ("No se puede Seleccionar");
+                            alert ("No se puede Seleccionar.");
                          }                      
                      }catch(e){alert(e.message);}                      
                 }
@@ -88,6 +91,8 @@ TreeData=
                         try{
                             $(TreeData.hdSelect).value = "";
                             $(TreeData.txtSelect).value = "";
+                            TreeData.NodeSelected = null;
+                            $(TreeData.lblPath).innerHTML = "";
                             $(TreeData.txtSelect).focus();
                             TreeData.Close();
                             TreeData.OnChangeValue();
@@ -179,7 +184,7 @@ this.Create         = function(){
                         this.DataSource.scriptQueryParam = "query";
                         this.DataSource.scriptQueryAppend = 'filter='+filter+'&SelectOption='+selectOption+'&ShowOption='+showOption+'&t'+(new Date().getTime());
                         this.DataSource.responseType = YAHOO.widget.DS_XHR.TYPE_JSON;
-                        this.DataSource.responseSchema = {resultsList:"Nodes",fields:[{key:"Id"},{key:"ParentId"},{key:"Level"},{key:"Orden"},{key:"Text"},{key:"Codigo"},{key:"BreadcrumbId"},{key:"BreadcrumbOrden"},{key:"BreadcrumbCodigo"},{key:"Descripcion"},{key:"DescripcionInvertida"}]};    
+                        this.DataSource.responseSchema = { resultsList: "Nodes", fields: [{ key: "Id" }, { key: "ParentId" }, { key: "Level" }, { key: "Orden" }, { key: "Text" }, { key: "Codigo" }, { key: "BreadcrumbId" }, { key: "BreadcrumbOrden" }, { key: "BreadcrumbCodigo" }, { key: "Descripcion" }, { key: "DescripcionInvertida" }, { key: "Seleccionable" }] };
                      }
 }
 function AutocompleteSelect(autocompleteHandler,filter,txtSelect,hdSelect,AutoCompleteContainer,onChangeValue,selectOption,showOption){ 
@@ -213,7 +218,7 @@ function AutocompleteSelect(autocompleteHandler,filter,txtSelect,hdSelect,AutoCo
         {	 
 	        var o = aArgs[2];
             $(txtSelect).value = '['+o.BreadcrumbCodigo+'] '+o.DescripcionInvertida;
-	        var strJson = '{"Id":'+o.Id+',"ParentId":'+o.ParentId+',"Level":'+o.Level+',"Orden":'+o.Orden+',"Text":"'+o.Text+'","Codigo":"'+o.Codigo+'","BreadcrumbId":"'+o.BreadcrumbId+'","BreadcrumbOrden":"'+o.BreadcrumbOrden+'","BreadcrumbCodigo":"'+o.BreadcrumbCodigo+'","Descripcion":"'+o.Descripcion+'","DescripcionInvertida":"'+o.DescripcionInvertida+'"}';
+            var strJson = '{"Id":' + o.Id + ',"ParentId":' + o.ParentId + ',"Level":' + o.Level + ',"Orden":' + o.Orden + ',"Text":"' + o.Text + '","Codigo":"' + o.Codigo + '","BreadcrumbId":"' + o.BreadcrumbId + '","BreadcrumbOrden":"' + o.BreadcrumbOrden + '","BreadcrumbCodigo":"' + o.BreadcrumbCodigo + '","Descripcion":"' + o.Descripcion + '","DescripcionInvertida":"' + o.DescripcionInvertida + '","Seleccionable":"' + o.Seleccionable + '"}';
 	        $(hdSelect).value= strJson;
 	        onChangeValue();
 	    }
