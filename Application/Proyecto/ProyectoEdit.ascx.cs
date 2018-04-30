@@ -130,6 +130,7 @@ namespace UI.Web
             ddlTipoProyecto.ToolTip = Translate("TooltipTipoEjecucionPresupuestaria");
             txtCostoTotal.ToolTip = Translate("TooltipTipoCostototal");
             txtCostoInicialEstimado.ToolTip = Translate("TooltipTipoMontoTotalEstimadoInicial");
+            txtEjercicioEstimacion.ToolTip = Translate("TooltipEjercicioEstimacion");
             chkRequiereDictamen.ToolTip = Translate("TooltipRequiereDictamen");
             ddlProceso.ToolTip = Translate("TooltipProyectoContribucion");
             ddlEstado.ToolTip = Translate("TooltipProyectoEtapa");
@@ -828,7 +829,7 @@ namespace UI.Web
                 //Matias 20170210 - Ticket #REQ653581
                 //UIHelper.Load<nc.PlanTipo>(ddlTipoPopUp, PlanTipoService.Current.GetList(new nc.PlanTipoFilter() { Activo = true }).OrderBy(t => t.Orden).ToList(), "Sigla", "IdPlanTipo", new nc.PlanTipo() { IdPlanTipo = 0, Sigla = "Seleccione Tipo de Plan" }, false);
                 ListPaged<PlanTipo> lista = PlanTipoService.Current.GetPlanTipoPlanesActivosResult(new nc.PlanTipoFilter() { Activo = true} );
-                UIHelper.Load<nc.PlanTipo>(ddlTipoPopUp, lista.OrderBy(t => t.Orden).ToList(), "Sigla", "IdPlanTipo", new nc.PlanTipo() { IdPlanTipo = 0, Sigla = "Seleccione Tipo de Plan" }, false);
+                UIHelper.Load<nc.PlanTipo>(ddlTipoPopUp, lista.OrderBy(t => t.Orden).ToList(), "Sigla", "IdPlanTipo", new nc.PlanTipo() { IdPlanTipo = 0, Sigla = "Seleccione Tipo de Marca" }, false);
                 if (lista.Count == 1)
                 {
                     ddlTipoPopUp.SelectedValue = Convert.ToString(lista.FirstOrDefault().IdPlanTipo);

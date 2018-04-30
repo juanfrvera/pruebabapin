@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProyectoPrincipiosEdit.ascx.cs" Inherits="UI.Web.Pages.ProyectoPrincipiosEdit" %>
 
-<asp:Panel ID="Panel1" runat="server">
+<asp:Panel ID="pnlInformacion" runat="server">
         <table width="100%" cellpadding="0" cellspacing="5px" border="0">
             <tr>
                     <td>&nbsp;</td>
@@ -239,7 +239,7 @@
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
     <span id="span7">
-        <asp:Label ID="lblCobertura" runat="server" Text="8. ¿Cuál será la cobertura territorial y poblacional del proyecto? ¿Quiénes y cuántos serán los beneficiarios directos e indirectos del proyecto?"></asp:Label>
+        <asp:Label ID="lblCobertura" runat="server" Text="8. ¿Cuál será la cobertura territorial del proyecto? ¿Quiénes y cuántos serán los beneficiarios directos e indirectos del proyecto?"></asp:Label>
         &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
     </span>
     <ajaxToolkit:CollapsiblePanelExtender ID="cpeCobertura" runat="Server" TargetControlID="pnlCobertura"
@@ -276,7 +276,7 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Directos<br>(1500 caracteres)
+                    Beneficiarios Directos<br>(1500 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosDirectos" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
@@ -289,7 +289,7 @@
             </tr>
             <tr>
                 <td style="width:101px;">
-                    Cobertura Beneficiarios Indirectos<br>(1500 caracteres)
+                    Beneficiarios Indirectos<br>(1500 caracteres)
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtCoberturaBeneficiariosIndirectos" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
