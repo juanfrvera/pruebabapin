@@ -280,7 +280,7 @@
             </table>
         </asp:Panel>
 
-        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios">
+        <asp:Panel ID="pnlOficinasYFuncionarios" runat="server" GroupingText="Oficinas y Funcionarios (gestión de permisos)">
                             
             <table cellpadding="0" cellspacing="0" border="0px" style="height: 100px">
                 <tr>
@@ -1072,7 +1072,7 @@
         <table width="100%" cellpadding="0" cellspacing="5">
             <tr class="menutoppopup">
                 <th align="center" height="10">
-                    <asp:Label ID="headerPopUpPlan" runat="server" Text="Plan" />
+                    <asp:Label ID="headerPopUpPlan" runat="server" Text="Marca" />
                 </th>
 
             </tr>

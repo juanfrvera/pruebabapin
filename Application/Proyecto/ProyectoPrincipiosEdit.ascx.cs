@@ -94,7 +94,7 @@ namespace UI.Web.Pages
             revObservacionesDNIP.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
             revObservacionesDNIP.ErrorMessage = TranslateFormat("InvalidFiled", "Necesidad a satisfacer");
 
-            pnlNecesidadASatisfacer.ToolTip = Translate("TooltipPrincipiosConceptualesDeFormulacion");
+            pnlInformacion.ToolTip = Translate("TooltipPrincipiosConceptualesDeFormulacion");
             pnlObjetivoDelProyecto.ToolTip = Translate("TooltipObjetivoDelProyecto");
             pnlProductoOServicio.ToolTip = Translate("TooltipProductoServicioDelProyecto");
             pnlDescripcionTecnica.ToolTip = Translate("TooltipDescripcionTecnica");
