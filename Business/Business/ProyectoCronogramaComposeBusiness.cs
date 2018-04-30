@@ -508,35 +508,37 @@ namespace Business
             //    error = SolutionContext.Current.TextManager.Translate("Rango estimado Obligatorio");
             //    return retval;
             //}
+            bool retval = true;
 
-            bool retval = (ActualProyectoEtapa.FechaInicioEstimada ==null && ActualProyectoEtapa.FechaFinEstimada ==null) 
-                || (  (ActualProyectoEtapa.FechaInicioEstimada !=null && ActualProyectoEtapa.FechaFinEstimada !=null) && 
-                            ActualProyectoEtapa.FechaInicioEstimada <= ActualProyectoEtapa.FechaFinEstimada);           
-            
-            if (!retval)
+            if (ActualProyectoEtapa.IdEtapa != (int)EtapaEnum.Actividad)
             {
-                error = SolutionContext.Current.TextManager.Translate("Rango Estimado Inválido");
-                return retval;
+                retval = (ActualProyectoEtapa.FechaInicioEstimada == null && ActualProyectoEtapa.FechaFinEstimada == null)
+                    || ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null) &&
+                                ActualProyectoEtapa.FechaInicioEstimada <= ActualProyectoEtapa.FechaFinEstimada);
+
+                if (!retval)
+                {
+                    error = SolutionContext.Current.TextManager.Translate("Rango Estimado Inválido");
+                    return retval;
+                }
+
+                //if ((ActualProyectoEtapa.FechaInicioEstimada != null) ^ (ActualProyectoEtapa.FechaFinEstimada != null))   //Matias 20170202 - Ticket #ER913481 
+                if ((ActualProyectoEtapa.FechaInicioEstimada == null) || (ActualProyectoEtapa.FechaFinEstimada == null))    //Matias 20170202 - Ticket #ER913481 
+                {
+                    retval = false;
+                    error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido, falta una fecha del rango");
+                    return retval;
+                }
+
+                // Si EQ.Basico => dentro del mismo año
+                if ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null)       //Matias 20170202 - Ticket #ER913481 - Agregue validacion del NULL para evitar que se rompa.
+                    && Entity.ProyectoIdProceso == idProcesoEquipamientoBasico
+                    && ((DateTime)ActualProyectoEtapa.FechaInicioEstimada).Year != ((DateTime)ActualProyectoEtapa.FechaFinEstimada).Year)
+                {
+                    error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido. El Equipamiento Básico debe ejecutarse dentro del mismo ejercicio (año)");
+                    return false;
+                }
             }
-
-            //if ((ActualProyectoEtapa.FechaInicioEstimada != null) ^ (ActualProyectoEtapa.FechaFinEstimada != null))   //Matias 20170202 - Ticket #ER913481 
-            if ((ActualProyectoEtapa.FechaInicioEstimada == null) || (ActualProyectoEtapa.FechaFinEstimada == null))    //Matias 20170202 - Ticket #ER913481 
-            {
-                retval = false;
-                error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido, falta una fecha del rango");
-                return retval;
-            }
-
-            // Si EQ.Basico => dentro del mismo año
-            if ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null)       //Matias 20170202 - Ticket #ER913481 - Agregue validacion del NULL para evitar que se rompa.
-                && Entity.ProyectoIdProceso == idProcesoEquipamientoBasico 
-                && ((DateTime)ActualProyectoEtapa.FechaInicioEstimada).Year != ((DateTime)ActualProyectoEtapa.FechaFinEstimada).Year )
-            {
-                error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido. El Equipamiento Básico debe ejecutarse dentro del mismo ejercicio (año)");
-                return false;
-            }
-
-
 
             // Controla que las etapas Estimadas esten en Rango
             foreach (ProyectoEtapaEstimadoResult peer in Entity.EtapasEstimadas.Where(ee => ee.IdProyectoEtapa == ActualProyectoEtapa.IdProyectoEtapa))

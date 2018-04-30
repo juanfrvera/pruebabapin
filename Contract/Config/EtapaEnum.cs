@@ -16,6 +16,7 @@ namespace Contract
         , Actividad = 6
         , Operacion = 7
         , Desmantelamiento = 8
+        , ActividadEspecifica = 9
     }
 }
 

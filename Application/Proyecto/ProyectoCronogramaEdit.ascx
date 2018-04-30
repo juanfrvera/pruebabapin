@@ -44,6 +44,10 @@
                                 </td>
                             </tr>-->
                                 <td align="right">
+                                    <asp:Button ID ="btActividadEspecifica" Visible="false" runat ="server" Text ="Agregar Actividad Específica" CausesValidation="false" 
+                                        OnClick="btActividadEspecifica_Click" />
+                                </td>
+                                <td align="right">
                                     <asp:Button ID ="btInicioDeCarga" Visible="false" runat ="server" Text ="Inicio de Carga" CausesValidation="false" 
                                         OnClick="btInicioDeCarga_Click" />
                                 </td>
@@ -57,7 +61,7 @@
                     OnRowCommand="GridEtapas_RowCommand" OnRowDataBound="GridEtapas_RowDataBound"
                     AllowSorting="True" OnSorting="GridEtapas_Sorting"
                     OnPageIndexChanging="GridEtapas_PageIndexChanging" 
-                    EmptyDataText="No hay producto intermedio definido" 
+                    EmptyDataText="No hay gasto definido" 
                     Width ="100%">
                     <Columns>
                         <asp:TemplateField HeaderText=""  SortExpression=""  HeaderStyle-Width ="4%">            
@@ -65,7 +69,7 @@
                                 <asp:RadioButton id="rbEtapa" runat="server" GroupName="grupoRadioEtapa" OnCheckedChanged="rbEtapa_OnCheckedChanged" AutoPostBack="true" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Denominación de la Obra"  SortExpression="DescripcionCorta" ItemStyle-Width="250px" >            
+                        <asp:TemplateField HeaderText="Denominación"  SortExpression="DescripcionCorta" ItemStyle-Width="250px" >            
                             <ItemTemplate>
                                 <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>'  ></asp:Label>
                             </ItemTemplate>

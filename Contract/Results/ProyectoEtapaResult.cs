@@ -108,6 +108,11 @@ namespace Contract
             {
                 string descripcion = ProyectoDenominacion;
 
+                if (this.IdEtapa == (int)EtapaEnum.ActividadEspecifica)
+                {
+                    descripcion = "ACTIVIDAD ESPECÍFICA " + descripcion;
+                }
+
                 if (descripcion.Length > 60)
                     descripcion = descripcion.Substring(0, 57) + "...";
 

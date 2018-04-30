@@ -142,7 +142,8 @@ namespace UI.Web
         protected const string BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS = "BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS";
         protected const string INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO = "INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO";
         protected const string INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE = "INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE";
-        
+        protected const string VALIDAR_PROYECTO_ACT_ESPECIF = "VALIDAR_PROYECTO_ACT_ESPECIF";
+
         #endregion Propiedades
 
         #region Override WebControlEdit
@@ -629,8 +630,25 @@ namespace UI.Web
             CommandProyectoEtapaEdit();
         }
 
+        protected void btActividadEspecifica_Click(object sender, EventArgs e)
+        {
+            ActualProyectoEtapa = GetNewEtapa();
+
+            ActualProyectoEtapa.IdProyectoEtapa = -1; //NUEVA
+            ActualProyectoEtapa.Nombre = Entity.Proyecto.ProyectoDenominacion;
+            ActualProyectoEtapa.ProyectoDenominacion = Entity.Proyecto.ProyectoDenominacion;
+            ActualProyectoEtapa.IdProyecto = Entity.Proyecto.IdProyecto;
+            ActualProyectoEtapa.IdEtapa = (int)EtapaEnum.ActividadEspecifica;
+            ActualProyectoEtapa.IdEstado = (int)EstadoEnum.Iniciado; //A iniciar para estado etapa
+            ActualProyectoEtapa.IdProyecto = Entity.Proyecto.IdProyecto;
+                
+            CommandProyectoEtapaSave();
+        }
+
         void MarcarProyectoEtapa(Int32 idProyectoEtapa)
         {
+            var tengoActividadEspecifica = Entity.Etapas.Where(x => x.IdEtapa == (int)EtapaEnum.ActividadEspecifica).Any();
+
             foreach (ProyectoEtapaResult pe in Entity.Etapas)
             {
                 if (pe.IdProyectoEtapa == idProyectoEtapa)
@@ -640,6 +658,20 @@ namespace UI.Web
                     ProyectoEtapaRealizadaRefresh();
                 }
             }
+
+            btActividadEspecifica.Enabled = false;
+            if (SolutionContext.Current.ParameterManager.GetStringValue(VALIDAR_PROYECTO_ACT_ESPECIF) == "S"
+                && (Entity.Proyecto.NroObra > 0 || Entity.Proyecto.NroObraEjecucion > 0)
+                && !tengoActividadEspecifica
+                )
+            {
+                //btActividadEspecifica.Enabled = true; POR EL MOMENTO NO SE MUESTRA
+            } else if (SolutionContext.Current.ParameterManager.GetStringValue(VALIDAR_PROYECTO_ACT_ESPECIF) == "N"
+                && !tengoActividadEspecifica)
+            {
+                //btActividadEspecifica.Enabled = true; POR EL MOMENTO NO SE MUESTRA
+            }
+
             foreach (GridViewRow row in gridEtapas.Rows)
             {
                 Int32 idRowAux = Int32.Parse(gridEtapas.DataKeys[row.RowIndex].Value.ToString());
@@ -952,6 +984,17 @@ namespace UI.Web
             }
             //FinModificado por ALO 2018-02-07
         }
+
+        ProyectoEtapaResult GetNewEtapa()
+        {
+            int id = -1;
+            ProyectoEtapaResult plResult = new ProyectoEtapaResult();
+            plResult.IdProyectoEtapa = id;
+            plResult.IdProyecto = 0;
+
+            return plResult;
+        }
+
         ProyectoEtapaEstimadoResult GetNewEtapaEstimada()
         {
             int id = 0;
