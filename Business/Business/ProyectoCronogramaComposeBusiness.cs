@@ -151,9 +151,11 @@ namespace Business
         }
         public override void Update(ProyectoCronogramaCompose entity, IContextUser contextUser)
         {
-            //Matias 20170131 - Ticket #REQ571729
-            
-            //FinMatias 20170131 - Ticket #REQ571729
+            // Elimina los que ya no estan
+            List<int> actualIdsEtapa = (from o in entity.Etapas where o.IdProyectoEtapa > 0 select o.IdProyectoEtapa).ToList();
+            List<ProyectoEtapa> oldDetailEtapa = ProyectoEtapaBusiness.Current.GetList(new ProyectoEtapaFilter() { IdProyecto = entity.IdProyecto, IdFase = entity.IdFase });
+            List<ProyectoEtapa> deletesEtapa = (from o in oldDetailEtapa where !actualIdsEtapa.Contains(o.IdProyectoEtapa) select o).ToList();
+            ProyectoEtapaBusiness.Current.Delete(deletesEtapa, contextUser);
             
             foreach (ProyectoEtapaResult etapa in entity.Etapas)
             {
@@ -165,10 +167,18 @@ namespace Business
                 proyecto.IdTipoProyecto = entity.Proyecto.IdTipoProyecto;
                 ProyectoBusiness.Current.Update(proyecto, contextUser);
 
-                // Por interfase no elimina ni agrega, solo actualiza
+                // Ahora si agrega, esto quedo de antes--> Por interfase no elimina ni agrega, solo actualiza
                 ProyectoEtapa pe = etapa.ToEntity();
                 pe.IdProyecto = entity.IdProyecto;
-                ProyectoEtapaBusiness.Current.Update(pe, contextUser);
+                if (pe.IdProyectoEtapa == -1)
+                {
+                    ProyectoEtapaBusiness.Current.Add(pe, contextUser);
+                    etapa.IdProyectoEtapa = pe.IdProyectoEtapa;
+                }
+                else
+                {
+                    ProyectoEtapaBusiness.Current.Update(pe, contextUser);
+                }
 
                 #region Estimados
                 // Elimina los que ya no estan
@@ -510,7 +520,7 @@ namespace Business
             //}
             bool retval = true;
 
-            if (ActualProyectoEtapa.IdEtapa != (int)EtapaEnum.Actividad)
+            if (ActualProyectoEtapa.IdEtapa != (int)EtapaEnum.ActividadEspecifica)
             {
                 retval = (ActualProyectoEtapa.FechaInicioEstimada == null && ActualProyectoEtapa.FechaFinEstimada == null)
                     || ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null) &&

@@ -28,7 +28,7 @@
                             </tr>-->
                             <tr>                      
 	                            <td width="70px"><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
-	                            <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
+	                            <td><cc:ExtendedDropDownList ID="ddlFase" Enabled="false" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
 	                            <td></td>
 	                            <!--<td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
 	                            <td align="center"><asp:Label ID="lblMffe" runat="server" ></asp:Label></td>
@@ -81,13 +81,15 @@
                         <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>
                         <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/> 
                         <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/>                
-                        <asp:TemplateField  HeaderStyle-Width ="5px">
+                        <asp:TemplateField  HeaderStyle-Width ="10px">
                             <HeaderTemplate>
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:ImageButton ID ="imgEdit" runat ="server"  src="../Images/edit.png" ToolTip ="Editar" CommandName='<%# Command.EDIT %>' CommandArgument='<%#Eval("ID")%>'   CausesValidation="false"  />
+                                &nbsp;
+                                <asp:ImageButton ID ='imgDelete' runat ="server"  src="../Images/delete.jpg" ToolTip ="Eliminar" CommandName='<%# Command.DELETE %>' Visible='<%# (int)Eval("Etapa_IdFase") != (int)Contract.FaseEnum.Ejecucion %>'    OnClientClick='<%#  "return confirm(\""+ConfirmDeleteMessage+"\")" %>' CommandArgument='<%#Eval("ID")%>' CausesValidation="false" />            
                             </ItemTemplate>            
-                            <ItemStyle Width="50px"  HorizontalAlign ="Right"/>
+                            <ItemStyle Width="70px"  HorizontalAlign ="Right"/>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>

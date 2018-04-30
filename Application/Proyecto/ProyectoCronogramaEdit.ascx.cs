@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Contract;
 using nc = Contract;
 using Service;
+using Business;
 using System.Data;
 using System.Collections;
 using System.Drawing;
@@ -527,12 +528,20 @@ namespace UI.Web
             }
         }
 
+        protected bool ChangeFaseSuccess
+        {
+            get;
+            set;
+        }
+
         #region Methods
         private void ChangeFase()
         {
             // Guardar informacion de la fase anterior
             GetValue();
             ProyectoCronogramaComposeService.Current.Update(Entity, UIContext.Current.ContextUser);
+            ChangeFaseSuccess = true;
+
             #region Old
 
             // Obtener la informacion de la nueva fase            
@@ -589,6 +598,7 @@ namespace UI.Web
         void ProyectoEtapaRefresh()
         {
             UIHelper.SetValue<Fase, int>(ddlFase, Entity.IdFase, FaseService.Current.GetById);
+
             /*if (Entity.ProyectoAnioCorriente.HasValue)
                 UIHelper.SetValue(ddlAnioCorriente, Entity.ProyectoAnioCorriente.Value);
             else*/
@@ -603,12 +613,20 @@ namespace UI.Web
 
             if (ActualProyectoEtapa != null)
                 MarcarProyectoEtapa(ActualProyectoEtapa.ID);
+
+            ddlFase.Enabled = false;
+            string error = "";
+            if(ProyectoCronogramaComposeBusiness.Current.ValidateEtapa(ActualProyectoEtapa,Entity,ref error))
+            {
+                ddlFase.Enabled = true;
+            }
             upGridEtapas.Update();
         }
 
         private void InicioDeCarga()
         {
-            if (Entity.Etapas.Count == 1 &&
+            if (
+                Entity.Etapas.Count == 1 &&
                 Entity.Etapas[0].FechaInicioEstimada == null &&
                 Entity.Etapas[0].FechaFinEstimada == null &&
                 Entity.Etapas[0].FechaInicioRealizada == null &&
@@ -616,6 +634,10 @@ namespace UI.Web
             {
                 var btnEdit = gridEtapas.Rows[0].Cells[gridEtapas.Columns.Count - 1].FindControl("imgEdit") as ImageButton;
                 btnEdit.Visible = false;
+                btInicioDeCarga.Visible = true;
+            }
+            else if (Entity.Etapas.Count == 0 && Convert.ToInt32(ddlFase.SelectedValue) != (int)FaseEnum.Ejecucion)
+            {
                 btInicioDeCarga.Visible = true;
             }
             else
@@ -626,6 +648,25 @@ namespace UI.Web
 
         protected void btInicioDeCarga_Click(object sender, EventArgs e)
         {
+            if (gridEtapas.Rows.Count == 0)
+            {
+                ActualProyectoEtapa = GetNewEtapa();
+                ActualProyectoEtapa.IdProyectoEtapa = -1; //NUEVA
+                ActualProyectoEtapa.Nombre = Entity.Proyecto.ProyectoDenominacion;
+                ActualProyectoEtapa.ProyectoDenominacion = Entity.Proyecto.ProyectoDenominacion;
+                ActualProyectoEtapa.IdProyecto = Entity.Proyecto.IdProyecto;
+                var etapa = EtapaService.Current.GetList(new nc.EtapaFilter()
+                {
+                    IdFase = Convert.ToInt32(ddlFase.SelectedValue),
+                    Activo = true,
+                    OrderByProperty = "Orden"
+                }).FirstOrDefault();
+                ActualProyectoEtapa.IdEtapa = etapa.IdEtapa;
+                ActualProyectoEtapa.IdEstado = (int)EstadoEnum.Iniciado; //A iniciar para estado etapa
+
+                Entity.Etapas.Add(ActualProyectoEtapa);
+                ProyectoEtapaRefresh();
+            }
             var btnEdit = gridEtapas.Rows[0].Cells[gridEtapas.Columns.Count - 1].FindControl("imgEdit") as ImageButton;
             CommandProyectoEtapaEdit();
         }
@@ -633,15 +674,13 @@ namespace UI.Web
         protected void btActividadEspecifica_Click(object sender, EventArgs e)
         {
             ActualProyectoEtapa = GetNewEtapa();
-
             ActualProyectoEtapa.IdProyectoEtapa = -1; //NUEVA
             ActualProyectoEtapa.Nombre = Entity.Proyecto.ProyectoDenominacion;
             ActualProyectoEtapa.ProyectoDenominacion = Entity.Proyecto.ProyectoDenominacion;
             ActualProyectoEtapa.IdProyecto = Entity.Proyecto.IdProyecto;
             ActualProyectoEtapa.IdEtapa = (int)EtapaEnum.ActividadEspecifica;
             ActualProyectoEtapa.IdEstado = (int)EstadoEnum.Iniciado; //A iniciar para estado etapa
-            ActualProyectoEtapa.IdProyecto = Entity.Proyecto.IdProyecto;
-                
+               
             CommandProyectoEtapaSave();
         }
 
