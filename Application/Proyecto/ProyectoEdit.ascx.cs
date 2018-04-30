@@ -238,8 +238,8 @@ namespace UI.Web
                 UIHelper.SetValue(txtEjercicioEstimacion, "No registrado");
                 if (Entity.proyectoPlan != null && Entity.proyectoPlan.Count > 0)
                 {
-                    UIHelper.SetValue(txtCostoInicialEstimado, (estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
-                    UIHelper.SetValue(txtEjercicioEstimacion, Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial);
+                    //Comentado 20180430 UIHelper.SetValue(txtCostoInicialEstimado, (estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
+                    //Comentado 20180430 UIHelper.SetValue(txtEjercicioEstimacion, Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial);
                     if (Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioInicial < 2018 &&
                         Entity.proyectoPlan.OrderBy(x => x.IdProyectoPlan).FirstOrDefault().PlanPeriodo_AnioFinal < 2020)
                     {
