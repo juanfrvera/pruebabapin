@@ -161,7 +161,8 @@ namespace Service
             return false;
         }
         public bool AuthorizeByType(List<PermisoSimpleResult> permisosByPerfil, string typeName, string actionName, int? idEstado)
-        {            
+        {
+            var a = permisosByPerfil.Where(x => x.IdSistemaEstado == 50).Count();
             if ((from o in permisosByPerfil
                  where o.SistemaEntidad_Codigo != null && o.SistemaEntidad_Codigo.ToUpper() == typeName.ToUpper()
                      && (actionName == string.Empty || o.IdSistemaAccion.HasValue == true || o.Codigo.ToUpper() == actionName.ToUpper())

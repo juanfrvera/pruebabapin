@@ -400,6 +400,51 @@ select * from Estado order by Nombre
 Select * from SistemaEntidadEstado WHERE idsistemaentidad = 458 -- Estado financiero en cronograma
 ORDER BY nombre
 */
+--------------------- Finalizado 50 copia de 8 en ejecucion
+IF NOT EXISTS(SELECT 1 from Permiso where [IdSistemaEstado] = '50')
+INSERT INTO [dbo].[Permiso] 
+([Nombre], [Codigo], [IdSistemaEntidad], [IdSistemaAccion], [IdSistemaEstado], [Activo]) 
+Select [Nombre], [Codigo], [IdSistemaEntidad], [IdSistemaAccion], 50, [Activo] from permiso p
+where idsistemaentidad = 437 and idsistemaestado = 8
+GO
+
+IF NOT EXISTS(SELECT 1 FROM [dbo].[ActividadPermiso]
+          WHERE idPermiso in (select idPermiso from Permiso where [IdSistemaEstado] = '50'))
+INSERT INTO [dbo].[ActividadPermiso] 
+([IdPermiso],[IdActividad]) 
+Select p.idPermiso, ap.IdActividad--, pe.idPermiso as idPermisoViejo 
+from Permiso p
+Inner Join Permiso pe on 
+		p.idsistemaaccion = pe.idsistemaaccion 
+		and p.idsistemaentidad = pe.idsistemaentidad 
+		and pe.idsistemaestado = 8 and pe.idsistemaentidad = 437
+Inner join ActividadPermiso ap on pe.idpermiso = ap.idpermiso
+where p.IdSistemaEstado = 50
+ORDER BY pe.idPermiso
+GO
+
+--------------------- Iniciado 16 copia de 5 en ejecucion
+IF NOT EXISTS(SELECT 1 from Permiso where [IdSistemaEstado] = '16' and idsistemaentidad = 437)
+INSERT INTO [dbo].[Permiso] 
+([Nombre], [Codigo], [IdSistemaEntidad], [IdSistemaAccion], [IdSistemaEstado], [Activo]) 
+Select [Nombre], [Codigo], [IdSistemaEntidad], [IdSistemaAccion], 16, [Activo] from permiso p
+where idsistemaentidad = 437 and idsistemaestado = 5
+GO
+
+IF NOT EXISTS(SELECT 1 FROM [dbo].[ActividadPermiso]
+          WHERE idPermiso in (select idPermiso from Permiso where [IdSistemaEstado] = '16' and idsistemaentidad = 437))
+INSERT INTO [dbo].[ActividadPermiso] 
+([IdPermiso],[IdActividad]) 
+Select p.idPermiso, ap.IdActividad--, pe.idPermiso as idPermisoViejo 
+from Permiso p
+Inner Join Permiso pe on 
+		p.idsistemaaccion = pe.idsistemaaccion 
+		and p.idsistemaentidad = pe.idsistemaentidad 
+		and pe.idsistemaestado = 5 and pe.idsistemaentidad = 437
+Inner join ActividadPermiso ap on pe.idpermiso = ap.idpermiso
+where p.IdSistemaEstado = 16
+ORDER BY pe.idPermiso
+GO
 
 USE [BD_BAPIN]
 GO

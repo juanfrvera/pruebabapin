@@ -1466,26 +1466,11 @@ namespace DataAccess
                              ,
                              Plan_Ultimo = t10 != null ? (string)t10.Sigla + "-" + t9.Nombre + "-" + t11.Nombre : null
                              ,
-                             Apertura = (from ap in
-                                             (
-                                              from pe in this.Context.ProyectoEtapas
-                                              join e in this.Context.Etapas on pe.IdEtapa equals e.IdEtapa
-                                              join f in this.Context.Fases on e.IdFase equals f.IdFase
-                                              where pe.IdProyecto == o.IdProyecto
-                                              select new
-                                              {
-                                                  IdProyecto = pe.IdProyecto
-                                              ,
-                                                  Actividad = e.Codigo == "AC" && pe.NroEtapa.HasValue ? pe.NroEtapa.Value : 0
-                                              ,
-                                                  Obra = e.Codigo == "OB" && pe.NroEtapa.HasValue ? pe.NroEtapa.Value : 0
-                                              }
-                                              )
-                                         group ap by ap.IdProyecto into g
-                                         select o.NroProyecto.ToString().PadLeft(2, '0') + "."
-                                             + g.Max(p => p.Actividad).ToString().PadLeft(2, '0') + "."
-                                             + g.Max(p => p.Obra).ToString().PadLeft(2, '0')
-                                        ).FirstOrDefault()
+                             Apertura = ((o.NroProyecto != null && o.NroProyecto > 0) || (o.NroActividad != null && o.NroActividad > 0) || (o.NroObra != null && o.NroObra > 0)) ?
+                                        (o.NroProyecto != null ? o.NroProyecto.ToString().PadLeft(2, '0') : "00") + "." +
+                                        (o.NroActividad != null ? o.NroActividad.ToString().PadLeft(2, '0') : "00") + "." +
+                                        (o.NroObra != null ? o.NroObra.ToString().PadLeft(2, '0') : "00")
+                                        : ""
                                  //((from pe in this.Context.ProyectoEtapas
                                  //       join e in this.Context.Etapas on pe.IdEtapa equals e.IdEtapa
                                  //       join f in this.Context.Fases on e.IdFase equals f.IdFase

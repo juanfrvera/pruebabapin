@@ -210,7 +210,20 @@ namespace Contract
                 }));
         }
 
-
+       /* public string CodigoPresupuestario
+        {
+            get
+            {
+                string codigoPresupuestario = "";
+                if (NroProyecto != null || NroActividad != null || NroObra != null)
+                {
+                    codigoPresupuestario = String.Format("{0:00}", NroProyecto) + "." +
+                                           String.Format("{0:00}", NroActividad) + "." +
+                                           String.Format("{0:00}", NroObra);
+                }
+                return codigoPresupuestario;
+            }
+        }*/
 
         public virtual Proyecto ToEntity()
         {
