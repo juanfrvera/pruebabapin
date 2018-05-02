@@ -273,132 +273,136 @@ namespace UI.Web
 
         private void CalcularTEP()
         {
-            var listProyectoTipo = ProyectoTipoService.Current.GetList();
-            Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.SinGastosImputados)).FirstOrDefault().IdProyectoTipo;
-
-            List<string> incisos = new List<string>();
-
-            var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.Proyecto.IdProyecto });
-            foreach (var proyectoEtapa in proyectoEtapas)
+            //Solo se calcula la Imputacion Presupuetaria en la fase de ejecución
+            if (Entity.IdFase == (int)FaseEnum.Ejecucion)
             {
-                var proyectoEtapaInformacionPresupuestarias = ProyectoEtapaInformacionPresupuestariaService.Current.GetResultFromList(new nc.ProyectoEtapaInformacionPresupuestariaFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
-                foreach (var proyectoEtapaInformacionPresupuestaria in proyectoEtapaInformacionPresupuestarias)
-                {
-                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaInformacionPresupuestaria.IdClasificacionGasto);
-                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
-                    {
-                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
-                    }
-                }
-                var proyectoEtapaEstimados = ProyectoEtapaEstimadoService.Current.GetResultFromList(new nc.ProyectoEtapaEstimadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
-                foreach (var proyectoEtapaEstimado in proyectoEtapaEstimados)
-                {
-                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaEstimado.IdClasificacionGasto);
-                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
-                    {
-                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
-                    }
-                }
-                var proyectoEtapaRealizados = ProyectoEtapaRealizadoService.Current.GetResultFromList(new nc.ProyectoEtapaRealizadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
-                foreach (var proyectoEtapaRealizado in proyectoEtapaRealizados)
-                {
-                    ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaRealizado.IdClasificacionGasto);
-                    if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
-                    {
-                        incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
-                    }
-                }
-            }
-            //string.Join("|", incisos)
+                var listProyectoTipo = ProyectoTipoService.Current.GetList();
+                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.SinGastosImputados)).FirstOrDefault().IdProyectoTipo;
 
-            if (incisos == null || incisos.Count == 0)
-            {
-                return;
-            }
-            else if (
-                (
-                    incisos.Where(x => x.Equals("04")).Any() &&
+                List<string> incisos = new List<string>();
+
+                //var proyectoEtapas = ProyectoEtapaService.Current.GetResultFromList(new nc.ProyectoEtapaFilter() { IdProyecto = Entity.Proyecto.IdProyecto });
+                var proyectoEtapas = Entity.Etapas;
+                foreach (var proyectoEtapa in proyectoEtapas)
+                {
+                    //var proyectoEtapaInformacionPresupuestarias = ProyectoEtapaInformacionPresupuestariaService.Current.GetResultFromList(new nc.ProyectoEtapaInformacionPresupuestariaFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                    foreach (var proyectoEtapaInformacionPresupuestaria in Entity.EtapasInformacionPresupuestarias)
+                    {
+                        ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaInformacionPresupuestaria.IdClasificacionGasto);
+                        if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                        {
+                            incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                        }
+                    }
+                    //var proyectoEtapaEstimados = ProyectoEtapaEstimadoService.Current.GetResultFromList(new nc.ProyectoEtapaEstimadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                    foreach (var proyectoEtapaEstimado in Entity.EtapasEstimadas)
+                    {
+                        ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaEstimado.IdClasificacionGasto);
+                        if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                        {
+                            incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                        }
+                    }
+                    //var proyectoEtapaRealizados = ProyectoEtapaRealizadoService.Current.GetResultFromList(new nc.ProyectoEtapaRealizadoFilter() { IdProyectoEtapa = proyectoEtapa.IdProyectoEtapa });
+                    foreach (var proyectoEtapaRealizado in Entity.EtapasRealizadas)
+                    {
+                        ClasificacionGasto cg = ClasificacionGastoService.Current.GetById(proyectoEtapaRealizado.IdClasificacionGasto);
+                        if (!incisos.Where(x => x.Equals(cg.BreadcrumbCode.Substring(1, 2))).Any())
+                        {
+                            incisos.Add(cg.BreadcrumbCode.Substring(1, 2));
+                        }
+                    }
+                }
+                //string.Join("|", incisos)
+
+                if (incisos == null || incisos.Count == 0)
+                {
+                    return;
+                }
+                else if (
+                    (
+                        incisos.Where(x => x.Equals("04")).Any() &&
+                        !incisos.Where(x => x.Equals("05")).Any() &&
+                        !incisos.Where(x => x.Equals("06")).Any()
+                    )
+                    /*||
+                    (
+                        Entity.Proyecto.NroProyecto != null && Entity.Proyecto.NroProyecto != 0 && incisos.Where(x => Int32.Parse(x) < 4).Any()
+                    )*/
+                    )
+                {
+                    //Condición Obligatoria
+                    //Inc 4 y no inc. 5 ni inc 6
+                    //O (Cód. de Proy <> de vacío ) y (inc 1 y/o 2 y/o  3 -  cualquier combinación de incisos menor a 4)
+                    //Otra Condicion Posible
+                    //Inc 4 + inc. 1 y/o 2 y/o 3 
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.IRDInvRealDirecta)).FirstOrDefault().IdProyectoTipo;
+                }
+                else if (
+                    (!incisos.Where(x => x.Equals("04")).Any() &&
+                    incisos.Where(x => x.Equals("05")).Any() &&
+                    !incisos.Where(x => x.Equals("06")).Any())
+                    // || Por el momento no considerar
+                    //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("01")).Any()
+                    //||
+                    //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("02")).Any()
+                    //||
+                    //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("03")).Any()
+                    )
+                {
+                    //Condición Obligatoria
+                    //Inc 5 y no inc. 4 ni inc 6
+                    //Otra Condición Posible
+                    //Inc 5 + inc. 1 y/o 2 y/o 3
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Transferencia)).FirstOrDefault().IdProyectoTipo;
+                }
+                else if (
+                   (incisos.Where(x => x.Equals("04")).Any() && (incisos.Where(x => x.Equals("05")).Any() || incisos.Where(x => x.Equals("06")).Any()))
+                    ||
+                    (incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("06")).Any())
+                    ||
+                    (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+                   )
+                {
+                    //Condición Obligatoria                             Otra Condición Posible (*1)
+                    //Inc 4 y (5 ó 6)                                   inc 4 y (5 ó 6) + inc. 1 y/o 2 y/o 3
+                    //O Inc 5 y 6                                       Ó Inc 5 y 6 + inc. 1 y/o 2 y/o 3
+                    //O Inc. 6.8.7 y cualquier otro inc. 6              O Inc. 6.8.7 y cualquier otro inc. 6 + inc. 1 y/o 2 y/o 3
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Combinados)).FirstOrDefault().IdProyectoTipo;
+                }
+                else if (
+                    (incisos.Where(x => x.Equals("06")).Any() && (!(incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())))
+                    &&
                     !incisos.Where(x => x.Equals("05")).Any() &&
-                    !incisos.Where(x => x.Equals("06")).Any()
-                )
-                /*||
-                (
-                    Entity.Proyecto.NroProyecto != null && Entity.Proyecto.NroProyecto != 0 && incisos.Where(x => Int32.Parse(x) < 4).Any()
-                )*/
-                )
-            {
-                //Condición Obligatoria
-                //Inc 4 y no inc. 5 ni inc 6
-                //O (Cód. de Proy <> de vacío ) y (inc 1 y/o 2 y/o  3 -  cualquier combinación de incisos menor a 4)
-                //Otra Condicion Posible
-                //Inc 4 + inc. 1 y/o 2 y/o 3 
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.IRDInvRealDirecta)).FirstOrDefault().IdProyectoTipo;
+                    !incisos.Where(x => x.Equals("04")).Any()
+                    )
+                {
+                    //Condición Obligatoria
+                    //Solo Inc. 6 (con excepción de 6.8.7) y no inc. 4 ni inc 5.
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.InversionesFinancieras)).FirstOrDefault().IdProyectoTipo;
+                }
+                else if (
+                    (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
+                    )
+                {
+                    //Condición Obligatoria
+                    //Únicamente inciso 6.8.7
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.AdelantoProveedores)).FirstOrDefault().IdProyectoTipo;
+                }
+                else if (
+                    ((Entity.Proyecto.NroProyecto == null || Entity.Proyecto.NroProyecto == 0) && !incisos.Where(x => Int32.Parse(x) >= 4).Any())
+                    )
+                {
+                    //Condición Obligatoria
+                    //Cód. de Proy= 00 y (inc 1 y/o 2 y/o  3 -cualquier combinación de incisos menor a 4) (*2)
+                    //Cualquier combinación de incisos menor a 4: (estos No son proyectos o no tienen cód. presupuestario asignado) 
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.GastoCorriente)).FirstOrDefault().IdProyectoTipo;
+                }
+                else
+                {
+                    Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Indefinido)).FirstOrDefault().IdProyectoTipo;
+                }
             }
-            else if (
-                (!incisos.Where(x => x.Equals("04")).Any() &&
-                incisos.Where(x => x.Equals("05")).Any() &&
-                !incisos.Where(x => x.Equals("06")).Any())
-                // || Por el momento no considerar
-                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("01")).Any()
-                //||
-                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("02")).Any()
-                //||
-                //incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("03")).Any()
-                )
-            {
-                //Condición Obligatoria
-                //Inc 5 y no inc. 4 ni inc 6
-                //Otra Condición Posible
-                //Inc 5 + inc. 1 y/o 2 y/o 3
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Transferencia)).FirstOrDefault().IdProyectoTipo;
-            }
-            else if (
-               (incisos.Where(x => x.Equals("04")).Any() && (incisos.Where(x => x.Equals("05")).Any() || incisos.Where(x => x.Equals("06")).Any()))
-                ||
-                (incisos.Where(x => x.Equals("05")).Any() && incisos.Where(x => x.Equals("06")).Any())
-                ||
-                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
-               )
-            {
-                //Condición Obligatoria                             Otra Condición Posible (*1)
-                //Inc 4 y (5 ó 6)                                   inc 4 y (5 ó 6) + inc. 1 y/o 2 y/o 3
-                //O Inc 5 y 6                                       Ó Inc 5 y 6 + inc. 1 y/o 2 y/o 3
-                //O Inc. 6.8.7 y cualquier otro inc. 6              O Inc. 6.8.7 y cualquier otro inc. 6 + inc. 1 y/o 2 y/o 3
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Combinados)).FirstOrDefault().IdProyectoTipo;
-            }
-            else if (
-                (incisos.Where(x => x.Equals("06")).Any() && (!(incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())))
-                &&
-                !incisos.Where(x => x.Equals("05")).Any() &&
-                !incisos.Where(x => x.Equals("04")).Any()
-                )
-            {
-                //Condición Obligatoria
-                //Solo Inc. 6 (con excepción de 6.8.7) y no inc. 4 ni inc 5.
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.InversionesFinancieras)).FirstOrDefault().IdProyectoTipo;
-            }
-            else if (
-                (incisos.Where(x => x.Equals("06")).Any() && incisos.Where(x => x.Equals("07")).Any() && incisos.Where(x => x.Equals("08")).Any())
-                )
-            {
-                //Condición Obligatoria
-                //Únicamente inciso 6.8.7
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.AdelantoProveedores)).FirstOrDefault().IdProyectoTipo;
-            }
-            else if (
-                ((Entity.Proyecto.NroProyecto == null || Entity.Proyecto.NroProyecto == 0) && !incisos.Where(x => Int32.Parse(x) >= 4).Any())
-                )
-            {
-                //Condición Obligatoria
-                //Cód. de Proy= 00 y (inc 1 y/o 2 y/o  3 -cualquier combinación de incisos menor a 4) (*2)
-                //Cualquier combinación de incisos menor a 4: (estos No son proyectos o no tienen cód. presupuestario asignado) 
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.GastoCorriente)).FirstOrDefault().IdProyectoTipo;
-            }
-            else
-            {
-                Entity.Proyecto.IdTipoProyecto = listProyectoTipo.Where(x => x.Nombre == EnumUtilities.GetEnumDescription(ProyectoTipoEnum.Indefinido)).FirstOrDefault().IdProyectoTipo;
-            }
-
         }
         private Int32 GetParameterIDFFTesoroNacional()
         {
