@@ -187,13 +187,18 @@ namespace UI.Web
             //Entity.Responsable.IdOficina = UIHelper.GetInt(toResponsable);
             //Entity.Funcionarios.Clear();
             //PrestamoComposeService.Current.ActualizarFuncionarios(Entity);
-            //UIHelper.Clear(dlFuncionarioResponsable);
+            UIHelper.Clear(dlFuncionarioResponsable);
             //UIHelper.Sort(Entity.Funcionarios, "Usuario_NombreYApellido", SortDirection.Ascending);
             //UIHelper.SetValue(dlFuncionarioResponsable, Entity.Funcionarios);
             //upFuncionariosResponsablePopUp.Update();
-
-            Entity.Funcionarios = PrestamoComposeService.Current.GetPrestamoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toResponsable));
-            UIHelper.SetValue(dlFuncionarioResponsable, Entity.Funcionarios.OrderBy(i => i.Usuario_ApellidoYNombre));
+            if (UIHelper.GetInt(toResponsable) > 0)
+            {
+                Entity.Funcionarios = PrestamoComposeService.Current.GetPrestamoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toResponsable));
+                if(Entity.Funcionarios != null && Entity.Funcionarios.Count() > 0)
+                {
+                    UIHelper.SetValue(dlFuncionarioResponsable, Entity.Funcionarios.OrderBy(i => i.Usuario_ApellidoYNombre));
+                }
+            }
             upFuncionariosResponsablePopUp.Update();
         }
 

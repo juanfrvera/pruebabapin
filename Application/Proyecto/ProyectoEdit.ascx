@@ -291,7 +291,9 @@
                         <%--<asp:DropDownList ID="ddlIniciador" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
                         <%--Matias 20140702 - Tarea 150--%>
                         <%--<uc:TreeOficinas runat="server" ID="toIniciador" Width ="250px" TabIndex ="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true"></uc:TreeOficinas>--%>
-                        <uc:TreeOficinas runat="server" ID="toIniciador" TabIndex="6" OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <uc:TreeOficinas runat="server" ID="toIniciador" Width="250px" TabIndex="6" 
+                            Handler="../Handlers/OficinaHandler.ashx" 
+                            OnValueChanged="toIniciador_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
                         <%--FinMatias 20140702 - Tarea 150--%>
                         <%--<asp:ImageButton ID="imgFuncionario1" runat ="server" ImageUrl="~/Images/funcionario.png" ToolTip="Funcionarios" OnClick="funcionario1_Click" />--%>
                     </td>
@@ -309,7 +311,9 @@
                     <td class="filaInput">
                         <%--Matias 20140702 - Tarea 150--%>
                         <%--<uc:TreeOficinas runat="server" ID="toEjecutor" Width ="250px" TabIndex ="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
-                        <uc:TreeOficinas runat="server" ID="toEjecutor" Width="250px" TabIndex="8" OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <uc:TreeOficinas runat="server" ID="toEjecutor" Width="250px" TabIndex="8" 
+                            Handler="../Handlers/OficinaHandler.ashx" 
+                            OnValueChanged="toEjecutor_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
                         <%--FinMatias 20140702 - Tarea 150--%>
                         <%--<asp:DropDownList ID="ddlEjecutor" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
                     </td>
@@ -327,7 +331,9 @@
                     <td class="filaInput">
                         <%--Matias 20140702 - Tarea 150--%>
                         <%--<uc:TreeOficinas runat="server" ID="toResponsable" Width ="250px" TabIndex ="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" ></uc:TreeOficinas>--%>
-                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="250px" TabIndex="10" OnValueChanged="toResponsable_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
+                        <uc:TreeOficinas runat="server" ID="toResponsable" Width="250px" TabIndex="10" 
+                            Handler="../Handlers/OficinaHandler.ashx" 
+                            OnValueChanged="toResponsable_ValueChanged" Autopostback="true" SelectOption="OnlySelectedDefined" ShowOption="All"></uc:TreeOficinas>
                         <%--FinMatias 20140702 - Tarea 150--%>
                         <%--<asp:DropDownList ID="ddlResponsable" runat="server" CssClass="field_input"  ></asp:DropDownList>--%>
                     </td>

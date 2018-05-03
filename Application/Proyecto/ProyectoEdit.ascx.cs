@@ -679,20 +679,41 @@ namespace UI.Web
         #region Private Methods
         private void ChangeOficinaIniciador()
         {
-            Entity.proyectoOficinaPerfilFuncionarioIniciador = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toIniciador));
-            UIHelper.SetValue(dlFuncionarioIniciador, Entity.proyectoOficinaPerfilFuncionarioIniciador.OrderBy(i => i.Usuario_ApellidoYNombre));
+            UIHelper.Clear(dlFuncionarioIniciador);
+            if (UIHelper.GetInt(toIniciador) > 0)
+            {
+                Entity.proyectoOficinaPerfilFuncionarioIniciador = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toIniciador));
+                if (Entity.proyectoOficinaPerfilFuncionarioIniciador != null && Entity.proyectoOficinaPerfilFuncionarioIniciador.Count > 0)
+                {
+                    UIHelper.SetValue(dlFuncionarioIniciador, Entity.proyectoOficinaPerfilFuncionarioIniciador.OrderBy(i => i.Usuario_ApellidoYNombre));
+                }
+            }
             upFuncionariosIniciadorPopUp.Update();
         }
         private void ChangeOficinaEjecutor()
         {
-            Entity.proyectoOficinaPerfilFuncionarioEjecutor = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toEjecutor));
-            UIHelper.SetValue(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor.OrderBy(i => i.Usuario_ApellidoYNombre));
+            UIHelper.Clear(dlFuncionarioEjecutor);
+            if (UIHelper.GetInt(toEjecutor) > 0)
+            {
+                Entity.proyectoOficinaPerfilFuncionarioEjecutor = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toEjecutor));
+                if (Entity.proyectoOficinaPerfilFuncionarioEjecutor != null && Entity.proyectoOficinaPerfilFuncionarioEjecutor.Count > 0)
+                {
+                    UIHelper.SetValue(dlFuncionarioEjecutor, Entity.proyectoOficinaPerfilFuncionarioEjecutor.OrderBy(i => i.Usuario_ApellidoYNombre));
+                }
+            }
             upFuncionariosEjecutorPopUp.Update();
         }
         private void ChangeOficinaResponsable()
         {
-            Entity.proyectoOficinaPerfilFuncionarioResponsable = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toResponsable));
-            UIHelper.SetValue(dlFuncionarioResponsable, Entity.proyectoOficinaPerfilFuncionarioResponsable.OrderBy(i => i.Usuario_ApellidoYNombre));
+            UIHelper.Clear(dlFuncionarioResponsable);
+            if (UIHelper.GetInt(toResponsable) > 0)
+            {
+                Entity.proyectoOficinaPerfilFuncionarioResponsable = ProyectoService.Current.GetProyectoOficinaPerfilFuncionarioResult(UIHelper.GetInt(toResponsable));
+                if (Entity.proyectoOficinaPerfilFuncionarioResponsable != null && Entity.proyectoOficinaPerfilFuncionarioResponsable.Count > 0)
+                {
+                    UIHelper.SetValue(dlFuncionarioResponsable, Entity.proyectoOficinaPerfilFuncionarioResponsable.OrderBy(i => i.Usuario_ApellidoYNombre));
+                }
+            }
             upFuncionariosResponsablePopUp.Update();
         }
         #endregion

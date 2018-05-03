@@ -235,3 +235,12 @@ function HayChequeado2(objectName) {
 </form>
 </body>
 </html>
+<script type="text/javascript" language="javascript">
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+    function EndRequestHandler(sender, args) {
+        if (args.get_error() != undefined) {
+            console.log("Error: " + args.get_error());
+            args.set_errorHandled(true);
+        }
+    }
+</script>
