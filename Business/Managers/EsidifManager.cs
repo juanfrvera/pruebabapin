@@ -271,8 +271,8 @@ namespace Business.Managers
                 "   <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">" +
                 "         <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">" +
                 "         <wsse:UsernameToken>" +
-                "            <wsse:Username>BAPIN</wsse:Username>" +
-                "            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">BapinEsidif2018</wsse:Password>" +
+                "            <wsse:Username>[Username]</wsse:Username>" +
+                "            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">[Password]</wsse:Password>" +
                 "         </wsse:UsernameToken>" +
                 "      </wsse:Security><wsa:MessageID>uuid:b24aa249-c882-47be-b69d-9eda71aef318</wsa:MessageID>" +
                 "      <wsa:Action>https://ws-si.mecon.gov.ar/ws/entidades_basicas/consultarAPGBapinesService</wsa:Action>" +
@@ -280,25 +280,11 @@ namespace Business.Managers
                 "   <soapenv:Body>" +
                 "   </soapenv:Body>" +
                 "</soapenv:Envelope>");
-            /*
-            "      <web:datosBapin>" +
-            "         <ejercicio>2018</ejercicio>" +
-            "         <estados>" +
-            "            <!--1 or more repetitions:-->" +
-            "            <estado>DEMANDA</estado>" +
-            "         </estados>" +
-            "         <!--Optional:-->" +
-            "         <codigoBapin>0</codigoBapin>" +
-            "         <jurisdiccion>5</jurisdiccion>" +
-            "         <!--Optional:-->" +
-            "         <!--<saf>320</saf>-->" +
-            "         <!--Optional:-->" +
-            "         <!--<programas>-->" +
-            "            <!--1 or more repetitions:-->" +
-            "            <!--<programa>5</programa>-->" +
-            "         <!--</programas>-->" +
-            "      </web:datosBapin>" +
-            */
+
+            //BAPIN
+            apgServiceString = apgServiceString.Replace("[Username]", SolutionContext.Current.ParameterManager.GetStringValue("USERNAME_ESIDIF"));
+            //BapinEsidif2018
+            apgServiceString = apgServiceString.Replace("[Password]", SolutionContext.Current.ParameterManager.GetStringValue("PASSWORD_ESIDIF"));
 
             soapEnvelopeDocument.LoadXml(apgServiceString);
 
