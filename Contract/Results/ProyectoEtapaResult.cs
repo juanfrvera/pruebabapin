@@ -119,8 +119,13 @@ namespace Contract
                 return descripcion;
             }
         }
+
         public decimal? TotalEstimado { get; set; }
+        public decimal? TotalEstimadoAnioActualyFuturos { get; set; }
         public decimal? TotalRealizado { get; set; }
+        public decimal? TotalRealizadoAnioAnterior { get; set; }
+        public decimal? CostoTotal { get; set; }
+
         public string NroEtapaConCeros
         {
             get
@@ -207,6 +212,20 @@ namespace Contract
                 return proyecto + "." + actividad + "." + obra;
             }
         }
+        //Pero no permite ordenar
+        /*public string CodigoPresupuestarioForGrid
+        {
+            get
+            {
+                return ((NroProyecto != null && NroProyecto != "" && NroProyecto != 0.ToString()) ||
+                        (NroActividad != null && NroActividad != "" && NroActividad != 0.ToString()) ||
+                        (NroObra != null && NroObra != "" && NroObra != 0.ToString())) ?
+                                        (NroProyecto != null ? NroProyecto.ToString().PadLeft(2, '0') : "00") + "." +
+                                        (NroActividad != null ? NroActividad.ToString().PadLeft(2, '0') : "00") + "." +
+                                        (NroObra != null ? NroObra.ToString().PadLeft(2, '0') : "00") 
+                        : "";
+            }
+        }*/
 
         public Int32 IdCopyProyectoEtapa { get; set; }
     }

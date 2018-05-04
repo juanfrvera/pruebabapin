@@ -3331,7 +3331,8 @@ namespace DataAccess
                          join peep in this.Context.ProyectoEtapaEstimadoPeriodos on pee.IdProyectoEtapaEstimado equals peep.IdProyectoEtapaEstimado
                          join e in this.Context.Etapas on o.IdEtapa equals e.IdEtapa
                          join f in this.Context.Fases on e.IdFase equals f.IdFase
-                         where filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto
+                         where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto)
+                         && (filter.IdFase == null || filter.IdFase == 0 || filter.IdFase == e.IdFase)
                          group peep by new { Id = o.IdProyecto, Periodo = peep.Periodo, NombreFase = f.Nombre } into groupQuery
                          select new CronogramaTotalPorAnio()
                          {
@@ -3352,7 +3353,8 @@ namespace DataAccess
                    join peep in this.Context.ProyectoEtapaRealizadoPeriodos on pee.IdProyectoEtapaRealizado equals peep.IdProyectoEtapaRealizado
                    join e in this.Context.Etapas on o.IdEtapa equals e.IdEtapa
                    join f in this.Context.Fases on e.IdFase equals f.IdFase
-                   where filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto
+                   where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == o.IdProyecto)
+                   && (filter.IdFase == null || filter.IdFase == 0 || filter.IdFase == e.IdFase)
                    group peep by new { Id = o.IdProyecto, Periodo = peep.Periodo, NombreFase = f.Nombre } into groupQuery
                    select new CronogramaTotalPorAnio()
                    {
@@ -3372,6 +3374,7 @@ namespace DataAccess
                  join per in this.Context.ProyectoEtapaRealizados on perp.IdProyectoEtapaRealizado equals per.IdProyectoEtapaRealizado
                  join pe in this.Context.ProyectoEtapas on per.IdProyectoEtapa equals pe.IdProyectoEtapa
                  where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == pe.IdProyecto)
+                 && (filter.IdFase == null || filter.IdFase == 0 || filter.IdFase == pe.Etapa.IdFase)
                  && perp.MontoCalculado > 0
                  select perp.Periodo
                  ).Union(
@@ -3379,6 +3382,7 @@ namespace DataAccess
                     join per in this.Context.ProyectoEtapaEstimados on peep.IdProyectoEtapaEstimado equals per.IdProyectoEtapaEstimado
                     join pe in this.Context.ProyectoEtapas on per.IdProyectoEtapa equals pe.IdProyectoEtapa
                     where (filter.IdProyecto == null || filter.IdProyecto == 0 || filter.IdProyecto == pe.IdProyecto)
+                    && (filter.IdFase == null || filter.IdFase == 0 || filter.IdFase == pe.Etapa.IdFase)
                     && peep.MontoCalculado > 0
                     select peep.Periodo)
                     ).Distinct();

@@ -14,35 +14,10 @@
                 <tr>
                     <td>
                         <table width="100%" cellpadding="0" style="margin-bottom:12px" >	  	
-                            <!--<tr>                      
-                                <td style="width:100px">&nbsp;</td>
-                                <td style="width:100px">&nbsp;</td>
-	                            <td style="width:200px">&nbsp;</td>
-	                            <td style="width:90px;text-align:left"><asp:Literal ID="ltrFIE" runat="server" Text="Fecha Inicio E."></asp:Literal></td>
-	                            <td style="width:90px;text-align:left"><asp:Literal ID="ltrFFE" runat="server" Text="Fecha Fin E."></asp:Literal></td>
-	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrFIR" runat="server" Text="Fecha Inicio R."></asp:Literal></td>
-	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrFFR" runat="server" Text="Fecha Fin R."></asp:Literal></td>
-	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrTE" runat="server" Text="Total E."></asp:Literal></td>
-	                            <td style="width:100px;text-align:left"><asp:Literal ID="ltrTR" runat="server" Text="Total R."></asp:Literal></td>
-    	                        <td style="width:20px">&nbsp;</td>
-                            </tr>-->
                             <tr>                      
 	                            <td width="70px"><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
 	                            <td><cc:ExtendedDropDownList ID="ddlFase" Enabled="false" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
 	                            <td></td>
-	                            <!--<td align="center"><asp:Label ID="lblMfie" runat="server" ></asp:Label></td>
-	                            <td align="center"><asp:Label ID="lblMffe" runat="server" ></asp:Label></td>
-	                            <td align="center"><asp:Label ID="lblMfir" runat="server" ></asp:Label></td>
-	                            <td align="center"><asp:Label ID="lblMffr" runat="server" ></asp:Label></td>
-	                            <td align="right"><asp:Label ID="lblMte" runat="server" ></asp:Label>&nbsp;</td>
-	                            <td align="right"><asp:Label ID="lblMtr" runat="server" ></asp:Label>&nbsp;</td>-->
-
-                            <!--<tr>
-                                <td colspan ="10" align ="right" >
-                                    <asp:Button ID ="btVerTotales" runat ="server" Text ="Total por Año" CausesValidation="false" 
-                                        OnClick="btVerTotales_Click" />
-                                </td>
-                            </tr>-->
                                 <td align="right">
                                     <asp:Button ID ="btActividadEspecifica" Visible="false" runat ="server" Text ="Agregar Actividad Específica" CausesValidation="false" 
                                         OnClick="btActividadEspecifica_Click" />
@@ -79,8 +54,8 @@
                         <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>   
                         <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>
                         <asp:BoundField HeaderText ="Fecha Fin Realizada" DataField ="FechaFinRealizada" SortExpression ="FechaFinRealizada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>
-                        <asp:BoundField HeaderText ="Total Estimada" DataField ="TotalEstimado" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/> 
-                        <asp:BoundField HeaderText ="Total Realizada" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/>                
+                        <asp:BoundField HeaderText ="Costo Total" DataField ="CostoTotal" SortExpression ="TotalEstimado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/> 
+                        <asp:BoundField HeaderText ="Total Realizado" DataField ="TotalRealizado" SortExpression ="TotalRealizado" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N0}" ItemStyle-Width ="100px"/>                
                         <asp:TemplateField  HeaderStyle-Width ="10px">
                             <HeaderTemplate>
                             </HeaderTemplate>
@@ -318,7 +293,7 @@
             </tr>
         </table>
     </asp:Panel>
-    <asp:Panel ID="pnInfoPresupuestaria" DefaultButton="btCancelTotales" runat="server">
+    <asp:Panel ID="pnInfoPresupuestaria" DefaultButton="btCerrarInfoPresupuestaria" runat="server">
         <asp:UpdatePanel ID="upInfoPresupuestariaPopUp" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <table width="100%">
@@ -364,7 +339,7 @@
                     <tr>
                         <td align="center">                                
                           
-                            <asp:Button ID="Button8" Text="Cerrar" OnClick="btCerrarInfoPresupuestaria_Click" CausesValidation="false" 
+                            <asp:Button ID="btCerrarInfoPresupuestaria" Text="Cerrar" OnClick="btCerrarInfoPresupuestaria_Click" CausesValidation="false" 
                                 runat="server" Width="60px" />                                
                         </td>
                     </tr>
@@ -585,13 +560,8 @@
                                     <td style="width: 50%;" valign="top" >
                                         <asp:Panel ID="pnlBuscarObjetoGastoRealizado" runat="server" GroupingText="Buscar Objeto del Gasto">
                                             <table >
-                                            <%--<tr>
-                                                <td valign="top"><asp:RadioButton ID="rbPorCodigoRealizada" runat="server" Text="Por Código" GroupName="obrGroup" OnCheckedChanged="rbPorCodigoRealizada_OnCheckedChanged" AutoPostBack="true"  /><br /></td>
-                                                <td valign="top"><asp:RadioButton ID="rbPorDescripcionRealizada" runat="server" Text="Por Descripción" GroupName="obrGroup"  OnCheckedChanged="rbPorCodigoRealizada_OnCheckedChanged" AutoPostBack="true"/></td>
-                                            </tr>--%>
                                             <tr>
                                             <td valign="top">
-                                                <%--<uc:Autocomplete runat="server" ID="acGastosRealizada" AutoPostback="true" Width="280" MinimumPrefixLength="2" ></uc:Autocomplete>--%>
                                                 <uc:TreeControl runat="server" ID="acGastosRealizada" Width="370px" ></uc:TreeControl>
                                             </td></tr></table>
                                         </asp:Panel>
@@ -662,60 +632,3 @@
         PopupDragHandleControlID="EtapasRealizadasPopUpDragHandle" PopupControlID="PopUpEtapasRealizadas"
         OkControlID="Button1" TargetControlID="Button1" BackgroundCssClass="modalBackground" />
 </asp:Panel>
-
-<%--Totales --%>
-<asp:panel id="PopUpTotales" runat="server" width="800px" style="background-color: #ffffff;
-    border: solid 2px #ffffff; border-color: Gray;">
-    <asp:Panel ID="DemorasPopUpDragHandle" runat="server" Style="cursor: move;">
-        <table width="100%" cellpadding="0" cellspacing="5">
-            <tr class="menutoppopup">
-                
-                    <th align="center" height="10">
-                        <asp:Label ID="headerPopUpTotales" runat="server" Text="Totales" />
-                    </th>
-                
-            </tr>
-        </table>
-    </asp:Panel>
-    <asp:Panel ID="pnTotales" DefaultButton="btCancelTotales" runat="server">
-        <asp:UpdatePanel ID="upTotalesPopUp" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <asp:Image id="img" runat ="server" ImageUrl="~/Images/alert.png" />
-                        </td>
-                        <td>
-                            <asp:Label ID="lbAdvertencia" runat ="server" Text ="Deberá Guardar los cambios para que se vean reflejados en el presente listado"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan ="2">
-                            <asp:GridView ID="gvTotales" runat = "server" AutoGenerateColumns ="false" 
-                                Width="100%" OnSorting="gvTotales_Sorting"  >
-                                <Columns >
-                                    <asp:BoundField HeaderText ="Año" DataField="Anio" />
-                                    <asp:BoundField HeaderText ="Estimado" DataField ="Estimado" DataFormatString="{0:N0}"/>
-                                    <asp:BoundField HeaderText ="Realizado" DataField="Realizado" DataFormatString="{0:N0}"/>
-                                </Columns>
-                            </asp:GridView>
-                        </td>
-                    </tr>
-                </table>
-                <table width="100%">
-                    <tr>
-                        <td align="center">                                
-                          
-                            <asp:Button ID="btCancelTotales" Text="Cerrar" OnClick="btCancelTotales_Click" CausesValidation="false" 
-                                runat="server" Width="60px" />                                
-                        </td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
-    <asp:Button ID="Button7" runat="server" Text="Button" Style="display: none" />
-    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderTotales" runat="server" CancelControlID="Button7"
-        PopupDragHandleControlID="TotalesPopUpDragHandle" PopupControlID="PopUpTotales"
-        OkControlID="Button7" TargetControlID="Button7" BackgroundCssClass="modalBackground" />
-</asp:panel>

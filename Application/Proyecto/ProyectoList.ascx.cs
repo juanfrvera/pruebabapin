@@ -233,7 +233,7 @@ namespace UI.Web
 
         protected override void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            /*if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string[] ActividadObra = e.Row.Cells[9].Text.Split('.');
 
@@ -248,7 +248,7 @@ namespace UI.Web
                     }
                 }
 
-            }
+            }*/
         }
 
         #endregion

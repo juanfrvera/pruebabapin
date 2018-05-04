@@ -134,7 +134,7 @@ namespace Contract
         public int? ProyectoPlan { get; set; }
 
         public bool BuscarEnProyectoPlan { get; set; }
-
+        public int IdFase { get; set; }
     }
 
     [Serializable]

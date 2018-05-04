@@ -450,7 +450,7 @@ namespace Business
             List<CronogramaTotalPorAnio> estimado=  ProyectoData.Current.GetTotalEstimadoPorAnio(filter);
             List<CronogramaTotalPorAnio> realizado= ProyectoData.Current.GetTotalRealizadoPorAnio(filter);
             List<CronogramaTotalPorAnio> EstimadoRealizado = estimado.Union (realizado ).ToList ();
-            return (
+            var query = (
                     from a in anios 
                     join _er in EstimadoRealizado on a equals _er.Anio into ter from er in ter.DefaultIfEmpty()
                     group er by new { Anio = a, NombreFase = er.NombreFase } into groupQuery
@@ -461,9 +461,53 @@ namespace Business
                         ,Realizado = groupQuery.Sum (i=> i.Realizado ) 
                         ,NombreFase = groupQuery.Key.NombreFase 
                     }
-                ).OrderBy(i => i.NombreFase).ThenBy(i => i.Anio).ToList();
-
+                ).OrderBy(i => i.NombreFase).ThenBy(i => i.Anio);
+            return query.ToList();
         }
+        /*
+        public List<CronogramaTotalPorAnio> GetTotalPorAnio(ProyectoFilter filter, ProyectoCronogramaCompose entity)
+        {
+            var anios = entity.EtapasEstimadas.Select(x => x.PeriodosUtilizados.FirstOrDefault()).ToList().Select(x => x.Periodo).Distinct().ToList();
+            anios.Sort();
+
+            var periodosEstimados = entity.EtapasEstimadas.Select(x => x.PeriodosUtilizados).ToList();
+            var query = (from o in entity.Etapas
+                         join pee in entity.EtapasEstimadas on o.IdProyectoEtapa equals pee.IdProyectoEtapa
+                         join peep in periodosEstimados on pee.IdProyectoEtapaEstimado equals peep.Select(x => x.IdProyectoEtapaEstimado).FirstOrDefault()
+                         group peep by new { Id = o.IdProyecto, Periodo = peep.Select(x => x.Periodo) } into groupQuery
+                         select new CronogramaTotalPorAnio()
+                         {
+                             Anio = groupQuery.Key.Periodo.FirstOrDefault()
+                            ,
+                             Estimado = groupQuery.Sum(i => i.FirstOrDefault().MontoCalculado)
+                            ,
+                             NombreFase = ""
+                         }
+                ).AsQueryable();
+
+            List<CronogramaTotalPorAnio> estimado = query.ToList(); // ProyectoData.Current.GetTotalEstimadoPorAnio(filter);
+            List<CronogramaTotalPorAnio> realizado = ProyectoData.Current.GetTotalRealizadoPorAnio(filter);
+            List<CronogramaTotalPorAnio> EstimadoRealizado = estimado.Union(realizado).ToList();
+
+            var query2 = (
+                    from a in anios
+                    join _er in EstimadoRealizado on a equals _er.Anio into ter
+                    from er in ter.DefaultIfEmpty()
+                    group er by new { Anio = a } into groupQuery
+                    select new CronogramaTotalPorAnio()
+                    {
+                        Anio = groupQuery.Key.Anio
+                        ,
+                        Estimado = groupQuery.Sum(i => i.Estimado)
+                        ,
+                        Realizado = groupQuery.Sum(i => i.Realizado)
+                        ,
+                        NombreFase = ""
+                    }
+                ).OrderBy(i => i.NombreFase).ThenBy(i => i.Anio);
+            return query2.ToList();
+        }
+        */
         #endregion
 
         #region protected Methods

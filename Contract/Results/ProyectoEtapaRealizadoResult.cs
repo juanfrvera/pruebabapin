@@ -50,6 +50,20 @@ namespace Contract
                 return rv;
             }
         }
+        public decimal TotalRealizadoAnioAnterior
+        {
+            get
+            {
+                decimal rv = 0;
+                foreach (ProyectoEtapaRealizadoPeriodoResult e in this.Periodos)
+                {
+                    if (e.Periodo == DateTime.Now.Year-1)
+                        rv += e.MontoCalculado;
+                }
+                return rv;
+            }
+        }
+        
 
         public List<ProyectoEtapaRealizadoPeriodoResult> Periodos = new List<ProyectoEtapaRealizadoPeriodoResult>();
 

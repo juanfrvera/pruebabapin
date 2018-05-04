@@ -173,11 +173,10 @@ namespace UI.Web
             // Realizados
             diFechaRealizada.RangeErrorMessage = TranslateFormat("InvalidField", "Fecha Inválida"); //Matias 20170220 - Ticket #ER730336
             PopUpEtapasRealizadas.Attributes.CssStyle.Add("display", "none");
-            PopUpTotales.Attributes.CssStyle.Add("display", "none");
+            //PopUpTotales.Attributes.CssStyle.Add("display", "none");
             UIHelper.Load<nc.Moneda>(ddlMonedaRealizada, MonedaService.Current.GetList(new nc.MonedaFilter() { Activo = true }), "Nombre", "IdMoneda");
             //UIHelper.Load<nc.FuenteFinanciamientoResult>(ddlFFinanciamientoRealizada, FuenteFinanciamientoService.Current.GetResult(new nc.FuenteFinanciamientoFilter() { Activo = true }), "Descripcion2", "IdFuenteFinanciamiento");
             //diFechaRealizada.Width = 80;
-            //rbPorCodigoRealizada.Checked = true;
 
             int anioVisible = DateTime.Now.Year;
             if(SolutionContext.Current.ParameterManager.GetNumberValue(INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE).HasValue && SolutionContext.Current.ParameterManager.GetNumberValue(INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE).Value > 0)
@@ -262,9 +261,9 @@ namespace UI.Web
             {
                 btAgregarEtapaRealizada.Enabled = btAgregarEtapaRealizada.Enabled && Entity.Etapas.Count > 0;
             }
-            AddGroupToGrid();
+            //AddGroupToGrid();
 
-            ActualizarVerTotales(); //Matias 20170126 - #REQ575961
+            //ActualizarVerTotales(); //Matias 20170126 - #REQ575961
         }
 
         #endregion Override
@@ -431,7 +430,7 @@ namespace UI.Web
             UIHelper.SetValue(ddlAnioCorrienteEstimado, DateTime.Now.Year);
             UIHelper.SetValue(ddlAnioCorrienteRealizado, DateTime.Now.Year);
         }
-        private void AddGroupToGrid()
+        /*private void AddGroupToGrid()
         {
             GridViewHelper helper = new GridViewHelper(this.gvTotales);
             helper.RegisterGroup("NombreFase", true, true);
@@ -439,7 +438,7 @@ namespace UI.Web
             helper.RegisterSummary("Realizado", SummaryOperation.Sum, "NombreFase");
             helper.GroupSummary += new GroupEvent(helper_Bug);
             helper.ApplyGroupSort();
-        }
+        }*/
         private void helper_Bug(string groupName, object[] values, GridViewRow row)
         {
             if (groupName == null) return;
@@ -470,24 +469,6 @@ namespace UI.Web
         }
         //FinMatias 20170215 - Ticket #REQ318684
 
-        #region Old
-        //public void ConfigurarAutocompletes()
-        //{
-        //    //acGastosRealizada.WebServiceName = "~/Services/wsProyectoCronograma.asmx";
-        //    //acGastosRealizada.ServiceMethod = "GetCalificacionGastoPorCodigo";
-        //    //acGastosRealizada.MinimumPrefixLength = 2;
-        //    //acGastosRealizada.AutoPostback = true;
-        //    //acGastosRealizada.ValueChanged += new EventHandler(this.AutocompletePostBackRealizada);
-        //    //acGastosRealizada.Tag = "";
-
-        //    //acGastosEstimada.WebServiceName = "~/Services/wsProyectoCronograma.asmx";
-        //    //acGastosEstimada.ServiceMethod = "GetCalificacionGastoPorCodigo";
-        //    //acGastosEstimada.MinimumPrefixLength = 2;
-        //    //acGastosEstimada.AutoPostback = true;
-        //    //acGastosEstimada.ValueChanged += new EventHandler(this.AutocompletePostBackEstimada);
-        //    //acGastosEstimada.Tag = "";
-        //}
-        #endregion
         #endregion
 
         #region Sobre Etapas
@@ -532,19 +513,12 @@ namespace UI.Web
             }
         }
 
-        protected bool ChangeFaseSuccess
-        {
-            get;
-            set;
-        }
-
         #region Methods
         private void ChangeFase()
         {
             // Guardar informacion de la fase anterior
             GetValue();
             ProyectoCronogramaComposeService.Current.Update(Entity, UIContext.Current.ContextUser);
-            ChangeFaseSuccess = true;
 
             #region Old
 
@@ -559,7 +533,6 @@ namespace UI.Web
             #endregion
             //Entity = ProyectoCronogramaComposeService.Current.GetByIdFase(Entity.IdProyecto, UIHelper.GetInt(ddlFase));
             // Actualiza la pantalla
-            //ActualizarLabelsEtapas();
             ProyectoEtapaClear();
             ProyectoEtapaEstimadaClear();
             ProyectoEtapaRealizadaClear();
@@ -738,12 +711,35 @@ namespace UI.Web
                 pnlAgregarEtapaEstimada.Update();
             }
         }
+
         void ActualizarTotalesEtapas()
         {
-            foreach (ProyectoEtapaResult pe in Entity.Etapas)
+            
+            foreach (ProyectoEtapaResult pe in Entity.Etapas.Where(x=>x.Etapa_IdFase == (int)Entity.IdFase).ToList())
             {
-                pe.TotalEstimado = (from ee in Entity.EtapasEstimadas where ee.IdProyectoEtapa == pe.IdProyectoEtapa select ee.TotalEstimado).Sum();
-                pe.TotalRealizado = (from ee in Entity.EtapasRealizadas where ee.IdProyectoEtapa == pe.IdProyectoEtapa select ee.TotalRealizado).Sum();
+                pe.TotalEstimado = (from ee in Entity.EtapasEstimadas 
+                                    where ee.IdProyectoEtapa == pe.IdProyectoEtapa
+                                    select ee.TotalEstimado).Sum();
+                pe.TotalEstimadoAnioActualyFuturos = (from ee in Entity.EtapasEstimadas
+                                                      where ee.IdProyectoEtapa == pe.IdProyectoEtapa
+                                                      select ee.TotalEstimadoAnioActualyFuturos).Sum();
+                /*
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto, IdFase = (int)Entity.IdFase });
+                //var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto, IdFase = (int)Entity.IdFase },Entity);
+                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
+                var antes = (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo); //pe.TotalEstimado
+                */
+
+                pe.TotalRealizado = (from ee in Entity.EtapasRealizadas 
+                                     where ee.IdProyectoEtapa == pe.IdProyectoEtapa 
+                                     select ee.TotalRealizado).Sum();
+                pe.TotalRealizadoAnioAnterior = (from ee in Entity.EtapasRealizadas
+                                                 where ee.IdProyectoEtapa == pe.IdProyectoEtapa
+                                                 select ee.TotalRealizadoAnioAnterior).Sum();
+                pe.CostoTotal = pe.TotalRealizadoAnioAnterior + pe.TotalEstimadoAnioActualyFuturos;
+
             }
         }
         /*
@@ -1158,13 +1154,16 @@ namespace UI.Web
             litEtapasEstimadasTotal.Visible = false;
             if (dataTable.Rows.Count > 0)
             {
-                //var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
-                /*var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                /*
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto, IdFase = (int)Entity.IdFase });
+                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
                 var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
-                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
-
-                litEtapasEstimadasTotal.Text = "Total: " + (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0");*/
-                litEtapasEstimadasTotal.Text = "Total: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimado).Sum().ToString("N0");
+                //var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
+                litEtapasEstimadasTotal.Text = "Suma de Estimado Actual y Futuros: " + (estimadoAnioActual + estimadoAnioFuturo).ToString("N0");
+                */
+                
+                UIHelper.SetValue(litEtapasEstimadasTotal, "Suma de Estimado Actual y Futuros: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimadoAnioActualyFuturos).Sum().ToString("N0"));
+                //litEtapasEstimadasTotal.Text = "Total: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimado).Sum().ToString("N0");
                 litEtapasEstimadasTotal.Visible = true;
 
                 if (dataTable.Columns.Count > 4)
@@ -1792,7 +1791,7 @@ namespace UI.Web
         }
 
         //Matias 20170126 - #REQ575961
-        private void ActualizarVerTotales()
+        /*private void ActualizarVerTotales()
         {
             //List<CronogramaTotalPorAnio> listaTotalPorAnio = ProyectoCronogramaComposeService.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
 
@@ -1805,7 +1804,7 @@ namespace UI.Web
             btVerTotales.Enabled = (Entity.EtapasEstimadas.Count > 0 || Entity.EtapasRealizadas.Count > 0) ? true : false;
 
             //btVerTotales.Enabled = (listaTotalPorAnio.Count == 0) ? false : true;            
-        }
+        }*/
         //FinMatias 20170126 - #REQ575961
 
         private void ActualizarControlesMoneda(int idMoneda)
@@ -1936,7 +1935,7 @@ namespace UI.Web
             {
                 if (dataTable.Columns.Count > 5)
                 {
-                    var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto });
+                    //var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto, IdFase = (int)Entity.IdFase });
                     gridEtapasRealizadas.FooterRow.Cells[0].Text = "";
                     gridEtapasRealizadas.FooterRow.Cells[1].Text = "";
                     gridEtapasRealizadas.FooterRow.Cells[2].Text = "";
@@ -2269,10 +2268,13 @@ namespace UI.Web
         #endregion
 
         #region Eventos Totales
-        protected void btVerTotales_Click(object sender, EventArgs e)
+        /*protected void btVerTotales_Click(object sender, EventArgs e)
         {
             ModalPopupExtenderTotales.Show();
-            UIHelper.Load(gvTotales, ProyectoCronogramaComposeService.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto }));
+
+            UIHelper.SetValue(litEtapasEstimadasTotal, "Suma de Estimado Actual y Futuros: " + (from ee in Entity.EtapasEstimadas select ee.TotalEstimadoAnioActualyFuturos).Sum().ToString("N0"));
+
+            UIHelper.Load(gvTotales, ProyectoCronogramaComposeService.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto, IdFase = (int)Entity.IdFase }));
 
             upTotalesPopUp.Update();
         }
@@ -2280,12 +2282,7 @@ namespace UI.Web
         protected void btCancelTotales_Click(object sender, EventArgs e)
         {
             ModalPopupExtenderTotales.Hide();
-        }
-
-        protected void gvTotales_Sorting(object sender, EventArgs e)
-        {
-
-        }
+        }*/
         #endregion
 
 
@@ -2295,12 +2292,6 @@ namespace UI.Web
             LastRegister,
             PriorRegister,
             FirstRegister
-
         }
-
-
-
-
-
     }
 }
