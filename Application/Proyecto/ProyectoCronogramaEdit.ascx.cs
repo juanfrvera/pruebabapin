@@ -138,9 +138,14 @@ namespace UI.Web
         protected const string ID_FUENTE_F_TESORO_NACIONAL = "ID_FUENTE_F_TESORO_NACIONAL";
         protected const string ID_PLAN_TIPO_PNIP = "ID_PLAN_TIPO_PNIP";
         protected const string ID_PROCESO_EQ_BASICO = "ID_PROCESO_EQ_BASICO";
+
         protected const string BLOQUEAR_GASTOS_ESTIMADOS = "BLOQUEAR_GASTOS_ESTIMADOS";
         protected const string BLOQUEAR_GASTOS_ESTIMADOS_PLANES = "BLOQUEAR_GASTOS_ESTIMADOS_PLANES";
         protected const string BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS = "BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS";
+        protected const string BLOQUEAR_GASTOS_REALIZADOS = "BLOQUEAR_GASTOS_REALIZADOS";
+        protected const string BLOQUEAR_GASTOS_REALIZADOS_ANIOS = "BLOQUEAR_GASTOS_REALIZADOS_ANIOS";
+        protected const string BLOQUEAR_GASTOS_REALIZADOS_TIPO_ORGANISMOS = "BLOQUEAR_GASTOS_REALIZADOS_TIPO_ORGANISMOS";
+
         protected const string INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO = "INFORMACION_PRESUPUESTARIA_CRONOGRAMA_TITULO";
         protected const string INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE = "INFORMACION_PRESUPUESTARIA_ANIO_VISIBLE";
         protected const string VALIDAR_PROYECTO_ACT_ESPECIF = "VALIDAR_PROYECTO_ACT_ESPECIF";
@@ -156,7 +161,8 @@ namespace UI.Web
             // Etapas
             PopUpEtapas.Attributes.CssStyle.Add("display", "none");
             UIHelper.Load<nc.Fase>(ddlFase, FaseService.Current.GetList(new nc.FaseFilter() { Activo = true }), "Nombre", "IdFase", "Orden", SortDirection.Ascending);
-            UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto_Etapa, Activo = true, OrderByProperty = "Orden" }), "Nombre", "IdEstado", false);
+            //UIHelper.Load<nc.Estado>(ddlEstado, EstadoService.Current.GetList(new nc.EstadoFilter() { IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto_Etapa, Activo = true, OrderByProperty = "Orden" }), "Nombre", "IdEstado", false);
+            UIHelper.Load<nc.SistemaEntidadEstado>(ddlEstado, SistemaEntidadEstadoService.Current.GetList(new nc.SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto_Etapa }), "Nombre", "IdEstado", new SistemaEntidadEstado() { IdEstado = 0, Nombre = "Seleccione Etapa" }, true, "Orden");
             UIHelper.SetValue(ddlEstado, (int)EstadoEnum.Pendiente);
 
             //Matias 20161205 - Bug Cronograma doble click
@@ -566,7 +572,7 @@ namespace UI.Web
         void ProyectoEtapaGetValue()
         {
             ActualProyectoEtapa.IdEstado = UIHelper.GetInt(ddlEstado);
-            ActualProyectoEtapa.Estado_Nombre = UIHelper.GetString(ddlEstado);
+            ActualProyectoEtapa.EstadoFinanciero_Nombre = UIHelper.GetString(ddlEstado);
             ActualProyectoEtapa.FechaInicioEstimada = UIHelper.GetDateTimeNullable(diFIE);
             ActualProyectoEtapa.FechaFinEstimada = UIHelper.GetDateTimeNullable(diFFE);
             ActualProyectoEtapa.FechaInicioRealizada = UIHelper.GetDateTimeNullable(diFIR);
@@ -806,7 +812,7 @@ namespace UI.Web
                     result.Nombre = ActualProyectoEtapa.Nombre;
                     result.CodigoVinculacion = ActualProyectoEtapa.CodigoVinculacion;
                     result.IdEstado = ActualProyectoEtapa.IdEstado;
-                    result.Estado_Nombre = ActualProyectoEtapa.Estado_Nombre;
+                    result.EstadoFinanciero_Nombre = ActualProyectoEtapa.EstadoFinanciero_Nombre;
                     result.FechaInicioEstimada = ActualProyectoEtapa.FechaInicioEstimada;
                     result.FechaFinEstimada = ActualProyectoEtapa.FechaFinEstimada;
                     result.FechaInicioRealizada = ActualProyectoEtapa.FechaInicioRealizada;
@@ -950,9 +956,11 @@ namespace UI.Web
 
 
         //private List<PlanPeriodo> planPeriodosBloqueados;
-        protected List<PlanPeriodo> PlanPeriodosBloqueados{get;set;}        
+        protected List<PlanPeriodo> PlanPeriodosBloqueadosGastosEstimados{ get; set; }
+        protected List<string> PeriodosBloqueadosGastosRealizados { get; set; }
         //private List<PlanPeriodo> organismoTipoBloqueados;
-        protected List<OrganismoTipo> OrganismoTipoBloqueados{get;set;}
+        protected List<OrganismoTipo> OrganismoTipoBloqueadosGastosEstimados { get; set; }
+        protected List<OrganismoTipo> OrganismoTipoBloqueadosGastosRealizados { get; set; }
         protected int TipoOrganismoProyecto { get; set; } 
 
         #region Sobre EtapaEstimada
@@ -983,12 +991,14 @@ namespace UI.Web
         void SetearBloqueos(ActionEnum action)
         {
             //Modificado por ALO 2018-02-07
-            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
+            if (PlanPeriodosBloqueadosGastosEstimados == null || OrganismoTipoBloqueadosGastosEstimados == null || PeriodosBloqueadosGastosRealizados == null || OrganismoTipoBloqueadosGastosRealizados == null)
+            {
+                SetPeriodosTipoOrganismoBloqueos();
+            }
 
+            //Estimados
             //Solo opera el bloqueo si tengo los dos bloqueos
-            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) return;
-
-            if (PlanPeriodosBloqueados.Count > 0 && OrganismoTipoBloqueados.Count > 0)
+            if (PlanPeriodosBloqueadosGastosEstimados != null && OrganismoTipoBloqueadosGastosEstimados != null && PlanPeriodosBloqueadosGastosEstimados.Count > 0 && OrganismoTipoBloqueadosGastosEstimados.Count > 0)
             {
                 var tieneBloqueo = false;
                 acGastosEstimada.Enabled = true;
@@ -997,8 +1007,8 @@ namespace UI.Web
                 foreach (var proyectoEtapaEstimadaValue in ActualProyectoEtapaEstimada.Periodos)
                 {
 
-                    if ((PlanPeriodosBloqueados.Count <= 0 || PlanPeriodosBloqueados.Where(x => x.AnioInicial.Equals(proyectoEtapaEstimadaValue.Periodo)).Any())
-                        && (OrganismoTipoBloqueados.Count <= 0 || OrganismoTipoBloqueados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
+                    if ((PlanPeriodosBloqueadosGastosEstimados.Count <= 0 || PlanPeriodosBloqueadosGastosEstimados.Where(x => x.AnioInicial.Equals(proyectoEtapaEstimadaValue.Periodo)).Any())
+                        && (OrganismoTipoBloqueadosGastosEstimados.Count <= 0 || OrganismoTipoBloqueadosGastosEstimados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
                     {
                         //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
                         //dataColumn.ColumnName == "2018"
@@ -1022,6 +1032,60 @@ namespace UI.Web
                 }
             }
             //FinModificado por ALO 2018-02-07
+            
+            //Realizados
+            if (PeriodosBloqueadosGastosRealizados != null && OrganismoTipoBloqueadosGastosRealizados != null && PeriodosBloqueadosGastosRealizados.Count > 0 && OrganismoTipoBloqueadosGastosRealizados.Count > 0)
+            {
+                //var tieneBloqueo = false;
+                acGastosRealizada.Enabled = true;
+                tsFuenteFinanciamientoRealizada.Enabled = true;
+                ddlMonedaRealizada.Enabled = true;
+
+                ddlPeriodoRealizada.Enabled = true;
+                tbMontoRealizda.Enabled = true;
+                diFechaRealizada.Enabled = true;
+
+                //foreach (var proyectoEtapaRealizadaValue in ActualProyectoEtapaRealizada.Periodos)
+                //{
+                foreach (var anioPeriodoRealizada in ddlPeriodoRealizada.Items)
+                {
+                    if ((PeriodosBloqueadosGastosRealizados.Count <= 0 || PeriodosBloqueadosGastosRealizados.Where(x => x.Equals(anioPeriodoRealizada.ToString())).Any())
+                        && (OrganismoTipoBloqueadosGastosRealizados.Count <= 0 || OrganismoTipoBloqueadosGastosRealizados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
+                    {
+                        //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
+                        //dataColumn.ColumnName == "2018"
+                        /*proyectoEtapaRealizadaValue.Bloqueado = true;*/
+                        //var itemPeriodoBLoqueado = ddlPeriodoRealizada.Items.FindByValue(proyectoEtapaRealizadaValue.Periodo.ToString());
+                        //if (action == ActionEnum.Create)
+                        //{
+                            var itemPeriodoBLoqueado = ddlPeriodoRealizada.Items.FindByValue(anioPeriodoRealizada.ToString());
+                            if (itemPeriodoBLoqueado != null)
+                            {
+                                //ddlPeriodoRealizada.Items.Remove(itemPeriodoBLoqueado);
+
+                                //if (action == ActionEnum.Update && PeriodosBloqueadosGastosRealizados.Where(x => x.Equals(UIHelper.GetInt(ddlPeriodoRealizada).ToString())).Any())//tieneBloqueo &&
+                                if (action == ActionEnum.Update && ActualProyectoEtapaRealizada.Periodos.Count == 1 && PeriodosBloqueadosGastosRealizados.Where(x => x.Equals(ActualProyectoEtapaRealizada.Periodos[0].Periodo.ToString())).Any())//tieneBloqueo &&
+                                {
+                                    //deshabilita - oculta botones y trees
+                                    acGastosRealizada.Enabled = false;
+                                    tsFuenteFinanciamientoRealizada.Enabled = false;
+                                    ddlMonedaRealizada.Enabled = false;
+                                    ddlPeriodoRealizada.Enabled = false;
+                                    tbMontoRealizda.Enabled = false;
+                                    diFechaRealizada.Enabled = false;
+                                    break;
+                                }
+
+                                itemPeriodoBLoqueado.Enabled = false;
+                            }
+                        //}
+                        //tieneBloqueo = true;
+                    } 
+                }
+
+
+            }
+
         }
 
         ProyectoEtapaResult GetNewEtapa()
@@ -1081,8 +1145,7 @@ namespace UI.Web
             UIHelper.SetValue<Moneda, int>(ddlMonedaEstimada, ActualProyectoEtapaEstimada.IdMoneda, MonedaService.Current.GetById);
             UIHelper.SetValue(acGastosEstimada as IWebControlTreeSelect, ActualProyectoEtapaEstimada.IdClasificacionGasto);
             CompletarPeriodosEstimados();
-            SetearBloqueos(ActionEnum.Update);
-            LoadGridPeriodosEstimados();            
+            LoadGridPeriodosEstimados(ActionEnum.Update);            
         }
         void ProyectoEtapaEstimadaGetValue()
         {
@@ -1124,7 +1187,7 @@ namespace UI.Web
             DataTable dataTable = Entity.ToDatatableEtapasEstimadasDinamico(ActualProyectoEtapa.IdProyectoEtapa, filterAnio);
             //FinMatias 20170214 - Ticket #REQ318684  
 
-            if (PlanPeriodosBloqueados == null || OrganismoTipoBloqueados == null) SetPeriodosTipoOrganismoBloqueos();
+            if (PlanPeriodosBloqueadosGastosEstimados == null || OrganismoTipoBloqueadosGastosEstimados == null) SetPeriodosTipoOrganismoBloqueos();
             gridEtapasEstimadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaEstimadaUpdate);
 
             //Matias - #REQ318684            
@@ -1198,8 +1261,8 @@ namespace UI.Web
             }
 
             //debo tener ambos parametros para considerarlos
-            if (TipoOrganismoProyecto > 0 && PlanPeriodosBloqueados != null && OrganismoTipoBloqueados != null
-                && PlanPeriodosBloqueados.Count > 0 && OrganismoTipoBloqueados.Count > 0)
+            if (TipoOrganismoProyecto > 0 && PlanPeriodosBloqueadosGastosEstimados != null && OrganismoTipoBloqueadosGastosEstimados != null
+                && PlanPeriodosBloqueadosGastosEstimados.Count > 0 && OrganismoTipoBloqueadosGastosEstimados.Count > 0)
             {
             
                 foreach (GridViewRow row in gridEtapasEstimadas.Rows)
@@ -1208,8 +1271,8 @@ namespace UI.Web
                     {
                         var totalMount = 0.00;
                         Control controlABloquear = null;
-                        if ((PlanPeriodosBloqueados.Where(x => x.AnioInicial.ToString().Equals(gridEtapasEstimadas.HeaderRow.Cells[row.Cells.GetCellIndex(cell)].Text)).Any())
-                            && (OrganismoTipoBloqueados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
+                        if ((PlanPeriodosBloqueadosGastosEstimados.Where(x => x.AnioInicial.ToString().Equals(gridEtapasEstimadas.HeaderRow.Cells[row.Cells.GetCellIndex(cell)].Text)).Any())
+                            && (OrganismoTipoBloqueadosGastosEstimados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
                         {
                             //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
                             //dataColumn.ColumnName == "2018"
@@ -1270,8 +1333,9 @@ namespace UI.Web
             return retval;
 
         }
-        void LoadGridPeriodosEstimados()
+        void LoadGridPeriodosEstimados(ActionEnum actionEnum)
         {
+            SetearBloqueos(actionEnum);
             UIHelper.Load(GridPeriodoEstimado, ActualProyectoEtapaEstimada.Periodos, "Periodo", SortDirection.Ascending, Type.GetType("System.Int32"));
             upEtapasEstimadasPopUp.Update();
         }
@@ -1382,6 +1446,8 @@ namespace UI.Web
             if (ValidateNumericFieldsEstimados() && ValidateEtapasEstimadas())
             {
                 UIHelper.CallTryMethod(CommandProyectoEtapaEstimadaSave);
+                SetearBloqueos(ActionEnum.Create);
+
                 HidePopUpEtapasEstimadas();
             }
         }
@@ -1392,6 +1458,7 @@ namespace UI.Web
                 UIHelper.CallTryMethod(CommandProyectoEtapaEstimadaSave);
                 ProyectoEtapaEstimadaSetValue();
                 RefreshNavigatorEstimadas();
+                SetearBloqueos(ActionEnum.Create);
             }
         }
         protected void btCancelEtapaEstimada_Click(object sender, EventArgs e)
@@ -1401,13 +1468,13 @@ namespace UI.Web
         }
         protected void btAgregarEtapaEstimada_Click(object sender, EventArgs e)
         {
-
             UIHelper.SetValue(tsFuenteFinanciamientoEstimada, GetParameterIDFFTesoroNacional());
             UIHelper.SetValue<Moneda, int>(ddlMonedaEstimada, SolutionContext.Current.BaseCurrencyId, MonedaService.Current.GetById);
             CompletarPeriodosEstimados();
-            SetearBloqueos(ActionEnum.Create);
-            LoadGridPeriodosEstimados();
+
+            LoadGridPeriodosEstimados(ActionEnum.Create);
             VisibleNavigatorEstimadas(false);
+
             upEtapasEstimadasPopUp.Update();
             ModalPopupExtenderEtapasEstimadas.Show();
             acGastosEstimada.Focus();
@@ -1428,10 +1495,15 @@ namespace UI.Web
                 }
             }
             UIHelper.Clear(GridPeriodoEstimado);
-            LoadGridPeriodosEstimados();
+            if (ActualProyectoEtapaEstimada.IdProyectoEtapaEstimado <= 0)
+            {
+                LoadGridPeriodosEstimados(ActionEnum.Create);
+            }
+            else
+            {
+                LoadGridPeriodosEstimados(ActionEnum.Update);
+            }
         }
-
-
 
         private bool ValidateNumericFieldsEstimados()
         {
@@ -1530,7 +1602,14 @@ namespace UI.Web
                 }
             }
             UIHelper.Clear(GridPeriodoEstimado);
-            LoadGridPeriodosEstimados();
+            /*if (ActualProyectoEtapaEstimada.IdProyectoEtapaEstimado <= 0)
+            {
+                LoadGridPeriodosEstimados(ActionEnum.Create);
+            }
+            else
+            {
+                LoadGridPeriodosEstimados(ActionEnum.Update);
+            }*/
         }
 
         #endregion
@@ -1547,6 +1626,7 @@ namespace UI.Web
             switch (e.CommandName)
             {
                 case Command.EDIT:
+                    SetearBloqueos(ActionEnum.Update); //Antes por el LoadGrid
                     CommandProyectoEtapaEstimadaEdit();
                     break;
                 case Command.DELETE:
@@ -1652,23 +1732,19 @@ namespace UI.Web
                     break;
             }
 
+            SetearBloqueos(ActionEnum.Update);
             ProyectoEtapaEstimadaSetValue();
             RefreshNavigatorEstimadas();
-
-
-
         }
 
         private void RefreshNavigatorEstimadas()
         {
-
             List<ProyectoEtapaEstimadoResult> peer = Entity.EtapasEstimadas.Where(i => i.IdProyectoEtapa == ActualProyectoEtapa.IdProyectoEtapa).ToList();
             Int32 idx = peer.FindIndex(i => i.IdProyectoEtapaEstimado == ActualProyectoEtapaEstimada.IdProyectoEtapaEstimado);
             btFirstEtapaEstimada.Enabled = ((idx > 0) && (peer.Count > 0));
             btBackEtapaEstimada.Enabled = ((idx > 0) && (peer.Count > 0));
             btLastEtapaEstimada.Enabled = ((idx < peer.Count - 1) && (peer.Count > 0));
             btNextEtapaEstimada.Enabled = ((idx < peer.Count - 1) && (peer.Count > 0));
-
         }
 
         private void VisibleNavigatorEstimadas(bool visible)
@@ -1770,6 +1846,8 @@ namespace UI.Web
             //Bloquear gastos estimados ActualProyectoEtapa.IdProyecto
             var proyecto = Business.ProyectoBusiness.Current.GetList(new nc.ProyectoFilter() { IdProyecto = Entity.IdProyecto }).FirstOrDefault();
             TipoOrganismoProyecto = proyecto.SubPrograma.Programa.Saf.IdTipoOrganismo;
+
+            //Estimados
             if (SolutionContext.Current.ParameterManager.GetBooleanValue(BLOQUEAR_GASTOS_ESTIMADOS))
             {
                 //Planes bloqueados config
@@ -1778,7 +1856,7 @@ namespace UI.Web
                 var allPlanPeriodos = PlanPeriodoService.Current.GetList();
                 var bloquear_gastos_estimados_planes_list = bloquear_gastos_estimados_planes.Replace(" ", string.Empty).Split(',').ToList();
                 //Los planes bloqueados filtrando por los del config
-                PlanPeriodosBloqueados = allPlanPeriodos.Where(x => bloquear_gastos_estimados_planes_list.Any(n => n.Equals(x.Nombre))).ToList();
+                PlanPeriodosBloqueadosGastosEstimados = allPlanPeriodos.Where(x => bloquear_gastos_estimados_planes_list.Any(n => n.Equals(x.Nombre))).ToList();
 
                 //Tipo organismos bloqueados config
                 var bloquear_gastos_estimados_tipo_organismos = SolutionContext.Current.ParameterManager.GetStringValue(BLOQUEAR_GASTOS_ESTIMADOS_TIPO_ORGANISMOS);
@@ -1786,7 +1864,27 @@ namespace UI.Web
                 var allOrganismoTipo = OrganismoTipoService.Current.GetList();
                 var bloquear_gastos_estimados_tipo_organismos_list = bloquear_gastos_estimados_tipo_organismos.Replace(" ", string.Empty).Split(',').ToList();
                 //Los tipos organismo bloqueados filtrando por los del config
-                OrganismoTipoBloqueados = allOrganismoTipo.Where(x => bloquear_gastos_estimados_tipo_organismos_list.Any(n => n.Equals(x.IdOrganismoTipo.ToString()))).ToList();
+                OrganismoTipoBloqueadosGastosEstimados = allOrganismoTipo.Where(x => bloquear_gastos_estimados_tipo_organismos_list.Any(n => n.Equals(x.IdOrganismoTipo.ToString()))).ToList();
+            }
+
+            //Realizados
+            if (SolutionContext.Current.ParameterManager.GetBooleanValue(BLOQUEAR_GASTOS_REALIZADOS))
+            {
+                //Planes bloqueados config
+                var bloquear_gastos_realizados_anios = SolutionContext.Current.ParameterManager.GetStringValue(BLOQUEAR_GASTOS_REALIZADOS_ANIOS);
+                //Todos los planes
+                //var allPlanPeriodos = PlanPeriodoService.Current.GetList();
+                var bloquear_gastos_realizados_anios_list = bloquear_gastos_realizados_anios.Replace(" ", string.Empty).Split(',').ToList();
+                //Los planes bloqueados filtrando por los del config -->allPlanPeriodos.Where(x => bloquear_gastos_realizados_anios_list.Any(n => n.Equals(x.Nombre))).ToList();
+                PeriodosBloqueadosGastosRealizados = bloquear_gastos_realizados_anios_list;  
+
+                //Tipo organismos bloqueados config
+                var bloquear_gastos_realizados_tipo_organismos = SolutionContext.Current.ParameterManager.GetStringValue(BLOQUEAR_GASTOS_REALIZADOS_TIPO_ORGANISMOS);
+                //Todos los tipos organismo
+                var allOrganismoTipo = OrganismoTipoService.Current.GetList();
+                var bloquear_gastos_realizados_tipo_organismos_list = bloquear_gastos_realizados_tipo_organismos.Replace(" ", string.Empty).Split(',').ToList();
+                //Los tipos organismo bloqueados filtrando por los del config
+                OrganismoTipoBloqueadosGastosRealizados = allOrganismoTipo.Where(x => bloquear_gastos_realizados_tipo_organismos_list.Any(n => n.Equals(x.IdOrganismoTipo.ToString()))).ToList();
             }
         }
 
@@ -1906,6 +2004,7 @@ namespace UI.Web
             }
             //FinMatias - #REQ318684
 
+            if (PeriodosBloqueadosGastosRealizados == null || OrganismoTipoBloqueadosGastosRealizados == null) SetPeriodosTipoOrganismoBloqueos();
             gridEtapasRealizadas.ColumnsGenerator = new ColumnGenerator(dataTable.Columns, EnableEtapaRealizadaUpdate);
 
             //List<ProyectoOrigenFinanciamientoResult> origenesResult = ProyectoOrigenFinanciamientoService.Current.GetOrigenes(new nc.ProyectoOrigenFinanciamientoFilter() { IdProyecto = Entity.IdProyecto });
@@ -1966,6 +2065,45 @@ namespace UI.Web
                 }
             }
 
+
+            //debo tener ambos parametros para considerarlos
+            if (TipoOrganismoProyecto > 0 && PeriodosBloqueadosGastosRealizados != null && OrganismoTipoBloqueadosGastosRealizados != null
+                && PeriodosBloqueadosGastosRealizados.Count > 0 && OrganismoTipoBloqueadosGastosRealizados.Count > 0)
+            {
+
+                foreach (GridViewRow row in gridEtapasRealizadas.Rows)
+                {
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        var totalMount = 0.00;
+                        Control controlABloquear = null;
+                        if ((PeriodosBloqueadosGastosRealizados.Where(x => x.ToString().Equals(gridEtapasRealizadas.HeaderRow.Cells[row.Cells.GetCellIndex(cell)].Text)).Any())
+                            && (OrganismoTipoBloqueadosGastosRealizados.Where(x => x.IdOrganismoTipo == TipoOrganismoProyecto).Any()))
+                        {
+                            //El nombre de la columna coincide con un año inicial de los planes bloqueados y a un id de tipo de organismo
+                            //dataColumn.ColumnName == "2018"
+                            totalMount = Double.Parse(cell.Text);
+                            //deshabilita - oculta boton delete
+                            foreach (Control control in row.Cells[row.Cells.Count - 1].Controls)
+                            {
+                                //gridEtapasRealizadas.Rows[0].Cells[6].Controls[2]
+                                if (control.ID != null && control.ID.Equals("imgDelete"))
+                                {
+                                    //bloquear o no bloquear, esa es la cuestión
+                                    control.Visible = false;
+                                    controlABloquear = control;
+                                }
+                            }
+                        }
+                        if (totalMount <= 0.00 && controlABloquear != null)
+                        {
+                            controlABloquear.Visible = true;
+                        }
+                    }
+
+                }
+            }
+
             upGridEtapasRealizadas.Update();
         }
 
@@ -1991,6 +2129,7 @@ namespace UI.Web
         #region Commands
         void CommandProyectoEtapaRealizadaEdit()
         {
+            btNewEtapasRealizadas.Visible = false;
             ProyectoEtapaRealizadaSetValue();
             ModalPopupExtenderEtapasRealizadas.Show();
             upEtapasRealizadasPopUp.Update();
@@ -2055,6 +2194,7 @@ namespace UI.Web
             { 
                 HidePopUpEtapasRealizadas();
             }
+            SetearBloqueos(ActionEnum.Create);
         }
         protected void btNewEtapaRealizada_Click(object sender, EventArgs e)
         {
@@ -2071,6 +2211,7 @@ namespace UI.Web
 
                 ActualizarControlesMoneda(UIHelper.GetInt(ddlMonedaRealizada)); //Matias 20140121 - Tarea 107
             }
+            SetearBloqueos(ActionEnum.Create);
         }
         protected void btCancelEtapaRealizada_Click(object sender, EventArgs e)
         {
@@ -2081,11 +2222,14 @@ namespace UI.Web
         }
         protected void btAgregarEtapaRealizada_Click(object sender, EventArgs e)
         {
+            btNewEtapasRealizadas.Visible = true;
             UIHelper.SetValue(lblErrorEtapaRealizada, "");
-
             UIHelper.SetValue(tsFuenteFinanciamientoRealizada, GetParameterIDFFTesoroNacional());
             //UIHelper.SetValue<FuenteFinanciamiento,int>(ddlFFinanciamientoRealizada, GetParameterIDFFTesoroNacional(),FuenteFinanciamientoService.Current.GetById);
             UIHelper.SetValue<Moneda, int>(ddlMonedaRealizada, SolutionContext.Current.BaseCurrencyId, MonedaService.Current.GetById);
+
+            SetearBloqueos(ActionEnum.Create);
+
             upEtapasRealizadasPopUp.Update();
             ModalPopupExtenderEtapasRealizadas.Show();
             acGastosRealizada.Focus();
@@ -2148,6 +2292,7 @@ namespace UI.Web
             {
                 case Command.EDIT:
                     CommandProyectoEtapaRealizadaEdit();
+                    SetearBloqueos(ActionEnum.Update);
                     break;
                 case Command.DELETE:
                     CommandProyectoEtapaRealizadaDelete();

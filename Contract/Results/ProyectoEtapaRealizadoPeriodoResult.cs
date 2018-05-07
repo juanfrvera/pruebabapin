@@ -11,6 +11,7 @@ namespace Contract
     {
         //Matias 20140121 - Tarea 107
         public Int32 IdMonedaProyectoEtapaRealizado { set; get; }
+        public bool Bloqueado { set; get; }
         public bool UsaMonedaBase
         {
             get

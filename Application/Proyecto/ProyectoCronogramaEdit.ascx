@@ -49,7 +49,7 @@
                                 <asp:Label ID="lblProyectoDenominacion" runat="server" Text='<%# Eval("DescripcionCorta") %>'  ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText ="Estado Financiero" DataField ="Estado_Nombre" SortExpression ="Estado_Nombre"   ItemStyle-Width ="80px"/>
+                        <asp:BoundField HeaderText ="Estado Financiero" DataField ="EstadoFinanciero_Nombre" SortExpression ="EstadoFinanciero_Nombre"   ItemStyle-Width ="80px"/>
                         <asp:BoundField HeaderText ="Fecha Inicio Estimada" DataField ="FechaInicioEstimada" SortExpression ="FechaInicioEstimada"  DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>
                         <asp:BoundField HeaderText ="Fecha Fin Estimada" DataField ="FechaFinEstimada" SortExpression ="FechaFinEstimada" DataFormatString="{0:dd/MM/yyyy}"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>   
                         <asp:BoundField HeaderText ="Fecha Inicio Realizada" DataField ="FechaInicioRealizada" SortExpression ="FechaInicioRealizada" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-HorizontalAlign="Center" ItemStyle-Width ="100px"/>
@@ -194,7 +194,6 @@
                             <asp:GridView ID="gridEtapasEstimadas" runat = "server"
                             AutoGenerateColumns="True" DataKeyNames="ID"   
                             OnRowCommand="GridEtapasEstimadas_RowCommand"
-                            RowDataBound="algo"
                             EmptyDataText="Para cargar los Gastos Estimados, las Fechas Estimadas del Cronograma deben estar definidas." >
                                 <Columns>                   
                                     <%--Estos botones no son los que se muestran en pantalla, esos botones se cargan dinamicamente. El objetivo de agregarlos aca es para evitar que desaparezca la grilla dinamica en algunos navegadores--%>
@@ -497,12 +496,12 @@
                                                 <asp:BoundField HeaderText ="" DataField ="Periodo" SortExpression ="Periodo"  HeaderStyle-Width ="6%" />
                                                 <asp:TemplateField   HeaderText="Moneda Externa" HeaderStyle-Width ="17%" >            
                                                     <ItemTemplate>                         
-                                                        <cc:NumericTextBox id="txtMonedaEstimado" runat="server"  Width="120px" DataFormatString="{0:F2}"  Text='<%# string.Format("{0:F2}",Eval("MontoPeriodo")) %>'  Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtMonedaEstimado" runat="server"  Width="120px" DataFormatString="{0:F2}"  Text='<%# string.Format("{0:F2}",Eval("MontoPeriodo")) %>'  Enabled='<%#!(bool)Eval("Bloqueado") && !(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveInteger" ></cc:NumericTextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField   HeaderText="Tipo de Cambio"  HeaderStyle-Width ="17%" >            
                                                     <ItemTemplate>                        
-                                                        <cc:NumericTextBox id="txtTipoCambioEstimado" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("CotizacionPeriodo")) %>' Enabled='<%#!(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                                        <cc:NumericTextBox id="txtTipoCambioEstimado" runat="server" Width="120px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("CotizacionPeriodo")) %>' Enabled='<%#!(bool)Eval("Bloqueado") && !(bool)Eval("UsaMonedaBase")%>'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField   HeaderText="Monto"  HeaderStyle-Width ="17%" >            

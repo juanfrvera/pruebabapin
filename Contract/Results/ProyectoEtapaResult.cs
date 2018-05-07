@@ -22,6 +22,7 @@ namespace Contract
         public int? NroEtapa { get; set; }
 
         public string Estado_Nombre { get; set; }
+        public string EstadoFinanciero_Nombre { get; set; }
         public int Etapa_IdFase { get; set; }
         public string Etapa_Nombre { get; set; }
         public int Etapa_Orden { get; set; }

@@ -46,7 +46,7 @@ namespace UI.Web
         public bool Enabled
         {
             get { return txFecha.Enabled; }
-            set { txFecha.Enabled = false; btCalendario.Enabled = false; }
+            set { txFecha.Enabled = value; btCalendario.Enabled = value; }
         }
 
         public bool ReadOnly

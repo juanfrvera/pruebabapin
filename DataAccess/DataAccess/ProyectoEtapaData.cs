@@ -177,9 +177,11 @@ namespace DataAccess
         {
 		  return (from o in Query(filter)					
 					join _t1  in this.Context.Estados on o.IdEstado equals _t1.IdEstado into tt1 from t1 in tt1.DefaultIfEmpty()
+                    join _tse in this.Context.SistemaEntidadEstados on o.IdEstado equals _tse.IdEstado
 				    join t2  in this.Context.Etapas on o.IdEtapa equals t2.IdEtapa  
                     join f in this.Context.Fases on t2.IdFase equals f.IdFase
 				    //join t3  in this.Context.Proyectos on o.IdProyecto equals t3.IdProyecto   
+                    where _tse.IdSistemaEntidad == (int)SistemaEntidadEnum.Proyecto_Etapa
 				   select new ProyectoEtapaResult(){
 					 IdProyectoEtapa=o.IdProyectoEtapa
 					 ,Nombre=o.Nombre
@@ -192,7 +194,9 @@ namespace DataAccess
 					 ,IdEtapa=o.IdEtapa
 					 ,IdProyecto=o.IdProyecto
 					 ,NroEtapa=o.NroEtapa
-                     ,Estado_Nombre= t1!=null?(string)t1.Nombre:null	
+                     ,Estado_Nombre= t1!=null?(string)t1.Nombre:null
+                     ,
+                     EstadoFinanciero_Nombre = _tse != null ? (string)_tse.Nombre : null
                     //    ,Estado_Codigo= t1!=null?(string)t1.Codigo:null	
                     //    ,Estado_Orden= t1!=null?(int?)t1.Orden:null	
                     //    ,Estado_Descripcion= t1!=null?(string)t1.Descripcion:null	
