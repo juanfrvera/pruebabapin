@@ -50,14 +50,14 @@ namespace Contract
                 return rv;
             }
         }
-        public decimal TotalRealizadoAnioAnterior
+        public decimal TotalRealizadoHastaAnioAnterior
         {
             get
             {
                 decimal rv = 0;
                 foreach (ProyectoEtapaRealizadoPeriodoResult e in this.Periodos)
                 {
-                    if (e.Periodo == DateTime.Now.Year-1)
+                    if (e.Periodo <= DateTime.Now.Year-1)
                         rv += e.MontoCalculado;
                 }
                 return rv;

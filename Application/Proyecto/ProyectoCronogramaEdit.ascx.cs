@@ -741,10 +741,10 @@ namespace UI.Web
                 pe.TotalRealizado = (from ee in Entity.EtapasRealizadas 
                                      where ee.IdProyectoEtapa == pe.IdProyectoEtapa 
                                      select ee.TotalRealizado).Sum();
-                pe.TotalRealizadoAnioAnterior = (from ee in Entity.EtapasRealizadas
+                pe.TotalRealizadoHastaAnioAnterior = (from ee in Entity.EtapasRealizadas
                                                  where ee.IdProyectoEtapa == pe.IdProyectoEtapa
-                                                 select ee.TotalRealizadoAnioAnterior).Sum();
-                pe.CostoTotal = pe.TotalRealizadoAnioAnterior + pe.TotalEstimadoAnioActualyFuturos;
+                                                 select ee.TotalRealizadoHastaAnioAnterior).Sum();
+                pe.CostoTotal = pe.TotalRealizadoHastaAnioAnterior + pe.TotalEstimadoAnioActualyFuturos;
 
             }
         }

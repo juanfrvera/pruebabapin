@@ -124,7 +124,7 @@ namespace Contract
         public decimal? TotalEstimado { get; set; }
         public decimal? TotalEstimadoAnioActualyFuturos { get; set; }
         public decimal? TotalRealizado { get; set; }
-        public decimal? TotalRealizadoAnioAnterior { get; set; }
+        public decimal? TotalRealizadoHastaAnioAnterior { get; set; }
         public decimal? CostoTotal { get; set; }
 
         public string NroEtapaConCeros
