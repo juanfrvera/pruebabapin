@@ -12,6 +12,8 @@ namespace UI.Web
 {
     public partial class ProyectoEdit : WebControlEdit<nc.ProyectoGeneralCompose>
     {
+        protected const string VALIDAR_PROYECTO_MARCA_TRIENIO = "VALIDAR_PROYECTO_MARCA_TRIENIO";
+
         #region Override
 
         private OficinaResult actualOficina;
@@ -1345,12 +1347,16 @@ namespace UI.Web
             ProyectoPlanGetValue();
 
             //validar que el proyecto tenga gastos en el trienio
-            var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto, IdFase = (int)FaseEnum.Ejecucion  });
-            var estimadoTrienio = totalesPorAnio.Where(x => x.Anio >= actualProyectoPlan.PlanPeriodo_AnioInicial && x.Anio <= actualProyectoPlan.PlanPeriodo_AnioFinal).Sum(x => x.Estimado);
-            if (estimadoTrienio <= 0)
+
+            if (SolutionContext.Current.ParameterManager.GetBooleanValue(VALIDAR_PROYECTO_MARCA_TRIENIO))
             {
-                UIHelper.ShowAlert(Translate("No existen gastos estimados para la marca seleccionada (trienio)."), upPlanPopUp);
-                return;
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto, IdFase = (int)FaseEnum.Ejecucion });
+                var estimadoTrienio = totalesPorAnio.Where(x => x.Anio >= actualProyectoPlan.PlanPeriodo_AnioInicial && x.Anio <= actualProyectoPlan.PlanPeriodo_AnioFinal).Sum(x => x.Estimado);
+                if (estimadoTrienio <= 0)
+                {
+                    UIHelper.ShowAlert(Translate("No existen gastos estimados para la marca seleccionada (trienio)."), upPlanPopUp);
+                    return;
+                }
             }
 
             ProyectoPlanResult result = (from o in Entity.proyectoPlan where o.IdProyectoPlan == ActualProyectoPlan.ID select o).FirstOrDefault();

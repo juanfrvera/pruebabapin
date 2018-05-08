@@ -130,7 +130,10 @@ GO
 
 --*05*
 USE [BD_BAPIN]
+GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_ONPConsultaAPG]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_ONPConsultaAPG]
 GO
 
 CREATE PROCEDURE [dbo].[sp_ONPConsultaAPG]
@@ -166,6 +169,10 @@ GO
 
 --*06*
 USE [BD_BAPIN]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_ONPConsultaAPG_UpdateProyectos]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_ONPConsultaAPG_UpdateProyectos]
 GO
 
 CREATE PROCEDURE [dbo].[sp_ONPConsultaAPG_UpdateProyectos]
@@ -226,4 +233,16 @@ GO
 Update ProyectoEtapa set idestado = 16 where IdProyecto in
 (SELECT IdProyecto FROM Proyecto p where FechaAlta > '2018-05-08' and FechaAlta < '2018-05-09')
 And IdEstado is null
+GO
+
+--*09* Trienio
+USE [BD_BAPIN]
+GO
+
+IF  EXISTS (SELECT * FROM [dbo].[Parameter] WHERE code='VALIDAR_PROYECTO_MARCA_TRIENIO'  )
+DELETE FROM [dbo].[Parameter] WHERE code='VALIDAR_PROYECTO_MARCA_TRIENIO'
+GO
+INSERT INTO [dbo].[Parameter] 
+([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
+VALUES (N'Validar proyecto marca trienio', N'VALIDAR_PROYECTO_MARCA_TRIENIO', N'Validar la asignación de marcas a los proyectos según si tienen gastos estimados dentro del trienio', N'3', N'N', null, null, N'');
 GO
