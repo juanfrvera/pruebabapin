@@ -854,6 +854,7 @@ namespace UI.Web
                 if (lista.Count == 1)
                 {
                     ddlTipoPopUp.SelectedValue = Convert.ToString(lista.FirstOrDefault().IdPlanTipo);
+                    CargarControlesPlanes();
                 }
                 //FinMatias 20170210 - Ticket #REQ653581
 
@@ -1337,10 +1338,21 @@ namespace UI.Web
                 && x.IdPlanVersion == UIHelper.GetInt(ddlVersionPopUp)
                 && x.IdPlanPeriodo == UIHelper.GetInt(ddlPeriodoPopUp)).Any())
             {
-                UIHelper.ShowAlert(Translate("- Plan ya Asociado"), upPlanHistorialPopUp);
+                UIHelper.ShowAlert(Translate("- Plan ya Asociado"), upPlanPopUp);
                 return;
             }
+
             ProyectoPlanGetValue();
+
+            //validar que el proyecto tenga gastos en el trienio
+            var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto, IdFase = (int)FaseEnum.Ejecucion  });
+            var estimadoTrienio = totalesPorAnio.Where(x => x.Anio >= actualProyectoPlan.PlanPeriodo_AnioInicial && x.Anio <= actualProyectoPlan.PlanPeriodo_AnioFinal).Sum(x => x.Estimado);
+            if (estimadoTrienio <= 0)
+            {
+                UIHelper.ShowAlert(Translate("No existen gastos estimados para la marca seleccionada (trienio)."), upPlanPopUp);
+                return;
+            }
+
             ProyectoPlanResult result = (from o in Entity.proyectoPlan where o.IdProyectoPlan == ActualProyectoPlan.ID select o).FirstOrDefault();
 
             if (result != null)
@@ -1382,8 +1394,6 @@ namespace UI.Web
             UIHelper.ClearItems(ddlPeriodoPopUp);
             UIHelper.ClearItems(ddlVersionPopUp);
             ActualProyectoPlan = GetNewProyectoPlan();
-
-
         }
         void ProyectoPlanSetValue()
         {
@@ -1409,7 +1419,6 @@ namespace UI.Web
             UIHelper.Load(gridPlanPopUp, Entity.proyectoPlan);
             //HabilitarControlesPlan();
             upPlanPopUp.Update();
-
         }
         #endregion
 
