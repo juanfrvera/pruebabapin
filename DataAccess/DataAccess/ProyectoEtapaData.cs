@@ -35,11 +35,13 @@ namespace DataAccess
 
        public List<ProyectoEtapaResult> GetEtapas(ProyectoEtapaFilter filter)
        {
-           List<ProyectoEtapaResult> etapas = (from pe in this.QueryResult(filter)
+           var queryEtapas = (from pe in this.QueryResult(filter)
                                                join e in this.Context.Etapas
                                                on pe.IdEtapa equals e.IdEtapa
                                                where filter.IdFase == 0 || e.IdFase == filter.IdFase
-                                               select pe).ToList();
+                                               select pe);
+
+           List<ProyectoEtapaResult> etapas = queryEtapas.ToList();
 
            List<Etapa> es = (from e in this.Context.Etapas select e).ToList();
            foreach (ProyectoEtapaResult i in etapas)
@@ -175,7 +177,7 @@ namespace DataAccess
         }	
         protected override IQueryable<ProyectoEtapaResult> QueryResult(ProyectoEtapaFilter filter)
         {
-		  return (from o in Query(filter)					
+		  var myquery = (from o in Query(filter)					
 					join _t1  in this.Context.Estados on o.IdEstado equals _t1.IdEstado into tt1 from t1 in tt1.DefaultIfEmpty()
                     join _tse in this.Context.SistemaEntidadEstados on o.IdEstado equals _tse.IdEstado
 				    join t2  in this.Context.Etapas on o.IdEtapa equals t2.IdEtapa  
@@ -235,7 +237,8 @@ namespace DataAccess
                         //,Proyecto_IdProyectoPlan= t3.IdProyectoPlan	
                         //,Proyecto_EvaluarValidaciones= t3.EvaluarValidaciones	
 						}
-                    ).AsQueryable();
+                    );
+          return myquery.AsQueryable();
         }
 
 

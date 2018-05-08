@@ -131,7 +131,9 @@ namespace Business
             ProyectoEtapa pe = new ProyectoEtapa()
             {
                 Nombre = "",
-                IdEtapa = (int)EtapaEnum.Actividad
+                //IdEtapa = (int)EtapaEnum.Actividad //Segun San Matias 8:05 (2018)
+                IdEtapa = (int)EtapaEnum.Obra, //Con fase 2 en ejecucion
+                IdEstado = (int)EstadoEnum.Iniciado //16 A Iniciar en Etapa
             };
             entity.ProyectoEtapas.Add(pe);
             base.Add(entity, contextUser);

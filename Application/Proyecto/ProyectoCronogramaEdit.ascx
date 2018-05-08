@@ -312,12 +312,12 @@
                                 <asp:BoundField HeaderText ="F.Financiamiento" DataField ="FFinanciamiento" SortExpression ="FFinanciamiento"  HeaderStyle-Width ="20%" />
                                 <asp:TemplateField   HeaderText="Monto Inicial"  HeaderStyle-Width ="10%" >            
                                     <ItemTemplate>                        
-                                        <cc:NumericTextBox id="txtc" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoInicial")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                        <cc:NumericTextBox id="txtc" runat="server" Width="97px" DataFormatString="{0:N0}"  Text='<%#string.Format("{0:N0}",Eval("MontoInicial")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField   HeaderText="Monto Vigente"  HeaderStyle-Width ="10%" >            
                                     <ItemTemplate>                        
-                                        <cc:NumericTextBox id="txtMontoVigente" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoVigente")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                        <cc:NumericTextBox id="txtMontoVigente" runat="server" Width="97px" DataFormatString="{0:N0}"  Text='<%#string.Format("{0:N0}",Eval("MontoVigente")) %>' Enabled='false'  UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
                                     </ItemTemplate>
                                 </asp:TemplateField>	
                                 <asp:TemplateField   HeaderText="MVE (*)"  HeaderStyle-Width ="8%" >            
@@ -327,7 +327,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField   HeaderText="Monto Devengado"  HeaderStyle-Width ="10%" >            
                                     <ItemTemplate>                        
-                                        <cc:NumericTextBox id="txtMontoDevengado" runat="server" Width="97px" DataFormatString="{0:F2}"  Text='<%#string.Format("{0:F2}",Eval("MontoDevengado")) %>' Enabled='false' UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
+                                        <cc:NumericTextBox id="txtMontoDevengado" runat="server" Width="97px" DataFormatString="{0:N0}"  Text='<%#string.Format("{0:N0}",Eval("MontoDevengado")) %>' Enabled='false' UseSeparadorMiles ="true"  InputType="PositiveFractional" ></cc:NumericTextBox>
                                     </ItemTemplate>
                                 </asp:TemplateField>		                                   
                             </Columns>

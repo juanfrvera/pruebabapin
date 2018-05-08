@@ -187,7 +187,7 @@ END
 GO
 
 --*07*
-USE [BAPIN]
+USE [BD_BAPIN]
 GO
 
 IF  EXISTS (SELECT * FROM [dbo].[Parameter] WHERE code='BLOQUEAR_GASTOS_REALIZADOS'  )
@@ -212,4 +212,18 @@ GO
 INSERT INTO [dbo].[Parameter] 
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
 VALUES (N'Bloquear Gastos Realizados Tipo Organismos', N'BLOQUEAR_GASTOS_REALIZADOS_TIPO_ORGANISMOS', N'bloquear la edición de los gastos realizados para los organismos presupuestarios definidos [Ids separados por coma]', N'3', N'', null, null, N'');
+GO
+
+--*08* Fix datos mal cargados
+USE [BD_BAPIN]
+GO
+
+Update ProyectoEtapa set idetapa = 5 where IdProyecto in
+(SELECT IdProyecto FROM Proyecto p where FechaAlta > '2018-05-02' and FechaAlta < '2018-05-09')
+AND IdProyectoEtapa in (select min(IdProyectoEtapa) from ProyectoEtapa group by IdProyecto)
+GO
+
+Update ProyectoEtapa set idestado = 16 where IdProyecto in
+(SELECT IdProyecto FROM Proyecto p where FechaAlta > '2018-05-08' and FechaAlta < '2018-05-09')
+And IdEstado is null
 GO

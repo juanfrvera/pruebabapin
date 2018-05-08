@@ -146,9 +146,9 @@ namespace Contract
                             row[0] = item.ID;
                             row[1] = item.ObjetoGasto;
                             row[2] = item.FuenteFinanciemiento;
-                            row[3] = periodo.MontoInicial;
-                            row[4] = periodo.MontoVigente;
-                            row[5] = periodo.MontoDevengado;
+                            row[3] = periodo.MontoInicial.ToString("N0");
+                            row[4] = periodo.MontoVigente.ToString("N0");
+                            row[5] = periodo.MontoDevengado.ToString("N0");
                             row[6] = periodo.MontoVigenteEstimativo;
                             table.Rows.Add(row);
                         }

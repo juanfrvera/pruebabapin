@@ -619,7 +619,7 @@ namespace UI.Web
                 btnEdit.Visible = false;
                 btInicioDeCarga.Visible = true;
             }
-            else if (Entity.Etapas.Count == 0 && Convert.ToInt32(ddlFase.SelectedValue) != (int)FaseEnum.Ejecucion)
+            else if (Entity.Etapas.Count == 0)
             {
                 btInicioDeCarga.Visible = true;
             }
