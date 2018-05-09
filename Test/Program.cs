@@ -2,16 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using Service;
 using Contract;
 using Business;
 using Business.Managers;
+using log4net;
+using log4net.Config;
+using System.IO;
+
 namespace Test
 {
     class Program
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+
         static void Main(string[] args)
         {
+            // Configure logging
+            string logConfigurationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase.Replace("file:///", string.Empty));
+            var file = new System.IO.FileInfo(Path.Combine(logConfigurationPath, "log4net.config.xml"));
+            XmlConfigurator.Configure(file);
+
             LoadInitialSettings();
 
             //  List<Parameter> parameters = ParameterService.Current.GetList(new ParameterFilter() {  Name = "%suario%" });
@@ -29,16 +41,19 @@ namespace Test
 
             Console.WriteLine("Testing webservices");
 
-            /*
             Console.WriteLine("Calling ping ...");
-            Console.WriteLine(EsidifManager.Ping()); 
+            Log.Info("Calling ping ...");
+            var ping= EsidifManager.Ping();
+            Log.Info("Ping response: " + ping);
+            Console.WriteLine(ping); 
+            Console.WriteLine("");
+
+            /*
+            Console.WriteLine("Calling change password ...");
+            Log.Info("Calling change password ...");
+            Console.WriteLine(EsidifManager.ChangePassword());
             Console.WriteLine("");
             */
-
-            //Console.WriteLine("Calling change password ...");
-            //Console.WriteLine(EsidifManager.ChangePassword());
-
-            //Console.WriteLine("");
 
             Console.WriteLine("Calling Consultar APG Bapines ...");
             Console.WriteLine(EsidifManager.ConsultarAPGBapines(new DatosBapinType(){ 
@@ -46,6 +61,7 @@ namespace Test
                 jurisdiccion = 80,
                 estados = new EstadoBapinType?[] { EstadoBapinType.DEMANDA}
             }));
+
             Console.ReadKey();
         }
       
@@ -67,10 +83,4 @@ namespace Test
             TestContext.Current.LoadManagers();
         }
     }
-
-    
-
-
-
-
 }

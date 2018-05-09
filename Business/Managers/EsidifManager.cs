@@ -8,15 +8,19 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Net;
 using System.IO;
+using log4net;
 
 namespace Business.Managers
 {
     public static class  EsidifManager
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(EsidifManager));
+
         //private static string _url = SolutionContext.Current.ParameterManager.GetStringValue("URL_ESIDIF"); // "https://tws8-si.mecon.gov.ar/SD_Core/ws/"
         private static string _url { get { return SolutionContext.Current.ParameterManager.GetStringValue("URL_ESIDIF"); } }
         //private static string _url = "https://tws-si.mecon.gov.ar/SD_Core/ws/";
         //private static string _url = "http://Pipo-PC:8088/mockconsultarAPGBapinesSoap11/";
+        private static bool esReintento = false;
 
         private static HttpWebRequest CreateWebRequest(string action)
         {
@@ -34,10 +38,10 @@ namespace Business.Managers
 
         private static void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
-            using (Stream stream = webRequest.GetRequestStream())
-            {
-                soapEnvelopeXml.Save(stream);
-            }
+            byte[] bytes = Encoding.Default.GetBytes(soapEnvelopeXml.OuterXml);
+            Stream reqStream = webRequest.GetRequestStream();
+            reqStream.Write(bytes, 0, bytes.Length);
+            reqStream.Close();
         }
 
         /// <summary>
@@ -80,19 +84,7 @@ namespace Business.Managers
             }
             catch (WebException ex)
             {
-                using (var stream = ex.Response.GetResponseStream())
-                using (var reader = new StreamReader(stream))
-                {
-                    string readerString = reader.ReadToEnd();
-                    XDocument doc = XDocument.Parse(readerString);
-                    //string myNamespace = "https://ws-si.mecon.gov.ar/ws/error/";
-                    //var a = doc.Descendants().Elements().Select(x => x.Name).ToArray();
-                    //Console.WriteLine(a);
-                    var errorCode = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorCode").FirstOrDefault().Value;
-                    var errorDescription = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorDescription").FirstOrDefault().Value;
-                    //doc.Descendants().Elements("{http://service.seguridad.esidif.mecon.gov.ar}ping").FirstOrDefault().Value;
-                    return errorDescription;
-                }
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -100,6 +92,7 @@ namespace Business.Managers
                 // like for example you don't have network access
                 // we cannot talk about a server exception here as
                 // the server probably was never reached
+                Log.Error(ex);
                 throw (ex);
             }
         }
@@ -125,18 +118,47 @@ namespace Business.Managers
         public static string ChangePassword()
         {
             var _action = "seguridad/changePasswordService";
-
+            
             IgnoreBadCertificates();
 
-            XmlDocument soapEnvelopeXml = CreateChangePasswordSoapEnvelope();
+            string newPassword = "Bapin" + String.Format("{0:yyyyMMddHHmmss}", DateTime.Now);
+
+            XmlDocument soapEnvelopeXml = new XmlDocument();
+            soapEnvelopeXml.PreserveWhitespace = false; //Important
+            soapEnvelopeXml = CreateChangePasswordSoapEnvelope(newPassword);
+
             HttpWebRequest webRequest = CreateWebRequest(_action);
             InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
+            string soapResult = string.Empty;
+            try
+            {
+                soapResult = DoWebRequest(webRequest);
+                Log.Info("Nueva password negociada via webservice");
+                //save new password
+                SolutionContext.Current.ParameterManager.Parameters.Where(x => x.Code == "PASSWORD_ESIDIF").FirstOrDefault().StringValue = newPassword;               
+                //persist
+                Parameter pr = ParameterBusiness.Current.GetById(SolutionContext.Current.ParameterManager.Parameters.Where(x => x.Code == "PASSWORD_ESIDIF").FirstOrDefault().IdParameter);
+                pr.StringValue = newPassword;
+                ParameterBusiness.Current.Update(pr, null);
+                Log.Info("Nueva password persistida en BD");
+            }
+            catch (WebException ex)
+            {
+                Log.Error("ChangePassword", ex);
+                using (var stream = ex.Response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    string readerString = reader.ReadToEnd();
+                    XDocument doc = XDocument.Parse(readerString);
 
-            string soapResult = DoWebRequest(webRequest);
+                    var errorCode = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorCode").FirstOrDefault().Value;
+                    var errorDescription = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorDescription").FirstOrDefault().Value;
+                    Log.Error(errorCode + "-" + errorDescription);
+                    return errorCode + "-" + errorDescription;
+                }
+            }
+
             return soapResult;
-
-            //XDocument doc = XDocument.Parse(soapResult);
-            //return soapResult.ToString();
         }
 
         public static string ConsultarAPGBapines(DatosBapinType datosBapinType)
@@ -149,15 +171,51 @@ namespace Business.Managers
             HttpWebRequest webRequest = CreateWebRequest(_action);
             InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
 
-            string soapResult = DoWebRequest(webRequest);
-            XDocument doc = XDocument.Parse(soapResult);
-            XNamespace ns = @"http://schemas.xmlsoap.org/soap/envelope/";
-            var unwrappedResponse = doc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body").First().FirstNode;
-            XmlSerializer oXmlSerializer = new XmlSerializer(typeof(ConsultarAperturasBapines), "http://bapin.jaxb.webServices.entidadesBasicas.esidif.mecon.gov.ar");
+            try
+            {
+                string soapResult = DoWebRequest(webRequest);
+                XDocument doc = XDocument.Parse(soapResult);
 
-            //var responseObj = (ConsultarAperturasBapines)oXmlSerializer.Deserialize(unwrappedResponse.CreateReader());
+                XNamespace ns = @"http://schemas.xmlsoap.org/soap/envelope/";
+                var unwrappedResponse = doc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body").First().FirstNode;
+                XmlSerializer oXmlSerializer = new XmlSerializer(typeof(ConsultarAperturasBapines), "http://bapin.jaxb.webServices.entidadesBasicas.esidif.mecon.gov.ar");
 
-            return unwrappedResponse.ToString();
+                //var responseObj = (ConsultarAperturasBapines)oXmlSerializer.Deserialize(unwrappedResponse.CreateReader());
+
+                return unwrappedResponse.ToString();
+            }
+            catch (WebException ex)
+            {
+                Log.Error(ex);
+                using (var stream = ex.Response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    string readerString = reader.ReadToEnd();
+                    XDocument doc = XDocument.Parse(readerString);
+
+                    var errorCode = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorCode").FirstOrDefault().Value;
+                    var errorDescription = doc.Descendants().Elements("{https://ws-si.mecon.gov.ar/ws/error/}ErrorDescription").FirstOrDefault().Value;
+
+                    if (!string.IsNullOrEmpty(errorCode))
+                    {
+                        //I need change password ?
+                        //Código: 115 - "Clave vencida."
+                        if (errorCode.Equals("115") && !esReintento)
+                        {
+                            Log.Info("Password Vencida");
+                            //try to change password
+                            if (ChangePassword().Equals(string.Empty))
+                            {
+                                Log.Info("Reintentando consulta");
+                                esReintento = true;
+                                ConsultarAPGBapines(datosBapinType);
+                            }
+                        }
+                    }
+
+                    return errorCode + "-" + errorDescription;
+                }
+            }
             //return (responseObj !=null && responseObj.bapines != null) ? responseObj.bapines.ToList() : new List<APGBapin>();
         }
 
@@ -169,71 +227,6 @@ namespace Business.Managers
                         .Select(rr => xmlSerializer.Deserialize(rr.CreateReader()) as APGBapin);
 
             return nodes;
-        }
-
-        public static string ConsultarAPGBapines2()
-        {
-            /*
-            // This is the client proxy
-            consultarAPGBapines proxy = new consultarAPGBapinesClient();
-
-            Business.ConsultarAPGBapinesServiceReference.datosBapinType datosBapin = new datosBapinType()
-            {
-                ejercicio = 2018
-            };
-            // Based on all of the examples I saw, I thought I would be able to 
-            // call the methods directly, such as proxy.getLoginInfo(), 
-            // proxy.LogIn(), etc. But, that is not how it works in this example.
-            // I will need to create the Request and Response Objects
-            // This object will contain the login info: roles, databases, etc.
-//            consultarAPGBapines loginInfo = new consultarAPGBapines(datosBapin);
-            // This request object contains the loginInfo object 
-            consultarAPGBapinesRequest loginRequest = new consultarAPGBapinesRequest(datosBapin);
-            // This response object will contain the loginInfo object populated 
-            // with roles, databases, etc.
-            consultarAPGBapinesResponse loginResponse;
-            // Send the request
-            loginResponse = proxy.consultarAPGBapines(loginRequest);
-            // Get the loginInfo data from the response
-            aperturaBapinType[] response;
-            response = loginResponse.consultarAperturasBapinesResponse;
-
-            return response.FirstOrDefault().codigoBapin.ToString();
-            */
-            return string.Empty;
-
-            /*
-            foreach (DatabaseInfo db in response.loginInfo.databases)
-            {
-                Debug.WriteLine("Database: " + db.name);
-            }
-            foreach (string role in response.loginInfo.loginRoles)
-            {
-                Debug.WriteLine("Role: " + role);
-            }
-            */
-
-            // This is the client proxy
-            /*
-            consultarAPGBapinesClient proxy = new consultarAPGBapinesClient();
-
-            Business.ConsultarAPGBapinesServiceReference.datosBapinType datosBapin = new datosBapinType()
-            {
-                ejercicio = 2018
-            };
-
-            consultarAPGBapinesRequest request = new consultarAPGBapinesRequest(datosBapin);
-
-            consultarAPGBapinesResponse consultaResponse;
-            consultaResponse = proxy.consultarAPGBapines(request);
-
-            // Get the loginInfo data from the response
-            aperturaBapinType[] response;
-            response = consultaResponse.consultarAperturasBapinesResponse;
-
-            var a = response.FirstOrDefault();
-            aperturaBapinType[] abt = proxy.consultarAPGBapines(datosBapin);
-            return abt.Select(x => x.codigoBapin.ToString()).FirstOrDefault();*/
         }
 
         private static XElement RemoveAllNamespaces(XElement xmlDocument)
@@ -248,6 +241,7 @@ namespace Business.Managers
             }
             return new XElement(xmlDocument.Name.LocalName, xmlDocument.Elements().Select(el => RemoveAllNamespaces(el)));
         }
+
         private static XmlDocument CreateConsultarBapinSoapEnvelope(DatosBapinType datosBapinType)
         {
             XmlSerializer xsBapinTypeDocument = new XmlSerializer(typeof(DatosBapinType));
@@ -285,6 +279,7 @@ namespace Business.Managers
             apgServiceString = apgServiceString.Replace("[Username]", SolutionContext.Current.ParameterManager.GetStringValue("USERNAME_ESIDIF"));
             //BapinEsidif2018
             apgServiceString = apgServiceString.Replace("[Password]", SolutionContext.Current.ParameterManager.GetStringValue("PASSWORD_ESIDIF"));
+            //apgServiceString = apgServiceString.Replace("[Password]", "Badulaque");
 
             soapEnvelopeDocument.LoadXml(apgServiceString);
 
@@ -319,16 +314,17 @@ namespace Business.Managers
                                         "   <soapenv:Body>" +
                                         "   </soapenv:Body>" +
                                         "</soapenv:Envelope>");
-            pingServiceString = pingServiceString.Replace("[Username]", "BAPIN");
-            pingServiceString = pingServiceString.Replace("[Password]", "SVQN50kM6m");
+
+
+            pingServiceString = pingServiceString.Replace("[Username]", SolutionContext.Current.ParameterManager.GetStringValue("USERNAME_ESIDIF"));
+            pingServiceString = pingServiceString.Replace("[Password]", SolutionContext.Current.ParameterManager.GetStringValue("PASSWORD_ESIDIF"));
             soapEnvelopeDocument.LoadXml(pingServiceString);
             return soapEnvelopeDocument;
         }
 
-        private static XmlDocument CreateChangePasswordSoapEnvelope()
+        private static XmlDocument CreateChangePasswordSoapEnvelope(string newPassword)
         {
             XmlDocument soapEnvelopeDocument = new XmlDocument();
-            //soapEnvelopeDocument.LoadXml(@"<SOAP-ENV:Envelope xmlns:SOAP-ENV=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/1999/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/1999/XMLSchema""><SOAP-ENV:Body><HelloWorld xmlns=""http://tempuri.org/"" SOAP-ENV:encodingStyle=""http://schemas.xmlsoap.org/soap/encoding/""><int1 xsi:type=""xsd:integer"">12</int1><int2 xsi:type=""xsd:integer"">32</int2></HelloWorld></SOAP-ENV:Body></SOAP-ENV:Envelope>");
             string changePasswordServiceString = String.Format(
                                 "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                                 "	<SOAP-ENV:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">" +
@@ -337,9 +333,9 @@ namespace Business.Managers
                                 "			xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"" +
                                 "			SOAP-ENV:mustUnderstand=\"1\">" +
                                 "			<wsse:UsernameToken wsu:Id=\"UsernameToken-5BF196167B4B2DE1EA14569303255361\">" +
-                                "				<wsse:Username>webservice</wsse:Username>" +
+                                "				<wsse:Username>[Username]</wsse:Username>" +
                                 "				<wsse:Password" +
-                                "					Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">WebService2011</wsse:Password>" +
+                                "					Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">[Password]</wsse:Password>" +
                                 "			</wsse:UsernameToken>" +
                                 "		</wsse:Security>" +
                                 "		<wsa:To SOAP-ENV:mustUnderstand=\"1\">http://eSidif.mecon.gov.ar/</wsa:To>" +
@@ -347,20 +343,25 @@ namespace Business.Managers
                                 "		<wsa:MessageID>urn:uuid:eb56e086-1aad-4f26-85cd-5e517eb4a5aa</wsa:MessageID>" +
                                 "	</SOAP-ENV:Header>" +
                                 "	<SOAP-ENV:Body>" +
-                                "		<ns3:login xmlns:ns3=\"http://service.seguridad.esidif.mecon.gov.ar\">webservice</ns3:login>" +
+                                "		<ns3:login xmlns:ns3=\"http://service.seguridad.esidif.mecon.gov.ar\">[Username]</ns3:login>" +
                                 "		<ns3:actualPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
-                                "			<password>WebService2011</password>" +
+                                "			<password>[ActualPassword]</password>" +
                                 "		</ns3:actualPassword>" +
                                 "		<ns3:nuevaPassword xmlns:ns3=\"http://password.seguridad.esidif.mecon.gov.ar\">" +
-                                "			<password>WebService2022</password>" +
+                                "			<password>[NuevaPassword]</password>" +
                                 "		</ns3:nuevaPassword>" +
                                 "	</SOAP-ENV:Body>" +
                                 "</SOAP-ENV:Envelope>");
-            changePasswordServiceString = changePasswordServiceString.Replace("[Username]", "BAPIN");
-            changePasswordServiceString = changePasswordServiceString.Replace("[Password]", "SVQN50kM6m");
-            changePasswordServiceString = changePasswordServiceString.Replace("[ActualPassword]", "SVQN50kM6m");
-            changePasswordServiceString = changePasswordServiceString.Replace("[NuevaPassword]", "SVQN50kM6m");
+
+            changePasswordServiceString = changePasswordServiceString.Replace("[Username]", SolutionContext.Current.ParameterManager.GetStringValue("USERNAME_ESIDIF"));
+            changePasswordServiceString = changePasswordServiceString.Replace("[Password]", SolutionContext.Current.ParameterManager.GetStringValue("PASSWORD_ESIDIF"));
+            changePasswordServiceString = changePasswordServiceString.Replace("[ActualPassword]", SolutionContext.Current.ParameterManager.GetStringValue("PASSWORD_ESIDIF"));
+            changePasswordServiceString = changePasswordServiceString.Replace("[NuevaPassword]", newPassword);
+
+            soapEnvelopeDocument.PreserveWhitespace = false; //Important
+            changePasswordServiceString = XElement.Parse(changePasswordServiceString).ToString(SaveOptions.DisableFormatting);
             soapEnvelopeDocument.LoadXml(changePasswordServiceString);
+            
             return soapEnvelopeDocument;
         }
 

@@ -33,7 +33,7 @@ namespace Business.Managers
                     List<Saf> safs = SafBusiness.Current.GetList(new SafFilter() { Activo = true });
                     List<ProyectoTipo> proyectoTipos = ProyectoTipoBusiness.Current.GetList(new ProyectoTipoFilter() { Activo = true });
                     List<Proceso> procesos = ProcesoBusiness.Current.GetList(new ProcesoFilter() { Activo = true });
-                    List<SistemaEntidadEstado> sistemaEntidadEstados = SistemaEntidadEstadoBusiness.Current.GetList(new SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = 437 });
+                    List<SistemaEntidadEstado> sistemaEntidadEstados = SistemaEntidadEstadoBusiness.Current.GetList(new SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto });
                     List<FinalidadFuncion> finalidadFunciones = FinalidadFuncionBusiness.Current.GetList(new FinalidadFuncionFilter() { Activo = true, Seleccionable = true });
                     List<OrganismoPrioridad> organismoPrioridades = OrganismoPrioridadBusiness.Current.GetList(new OrganismoPrioridadFilter() { Activo = true });
                     List<Oficina> oficinas = OficinaBusiness.Current.GetList(new OficinaFilter() { Activo = true, Seleccionable = true });
