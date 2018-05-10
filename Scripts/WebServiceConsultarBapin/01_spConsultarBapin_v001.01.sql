@@ -65,9 +65,9 @@ INNER JOIN PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
 INNER JOIN (select * from dbo.fn_Split(@estado,'|')) ES on 
 	(	(ES.Data = 'DEMANDA' and PPE.IdPlanTipo = 5) --Incluye toda la DEMANDA indepte de la version.
 		OR 
-		(ES.Data = 'PLAN' and PPE.IdPlanTipo = 4 and ((PV.IdPlanVersion = 2 /*Presupuesto Nacional*/) or (PV.IdPlanVersion = 43 /*Solicitud*/) ) )
+		(ES.Data = 'PLAN' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 2 /*Presupuesto Nacional*/)
 		OR 
-		(REPLACE(ES.Data,' ','_') = 'PLAN_SEGUN_EJECUCION' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 /*Alta durante la ejecución del Presupuesto*/)
+		(REPLACE(ES.Data,' ','_') = 'PLAN_SEGUN_EJECUCION' and PPE.IdPlanTipo = 4 and ((PV.IdPlanVersion = 3 /*Alta durante la ejecución del Presupuesto*/) or (PV.IdPlanVersion = 43 /*Solicitud*/) ) )
 		OR 
 		(REPLACE(ES.Data,' ','_') = 'PLAN_OCT-DIC' and PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 37 /*Octubre - Diciembre*/) ) --required
 
@@ -87,7 +87,7 @@ LEFT JOIN	(
 			INNER JOIN	ProyectoPlan PP on PP.IdProyecto = Pint.IdProyecto
 			INNER JOIN	PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
 			INNER JOIN	PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
-			where		PPE.IdPlanTipo = 4 and ( (PV.IdPlanVersion = 2 /*Plan Nacional Presupuestario*/) or (PV.IdPlanVersion = 43 /*Plan Solicitud*/) ) 
+			where		PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 2 /*Plan Nacional Presupuestario*/
 			group by	Pint.IdProyecto
 			) as UltimoPlan on UltimoPlan.IdProyecto = P.IdProyecto
 
@@ -97,7 +97,7 @@ LEFT JOIN	(
 			INNER JOIN	ProyectoPlan PP on PP.IdProyecto = Pint.IdProyecto
 			INNER JOIN	PlanPeriodo PPE on PPE.IdPlanPeriodo = PP.IdPlanPeriodo
 			INNER JOIN	PlanVersion PV on PV.IdPlanVersion = PP.IdPlanVersion
-			where		PPE.IdPlanTipo = 4 and PV.IdPlanVersion = 3 --Plan Nacional Presupuestario
+			where		PPE.IdPlanTipo = 4 and ( PV.IdPlanVersion = 3 /*Alta durante la ejecución del Presupuesto*/ or PV.IdPlanVersion = 43 /*Plan Solicitud*/ ) 
 			group by	Pint.IdProyecto
 			) as UltimoPlanSegunEjecucion on UltimoPlanSegunEjecucion.IdProyecto = P.IdProyecto
 
