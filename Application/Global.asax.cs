@@ -12,8 +12,11 @@ namespace Application
 {
     public class Global : System.Web.HttpApplication
     {
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(Global));
         protected void Application_Start(object sender, EventArgs e)
         {
+            //log4net.Config.XmlConfigurator.Configure();
+            Log.Info("Startup application.");
             UIContext.Current.LoadManagers();
         }
         protected void Session_Start(object sender, EventArgs e)

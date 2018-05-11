@@ -18,7 +18,7 @@ namespace UI.Web
         {
 			base._Initialize();
             bool canCreate = this.Can(ActionConfig.CREATE);
-            btNew.Visible = canCreate;
+            //btNew.Visible = canCreate;
             SortExpression = "Nombre";
         }	
 		protected override void _Load()

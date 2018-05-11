@@ -64,6 +64,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\HtmlToPdf\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\Enterprise Library\Microsoft.Practices.EnterpriseLibrary.AppSettings.Configuration.Design.dll</HintPath>
@@ -269,6 +273,9 @@
     <Content Include="Graficos\ProyectoGraficosZoom.aspx" />
     <Content Include="Graficos\Temp\temp.htm" />
     <Content Include="App_Themes\Sky\close2.gif" />
+    <Content Include="log4net.config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Matching\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Matching\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Matching\bootstrap\css\bootstrap.css" />

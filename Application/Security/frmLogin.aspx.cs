@@ -8,11 +8,13 @@ using System.Web.Security;
 using Service;
 using nc=Contract;
 using System.IO;
+using log4net;
 
 namespace UI.Web
 {
     public partial class frmLogin : PageBase
     {
+        ILog log = log4net.LogManager.GetLogger(typeof(frmLogin)); 
         protected override void _Initialize()
         {            
             base._Initialize();
@@ -30,6 +32,8 @@ namespace UI.Web
             {
                 string userName = UIHelper.GetString(txtUserName);
                 string password = UIHelper.GetString(txtPassword);
+
+                log.Info("Login usuario " + userName);
 
                 UIContext.Current.Login(userName, password);
                 
@@ -52,7 +56,7 @@ namespace UI.Web
                 // Create the cookie.
                 Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
-               Response.Redirect("Default.aspx"); 
+                Response.Redirect("Default.aspx"); 
             }            
             catch (Exception exception)
             {

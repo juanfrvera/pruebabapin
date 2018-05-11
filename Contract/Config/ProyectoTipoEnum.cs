@@ -8,22 +8,22 @@ namespace Contract
 {
     public enum ProyectoTipoEnum
     { 
-        [Description("IRD – Inv. Real Directa")]
-        IRDInvRealDirecta = 0,
+        [Description("Inv. Real Directa")]
+        InvRealDirecta = 10,
         [Description("Transferencia")]
-        Transferencia,
-        [Description("Combinados")]
-        Combinados,
+        Transferencia = 11,
+        [Description("Combiados")]
+        Combinados = 12,
         [Description("Inversiones Financieras")]
-        InversionesFinancieras,
+        InversionesFinancieras = 15,
         [Description("Adelanto  a proveedores")]
-        AdelantoProveedores,
+        AdelantoProveedores = 16,
         [Description("Sin gastos imputados")]
-        SinGastosImputados,
+        SinGastosImputados = 17,
         [Description("Gasto Corriente")]
-        GastoCorriente,
+        GastoCorriente = 18,
         [Description("Indefinido")]
-        Indefinido	
+        Indefinido = 19,
     }
 }
 

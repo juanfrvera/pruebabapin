@@ -34,7 +34,7 @@
                       <table width="100%">
                         <tr>
                             <td align="left">
-								    <asp:Button  ID ="btNew"  runat = "server" Text="Agregar" OnClick ="btNew_OnClick"   />
+								    <asp:Button  ID ="btNew" Visible="false" runat = "server" Text="Agregar" OnClick ="btNew_OnClick"   />
 								    <asp:Button  ID ="btExportExcel"  runat = "server" Text="Exportar a Excel" OnClick ="btExportExcel_OnClick"   />
                             </td>
                             <td align="right" ><uc:PaggingButtons runat="server" ID="pgButtons"  SearchVisible="true" ValidationGroup="FilterProyectoTipo" ></uc:PaggingButtons ></td>

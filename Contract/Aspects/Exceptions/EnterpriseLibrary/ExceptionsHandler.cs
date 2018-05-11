@@ -8,11 +8,13 @@ using Contract;
 using System.Data.SqlClient;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System.Diagnostics;
-   
+using log4net;
+
 namespace EnterpriseLibrary
 {
     public class ExceptionHandlerBase
-    {     
+    {
+        ILog log = log4net.LogManager.GetLogger(typeof(ExceptionHandlerBase)); 
         protected readonly string MESSAGE_NOT_FOUND = "Error sin Especificacion";
 
         protected string Tanslate(string key)
@@ -24,7 +26,7 @@ namespace EnterpriseLibrary
         protected void Log(string translateMessage, string originalMessage, string traceMessage, EventLogEntryType eventType)
         {
             string message = string.Format("Translate:{0} Original:{1} Trace:{2}", translateMessage!=null?translateMessage:originalMessage, originalMessage, traceMessage);
-            //Logger.Write(message, "Application", 1, 0, eventType, translateMessage);
+            log.Error(message);
             try
             {
                 EventLog.WriteEntry(SolutionContext.Current.NameApplication, string.Format("Message:\r\n{0}\r\nStackTrace:\r\n{1}", originalMessage, traceMessage), eventType);
@@ -33,8 +35,7 @@ namespace EnterpriseLibrary
         }
         protected void Log(Exception exception)
         {
-
-            
+      
         }
   }      
   [ConfigurationElementType(typeof(CustomHandlerData))]

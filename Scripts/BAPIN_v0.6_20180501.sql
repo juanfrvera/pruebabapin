@@ -246,3 +246,9 @@ INSERT INTO [dbo].[Parameter]
 ([Name], [Code], [Description], [IdParameterCategory], [StringValue], [NumberValue], [DateValue], [TextValue]) 
 VALUES (N'Validar proyecto marca trienio', N'VALIDAR_PROYECTO_MARCA_TRIENIO', N'Validar la asignación de marcas a los proyectos según si tienen gastos estimados dentro del trienio', N'3', N'N', null, null, N'');
 GO
+
+--*10* Estado financiero suspendido
+IF NOT EXISTS(SELECT 1 from SistemaEntidadEstado where [idestado] = '18' and idsistemaentidad=458 )
+insert into SistemaEntidadEstado values (458, 18, 'Suspendido')
+GO
+
