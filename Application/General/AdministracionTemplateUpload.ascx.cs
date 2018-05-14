@@ -18,13 +18,27 @@ namespace UI.Web
         protected override void _Initialize()
         {
             base._Initialize();
+            btAgregarTemplateFile.Enabled = true;
+            btRegenerarTemplateFile.Enabled = true;
             PopUpTemplateFiles.Attributes.CssStyle.Add("display", "none");
-            try
+            var prResult = SolutionContext.Current.ParameterManager.Parameters.Where(x => x.Code == "ID_TEMPLATE_IMPORTACION").FirstOrDefault();
+            if (prResult == null)
             {
-                idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
+                UIHelper.ShowAlert(Translate("No existe parámetro Id Template Importación"), Page);
+                pnlTemplateFiles.Enabled = false;
+                return;
             }
-            catch (InvalidOperationException)
+            else
             {
+                try
+                {
+                    idLastTemplateVersion = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue("ID_TEMPLATE_IMPORTACION");
+                }
+                catch (InvalidOperationException)
+                {
+                    btRegenerarTemplateFile.Enabled = false;
+                    return;
+                }
             }
 
             if (idLastTemplateVersion > 0)
@@ -108,8 +122,10 @@ namespace UI.Web
         void TemplateFileRefresh()
         {
             var listFileInfo = new List<FileInfoResult>();
+            btRegenerarTemplateFile.Enabled = false;
             if (Entity != null)
             {
+                btRegenerarTemplateFile.Enabled = true;
                 listFileInfo.Add(Entity);
             }
             UIHelper.Load(gridTemplateFiles, listFileInfo, "Order");
@@ -156,7 +172,10 @@ namespace UI.Web
                 else
                 {
                     nc.Parameter pr = ParameterService.Current.GetById(prResult.IdParameter);
-                    FileInfoService.Current.Delete(FileInfoService.Current.GetById((Int32)pr.NumberValue), UIContext.Current.ContextUser);
+                    if (pr.NumberValue.HasValue)
+                    {
+                        FileInfoService.Current.Delete(FileInfoService.Current.GetById((Int32)pr.NumberValue), UIContext.Current.ContextUser);
+                    }
                     pr.NumberValue = Entity.IdFile;
                     ParameterService.Current.Update(pr, UIContext.Current.ContextUser);
                     idLastTemplateVersion = (int)pr.NumberValue;

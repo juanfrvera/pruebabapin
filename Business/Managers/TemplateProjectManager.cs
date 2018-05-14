@@ -33,7 +33,8 @@ namespace Business.Managers
                     List<Saf> safs = SafBusiness.Current.GetList(new SafFilter() { Activo = true });
                     List<ProyectoTipo> proyectoTipos = ProyectoTipoBusiness.Current.GetList(new ProyectoTipoFilter() { Activo = true });
                     List<Proceso> procesos = ProcesoBusiness.Current.GetList(new ProcesoFilter() { Activo = true });
-                    List<SistemaEntidadEstado> sistemaEntidadEstados = SistemaEntidadEstadoBusiness.Current.GetList(new SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto });
+                    List<SistemaEntidadEstado> sistemaEntidadEstadoProyectos = SistemaEntidadEstadoBusiness.Current.GetList(new SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto });
+                    List<SistemaEntidadEstado> sistemaEntidadEstadoFinancieros = SistemaEntidadEstadoBusiness.Current.GetList(new SistemaEntidadEstadoFilter() { Activo = true, IdSistemaEntidad = (int)SistemaEntidadEnum.Proyecto_Etapa });
                     List<FinalidadFuncion> finalidadFunciones = FinalidadFuncionBusiness.Current.GetList(new FinalidadFuncionFilter() { Activo = true, Seleccionable = true });
                     List<OrganismoPrioridad> organismoPrioridades = OrganismoPrioridadBusiness.Current.GetList(new OrganismoPrioridadFilter() { Activo = true });
                     List<Oficina> oficinas = OficinaBusiness.Current.GetList(new OficinaFilter() { Activo = true, Seleccionable = true });
@@ -41,6 +42,7 @@ namespace Business.Managers
                     List<ClasificacionGasto> clasificacionGastos = ClasificacionGastoBusiness.Current.GetList(new ClasificacionGastoFilter() { Activo = true, Seleccionable = true });
                     List<FuenteFinanciamiento> fuenteFinanciamientos = FuenteFinanciamientoBusiness.Current.GetList(new FuenteFinanciamientoFilter() { Activo = true, Seleccionable = true });
                     List<Moneda> monedas = MonedaBusiness.Current.GetList(new MonedaFilter() { Activo = true });
+                    List<ModalidadContratacion> modalidadContrataciones = ModalidadContratacionBusiness.Current.GetList(new ModalidadContratacionFilter() { Activo = true });
                     
                     //Clear column data and reload data
                     ExcelHelper.ClearData(worksheetBD, "A2", 1);
@@ -98,29 +100,44 @@ namespace Business.Managers
                     safRange.LoadFromCollection(safValues);
                     package.Workbook.Names["SAF"].Address = safRange.Address;
 
-                    //N “TipoProyecto”.
-                    var proyectoTipoRange = worksheetBD.Cells["N2:N" + (proyectoTipos.Count + 1)];
-                    var proyectoTipoValues = proyectoTipos.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdProyectoTipo.ToString().ToUpper())).OrderBy(x => x).ToArray();
-                    proyectoTipoRange.LoadFromCollection(proyectoTipoValues);
-                    package.Workbook.Names["TipoProyecto"].Address = proyectoTipoRange.Address;
+                    //La imputacion presupuestaria es autocalculada 
+                    //N “ImputacionPresupuestaria” “ex TipoProyecto”.
+                    //var proyectoTipoRange = worksheetBD.Cells["N2:N" + (proyectoTipos.Count + 1)];
+                    //var proyectoTipoValues = proyectoTipos.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdProyectoTipo.ToString().ToUpper())).OrderBy(x => x).ToArray();
+                    //proyectoTipoRange.LoadFromCollection(proyectoTipoValues);
+                    //package.Workbook.Names["TipoProyecto"].Address = proyectoTipoRange.Address;
 
-                    //P “TipoProyecto” + Q “Proceso”
+                    //La imputacion presupuestaria es autocalculada 
+                    //N “ModalidadDeContratacion”.
+                    var modalidadDeContratacionRange = worksheetBD.Cells["N2:N" + (modalidadContrataciones.Count + 1)];
+                    var modalidadDeContratacionValues = modalidadContrataciones.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdModalidadContratacion.ToString().ToUpper())).OrderBy(x => x).ToArray();
+                    modalidadDeContratacionRange.LoadFromCollection(modalidadDeContratacionValues);
+                    package.Workbook.Names["ModalidadDeContratacion"].Address = modalidadDeContratacionRange.Address;
+
+                    //P “Etapa”.
+                    var sistemaEntidadEstadoProyectoRange = worksheetBD.Cells["P2:P" + (sistemaEntidadEstadoProyectos.Count + 1)];
+                    var sistemaEntidadEstadoProyectoValues = sistemaEntidadEstadoProyectos.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdEstado.ToString().ToUpper())).OrderBy(x => x).ToArray();
+                    sistemaEntidadEstadoProyectoRange.LoadFromCollection(sistemaEntidadEstadoProyectoValues);
+                    package.Workbook.Names["Etapa"].Address = sistemaEntidadEstadoProyectoRange.Address;
+
+                    //Q “Proceso” (antes enganchado conP “TipoProyecto”)
                     var procesosOrdenados = procesos.Select(x => new
                     {
-                        TIPOPROYECTO = string.Format("{0} ({1})", x.ProyectoTipo.Nombre, x.ProyectoTipo.IdProyectoTipo.ToString().ToUpper()),
+                        //TIPOPROYECTO = string.Format("{0} ({1})", x.ProyectoTipo.Nombre, x.ProyectoTipo.IdProyectoTipo.ToString().ToUpper()),
                         PROCESO = string.Format("{0} ({1})", x.Nombre, x.IdProceso.ToString().ToUpper()),
-                    }).OrderBy(x => x.TIPOPROYECTO).ThenBy(x => x.PROCESO);
-                    var procesosProyectoTipoRange = worksheetBD.Cells["P2:P" + (procesos.Count + 1)];
-                    procesosProyectoTipoRange.LoadFromCollection(procesosOrdenados.Select(x => x.TIPOPROYECTO).ToArray());
+                    }).OrderBy(x => x.PROCESO); //x => x.TIPOPROYECTO).ThenBy(
+                    //var procesosProyectoTipoRange = worksheetBD.Cells["P2:P" + (procesos.Count + 1)];
+                    //procesosProyectoTipoRange.LoadFromCollection(procesosOrdenados.Select(x => x.TIPOPROYECTO).ToArray());
                     var procesoRange = worksheetBD.Cells["Q2:Q" + (procesos.Count + 1)];
                     procesoRange.LoadFromCollection(procesosOrdenados.Select(x => x.PROCESO).ToArray());
-                    package.Workbook.Names["TipoProyecto_Relacion_TP_P"].Address = procesosProyectoTipoRange.Address;
+                    package.Workbook.Names["Contribucion"].Address = procesoRange.Address;
+                    //package.Workbook.Names["TipoProyecto_Relacion_TP_P"].Address = procesosProyectoTipoRange.Address;
                     
                     //S “EstadoFinanciero”.
-                    var sistemaEntidadEstadoRange = worksheetBD.Cells["S2:S" + (sistemaEntidadEstados.Count + 1)];
-                    var sistemaEntidadEstadoValues = sistemaEntidadEstados.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdEstado.ToString().ToUpper())).OrderBy(x => x).ToArray();
-                    sistemaEntidadEstadoRange.LoadFromCollection(sistemaEntidadEstadoValues);
-                    package.Workbook.Names["EstadoFinanciero"].Address = sistemaEntidadEstadoRange.Address;
+                    var sistemaEntidadEstadoFinancieroRange = worksheetBD.Cells["S2:S" + (sistemaEntidadEstadoFinancieros.Count + 1)];
+                    var sistemaEntidadEstadoFinancieroValues = sistemaEntidadEstadoFinancieros.Select(x => string.Format("{0} ({1})", x.Nombre, x.IdEstado.ToString().ToUpper())).OrderBy(x => x).ToArray();
+                    sistemaEntidadEstadoFinancieroRange.LoadFromCollection(sistemaEntidadEstadoFinancieroValues);
+                    package.Workbook.Names["EstadoFinanciero"].Address = sistemaEntidadEstadoFinancieroRange.Address;
 
                     //U “FinalidadFuncion”.
                     var finalidadFuncionesRange = worksheetBD.Cells["U2:U" + (finalidadFunciones.Count + 1)];

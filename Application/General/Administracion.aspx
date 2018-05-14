@@ -177,7 +177,7 @@
         
     </table>
 
-    <div style="display:none">
+    <div>
         <table width="100%">
         <tr><td><div class="tablaTitulosBlanco"><asp:Literal ID="Literal3" Text="Importación de proyectos" runat="server" ></asp:Literal></div></td></tr>
         
@@ -198,4 +198,5 @@
     </table>
     </div>
 
+    </br>
 </asp:Content> 

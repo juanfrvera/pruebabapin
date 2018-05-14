@@ -16,7 +16,7 @@ into #ProjectIdSplited
 FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 
 	select
-	p.IdProyecto as idProyecto,
+	'' as idProyecto, --Esta columna se utiliza como identificador unico de nuevos proyectos
 	p.Codigo as	codigo,
 	--string.Format("{0} - {1} ({2})", proyecto.Saf_Codigo, proyecto.Saf_Nombre, proyecto.IdSAF)
 	Saf.Codigo + ' - ' + Saf.Denominacion + ' (' + CAST(saf.IdSaf AS VARCHAR(16)) + ')' as saf,
@@ -26,10 +26,11 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	--"{0} ({1})", x.Nombre, x.IdProyectoTipo
 	ptipo.Nombre + ' (' + UPPER(CAST(ptipo.IdProyectoTipo AS VARCHAR(16))) + ')' as	proyectoTipo,
 	--"{0} ({1})", x.Nombre, x.IdProceso.ToString().ToUpper()
-	pro.Nombre + ' (' + UPPER(CAST(pro.IdProceso AS VARCHAR(16))) + ')' as	proceso,
+	--pro.Nombre + ' (' + UPPER(CAST(pro.IdProceso AS VARCHAR(16))) + ')' as	proceso,
 	p.ProyectoDenominacion as	proyectoDenominacion,
 	--"{0} ({1})", x.Nombre, x.IdSistemaEntidadEstado.ToString().ToUpper()
-	e.Nombre + ' (' + UPPER(CAST(e.IdEstado AS VARCHAR(16))) + ')' as	estadoFinanciero,
+	se.Nombre + ' (' + UPPER(CAST(se.IdEstado AS VARCHAR(16))) + ')' as	etapa,
+	mc.Nombre + ' (' + UPPER(CAST(mc.IdModalidadContratacion AS VARCHAR(16))) + ')' as	modalidadContratacion,
 	--{0} - {1} ({2})", x.BreadcrumbCode, x.Descripcion, x.IdFinalidadFuncion.ToString().ToUpper()
 	ff.BreadcrumbCode + ' - ' + ff.Descripcion + ' (' + UPPER(CAST(ff.IdFinalidadFuncion AS VARCHAR(16))) + ')' as	finalidadFuncion,
 	--"{0} ({1})", x.Nombre, x.IdOrganismoPrioridad.ToString().ToUpper()
@@ -39,6 +40,11 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	ofi.Descripcion + ' (' + UPPER(CAST(ofi.IdOficina AS VARCHAR(16))) + ')' as	oficina,
 	--string.Format("{0} ({1})", x.Nombre, x.IdClasificacionGeografica.ToString().ToUpper())
 	cgeo.Nombre + ' (' + UPPER(CAST(cgeo.IdClasificacionGeografica AS VARCHAR(16))) + ')' as	localizacion,
+	CASE p.EsPPP
+	  WHEN 1 THEN 'Si' 
+	  ELSE 'No' 
+	END as EsPPP,
+	sef.Nombre + ' (' + UPPER(CAST(sef.IdEstado AS VARCHAR(16))) + ')' as	estadoFinanciero,
 	pe.FechaInicioEstimada as	fechaInicioEstimada,
 	pe.FechaFinEstimada as	fechaFinEstimada,
 	pe.FechaInicioRealizada as	fechaInicioRealizada,
@@ -52,7 +58,7 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	peep.MontoCalculado as	monto
 	FROM Proyecto p
 		INNER JOIN #ProjectIdSplited FP on p.IdProyecto = FP.Data
-		INNER JOIN Estado e on e.IdEstado=p.IdEstado
+		INNER JOIN SistemaEntidadEstado se on se.IdEstado=p.IdEstado and se.idsistemaentidad = 437
 		INNER JOIN ProyectoTipo ptipo on ptipo.IdProyectoTipo=p.IdTipoProyecto
 		INNER JOIN SubPrograma sprog on sprog.IdSubPrograma=p.IdSubPrograma
 		LEFT JOIN Programa prog on prog.IdPrograma=sprog.IdPrograma
@@ -60,11 +66,13 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 
 		LEFT JOIN ProyectoEtapa pe on pe.IdProyecto=p.IdProyecto
 		INNER JOIN Etapa et on et.IdEtapa = pe.IdEtapa
-
-		LEFT JOIN Proceso pro on pro.IdProceso=p.IdProceso
+		LEFT JOIN SistemaEntidadEstado sef on sef.IdEstado=pe.IdEstado and sef.idsistemaentidad = 458
+		
+		--LEFT JOIN Proceso pro on pro.IdProceso=p.IdProceso
 		LEFT JOIN FinalidadFuncion ff on ff.IdFinalidadFuncion=p.IdFinalidadFuncion
 		LEFT JOIN OrganismoPrioridad op on op.IdOrganismoPrioridad=p.IdOrganismoPrioridad
-
+		LEFT JOIN ModalidadContratacion mc on mc.IdModalidadContratacion=p.IdModalidadContratacion
+		
 		LEFT JOIN ProyectoLocalizacion pl on p.IdProyecto = pl.IdProyecto
 		INNER JOIN ClasificacionGeografica cgeo on pl.IdClasificacionGeografica = cgeo.IdClasificacionGeografica
 
@@ -82,6 +90,7 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	where 
 		et.IdFase = 2 --Ejecucion
 		and Perfil.Codigo = 'INIC'
+	Order by p.Codigo, peep.Periodo
 END
 
 GO
