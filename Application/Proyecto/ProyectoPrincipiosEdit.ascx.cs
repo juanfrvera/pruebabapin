@@ -105,9 +105,10 @@ namespace UI.Web.Pages
             txtCoberturaBeneficiariosIndirectos.ToolTip = Translate("TooltipBeneficiariosIndirectos");
             pnlDificultadesRiesgos.ToolTip = Translate("TooltipDificultadesRiesgos");
             txtObservacionesDNIP.ToolTip = Translate("TooltipObservacionesDNIP");
-            if (UIContext.Current.ContextUser != null && UIContext.Current.ContextUser.PerfilesPorOficina != null)
+            if (UIContext.Current.ContextUser != null && UIContext.Current.ContextUser.User != null)
             {
-                txtObservacionesDNIP.Enabled = UIContext.Current.ContextUser.PerfilesPorOficina.Where(x => x.Oficina_Nombre == "DNIP").Any();
+                txtObservacionesDNIP.Enabled = UIContext.Current.ContextUser.User.Persona_IdOficina == 62; // OficinaService.Current.FirstOrDefault(new nc.OficinaFilter() { Nombre = "DNIP", Activo = true }).IdOficina;
+                //txtObservacionesDNIP.Enabled = UIContext.Current.ContextUser.PerfilesPorOficina.Where(x => x.Oficina_Nombre == "DNIP").Any();
             }
         }
         public override void Clear()

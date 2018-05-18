@@ -11,6 +11,7 @@
 <%@ Register TagPrefix="uc" TagName="ImprimirProyecto" Src="~/ControlsPersonal/WebControl_PrintProyecto.ascx" %>
 <%@ Register TagPrefix="uc" TagName="ProjectHistoricoReporte" Src="~/ControlsPersonal/WebControl_ProjectHistoricoReporte.ascx" %>
 <%@ Register TagPrefix="uc" TagName="ProjectEstadoDesicionHistorico" Src="~/ControlsPersonal/WebControl_ProjectEstadoDesicionHistorico.ascx" %>
+<%@ Register Tagprefix="uc"  TagName="FileUploadWC" Src="~/Controls/WebControl_FileUpload.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContenidoPrincipal" runat="server">
     <table width="100%">
@@ -112,4 +113,55 @@
     <uc:ProjectEstadoDesicionHistorico runat="server" ID="ucProjectEstadoDesicionHistorico"></uc:ProjectEstadoDesicionHistorico>
     <!-- END POPUPS-->
 
+    <%--PANEL IMPORT TEMPLATE--%>
+    <asp:Panel ID="PopUpTemplateFiles" runat="server" Width="800px" Style="background-color: #ffffff;
+        border: solid 2px #ffffff; border-color: Gray;">
+        <asp:Panel ID="TemplateFilesPopUpDragHandle" runat="server" Style="cursor: move;">
+            <table width="100%" cellpadding="0" cellspacing="5">
+                <tr class="menutoppopup">
+                    <td>
+                        <th align="center" height="10">
+                            <asp:Label ID="headerPopUpTemplateFiles" runat="server" Text="Importar proyectos" />
+                        </th>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        <asp:Panel ID="pnTemplateFiles" DefaultButton="btSaveTemplateFiles" Height="150px" runat="server">
+            <asp:UpdatePanel ID="upTemplateFilesPopUp"  runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table width="100%">
+                        <tr>
+                            <td style="width:80px">&nbsp;</td>
+                            <td style="width:460px">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="left" ><asp:Literal ID="litArchivo" runat="server" Text="Archivo" ></asp:Literal></td>
+	                                    <td align="left" ><uc:FileUploadWC ID="fuArchivo" runat="server" ></uc:FileUploadWC></td>
+                                    </tr>                                                                                  
+                                    <tr>
+                                        <td colspan='2' align="center"><asp:Label ID="lblError" runat="server" Text="" ForeColor="Red" ></asp:Label><br/></td>
+                                    </tr>
+                                     <tr>
+                                        <td align="center"  colspan="2" >                                
+                                            <asp:Button ID="btSaveTemplateFiles" Text="Aceptar" OnClick="btSaveTemplateFile_Click" runat="server" ValidationGroup="vgTemplateFiles" />
+                                            <asp:Button ID="btCancelTemplateFiles" Text="Cerrar" OnClick="btCancelTemplateFile_Click" runat="server" Width="60px" />                                
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>  
+                            <td style="width:40px">&nbsp;</td>                      
+                        </tr>
+                    </table>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="btSaveTemplateFiles" />
+                </Triggers>
+            </asp:UpdatePanel>
+        </asp:Panel>
+        <asp:Button ID="Button2" runat="server" Text="Button" Style="display: none" />
+        <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtenderTemplateFiles" runat="server" CancelControlID="Button2"
+            PopupDragHandleControlID="TemplateFilesPopUpDragHandle" PopupControlID="PopUpTemplateFiles"
+            OkControlID="Button2" TargetControlID="Button2" BackgroundCssClass="modalBackground" />
+    </asp:Panel>
 </asp:Content>

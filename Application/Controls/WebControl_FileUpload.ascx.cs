@@ -37,6 +37,14 @@ namespace UI.Web
         {
             get { return fuArchivo.FileContent != null && fuArchivo.FileContent.Length > 0; }
         }
+        public string FileNameFull
+        {
+            get { return fuArchivo.PostedFile.FileName; }
+        }
+        public FileUpload FullArchivo
+        {
+            get { return fuArchivo; }
+        }
         public string FileName
         {
             get { return fileInfo.FileName; }
@@ -62,6 +70,8 @@ namespace UI.Web
                     UIHelper.Validate(false, "FieldInvalidFormat", "EXE");
                 //FinMatias 20140121 - Tarea 113
                 fileInfo = SolutionContext.Current.FileManager.Upload("",(FileName!=null && FileName != string.Empty)?FileName:fuArchivo.FileName, fuArchivo.PostedFile.ContentType,fileInfo.Date,fuArchivo.FileBytes, UIContext.Current.ContextUser);
+
+
                 return fileInfo.IdFile;
             }  
             return 0;

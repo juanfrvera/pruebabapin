@@ -41,7 +41,7 @@ namespace UI.Web
         {
             Entity.Evaluacion.MarcoLegal = UIHelper.GetString(txtMarcoLegal);
             Entity.Evaluacion.InfoAdicional = UIHelper.GetString(txtInfoAdicional);
-            ProyectoEvaluacionService.Current.Save(Entity.Evaluacion.ToEntity(), UIContext.Current.ContextUser);
+            //ProyectoEvaluacionService.Current.Save(Entity.Evaluacion.ToEntity(), UIContext.Current.ContextUser);
         }
         public override void SetValue()
         {
@@ -52,6 +52,12 @@ namespace UI.Web
                 Entity.Evaluacion = pes;
                 UIHelper.SetValue(txtMarcoLegal, Entity.Evaluacion.MarcoLegal);
                 UIHelper.SetValue(txtInfoAdicional, Entity.Evaluacion.InfoAdicional);
+            }
+            else
+            {
+                Entity.Evaluacion = new ProyectoEvaluacionResult();
+                Entity.Evaluacion.Id_Proyecto = Entity.IdProyecto;
+                Entity.Evaluacion.Id_ProyectoEvaluacion = -1;
             }
             ProyectoFileRefresh();
             upMarcoLegal.Update();

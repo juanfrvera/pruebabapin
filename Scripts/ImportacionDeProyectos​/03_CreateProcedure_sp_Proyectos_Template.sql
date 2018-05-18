@@ -23,19 +23,19 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	--string.Format("{0} - {1} ({2})", x.Programa.Codigo, x.Programa.Nombre, x.Programa.IdPrograma.ToString().ToUpper()), 
 	prog.Codigo + ' - ' + prog.Nombre + ' (' + UPPER(CAST(prog.IdPrograma AS VARCHAR(16))) + ')' as	programa,
 	sprog.Codigo + ' - ' + sprog.Nombre + ' (' + UPPER(CAST(sprog.IdSubPrograma AS VARCHAR(16))) + ')' as	subPrograma,
-	--"{0} ({1})", x.Nombre, x.IdProyectoTipo
-	ptipo.Nombre + ' (' + UPPER(CAST(ptipo.IdProyectoTipo AS VARCHAR(16))) + ')' as	proyectoTipo,
+	p.ProyectoDenominacion as	proyectoDenominacion,
+    pro.Nombre + ' (' + UPPER(CAST(pro.IdProceso AS VARCHAR(16))) + ')' as	contribucion,
+	--ptipo.Nombre + ' (' + UPPER(CAST(ptipo.IdProyectoTipo AS VARCHAR(16))) + ')' as	proyectoTipo,
 	--"{0} ({1})", x.Nombre, x.IdProceso.ToString().ToUpper()
 	--pro.Nombre + ' (' + UPPER(CAST(pro.IdProceso AS VARCHAR(16))) + ')' as	proceso,
-	p.ProyectoDenominacion as	proyectoDenominacion,
 	--"{0} ({1})", x.Nombre, x.IdSistemaEntidadEstado.ToString().ToUpper()
 	se.Nombre + ' (' + UPPER(CAST(se.IdEstado AS VARCHAR(16))) + ')' as	etapa,
 	mc.Nombre + ' (' + UPPER(CAST(mc.IdModalidadContratacion AS VARCHAR(16))) + ')' as	modalidadContratacion,
 	--{0} - {1} ({2})", x.BreadcrumbCode, x.Descripcion, x.IdFinalidadFuncion.ToString().ToUpper()
 	ff.BreadcrumbCode + ' - ' + ff.Descripcion + ' (' + UPPER(CAST(ff.IdFinalidadFuncion AS VARCHAR(16))) + ')' as	finalidadFuncion,
 	--"{0} ({1})", x.Nombre, x.IdOrganismoPrioridad.ToString().ToUpper()
-	op.Nombre + ' (' + UPPER(CAST(op.IdOrganismoPrioridad AS VARCHAR(16))) + ')'  as	prioridad,
-	p.SubPrioridad as	numeroPrioridad,
+	--op.Nombre + ' (' + UPPER(CAST(op.IdOrganismoPrioridad AS VARCHAR(16))) + ')'  as	prioridad,
+	--p.SubPrioridad as	numeroPrioridad,
 	--"{0} - ({1})", x.Descripcion, x.IdOficina.ToString().ToUpper()
 	ofi.Descripcion + ' (' + UPPER(CAST(ofi.IdOficina AS VARCHAR(16))) + ')' as	oficina,
 	--string.Format("{0} ({1})", x.Nombre, x.IdClasificacionGeografica.ToString().ToUpper())
@@ -59,7 +59,7 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	FROM Proyecto p
 		INNER JOIN #ProjectIdSplited FP on p.IdProyecto = FP.Data
 		INNER JOIN SistemaEntidadEstado se on se.IdEstado=p.IdEstado and se.idsistemaentidad = 437
-		INNER JOIN ProyectoTipo ptipo on ptipo.IdProyectoTipo=p.IdTipoProyecto
+		--INNER JOIN ProyectoTipo ptipo on ptipo.IdProyectoTipo=p.IdTipoProyecto
 		INNER JOIN SubPrograma sprog on sprog.IdSubPrograma=p.IdSubPrograma
 		LEFT JOIN Programa prog on prog.IdPrograma=sprog.IdPrograma
 		LEFT JOIN Saf on Saf.IdSaf=prog.idsaf
@@ -68,7 +68,7 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 		INNER JOIN Etapa et on et.IdEtapa = pe.IdEtapa
 		LEFT JOIN SistemaEntidadEstado sef on sef.IdEstado=pe.IdEstado and sef.idsistemaentidad = 458
 		
-		--LEFT JOIN Proceso pro on pro.IdProceso=p.IdProceso
+		LEFT JOIN Proceso pro on pro.IdProceso=p.IdProceso
 		LEFT JOIN FinalidadFuncion ff on ff.IdFinalidadFuncion=p.IdFinalidadFuncion
 		LEFT JOIN OrganismoPrioridad op on op.IdOrganismoPrioridad=p.IdOrganismoPrioridad
 		LEFT JOIN ModalidadContratacion mc on mc.IdModalidadContratacion=p.IdModalidadContratacion
@@ -93,4 +93,5 @@ FROM dbo.fn_Split(@IdsString,'|') OPTION ( MAXRECURSION 30000 )
 	Order by p.Codigo, peep.Periodo
 END
 
-GO
+
+

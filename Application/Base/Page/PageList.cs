@@ -316,11 +316,11 @@ namespace UI.Web
                 SetParameter(FilterKey, Filter);
             }
         }
-        protected override void ImportTemplate()
+        /*protected override void ImportTemplate()
         {
             //Importar template
             throw(new NotImplementedException());
-        }
+        }*/
         //FinALO 20180122
 
         #region Export

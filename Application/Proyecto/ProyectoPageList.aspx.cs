@@ -13,7 +13,8 @@ using System.Collections;
 using System.Data; //Matias - Tarea 133 - example google-charts
 using System.Text; //Matias - Tarea 133 - example google-charts
 using System.Web.Script.Serialization; //Matias - Tarea 133
-
+using Business.Managers;
+using System.IO;
 
 namespace UI.Web
 {
@@ -43,6 +44,7 @@ namespace UI.Web
             ucImprimirProyecto.Attributes.CssStyle.Add("display", "none");
             ucVerReporte.Attributes.CssStyle.Add("display", "none");
             ucCopy.Attributes.CssStyle.Add("display", "none");
+            PopUpTemplateFiles.Attributes.CssStyle.Add("display", "none");
         }
         protected override void _Load()
         {
@@ -139,7 +141,35 @@ namespace UI.Web
         protected override void ImportTemplate()
         {
             SetearUsuarioLogueado();
-            base.ImportTemplate();
+            if (fuArchivo.IsFileSelected)
+            {
+                //guardo el archivo
+                ActualTemplateFile.IdFile = fuArchivo.GetIdFileSelected();            
+                //proceso el archivo
+                TemplateProjectManager.UpdateProjects(ActualTemplateFile.IdFile, fuArchivo.FullArchivo);
+
+                //retorno el archivo procesado
+                var result = FileInfoService.Current.GetById(ActualTemplateFile.IdFile);
+                ActualTemplateFile.FileName = fuArchivo.FileName;  
+                ActualTemplateFile.FileType = result.FileType;
+
+                MemoryStream stream = new MemoryStream();
+                byte[] templateByte = result.Data.ToArray();
+                stream.Write(templateByte, 0, templateByte.Length);
+
+                HttpContext.Current.Session["OpenXmlStreamInput"] = stream;
+                HttpContext.Current.Session["OpenXmlFileContentType"] = ActualTemplateFile.FileType; //"application/vnd.ms-excel";
+                HttpContext.Current.Session["OpenXmlFileName"] = ActualTemplateFile.FileName;
+
+                base.ShowDownLoadExport();
+
+                TemplateFileClear();
+            }
+            else
+            {
+                lblError.Text = SolutionContext.Current.TextManager.Translate("Datos obligatorios");
+                upTemplateFilesPopUp.Update();
+            }
         }
 
         protected override void CommandOthers()
@@ -158,6 +188,9 @@ namespace UI.Web
                     break;
                 case Command.HISTORY_PLAN:
                     Execute(ActionConfig.HISTORY_PLAN);
+                    break;
+                case Command.IMPORT_TEMPLATE:
+                    ImportTemplate();
                     break;
                 case Command.PRINT:
                     Print();
@@ -228,6 +261,38 @@ namespace UI.Web
         }
         #endregion
 
+        #region Properties
+        private FileInfoResult actualTemplateFile;
+        protected FileInfoResult ActualTemplateFile
+        {
+            get
+            {
+                if (actualTemplateFile == null)
+                    if (ViewState["actualTemplateFile"] != null)
+                        actualTemplateFile = ViewState["actualTemplateFile"] as FileInfoResult;
+                    else
+                    {
+                        actualTemplateFile = GetNewTemplateFile();
+                        ViewState["actualTemplateFile"] = actualTemplateFile;
+                    }
+                return actualTemplateFile;
+            }
+            set
+            {
+                actualTemplateFile = value;
+                ViewState["actualTemplateFile"] = value;
+            }
+        }
+        FileInfoResult GetNewTemplateFile()
+        {
+            int id = 0;
+            if (id > 0) id = 0;
+            id--;
+            FileInfoResult plResult = new FileInfoResult();
+            return plResult;
+        }
+        #endregion
+
         #region Events
         protected void btNew_OnClick(object sender, EventArgs e)
         {
@@ -244,7 +309,33 @@ namespace UI.Web
         }
         protected void bImportTemplate_OnClick(object sender, EventArgs e)
         {
+            UIHelper.SetValue(lblError, "");
+            fuArchivo.Focus();
+            ModalPopupExtenderTemplateFiles.Show();
+        }
+        protected void btSaveTemplateFile_Click(object sender, EventArgs e)
+        {
             ControlCommand(Command.IMPORT_TEMPLATE);
+//            CallTryMethod(CommandTemplateFileSave);
+            if (lblError.Text == "")
+                HidePopUpTemplateFiles();
+            else
+                ModalPopupExtenderTemplateFiles.Show();
+        }
+        protected void btCancelTemplateFile_Click(object sender, EventArgs e)
+        {
+            TemplateFileClear();
+            HidePopUpTemplateFiles();
+        }
+        void HidePopUpTemplateFiles()
+        {
+            TemplateFileClear();
+            ModalPopupExtenderTemplateFiles.Hide();
+        }
+        void TemplateFileClear()
+        {
+            ActualTemplateFile = GetNewTemplateFile();
+            UIHelper.SetValue(lblError, "");
         }
         //FinALO 20180118
 

@@ -81,6 +81,10 @@ namespace Business
                     pfr.IdProyectoFile = 0;
                     ProyectoFileBusiness.Current.Add(pf, contextUser);
                 }
+
+                //Agrego ProyectoEvaluacion
+                entity.Evaluacion.Id_Proyecto = entity.IdProyecto;
+                ProyectoEvaluacionBusiness.Current.Add(entity.Evaluacion.ToEntity(), contextUser);
             }
             catch (Exception exception)
             {
@@ -118,6 +122,18 @@ namespace Business
                 //Matias 20131106 - Tarea 80
                 ProyectoBusiness.Current.updateFechaUltimaModificacion(entity.IdProyecto, contextUser);
                 //FinMatias 20131106 - Tarea 80
+
+                // Modifico Proyecto Evaluacion
+                ProyectoEvaluacion pe = entity.Evaluacion.ToEntity();
+                pe.Id_Proyecto = entity.IdProyecto;
+                if (entity.Evaluacion.Id_ProyectoEvaluacion <= 0)
+                {
+                    ProyectoEvaluacionBusiness.Current.Add(pe, contextUser);
+                }
+                else
+                    ProyectoEvaluacionBusiness.Current.Update(pe, contextUser);
+
+
                 SingletonsBusiness.COUNT_CHANGES += Singletons.COUNT_CHANGES;
                 Singletons.COUNT_CHANGES = 0;
             }

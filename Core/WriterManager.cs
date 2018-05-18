@@ -482,9 +482,10 @@ namespace Contract
         }
         public Stream Write(DataTable dataSource)
         {
-            using (ExcelPackage package = new ExcelPackage())
+            using (ExcelPackage package = new ExcelPackage(this.Stream))
             {
-                package.Load(this.Stream);
+                //package.Load(this.Stream);
+
                 //Filas
                 int r = 1;
 
@@ -505,8 +506,13 @@ namespace Contract
                 //Load data in one step
                 excelSheet.Cells[r+1, 1].LoadFromDataTable(dataSource, false);
 
-                package.Save();
-                this.Stream = package.Stream;
+                //FIX se mareaba  y sumaba
+                this.Stream.Position = 0; // Not actually needed, SetLength(0) will reset the Position anyway
+                this.Stream.SetLength(0);
+
+                package.SaveAs(this.Stream);
+                //package.Save();
+                //this.Stream = package.Stream;
             }
             return this.Stream;
         }

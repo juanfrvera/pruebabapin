@@ -640,6 +640,14 @@ namespace UI.Web
                     Activo = true,
                     OrderByProperty = "Orden"
                 }).FirstOrDefault();
+
+                if (etapa == null)
+                {
+                    UIHelper.ShowAlert(UIHelper.Translate("La fase no tiene una etapa inicial"), Page);
+                    return;
+                }
+
+
                 ActualProyectoEtapa.IdEtapa = etapa.IdEtapa;
                 ActualProyectoEtapa.IdEstado = (int)EstadoEnum.Iniciado; //A iniciar para estado etapa
 

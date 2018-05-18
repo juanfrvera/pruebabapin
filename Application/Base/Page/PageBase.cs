@@ -1161,7 +1161,6 @@ namespace UI.Web
         {
             this.Search();
             this.ImportTemplate();
-            this.ShowDownLoadExport();
         }
         protected virtual void CommandExportPdf()
         {

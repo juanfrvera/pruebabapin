@@ -184,9 +184,9 @@
         <tr>
             <td>
                 <ul>
-                    <li id="liListarProyectos" runat="server">
+                    <!--<li id="liListarProyectos" runat="server">
                         <asp:LinkButton ID="btLBListarProyectos" runat="server" OnClick="btLBListarProyectos_Click" Text="Listados"></asp:LinkButton>
-                    </li>
+                    </li>-->
                     <li id="liSubirTemplate" runat="server">
                         <asp:LinkButton ID="btLBSubirTemplate" runat="server" OnClick="btLBSubirTemplate_Click" Text="Regenerar y/o subir nuevo template"></asp:LinkButton>
                     </li>
@@ -198,5 +198,5 @@
     </table>
     </div>
 
-    </br>
+    <br/><br/>
 </asp:Content> 
