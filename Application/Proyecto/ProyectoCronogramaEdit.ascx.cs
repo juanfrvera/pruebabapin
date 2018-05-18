@@ -593,12 +593,12 @@ namespace UI.Web
             if (ActualProyectoEtapa != null)
                 MarcarProyectoEtapa(ActualProyectoEtapa.ID);
 
-            ddlFase.Enabled = false;
+            /*ddlFase.Enabled = false;
             string error = "";
             if(ProyectoCronogramaComposeBusiness.Current.ValidateEtapa(ActualProyectoEtapa,Entity,ref error))
             {
                 ddlFase.Enabled = true;
-            }
+            }*/
             upGridEtapas.Update();
         }
 

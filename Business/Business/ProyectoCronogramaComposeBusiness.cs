@@ -553,7 +553,7 @@ namespace Business
         public bool ValidateEtapa(ProyectoEtapaResult ActualProyectoEtapa, ProyectoCronogramaCompose Entity, ref string error)
         {
             // Parametros
-            Int32 idProcesoEquipamientoBasico = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue(ID_PROCESO_EQ_BASICO);
+            //Int32 idProcesoEquipamientoBasico = (Int32)SolutionContext.Current.ParameterManager.GetNumberValue(ID_PROCESO_EQ_BASICO);
 
             // Controla el rango de fechas Estimadas
             //bool retval = ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null;
@@ -577,7 +577,7 @@ namespace Business
                 }
 
                 //if ((ActualProyectoEtapa.FechaInicioEstimada != null) ^ (ActualProyectoEtapa.FechaFinEstimada != null))   //Matias 20170202 - Ticket #ER913481 
-                if ((ActualProyectoEtapa.FechaInicioEstimada == null) || (ActualProyectoEtapa.FechaFinEstimada == null))    //Matias 20170202 - Ticket #ER913481 
+                if ((((Entity.EtapasEstimadas != null && Entity.EtapasEstimadas.Count > 0) || (Entity.EtapasRealizadas != null && Entity.EtapasRealizadas.Count > 0)) && (ActualProyectoEtapa.FechaInicioEstimada == null || ActualProyectoEtapa.FechaFinEstimada == null)))    //Matias 20170202 - Ticket #ER913481 
                 {
                     retval = false;
                     error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido, falta una fecha del rango");
@@ -585,13 +585,13 @@ namespace Business
                 }
 
                 // Si EQ.Basico => dentro del mismo año
-                if ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null)       //Matias 20170202 - Ticket #ER913481 - Agregue validacion del NULL para evitar que se rompa.
+                /*if ((ActualProyectoEtapa.FechaInicioEstimada != null && ActualProyectoEtapa.FechaFinEstimada != null)       //Matias 20170202 - Ticket #ER913481 - Agregue validacion del NULL para evitar que se rompa.
                     && Entity.ProyectoIdProceso == idProcesoEquipamientoBasico
                     && ((DateTime)ActualProyectoEtapa.FechaInicioEstimada).Year != ((DateTime)ActualProyectoEtapa.FechaFinEstimada).Year)
                 {
                     error = SolutionContext.Current.TextManager.Translate("Período Estimado inválido. El Equipamiento Básico debe ejecutarse dentro del mismo ejercicio (año)");
                     return false;
-                }
+                }*/
             }
 
             // Controla que las etapas Estimadas esten en Rango

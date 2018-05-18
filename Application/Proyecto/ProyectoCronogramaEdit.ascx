@@ -16,7 +16,7 @@
                         <table width="100%" cellpadding="0" style="margin-bottom:12px" >	  	
                             <tr>                      
 	                            <td width="70px"><asp:Literal ID="ltrFase" runat="server" Text="Gastos de"></asp:Literal></td>
-	                            <td><cc:ExtendedDropDownList ID="ddlFase" Enabled="false" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
+	                            <td><cc:ExtendedDropDownList ID="ddlFase" runat="server" OnSelectedIndexChanged="ddlFase_OnSelectedIndexChanged" AutoPostBack="true"  ></cc:ExtendedDropDownList></td>
 	                            <td></td>
                                 <td align="right">
                                     <asp:Button ID ="btActividadEspecifica" Visible="false" runat ="server" Text ="Agregar Actividad Específica" CausesValidation="false" 
