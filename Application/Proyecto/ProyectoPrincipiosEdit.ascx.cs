@@ -37,6 +37,8 @@ namespace UI.Web.Pages
                 txtDimensionesCostosEnte.Attributes.Add("maxlength", txtDimensionesCostosEnte.MaxLength.ToString());
                 txtDificultadesRiesgosEnumeracion.Attributes.Add("maxlength", txtDificultadesRiesgosEnumeracion.MaxLength.ToString());
                 txtRequiereIntevencionAutoridad.Attributes.Add("maxlength", txtRequiereIntevencionAutoridad.MaxLength.ToString());
+                //Agregado Juan
+                txtRelacionProyMet.Attributes.Add("maxlength", txtRelacionProyMet.MaxLength.ToString());
                 //No tiene maxlength txtObservacionesDNIP.Attributes.Add("maxlength", txtObservacionesDNIP.MaxLength.ToString());
             }
 
@@ -90,6 +92,10 @@ namespace UI.Web.Pages
 
             rfvRequiereIntevencionEstado.Enabled = false;
             rfvRequiereIntevencionEstado.ErrorMessage = TranslateFormat("FieldIsNull", "Estado del trámite");
+            
+            //Agregado Juan
+            revRelacionProyMet.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(1500);
+            revRelacionProyMet.ErrorMessage = TranslateFormat("FieldInvalidLength", "Relación entre el Proyecto y la Metodología Marco Lógico? (1500 caractéres máx.)");
 
             revObservacionesDNIP.ValidationExpression = Contract.DataHelper.GetExpRegStringNullable(2147483647);
             revObservacionesDNIP.ErrorMessage = TranslateFormat("InvalidFiled", "Necesidad a satisfacer");
@@ -104,6 +110,8 @@ namespace UI.Web.Pages
             txtCoberturaBeneficiariosDirectos.ToolTip = Translate("TooltipBeneficiariosDirectos");
             txtCoberturaBeneficiariosIndirectos.ToolTip = Translate("TooltipBeneficiariosIndirectos");
             pnlDificultadesRiesgos.ToolTip = Translate("TooltipDificultadesRiesgos");
+            //Agregado, pero donde esta este tooltip?
+            pnlRelacionProyMet.ToolTip = Translate("TooltipRelacionProyMet");
             txtObservacionesDNIP.ToolTip = Translate("TooltipObservacionesDNIP");
             if (UIContext.Current.ContextUser != null && UIContext.Current.ContextUser.User != null)
             {
@@ -135,6 +143,10 @@ namespace UI.Web.Pages
             UIHelper.Clear(cbRequiereIntevencion);
             UIHelper.Clear(txtRequiereIntevencionAutoridad);
             rblRequiereIntevencionEstado.ClearSelection();
+
+            //Agregado Juan
+            UIHelper.Clear(txtRelacionProyMet);
+
             UIHelper.Clear(txtObservacionesDNIP);
         }
         public override void GetValue()
@@ -150,6 +162,10 @@ namespace UI.Web.Pages
             //Entity.PrincipiosFormulacion.CoberturaPoblacional = UIHelper.GetString(txtCoberturaPoblacional);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosDirectos = UIHelper.GetString(txtCoberturaBeneficiariosDirectos);
             Entity.PrincipiosFormulacion.CoberturaBeneficiariosIndirectos = UIHelper.GetString(txtCoberturaBeneficiariosIndirectos);
+          
+            //Agregado Juan
+            Entity.PrincipiosFormulacion.RelacionProyectoMetodologia = UIHelper.GetString(txtRelacionProyMet);
+            
             Entity.PrincipiosFormulacion.ObservacionesDNIP = UIHelper.GetString(txtObservacionesDNIP);
 
             if (cbDificultadesRiesgos.Checked || cbDificultadesRiesgosNo.Checked)
@@ -206,6 +222,8 @@ namespace UI.Web.Pages
             lblDificultadesRiesgos.Style.Remove("color");
             lblDimensionesCostos.Style.Remove("color");
             lblRequiereIntevencion.Style.Remove("color");
+            //Agregado Juan
+            lblRelacionProyMet.Style.Remove("color");
             if (Entity.PrincipiosFormulacion == null)
             {
                 Entity.PrincipiosFormulacion = new ProyectoPrincipiosFormulacionResult();
@@ -222,6 +240,8 @@ namespace UI.Web.Pages
                 lblDificultadesRiesgos.Style.Add("color", "red");
                 lblDimensionesCostos.Style.Add("color", "red");
                 lblRequiereIntevencion.Style.Add("color", "red");
+                //Agregado Juan
+                lblRelacionProyMet.Style.Add("color", "red");
             }
             else
             {
@@ -310,7 +330,13 @@ namespace UI.Web.Pages
                 {
                     UIHelper.SetValue(cbRequiereIntevencionNo, !Entity.PrincipiosFormulacion.RequiereIntevencion);
                 }
+
+                //Agregado Juan
+                UIHelper.SetValue(txtRelacionProyMet, Entity.PrincipiosFormulacion.RelacionProyectoMetodologia);
+                if (String.IsNullOrEmpty(txtRelacionProyMet.Text)) lblRelacionProyMet.Style.Add("color", "red");
+
                 UIHelper.SetValue(txtObservacionesDNIP, Entity.PrincipiosFormulacion.ObservacionesDNIP);
+
 
                 cbDificultadesRiesgosCheckedChanged();
                 cbDimensionesCostosDimensionadosCheckedChanged();
@@ -327,6 +353,8 @@ namespace UI.Web.Pages
                 upDificultadesRiesgos.Update();
                 upDimensionesCostos.Update();
                 upRequiereIntevencion.Update();
+                //Agregado Juan
+                upRelacionProyMet.Update();
                 upObservacionesDNIP.Update();
             }
 

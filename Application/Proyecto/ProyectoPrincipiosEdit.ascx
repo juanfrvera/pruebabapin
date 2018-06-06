@@ -357,18 +357,18 @@
     <asp:Panel ID="pnlDimensionesCostos" runat="server">
             <table width="100%" cellpadding="0" cellspacing="5px" border="0">
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         <asp:RadioButton ID="cbDimensionesCostosDimensionados" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="Si" CssClass="" ValidationGroup="" OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
                         <asp:RadioButton ID="cbDimensionesCostosDimensionadosNo" GroupName="DimensionesCostosDimensionados" runat="server" AutoPostBack="true"  TextAlign="Left"  Checked='<%# Bind("DimensionesCostosDimensionados") %>' Enabled="true" Text="No" CssClass="" ValidationGroup=""  OnCheckedChanged="cbDimensionesCostosDimensionados_CheckedChanged"/>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         <asp:Literal ID="lblDimensionesCostosValidados" Text="¿Los costos fueron validados con la institución, autoridad o nivel de gobierno (nacional, provincial, municipal) que deberá afrontarlos?" runat="server"></asp:Literal>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td>
                         <asp:RadioButtonList ID="rblDimensionesCostosValidados" RepeatDirection="Horizontal" RepeatLayout="Table" TextAlign="Left"  runat="server" ValidationGroup="EditionProyectoPrincipios" AutoPostBack="true" OnTextChanged="cbDimensionesCostosValidados_CheckedChanged" >
                             <asp:ListItem>Si</asp:ListItem>
                             <asp:ListItem>No</asp:ListItem>
@@ -381,12 +381,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                         <asp:Literal ID="ltDimensionesCostosEnte" Text="Mencione el nombre de la institución, autoridad o nivel de gobierno que ha realizado la autorización. (500 caracteres)" runat="server"></asp:Literal>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td>
                         <asp:TextBox runat="server" ID="txtDimensionesCostosEnte" MaxLength="500" Rows="6" Enabled="false" TextMode="MultiLine"></asp:TextBox>
                     </td>
                     <td Width="1px">
@@ -464,11 +464,42 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 <br/>				
+<%--PANEL Relacion entre proyecto y metodología (12 Agregada)--%>
+<asp:UpdatePanel ID="upRelacionProyMet" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+        <div class="CollapsiblePanelTab">
+            <span id="span11">
+                <asp:Label ID="lblRelacionProyMet" runat="server" Text="12. ¿Cuál es la relación entre el Proyecto y la Metodología Marco Lógico? (1500 caracteres)"></asp:Label>
+                &nbsp;&nbsp;<!--img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" /-->
+            </span>
+            <ajaxToolkit:CollapsiblePanelExtender ID="cpeRelacionProyMet" runat="Server" TargetControlID="pnlRelacionProyMet"
+                Collapsed="True" ExpandControlID="lblRelacionProyMet" CollapseControlID="lblRelacionProyMet"
+                AutoCollapse="False" AutoExpand="False" ExpandDirection="Vertical" />
+        </div>
+        <asp:Panel ID="pnlRelacionProyMet" runat="server">
+                <table width="100%" cellpadding="0" cellspacing="5px" border="0">
+                    <tr>
+                        <td>
+                            <asp:TextBox runat="server" ID="txtRelacionProyMet" MaxLength="1500" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RegularExpressionValidator ID="revRelacionProyMet" runat="server" ControlToValidate="txtRelacionProyMet"
+                                ValidationGroup="EditionProyectoPrincipios" Text="*" Width="1px" Height="1px" ErrorMessage="La relación no es válida">
+                            </asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                </table>
+        </asp:Panel>
+    </ContentTemplate>
+</asp:UpdatePanel>
+<br/>
 <%--PANEL Observaciones DNIP --%>
 <asp:UpdatePanel ID="upObservacionesDNIP" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
 <div class="CollapsiblePanelTab">
-    <span id="span11">
+    <span id="span12">
         <asp:Label ID="lblObservacionesDNIP" runat="server" Text="Observaciones de la DNIP"></asp:Label>
         &nbsp;&nbsp;<img src="../App_Themes/Sky/Images/Layout/SpryMenuBarRight.gif" />
     </span>

@@ -225,12 +225,20 @@ namespace UI.Web
 
             if (Entity.proyecto != null && Entity.proyecto.IdProyecto > 0)
             {
-                //Calcular CostoTotal = Este campo suma Todos los GR del Año-1 + Estimada Año Actual + Estimados Futuros (Año+1 en adelante)
-                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio(new nc.ProyectoFilter() { IdProyecto = Entity.proyecto.IdProyecto, IdFase = (int)FaseEnum.Ejecucion });
-                var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
-                var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
-                var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
-                UIHelper.SetValue(txtCostoTotal, (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
+                //(Viejo)Calcular CostoTotal = Este campo suma Todos los GR del Año-1 + Estimada Año Actual + Estimados Futuros (Año+1 en adelante)
+                var totalesPorAnio = Business.ProyectoCronogramaComposeBusiness.Current.GetTotalPorAnio
+                (
+                    new nc.ProyectoFilter() {
+                        IdProyecto = Entity.proyecto.IdProyecto, IdFase = (int)FaseEnum.Ejecucion 
+                    }
+                );
+                //var estimadoAnioActual = totalesPorAnio.Where(x => x.Anio == DateTime.Now.Year).Sum(x => x.Estimado);
+                //var estimadoAnioFuturo = totalesPorAnio.Where(x => x.Anio >= DateTime.Now.Year + 1).Sum(x => x.Estimado);
+                //var realizadoAnioAnterior = totalesPorAnio.Where(x => x.Anio <= DateTime.Now.Year - 1).Sum(x => x.Realizado);
+                //UIHelper.SetValue(txtCostoTotal, (realizadoAnioAnterior + estimadoAnioActual + estimadoAnioFuturo).ToString("N0"));
+                //Juan 05062018
+                var total = totalesPorAnio.Sum(x => x.Estimado);
+                UIHelper.SetValue(txtCostoTotal, total);
 
                 //Cálculo: estimado (año actual + futuros)  al momento de poner la marca plan por primera vez.  
                 //El campo debe mostrar el valor al momento de poner la última marca plan correspondiente al periodo en el cual se puso por primera vez.

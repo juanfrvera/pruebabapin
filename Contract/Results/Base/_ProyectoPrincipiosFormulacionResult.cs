@@ -29,6 +29,8 @@ namespace Contract.Base
         public bool? RequiereIntevencion { get; set; }
         public string RequiereIntevencionAutoridad { get; set; }
         public int? RequiereIntevencionEstado { get; set; }
+        //Agregado Juan
+        public string RelacionProyectoMetodologia { get; set; }
         public string ObservacionesDNIP { get; set; }
 
 		public int _Proyecto_IdTipoProyecto{get;set;}	
@@ -80,6 +82,8 @@ namespace Contract.Base
             _ProyectoPrincipiosFormulacion.RequiereIntevencion = this.RequiereIntevencion;
             _ProyectoPrincipiosFormulacion.RequiereIntevencionAutoridad = this.RequiereIntevencionAutoridad;
             _ProyectoPrincipiosFormulacion.RequiereIntevencionEstado = this.RequiereIntevencionEstado;
+            //Agregado Juan
+            _ProyectoPrincipiosFormulacion.RelacionProyectoMetodologia = this.RelacionProyectoMetodologia;
             _ProyectoPrincipiosFormulacion.ObservacionesDNIP = this.ObservacionesDNIP;
 		  return _ProyectoPrincipiosFormulacion;
 		}		
@@ -106,6 +110,8 @@ namespace Contract.Base
           this.RequiereIntevencion = entity.RequiereIntevencion;
           this.RequiereIntevencionAutoridad = entity.RequiereIntevencionAutoridad;
           this.RequiereIntevencionEstado = entity.RequiereIntevencionEstado;
+          //Agregado Juan
+          this.RelacionProyectoMetodologia = entity.RelacionProyectoMetodologia;
           this.ObservacionesDNIP = entity.ObservacionesDNIP;
 		 		  
 		}		
@@ -133,6 +139,9 @@ namespace Contract.Base
             if ((entity.RequiereIntevencion == null) ? this.RequiereIntevencion != null : !entity.RequiereIntevencion.Equals(this.RequiereIntevencion)) return false;
             if ((entity.RequiereIntevencionAutoridad == null) ? this.RequiereIntevencionAutoridad != null : !entity.RequiereIntevencionAutoridad.Equals(this.RequiereIntevencionAutoridad)) return false;
             if ((entity.RequiereIntevencionEstado == null) ? this.RequiereIntevencionEstado != null : !entity.RequiereIntevencionEstado.Equals(this.RequiereIntevencionEstado)) return false;
+            //Agregado Juan
+            if ((entity.RelacionProyectoMetodologia == null) ? this.RelacionProyectoMetodologia != null : !entity.RelacionProyectoMetodologia.Equals(this.RelacionProyectoMetodologia)) return false;
+            
             if ((entity.ObservacionesDNIP == null) ? this.ObservacionesDNIP != null : !entity.ObservacionesDNIP.Equals(this.ObservacionesDNIP)) return false;
             return true;
         }
@@ -160,6 +169,9 @@ namespace Contract.Base
             ,new DataColumnMapping("RequiereIntevencion","RequiereIntevencion")
             ,new DataColumnMapping("RequiereIntevencionAutoridad","RequiereIntevencionAutoridad")
             ,new DataColumnMapping("RequiereIntevencionEstado","RequiereIntevencionEstado")
+            //Agregado Juan
+            ,new DataColumnMapping("RelacionProyectoMetodologia","RelacionProyectoMetodologia")
+            
             ,new DataColumnMapping("ObservacionesDNIP","ObservacionesDNIP")
 			}));
 		}

@@ -14397,6 +14397,9 @@ namespace Contract
 		
 		private System.Nullable<int> _RequiereIntevencionEstado;
 		
+        //Agregado Juan
+		private string _RelacionProyectoMetodologia;
+		
 		private string _ObservacionesDNIP;
 		
 		private EntityRef<Proyecto> _Proyecto;
@@ -14447,6 +14450,10 @@ namespace Contract
     partial void OnRequiereIntevencionAutoridadChanged();
     partial void OnRequiereIntevencionEstadoChanging(System.Nullable<int> value);
     partial void OnRequiereIntevencionEstadoChanged();
+    //Agregado Juan
+    partial void OnRelacionProyectoMetodologiaChanging(string value);
+    partial void OnRelacionProyectoMetodologiaChanged();
+
     partial void OnObservacionesDNIPChanging(string value);
     partial void OnObservacionesDNIPChanged();
     #endregion
@@ -14900,9 +14907,30 @@ namespace Contract
 				}
 			}
 		}
+		//Agregado Juan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RelacionProyectoMetodologia", DbType="VarChar(255)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
+		public string RelacionProyectoMetodologia
+		{
+			get
+			{
+				return this._RelacionProyectoMetodologia;
+			}
+			set
+			{
+				if ((this._RelacionProyectoMetodologia != value))
+				{
+					this.OnRelacionProyectoMetodologiaChanging(value);
+					this.SendPropertyChanging();
+					this._RelacionProyectoMetodologia = value;
+					this.SendPropertyChanged("RelacionProyectoMetodologia");
+					this.OnRelacionProyectoMetodologiaChanged();
+				}
+			}
+		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ObservacionesDNIP", DbType="VarChar(MAX)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
 		public string ObservacionesDNIP
 		{
 			get

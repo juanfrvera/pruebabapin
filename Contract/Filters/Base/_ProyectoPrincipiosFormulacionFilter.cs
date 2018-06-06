@@ -29,6 +29,10 @@ namespace Contract.Base
         private bool? _RequiereIntevencion;
         private string _RequiereIntevencionAutoridad;
         private int? _RequiereIntevencionEstado;
+
+        //Agregado Juan
+        private string _RelacionProyectoMetodologia;
+
         private string _ObservacionesDNIP;
 
 		#endregion
@@ -191,6 +195,18 @@ namespace Contract.Base
 
         [DataMember(Name = "RequiereIntevencionEstado", IsRequired = false)]
         public int? RequiereIntevencionEstado { get; set; }
+
+        //Agregado Juan
+        [DataMember(Name = "RelacionProyectoMetodologia", IsRequired = false)]
+        public string RelacionProyectoMetodologia
+        {
+            get
+            {
+                if (_RelacionProyectoMetodologia == null) _RelacionProyectoMetodologia = string.Empty;
+                return _RelacionProyectoMetodologia;
+            }
+            set { _RelacionProyectoMetodologia = value; }
+        }
 
         [DataMember(Name = "ObservacionesDNIP", IsRequired = false)]
         public string ObservacionesDNIP

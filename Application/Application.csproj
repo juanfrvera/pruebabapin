@@ -260,6 +260,8 @@
     <Content Include="App_Themes\LeafletMaps.css" />
     <Content Include="App_Themes\Site.css" />
     <Content Include="App_Themes\Sky\close.png" />
+    <Content Include="bin\Application.dll" />
+    <Content Include="bin\Application.pdb" />
     <Content Include="ControlsPersonal\WebControl_IndicadorClaseTree.ascx" />
     <Content Include="ControlsPersonal\WebControl_IndicadorClaseTreeSinSector.ascx" />
     <Content Include="ControlsPersonal\WebControl_ProjectEstadoDesicionHistorico.ascx" />

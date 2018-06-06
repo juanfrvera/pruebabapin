@@ -61,6 +61,8 @@ namespace DataAccess.Base
                     && (filter.RequiereIntevencion == null || o.RequiereIntevencion == filter.RequiereIntevencion)
                     && (filter.RequiereIntevencionAutoridad == null || filter.RequiereIntevencionAutoridad.Trim() == string.Empty || filter.RequiereIntevencionAutoridad.Trim() == "%" || (filter.RequiereIntevencionAutoridad.EndsWith("%") && filter.RequiereIntevencionAutoridad.StartsWith("%") && (o.RequiereIntevencionAutoridad.Contains(filter.RequiereIntevencionAutoridad.Replace("%", "")))) || (filter.RequiereIntevencionAutoridad.EndsWith("%") && o.RequiereIntevencionAutoridad.StartsWith(filter.RequiereIntevencionAutoridad.Replace("%", ""))) || (filter.RequiereIntevencionAutoridad.StartsWith("%") && o.RequiereIntevencionAutoridad.EndsWith(filter.RequiereIntevencionAutoridad.Replace("%", ""))) || o.RequiereIntevencionAutoridad == filter.RequiereIntevencionAutoridad)
                     && (filter.RequiereIntevencionEstado == null || filter.RequiereIntevencionEstado == 0 || o.RequiereIntevencionEstado == filter.RequiereIntevencionEstado)
+                    //Agregado Juan
+                     && (filter.RelacionProyectoMetodologia == null || filter.RelacionProyectoMetodologia.Trim() == string.Empty || filter.RelacionProyectoMetodologia.Trim() == "%" || (filter.RelacionProyectoMetodologia.EndsWith("%") && filter.RelacionProyectoMetodologia.StartsWith("%") && (o.RelacionProyectoMetodologia.Contains(filter.RelacionProyectoMetodologia.Replace("%", "")))) || (filter.RelacionProyectoMetodologia.EndsWith("%") && o.RelacionProyectoMetodologia.StartsWith(filter.RelacionProyectoMetodologia.Replace("%", ""))) || (filter.RelacionProyectoMetodologia.StartsWith("%") && o.RelacionProyectoMetodologia.EndsWith(filter.RelacionProyectoMetodologia.Replace("%", ""))) || o.RelacionProyectoMetodologia == filter.RelacionProyectoMetodologia)
 
                     && (filter.ObservacionesDNIP == null || filter.ObservacionesDNIP.Trim() == string.Empty || filter.ObservacionesDNIP.Trim() == "%" || (filter.ObservacionesDNIP.EndsWith("%") && filter.ObservacionesDNIP.StartsWith("%") && (o.ObservacionesDNIP.Contains(filter.ObservacionesDNIP.Replace("%", "")))) || (filter.ObservacionesDNIP.EndsWith("%") && o.ObservacionesDNIP.StartsWith(filter.ObservacionesDNIP.Replace("%", ""))) || (filter.ObservacionesDNIP.StartsWith("%") && o.ObservacionesDNIP.EndsWith(filter.ObservacionesDNIP.Replace("%", ""))) || o.ObservacionesDNIP == filter.ObservacionesDNIP)
                     select o
@@ -94,6 +96,8 @@ namespace DataAccess.Base
                      RequiereIntevencion = o.RequiereIntevencion,
                      RequiereIntevencionAutoridad = o.RequiereIntevencionAutoridad,
                      RequiereIntevencionEstado = o.RequiereIntevencionEstado,
+                     //Agregado Juan
+                     RelacionProyectoMetodologia=o.RelacionProyectoMetodologia,
                      ObservacionesDNIP = o.ObservacionesDNIP
 						}
                     ).AsQueryable();
@@ -123,6 +127,8 @@ namespace DataAccess.Base
             _new.RequiereIntevencion = entity.RequiereIntevencion;
             _new.RequiereIntevencionAutoridad = entity.RequiereIntevencionAutoridad;
             _new.RequiereIntevencionEstado = entity.RequiereIntevencionEstado;
+            //Agregado Juan
+            _new.RelacionProyectoMetodologia = entity.RelacionProyectoMetodologia;
             _new.ObservacionesDNIP = entity.ObservacionesDNIP;
 
             return _new;			
@@ -149,6 +155,8 @@ namespace DataAccess.Base
             newEntity.RequiereIntevencion = newEntity.RequiereIntevencion;
             newEntity.RequiereIntevencionAutoridad = string.Format(renameFormat,newEntity.RequiereIntevencionAutoridad);
             newEntity.RequiereIntevencionEstado = newEntity.RequiereIntevencionEstado;
+            //Agregado Juan
+            newEntity.RelacionProyectoMetodologia = string.Format(renameFormat, newEntity.RelacionProyectoMetodologia);
             newEntity.ObservacionesDNIP = string.Format(renameFormat,newEntity.ObservacionesDNIP);
             Add(newEntity);
 			return GetId(newEntity);
@@ -182,6 +190,8 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
+         //Agregado Juan
+         target.RelacionProyectoMetodologia = source.RelacionProyectoMetodologia;
          target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		public override void Set(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacion target,bool hadSetId)
@@ -207,6 +217,8 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
+         //Agregado Juan
+         target.RelacionProyectoMetodologia = source.RelacionProyectoMetodologia;
          target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		public override void Set(ProyectoPrincipiosFormulacion source,ProyectoPrincipiosFormulacionResult target,bool hadSetId)
@@ -232,6 +244,8 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
+         //Agregado Juan
+         target.RelacionProyectoMetodologia = source.RelacionProyectoMetodologia;
          target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}		
 		public override void Set(ProyectoPrincipiosFormulacionResult source,ProyectoPrincipiosFormulacionResult target,bool hadSetId)
@@ -257,6 +271,8 @@ namespace DataAccess.Base
          target.RequiereIntevencion = source.RequiereIntevencion;
          target.RequiereIntevencionAutoridad = source.RequiereIntevencionAutoridad;
          target.RequiereIntevencionEstado = source.RequiereIntevencionEstado;
+         //Agregado Juan
+         target.RelacionProyectoMetodologia = source.RelacionProyectoMetodologia;
          target.ObservacionesDNIP = source.ObservacionesDNIP;  
 		}
 		#endregion			
@@ -288,6 +304,8 @@ namespace DataAccess.Base
             if ((source.RequiereIntevencion == null) ? (target.RequiereIntevencion.HasValue) : !source.RequiereIntevencion.Equals(target.RequiereIntevencion)) return false;
             if ((source.RequiereIntevencionAutoridad == null) ? target.RequiereIntevencionAutoridad != null : !((target.RequiereIntevencionAutoridad == String.Empty && source.RequiereIntevencionAutoridad == null) || (target.RequiereIntevencionAutoridad == null && source.RequiereIntevencionAutoridad == String.Empty)) && !source.RequiereIntevencionAutoridad.Trim().Replace("\r", "").Equals(target.RequiereIntevencionAutoridad.Trim().Replace("\r", ""))) return false;
             if ((source.RequiereIntevencionEstado == null) ? (target.RequiereIntevencionEstado.HasValue) : !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
+            //Agregado Juan
+            if ((source.RelacionProyectoMetodologia == null) ? target.RelacionProyectoMetodologia != null : !((target.RelacionProyectoMetodologia == String.Empty && source.RelacionProyectoMetodologia == null) || (target.RelacionProyectoMetodologia == null && source.RelacionProyectoMetodologia == String.Empty)) && !source.RelacionProyectoMetodologia.Trim().Replace("\r", "").Equals(target.RelacionProyectoMetodologia.Trim().Replace("\r", ""))) return false;
             if ((source.ObservacionesDNIP == null) ? target.ObservacionesDNIP != null : !((target.ObservacionesDNIP == String.Empty && source.ObservacionesDNIP == null) || (target.ObservacionesDNIP == null && source.ObservacionesDNIP == String.Empty)) && !source.ObservacionesDNIP.Trim().Replace("\r", "").Equals(target.ObservacionesDNIP.Trim().Replace("\r", ""))) return false;
 		  return true;
         }
@@ -321,6 +339,8 @@ namespace DataAccess.Base
                 if (source.RequiereIntevencion.HasValue && source.RequiereIntevencion != false) return false;   //false initial value 
                 if (source.RequiereIntevencionAutoridad != null && source.RequiereIntevencionAutoridad != String.Empty) return false;
                 if (source.RequiereIntevencionEstado != null && !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
+                //Agregado Juan
+                if (source.RelacionProyectoMetodologia != null && source.RelacionProyectoMetodologia != String.Empty) return false;
                 if (source.ObservacionesDNIP != null && source.ObservacionesDNIP != String.Empty) return false;
                 return true;
             }
@@ -349,7 +369,8 @@ namespace DataAccess.Base
             if ((source.RequiereIntevencionEstado == null) ? (target.RequiereIntevencionEstado.HasValue) : !source.RequiereIntevencionEstado.Equals(target.RequiereIntevencionEstado)) return false;
 
             if(!source._Proyecto_IdTipoProyecto.Equals(target._Proyecto_IdTipoProyecto))return false;
-
+            //Agregado Juan
+            if ((source.RelacionProyectoMetodologia == null) ? target.RelacionProyectoMetodologia != null : !((target.RelacionProyectoMetodologia == String.Empty && source.RelacionProyectoMetodologia == null) || (target.RelacionProyectoMetodologia == null && source.RelacionProyectoMetodologia == String.Empty)) && !source.RelacionProyectoMetodologia.Trim().Replace("\r", "").Equals(target.RelacionProyectoMetodologia.Trim().Replace("\r", ""))) return false;
             if ((source.ObservacionesDNIP == null) ? target.ObservacionesDNIP != null : !((target.ObservacionesDNIP == String.Empty && source.ObservacionesDNIP == null) || (target.ObservacionesDNIP == null && source.ObservacionesDNIP == String.Empty)) && !source.ObservacionesDNIP.Trim().Replace("\r", "").Equals(target.ObservacionesDNIP.Trim().Replace("\r", ""))) return false;
 		  return true;
         }

@@ -544,6 +544,8 @@
       <Column Name="RequiereIntevencion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="RequiereIntevencionAutoridad" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="RequiereIntevencionEstado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <!--Agregado Juan-->
+      <Column Name="RelacionProyectoMetodologia" Type="System.String" DbType="VarChar(255)" CanBeNull="true"/>
       <Column Name="ObservacionesDNIP" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Proyecto_ProyectoPrincipiosFormulacion" Member="Proyecto" ThisKey="IdProyecto" OtherKey="IdProyecto" Type="Proyecto" IsForeignKey="true" />
     </Type>

@@ -832,6 +832,60 @@ namespace UI.Web.Pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRequiereIntevencionEstado;
         
         /// <summary>
+        /// upRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upRelacionProyMet;
+        
+        /// <summary>
+        /// lblRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRelacionProyMet;
+        
+        /// <summary>
+        /// cpeRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeRelacionProyMet;
+        
+        /// <summary>
+        /// pnlRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRelacionProyMet;
+        
+        /// <summary>
+        /// txtRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRelacionProyMet;
+        
+        /// <summary>
+        /// revRelacionProyMet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revRelacionProyMet;
+        
+        /// <summary>
         /// upObservacionesDNIP control.
         /// </summary>
         /// <remarks>

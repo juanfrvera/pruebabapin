@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Web
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Contract", "2_Contract", "{8E3502AE-2D8B-42C8-BEEA-7BC470547769}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Data", "3_Data", "{AAD06F35-D6C6-42B5-9A9C-B2159C6B3BA3}"
